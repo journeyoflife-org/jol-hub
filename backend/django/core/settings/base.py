@@ -12,9 +12,15 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+import sys
 from pathlib import Path
 from datetime import timedelta
+from celery.schedules import crontab
+
 import environ
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
@@ -129,13 +135,13 @@ MIDDLEWARE = [
     # Debug toolbar (activated conditionally)
 ]
 
-ROOT_URLCONF = 'backend.django.core.urls'
+ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'backend' / 'django' / 'templates',
+            BASE_DIR / 'django' / 'templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -149,7 +155,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'backend.django.core.wsgi.application'
+WSGI_APPLICATION = 'django.core.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -232,7 +238,7 @@ LANGUAGES = [
 ]
 
 LOCALE_PATHS = [
-    BASE_DIR / 'backend' / 'django' / 'locale',
+    BASE_DIR / 'django' / 'locale',
 ]
 
 # Static files (CSS, JavaScript, Images)
@@ -241,7 +247,7 @@ LOCALE_PATHS = [
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
-    BASE_DIR / 'backend' / 'django' / 'static',
+    BASE_DIR / 'django' / 'static',
 ]
 
 # WhiteNoise configuration for static files
@@ -469,22 +475,22 @@ LOGGING = {
         },
     },
     'root': {
-        'handlers': ['console', 'file'],
+        'handlers': ['console'],
         'level': 'INFO',
     },
     'loggers': {
         'django': {
-            'handlers': ['console', 'file'],
+            'handlers': ['console'],
             'level': 'INFO',
             'propagate': False,
         },
         'django.request': {
-            'handlers': ['error_file', 'mail_admins'],
+            'handlers': ['console'],
             'level': 'ERROR',
             'propagate': False,
         },
         'jolhub': {
-            'handlers': ['console', 'file', 'error_file'],
+            'handlers': ['console'],
             'level': 'DEBUG' if DEBUG else 'INFO',
             'propagate': False,
         },
@@ -689,3 +695,20 @@ if 'test' in sys.argv:
 # Import environment-specific settings
 # This will be overridden by development.py or production.py
 ENVIRONMENT = 'base'
+
+# Ensure file handler exists (fix for missing handler error)
+if 'LOGGING' in locals() and 'handlers' in LOGGING:
+    if 'file' not in LOGGING['handlers']:
+        LOGGING['handlers']['file'] = {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs', 'django.log'),
+            'maxBytes': 1024 * 1024 * 5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'verbose',
+        }
+        # Create logs directory if it doesn't exist
+        os.makedirs(os.path.join(BASE_DIR, 'logs'), exist_ok=True)
+# Load environment variables
+from dotenv import load_dotenv
+load_dotenv()

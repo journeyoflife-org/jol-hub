@@ -28,12 +28,12 @@ import sys
 from pathlib import Path
 
 # Add the project root to Python path
-PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 # Set the DJANGO_SETTINGS_MODULE environment variable
 # This tells Django which settings module to use
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.django.core.settings.production')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django.core.settings.production')
 
 # Import Django application after settings are configured
 from django.core.wsgi import get_wsgi_application
@@ -151,13 +151,13 @@ def health_check_app(environ, start_response):
 ENVIRONMENT = os.environ.get('JOL_ENVIRONMENT', 'production')
 
 if ENVIRONMENT == 'development':
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'backend.django.core.settings.development'
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'django.core.settings.development'
 elif ENVIRONMENT == 'staging':
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'backend.django.core.settings.staging'
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'django.core.settings.staging'
 elif ENVIRONMENT == 'production':
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'backend.django.core.settings.production'
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'django.core.settings.production'
 else:
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'backend.django.core.settings.production'
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'django.core.settings.production'
 
 # Reload application with correct settings
 from django.core.wsgi import get_wsgi_application

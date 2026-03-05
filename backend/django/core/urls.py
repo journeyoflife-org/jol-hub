@@ -65,13 +65,15 @@ urlpatterns = [
     path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     
     # API v1 endpoints
-    path('api/v1/auth/', include('apps.users.api.urls', namespace='auth')),
-    path('api/v1/organizations/', include('apps.organizations.api.urls', namespace='organizations')),
-    path('api/v1/users/', include('apps.users.api.urls', namespace='users')),
-    path('api/v1/content/', include('apps.content.api.urls', namespace='content')),
-    path('api/v1/donations/', include('apps.donations.api.urls', namespace='donations')),
-    path('api/v1/analytics/', include('apps.analytics.api.urls', namespace='analytics')),
-    path('api/v1/countries/', include('apps.countries.api.urls', namespace='countries')),
+    path('api/v1/auth/', include('apps.users.auth_urls')),
+    path('api/v1/organizations/', include('apps.organizations.urls')),
+    path('api/v1/users/', include('apps.users.urls')),
+    path('api/v1/content/', include('apps.content.urls')),
+    path('api/v1/donations/', include('apps.donations.urls')),
+    path('api/v1/analytics/', include('apps.analytics.urls')),
+    path('api/v1/countries/', include('apps.countries.urls')),
+    path('api/v1/integrations/', include('apps.integrations.urls')),
+    path('api/v1/financial/', include('apps.financial.urls')),
     
     # Allauth (social authentication)
     path('accounts/', include('allauth.urls')),

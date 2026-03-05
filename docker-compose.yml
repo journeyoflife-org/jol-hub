@@ -1,0 +1,110 @@
+# -----------------------------------------------------------------------------
+# JOL-HUB — Local Development Docker Compose
+# -----------------------------------------------------------------------------
+# Services:
+#   • db: PostgreSQL 16
+#   • redis: Redis 7 (Celery broker + cache)
+#   • backend: Django development server
+#   • celery-worker: Celery worker
+#   • celery-beat: Celery scheduler
+# -----------------------------------------------------------------------------
+
+version: "3.8"
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: jolhub-db
+    environment:
+      POSTGRES_DB: jolhub
+      POSTGRES_USER: jolhub
+      POSTGRES_PASSWORD: jolhub
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jolhub"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: jolhub-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: jolhub-backend
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    environment:
+      DEBUG: "true"
+      DATABASE_URL: postgres://jolhub:jolhub@db:5432/jolhub
+      REDIS_URL: redis://redis:6379/0
+      DJANGO_SECRET_KEY: local-dev-secret-key-not-for-production
+    volumes:
+      - ./backend:/app
+      - static_volume:/app/static
+      - media_volume:/app/media
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  celery-worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: jolhub-celery-worker
+    command: celery -A backend.django.core worker -l info -c 2
+    environment:
+      DEBUG: "true"
+      DATABASE_URL: postgres://jolhub:jolhub@db:5432/jolhub
+      REDIS_URL: redis://redis:6379/0
+      DJANGO_SECRET_KEY: local-dev-secret-key-not-for-production
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - db
+      - redis
+      - backend
+
+  celery-beat:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: jolhub-celery-beat
+    command: celery -A backend.django.core beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    environment:
+      DEBUG: "true"
+      DATABASE_URL: postgres://jolhub:jolhub@db:5432/jolhub
+      REDIS_URL: redis://redis:6379/0
+      DJANGO_SECRET_KEY: local-dev-secret-key-not-for-production
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - db
+      - redis
+      - backend
+
+volumes:
+  postgres_data:
+  redis_data:
+  static_volume:
+  media_volume:

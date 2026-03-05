@@ -135,7 +135,7 @@ class Website(BaseModel):
 
     organization = models.OneToOneField(
         Organization, on_delete=models.CASCADE,
-        related_name='website', verbose_name=_('organization'),
+        related_name='site', verbose_name=_('organization'),
     )
     domain = models.CharField(_('domain'), max_length=255, unique=True, blank=True)
     theme = models.CharField(_('theme'), max_length=64, default='default')

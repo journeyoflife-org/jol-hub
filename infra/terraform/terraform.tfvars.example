@@ -1,0 +1,56 @@
+# -----------------------------------------------------------------------------
+# JOL-HUB Terraform Variables — Example Configuration
+# -----------------------------------------------------------------------------
+# Copy this file to terraform.tfvars and customize for your environment
+# -----------------------------------------------------------------------------
+
+# Environment settings
+environment = "staging"
+aws_region  = "eu-west-1"
+
+# VPC configuration
+vpc_cidr = "10.0.0.0/16"
+az_count = 3
+
+# Database configuration
+postgres_version            = "16.3"
+rds_instance_class          = "db.t3.medium"
+rds_allocated_storage       = 20
+rds_max_allocated_storage   = 100
+rds_backup_retention_days   = 7
+rds_multi_az                = false
+rds_enable_performance_insights = true
+
+# ElastiCache configuration
+redis_version           = "7.1"
+redis_node_type         = "cache.t3.micro"
+redis_num_cache_clusters = 2
+
+# ECS configuration
+django_cpu           = "512"
+django_memory        = "1024"
+django_desired_count = 2
+django_min_count     = 2
+django_max_count     = 10
+
+celery_cpu                  = "256"
+celery_memory               = "512"
+celery_worker_desired_count = 2
+celery_worker_min_count     = 1
+celery_worker_max_count     = 10
+
+# SSL/TLS certificates (required)
+# Create these in ACM first
+alb_certificate_arn      = "arn:aws:acm:eu-west-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+cloudfront_certificate_arn = ""
+
+# DNS configuration (optional)
+route53_zone_id = "Z1234567890ABC"
+app_domain      = "api-staging.journeyoflife.org"
+
+# Monitoring (optional)
+alarm_sns_topic_arn = ""
+
+# Security
+enable_bastion      = false
+allowed_admin_cidrs = []

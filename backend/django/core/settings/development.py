@@ -13,7 +13,6 @@ from .base import env
 
 # =============================================================================
 # DEBUG SETTINGS
-# =============================================================================
 
 DEBUG = True
 TEMPLATE_DEBUG = True
@@ -27,7 +26,6 @@ ALLOWED_HOSTS += ['localhost', '127.0.0.1', '[::1]']
 
 # Django Debug Toolbar
 INSTALLED_APPS += [
-    'debug_toolbar',
     'django_extensions',
 ]
 
@@ -44,7 +42,6 @@ INTERNAL_IPS = [
 DEBUG_TOOLBAR_CONFIG = {
     'DISABLE_PANELS': [
         'debug_toolbar.panels.redirects.RedirectsPanel',
-        'debug_toolbar.panels.profiling.ProfilingPanel',
     ],
     'SHOW_TEMPLATE_CONTEXT': True,
     'SHOW_COLLAPSED': False,
@@ -210,7 +207,7 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # Additional static files directories for development
 STATICFILES_DIRS += [
-    BASE_DIR / 'frontend' / 'react' / 'public',
+    BASE_DIR.parent / 'frontend' / 'react' / 'public',
 ]
 
 # =============================================================================
