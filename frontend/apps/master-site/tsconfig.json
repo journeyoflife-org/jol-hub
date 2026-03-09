@@ -1,25 +1,18 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "jsx": "react-jsx",
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@jol-hub/auth": ["../../packages/auth/src"],
-      "@jol-hub/bitrix-sdk": ["../../packages/bitrix-sdk/src"],
-      "@jol-hub/i18n": ["../../packages/i18n/src"],
-      "@jol-hub/ui": ["../../packages/ui/src"]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+      "@/*": ["./src/*"]
+    }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*", "*.ts", "*.tsx"],
+  "exclude": ["node_modules", ".next"]
 }

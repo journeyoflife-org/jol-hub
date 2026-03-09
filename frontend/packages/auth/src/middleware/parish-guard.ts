@@ -111,13 +111,13 @@ function extractSubdomain(hostname: string): string | null {
   const host = hostname.split(':')[0];
   
   // Handle localhost development
-  if (host === 'localhost' || host.startsWith('127.0.0.1')) {
+  if (host === 'localhost' || host?.startsWith('127.0.0.1')) {
     // Check for x-subdomain header for local testing
     return null;
   }
   
   // Handle preview deployments
-  if (host.includes('--')) {
+  if (host?.includes('--')) {
     const parts = host.split('--');
     if (parts.length > 0 && parts[0]) {
       return parts[0];
@@ -125,11 +125,11 @@ function extractSubdomain(hostname: string): string | null {
   }
   
   // Extract subdomain from standard patterns
-  const parts = host.split('.');
+  const parts = host?.split('.');
   
   // Pattern: parish-name.jol-hub.lt (3+ parts)
-  if (parts.length >= 3) {
-    const subdomain = parts[0];
+  if (parts && parts.length >= 3) {
+    const subdomain = parts?.[0];
     // Validate subdomain format (alphanumeric and hyphens)
     if (subdomain && /^[a-z0-9-]+$/.test(subdomain)) {
       return subdomain;
@@ -200,7 +200,7 @@ async function validateParishSubdomain(subdomain: string): Promise<string | null
 function checkParishAccess(
   session: UserSession | null,
   parishId: string | null,
-  config: ParishGuardConfig
+  _config: ParishGuardConfig
 ): ParishAccessResult {
   // No subdomain - main site access
   if (!parishId) {

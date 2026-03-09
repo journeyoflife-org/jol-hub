@@ -1,4 +1,5 @@
-import type { OAuthConfig, OAuthUserConfig } from 'next-auth/providers';
+import type { OAuthConfig, OAuthUserConfig } from 'next-auth/providers/index';
+import type { Profile } from 'next-auth';
 import type {
   Bitrix24User,
   Bitrix24TokenResponse,
@@ -211,7 +212,7 @@ export interface Bitrix24ProviderOptions extends OAuthUserConfig<Bitrix24User> {
  * @see https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&LESSON_ID=2385
  */
 export function Bitrix24Provider(
-  options: Bitrix24ProviderOptions = {}
+  options: Partial<Bitrix24ProviderOptions> = {}
 ): OAuthConfig<Bitrix24User> {
   const {
     authDomain = process.env.BITRIX_AUTH_URL ?? '',
@@ -236,85 +237,46 @@ export function Bitrix24Provider(
     // Authorization endpoint configuration
     authorization: {
       url: `${normalizedDomain}/oauth/authorize/`,
-      params: async ({ callbackUrl }) => {
-        // Generate state for CSRF protection
-        const state = generateOAuthState(callbackUrl);
-        
-        // Build base parameters
-        const params: Record<string, string> = {
-          response_type: 'code',
-          scope: scopes.join(','),
-          state,
-        };
-        
-        // Add PKCE parameters if enabled
-        if (enablePKCE) {
-          const pkcePair = await generatePKCEPair();
-          params.code_challenge = pkcePair.codeChallenge;
-          params.code_challenge_method = pkcePair.codeChallengeMethod;
-          
-          // Store verifier in session for later use
-          // Note: This requires session middleware to be configured
-          if (typeof window !== 'undefined') {
-            sessionStorage.setItem('pkce_verifier', pkcePair.codeVerifier);
-          }
-        }
-        
-        logAuthEvent('login_start');
-        return params;
+      params: {
+        response_type: 'code',
+        scope: scopes.join(','),
       },
     },
     
     // Token endpoint configuration
     token: {
       url: `${normalizedDomain}/oauth/token/`,
-      async conform(response) {
-        const data: Bitrix24TokenResponse = await response.json();
-        
-        if (!response.ok) {
-          const error = data as unknown as { error?: string; error_description?: string };
-          logAuthEvent('login_failure', { error: error.error_description ?? error.error });
-          throw new Error(error.error_description ?? 'Token exchange failed');
-        }
-        
-        logAuthEvent('login_success');
-        
-        return {
-          access_token: data.access_token,
-          refresh_token: data.refresh_token,
-          expires_in: data.expires_in,
-          token_type: data.token_type,
-          scope: data.scope,
-        };
-      },
     },
     
     // User info endpoint configuration
     userinfo: {
       url: `${normalizedDomain}/rest/user.current`,
-      async request({ tokens }) {
+      async request({ tokens }: { tokens: { access_token?: string } }): Promise<Profile> {
+        if (!tokens.access_token) {
+          throw new Error('No access token available');
+        }
         const url = `${normalizedDomain}/rest/user.current?auth=${tokens.access_token}`;
-        
+
         const response = await fetch(url, {
           method: 'GET',
           headers: {
             'Accept': 'application/json',
           },
         });
-        
+
         if (!response.ok) {
           const errorText = await response.text();
           logAuthEvent('login_failure', { error: `Failed to fetch user: ${errorText}` });
           throw new Error('Failed to fetch user info from Bitrix24');
         }
-        
+
         const data: Bitrix24ApiResponse<Bitrix24User> = await response.json();
-        return data.result;
+        return data.result as unknown as Profile;
       },
     },
     
     // Profile transformation
-    profile(profile) {
+    profile(profile: Bitrix24User) {
       const role = roleMapper(profile.WORK_POSITION);
       const parishIds = profile.UF_DEPARTMENT?.map(String) ?? [];
       
@@ -335,7 +297,8 @@ export function Bitrix24Provider(
     
     // Styling for UI
     style: {
-      brandColor: '#2FC6F6',
+      text: '#fff',
+      bg: '#2FC6F6',
       logo: 'https://www.bitrix24.com/favicon.ico',
     },
     
@@ -393,4 +356,4 @@ export async function refreshBitrixToken(
 // EXPORTS
 // =============================================================================
 
-export type { Bitrix24User, Bitrix24ProviderOptions };
+// Bitrix24User and Bitrix24ProviderOptions are already exported via 'export interface' above

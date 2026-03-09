@@ -82,5 +82,3 @@ export { Toaster } from './components/toaster';
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from './components/tooltip';
 
 // Types
-export type { ButtonProps } from './components/button';
-export type { AlertProps } from './components/alert';

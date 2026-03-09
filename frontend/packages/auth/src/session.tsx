@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { createContext, useContext, type ReactNode } from 'react';
 import { useSession as useNextAuthSession } from 'next-auth/react';
 import type { Session } from './types';
 
@@ -73,8 +73,8 @@ export async function getCsrfToken(): Promise<string | null> {
  * Sign in the user.
  */
 export async function signIn(
-  provider?: string,
-  options?: { callbackUrl?: string; redirect?: boolean }
+  _provider?: string,
+  _options?: { callbackUrl?: string; redirect?: boolean }
 ): Promise<void> {
   // This is a placeholder - the actual implementation
   // should use signIn from next-auth
@@ -83,7 +83,7 @@ export async function signIn(
 /**
  * Sign out the user.
  */
-export async function signOut(options?: { callbackUrl?: string; redirect?: boolean }): Promise<void> {
+export async function signOut(_options?: { callbackUrl?: string; redirect?: boolean }): Promise<void> {
   // This is a placeholder - the actual implementation
   // should use signOut from next-auth
 }

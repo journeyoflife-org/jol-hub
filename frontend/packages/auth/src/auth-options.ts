@@ -1,6 +1,7 @@
 import type { NextAuthOptions } from 'next-auth';
+import type { JWT } from 'next-auth/jwt';
 import { Bitrix24Provider } from './providers/bitrix24';
-import type { JWTTokenPayload, Session, User } from './types';
+import type { JWTTokenPayload, Session } from './types';
 
 /**
  * Bitrix24 profile returned from OAuth.
@@ -32,7 +33,7 @@ export const authOptions: NextAuthOptions = {
   },
 
   callbacks: {
-    async signIn({ user, account, profile }) {
+    async signIn({ user: _user, account, profile: _profile }) {
       // Allow sign in only for verified Bitrix24 users
       if (account?.provider === 'bitrix24') {
         // Add any additional validation here
@@ -41,7 +42,7 @@ export const authOptions: NextAuthOptions = {
       return false;
     },
 
-    async jwt({ token, account, user }) {
+    async jwt({ token, account, user }): Promise<JWT> {
       // Initial sign in
       if (account && user) {
         return {
@@ -57,20 +58,20 @@ export const authOptions: NextAuthOptions = {
             bitrixId: account.providerAccountId,
             bitrixDomain: extractDomain(account),
           },
-        } as JWTTokenPayload;
+        } as JWT;
       }
 
       // Return previous token if the access token has not expired yet
-      if (Date.now() < (token.accessTokenExpires as number)) {
-        return token;
+      if (Date.now() < ((token as unknown as JWTTokenPayload).accessTokenExpires as number)) {
+        return token as JWT;
       }
 
       // Access token has expired, try to refresh it
-      return refreshAccessToken(token as JWTTokenPayload);
+      return refreshAccessToken(token as unknown as JWTTokenPayload);
     },
 
-    async session({ session, token }) {
-      const jwtToken = token as JWTTokenPayload;
+    async session({ session, token }): Promise<Session> {
+      const jwtToken = token as unknown as JWTTokenPayload;
 
       return {
         ...session,
@@ -91,7 +92,7 @@ export const authOptions: NextAuthOptions = {
   },
 
   events: {
-    async signIn({ user, account, isNewUser }) {
+    async signIn({ user, account: _account, isNewUser }) {
       console.log(`User signed in: ${user.email}, new: ${isNewUser}`);
     },
     async signOut({ token }) {
@@ -105,7 +106,7 @@ export const authOptions: NextAuthOptions = {
 /**
  * Extracts the Bitrix24 domain from account info.
  */
-function extractDomain(account: { providerAccountId?: string }): string {
+function extractDomain(_account: { providerAccountId?: string }): string {
   const authDomain = process.env.BITRIX_AUTH_URL;
   if (authDomain) {
     try {
@@ -121,7 +122,7 @@ function extractDomain(account: { providerAccountId?: string }): string {
 /**
  * Refreshes an expired access token using the refresh token.
  */
-async function refreshAccessToken(token: JWTTokenPayload): Promise<JWTTokenPayload> {
+async function refreshAccessToken(token: JWTTokenPayload): Promise<JWT> {
   try {
     const authDomain = process.env.BITRIX_AUTH_URL;
     const clientId = process.env.BITRIX_CLIENT_ID;

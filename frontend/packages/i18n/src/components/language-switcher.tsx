@@ -1,6 +1,5 @@
 'use client';
 
-import { useTranslation } from 'react-i18next';
 import { useLocale } from '../hooks/use-locale';
 import type { SupportedLocale } from '../types';
 import { SUPPORTED_LOCALES, LOCALE_CONFIGS } from '../types';

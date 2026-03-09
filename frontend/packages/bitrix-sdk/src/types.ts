@@ -71,9 +71,11 @@ export interface Bitrix24BatchResponse<T extends Record<string, unknown>>
  */
 export interface PaginationParams {
   start?: number;
+  limit?: number;
   order?: Record<string, 'ASC' | 'DESC'>;
   filter?: Record<string, string | number | boolean>;
   select?: string[];
+  [key: string]: unknown; // Index signature for type compatibility
 }
 
 /**

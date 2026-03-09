@@ -1,4 +1,4 @@
-import type { SupportedLocale, LocaleConfig, LOCALE_CONFIGS } from '../types';
+import type { SupportedLocale } from '../types';
 
 /**
  * Format a date according to the locale.

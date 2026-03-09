@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSession, signIn, signOut } from 'next-auth/react';
-import type { Bitrix24Session, JolHubUserRole, ParishInfo } from '../types/bitrix';
+import type { JolHubUserRole } from '../types/bitrix';
 
 // =============================================================================
 // TYPES
@@ -125,7 +125,7 @@ export function useBitrixAuth(): BitrixAuthState {
     }
 
     return {
-      id: session.user.id ?? '',
+      id: (session.user as any).id?.toString() ?? '',
       bitrixId: (session.user as unknown as Record<string, unknown>).bitrixId as string ?? '',
       email: session.user.email ?? '',
       name: session.user.name ?? '',
@@ -309,7 +309,7 @@ export function useParishAccess(): {
   userRole: JolHubUserRole | null;
 } {
   const { isAuthenticated, user, hasParishAccess } = useBitrixAuth();
-  const { parishId, subdomain } = useParishContext();
+  const { parishId, subdomain: _subdomain } = useParishContext();
 
   const result = useMemo(() => {
     // No parish context (main site)
@@ -357,4 +357,4 @@ export function useParishAccess(): {
 // EXPORTS
 // =============================================================================
 
-export type { BitrixAuthState, Bitrix24UserSession, LoginOptions, LogoutOptions };
+// Types are already exported via 'export interface' declarations above

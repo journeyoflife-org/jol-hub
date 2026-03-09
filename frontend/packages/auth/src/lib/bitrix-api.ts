@@ -500,9 +500,4 @@ export function createBitrixApiClient(
 // EXPORTS
 // =============================================================================
 
-export type {
-  BitrixApiClientConfig,
-  BitrixApiParams,
-  BitrixTask,
-  BitrixCalendarEvent,
-};
+// Types are already exported at the top of the file
