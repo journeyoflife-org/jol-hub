@@ -1,0 +1,30 @@
+{
+  "siteName": "JOL-HUB",
+  "siteDescription": "Платформа Литовской католической церкви",
+  "navigation": {
+    "home": "Главная",
+    "parishes": "Приходы",
+    "events": "События",
+    "news": "Новости",
+    "about": "О нас",
+    "contact": "Контакты"
+  },
+  "actions": {
+    "learnMore": "Узнать больше",
+    "viewAll": "Смотреть все",
+    "search": "Поиск",
+    "submit": "Отправить",
+    "cancel": "Отмена",
+    "save": "Сохранить",
+    "edit": "Редактировать",
+    "delete": "Удалить",
+    "close": "Закрыть",
+    "back": "Назад"
+  },
+  "footer": {
+    "copyright": "© {{year}} JOL-HUB. Все права защищены.",
+    "privacyPolicy": "Политика конфиденциальности",
+    "termsOfService": "Условия использования",
+    "cookiePolicy": "Политика cookies"
+  }
+}

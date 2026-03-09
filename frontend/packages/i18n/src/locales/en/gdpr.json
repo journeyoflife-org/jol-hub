@@ -1,0 +1,53 @@
+{
+  "cookieConsent": {
+    "title": "Cookie Consent",
+    "description": "We use cookies to ensure the proper functioning of the website, improve your browsing experience, and analyze traffic.",
+    "manageCookies": "Manage Cookies",
+    "necessaryOnly": "Necessary Only",
+    "acceptAll": "Accept All",
+    "savePreferences": "Save Preferences",
+    "categories": {
+      "necessary": {
+        "title": "Necessary Cookies",
+        "description": "These cookies are essential for the website to function and cannot be disabled."
+      },
+      "analytics": {
+        "title": "Analytics Cookies",
+        "description": "These cookies help us understand how visitors interact with the website by collecting anonymized information."
+      },
+      "marketing": {
+        "title": "Marketing Cookies",
+        "description": "These cookies are used by advertising networks to show personalized ads."
+      }
+    }
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: {{date}}",
+    "intro": "This privacy policy explains how JOL-HUB collects, uses, and protects your personal information.",
+    "dataCollection": {
+      "title": "Data Collection",
+      "description": "We collect the following information:"
+    },
+    "dataUsage": {
+      "title": "Data Usage",
+      "description": "We use your data for the following purposes:"
+    },
+    "dataProtection": {
+      "title": "Data Protection",
+      "description": "We take appropriate measures to protect your data."
+    },
+    "yourRights": {
+      "title": "Your Rights",
+      "description": "Under GDPR, you have the following rights:"
+    }
+  },
+  "dataSubjectRights": {
+    "access": "Right to access your data",
+    "rectification": "Right to rectify incorrect data",
+    "erasure": "Right to be forgotten",
+    "restriction": "Right to restrict processing",
+    "portability": "Right to data portability",
+    "objection": "Right to object to processing"
+  }
+}

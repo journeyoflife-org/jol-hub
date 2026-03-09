@@ -1,0 +1,30 @@
+{
+  "siteName": "JOL-HUB",
+  "siteDescription": "Lithuanian Catholic Church Platform",
+  "navigation": {
+    "home": "Home",
+    "parishes": "Parishes",
+    "events": "Events",
+    "news": "News",
+    "about": "About Us",
+    "contact": "Contact"
+  },
+  "actions": {
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "search": "Search",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "close": "Close",
+    "back": "Back"
+  },
+  "footer": {
+    "copyright": "© {{year}} JOL-HUB. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy"
+  }
+}

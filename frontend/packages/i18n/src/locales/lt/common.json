@@ -1,0 +1,30 @@
+{
+  "siteName": "JOL-HUB",
+  "siteDescription": "Lietuvos katalikų bažnyčios platforma",
+  "navigation": {
+    "home": "Pagrindinis",
+    "parishes": "Parapijos",
+    "events": "Įvykiai",
+    "news": "Naujienos",
+    "about": "Apie mus",
+    "contact": "Kontaktai"
+  },
+  "actions": {
+    "learnMore": "Sužinoti daugiau",
+    "viewAll": "Žiūrėti visus",
+    "search": "Paieška",
+    "submit": "Pateikti",
+    "cancel": "Atšaukti",
+    "save": "Išsaugoti",
+    "edit": "Redaguoti",
+    "delete": "Ištrinti",
+    "close": "Uždaryti",
+    "back": "Atgal"
+  },
+  "footer": {
+    "copyright": "© {{year}} JOL-HUB. Visos teisės saugomos.",
+    "privacyPolicy": "Privatumo politika",
+    "termsOfService": "Naudojimo sąlygos",
+    "cookiePolicy": "Slapukų politika"
+  }
+}

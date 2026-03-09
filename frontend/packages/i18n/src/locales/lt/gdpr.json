@@ -1,0 +1,53 @@
+{
+  "cookieConsent": {
+    "title": "Slapukų sutikimas",
+    "description": "Mes naudojame slapukus, kad užtikrintume tinkamą svetainės veikimą, pagerintume jūsų naršymo patirtį ir analizuotume srautą.",
+    "manageCookies": "Tvarkyti slapukus",
+    "necessaryOnly": "Tik būtini",
+    "acceptAll": "Priimti visus",
+    "savePreferences": "Išsaugoti nuostatas",
+    "categories": {
+      "necessary": {
+        "title": "Būtini slapukai",
+        "description": "Šie slapukai yra būtini svetainės veikimui ir negali būti išjungti."
+      },
+      "analytics": {
+        "title": "Analitiniai slapukai",
+        "description": "Šie slapukai padeda mums suprasti, kaip lankytojai sąveikauja su svetaine, renkant anonimizuotą informaciją."
+      },
+      "marketing": {
+        "title": "Rinkodaros slapukai",
+        "description": "Šie slapukai naudojami reklamos tinklams, kad būtų galima rodyti suasmenintas reklamas."
+      }
+    }
+  },
+  "privacyPolicy": {
+    "title": "Privatumo politika",
+    "lastUpdated": "Paskutinį kartą atnaujinta: {{date}}",
+    "intro": "Ši privatumo politika paaiškina, kaip JOL-HUB renka, naudoja ir apsaugo jūsų asmeninę informaciją.",
+    "dataCollection": {
+      "title": "Duomenų rinkimas",
+      "description": "Renkame šią informaciją:"
+    },
+    "dataUsage": {
+      "title": "Duomenų naudojimas",
+      "description": "Naudojame jūsų duomenis šiems tikslams:"
+    },
+    "dataProtection": {
+      "title": "Duomenų apsauga",
+      "description": "Imamės atitinkamų priemonių jūsų duomenims apsaugoti."
+    },
+    "yourRights": {
+      "title": "Jūsų teisės",
+      "description": "Pagal BDAR turite šias teises:"
+    }
+  },
+  "dataSubjectRights": {
+    "access": "Teisė susipažinti su savo duomenimis",
+    "rectification": "Teisė taisyti neteisingus duomenis",
+    "erasure": "Teisė būti ištrintam (teisė būti pamirštam)",
+    "restriction": "Teisė apriboti duomenų tvarkymą",
+    "portability": "Teisė į duomenų perkeliamumą",
+    "objection": "Teisė prieštarauti duomenų tvarkymui"
+  }
+}
