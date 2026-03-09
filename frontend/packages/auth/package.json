@@ -16,6 +16,10 @@
     "./hooks": {
       "types": "./src/hooks/useBitrixAuth.ts",
       "default": "./src/hooks/useBitrixAuth.ts"
+    },
+    "./api": {
+      "types": "./src/lib/bitrix-api.ts",
+      "default": "./src/lib/bitrix-api.ts"
     }
   },
   "scripts": {

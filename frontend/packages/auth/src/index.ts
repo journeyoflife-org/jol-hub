@@ -57,6 +57,19 @@ export {
 } from './middleware/parish-guard';
 
 // =============================================================================
+// Bitrix24 REST API Client
+// =============================================================================
+
+export {
+  BitrixApiClient,
+  createBitrixApiClient,
+  type BitrixApiClientConfig,
+  type BitrixApiParams,
+  type BitrixTask,
+  type BitrixCalendarEvent,
+} from './lib/bitrix-api';
+
+// =============================================================================
 // Types
 // =============================================================================
 
@@ -87,4 +100,8 @@ export {
   // API types
   type Bitrix24ApiResponse,
   type Bitrix24ApiError,
+  
+  // CRM types
+  type BitrixCrmContact,
+  type BitrixCrmContactAddParams,
 } from './types/bitrix';

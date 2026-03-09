@@ -17,6 +17,7 @@ import { mapBitrixRole, DEFAULT_BITRIX_SCOPES } from '../types/bitrix';
 /**
  * Generates a cryptographically random string for PKCE code verifier.
  * @param length - Length of the verifier (43-128 characters)
+ * @returns Random string using unreserved characters per RFC 7636
  */
 function generateRandomString(length: number): string {
   const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
@@ -26,9 +27,11 @@ function generateRandomString(length: number): string {
   if (typeof crypto !== 'undefined' && crypto.getRandomValues) {
     crypto.getRandomValues(values);
   } else {
-    // Fallback for non-browser environments
+    // Fallback for non-browser environments (Node.js)
+    const nodeCrypto = require('crypto');
+    const randomBytes = nodeCrypto.randomBytes(length);
     for (let i = 0; i < length; i++) {
-      values[i] = Math.floor(Math.random() * charset.length);
+      values[i] = randomBytes[i];
     }
   }
   
@@ -39,15 +42,24 @@ function generateRandomString(length: number): string {
 
 /**
  * Generates SHA256 hash and encodes as base64url.
+ * Uses Web Crypto API in browser, Node.js crypto in server.
  */
 async function sha256Base64Url(plain: string): Promise<string> {
   const encoder = new TextEncoder();
   const data = encoder.encode(plain);
   
-  // Use Web Crypto API for SHA256
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  let hashBuffer: ArrayBuffer;
   
-  // Convert to base64url
+  // Use Web Crypto API if available (browser)
+  if (typeof crypto !== 'undefined' && crypto.subtle) {
+    hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  } else {
+    // Fallback for Node.js environment
+    const nodeCrypto = require('crypto');
+    hashBuffer = nodeCrypto.createHash('sha256').update(plain).digest();
+  }
+  
+  // Convert to base64url (RFC 7636 Appendix A)
   const hashArray = new Uint8Array(hashBuffer);
   const base64 = btoa(String.fromCharCode(...hashArray));
   return base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
@@ -55,12 +67,16 @@ async function sha256Base64Url(plain: string): Promise<string> {
 
 /**
  * Generates PKCE code verifier and challenge pair.
+ * Uses 128-character verifier for maximum security per RFC 7636.
+ * 
+ * @returns PKCE pair with verifier, challenge, and method
  */
 export async function generatePKCEPair(): Promise<PKCEPair> {
-  // Generate random code verifier (43-128 characters)
-  const codeVerifier = generateRandomString(64);
+  // Generate random code verifier (128 characters for maximum security)
+  // RFC 7636 allows 43-128 characters, we use 128 for paranoid compliance
+  const codeVerifier = generateRandomString(128);
   
-  // Generate code challenge using S256 method
+  // Generate code challenge using S256 method (mandatory for Bitrix24)
   const codeChallenge = await sha256Base64Url(codeVerifier);
   
   return {

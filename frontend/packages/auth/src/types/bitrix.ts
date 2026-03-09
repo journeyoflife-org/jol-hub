@@ -42,8 +42,12 @@ export interface Bitrix24User {
   WORK_PHONE?: string;
   /** Internal phone extension */
   UF_PHONE_INNER?: string;
-  /** Array of department IDs user belongs to */
+  /** Array of department IDs user belongs to (parish IDs) */
   UF_DEPARTMENT?: number[];
+  /** Custom field: Primary parish ID for the user */
+  UF_PARISH_ID?: string;
+  /** Custom field: Diocese ID for hierarchical access control */
+  UF_DIOCESE_ID?: string;
   /** User's city */
   PERSONAL_CITY?: string;
   /** User's street address */
@@ -228,6 +232,100 @@ export interface ParishInfo {
   dioceseId?: string;
   /** Parish priest user ID */
   priestId?: string;
+}
+
+// =============================================================================
+// CRM TYPES
+// =============================================================================
+
+/**
+ * Bitrix24 CRM Contact entity.
+ * Used for parish member/contact management.
+ * @see https://dev.1c-bitrix.ru/rest_help/crm/contacts/crm_contact_fields.php
+ */
+export interface BitrixCrmContact {
+  /** Unique contact identifier */
+  ID: string;
+  /** First name */
+  NAME: string;
+  /** Last name */
+  LAST_NAME?: string;
+  /** Email addresses */
+  EMAIL?: Array<{
+    ID?: string;
+    VALUE: string;
+    VALUE_TYPE: 'WORK' | 'HOME' | 'OTHER';
+  }>;
+  /** Phone numbers */
+  PHONE?: Array<{
+    ID?: string;
+    VALUE: string;
+    VALUE_TYPE: 'WORK' | 'HOME' | 'MOBILE' | 'FAX' | 'OTHER';
+  }>;
+  /** Company ID (linked parish organization) */
+  COMPANY_ID?: string;
+  /** Company title */
+  COMPANY_TITLE?: string;
+  /** Contact type ID */
+  TYPE_ID?: string;
+  /** Source ID */
+  SOURCE_ID?: string;
+  /** Source description */
+  SOURCE_DESCRIPTION?: string;
+  /** Assigned to user ID */
+  ASSIGNED_BY_ID?: string;
+  /** Created by user ID */
+  CREATED_BY_ID?: string;
+  /** Creation date */
+  DATE_CREATE?: string;
+  /** Last modification date */
+  DATE_MODIFY?: string;
+  /** Address */
+  ADDRESS?: string;
+  /** Address city */
+  ADDRESS_CITY?: string;
+  /** Address country */
+  ADDRESS_COUNTRY?: string;
+  /** Comments */
+  COMMENTS?: string;
+  /** Opened flag (available to all) */
+  OPENED?: 'Y' | 'N';
+  /** Export flag */
+  EXPORT?: 'Y' | 'N';
+  /** Birth date */
+  BIRTHDATE?: string;
+  /** Photo URL */
+  PHOTO?: string;
+  /** Custom fields - parish-specific data */
+  UF_CRM_PARISH_ID?: string;
+  UF_CRM_DIOCESE_ID?: string;
+  UF_CRM_BAPTISM_DATE?: string;
+  UF_CRM_CONFIRMATION_DATE?: string;
+  UF_CRM_MARRIAGE_DATE?: string;
+}
+
+/**
+ * CRM Contact add parameters.
+ */
+export interface BitrixCrmContactAddParams {
+  /** First name (required) */
+  NAME: string;
+  /** Last name */
+  LAST_NAME?: string;
+  /** Email addresses */
+  EMAIL?: Array<{ VALUE: string; VALUE_TYPE: 'WORK' | 'HOME' | 'OTHER' }>;
+  /** Phone numbers */
+  PHONE?: Array<{ VALUE: string; VALUE_TYPE: 'WORK' | 'HOME' | 'MOBILE' | 'OTHER' }>;
+  /** Company ID */
+  COMPANY_ID?: string;
+  /** Assigned to user ID */
+  ASSIGNED_BY_ID?: string;
+  /** Comments */
+  COMMENTS?: string;
+  /** Opened flag */
+  OPENED?: 'Y' | 'N';
+  /** Custom fields */
+  [key: string]: string | number | boolean | object | undefined;
 }
 
 // =============================================================================
