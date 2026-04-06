@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Greek Catholic Byzantine Rite Theme */
+:root {
+  --byzantine-gold: #D4AF37;
+  --byzantine-red: #8B0000;
+  --byzantine-blue: #1E3A5F;
+  --byzantine-purple: #4A0080;
+}
+
+body {
+  @apply bg-gray-50 text-gray-900;
+}
+
+/* Byzantine cross styling */
+.byzantine-cross {
+  position: relative;
+}
+
+.byzantine-cross::before {
+  content: '☦';
+  font-size: 1.5rem;
+  color: var(--byzantine-gold);
+}
+
+/* Icon card styling */
+.icon-card {
+  @apply bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105;
+}
+
+.icon-card img {
+  @apply w-full h-48 object-cover;
+}
+
+/* Divine Liturgy schedule styling */
+.liturgy-schedule {
+  @apply bg-byzantine-blue text-white rounded-lg p-6;
+}
+
+/* Greek Catholic header styling */
+.header-byzantine {
+  background: linear-gradient(135deg, var(--byzantine-blue) 0%, var(--byzantine-purple) 100%);
+}
+
+/* Footer styling */
+.footer-byzantine {
+  @apply bg-gray-800 text-white;
+}
+
+/* Triple bar cross symbol */
+.triple-bar-cross::before {
+  content: '☦';
+  @apply text-byzantine-gold text-2xl;
+}
