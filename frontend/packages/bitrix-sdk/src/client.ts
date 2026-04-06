@@ -3,6 +3,9 @@ import { Bitrix24ApiError, Bitrix24AuthError, Bitrix24RateLimitError, Bitrix24Ti
 import { UserApi } from './api/user';
 import { DepartmentApi } from './api/department';
 import { CalendarApi } from './api/calendar';
+import { ContactApi, DealApi } from './api/crm';
+import { EventApi } from './api/events';
+import { EmailApi } from './api/email';
 
 /**
  * Bitrix24 REST API Client.
@@ -28,6 +31,10 @@ export class Bitrix24Client {
   public readonly user: UserApi;
   public readonly department: DepartmentApi;
   public readonly calendar: CalendarApi;
+  public readonly contact: ContactApi;
+  public readonly deal: DealApi;
+  public readonly event: EventApi;
+  public readonly email: EmailApi;
 
   constructor(config: Bitrix24Config) {
     this.config = {
@@ -44,6 +51,10 @@ export class Bitrix24Client {
     this.user = new UserApi(this);
     this.department = new DepartmentApi(this);
     this.calendar = new CalendarApi(this);
+    this.contact = new ContactApi(this);
+    this.deal = new DealApi(this);
+    this.event = new EventApi(this);
+    this.email = new EmailApi(this);
   }
 
   /**

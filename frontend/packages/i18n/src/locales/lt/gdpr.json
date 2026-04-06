@@ -1,6 +1,12 @@
 {
+  "privacySettings": "Privatumo nustatymai",
+  "common": {
+    "back": "Atgal",
+    "learnMore": "Sužinoti daugiau",
+    "required": "Privaloma"
+  },
   "cookieConsent": {
-    "title": "Slapukų sutikimas",
+    "title": "Privatumo nustatymai",
     "description": "Mes naudojame slapukus, kad užtikrintume tinkamą svetainės veikimą, pagerintume jūsų naršymo patirtį ir analizuotume srautą.",
     "manageCookies": "Tvarkyti slapukus",
     "necessaryOnly": "Tik būtini",
@@ -13,7 +19,7 @@
       },
       "analytics": {
         "title": "Analitiniai slapukai",
-        "description": "Šie slapukai padeda mums suprasti, kaip lankytojai sąveikauja su svetaine, renkant anonimizuotą informaciją."
+        "description": "Šie slapukai padeda mums suprasti, kaip lankytojai sąveikauja su svetaine (Google Analytics, DeepL naudojimo stebėjimas), renkant anonimizuotą informaciją."
       },
       "marketing": {
         "title": "Rinkodaros slapukai",

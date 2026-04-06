@@ -17,6 +17,10 @@ terraform {
       source  = "hashicorp/random"
       version = "~> 3.0"
     }
+    tls = {
+      source  = "hashicorp/tls"
+      version = "~> 4.0"
+    }
   }
 
   # Backend configuration — uncomment and configure for production
@@ -189,4 +193,79 @@ resource "aws_route53_record" "app" {
     zone_id                = module.ecs.alb_zone_id
     evaluate_target_health = true
   }
+}
+
+# -----------------------------------------------------------------------------
+# EKS Module (Kubernetes Cluster) - Optional
+# -----------------------------------------------------------------------------
+
+module "eks" {
+  count = var.enable_eks ? 1 : 0
+
+  source = "./modules/eks"
+
+  project_name               = var.project_name
+  environment                = var.environment
+  subnet_ids                 = module.vpc.private_subnet_ids
+  node_group_subnet_ids      = module.vpc.private_subnet_ids
+  cluster_security_group_id  = module.security.eks_security_group_id
+  public_access_cidrs        = var.allowed_admin_cidrs
+  s3_bucket_arn              = module.storage.s3_bucket_arn
+  cluster_version            = var.eks_cluster_version
+  general_instance_types     = var.eks_general_instance_types
+  general_desired_size       = var.eks_general_desired_size
+  general_min_size           = var.eks_general_min_size
+  general_max_size           = var.eks_general_max_size
+  compute_instance_types     = var.eks_compute_instance_types
+  compute_desired_size       = var.eks_compute_desired_size
+  compute_min_size           = var.eks_compute_min_size
+  compute_max_size           = var.eks_compute_max_size
+  tags                       = local.common_tags
+}
+
+# -----------------------------------------------------------------------------
+# Monitoring Module (Prometheus & Grafana) - Optional
+# -----------------------------------------------------------------------------
+
+module "monitoring" {
+  count = var.enable_monitoring ? 1 : 0
+
+  source = "./modules/monitoring"
+
+  project_name            = var.project_name
+  environment             = var.environment
+  vpc_id                  = module.vpc.vpc_id
+  vpc_cidr                = module.vpc.vpc_cidr
+  private_subnet_ids      = module.vpc.private_subnet_ids
+  alarm_sns_topic_arn     = var.alarm_sns_topic_arn
+  alb_name                = module.ecs.alb_name
+  db_instance_identifier  = module.database.db_instance_identifier
+  db_max_connections      = var.rds_max_connections
+  redis_cluster_id        = module.elasticache.redis_cluster_id
+  api_latency_threshold   = var.api_latency_threshold
+  error_rate_threshold    = var.error_rate_threshold
+  db_cpu_threshold        = var.db_cpu_threshold
+  redis_memory_threshold  = var.redis_memory_threshold
+  tags                    = local.common_tags
+}
+
+# -----------------------------------------------------------------------------
+# Logging Module (OpenSearch / ELK) - Optional
+# -----------------------------------------------------------------------------
+
+module "logging" {
+  count = var.enable_logging ? 1 : 0
+
+  source = "./modules/logging"
+
+  project_name            = var.project_name
+  environment             = var.environment
+  vpc_id                  = module.vpc.vpc_id
+  vpc_cidr                = module.vpc.vpc_cidr
+  subnet_ids              = module.vpc.private_subnet_ids
+  oidc_provider_arn       = var.enable_eks ? module.eks[0].cluster_oidc_provider_arn : ""
+  oidc_provider_url       = var.enable_eks ? module.eks[0].cluster_oidc_issuer_url : ""
+  master_user_password    = var.opensearch_master_password
+  log_retention_days      = var.log_retention_days
+  tags                    = local.common_tags
 }

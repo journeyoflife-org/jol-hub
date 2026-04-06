@@ -79,6 +79,71 @@ export {
   ToastViewport,
 } from './components/toast';
 export { Toaster } from './components/toaster';
+export { useToast, toast } from './components/use-toast';
+export type { ToastActionElement, ToastProps } from './components/toast';
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from './components/tooltip';
+
+// Parish Templates - Shared Components
+export { LiturgicalCalendar } from './components/liturgical-calendar';
+export type { LiturgicalCalendarProps, LiturgicalSeason, FeastDay } from './components/liturgical-calendar';
+export { ContactForm } from './components/contact-form';
+export type { ContactFormProps, ContactFormData } from './components/contact-form';
+export { PhotoGallery } from './components/photo-gallery';
+export type { PhotoGalleryProps, Photo } from './components/photo-gallery';
+export { ServiceSchedule } from './components/service-schedule';
+export type { ServiceScheduleProps, ScheduleItem } from './components/service-schedule';
+
+// Donation Widget (GDPR-compliant)
+export {
+  DonationWidget,
+  StripePaymentForm,
+  DonationSuccess,
+  DonationError,
+  useDonation,
+  createPaymentIntent,
+  confirmDonation,
+  getTaxReceipt,
+  downloadTaxReceipt,
+  createCrmDonationContact,
+  createCrmDonationDeal,
+  syncDonationToCrm,
+} from './components/donation';
+
+// GDPR Cookie Consent
+export {
+  CookieConsentBanner,
+  getStoredConsent,
+  storeConsent,
+  isConsentValid,
+} from './components/cookie-consent-banner';
+export type {
+  CookieConsentBannerProps,
+  ConsentPreferences,
+  ConsentCategory,
+} from './components/cookie-consent-banner';
+
+// GDPR Compliance Pages
+export { PrivacyPage } from './components/privacy-page';
+export type { PrivacyPageProps } from './components/privacy-page';
+export { ConsentPage } from './components/consent-page';
+export type { ConsentPageProps } from './components/consent-page';
+export { DSRPage } from './components/dsr-page';
+export type { DSRPageProps } from './components/dsr-page';
+
+// PII Encryption Utilities
+export {
+  encryptPII,
+  decryptPII,
+  encryptFormData,
+  isEncryptionAvailable,
+  generateEncryptionKey,
+  hashForPseudonymization,
+  usePIIEncryption,
+} from './lib/pii-encryption';
+export type {
+  EncryptedData,
+  PIIField,
+  EncryptionConfig,
+} from './lib/pii-encryption';
 
 // Types

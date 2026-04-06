@@ -74,6 +74,7 @@ urlpatterns = [
     path('api/v1/countries/', include('apps.countries.urls')),
     path('api/v1/integrations/', include('apps.integrations.urls')),
     path('api/v1/financial/', include('apps.financial.urls')),
+    path('api/v1/crm/', include('apps.crm.api.urls')),
     
     # Allauth (social authentication)
     path('accounts/', include('allauth.urls')),

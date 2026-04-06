@@ -7,7 +7,9 @@
     "events": "Events",
     "news": "News",
     "about": "About Us",
-    "contact": "Contact"
+    "contact": "Contact",
+    "donate": "Donate",
+    "schedule": "Schedule"
   },
   "actions": {
     "learnMore": "Learn More",
@@ -19,12 +21,77 @@
     "edit": "Edit",
     "delete": "Delete",
     "close": "Close",
-    "back": "Back"
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "send": "Send",
+    "loading": "Loading...",
+    "retry": "Try Again"
   },
   "footer": {
     "copyright": "© {{year}} JOL-HUB. All rights reserved.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
     "cookiePolicy": "Cookie Policy"
+  },
+  "language": {
+    "label": "Language",
+    "lt": "Lietuvių",
+    "ru": "Русский",
+    "en": "English",
+    "select": "Select language"
+  },
+  "parish": {
+    "mass_schedule": "Mass Schedule",
+    "priest": "Priest",
+    "announcements": "Announcements",
+    "donation": "Donation",
+    "contact": "Contact",
+    "location": "Location",
+    "gallery": "Gallery",
+    "services": "Services"
+  },
+  "funeral": {
+    "obituaries": "Obituaries",
+    "condolences": "Condolences",
+    "flowers": "Flowers",
+    "livestream": "Live Stream",
+    "funeral_director": "Funeral Director",
+    "search_surname": "Search by surname",
+    "filter_month": "Filter by month",
+    "password_required": "Password Required",
+    "enter_password": "Enter password",
+    "access_stream": "Access Stream",
+    "leave_condolence": "Leave Condolence",
+    "order_flowers": "Order Flowers"
+  },
+  "cemetery": {
+    "services": "Services",
+    "pricing": "Pricing",
+    "subscribe": "Subscribe",
+    "quote_request": "Quote Request",
+    "before_after": "Before & After",
+    "sections": "Sections",
+    "upload_photo": "Upload Photo"
+  },
+  "errors": {
+    "generic": "An error occurred. Please try again.",
+    "network": "Network error. Please check your connection.",
+    "not_found": "Page not found.",
+    "unauthorized": "Please sign in.",
+    "forbidden": "Access denied.",
+    "validation": "Please check the form and try again."
+  },
+  "disclaimer": {
+    "ai_translated": "Translated by AI",
+    "sacred_text_warning": "Sacred texts and prayers are not auto-translated",
+    "requires_clergy_approval": "Requires clergy approval",
+    "translation_failed": "Translation failed – showing original text"
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu",
+    "toggle_language": "Change language"
   }
 }

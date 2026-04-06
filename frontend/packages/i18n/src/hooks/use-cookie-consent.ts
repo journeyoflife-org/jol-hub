@@ -135,7 +135,17 @@ function saveConsent(consent: CookieConsentPreferences): void {
 
   const value = encodeURIComponent(JSON.stringify(consent));
   const maxAge = 60 * 60 * 24 * 365; // 1 year
-  const domain = process.env.NODE_ENV === 'production' ? '.jol-hub.lt' : '';
+  const domain = process.env.NODE_ENV === 'production' ? '.jol-hub.eu' : '';
 
   document.cookie = `${CONSENT_COOKIE_NAME}=${value}; max-age=${maxAge}; path=/; SameSite=Lax${domain ? `; domain=${domain}` : ''}`;
+}
+
+/**
+ * Check if user has consented to a specific category (server-safe).
+ */
+export function hasConsentForCategory(category: CookieCategory): boolean {
+  if (typeof document === 'undefined') return category === 'necessary';
+  const stored = getStoredConsent();
+  if (!stored) return category === 'necessary';
+  return stored[category] === true;
 }

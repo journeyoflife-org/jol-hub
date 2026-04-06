@@ -108,6 +108,9 @@ LOCAL_APPS = [
     
     # Financial apps
     'apps.financial',
+    
+    # CRM app
+    'apps.crm',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -132,6 +135,9 @@ MIDDLEWARE = [
     
     # Allauth middleware
     'allauth.account.middleware.AccountMiddleware',
+    
+    # Tenant context middleware (for CRM multi-tenant isolation)
+    'apps.crm.middleware.TenantContextMiddleware',
     
     # Debug toolbar (activated conditionally)
 ]
@@ -303,6 +309,12 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'anon': '100/hour',
         'user': '1000/hour',
+        # GDPR / SOC2 - Stricter rate limits for sensitive endpoints
+        'auth': '10/hour',           # Login/register - prevent brute force
+        'gdpr_export': '5/hour',     # Data export - prevent data scraping
+        'gdpr_delete': '3/hour',     # Data deletion - prevent abuse
+        'donation_create': '20/hour', # Donation creation - prevent fraud
+        'donation_refund': '10/hour', # Refunds - prevent financial abuse
     },
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'EXCEPTION_HANDLER': 'apps.core.exceptions.custom_exception_handler',
@@ -534,6 +546,8 @@ X_FRAME_OPTIONS = 'DENY'
 
 CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=[
     'http://localhost:3000',
+    "http://localhost:3001",
+    "http://localhost:3002",
     'http://127.0.0.1:3000',
 ])
 
@@ -710,6 +724,3 @@ if 'LOGGING' in locals() and 'handlers' in LOGGING:
         }
         # Create logs directory if it doesn't exist
         os.makedirs(os.path.join(BASE_DIR, 'logs'), exist_ok=True)
-# Load environment variables
-from dotenv import load_dotenv
-load_dotenv()

@@ -255,3 +255,120 @@ variable "alarm_sns_topic_arn" {
   type        = string
   default     = ""
 }
+
+variable "enable_monitoring" {
+  description = "Enable AWS Managed Prometheus and Grafana"
+  type        = bool
+  default     = false
+}
+
+variable "api_latency_threshold" {
+  description = "API latency threshold in seconds"
+  type        = number
+  default     = 1.0
+}
+
+variable "error_rate_threshold" {
+  description = "Error rate threshold percentage"
+  type        = number
+  default     = 5.0
+}
+
+variable "db_cpu_threshold" {
+  description = "Database CPU threshold percentage"
+  type        = number
+  default     = 80
+}
+
+variable "redis_memory_threshold" {
+  description = "Redis memory threshold in bytes"
+  type        = number
+  default     = 536870912  # 512MB
+}
+
+variable "rds_max_connections" {
+  description = "Maximum database connections"
+  type        = number
+  default     = 100
+}
+
+# -----------------------------------------------------------------------------
+# EKS Variables
+# -----------------------------------------------------------------------------
+
+variable "enable_eks" {
+  description = "Enable EKS Kubernetes cluster"
+  type        = bool
+  default     = false
+}
+
+variable "eks_cluster_version" {
+  description = "Kubernetes version for EKS cluster"
+  type        = string
+  default     = "1.28"
+}
+
+variable "eks_general_instance_types" {
+  description = "Instance types for general node group"
+  type        = list(string)
+  default     = ["m6i.xlarge", "m6a.xlarge"]
+}
+
+variable "eks_general_desired_size" {
+  description = "Desired number of nodes in general node group"
+  type        = number
+  default     = 3
+}
+
+variable "eks_general_min_size" {
+  description = "Minimum number of nodes in general node group"
+  type        = number
+  default     = 2
+}
+
+variable "eks_general_max_size" {
+  description = "Maximum number of nodes in general node group"
+  type        = number
+  default     = 10
+}
+
+variable "eks_compute_instance_types" {
+  description = "Instance types for compute node group"
+  type        = list(string)
+  default     = ["c6i.xlarge", "c6a.xlarge"]
+}
+
+variable "eks_compute_desired_size" {
+  description = "Desired number of nodes in compute node group"
+  type        = number
+  default     = 2
+}
+
+variable "eks_compute_min_size" {
+  description = "Minimum number of nodes in compute node group"
+  type        = number
+  default     = 1
+}
+
+variable "eks_compute_max_size" {
+  description = "Maximum number of nodes in compute node group"
+  type        = number
+  default     = 10
+}
+
+# -----------------------------------------------------------------------------
+# Logging Variables
+# -----------------------------------------------------------------------------
+
+variable "enable_logging" {
+  description = "Enable OpenSearch logging stack"
+  type        = bool
+  default     = false
+}
+
+variable "opensearch_master_password" {
+  description = "OpenSearch master user password"
+  type        = string
+  sensitive   = true
+  default     = ""
+}

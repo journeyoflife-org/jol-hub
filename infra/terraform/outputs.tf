@@ -107,3 +107,60 @@ output "cdn_url" {
   description = "URL of the CloudFront CDN"
   value       = "https://${module.storage.cloudfront_domain_name}"
 }
+
+# -----------------------------------------------------------------------------
+# EKS Outputs
+# -----------------------------------------------------------------------------
+
+output "eks_cluster_name" {
+  description = "Name of the EKS cluster"
+  value       = var.enable_eks ? module.eks[0].cluster_name : null
+}
+
+output "eks_cluster_endpoint" {
+  description = "Endpoint of the EKS cluster"
+  value       = var.enable_eks ? module.eks[0].cluster_endpoint : null
+}
+
+output "eks_cluster_version" {
+  description = "Kubernetes version of the EKS cluster"
+  value       = var.enable_eks ? module.eks[0].cluster_version : null
+}
+
+output "eks_kubectl_config" {
+  description = "kubectl configuration command"
+  value       = var.enable_eks ? module.eks[0].kubectl_config : null
+}
+
+# -----------------------------------------------------------------------------
+# Monitoring Outputs
+# -----------------------------------------------------------------------------
+
+output "prometheus_endpoint" {
+  description = "Endpoint of the Prometheus workspace"
+  value       = var.enable_monitoring ? module.monitoring[0].prometheus_endpoint : null
+}
+
+output "grafana_endpoint" {
+  description = "Endpoint of the Grafana workspace"
+  value       = var.enable_monitoring ? module.monitoring[0].grafana_endpoint : null
+}
+
+output "cloudwatch_dashboard_name" {
+  description = "Name of the CloudWatch dashboard"
+  value       = var.enable_monitoring ? module.monitoring[0].cloudwatch_dashboard_name : null
+}
+
+# -----------------------------------------------------------------------------
+# Logging Outputs
+# -----------------------------------------------------------------------------
+
+output "opensearch_endpoint" {
+  description = "Endpoint of the OpenSearch domain"
+  value       = var.enable_logging ? module.logging[0].opensearch_endpoint : null
+}
+
+output "opensearch_dashboard_endpoint" {
+  description = "Dashboard endpoint of the OpenSearch domain"
+  value       = var.enable_logging ? module.logging[0].opensearch_dashboard_endpoint : null
+}

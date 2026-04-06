@@ -14,6 +14,10 @@ class PageView(UUIDModel, TimeStampedModel):
     A single page-view event.
     Stored in raw form; nightly job aggregates into DailyStats.
     IP addresses are anonymised (last octet zeroed) for GDPR.
+    
+    GDPR Art. 7, Art. 13 - Consent tracking:
+    - consent_given: Whether user consented to analytics tracking
+    - Only page views with consent_given=True should be aggregated
     """
 
     organization = models.ForeignKey(
@@ -34,6 +38,18 @@ class PageView(UUIDModel, TimeStampedModel):
         blank=True,
     )
     duration_seconds = models.PositiveIntegerField(_('duration (s)'), null=True, blank=True)
+    consent_given = models.BooleanField(
+        _('consent given'),
+        default=False,
+        db_index=True,
+        help_text=_('GDPR Art. 7: User consented to analytics tracking'),
+    )
+    consent_version = models.CharField(
+        _('consent version'),
+        max_length=32,
+        blank=True,
+        help_text=_('Version of consent banner shown to user'),
+    )
 
     class Meta:
         verbose_name = _('page view')
@@ -41,6 +57,8 @@ class PageView(UUIDModel, TimeStampedModel):
         ordering = ['-created_at']
         indexes = [
             models.Index(fields=['organization', 'created_at']),
+            models.Index(fields=['organization', 'consent_given']),
+            models.Index(fields=['consent_given', 'created_at']),
         ]
 
     def __str__(self):

@@ -7,7 +7,9 @@
     "events": "События",
     "news": "Новости",
     "about": "О нас",
-    "contact": "Контакты"
+    "contact": "Контакты",
+    "donate": "Пожертвовать",
+    "schedule": "Расписание"
   },
   "actions": {
     "learnMore": "Узнать больше",
@@ -19,12 +21,77 @@
     "edit": "Редактировать",
     "delete": "Удалить",
     "close": "Закрыть",
-    "back": "Назад"
+    "back": "Назад",
+    "next": "Далее",
+    "previous": "Назад",
+    "send": "Отправить",
+    "loading": "Загрузка...",
+    "retry": "Повторить"
   },
   "footer": {
     "copyright": "© {{year}} JOL-HUB. Все права защищены.",
     "privacyPolicy": "Политика конфиденциальности",
     "termsOfService": "Условия использования",
     "cookiePolicy": "Политика cookies"
+  },
+  "language": {
+    "label": "Язык",
+    "lt": "Lietuvių",
+    "ru": "Русский",
+    "en": "English",
+    "select": "Выбрать язык"
+  },
+  "parish": {
+    "mass_schedule": "Расписание Литургий",
+    "priest": "Священник",
+    "announcements": "Объявления",
+    "donation": "Пожертвование",
+    "contact": "Контакты",
+    "location": "Местонахождение",
+    "gallery": "Галерея",
+    "services": "Услуги"
+  },
+  "funeral": {
+    "obituaries": "Некрологи",
+    "condolences": "Соболезнования",
+    "flowers": "Цветы",
+    "livestream": "Прямая трансляция",
+    "funeral_director": "Директор похоронного бюро",
+    "search_surname": "Поиск по фамилии",
+    "filter_month": "Фильтр по месяцу",
+    "password_required": "Требуется пароль",
+    "enter_password": "Введите пароль",
+    "access_stream": "Смотреть трансляцию",
+    "leave_condolence": "Оставить соболезнование",
+    "order_flowers": "Заказать цветы"
+  },
+  "cemetery": {
+    "services": "Услуги",
+    "pricing": "Цены",
+    "subscribe": "Подписаться",
+    "quote_request": "Запрос цены",
+    "before_after": "До и после",
+    "sections": "Секции",
+    "upload_photo": "Загрузить фото"
+  },
+  "errors": {
+    "generic": "Произошла ошибка. Пожалуйста, повторите.",
+    "network": "Ошибка сети. Проверьте подключение.",
+    "not_found": "Страница не найдена.",
+    "unauthorized": "Пожалуйста, войдите.",
+    "forbidden": "Доступ запрещён.",
+    "validation": "Проверьте форму и повторите."
+  },
+  "disclaimer": {
+    "ai_translated": "Переведено искусственным интеллектом",
+    "sacred_text_warning": "Священные тексты и молитвы не переводятся автоматически",
+    "requires_clergy_approval": "Требует одобрения духовенства",
+    "translation_failed": "Перевод не удался – показывается оригинальный текст"
+  },
+  "accessibility": {
+    "skip_to_content": "Перейти к содержимому",
+    "open_menu": "Открыть меню",
+    "close_menu": "Закрыть меню",
+    "toggle_language": "Изменить язык"
   }
 }

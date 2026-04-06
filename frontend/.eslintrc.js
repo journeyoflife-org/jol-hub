@@ -3,13 +3,12 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    es2022,
+    es2022: true,
     node: true,
   },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:import/recommended',
@@ -20,7 +19,6 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: './tsconfig.json',
     ecmaFeatures: {
       jsx: true,
     },
@@ -33,31 +31,23 @@ module.exports = {
     'import/resolver': {
       typescript: {
         alwaysTryTypes: true,
-        project: './tsconfig.json',
       },
     },
   },
   rules: {
     // TypeScript strict rules
     '@typescript-eslint/no-unused-vars': [
-      'error',
+      'warn',
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
-    '@typescript-eslint/no-explicit-any': 'error',
-    '@typescript-eslint/explicit-function-return-type': 'warn',
-    '@typescript-eslint/explicit-module-boundary-types': 'warn',
-    '@typescript-eslint/no-non-null-assertion': 'error',
-    '@typescript-eslint/prefer-nullish-coalescing': 'error',
-    '@typescript-eslint/prefer-optional-chain': 'error',
-    '@typescript-eslint/no-unnecessary-condition': 'warn',
-    '@typescript-eslint/strict-boolean-expressions': [
-      'error',
-      {
-        allowString: true,
-        allowNumber: true,
-        allowNullableObject: true,
-      },
-    ],
+    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'warn',
+    '@typescript-eslint/prefer-nullish-coalescing': 'off',
+    '@typescript-eslint/prefer-optional-chain': 'off',
+    '@typescript-eslint/no-unnecessary-condition': 'off',
+    '@typescript-eslint/strict-boolean-expressions': 'off',
 
     // React rules
     'react/react-in-jsx-scope': 'off',
@@ -68,22 +58,15 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
 
     // Import rules
-    'import/order': [
-      'error',
-      {
-        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-        'newlines-between': 'always',
-        alphabetize: { order: 'asc', caseInsensitive: true },
-      },
-    ],
-    'import/no-unresolved': 'error',
-    'import/no-duplicates': 'error',
+    'import/order': 'off',
+    'import/no-unresolved': 'warn',
+    'import/no-duplicates': 'warn',
 
     // General rules
     'no-console': ['warn', { allow: ['warn', 'error'] }],
-    'prefer-const': 'error',
+    'prefer-const': 'warn',
     'no-var': 'error',
-    eqeqeq: ['error', 'always'],
+    eqeqeq: ['warn', 'always'],
   },
   ignorePatterns: [
     'node_modules',

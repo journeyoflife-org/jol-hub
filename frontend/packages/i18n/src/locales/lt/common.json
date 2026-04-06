@@ -7,7 +7,9 @@
     "events": "Įvykiai",
     "news": "Naujienos",
     "about": "Apie mus",
-    "contact": "Kontaktai"
+    "contact": "Kontaktai",
+    "donate": "Aukoti",
+    "schedule": "Tvarkaraštis"
   },
   "actions": {
     "learnMore": "Sužinoti daugiau",
@@ -19,12 +21,78 @@
     "edit": "Redaguoti",
     "delete": "Ištrinti",
     "close": "Uždaryti",
-    "back": "Atgal"
+    "back": "Atgal",
+    "next": "Toliau",
+    "previous": "Atgal",
+    "send": "Siųsti",
+    "loading": "Kraunama...",
+    "retry": "Bandyti dar kartą"
   },
   "footer": {
     "copyright": "© {{year}} JOL-HUB. Visos teisės saugomos.",
     "privacyPolicy": "Privatumo politika",
     "termsOfService": "Naudojimo sąlygos",
     "cookiePolicy": "Slapukų politika"
+  },
+  "language": {
+    "label": "Kalba",
+    "lt": "Lietuvių",
+    "ru": "Русский",
+    "en": "English",
+    "select": "Pasirinkti kalbą"
+  },
+  "parish": {
+    "mass_schedule": "Mišių tvarkaraštis",
+    "priest": "Kunigas",
+    "announcements": "Pranešimai",
+    "donation": "Auka",
+    "contact": "Kontaktai",
+    "location": "Vieta",
+    "gallery": "Galerija",
+    "services": "Paslaugos"
+  },
+  "funeral": {
+    "obituaries": "Nekrologai",
+    "condolences": "Užuojautos",
+    "flowers": "Gėlės",
+    "livestream": "Tiesioginė transliacija",
+    "funeral_director": "Laidojimo namų direktorius",
+    "search_surname": "Ieškoti pagal pavardę",
+    "filter_month": "Filtruoti pagal mėnesį",
+    "password_required": "Reikalingas slaptažodis",
+    "enter_password": "Įveskite slaptažodį",
+    "access_stream": "Prisijungti prie transliacijos",
+    "leave_condolence": "Palikti užuojautą",
+    "order_flowers": "Užsakyti gėles"
+  },
+  "cemetery": {
+    "services": "Paslaugos",
+    "pricing": "Kainos",
+    "subscribe": "Prenumeruoti",
+    "quote_request": "Kainų pasiūlymas",
+    "before_after": "Prieš ir po",
+    "sections": "Skyriai",
+    "upload_photo": "Įkelti nuotrauką"
+  },
+  "errors": {
+    "generic": "Įvyko klaida. Bandykite dar kartą.",
+    "network": "Tinklo klaida. Patikrinkite ryšį.",
+    "not_found": "Puslapis nerastas.",
+    "unauthorized": "Prašome prisijungti.",
+    "forbidden": "Neturite prieigos.",
+    "validation": "Patikrinkite formą ir bandykite dar kartą."
+  },
+  "disclaimer": {
+    "ai_translated": "Išversta dirbtiniu intelektu",
+    "sacred_text_warning": "Šventieji tekstai ir maldos neverčiami automatiškai",
+    "requires_clergy_approval": "Reikalauja dvasininko patvirtinimo",
+    "translation_failed": "Vertimas nepavyko – pateikiamas originalus tekstas"
+  },
+  "accessibility": {
+    "skip_to_content": "Pereiti į turinį",
+    "open_menu": "Atidaryti meniu",
+    "close_menu": "Uždaryti meniu",
+    "toggle_language": "Keisti kalbą"
   }
 }
+
