@@ -9,14 +9,14 @@ name: Compliance Check
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, master, develop]
     paths:
       - 'backend/**'
       - 'frontend/**'
       - 'docs/compliance/**'
       - '.github/workflows/compliance-check.yml'
   pull_request:
-    branches: [main, develop]
+    branches: [main, master, develop]
   schedule:
     # Run weekly on Monday at 3:00 AM UTC
     - cron: '0 3 * * 1'

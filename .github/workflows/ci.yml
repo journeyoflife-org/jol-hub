@@ -9,14 +9,14 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, master, develop]
     paths:
       - 'backend/**'
       - 'frontend/**'
       - 'tools/**'
       - '.github/workflows/ci.yml'
   pull_request:
-    branches: [main, develop]
+    branches: [main, master, develop]
     paths:
       - 'backend/**'
       - 'frontend/**'
