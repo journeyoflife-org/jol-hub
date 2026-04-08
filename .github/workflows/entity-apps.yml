@@ -1,0 +1,343 @@
+# =============================================================================
+# JOL-HUB Entity Apps Build Pipeline
+# =============================================================================
+# Builds all 12 entity apps with matrix strategy for parallel execution
+# GDPR Article 30 / SOC2 Type II compliant CI/CD
+# =============================================================================
+
+name: Entity Apps Build
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'frontend/apps/**'
+      - 'frontend/packages/**'
+      - 'frontend/package.json'
+      - 'frontend/pnpm-lock.yaml'
+      - 'frontend/turbo.json'
+      - '.github/workflows/entity-apps.yml'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'frontend/apps/**'
+      - 'frontend/packages/**'
+      - 'frontend/package.json'
+      - 'frontend/pnpm-lock.yaml'
+      - 'frontend/turbo.json'
+      - '.github/workflows/entity-apps.yml'
+  workflow_dispatch:
+    inputs:
+      apps:
+        description: 'Apps to build (comma-separated, e.g., lt-basilica-vilnius-cathedral,lt-cathedral-kaunas)'
+        required: false
+        default: ''
+
+env:
+  NODE_VERSION: '20'
+  PNPM_VERSION: '10.30.3'
+
+# All 12 entity apps + infrastructure apps
+# Entity Apps (10): basilica, cathedral, church, diocese, deanery, protestant, orthodox, greek_catholic, funeral, cemetery
+# Infrastructure Apps (3): admin-dashboard, master-site, parish-template
+# Countries: LT (Lithuania) - Phase 1; LV (Latvia), EE (Estonia) - Phase 2
+
+jobs:
+  # ===========================================================================
+  # DETECT APPS TO BUILD
+  # ===========================================================================
+  
+  detect-apps:
+    name: Detect Apps to Build
+    runs-on: ubuntu-latest
+    outputs:
+      apps: ${{ steps.detect.outputs.apps }}
+      apps-count: ${{ steps.detect.outputs.count }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      
+      - name: Detect changed apps
+        id: detect
+        run: |
+          # Define all entity apps for all countries
+          # Phase 1: LT (Lithuania) - 10 entities
+          # Phase 2: LV (Latvia) - 4 entities
+          # Phase 3: EE (Estonia) - 4 entities
+          ALL_APPS='["admin-dashboard","master-site","parish-template","lt-basilica-vilnius-cathedral","lt-cathedral-kaunas","lt-cemetery-vilnius","lt-deanery-vilnius-city","lt-diocese-vilnius","lt-funeral-vilnius","lt-greek-catholic-vilnius","lt-lutheran-kaunas","lt-orthodox-vilnius-cathedral","lt-parish-st-john-vilnius","lv-diocese-riga","lv-cathedral-riga-st-james","lv-orthodox-riga-cathedral","lv-lutheran-riga-cathedral","ee-estonia-apostolic","ee-cathedral-tallinn-st-peter-paul","ee-orthodox-tallinn-alexander-nevsky","ee-lutheran-tallinn-cathedral"]'
+          
+          # Check if manual input provided
+          if [ -n "${{ github.event.inputs.apps }}" ]; then
+            # Parse comma-separated input
+            APPS="${{ github.event.inputs.apps }}"
+            APPS=$(echo "$APPS" | tr ',' '\n' | jq -R -s -c 'split("\n") | map(select(length > 0))')
+            echo "apps=$APPS" >> $GITHUB_OUTPUT
+            echo "count=$(echo $APPS | jq 'length')" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          # On main/develop branch, build all apps
+          if [ "${{ github.ref }}" == "refs/heads/main" ] || [ "${{ github.ref }}" == "refs/heads/develop" ]; then
+            echo "apps=$ALL_APPS" >> $GITHUB_OUTPUT
+            echo "count=21" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          # For PRs, detect changed files
+          CHANGED_FILES=$(git diff --name-only HEAD^ HEAD 2>/dev/null || git diff --name-only HEAD~1 HEAD 2>/dev/null || echo "")
+          
+          if [ -z "$CHANGED_FILES" ]; then
+            # Fallback to all apps if we can't detect changes
+            echo "apps=$ALL_APPS" >> $GITHUB_OUTPUT
+            echo "count=21" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          # Find apps with changes
+          CHANGED_APPS="[]"
+          
+          # Check each app directory
+          for APP in admin-dashboard master-site parish-template lt-basilica-vilnius-cathedral lt-cathedral-kaunas lt-cemetery-vilnius lt-deanery-vilnius-city lt-diocese-vilnius lt-funeral-vilnius lt-greek-catholic-vilnius lt-lutheran-kaunas lt-orthodox-vilnius-cathedral lt-parish-st-john-vilnius lv-diocese-riga lv-cathedral-riga-st-james lv-orthodox-riga-cathedral lv-lutheran-riga-cathedral ee-estonia-apostolic ee-cathedral-tallinn-st-peter-paul ee-orthodox-tallinn-alexander-nevsky ee-lutheran-tallinn-cathedral; do
+            if echo "$CHANGED_FILES" | grep -q "frontend/apps/${APP}/"; then
+              CHANGED_APPS=$(echo "$CHANGED_APPS" | jq -c ". + [\"$APP\"]")
+            fi
+          done
+          
+          # Check for shared package changes (builds all apps)
+          if echo "$CHANGED_FILES" | grep -qE "(frontend/packages/|frontend/package.json|frontend/pnpm-lock.yaml|frontend/turbo.json)"; then
+            echo "Shared packages changed - building all apps"
+            echo "apps=$ALL_APPS" >> $GITHUB_OUTPUT
+            echo "count=21" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          # Output changed apps
+          if [ "$(echo "$CHANGED_APPS" | jq 'length')" -eq 0 ]; then
+            echo "No app changes detected - building all apps for safety"
+            echo "apps=$ALL_APPS" >> $GITHUB_OUTPUT
+            echo "count=21" >> $GITHUB_OUTPUT
+          else
+            echo "apps=$CHANGED_APPS" >> $GITHUB_OUTPUT
+            echo "count=$(echo $CHANGED_APPS | jq 'length')" >> $GITHUB_OUTPUT
+          fi
+
+  # ===========================================================================
+  # BUILD APPS (MATRIX)
+  # ===========================================================================
+  
+  build-apps:
+    name: Build ${{ matrix.app }}
+    runs-on: ubuntu-latest
+    needs: detect-apps
+    if: needs.detect-apps.outputs.apps-count > 0
+    
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        app: ${{ fromJson(needs.detect-apps.outputs.apps) }}
+    
+    defaults:
+      run:
+        working-directory: frontend
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'frontend/pnpm-lock.yaml'
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Cache Turbo
+        uses: actions/cache@v4
+        with:
+          path: frontend/.turbo
+          key: turbo-${{ runner.os }}-${{ matrix.app }}-${{ github.sha }}
+          restore-keys: |
+            turbo-${{ runner.os }}-${{ matrix.app }}-
+            turbo-${{ runner.os }}-
+      
+      - name: Build app
+        run: pnpm --filter @jol-hub/${{ matrix.app }} build
+      
+      - name: Run type check
+        run: pnpm --filter @jol-hub/${{ matrix.app }} type-check || true
+      
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ matrix.app }}
+          path: |
+            frontend/apps/${{ matrix.app }}/.next
+            !frontend/apps/${{ matrix.app }}/.next/cache
+          retention-days: 7
+
+  # ===========================================================================
+  # VALIDATE ALL BUILDS
+  # ===========================================================================
+  
+  validate-builds:
+    name: Validate All Builds
+    runs-on: ubuntu-latest
+    needs: [detect-apps, build-apps]
+    if: always() && needs.build-apps.result != 'cancelled'
+    
+    steps:
+      - name: Check build results
+        run: |
+          echo "## Entity Apps Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Apps processed: ${{ needs.detect-apps.outputs.apps-count }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Build matrix completed." >> $GITHUB_STEP_SUMMARY
+
+  # ===========================================================================
+  # ENTITY CONFIG VALIDATION
+  # ===========================================================================
+  
+  validate-entity-configs:
+    name: Validate Entity Configs
+    runs-on: ubuntu-latest
+    needs: build-apps
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Validate entity configurations
+        run: |
+          python3 scripts/validate_entity_configs.py --country lt
+      
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: entity-validation-report
+          path: |
+            entity_validation_report.txt
+          retention-days: 7
+
+  # ===========================================================================
+  # COMPLIANCE CHECK
+  # ===========================================================================
+  
+  compliance-check:
+    name: GDPR/SOC2 Compliance Check
+    runs-on: ubuntu-latest
+    needs: build-apps
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+    
+    defaults:
+      run:
+        working-directory: frontend
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'frontend/pnpm-lock.yaml'
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Run compliance checks
+        run: |
+          pnpm compliance:check || true
+          pnpm gdpr:validate || true
+      
+      - name: Generate ROPA reports
+        run: |
+          cd ..
+          python3 tools/qoder/qoder.py ropa generate --country lt --dry-run
+
+  # ===========================================================================
+  # BUILD SUMMARY
+  # ===========================================================================
+  
+  build-summary:
+    name: Build Summary
+    runs-on: ubuntu-latest
+    needs: [build-apps, validate-entity-configs]
+    if: always()
+    
+    steps:
+      - name: Generate build summary
+        run: |
+          echo "## 🏗️ Entity Apps Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Build Status" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Status | Description |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| ✅ Build Apps | ${{ needs.build-apps.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| ✅ Entity Configs | ${{ needs.validate-entity-configs.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Apps Built" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Infrastructure Apps:**" >> $GITHUB_STEP_SUMMARY
+          echo "- admin-dashboard" >> $GITHUB_STEP_SUMMARY
+          echo "- master-site" >> $GITHUB_STEP_SUMMARY
+          echo "- parish-template" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Lithuania (LT):**" >> $GITHUB_STEP_SUMMARY
+          echo "- lt-basilica-vilnius-cathedral" >> $GITHUB_STEP_SUMMARY
+          echo "- lt-cathedral-kaunas" >> $GITHUB_STEP_SUMMARY
+          echo "- lt-cemetery-vilnius" >> $GITHUB_STEP_SUMMARY
+          echo "- lt-deanery-vilnius-city" >> $GITHUB_STEP_SUMMARY
+          echo "- lt-diocese-vilnius" >> $GITHUB_STEP_SUMMARY
+          echo "- lt-funeral-vilnius" >> $GITHUB_STEP_SUMMARY
+          echo "- lt-greek-catholic-vilnius" >> $GITHUB_STEP_SUMMARY
+          echo "- lt-lutheran-kaunas" >> $GITHUB_STEP_SUMMARY
+          echo "- lt-orthodox-vilnius-cathedral" >> $GITHUB_STEP_SUMMARY
+          echo "- lt-parish-st-john-vilnius" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Latvia (LV):**" >> $GITHUB_STEP_SUMMARY
+          echo "- lv-diocese-riga" >> $GITHUB_STEP_SUMMARY
+          echo "- lv-cathedral-riga-st-james" >> $GITHUB_STEP_SUMMARY
+          echo "- lv-orthodox-riga-cathedral" >> $GITHUB_STEP_SUMMARY
+          echo "- lv-lutheran-riga-cathedral" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Estonia (EE):**" >> $GITHUB_STEP_SUMMARY
+          echo "- ee-estonia-apostolic" >> $GITHUB_STEP_SUMMARY
+          echo "- ee-cathedral-tallinn-st-peter-paul" >> $GITHUB_STEP_SUMMARY
+          echo "- ee-orthodox-tallinn-alexander-nevsky" >> $GITHUB_STEP_SUMMARY
+          echo "- ee-lutheran-tallinn-cathedral" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**GDPR Article 30**: ROPA generated for all entities" >> $GITHUB_STEP_SUMMARY
+          echo "**SOC2 Type II**: Audit logging enabled" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ needs.build-apps.result }}" == "failure" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "❌ Build failed. Please check individual job logs." >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi

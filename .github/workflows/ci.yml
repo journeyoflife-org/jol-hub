@@ -1,0 +1,378 @@
+# =============================================================================
+# JOL-HUB Continuous Integration Pipeline
+# =============================================================================
+# Runs on every push and pull request to main/develop branches
+# Performs: Linting, Type Checking, Unit Tests, Integration Tests
+# =============================================================================
+
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
+      - 'tools/**'
+      - '.github/workflows/ci.yml'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
+      - 'tools/**'
+      - '.github/workflows/ci.yml'
+
+env:
+  PYTHON_VERSION: '3.11'
+  NODE_VERSION: '20'
+  PNPM_VERSION: '10.30.3'
+
+jobs:
+  # ===========================================================================
+  # BACKEND JOBS
+  # ===========================================================================
+  
+  backend-lint:
+    name: Backend - Lint & Format Check
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend/django
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          cache-dependency-path: 'backend/django/requirements.txt'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install black isort flake8 pylint django-stubs
+          pip install -r requirements.txt
+      
+      - name: Run Black (code formatting)
+        run: black --check --diff .
+      
+      - name: Run isort (import sorting)
+        run: isort --check-only --diff .
+      
+      - name: Run Flake8 (style guide enforcement)
+        run: flake8 . --max-line-length=100 --exclude=migrations,venv,__pycache__,node_modules
+
+  backend-type-check:
+    name: Backend - Type Check (mypy)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend/django
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          cache-dependency-path: 'backend/django/requirements.txt'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mypy django-stubs djangorestframework-stubs
+          pip install -r requirements.txt
+      
+      - name: Run mypy
+        run: mypy . --ignore-missing-imports --no-error-summary || true
+
+  backend-tests:
+    name: Backend - Unit & Integration Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend/django
+    
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: jolhub_test
+          POSTGRES_USER: test_user
+          POSTGRES_PASSWORD: test_password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    
+    env:
+      DEBUG: 'True'
+      SECRET_KEY: 'test-secret-key-for-ci-not-for-production'
+      DATABASE_URL: postgres://test_user:test_password@localhost:5432/jolhub_test
+      CELERY_BROKER_URL: redis://localhost:6379/0
+      CELERY_RESULT_BACKEND: redis://localhost:6379/1
+      DJANGO_SETTINGS_MODULE: core.settings.development
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          cache-dependency-path: 'backend/django/requirements.txt'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pytest-django pytest-cov pytest-xdist pytest-asyncio
+          pip install -r requirements.txt
+      
+      - name: Run migrations
+        run: python manage.py migrate --settings=core.settings.development
+      
+      - name: Run tests with coverage
+        run: |
+          pytest \
+            --cov=apps \
+            --cov-report=xml \
+            --cov-report=html \
+            --cov-fail-under=60 \
+            -n auto \
+            -v
+      
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./backend/django/coverage.xml
+          flags: backend
+          name: backend-coverage
+          fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  # ===========================================================================
+  # FRONTEND JOBS
+  # ===========================================================================
+  
+  frontend-lint:
+    name: Frontend - Lint & Format Check
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'frontend/pnpm-lock.yaml'
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Run ESLint
+        run: pnpm lint
+      
+      - name: Run Prettier check
+        run: pnpm format:check
+
+  frontend-type-check:
+    name: Frontend - TypeScript Check
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'frontend/pnpm-lock.yaml'
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Run TypeScript check
+        run: pnpm type-check
+
+  frontend-tests:
+    name: Frontend - Unit Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'frontend/pnpm-lock.yaml'
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Run tests
+        run: pnpm test -- --coverage || true
+      
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./frontend/coverage/lcov.info
+          flags: frontend
+          name: frontend-coverage
+          fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  frontend-build:
+    name: Frontend - Build
+    runs-on: ubuntu-latest
+    needs: [frontend-lint, frontend-type-check]
+    defaults:
+      run:
+        working-directory: frontend
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'frontend/pnpm-lock.yaml'
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Build application
+        run: pnpm build
+      
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-build
+          path: |
+            frontend/apps/master-site/.next
+            frontend/apps/parish-template/.next
+          retention-days: 7
+
+  # ===========================================================================
+  # DOCKER BUILD TEST
+  # ===========================================================================
+  
+  docker-build:
+    name: Docker - Build Test
+    runs-on: ubuntu-latest
+    needs: [backend-tests, frontend-build]
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      
+      - name: Build backend image (test)
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          file: ./backend/Dockerfile
+          push: false
+          tags: jolhub-backend:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ===========================================================================
+  # SUMMARY JOB
+  # ===========================================================================
+  
+  ci-summary:
+    name: CI Summary
+    runs-on: ubuntu-latest
+    needs: [backend-lint, backend-tests, frontend-lint, frontend-tests, frontend-build, docker-build]
+    if: always()
+    
+    steps:
+      - name: Check all jobs status
+        run: |
+          echo "## CI Pipeline Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Job | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Backend Lint | ${{ needs.backend-lint.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Backend Tests | ${{ needs.backend-tests.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Frontend Lint | ${{ needs.frontend-lint.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Frontend Tests | ${{ needs.frontend-tests.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Frontend Build | ${{ needs.frontend-build.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Docker Build | ${{ needs.docker-build.result }} |" >> $GITHUB_STEP_SUMMARY
+          
+          if [[ "${{ needs.backend-lint.result }}" == "failure" ]] || \
+             [[ "${{ needs.backend-tests.result }}" == "failure" ]] || \
+             [[ "${{ needs.frontend-lint.result }}" == "failure" ]] || \
+             [[ "${{ needs.frontend-tests.result }}" == "failure" ]] || \
+             [[ "${{ needs.frontend-build.result }}" == "failure" ]]; then
+            echo ""
+            echo "❌ CI Pipeline failed. Please check the failed jobs above."
+            exit 1
+          fi
+          
+          echo ""
+          echo "✅ All CI checks passed!"

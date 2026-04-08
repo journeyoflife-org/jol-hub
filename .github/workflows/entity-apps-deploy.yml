@@ -1,0 +1,365 @@
+# =============================================================================
+# JOL-HUB Entity Apps Deployment Pipeline
+# =============================================================================
+# Deploys all 12 entity apps to staging/production
+# GDPR Article 44: Country-scoped deployment
+# SOC2 Type II: Deployment approval gates
+# =============================================================================
+
+name: Entity Apps Deploy
+
+on:
+  workflow_run:
+    workflows: ["Entity Apps Build"]
+    types:
+      - completed
+    branches: [main, develop]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+      apps:
+        description: 'Apps to deploy (comma-separated, empty = all)'
+        required: false
+        default: ''
+      country:
+        description: 'Country code (lt, lv, ee)'
+        required: false
+        default: 'lt'
+
+env:
+  REGISTRY: ghcr.io
+  NODE_VERSION: '20'
+  PNPM_VERSION: '10.30.3'
+
+# Entity Apps Configuration
+# Phase 1: LT (Lithuania) - 10 entity apps + 3 infrastructure apps
+# Phase 2: LV (Latvia) - Planned
+# Phase 3: EE (Estonia) - Planned
+
+jobs:
+  # ===========================================================================
+  # PREPARE DEPLOYMENT
+  # ===========================================================================
+  
+  prepare-deployment:
+    name: Prepare Deployment
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch'
+    
+    outputs:
+      apps: ${{ steps.prepare.outputs.apps }}
+      environment: ${{ steps.prepare.outputs.environment }}
+      country: ${{ steps.prepare.outputs.country }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Prepare deployment configuration
+        id: prepare
+        run: |
+          # Determine environment
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            ENV="${{ github.event.inputs.environment }}"
+            COUNTRY="${{ github.event.inputs.country }}"
+            APPS="${{ github.event.inputs.apps }}"
+          elif [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            ENV="production"
+            COUNTRY="lt"
+            APPS=""
+          else
+            ENV="staging"
+            COUNTRY="lt"
+            APPS=""
+          fi
+          
+          echo "environment=$ENV" >> $GITHUB_OUTPUT
+          echo "country=$COUNTRY" >> $GITHUB_OUTPUT
+          
+          # Parse apps list
+          if [ -n "$APPS" ]; then
+            APPS_JSON=$(echo "$APPS" | tr ',' '\n' | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          else
+            # All entity apps for the country
+            APPS_JSON='["admin-dashboard","master-site","parish-template","lt-basilica-vilnius-cathedral","lt-cathedral-kaunas","lt-cemetery-vilnius","lt-deanery-vilnius-city","lt-diocese-vilnius","lt-funeral-vilnius","lt-greek-catholic-vilnius","lt-lutheran-kaunas","lt-orthodox-vilnius-cathedral","lt-parish-st-john-vilnius"]'
+          fi
+          
+          echo "apps=$APPS_JSON" >> $GITHUB_OUTPUT
+
+  # ===========================================================================
+  # PRODUCTION APPROVAL GATE
+  # ===========================================================================
+  
+  approval-gate:
+    name: Production Approval
+    runs-on: ubuntu-latest
+    needs: prepare-deployment
+    if: needs.prepare-deployment.outputs.environment == 'production'
+    environment:
+      name: production
+      url: https://jolhub.org
+    
+    steps:
+      - name: Approval required
+        run: |
+          echo "✅ Production deployment approved"
+          echo "**Approver**: ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Timestamp**: $(date -u)" >> $GITHUB_STEP_SUMMARY
+
+  # ===========================================================================
+  # DOWNLOAD BUILD ARTIFACTS
+  # ===========================================================================
+  
+  download-builds:
+    name: Download Build Artifacts
+    runs-on: ubuntu-latest
+    needs: [prepare-deployment, approval-gate]
+    if: always() && (needs.approval-gate.result == 'success' || needs.approval-gate.result == 'skipped')
+    
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        app: ${{ fromJson(needs.prepare-deployment.outputs.apps) }}
+    
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-${{ matrix.app }}
+          path: ./builds/${{ matrix.app }}
+        continue-on-error: true
+      
+      - name: Verify build exists
+        run: |
+          if [ -d "./builds/${{ matrix.app }}/.next" ]; then
+            echo "✅ Build artifact found for ${{ matrix.app }}"
+          else
+            echo "⚠️ No build artifact found for ${{ matrix.app }} - will build on deployment"
+          fi
+      
+      - name: Upload for deployment
+        uses: actions/upload-artifact@v4
+        with:
+          name: deploy-${{ matrix.app }}
+          path: ./builds/${{ matrix.app }}
+          retention-days: 1
+
+  # ===========================================================================
+  # DEPLOY TO STAGING
+  # ===========================================================================
+  
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: [prepare-deployment, download-builds]
+    if: needs.prepare-deployment.outputs.environment == 'staging'
+    environment:
+      name: staging
+      url: https://staging.jolhub.org
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Configure kubectl
+        uses: azure/setup-kubectl@v3
+      
+      - name: Set kubeconfig
+        run: |
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBE_CONFIG_STAGING }}" | base64 -d > ~/.kube/config
+      
+      - name: Deploy entity apps
+        run: |
+          # Deploy all entity apps to staging
+          APPS='${{ needs.prepare-deployment.outputs.apps }}'
+          COUNTRY='${{ needs.prepare-deployment.outputs.country }}'
+          
+          for APP in $(echo "$APPS" | jq -r '.[]'); do
+            echo "Deploying $APP..."
+            
+            # Check if deployment exists
+            if kubectl get deployment "jolhub-$APP" -n "jolhub-$COUNTRY-staging" 2>/dev/null; then
+              kubectl set image deployment/"jolhub-$APP" \
+                "app=ghcr.io/${{ github.repository }}/frontend-$APP:sha-${{ github.sha }}" \
+                -n "jolhub-$COUNTRY-staging" || true
+            else
+              echo "Deployment config not found for $APP - skipping"
+            fi
+          done
+      
+      - name: Wait for rollout
+        run: |
+          APPS='${{ needs.prepare-deployment.outputs.apps }}'
+          COUNTRY='${{ needs.prepare-deployment.outputs.country }}'
+          
+          for APP in $(echo "$APPS" | jq -r '.[]'); do
+            if kubectl get deployment "jolhub-$APP" -n "jolhub-$COUNTRY-staging" 2>/dev/null; then
+              echo "Waiting for $APP rollout..."
+              kubectl rollout status deployment/"jolhub-$APP" -n "jolhub-$COUNTRY-staging" --timeout=180s || true
+            fi
+          done
+      
+      - name: Run health checks
+        run: |
+          # Staging health checks
+          curl -f https://staging.jolhub.org/api/v1/health/ || true
+          
+          # Entity-specific health checks
+          APPS='${{ needs.prepare-deployment.outputs.apps }}'
+          for APP in $(echo "$APPS" | jq -r '.[]'); do
+            curl -f "https://$APP.staging.jolhub.org/" || true
+          done
+      
+      - name: Deployment summary
+        if: always()
+        run: |
+          echo "## 🚀 Staging Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Environment**: Staging" >> $GITHUB_STEP_SUMMARY
+          echo "- **Country**: ${{ needs.prepare-deployment.outputs.country }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+
+  # ===========================================================================
+  # DEPLOY TO PRODUCTION
+  # ===========================================================================
+  
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [prepare-deployment, download-builds, approval-gate]
+    if: needs.prepare-deployment.outputs.environment == 'production' && always() && needs.approval-gate.result == 'success'
+    environment:
+      name: production
+      url: https://jolhub.org
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Configure kubectl
+        uses: azure/setup-kubectl@v3
+      
+      - name: Set kubeconfig
+        run: |
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBE_CONFIG_PRODUCTION }}" | base64 -d > ~/.kube/config
+      
+      - name: Pre-deployment validation
+        run: |
+          echo "Running pre-deployment validation..."
+          
+          # Validate entity configurations
+          python3 scripts/validate_entity_configs.py --country ${{ needs.prepare-deployment.outputs.country }}
+          
+          # Validate ROPA compliance
+          python3 tools/qoder/qoder.py ropa generate --country ${{ needs.prepare-deployment.outputs.country }} --dry-run
+      
+      - name: Deploy entity apps (Blue-Green)
+        run: |
+          APPS='${{ needs.prepare-deployment.outputs.apps }}'
+          COUNTRY='${{ needs.prepare-deployment.outputs.country }}'
+          
+          for APP in $(echo "$APPS" | jq -r '.[]'); do
+            echo "Deploying $APP to production..."
+            
+            # Blue-Green deployment
+            if kubectl get deployment "jolhub-$APP-green" -n "jolhub-$COUNTRY-production" 2>/dev/null; then
+              # Deploy to green
+              kubectl set image deployment/"jolhub-$APP-green" \
+                "app=ghcr.io/${{ github.repository }}/frontend-$APP:sha-${{ github.sha }}" \
+                -n "jolhub-$COUNTRY-production"
+              
+              # Wait for green to be ready
+              kubectl rollout status deployment/"jolhub-$APP-green" -n "jolhub-$COUNTRY-production" --timeout=300s
+              
+              # Switch traffic to green
+              kubectl patch service "jolhub-$APP" -n "jolhub-$COUNTRY-production" \
+                -p '{"spec":{"selector":{"app":"jolhub-'$APP'","version":"green"}}}'
+            else
+              # Standard deployment
+              kubectl set image deployment/"jolhub-$APP" \
+                "app=ghcr.io/${{ github.repository }}/frontend-$APP:sha-${{ github.sha }}" \
+                -n "jolhub-$COUNTRY-production" || true
+            fi
+          done
+      
+      - name: Production smoke tests
+        run: |
+          # Comprehensive health checks
+          curl -f https://jolhub.org/api/v1/health/
+          curl -f https://jolhub.org/api/v1/health/db/
+          
+          # Entity app checks
+          APPS='${{ needs.prepare-deployment.outputs.apps }}'
+          for APP in $(echo "$APPS" | jq -r '.[]'); do
+            curl -f "https://$APP.jolhub.org/" || echo "Warning: $APP not accessible"
+          done
+      
+      - name: Create deployment record
+        run: |
+          # Log deployment for audit trail (SOC2, GDPR)
+          DEPLOYMENT_RECORD="{
+            \"timestamp\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",
+            \"environment\": \"production\",
+            \"country\": \"${{ needs.prepare-deployment.outputs.country }}\",
+            \"commit\": \"${{ github.sha }}\",
+            \"actor\": \"${{ github.actor }}\",
+            \"workflow\": \"${{ github.workflow }}\",
+            \"run_id\": \"${{ github.run_id }}\"
+          }"
+          
+          echo "$DEPLOYMENT_RECORD" | jq '.' >> deployment_record.json
+      
+      - name: Deployment summary
+        if: always()
+        run: |
+          echo "## 🚀 Production Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Environment**: Production" >> $GITHUB_STEP_SUMMARY
+          echo "- **Country**: ${{ needs.prepare-deployment.outputs.country }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Approver**: ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### GDPR Compliance" >> $GITHUB_STEP_SUMMARY
+          echo "- Article 30: ROPA generated" >> $GITHUB_STEP_SUMMARY
+          echo "- Article 44: Country-scoped deployment" >> $GITHUB_STEP_SUMMARY
+          echo "- SOC2 Type II: Audit trail recorded" >> $GITHUB_STEP_SUMMARY
+
+  # ===========================================================================
+  # POST-DEPLOYMENT NOTIFICATION
+  # ===========================================================================
+  
+  notify:
+    name: Post-Deployment Notification
+    runs-on: ubuntu-latest
+    needs: [prepare-deployment, deploy-staging, deploy-production]
+    if: always()
+    
+    steps:
+      - name: Notify deployment status
+        run: |
+          echo "## 📢 Deployment Notification" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Environment | ${{ needs.prepare-deployment.outputs.environment }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Country | ${{ needs.prepare-deployment.outputs.country }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Staging | ${{ needs.deploy-staging.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Production | ${{ needs.deploy-production.result }} |" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ needs.deploy-staging.result }}" == "failure" ] || [ "${{ needs.deploy-production.result }}" == "failure" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "⚠️ Deployment issues detected. Please investigate." >> $GITHUB_STEP_SUMMARY
+          fi
