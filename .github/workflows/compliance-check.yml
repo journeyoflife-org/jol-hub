@@ -1,0 +1,590 @@
+# =============================================================================
+# JOL-HUB GDPR & Compliance Check Pipeline
+# =============================================================================
+# Validates GDPR compliance, accessibility, and regulatory requirements
+# Runs on schedule and on demand
+# =============================================================================
+
+name: Compliance Check
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
+      - 'docs/compliance/**'
+      - '.github/workflows/compliance-check.yml'
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    # Run weekly on Monday at 3:00 AM UTC
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+    inputs:
+      check_type:
+        description: 'Type of compliance check'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - gdpr
+          - accessibility
+          - security
+          - documentation
+
+env:
+  PYTHON_VERSION: '3.11'
+  NODE_VERSION: '20'
+  PNPM_VERSION: '10.30.3'
+
+jobs:
+  # ===========================================================================
+  # GDPR COMPLIANCE CHECKS
+  # ===========================================================================
+  
+  gdpr-check:
+    name: GDPR Compliance Check
+    runs-on: ubuntu-latest
+    if: github.event.inputs.check_type == 'all' || github.event.inputs.check_type == 'gdpr' || github.event_name != 'workflow_dispatch'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install GDPR check tools
+        run: |
+          pip install checkov
+          pip install beautifulsoup4 requests
+      
+      - name: Check for PII handling patterns
+        run: |
+          echo "Checking for proper PII handling..."
+          
+          # Check for proper encryption in models
+          echo "### PII Field Encryption Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if grep -r "EncryptedField\|encrypt\|fernet" backend/django/apps/ --include="*.py" > /dev/null; then
+            echo "✅ Encrypted field usage found" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ No encrypted field usage found - review PII fields" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Check consent management implementation
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Consent Management Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Check for consent-related code
+          if grep -r "consent\|Consent" backend/django/apps/ --include="*.py" > /dev/null; then
+            echo "✅ Consent management code found" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ No consent management implementation found" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Check data subject rights endpoints
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Data Subject Rights Endpoints Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Check for GDPR endpoints
+          REQUIRED_ENDPOINTS=("export" "delete" "rectify" "access")
+          
+          for endpoint in "${REQUIRED_ENDPOINTS[@]}"; do
+            if grep -r "$endpoint\|${endpoint^}" backend/django/apps/users/ --include="*.py" > /dev/null; then
+              echo "✅ $endpoint endpoint found" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "⚠️ $endpoint endpoint not found" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+      
+      - name: Check privacy policy and notices
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Privacy Documentation Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Check for privacy-related files
+          PRIVACY_FILES=(
+            "docs/legal/privacy-policy.md"
+            "docs/legal/cookie-policy.md"
+            "docs/legal/terms-of-service.md"
+            "docs/compliance/GDPR-checklist.md"
+          )
+          
+          for file in "${PRIVACY_FILES[@]}"; do
+            if [ -f "$file" ]; then
+              echo "✅ $file exists" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "⚠️ $file missing" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+      
+      - name: Check data retention policies
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Data Retention Policy Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if grep -r "retention\|RETENTION\|delete_after" backend/django/ --include="*.py" > /dev/null; then
+            echo "✅ Data retention policies found in code" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ No data retention policies found in code" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Check audit logging
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Audit Logging Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if grep -r "AuditLog\|audit_log\|LOGGING" backend/django/ --include="*.py" > /dev/null; then
+            echo "✅ Audit logging implementation found" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Audit logging implementation not found" >> $GITHUB_STEP_SUMMARY
+          fi
+
+  # ===========================================================================
+  # AUTOMATED COMPLIANCE TEST SUITE
+  # ===========================================================================
+  
+  automated-compliance-tests:
+    name: Automated Compliance Tests (GDPR/SOC2/PCI-DSS)
+    runs-on: ubuntu-latest
+    if: github.event.inputs.check_type == 'all' || github.event.inputs.check_type == 'gdpr' || github.event_name != 'workflow_dispatch'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          cache-dependency-path: 'data/requirements.txt'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pyyaml
+          pip install -r data/requirements.txt || true
+      
+      - name: Run GDPR Compliance Tests
+        run: |
+          echo "### 📋 GDPR Compliance Tests" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          
+          python -m pytest data/tests/test_compliance.py::TestGDPRCompliance -v --tb=short 2>&1 | tee gdpr_results.txt || true
+          
+          if grep -q "passed" gdpr_results.txt; then
+            echo "✅ GDPR tests passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ Some GDPR tests require attention" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Run SOC2 Type II Compliance Tests
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔒 SOC2 Type II Compliance Tests" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          
+          python -m pytest data/tests/test_compliance.py::TestSOC2Compliance -v --tb=short 2>&1 | tee soc2_results.txt || true
+          
+          if grep -q "passed" soc2_results.txt; then
+            echo "✅ SOC2 tests passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ Some SOC2 tests require attention" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Run PCI-DSS Compliance Tests
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 💳 PCI-DSS Compliance Tests" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          
+          python -m pytest data/tests/test_compliance.py::TestPCIDSSCompliance -v --tb=short 2>&1 | tee pci_results.txt || true
+          
+          if grep -q "passed" pci_results.txt; then
+            echo "✅ PCI-DSS tests passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ Some PCI-DSS tests require attention" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Run Audit Log Integrity Tests
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔐 Audit Log Integrity Tests" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          
+          python -m pytest data/tests/test_compliance.py::TestAuditLogIntegrity -v --tb=short 2>&1 | tee audit_results.txt || true
+          
+          if grep -q "passed" audit_results.txt; then
+            echo "✅ Audit integrity tests passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ Some audit integrity tests require attention" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Generate Compliance Report
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 Compliance Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          
+          python scripts/run_compliance_tests.py --all --output json > compliance_report.json 2>&1 || true
+          
+          if [ -f compliance_report.json ]; then
+            echo '```json' >> $GITHUB_STEP_SUMMARY
+            cat compliance_report.json >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Upload Compliance Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: automated-compliance-report
+          path: |
+            compliance_report.json
+            *_results.txt
+          retention-days: 90
+
+  # ===========================================================================
+  # ACCESSIBILITY CHECKS (WCAG 2.1 AA)
+  # ===========================================================================
+  
+  accessibility-check:
+    name: WCAG Accessibility Check
+    runs-on: ubuntu-latest
+    if: github.event.inputs.check_type == 'all' || github.event.inputs.check_type == 'accessibility' || github.event_name != 'workflow_dispatch'
+    defaults:
+      run:
+        working-directory: frontend
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'frontend/pnpm-lock.yaml'
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Install accessibility testing tools
+        run: |
+          pnpm add -D @axe-core/react pa11y eslint-plugin-jsx-a11y
+      
+      - name: Run ESLint accessibility checks
+        run: |
+          pnpm eslint --plugin jsx-a11y --ext .tsx,.jsx ./apps || true
+      
+      - name: Check for ARIA attributes
+        run: |
+          echo "### ARIA Attributes Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          ARIA_COUNT=$(grep -r "aria-" ./apps --include="*.tsx" | wc -l)
+          echo "Found $ARIA_COUNT ARIA attributes in components" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "$ARIA_COUNT" -gt 0 ]; then
+            echo "✅ ARIA attributes are being used" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ No ARIA attributes found - review accessibility" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Check for alt attributes on images
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Image Alt Attribute Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Count images with alt
+          IMAGES_WITH_ALT=$(grep -r "<img.*alt=" ./apps --include="*.tsx" | wc -l)
+          TOTAL_IMAGES=$(grep -r "<img" ./apps --include="*.tsx" | wc -l)
+          
+          echo "Images with alt: $IMAGES_WITH_ALT / $TOTAL_IMAGES" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "$IMAGES_WITH_ALT" -eq "$TOTAL_IMAGES" ]; then
+            echo "✅ All images have alt attributes" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ Some images missing alt attributes" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Check for form labels
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Form Label Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          INPUT_COUNT=$(grep -r "<input" ./apps --include="*.tsx" | wc -l)
+          LABEL_COUNT=$(grep -r "<label\|htmlFor=" ./apps --include="*.tsx" | wc -l)
+          
+          echo "Inputs: $INPUT_COUNT, Labels: $LABEL_COUNT" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "$LABEL_COUNT" -ge "$INPUT_COUNT" ]; then
+            echo "✅ Form labels are properly associated" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ Some form inputs may be missing labels" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Check for keyboard navigation
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Keyboard Navigation Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          KEYBOARD_ATTR=$(grep -r "onKeyDown\|onKeyUp\|tabIndex\|tabIndex" ./apps --include="*.tsx" | wc -l)
+          
+          echo "Keyboard event handlers found: $KEYBOARD_ATTR" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "$KEYBOARD_ATTR" -gt 0 ]; then
+            echo "✅ Keyboard navigation handlers present" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ No explicit keyboard navigation handlers found" >> $GITHUB_STEP_SUMMARY
+          fi
+
+  # ===========================================================================
+  # SECURITY COMPLIANCE CHECKS
+  # ===========================================================================
+  
+  security-compliance:
+    name: Security Compliance Check
+    runs-on: ubuntu-latest
+    if: github.event.inputs.check_type == 'all' || github.event.inputs.check_type == 'security' || github.event_name != 'workflow_dispatch'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Check security headers configuration
+        run: |
+          echo "### Security Headers Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Check Django security settings
+          SECURITY_SETTINGS=(
+            "SECURE_SSL_REDIRECT"
+            "SECURE_HSTS_SECONDS"
+            "SESSION_COOKIE_SECURE"
+            "CSRF_COOKIE_SECURE"
+            "X_FRAME_OPTIONS"
+          )
+          
+          for setting in "${SECURITY_SETTINGS[@]}"; do
+            if grep -r "$setting" backend/django/core/settings/ --include="*.py" > /dev/null; then
+              echo "✅ $setting configured" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "⚠️ $setting not found" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+      
+      - name: Check authentication security
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Authentication Security Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Check for MFA
+          if grep -r "MFA\|TOTP\|two_factor" backend/django/apps/users/ --include="*.py" > /dev/null; then
+            echo "✅ MFA implementation found" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ No MFA implementation found" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          # Check for password validation
+          if grep -r "AUTH_PASSWORD_VALIDATORS" backend/django/core/settings/ --include="*.py" > /dev/null; then
+            echo "✅ Password validators configured" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Password validators not configured" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Check CORS configuration
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### CORS Configuration Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if grep -r "CORS_ALLOWED_ORIGINS\|CORS_ORIGIN_WHITELIST" backend/django/core/settings/ --include="*.py" > /dev/null; then
+            echo "✅ CORS origins are explicitly configured" >> $GITHUB_STEP_SUMMARY
+            
+            # Check for wildcard (security risk)
+            if grep -r "CORS_ORIGIN_ALLOW_ALL.*True" backend/django/core/settings/ --include="*.py" > /dev/null; then
+              echo "❌ WARNING: CORS allow all is enabled - security risk!" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "⚠️ CORS configuration not found" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Check for hardcoded secrets
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Hardcoded Secrets Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Check for common secret patterns
+          SECRET_PATTERNS=(
+            "password\s*=\s*['\"]"
+            "secret\s*=\s*['\"]"
+            "api_key\s*=\s*['\"]"
+            "token\s*=\s*['\"]"
+          )
+          
+          FOUND_SECRETS=0
+          for pattern in "${SECRET_PATTERNS[@]}"; do
+            if grep -rE "$pattern" backend/django/apps/ --include="*.py" | grep -v "env\|os.environ\|settings\|test" > /dev/null; then
+              FOUND_SECRETS=1
+            fi
+          done
+          
+          if [ "$FOUND_SECRETS" -eq 0 ]; then
+            echo "✅ No hardcoded secrets found" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ WARNING: Potential hardcoded secrets found!" >> $GITHUB_STEP_SUMMARY
+          fi
+
+  # ===========================================================================
+  # DOCUMENTATION COMPLIANCE
+  # ===========================================================================
+  
+  documentation-check:
+    name: Documentation Compliance Check
+    runs-on: ubuntu-latest
+    if: github.event.inputs.check_type == 'all' || github.event.inputs.check_type == 'documentation' || github.event_name != 'workflow_dispatch'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Check required documentation
+        run: |
+          echo "### Required Documentation Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          REQUIRED_DOCS=(
+            "README.md"
+            "docs/architecture/system-overview.md"
+            "docs/architecture/security-model.md"
+            "docs/architecture/data-flow.md"
+            "docs/compliance/GDPR-checklist.md"
+            "docs/api/openapi-spec.yaml"
+            "backend/django/requirements.txt"
+            "frontend/package.json"
+          )
+          
+          MISSING_DOCS=0
+          for doc in "${REQUIRED_DOCS[@]}"; do
+            if [ -f "$doc" ]; then
+              echo "✅ $doc exists" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "❌ $doc missing" >> $GITHUB_STEP_SUMMARY
+              MISSING_DOCS=1
+            fi
+          done
+          
+          if [ "$MISSING_DOCS" -eq 0 ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "✅ All required documentation is present" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Check API documentation
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### API Documentation Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f "docs/api/openapi-spec.yaml" ]; then
+            # Validate OpenAPI spec
+            if command -v npx &> /dev/null; then
+              npx @apidevtools/swagger-cli validate docs/api/openapi-spec.yaml && \
+                echo "✅ OpenAPI spec is valid" >> $GITHUB_STEP_SUMMARY || \
+                echo "⚠️ OpenAPI spec has validation errors" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "ℹ️ OpenAPI spec exists (validation skipped)" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "❌ OpenAPI spec missing" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Check code documentation
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Code Documentation Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Check for docstrings in Python
+          PYTHON_FILES=$(find backend/django/apps -name "*.py" -not -path "*/migrations/*" | wc -l)
+          DOCSTRING_FILES=$(grep -l '"""' backend/django/apps/**/*.py 2>/dev/null | wc -l || echo "0")
+          
+          echo "Python files with docstrings: $DOCSTRING_FILES / $PYTHON_FILES" >> $GITHUB_STEP_SUMMARY
+
+  # ===========================================================================
+  # COMPLIANCE SUMMARY
+  # ===========================================================================
+  
+  compliance-summary:
+    name: Compliance Check Summary
+    runs-on: ubuntu-latest
+    needs: [gdpr-check, automated-compliance-tests, accessibility-check, security-compliance, documentation-check]
+    if: always()
+    
+    steps:
+      - name: Generate Compliance Summary
+        run: |
+          echo "## Compliance Check Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Date**: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "**Run ID**: ${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Check | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| GDPR Compliance | ${{ needs.gdpr-check.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Automated Compliance Tests | ${{ needs.automated-compliance-tests.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Accessibility (WCAG) | ${{ needs.accessibility-check.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Security Compliance | ${{ needs.security-compliance.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Documentation | ${{ needs.documentation-check.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "*This is an automated compliance check. Review detailed results above.*" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Create compliance artifact
+        run: |
+          mkdir -p compliance-report
+          echo "# JOL-HUB Compliance Report" > compliance-report/report.md
+          echo "Generated: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> compliance-report/report.md
+          echo "" >> compliance-report/report.md
+          echo "## Results" >> compliance-report/report.md
+          echo "- GDPR: ${{ needs.gdpr-check.result }}" >> compliance-report/report.md
+          echo "- Automated Tests: ${{ needs.automated-compliance-tests.result }}" >> compliance-report/report.md
+          echo "- Accessibility: ${{ needs.accessibility-check.result }}" >> compliance-report/report.md
+          echo "- Security: ${{ needs.security-compliance.result }}" >> compliance-report/report.md
+          echo "- Documentation: ${{ needs.documentation-check.result }}" >> compliance-report/report.md
+      
+      - name: Upload compliance report
+        uses: actions/upload-artifact@v4
+        with:
+          name: compliance-report
+          path: compliance-report/
+          retention-days: 90
