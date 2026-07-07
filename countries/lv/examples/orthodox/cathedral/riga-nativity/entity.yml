@@ -1,0 +1,90 @@
+# Latvia Riga Orthodox Cathedral Entity Configuration
+# GDPR Article 44: Country-scoped data routing
+# Julian Calendar: Orthodox liturgical year
+
+entity:
+  id: "lv-orthodox-riga-cathedral"
+  type: "orthodox"
+  name: "Rīgas Piedzīvojējsvecticīgo katedrāle"
+  name_en: "Riga Nativity of Christ Orthodox Cathedral"
+  country: "lv"
+  
+  # Canonical information
+  canonical:
+    jurisdiction: "Latvian Orthodox Church"
+    patriarchate: "Moscow Patriarchate"
+    type: "cathedral"
+    dedication: "Nativity of Christ"
+    calendar: "julian"
+    
+  # Contact information
+  contact:
+    address: "Brīvīdas bulvāris 23, Rīga, LV-1515, Latvija"
+    phone: "+371 6722 7656"
+    email: "orthodox@dzives-cels.lv"
+    website: "https://dzives-cels.lv/riga-orthodox-cathedral"
+    
+  # Hierarchy
+  hierarchy:
+    level: 2
+    parent_jurisdiction: "latvian-orthodox-church"
+    
+  # Localization
+  languages:
+    primary: "lv"
+    supported: ["lv", "ru", "en"]
+    
+  # Domain configuration
+  domain:
+    primary: "orthodox-cathedral.dzives-cels.lv"
+    aliases: []
+    
+  # Features enabled
+  features:
+    - "services"
+    - "sacraments"
+    - "calendar"
+    - "donations"
+    
+  # Service schedule
+  schedule:
+    services:
+      - day: "saturday"
+        time: "18:00"
+        type: "vespers"
+      - day: "sunday"
+        time: "09:00"
+        type: "divine_liturgy"
+    confessions:
+      - day: "saturday"
+        time: "17:00"
+        
+  # Sacraments
+  sacraments:
+    baptism: true
+    chrismation: true
+    communion: true
+    confession: true
+    marriage: true
+    ordination: false
+    unction: true
+    
+  # Compliance
+  compliance:
+    gdpr: true
+    canon_law: true
+    dpa: "Datu valsts inspekcija"
+    
+  # Integrations
+  integrations:
+    bitrix24:
+      portal: "dzives-cels.bitrix24.lv"
+      sync_contacts: true
+      sync_donations: true
+      
+  # Audit
+  audit:
+    created_at: "2026-04-06T00:00:00Z"
+    created_by: "system"
+    last_modified: "2026-04-06T00:00:00Z"
+    version: "1.0.0"

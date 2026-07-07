@@ -1,0 +1,108 @@
+# Vilnius Greek Catholic Church
+# Example 8: Other Christian Entity Type
+
+entity:
+  id: "lt-greek-catholic-vilnius-001"
+  name: "Vilniaus Šv. Apaštalų Petro ir Povilo Graikų Katalikų Bažnyčia"
+  name_en: "Vilnius Greek Catholic Church of Sts. Peter and Paul"
+  type: "greek_catholic"
+  status: "active"
+  country: "lt"
+  
+  # Eastern Catholic Canonical Information
+  canonical:
+    church: "Ukrainian Greek Catholic Church"
+    eparchy: "Kyiv-Halych Eparchy"
+    rite: "byzantine"
+    calendar: "gregorian"
+    jurisdiction: "Ukrainian Greek Catholic Church in communion with Rome"
+    sui_juris: true
+    founded: "1991"
+    consecrated: "1997"
+    
+  # Location
+  address:
+    street: "M. Valančiaus g. 5"
+    city: "Vilnius"
+    postal_code: "03102"
+    country: "Lithuania"
+    coordinates:
+      latitude: 54.6890
+      longitude: 25.2670
+      
+  # Contact Information
+  contact:
+    email: "info@greekcatholic.lt"
+    phone: "+370 5 234 5678"
+    website: "https://greekcatholic.lt"
+    
+  # Bitrix24 Integration
+  bitrix24:
+    portal_domain: "greekcatholic-lt.bitrix24.eu"
+    contact_group_id: 12
+    deal_category_id: 8
+    
+  # Website Configuration
+  website:
+    domain: "greekcatholic.lt"
+    ssl_enabled: true
+    default_language: "lt"
+    supported_languages:
+      - "lt"
+      - "en"
+      - "uk"
+    theme: "byzantine-catholic"
+    
+  # Online Store Configuration
+  online_store:
+    enabled: true
+    products:
+      - category: "icons"
+        name_lt: "Ikonos"
+        name_en: "Icons"
+      - category: "candles"
+        name_lt: "Žvakės"
+      - category: "books"
+        name_lt: "Knygos"
+        name_en: "Eastern Christian Books"
+    payment_methods:
+      - "stripe"
+      - "bank_link"
+      
+  # Compliance Configuration
+  compliance:
+    level: "gdpr"
+    eastern_catholic_governance: true
+    canon_law: "CCEO"  # Code of Canons of the Eastern Churches
+    sacramental_data_processing: true
+    legal_basis: "GDPR Art. 9(2)(d)"
+    audit_logging: true
+    data_retention:
+      sacramental_records: "permanent"
+      parishioner_data: 10
+      eparchy_reports: "permanent"
+      
+  # Divine Liturgy Schedule (Byzantine Rite)
+  liturgy_schedule:
+    weekdays:
+      - time: "18:00"
+        language: "uk"
+        type: "vespers"
+    saturdays:
+      - time: "17:00"
+        language: "lt"
+        type: "vigil"
+    sundays:
+      - time: "10:00"
+        language: "uk"
+        type: "divine_liturgy"
+      - time: "12:00"
+        language: "lt"
+        type: "divine_liturgy"
+        
+  # Community Statistics
+  statistics:
+    parishioners: 1200
+    ukrainian_community: 800
+    lithuanian_community: 400
+    average_sunday_attendance: 350

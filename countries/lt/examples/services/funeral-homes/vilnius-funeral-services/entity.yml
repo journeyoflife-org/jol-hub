@@ -1,0 +1,134 @@
+# Example 9: Vilnius Funeral Services
+# Organization Configuration for JOL-HUB
+
+entity:
+  id: "lt-service-funeral-001"
+  name: "Vilniaus Laidojimo Paslaugos"
+  name_en: "Vilnius Funeral Services"
+  type: "funeral_service"
+  status: "active"
+  country: "lt"
+  
+  # Business Information
+  business:
+    registration_code: "123456789"
+    vat_registered: true
+    vat_rate: 21
+    established: "1995"
+    
+  # Location (Main Office)
+  address:
+    street: "Laidojimo g. 15"
+    city: "Vilnius"
+    postal_code: "02100"
+    country: "Lithuania"
+    coordinates:
+      latitude: 54.6721
+      longitude: 25.2678
+      
+  # Contact Information
+  contact:
+    email: "info@vilniauslaidojimas.lt"
+    phone: "+370 5 212 3456"
+    emergency_phone: "+370 699 12345"  # 24/7 emergency line
+    website: "https://vilniauslaidojimas.lt"
+    
+  # Bitrix24 Integration
+  bitrix24:
+    portal_domain: "jol-lithuania.bitrix24.eu"
+    contact_group_id: 50
+    deal_category_id: "funeral_services"
+    
+  # Website Configuration
+  website:
+    domain: "vilniauslaidojimas.lt"
+    ssl_enabled: true
+    default_language: "lt"
+    supported_languages:
+      - "lt"
+      - "en"
+      - "ru"
+      - "pl"
+    theme: "service-professional"
+    
+  # Online Store Configuration
+  online_store:
+    enabled: true
+    products:
+      - category: "funeral_packages"
+        name_lt: "Laidojimo paketai"
+        name_en: "Funeral Packages"
+        items:
+          - name: "Bazinis"
+            price: 1500
+            currency: "EUR"
+          - name: "Standartinis"
+            price: 2500
+            currency: "EUR"
+          - name: "Premium"
+            price: 4000
+            currency: "EUR"
+      - category: "caskets"
+        name_lt: "Karstai"
+        name_en: "Caskets"
+      - category: "urns"
+        name_lt: "Urnelės"
+        name_en: "Urns"
+      - category: "flowers"
+        name_lt: "Gėlės"
+        name_en: "Flowers"
+      - category: "memorial_products"
+        name_lt: "Atminimo produktai"
+        name_en: "Memorial Products"
+    payment_methods:
+      - "stripe"
+      - "paypal"
+      - "bank_link"
+    payment_plans:
+      enabled: true
+      max_installments: 12
+      interest_free_months: 3
+    pre_need_contracts:
+      enabled: true
+      legal_template: "lt/preneed_contract"
+      
+  # Compliance Configuration
+  compliance:
+    level: "soc2_gdpr_pci"  # SOC2 + GDPR + PCI-DSS
+    pci_dss_level: "level_2"
+    deceased_person_data: true
+    health_data_processing: true
+    financial_transactions: true
+    audit_logging: true
+    data_retention:
+      service_records: 75  # years
+      financial_records: 10
+      customer_data: 10
+      
+  # Service Configuration
+  services:
+    types:
+      - "traditional_funeral"
+      - "cremation"
+      - "memorial_service"
+      - "pre_need_planning"
+      - "body_transport"
+      - "international_repatriation"
+    operating_hours:
+      weekdays: "08:00-18:00"
+      saturday: "09:00-14:00"
+      emergency: "24/7"
+    service_areas:
+      - "Vilnius city"
+      - "Vilnius district"
+      - "Šalčininkai"
+      - "Švenčionys"
+      
+  # Partner Cemeteries
+  partner_cemeteries:
+    - name: "Antakalnio kapinės"
+      location: "Vilnius"
+    - name: "Karveliškių kapinės"
+      location: "Vilnius"
+    - name: "Saulėtekio kapinės"
+      location: "Vilnius"

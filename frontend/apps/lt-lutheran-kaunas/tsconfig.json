@@ -1,0 +1,38 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@jol-hub/ui": [
+        "../../packages/ui/src"
+      ],
+      "@jol-hub/i18n": [
+        "../../packages/i18n/src"
+      ],
+      "@jol-hub/auth": [
+        "../../packages/auth/src"
+      ],
+      "@jol-hub/bitrix-sdk": [
+        "../../packages/bitrix-sdk/src"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "jsx": "preserve"
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

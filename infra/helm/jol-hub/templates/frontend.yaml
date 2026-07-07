@@ -1,0 +1,143 @@
+{{- if .Values.frontend.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "jol-hub.labels" . | nindent 4 }}
+    app.kubernetes.io/component: frontend
+spec:
+  replicas: {{ .Values.frontend.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "jol-hub.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: frontend
+  template:
+    metadata:
+      labels:
+        {{- include "jol-hub.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: frontend
+    spec:
+      serviceAccountName: {{ include "jol-hub.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: frontend
+          image: {{ include "jol-hub.image" .Values.frontend.image }}
+          imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          env:
+            {{- toYaml .Values.frontend.env | nindent 12 }}
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            successThreshold: 1
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          resources:
+            {{- toYaml .Values.frontend.resources | nindent 12 }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "jol-hub.labels" . | nindent 4 }}
+    app.kubernetes.io/component: frontend
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "jol-hub.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: frontend
+{{- end }}
+---
+{{- if .Values.adminDashboard.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-dashboard
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "jol-hub.labels" . | nindent 4 }}
+    app.kubernetes.io/component: admin-dashboard
+spec:
+  replicas: {{ .Values.adminDashboard.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "jol-hub.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: admin-dashboard
+  template:
+    metadata:
+      labels:
+        {{- include "jol-hub.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: admin-dashboard
+    spec:
+      serviceAccountName: {{ include "jol-hub.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: admin-dashboard
+          image: {{ include "jol-hub.image" .Values.adminDashboard.image }}
+          imagePullPolicy: {{ .Values.adminDashboard.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          env:
+            - name: NEXT_PUBLIC_API_URL
+              value: "https://{{ .Values.app.apiDomain }}/api/v1"
+            - name: NEXTAUTH_URL
+              value: "https://{{ .Values.app.adminDomain }}"
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          resources:
+            {{- toYaml .Values.adminDashboard.resources | nindent 12 }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-dashboard-service
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "jol-hub.labels" . | nindent 4 }}
+    app.kubernetes.io/component: admin-dashboard
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "jol-hub.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: admin-dashboard
+{{- end }}

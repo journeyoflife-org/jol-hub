@@ -1,5 +1,3 @@
-import { entityConfig } from '@/config/entity';
-
 export const metadata = {
   title: 'Aukos | Donate - Kauno Arkikatedra',
   description: 'Paremti Kauno arkikatedrą - Support Kaunas Cathedral with your donation',

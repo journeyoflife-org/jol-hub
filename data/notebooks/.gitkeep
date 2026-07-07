@@ -1,0 +1,8 @@
+# JOL-HUB Data Notebooks
+# Jupyter notebooks for data analysis and exploration
+
+# Notebooks in this directory should:
+# 1. Never contain production credentials
+# 2. Use anonymized/sample data when possible
+# 3. Be reviewed before committing
+# 4. Follow GDPR data handling guidelines

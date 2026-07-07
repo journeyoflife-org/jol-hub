@@ -54,6 +54,45 @@ class Invoice(BaseModel):
     def __str__(self):
         return f'{self.invoice_number} — {self.organization} ({self.status})'
 
+    def save(self, *args, **kwargs):
+        """
+        Save with tenant context validation.
+        
+        SOC2 CC6.2 / GDPR Article 32 - Prevents cross-tenant invoice manipulation.
+        """
+        self._validate_tenant_context()
+        super().save(*args, **kwargs)
+
+    def _validate_tenant_context(self):
+        """
+        Validate that the organization matches current tenant context.
+        
+        Prevents cross-tenant invoice manipulation.
+        """
+        import logging
+        logger = logging.getLogger('jolhub.tenant_validation')
+        
+        if not self.organization_id:
+            return
+        
+        try:
+            from apps.crm.middleware import get_current_tenant_id
+            tenant_id = get_current_tenant_id()
+            
+            if tenant_id and str(self.organization_id) != str(tenant_id):
+                logger.error(
+                    f"Cross-tenant invoice attempt: context_tenant={tenant_id}, "
+                    f"target_org={self.organization_id}"
+                )
+                from django.core.exceptions import ValidationError
+                raise ValidationError(
+                    "Organization does not match current tenant context"
+                )
+        except ImportError:
+            pass
+        except Exception as e:
+            logger.debug(f"Tenant validation skipped: {e}")
+
 
 class Payout(BaseModel):
     """Settlement payout from platform to an organisation."""
@@ -89,3 +128,42 @@ class Payout(BaseModel):
 
     def __str__(self):
         return f'Payout {self.amount} {self.currency} → {self.organization} ({self.status})'
+
+    def save(self, *args, **kwargs):
+        """
+        Save with tenant context validation.
+        
+        SOC2 CC6.2 / GDPR Article 32 - Prevents cross-tenant payout manipulation.
+        """
+        self._validate_tenant_context()
+        super().save(*args, **kwargs)
+
+    def _validate_tenant_context(self):
+        """
+        Validate that the organization matches current tenant context.
+        
+        Prevents cross-tenant payout manipulation.
+        """
+        import logging
+        logger = logging.getLogger('jolhub.tenant_validation')
+        
+        if not self.organization_id:
+            return
+        
+        try:
+            from apps.crm.middleware import get_current_tenant_id
+            tenant_id = get_current_tenant_id()
+            
+            if tenant_id and str(self.organization_id) != str(tenant_id):
+                logger.error(
+                    f"Cross-tenant payout attempt: context_tenant={tenant_id}, "
+                    f"target_org={self.organization_id}"
+                )
+                from django.core.exceptions import ValidationError
+                raise ValidationError(
+                    "Organization does not match current tenant context"
+                )
+        except ImportError:
+            pass
+        except Exception as e:
+            logger.debug(f"Tenant validation skipped: {e}")

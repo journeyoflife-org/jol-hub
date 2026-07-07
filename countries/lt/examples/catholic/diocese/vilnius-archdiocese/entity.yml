@@ -1,0 +1,117 @@
+# Example 3: Vilnius Archdiocese
+# Organization Configuration for JOL-HUB
+
+entity:
+  id: "lt-catholic-diocese-001"
+  name: "Vilniaus arkivyskupija"
+  name_en: "Vilnius Archdiocese"
+  type: "diocese"
+  status: "active"
+  country: "lt"
+  
+  # Canonical Information
+  canonical:
+    rite: "roman"
+    jurisdiction: "Vilnius Archdiocese"
+    jurisdiction_type: "archdiocese"
+    metropolitan_province: "Lithuania"
+    established: "1387"
+    patron: "St. Casimir"
+    cathedral: "Vilniaus Šv. Stanislovo ir Šv. Vladislovo arkikatedra bazilika"
+    
+  # Location (Curia Office)
+  address:
+    street: "Šventaragio g. 2"
+    city: "Vilnius"
+    postal_code: "01128"
+    country: "Lithuania"
+    coordinates:
+      latitude: 54.6833
+      longitude: 25.2900
+      
+  # Contact Information
+  contact:
+    email: "arkivyskupija@vilnius.archyvai.lt"
+    phone: "+370 5 212 38 25"
+    website: "https://vilnius.archyvai.lt"
+    
+  # Hierarchical Structure
+  hierarchy:
+    deaneries:
+      - id: "lt-deanery-vilnius-city"
+        name: "Vilniaus miesto dekanatas"
+        parishes: 28
+      - id: "lt-deanery-vilnius-district"
+        name: "Vilniaus rajono dekanatas"
+        parishes: 35
+      - id: "lt-deanery-ukmerge"
+        name: "Ukmergės dekanatas"
+        parishes: 22
+      - id: "lt-deanery-elektrenai"
+        name: "Elektrėnų dekanatas"
+        parishes: 15
+      - id: "lt-deanery-salcininkai"
+        name: "Šalčininkų dekanatas"
+        parishes: 18
+      - id: "lt-deanery-svencionys"
+        name: "Švenčionių dekanatas"
+        parishes: 20
+      - id: "lt-deanery-trakai"
+        name: "Trakų dekanatas"
+        parishes: 25
+      - id: "lt-deanery-sirvintos"
+        name: "Širvintų dekanatas"
+        parishes: 12
+        
+  # Bitrix24 Integration (Multi-tenant)
+  bitrix24:
+    portal_domain: "vilniaus-arkivyskupija.bitrix24.eu"
+    multi_tenant: true
+    parish_sub_accounts: true
+    contact_group_id: 1
+    
+  # Website Configuration
+  website:
+    domain: "vilnius.archyvai.lt"
+    ssl_enabled: true
+    default_language: "lt"
+    supported_languages:
+      - "lt"
+      - "en"
+      - "pl"
+      - "by"  # Belarusian minority
+    theme: "diocese-official"
+    
+  # Online Store Configuration
+  online_store:
+    enabled: true
+    products:
+      - category: "publications"
+        name_lt: "Leidiniai"
+        name_en: "Publications"
+      - category: "retreats"
+        name_lt: "Rekolekcijos"
+        name_en: "Retreats"
+      - category: "events"
+        name_lt: "Renginiai"
+        name_en: "Events"
+    payment_methods:
+      - "stripe"
+      - "bank_link"
+      
+  # Compliance Configuration
+  compliance:
+    level: "canonical"
+    canonical_records: true
+    multi_parish_data_handling: true
+    audit_logging: true
+    data_retention:
+      sacramental_records: "permanent"
+      parishioner_data: 10
+      financial_records: 10
+      
+  # Statistics
+  statistics:
+    total_parishes: 175
+    total_priests: 250
+    catholic_population: 450000

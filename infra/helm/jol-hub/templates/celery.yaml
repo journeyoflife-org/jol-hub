@@ -1,0 +1,104 @@
+{{- if .Values.celery.worker.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: celery-worker
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "jol-hub.labels" . | nindent 4 }}
+    app.kubernetes.io/component: celery-worker
+spec:
+  replicas: {{ .Values.celery.worker.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "jol-hub.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: celery-worker
+  template:
+    metadata:
+      labels:
+        {{- include "jol-hub.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: celery-worker
+    spec:
+      serviceAccountName: {{ include "jol-hub.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: celery-worker
+          image: {{ include "jol-hub.image" .Values.celery.worker.image }}
+          imagePullPolicy: {{ .Values.celery.worker.image.pullPolicy }}
+          command: ["celery", "-A", "backend.django.core", "worker", "-l", "info", "-c", "{{ .Values.celery.worker.concurrency }}"]
+          envFrom:
+            - configMapRef:
+                name: jol-hub-config
+            - secretRef:
+                name: jol-hub-secrets
+          resources:
+            {{- toYaml .Values.celery.worker.resources | nindent 12 }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+{{- if .Values.celery.worker.autoscaling.enabled }}
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: celery-worker-hpa
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "jol-hub.labels" . | nindent 4 }}
+    app.kubernetes.io/component: celery-worker
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: celery-worker
+  minReplicas: {{ .Values.celery.worker.autoscaling.minReplicas }}
+  maxReplicas: {{ .Values.celery.worker.autoscaling.maxReplicas }}
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.celery.worker.autoscaling.targetCPUUtilizationPercentage }}
+{{- end }}
+{{- end }}
+---
+{{- if .Values.celery.beat.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: celery-beat
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "jol-hub.labels" . | nindent 4 }}
+    app.kubernetes.io/component: celery-beat
+spec:
+  replicas: {{ .Values.celery.beat.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "jol-hub.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: celery-beat
+  template:
+    metadata:
+      labels:
+        {{- include "jol-hub.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: celery-beat
+    spec:
+      serviceAccountName: {{ include "jol-hub.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: celery-beat
+          image: {{ include "jol-hub.image" .Values.celery.worker.image }}
+          imagePullPolicy: {{ .Values.celery.worker.image.pullPolicy }}
+          command: ["celery", "-A", "backend.django.core", "beat", "-l", "info", "--scheduler", "django_celery_beat.schedulers:DatabaseScheduler"]
+          envFrom:
+            - configMapRef:
+                name: jol-hub-config
+            - secretRef:
+                name: jol-hub-secrets
+          resources:
+            {{- toYaml .Values.celery.beat.resources | nindent 12 }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+{{- end }}

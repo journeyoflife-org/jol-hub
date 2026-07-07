@@ -191,7 +191,7 @@ class Bitrix24WebhookHealthView(APIView):
     def get(self, request):
         """Return webhook handler health status."""
         try:
-            from backend.integrations.bitrix24.webhooks import get_webhook_handler
+            from integrations.bitrix24.webhooks import get_webhook_handler
             handler = get_webhook_handler()
             
             # Get circuit breaker status

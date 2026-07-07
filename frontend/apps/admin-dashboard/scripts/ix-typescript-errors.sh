@@ -1,5 +1,5 @@
 #!/bin/bash
-# FILE: /opt/jol/git/jol-hub/frontend/apps/admin-dashboard/scripts/fix-typescript-errors.sh
+# FILE: /opt/jol/repos/jol-hub/frontend/apps/admin-dashboard/scripts/fix-typescript-errors.sh
 
 echo "=== JOL Admin Dashboard TypeScript Error Recovery ==="
 

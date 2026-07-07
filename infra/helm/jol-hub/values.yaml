@@ -1,0 +1,254 @@
+# -----------------------------------------------------------------------------
+# JOL-HUB Helm Chart Default Values
+# -----------------------------------------------------------------------------
+
+# Global settings
+global:
+  imageRegistry: ""
+  imagePullSecrets: []
+  storageClass: "gp3"
+
+# Application settings
+app:
+  environment: production
+  debug: false
+  domain: jol-hub.eu
+  apiDomain: api.jol-hub.eu
+  adminDomain: admin.jol-hub.eu
+
+# Backend (Django) settings
+backend:
+  enabled: true
+  replicaCount: 3
+  
+  image:
+    repository: jol-hub/backend
+    tag: latest
+    pullPolicy: Always
+  
+  resources:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+  
+  autoscaling:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 20
+    targetCPUUtilizationPercentage: 70
+    targetMemoryUtilizationPercentage: 80
+  
+  podDisruptionBudget:
+    enabled: true
+    minAvailable: 2
+  
+  env: []
+    # - name: MY_VAR
+    #   value: "my-value"
+  
+  envFrom: []
+    # - configMapRef:
+    #     name: my-configmap
+
+# Frontend (Next.js) settings
+frontend:
+  enabled: true
+  replicaCount: 2
+  
+  image:
+    repository: jol-hub/frontend
+    tag: latest
+    pullPolicy: Always
+  
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 70
+  
+  env:
+    - name: NEXT_PUBLIC_API_URL
+      value: "https://api.jol-hub.eu/api/v1"
+
+# Admin Dashboard settings
+adminDashboard:
+  enabled: true
+  replicaCount: 2
+  
+  image:
+    repository: jol-hub/admin-dashboard
+    tag: latest
+    pullPolicy: Always
+  
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+# Celery Worker settings
+celery:
+  worker:
+    enabled: true
+    replicaCount: 2
+    concurrency: 4
+    
+    image:
+      repository: jol-hub/backend
+      tag: latest
+      pullPolicy: Always
+    
+    resources:
+      requests:
+        cpu: 200m
+        memory: 512Mi
+      limits:
+        cpu: 1000m
+        memory: 1Gi
+    
+    autoscaling:
+      enabled: true
+      minReplicas: 2
+      maxReplicas: 10
+      targetCPUUtilizationPercentage: 70
+  
+  beat:
+    enabled: true
+    replicaCount: 1
+    
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+
+# PostgreSQL settings
+postgresql:
+  enabled: true
+  
+  auth:
+    database: jolhub
+    username: jolhub
+    existingSecret: postgres-credentials
+  
+  primary:
+    persistence:
+      enabled: true
+      size: 100Gi
+      storageClass: gp3
+    
+    resources:
+      requests:
+        cpu: 250m
+        memory: 512Mi
+      limits:
+        cpu: 1000m
+        memory: 2Gi
+
+# Redis settings
+redis:
+  enabled: true
+  
+  auth:
+    enabled: false
+  
+  master:
+    persistence:
+      enabled: true
+      size: 10Gi
+      storageClass: gp3
+    
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi
+
+# Ingress settings
+ingress:
+  enabled: true
+  className: nginx
+  
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+  
+  tls: true
+  tlsSecret: jol-hub-tls
+
+# Network Policy settings
+networkPolicy:
+  enabled: true
+
+# Service Account settings
+serviceAccount:
+  create: true
+  name: jol-hub-service-account
+  annotations: {}
+
+# Pod Security settings
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  fsGroup: 1000
+
+# Security Context
+securityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+
+# Node affinity
+affinity: {}
+
+# Tolerations
+tolerations: []
+
+# Node selector
+nodeSelector: {}
+
+# Priority Class
+priorityClassName: ""
+
+# Topology Spread Constraints
+topologySpreadConstraints: []
+
+# Service Mesh (Istio)
+serviceMesh:
+  enabled: false
+
+# Monitoring
+monitoring:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    interval: 30s
+    path: /metrics
+    port: http
+
+# Logging
+logging:
+  enabled: true
+  format: json

@@ -5,17 +5,28 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**"],
+      "outputLogs": "new-only"
     },
     "lint": {
-      "dependsOn": ["^lint"]
+      "dependsOn": ["^lint"],
+      "outputLogs": "new-only"
     },
     "type-check": {
-      "dependsOn": ["^type-check"]
+      "dependsOn": ["^type-check"],
+      "outputLogs": "new-only"
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"],
+      "outputLogs": "new-only"
     },
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "clean": {
+      "cache": false
     }
   }
 }

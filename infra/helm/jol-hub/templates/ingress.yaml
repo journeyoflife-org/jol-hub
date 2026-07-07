@@ -1,0 +1,72 @@
+{{- if .Values.ingress.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jol-hub-ingress
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "jol-hub.labels" . | nindent 4 }}
+    app.kubernetes.io/component: ingress
+  annotations:
+    {{- if .Values.ingress.className }}
+    kubernetes.io/ingress.class: {{ .Values.ingress.className }}
+    {{- end }}
+    {{- with .Values.ingress.annotations }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+spec:
+  {{- if .Values.ingress.tls }}
+  tls:
+    - hosts:
+        - {{ .Values.app.domain }}
+        - www.{{ .Values.app.domain }}
+      secretName: {{ .Values.ingress.tlsSecret }}-main
+    - hosts:
+        - {{ .Values.app.apiDomain }}
+      secretName: {{ .Values.ingress.tlsSecret }}-api
+    - hosts:
+        - {{ .Values.app.adminDomain }}
+      secretName: {{ .Values.ingress.tlsSecret }}-admin
+  {{- end }}
+  rules:
+    - host: {{ .Values.app.domain }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-service
+                port:
+                  number: 3000
+    - host: www.{{ .Values.app.domain }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-service
+                port:
+                  number: 3000
+    - host: {{ .Values.app.apiDomain }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 8000
+    - host: {{ .Values.app.adminDomain }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: admin-dashboard-service
+                port:
+                  number: 3000
+{{- end }}

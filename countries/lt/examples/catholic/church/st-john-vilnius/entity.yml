@@ -1,0 +1,96 @@
+# Example 5: St. John Vilnius (Catholic Church/Parish)
+# Organization Configuration for JOL-HUB
+
+entity:
+  id: "lt-catholic-church-001"
+  name: "Vilniaus Šv. Jono Krikštytojo ir Jono Evangelisto bažnyčia"
+  name_en: "St. John the Baptist and St. John the Evangelist Church"
+  type: "church"
+  status: "active"
+  country: "lt"
+  
+  # Canonical Information
+  canonical:
+    rite: "roman"
+    jurisdiction: "Vilnius City Deanery"
+    dedication: "St. John the Baptist and St. John the Evangelist"
+    parish_established: "1387"
+    
+  # Location
+  address:
+    street: "Šv. Jono g. 7"
+    city: "Vilnius"
+    postal_code: "01123"
+    country: "Lithuania"
+    coordinates:
+      latitude: 54.6819
+      longitude: 25.2870
+      
+  # Contact Information
+  contact:
+    email: "info@svjonas.lt"
+    phone: "+370 5 261 09 72"
+    website: "https://svjonas.lt"
+    
+  # Diocesan Hierarchy
+  hierarchy:
+    parent_diocese: "lt-diocese-vilnius-arch"
+    parent_deanery: "lt-deanery-vilnius-city"
+    
+  # Bitrix24 Integration
+  bitrix24:
+    portal_domain: "vilniaus-arkivyskupija.bitrix24.eu"
+    contact_group_id: 10
+    
+  # Website Configuration
+  website:
+    domain: "svjonas.lt"
+    ssl_enabled: true
+    default_language: "lt"
+    supported_languages:
+      - "lt"
+      - "en"
+      - "pl"
+    theme: "parish-classic"
+    
+  # Online Store Configuration
+  online_store:
+    enabled: true
+    products:
+      - category: "mass_intentions"
+        name_lt: "Šv. Mišių užsakymas"
+      - category: "candles"
+        name_lt: "Žvakės"
+      - category: "hall_rental"
+        name_lt: "Salės nuoma"
+        name_en: "Hall Rental"
+    payment_methods:
+      - "stripe"
+      - "bank_link"
+      
+  # Compliance Configuration
+  compliance:
+    level: "gdpr"
+    sacramental_records: true
+    audit_logging: true
+    
+  # Mass Schedule
+  mass_schedule:
+    weekdays:
+      - time: "18:00"
+        language: "lt"
+    saturdays:
+      - time: "17:00"
+        language: "lt"
+    sundays:
+      - time: "09:00"
+        language: "lt"
+      - time: "11:00"
+        language: "lt"
+      - time: "19:00"
+        language: "lt"
+        
+  # Confession Schedule
+  confession_schedule:
+    saturday: "16:00-17:00"
+    sunday: "08:30-09:00"

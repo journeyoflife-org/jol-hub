@@ -1,29 +1,103 @@
+"""
+Development settings for JOL-HUB.
+
+PostgreSQL 16 configuration for local development.
+Enables RLS (Row-Level Security) testing for multi-tenant isolation.
+
+SOC2 CC6.2 / GDPR Article 32 - Security controls must be testable locally.
+"""
+
 from .base import *
 
 DEBUG = True
 
-# SQLite for local development
+# =============================================================================
+# P O S T G R E S Q L   1 6   C O N F I G U R A T I O N
+# =============================================================================
+
+# PostgreSQL for local development (enables RLS testing)
+# DATABASE_URL format: postgres://user:password@host:port/database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('DB_NAME', default='jolhub'),
+        'USER': env('DB_USER', default='jolhub'),
+        'PASSWORD': env('DB_PASSWORD', default='jolhub'),
+        'HOST': env('DB_HOST', default='localhost'),
+        'PORT': env('DB_PORT', default='5432'),
+        'CONN_MAX_AGE': 600,
+        'CONN_HEALTH_CHECKS': True,
+        'OPTIONS': {
+            'connect_timeout': 10,
+        },
     }
 }
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '*']
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# DISABLE REDIS - Use local memory instead
+# =============================================================================
+# R E D I S   C A C H E   &   S E S S I O N S
+# =============================================================================
+
+# Redis for caching (required for multi-tenant cache isolation)
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        'LOCATION': 'unique-snowflake',
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': env('REDIS_URL', default='redis://localhost:6379/2'),
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+            'SOCKET_CONNECT_TIMEOUT': 5,
+            'SOCKET_TIMEOUT': 60,
+            'CONNECTION_POOL_KWARGS': {
+                'max_connections': 50,
+                'retry_on_timeout': True,
+            },
+        },
+        'KEY_PREFIX': 'jolhub_dev',
     }
 }
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Use database, not Redis
+
+# Database-backed sessions for development (Redis in production)
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 SESSION_CACHE_ALIAS = 'default'
 
-# If Celery is configured, use local memory broker
-CELERY_BROKER_URL = 'memory://'
-CELERY_RESULT_BACKEND = 'cache'
-CELERY_CACHE_BACKEND = 'default'
+# =============================================================================
+# C E L E R Y   C O N F I G U R A T I O N
+# =============================================================================
+
+# Redis broker for Celery (required for background tasks)
+CELERY_BROKER_URL = env('CELERY_BROKER_URL', default='redis://localhost:6379/0')
+CELERY_RESULT_BACKEND = env('CELERY_RESULT_BACKEND', default='redis://localhost:6379/1')
+CELERY_TASK_ALWAYS_EAGER = env.bool('CELERY_TASK_ALWAYS_EAGER', default=False)
+
+# =============================================================================
+# D E B U G   T O O L B A R
+# =============================================================================
+
+# Debug toolbar internal IPs
+INTERNAL_IPS = [
+    '127.0.0.1',
+    'localhost',
+]
+
+# =============================================================================
+# L O G G I N G   ( D E V E L O P M E N T )
+# =============================================================================
+
+# Increase logging verbosity for development
+LOGGING['handlers']['console']['formatter'] = 'simple'
+LOGGING['loggers']['django.db.backends'] = {
+    'handlers': ['console'],
+    'level': 'DEBUG' if DEBUG else 'INFO',
+    'propagate': False,
+}
+LOGGING['loggers']['jolhub']['level'] = 'DEBUG'
+
+# =============================================================================
+# S E C U R I T Y   ( R E L A X E D   F O R   D E V )
+# =============================================================================
+
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False

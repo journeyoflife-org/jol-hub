@@ -1,0 +1,183 @@
+# =============================================================================
+# JOL-HUB Bug Report Template
+# =============================================================================
+
+name: Bug Report
+description: Report a bug or unexpected behavior in JOL-HUB
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+assignees: []
+projects: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+        Please provide as much detail as possible to help us resolve the issue.
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is this bug?
+      options:
+        - Critical (System down/Data loss)
+        - High (Major feature broken)
+        - Medium (Feature partially broken)
+        - Low (Minor issue/Cosmetic)
+      default: 2
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which component is affected?
+      options:
+        - Backend (Django API)
+        - Frontend (Next.js)
+        - Database
+        - Authentication
+        - Payments/Donations
+        - Content Management
+        - Admin Dashboard
+        - Infrastructure
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: country
+    attributes:
+      label: Country/Region
+      description: Which country deployment is affected?
+      options:
+        - All Countries
+        - Lithuania (LT)
+        - Latvia (LV)
+        - Estonia (EE)
+        - Poland (PL)
+        - Germany (DE)
+        - France (FR)
+        - Italy (IT)
+        - Spain (ES)
+        - Other (specify below)
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+      placeholder: "When I try to..., the system..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Detailed steps to reproduce the behavior
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+      value: |
+        1. 
+        2. 
+        3. 
+        4. 
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expected to happen.
+      placeholder: "I expected the system to..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened?
+      placeholder: "Instead, the system..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots to help explain your problem.
+      placeholder: "Drag and drop screenshots here..."
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error Logs
+      description: Please copy and paste any relevant error logs.
+      placeholder: |
+        ```
+        Paste error logs here
+        ```
+      render: shell
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Please provide environment details
+      value: |
+        - **OS**: [e.g., Windows 11, macOS 14, Ubuntu 22.04]
+        - **Browser**: [e.g., Chrome 120, Firefox 121, Safari 17]
+        - **Node.js Version**: [e.g., 20.10.0]
+        - **Python Version**: [e.g., 3.11.7]
+    validations:
+      required: true
+
+  - type: dropdown
+    id: deployment
+    attributes:
+      label: Deployment Environment
+      description: Where did this bug occur?
+      options:
+        - Production (jolhub.org)
+        - Staging (staging.jolhub.org)
+        - Local Development
+        - Other
+      default: 0
+
+  - type: checkboxes
+    id: gdpr-impact
+    attributes:
+      label: GDPR Impact Assessment
+      description: Does this bug involve personal data?
+      options:
+        - label: This bug involves personal data (PII)
+        - label: This bug may affect data subject rights
+        - label: This bug has no GDPR impact
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Add any other context about the problem here.
+      placeholder: "Any other relevant information..."
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have searched for similar issues and found none
+          required: true
+        - label: I have provided all the required information above
+          required: true
+        - label: I have redacted any sensitive information (passwords, tokens, PII)
+          required: true

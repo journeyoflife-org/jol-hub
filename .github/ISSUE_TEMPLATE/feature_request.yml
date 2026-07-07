@@ -1,0 +1,176 @@
+# =============================================================================
+# JOL-HUB Feature Request Template
+# =============================================================================
+
+name: Feature Request
+description: Suggest a new feature or enhancement for JOL-HUB
+title: "[FEATURE] "
+labels: ["enhancement", "needs-triage"]
+assignees: []
+projects: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature!
+        Please provide detailed information to help us evaluate your request.
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature?
+      options:
+        - Critical (Blocking major functionality)
+        - High (Important for operations)
+        - Medium (Would be nice to have)
+        - Low (Minor enhancement)
+      default: 2
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which component would this feature affect?
+      options:
+        - Backend (Django API)
+        - Frontend (Next.js)
+        - Database
+        - Authentication
+        - Payments/Donations
+        - Content Management
+        - Admin Dashboard
+        - Infrastructure
+        - Mobile App
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: country-scope
+    attributes:
+      label: Country Scope
+      description: Which countries would benefit from this feature?
+      options:
+        - All Countries (Global)
+        - Specific Country (specify below)
+        - Regional (multiple countries)
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What problem does this feature solve?
+      placeholder: "Currently, users cannot... which causes..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe your proposed solution in detail.
+      placeholder: "I would like to see..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you considered any alternative solutions?
+      placeholder: "Another approach could be..."
+
+  - type: textarea
+    id: user-stories
+    attributes:
+      label: User Stories
+      description: Please provide user stories for this feature.
+      placeholder: |
+        As a [user type], I want to [action], so that [benefit].
+        
+        Example:
+        - As a parish administrator, I want to schedule mass times, so that visitors can see the schedule.
+        - As a donor, I want to set up recurring donations, so that I can support my parish regularly.
+      value: |
+        As a [user type], I want to [action], so that [benefit].
+        
+        1. 
+        2. 
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: What are the acceptance criteria for this feature?
+      placeholder: |
+        - [ ] Given [context], when [action], then [outcome]
+        - [ ] Given [context], when [action], then [outcome]
+      value: |
+        - [ ] Given [context], when [action], then [outcome]
+        - [ ] Performance: [specific metrics]
+        - [ ] Security: [security requirements]
+        - [ ] Accessibility: [WCAG requirements]
+
+  - type: textarea
+    id: mockups
+    attributes:
+      label: Mockups/Designs
+      description: Please attach any mockups, wireframes, or design documents.
+      placeholder: "Drag and drop images here..."
+
+  - type: dropdown
+    id: gdpr-relevance
+    attributes:
+      label: GDPR Relevance
+      description: Does this feature involve personal data processing?
+      options:
+        - Yes - Involves PII processing
+        - Yes - Involves data subject rights
+        - Yes - Involves data transfers
+        - No - No personal data involved
+        - Unsure - Needs assessment
+      default: 3
+
+  - type: checkboxes
+    id: compliance-checks
+    attributes:
+      label: Compliance Considerations
+      description: Please check all that apply
+      options:
+        - label: This feature requires a DPIA (Data Protection Impact Assessment)
+        - label: This feature requires consent management
+        - label: This feature requires audit logging
+        - label: This feature requires data retention policies
+        - label: This feature has no compliance implications
+
+  - type: textarea
+    id: technical-notes
+    attributes:
+      label: Technical Notes
+      description: Any technical implementation notes or considerations?
+      placeholder: |
+        - API endpoints needed: ...
+        - Database changes required: ...
+        - Third-party integrations: ...
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Add any other context about the feature request here.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have searched for similar feature requests and found none
+          required: true
+        - label: I have provided detailed acceptance criteria
+          required: true
+        - label: I have considered GDPR/compliance implications
+          required: true

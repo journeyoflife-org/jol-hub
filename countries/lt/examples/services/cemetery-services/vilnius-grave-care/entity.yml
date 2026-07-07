@@ -1,0 +1,140 @@
+# Example 11: Vilnius Grave Care
+# Organization Configuration for JOL-HUB
+
+entity:
+  id: "lt-service-cemetery-001"
+  name: "Vilniaus Kapinių Priežiūra"
+  name_en: "Vilnius Grave Care"
+  type: "cemetery_service"
+  status: "active"
+  country: "lt"
+  
+  # Business Information
+  business:
+    registration_code: "456789123"
+    vat_registered: true
+    vat_rate: 21
+    established: "2010"
+    
+  # Location (Main Office)
+  address:
+    street: "Kapinių g. 8"
+    city: "Vilnius"
+    postal_code: "02101"
+    country: "Lithuania"
+    coordinates:
+      latitude: 54.6985
+      longitude: 25.2789
+      
+  # Contact Information
+  contact:
+    email: "info@vilniusgravecare.lt"
+    phone: "+370 5 234 5678"
+    website: "https://vilniusgravecare.lt"
+    
+  # Bitrix24 Integration
+  bitrix24:
+    portal_domain: "jol-lithuania.bitrix24.eu"
+    contact_group_id: 60
+    deal_category_id: "cemetery_services"
+    
+  # Website Configuration
+  website:
+    domain: "vilniusgravecare.lt"
+    ssl_enabled: true
+    default_language: "lt"
+    supported_languages:
+      - "lt"
+      - "en"
+      - "ru"
+      - "pl"
+    theme: "service-professional"
+    
+  # Online Store Configuration
+  online_store:
+    enabled: true
+    products:
+      - category: "maintenance_plans"
+        name_lt: "Priežiūros planai"
+        name_en: "Maintenance Plans"
+        items:
+          - name: "Mėnesinis"
+            price: 25
+            currency: "EUR"
+            billing: "monthly"
+          - name: "Ketvirtinis"
+            price: 65
+            currency: "EUR"
+            billing: "quarterly"
+          - name: "Metinis"
+            price: 220
+            currency: "EUR"
+            billing: "yearly"
+      - category: "monuments"
+        name_lt: "Paminklai"
+        name_en: "Monuments"
+      - category: "gravestones"
+        name_lt: "Antkapiai"
+        name_en: "Gravestones"
+      - category: "plaques"
+        name_lt: "Plokštės"
+        name_en: "Plaques"
+      - category: "flowers_planting"
+        name_lt: "Gėlių sodinimas"
+        name_en: "Flower Planting"
+      - category: "lighting"
+        name_lt: "Apšvietimas"
+        name_en: "Grave Lighting"
+    payment_methods:
+      - "stripe"
+      - "bank_link"
+    subscription_services:
+      enabled: true
+      auto_renewal: true
+      notification_days_before_renewal: 14
+      
+  # Compliance Configuration
+  compliance:
+    level: "soc2_gdpr_pci"
+    pci_dss_level: "level_2"
+    deceased_person_data: true
+    audit_logging: true
+    data_retention:
+      service_records: 75
+      contract_records: 75
+      
+  # Service Configuration
+  services:
+    types:
+      - "grave_maintenance"
+      - "monument_installation"
+      - "flower_planting"
+      - "grave_restoration"
+      - "plot_locating"
+      - "photography_service"
+    operating_hours:
+      weekdays: "08:00-17:00"
+      saturday: "09:00-13:00"
+    service_areas:
+      - "Vilnius city"
+      - "Vilnius district"
+    cemeteries_served:
+      - "Antakalnio kapinės"
+      - "Karveliškių kapinės"
+      - "Saulėtekio kapinės"
+      - "Rokantiškių kapinės"
+      - "Liepkalnio kapinės"
+      
+  # Subscription Management
+  subscriptions:
+    reminder_notifications:
+      - type: "email"
+        timing: "before_service"
+      - type: "email"
+        timing: "after_service"
+        include_photo: true
+    service_includes:
+      - "grass_cutting"
+      - "weed_removal"
+      - "flower_watering"
+      - "debris_cleaning"

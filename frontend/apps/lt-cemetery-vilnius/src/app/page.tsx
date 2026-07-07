@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button, Badge } from '@jol-hub/ui';
+import { Button } from '@jol-hub/ui';
 import { entityConfig } from '@/config/entity';
 
 export default function HomePage() {

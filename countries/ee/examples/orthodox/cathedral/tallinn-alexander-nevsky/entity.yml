@@ -1,0 +1,90 @@
+# Estonia Tallinn Orthodox Cathedral Entity Configuration
+# GDPR Article 44: Country-scoped data routing
+# Julian Calendar: Orthodox liturgical year
+
+entity:
+  id: "ee-orthodox-tallinn-alexander-nevsky"
+  type: "orthodox"
+  name: "Tallinna Aleksander Nevski katedraal"
+  name_en: "Tallinn Alexander Nevsky Orthodox Cathedral"
+  country: "ee"
+  
+  # Canonical information
+  canonical:
+    jurisdiction: "Estonian Orthodox Church of Moscow Patriarchate"
+    patriarchate: "Moscow Patriarchate"
+    type: "cathedral"
+    dedication: "St. Alexander Nevsky"
+    calendar: "julian"
+    
+  # Contact information
+  contact:
+    address: "Lossi plats 10, 10130 Tallinn, Eesti"
+    phone: "+372 644 4646"
+    email: "orthodox@elu-tee.ee"
+    website: "https://elu-tee.ee/alexander-nevsky-cathedral"
+    
+  # Hierarchy
+  hierarchy:
+    level: 2
+    parent_jurisdiction: "estonian-orthodox-church-moscow"
+    
+  # Localization
+  languages:
+    primary: "et"
+    supported: ["et", "ru", "en"]
+    
+  # Domain configuration
+  domain:
+    primary: "alexander-nevsky.elu-tee.ee"
+    aliases: []
+    
+  # Features enabled
+  features:
+    - "services"
+    - "sacraments"
+    - "calendar"
+    - "donations"
+    
+  # Service schedule
+  schedule:
+    services:
+      - day: "saturday"
+        time: "18:00"
+        type: "vespers"
+      - day: "sunday"
+        time: "10:00"
+        type: "divine_liturgy"
+    confessions:
+      - day: "saturday"
+        time: "17:00"
+        
+  # Sacraments
+  sacraments:
+    baptism: true
+    chrismation: true
+    communion: true
+    confession: true
+    marriage: true
+    ordination: false
+    unction: true
+    
+  # Compliance
+  compliance:
+    gdpr: true
+    canon_law: true
+    dpa: "Andmekaitse Inspektsioon"
+    
+  # Integrations
+  integrations:
+    bitrix24:
+      portal: "elu-tee.bitrix24.ee"
+      sync_contacts: true
+      sync_donations: true
+      
+  # Audit
+  audit:
+    created_at: "2026-04-06T00:00:00Z"
+    created_by: "system"
+    last_modified: "2026-04-06T00:00:00Z"
+    version: "1.0.0"

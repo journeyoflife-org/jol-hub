@@ -1,0 +1,83 @@
+# Estonia Tallinn Lutheran Cathedral Entity Configuration
+# GDPR Article 44: Country-scoped data routing
+# Western Calendar: Lutheran liturgical year
+
+entity:
+  id: "ee-lutheran-tallinn-cathedral"
+  type: "protestant"
+  name: "Tallinna Toomkirik"
+  name_en: "Tallinn Cathedral (St. Mary's Lutheran)"
+  country: "ee"
+  
+  # Canonical information
+  canonical:
+    jurisdiction: "Estonian Evangelical Lutheran Church"
+    type: "cathedral"
+    dedication: "St. Mary"
+    calendar: "gregorian"
+    
+  # Contact information
+  contact:
+    address: "Toom-Kooli 6, 10130 Tallinn, Eesti"
+    phone: "+372 644 4180"
+    email: "toomkirik@eelk.ee"
+    website: "https://elu-tee.ee/tallinn-cathedral"
+    
+  # Hierarchy
+  hierarchy:
+    level: 2
+    parent_jurisdiction: "estonian-evangelical-lutheran-church"
+    
+  # Localization
+  languages:
+    primary: "et"
+    supported: ["et", "en", "de"]
+    
+  # Domain configuration
+  domain:
+    primary: "tallinn-cathedral.elu-tee.ee"
+    aliases:
+      - "toomkirik.elu-tee.ee"
+    
+  # Features enabled
+  features:
+    - "services"
+    - "community"
+    - "events"
+    - "donations"
+    - "concerts"
+    
+  # Service schedule
+  schedule:
+    services:
+      - day: "sunday"
+        time: "10:00"
+        type: "main_service"
+        language: "et"
+      - day: "wednesday"
+        time: "18:00"
+        type: "vespers"
+        
+  # Compliance
+  compliance:
+    gdpr: true
+    dpa: "Andmekaitse Inspektsioon"
+    
+  # Statistics
+  statistics:
+    members_estimate: 5000
+    founded: "1233"
+    
+  # Integrations
+  integrations:
+    bitrix24:
+      portal: "elu-tee.bitrix24.ee"
+      sync_contacts: true
+      sync_donations: true
+      
+  # Audit
+  audit:
+    created_at: "2026-04-06T00:00:00Z"
+    created_by: "system"
+    last_modified: "2026-04-06T00:00:00Z"
+    version: "1.0.0"

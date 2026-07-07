@@ -1,0 +1,353 @@
+# Bitrix24 CRM Configuration for JOL-HUB Lithuania
+# Multi-tenant CRM integration for religious institutions
+
+country_code: "lt"
+region: "eu-central"  # Bitrix24 EU data center
+
+# Bitrix24 Portal Configuration
+portal:
+  # Primary JOL-HUB Lithuania Portal (Multi-tenant)
+  primary:
+    domain: "jol-lithuania.bitrix24.eu"
+    region: "eu"
+    data_residency: "EU"
+    gdpa_compliant: true
+    
+  # Regional portals by diocese
+  diocese_portals:
+    vilnius_archdiocese:
+      domain: "vilniaus-arkivyskupija.bitrix24.eu"
+      type: "dedicated"
+      subscription: "company"
+    kaunas_archdiocese:
+      domain: "kauno-arkivyskupija.bitrix24.eu"
+      type: "dedicated"
+      subscription: "company"
+
+# CRM Module Configuration by Entity Type
+entity_crm_config:
+  # Catholic Basilica
+  basilica:
+    enabled_modules:
+      - "crm"  # Core CRM
+      - "calendar"  # Events and Mass schedules
+      - "tasks"  # Volunteer management
+      - "document_generator"  # Certificates
+      - "marketing"  # Email campaigns
+      - "sale"  # Online store
+      - "invoice"  # Payment processing
+    crm_entities:
+      - "lead"
+      - "deal"
+      - "contact"
+      - "company"
+    custom_fields:
+      - name: "parishioner_id"
+        type: "string"
+        required: false
+      - name: "sacramental_records"
+        type: "file"
+        encrypted: true
+      - name: "mass_intention_type"
+        type: "enumeration"
+        values:
+          - "living"
+          - "deceased"
+          - "special_intention"
+      - name: "donation_type"
+        type: "enumeration"
+        values:
+          - "one_time"
+          - "recurring"
+          - "mass_offering"
+          - "candle_offering"
+          - "special_collection"
+
+  # Catholic Cathedral
+  cathedral:
+    enabled_modules:
+      - "crm"
+      - "calendar"
+      - "tasks"
+      - "document_generator"
+      - "marketing"
+      - "sale"
+      - "invoice"
+    inherit_from: "basilica"
+
+  # Diocese
+  diocese:
+    enabled_modules:
+      - "crm"
+      - "calendar"
+      - "tasks"
+      - "document_generator"
+      - "marketing"
+      - "sale"
+      - "invoice"
+      - "company"  # Multi-organization support
+    multi_tenant: true
+    parish_sub_accounts: true
+    custom_fields:
+      - name: "parish_code"
+        type: "string"
+        required: true
+      - name: "deanery"
+        type: "enumeration"
+        dynamic: true
+      - name: "priest_assignment"
+        type: "enumeration"
+        values:
+          - "pastor"
+          - "associate_pastor"
+          - "deacon"
+          - "visiting"
+
+  # Deanery
+  deanery:
+    enabled_modules:
+      - "crm"
+      - "calendar"
+      - "tasks"
+    shared_crm: true
+    parish_access_level: "read_write"
+    custom_fields:
+      - name: "parish_code"
+        type: "string"
+        required: true
+
+  # Catholic Church/Parish
+  church:
+    enabled_modules:
+      - "crm"
+      - "calendar"
+      - "tasks"
+      - "document_generator"
+      - "marketing"
+      - "sale"
+    custom_fields:
+      - name: "family_id"
+        type: "string"
+        required: false
+      - name: "sacraments_received"
+        type: "enumeration"
+        multiple: true
+        values:
+          - "baptism"
+          - "confirmation"
+          - "eucharist"
+          - "marriage"
+          - "holy_orders"
+          - "anointing_of_sick"
+      - name: "envelope_number"
+        type: "string"
+        required: false
+
+  # Protestant Church
+  protestant_church:
+    enabled_modules:
+      - "crm"
+      - "calendar"
+      - "tasks"
+      - "marketing"
+      - "sale"
+    custom_fields:
+      - name: "congregation_role"
+        type: "enumeration"
+        values:
+          - "member"
+          - "elder"
+          - "deacon"
+          - "pastor"
+      - name: "baptism_status"
+        type: "enumeration"
+        values:
+          - "baptized"
+          - "not_baptized"
+          - "seeking"
+
+  # Orthodox Church
+  orthodox_church:
+    enabled_modules:
+      - "crm"
+      - "calendar"
+      - "tasks"
+      - "document_generator"
+      - "marketing"
+      - "sale"
+    custom_fields:
+      - name: "jurisdiction"
+        type: "enumeration"
+        values:
+          - "moscow_patriarchate"
+          - "constantinople"
+          - "other"
+      - name: "sacramental_records"
+        type: "file"
+        encrypted: true
+
+  # Other Christian
+  other_christian:
+    enabled_modules:
+      - "crm"
+      - "calendar"
+      - "tasks"
+      - "marketing"
+    custom_fields:
+      - name: "denomination"
+        type: "string"
+        required: false
+
+  # Funeral Home
+  funeral_home:
+    enabled_modules:
+      - "crm"
+      - "calendar"
+      - "tasks"
+      - "document_generator"
+      - "marketing"
+      - "sale"
+      - "invoice"
+    crm_entities:
+      - "lead"
+      - "deal"
+      - "contact"
+      - "company"
+    deal_stages:
+      - "new_inquiry"
+      - "consultation_scheduled"
+      - "service_planned"
+      - "contract_signed"
+      - "service_completed"
+      - "invoiced"
+      - "paid"
+    custom_fields:
+      - name: "deceased_name"
+        type: "string"
+        required: false
+      - name: "date_of_birth"
+        type: "date"
+      - name: "date_of_death"
+        type: "date"
+      - name: "service_type"
+        type: "enumeration"
+        values:
+          - "traditional_funeral"
+          - "cremation"
+          - "memorial_service"
+          - "pre_need_planning"
+      - name: "cemetery_preference"
+        type: "string"
+      - name: "pre_need_contract"
+        type: "boolean"
+        default: false
+
+  # Cemetery Service
+  cemetery_service:
+    enabled_modules:
+      - "crm"
+      - "calendar"
+      - "tasks"
+      - "document_generator"
+      - "marketing"
+      - "sale"
+      - "invoice"
+    custom_fields:
+      - name: "plot_number"
+        type: "string"
+        required: false
+      - name: "section"
+        type: "string"
+      - name: "maintenance_contract"
+        type: "boolean"
+        default: false
+      - name: "contract_renewal_date"
+        type: "date"
+      - name: "monument_type"
+        type: "enumeration"
+        values:
+          - "headstone"
+          - "monument"
+          - "plaque"
+          - "none"
+
+# Webhook Configuration
+webhooks:
+  event_types:
+    - "onCrmContactAdd"
+    - "onCrmContactUpdate"
+    - "onCrmDealAdd"
+    - "onCrmDealUpdate"
+    - "onCrmLeadAdd"
+    - "onCrmLeadUpdate"
+    - "onCrmInvoiceAdd"
+    - "onCrmInvoiceUpdate"
+  authentication:
+    method: "hmac_sha256"
+    signature_header: "X-Bitrix24-Signature"
+  retry_policy:
+    max_attempts: 5
+    backoff_seconds: [1, 2, 4, 8, 16]
+
+# API Rate Limits
+api_limits:
+  requests_per_second: 2
+  batch_size_max: 50
+  daily_limit: 10000
+
+# Data Synchronization
+sync:
+  direction: "bidirectional"
+  frequency_minutes: 5
+  conflict_resolution: "server_wins"  # Bitrix24 as source of truth
+  soft_delete: true
+  retention_deleted_days: 30
+
+# GDPR Compliance Settings
+gdpr:
+  consent_tracking: true
+  right_to_erasure:
+    enabled: true
+    canonical_exception: true
+    bitmask_field: "consent_flags"
+  data_export:
+    enabled: true
+    format: "json"
+  audit_log:
+    enabled: true
+    retention_days: 365
+
+# Language and Localization
+localization:
+  default_language: "lt"
+  supported_languages:
+    - "lt"  # Lithuanian
+    - "en"  # English
+    - "pl"  # Polish (border regions)
+    - "ru"  # Russian (minority communities)
+  date_format: "Y-m-d"
+  time_format: "H:i"
+  timezone: "Europe/Vilnius"
+
+# Email Integration
+email:
+  default_from: "info@jol-hub.lt"
+  reply_to_template: "{organization_email}"
+  templates:
+    donation_receipt: "lt/donation_receipt"
+    event_registration: "lt/event_registration"
+    mass_intention: "lt/mass_intention"
+    funeral_service: "lt/funeral_service"
+
+# Security Settings
+security:
+  two_factor_required: true
+  ip_whitelist_enabled: false
+  session_timeout_minutes: 30
+  password_policy:
+    min_length: 12
+    require_uppercase: true
+    require_lowercase: true
+    require_number: true
+    require_special: true
+    max_age_days: 90

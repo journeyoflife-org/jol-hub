@@ -269,3 +269,58 @@ module "logging" {
   log_retention_days      = var.log_retention_days
   tags                    = local.common_tags
 }
+
+# -----------------------------------------------------------------------------
+# Secrets Management Module (AWS Secrets Manager + Vault)
+# -----------------------------------------------------------------------------
+
+module "secrets" {
+  source = "./modules/secrets"
+
+  project_name            = var.project_name
+  environment             = var.environment
+  aws_region              = var.aws_region
+  vpc_id                  = module.vpc.vpc_id
+  private_subnet_ids      = module.vpc.private_subnet_ids
+
+  # IAM roles for secret access
+  ecs_execution_role_arn = module.ecs.execution_role_arn
+  ecs_task_role_arn      = module.ecs.task_role_arn
+
+  # Secret retention
+  recovery_window_days   = var.secrets_recovery_window_days
+  enable_secret_rotation = var.enable_secret_rotation
+
+  # Payment secrets (PCI-DSS scoped)
+  stripe_secret_key       = var.stripe_secret_key
+  stripe_publishable_key  = var.stripe_publishable_key
+  stripe_webhook_secret   = var.stripe_webhook_secret
+  paypal_client_id        = var.paypal_client_id
+  paypal_client_secret    = var.paypal_client_secret
+  paypal_mode             = var.paypal_mode
+
+  # Email secrets
+  email_host              = var.email_host
+  email_port              = var.email_port
+  email_host_user         = var.email_host_user
+  email_host_password     = var.email_host_password
+  email_use_tls           = var.email_use_tls
+
+  # Integration secrets
+  bitrix24_webhook_url    = var.bitrix24_webhook_url
+  bitrix24_portal_id      = var.bitrix24_portal_id
+  bitrix24_contact_group_id = var.bitrix24_contact_group_id
+
+  # OAuth secrets
+  google_oauth_client_id     = var.google_oauth_client_id
+  google_oauth_client_secret = var.google_oauth_client_secret
+  facebook_oauth_client_id   = var.facebook_oauth_client_id
+  facebook_oauth_client_secret = var.facebook_oauth_client_secret
+
+  # HashiCorp Vault (optional)
+  enable_vault     = var.enable_vault
+  vault_addr       = var.vault_addr
+  vault_namespace  = var.vault_namespace
+
+  tags = local.common_tags
+}

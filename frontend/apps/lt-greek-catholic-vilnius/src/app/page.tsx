@@ -49,7 +49,7 @@ export default function HomePage() {
             <div key={key} className="bg-white p-4 rounded-lg shadow-md border-l-4 border-byzantine-gold">
               <h3 className="font-bold text-byzantine-red">{sacrament.nameLt}</h3>
               <p className="text-sm text-gray-600">{sacrament.nameEn}</p>
-              {sacrament.note && (
+              {'note' in sacrament && sacrament.note && (
                 <p className="text-xs text-gray-500 mt-2">{sacrament.note}</p>
               )}
             </div>

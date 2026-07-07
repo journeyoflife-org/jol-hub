@@ -65,8 +65,8 @@ def process_bitrix24_webhook(event_id: str, country: Optional[str] = None):
         logger.info(f"Processing Bitrix24 webhook: {event.event_type} (country={country})")
         
         # Get the webhook handler
-        from backend.integrations.bitrix24.webhooks import get_webhook_handler
-        from backend.integrations.bitrix24.webhooks.handlers import WebhookEvent as B24Event
+        from integrations.bitrix24.webhooks import get_webhook_handler
+        from integrations.bitrix24.webhooks.handlers import WebhookEvent as B24Event
         
         handler = get_webhook_handler()
         

@@ -1,0 +1,5 @@
+# MCP Server Dependencies
+# Install with: pip install -r requirements-mcp.txt
+
+mcp>=1.0.0
+psycopg2-binary>=2.9.9

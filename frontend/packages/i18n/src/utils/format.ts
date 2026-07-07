@@ -89,7 +89,7 @@ export function formatRelativeTime(
 /**
  * Get the text direction for a locale.
  */
-export function getLocaleDirection(locale: SupportedLocale): 'ltr' | 'rtl' {
+export function getLocaleDirection(_locale: SupportedLocale): 'ltr' | 'rtl' {
   // All supported locales are LTR
   return 'ltr';
 }

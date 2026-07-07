@@ -1,0 +1,25 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Documentation
+    url: https://docs.jolhub.org
+    about: Check our documentation for guides and API references
+  
+  - name: 💬 Community Discussions
+    url: https://github.com/JourneyOfLife/jol-hub/discussions
+    about: Ask questions and discuss with the community
+  
+  - name: 🔒 Security Policy
+    url: https://github.com/JourneyOfLife/jol-hub/security/policy
+    about: View our security policy and responsible disclosure guidelines
+  
+  - name: 📧 Security Email
+    url: mailto:security@journeyoflife.org
+    about: Report security vulnerabilities privately (preferred for critical issues)
+  
+  - name: 🏛️ GDPR Compliance
+    url: https://docs.jolhub.org/compliance/gdpr
+    about: View our GDPR compliance documentation
+  
+  - name: 🆘 Support Portal
+    url: https://support.jolhub.org
+    about: Get help from our support team for production issues

@@ -1,0 +1,95 @@
+# Example 10: Kaunas Memorial Care
+# Organization Configuration for JOL-HUB
+
+entity:
+  id: "lt-service-funeral-002"
+  name: "Kauno Memorialinės Paslaugos"
+  name_en: "Kaunas Memorial Care"
+  type: "funeral_service"
+  status: "active"
+  country: "lt"
+  
+  # Business Information
+  business:
+    registration_code: "987654321"
+    vat_registered: true
+    vat_rate: 21
+    established: "2005"
+    
+  # Location (Main Office)
+  address:
+    street: "Memorialo g. 25"
+    city: "Kaunas"
+    postal_code: "45123"
+    country: "Lithuania"
+    coordinates:
+      latitude: 54.9028
+      longitude: 23.9156
+      
+  # Contact Information
+  contact:
+    email: "info@kaunasmemorial.lt"
+    phone: "+370 37 456 789"
+    emergency_phone: "+370 698 76543"
+    website: "https://kaunasmemorial.lt"
+    
+  # Bitrix24 Integration
+  bitrix24:
+    portal_domain: "jol-lithuania.bitrix24.eu"
+    contact_group_id: 51
+    deal_category_id: "funeral_services"
+    
+  # Website Configuration
+  website:
+    domain: "kaunasmemorial.lt"
+    ssl_enabled: true
+    default_language: "lt"
+    supported_languages:
+      - "lt"
+      - "en"
+    theme: "service-professional"
+    
+  # Online Store Configuration
+  online_store:
+    enabled: true
+    products:
+      - category: "funeral_packages"
+        name_lt: "Laidojimo paketai"
+      - category: "caskets"
+        name_lt: "Karstai"
+      - category: "cremation_services"
+        name_lt: "Kremavimo paslaugos"
+        name_en: "Cremation Services"
+      - category: "memorial_products"
+        name_lt: "Atminimo produktai"
+    payment_methods:
+      - "stripe"
+      - "bank_link"
+    payment_plans:
+      enabled: true
+      max_installments: 12
+      
+  # Compliance Configuration
+  compliance:
+    level: "soc2_gdpr_pci"
+    pci_dss_level: "level_2"
+    audit_logging: true
+    data_retention:
+      service_records: 75
+      
+  # Service Configuration
+  services:
+    types:
+      - "traditional_funeral"
+      - "cremation"
+      - "memorial_service"
+      - "pre_need_planning"
+    operating_hours:
+      weekdays: "08:00-17:00"
+      saturday: "09:00-13:00"
+      emergency: "24/7"
+    service_areas:
+      - "Kaunas city"
+      - "Kaunas district"
+      - "Jonava"
+      - "Kėdainiai"

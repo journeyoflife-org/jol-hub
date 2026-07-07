@@ -1,0 +1,43 @@
+# DBT Project Configuration
+# JOL-HUB Data Transformation
+
+name: 'jol_hub'
+version: '1.0.0'
+config-version: 2
+
+profile: 'jol_hub'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+vars:
+  # GDPR Retention periods (in days)
+  financial_retention_days: 2555
+  user_data_retention_days: 730
+  logs_retention_days: 90
+  
+  # EU Countries supported
+  eu_countries: ['LT', 'LV', 'EE', 'FI', 'SE', 'NO', 'DK', 'DE', 'PL', 'CZ',
+                 'SK', 'AT', 'HU', 'SI', 'HR', 'IT', 'ES', 'PT', 'FR', 'BE',
+                 'NL', 'LU', 'IE', 'GB', 'GR', 'CY', 'MT']
+
+models:
+  jol_hub:
+    staging:
+      +materialized: view
+      +schema: staging
+    marts:
+      +materialized: table
+      +schema: marts
+    gdpr:
+      +materialized: table
+      +schema: gdpr_compliance
