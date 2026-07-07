@@ -18,7 +18,7 @@
     "deploy:check": "bash scripts/pre-deploy-check.sh"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.3.4",
+    "@hookform/resolvers": "^5.4.0",
     "@jol-hub/auth": "workspace:*",
     "@jol-hub/i18n": "workspace:*",
     "@jol-hub/ui": "workspace:*",
