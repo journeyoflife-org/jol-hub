@@ -1,0 +1,160 @@
+# Latvia Liturgical Calendar Configuration
+# Roman Catholic Church - Latvian Bishops' Conference
+# Compliance: GDPR Art. 5(1)(b) - Purpose Limitation for religious data
+
+country_code: "lv"
+country_name: "Latvia"
+language: "lv"
+timezone: "Europe/Riga"
+
+# Liturgical Calendar Settings
+calendar:
+  type: "roman"
+  rite: "latin"
+  province: "Riga"
+  
+  # Liturgical seasons with Latvian names
+  seasons:
+    advent:
+      name_lv: "Advents"
+      color: "purple"
+    christmas:
+      name_lv: "Ziemassvētki"
+      color: "white"
+    ordinary_time:
+      name_lv: "Parasti laiki"
+      color: "green"
+    lent:
+      name_lv: "Lielgavēnis"
+      color: "purple"
+    easter:
+      name_lv: "Lieldienas"
+      color: "white"
+    pentecost:
+      name_lv: "Vasarsvētki"
+      color: "red"
+
+  # Latvian specific feast days
+  local_feasts:
+    - date: "01-06"
+      name: "Zvaigznes diena (Trīs valdnieki)"
+      name_en: "Epiphany"
+      rank: "solemnity"
+    - date: "02-02"
+      name: "Kunga prezentēšanas svētki"
+      name_en: "Presentation of the Lord"
+      rank: "feast"
+    - date: "03-25"
+      name: "Vissvētākās Jaunavas Marijas pasludināšana"
+      name_en: "Annunciation"
+      rank: "solemnity"
+    - date: "06-23"
+      name: "Jāņi (Līgo)"
+      name_en: "St. John's Eve / Midsummer"
+      type: "national"
+    - date: "06-24"
+      name: "Jāņa Kristītāja dzimšana"
+      name_en: "Nativity of St. John the Baptist"
+      rank: "solemnity"
+    - date: "08-15"
+      name: "Vissvētākās Jaunavas Marijas debesis uzņemšana"
+      name_en: "Assumption of Mary"
+      rank: "solemnity"
+    - date: "11-01"
+      name: "Visu Svēto diena"
+      name_en: "All Saints Day"
+      rank: "solemnity"
+    - date: "11-02"
+      name: "Mirušo piemiņas diena"
+      name_en: "All Souls Day"
+      rank: "commemoration"
+    - date: "11-18"
+      name: "Latvijas Republikas proklamēšanas diena"
+      name_en: "Proclamation Day of the Republic of Latvia"
+      type: "national"
+    - date: "12-24"
+      name: "Ziemassvētku vakars"
+      name_en: "Christmas Eve"
+      rank: "solemnity"
+    - date: "12-25"
+      name: "Ziemassvētki"
+      name_en: "Christmas"
+      rank: "solemnity"
+    - date: "12-26"
+      name: "Otra Ziemassvētku diena"
+      name_en: "St. Stephen"
+      rank: "feast"
+
+  # Holy days of obligation in Latvia
+  holy_days_of_obligation:
+    - "01-01"  # Mary, Mother of God
+    - "01-06"  # Epiphany
+    - "03-19"  # St. Joseph
+    - "08-15"  # Assumption
+    - "11-01"  # All Saints
+    - "12-08"  # Immaculate Conception
+    - "12-25"  # Christmas
+
+  # Easter calculation reference
+  easter_calculation: "gregorian"
+
+# Dioceses in Latvia
+dioceses:
+  - name: "Rīgas arhidiecēze"
+    name_en: "Riga Archdiocese"
+    type: "archdiocese"
+    cathedral: "Rīgas Svētā Jēkaba katedrāle"
+    bishop_title: "Arhibīskaps metropolīts"
+  - name: "Liepājas diecēze"
+    name_en: "Liepaja Diocese"
+    type: "diocese"
+    cathedral: "Liepājas Svētā Jāzepa katedrāle"
+  - name: "Jelgavas diecēze"
+    name_en: "Jelgava Diocese"
+    type: "diocese"
+    cathedral: "Jelgavas Svētās Jaunavas Marijas bezvainīgās ieņemšanas katedrāle"
+  - name: "Rēzeknes-Aglonas diecēze"
+    name_en: "Rezekne-Aglona Diocese"
+    type: "diocese"
+    cathedral: "Rēzeknes Vissvētākās Jaunavas Marijas sāpju karalienes bazilika"
+
+# Basilicas in Latvia
+basilicas:
+  - name: "Aglonas bazilika"
+    name_en: "Basilica of the Assumption in Aglona"
+    location: "Aglona"
+    status: "minor_basilica"
+    pilgrimage_site: true
+    annual_feast: "08-15"
+  - name: "Rīgas Svētā Jēkaba katedrāle"
+    name_en: "St. James Cathedral in Riga"
+    location: "Riga"
+    status: "minor_basilica"
+    cathedral: true
+
+# Orthodox Church Calendar (Julian)
+orthodox_calendar:
+  calendar_type: "julian"
+  jurisdiction: "Latvian Orthodox Church"
+  major_feasts:
+    - date: "01-07"  # Julian Christmas
+      name: "Ziemassvētki"
+      name_en: "Christmas (Orthodox)"
+    - date: "04-XX"  # Variable Julian Easter
+      name: "Lieldienas"
+      name_en: "Easter (Orthodox)"
+
+# Lutheran Church Calendar
+lutheran_calendar:
+  jurisdiction: "Evangelical Lutheran Church of Latvia"
+  liturgical_year: "western"
+  major_feasts:
+    - "Christmas"
+    - "Easter"
+    - "Pentecost"
+    - "Reformation Sunday"  # Last Sunday of October
+
+# GDPR Compliance Note
+# This configuration contains liturgical data used for website functionality.
+# No personal data is stored in this configuration file.
+# Processing of sacramental records is subject to Canon Law and GDPR Art. 9(2)(d).

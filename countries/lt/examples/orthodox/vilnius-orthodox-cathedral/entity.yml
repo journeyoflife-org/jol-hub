@@ -1,0 +1,91 @@
+# Example 7: Vilnius Orthodox Cathedral
+# Organization Configuration for JOL-HUB
+
+entity:
+  id: "lt-orthodox-cathedral-001"
+  name: "Vilniaus Dievo Motinos Ėmimo į dangų soboras"
+  name_en: "Dormition Cathedral of the Mother of God"
+  type: "church_orthodox"
+  status: "active"
+  country: "lt"
+  
+  # Ecclesiastical Information
+  ecclesiastical:
+    tradition: "eastern_orthodox"
+    jurisdiction: "Lithuanian Orthodox Diocese"
+    patriarchate: "Moscow Patriarchate"
+    dedication: "Dormition of the Theotokos"
+    established: "1346"
+    
+  # Location
+  address:
+    street: "M. Valančiaus g. 7"
+    city: "Vilnius"
+    postal_code: "01116"
+    country: "Lithuania"
+    coordinates:
+      latitude: 54.6779
+      longitude: 25.2910
+      
+  # Contact Information
+  contact:
+    email: "info@orthodoxy.lt"
+    phone: "+370 5 261 56 49"
+    website: "https://orthodoxy.lt"
+    
+  # Bitrix24 Integration
+  bitrix24:
+    portal_domain: "jol-lithuania.bitrix24.eu"
+    contact_group_id: 30
+    
+  # Website Configuration
+  website:
+    domain: "orthodoxy.lt"
+    ssl_enabled: true
+    default_language: "lt"
+    supported_languages:
+      - "lt"
+      - "ru"  # Russian Orthodox community
+      - "by"  # Belarusian community
+      - "en"
+    theme: "orthodox-traditional"
+    
+  # Online Store Configuration
+  online_store:
+    enabled: true
+    products:
+      - category: "icons"
+        name_lt: "Ikonos"
+        name_en: "Icons"
+      - category: "candles"
+        name_lt: "Žvakės"
+      - category: "books"
+        name_lt: "Knygos"
+        name_en: "Orthodox Books"
+    payment_methods:
+      - "stripe"
+      - "bank_link"
+      
+  # Compliance Configuration
+  compliance:
+    level: "gdpr"
+    patriarchate_reporting: true
+    audit_logging: true
+    
+  # Liturgy Schedule (Julian Calendar)
+  liturgy_schedule:
+    calendar: "julian"  # Orthodox Julian calendar
+    saturdays:
+      - time: "09:00"
+        language: "lt"
+        type: "divine_liturgy"
+    sundays:
+      - time: "09:00"
+        language: "slavonic"
+        type: "divine_liturgy"
+      - time: "11:00"
+        language: "lt"
+        type: "divine_liturgy"
+    vespers:
+      saturday: "17:00"
+      eve_of_feasts: "17:00"

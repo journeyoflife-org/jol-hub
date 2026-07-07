@@ -1,0 +1,98 @@
+# Example 2: Kaunas Cathedral
+# Organization Configuration for JOL-HUB
+
+entity:
+  id: "lt-catholic-cathedral-001"
+  name: "Kauno Šv. apaštalų Petro ir Pauliaus arkikatedra bazilija"
+  name_en: "Kaunas Cathedral Basilica of St. Peter and St. Paul"
+  type: "cathedral"
+  status: "active"
+  country: "lt"
+  
+  # Canonical Information
+  canonical:
+    rite: "roman"
+    jurisdiction: "Kaunas Archdiocese"
+    dedication: "St. Peter and St. Paul"
+    consecration_date: "1650"
+    basilica_status: "minor_basilica"
+    seat_of: "Archbishop of Kaunas"
+    
+  # Location
+  address:
+    street: "Vilniaus g. 1"
+    city: "Kaunas"
+    postal_code: "44287"
+    country: "Lithuania"
+    coordinates:
+      latitude: 54.8976
+      longitude: 23.8827
+      
+  # Contact Information
+  contact:
+    email: "info@kaunoarkikatedra.lt"
+    phone: "+370 37 32 26 08"
+    website: "https://kaunoarkikatedra.lt"
+    
+  # Diocesan Hierarchy
+  hierarchy:
+    parent_diocese: "lt-diocese-kaunas-arch"
+    parent_deanery: "lt-deanery-kaunas-city"
+    
+  # Bitrix24 Integration
+  bitrix24:
+    portal_domain: "kauno-arkivyskupija.bitrix24.eu"
+    contact_group_id: 1
+    deal_category_id: 1
+    
+  # Website Configuration
+  website:
+    domain: "kaunoarkikatedra.lt"
+    ssl_enabled: true
+    default_language: "lt"
+    supported_languages:
+      - "lt"
+      - "en"
+    theme: "cathedral-classic"
+    
+  # Online Store Configuration
+  online_store:
+    enabled: true
+    products:
+      - category: "mass_intentions"
+        name_lt: "Šv. Mišių užsakymas"
+      - category: "concerts"
+        name_lt: "Koncertai"
+        name_en: "Organ Concerts"
+      - category: "tours"
+        name_lt: "Ekskursijos"
+        name_en: "Guided Tours"
+    payment_methods:
+      - "stripe"
+      - "bank_link"
+      
+  # Compliance Configuration
+  compliance:
+    level: "canonical"
+    canonical_records: true
+    audit_logging: true
+    
+  # Mass Schedule
+  mass_schedule:
+    weekdays:
+      - time: "07:00"
+        language: "lt"
+      - time: "18:00"
+        language: "lt"
+    saturdays:
+      - time: "18:00"
+        language: "lt"
+    sundays:
+      - time: "08:30"
+        language: "lt"
+      - time: "10:00"
+        language: "lt"
+      - time: "12:00"
+        language: "lt"
+      - time: "18:00"
+        language: "lt"

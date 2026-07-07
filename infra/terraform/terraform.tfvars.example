@@ -54,3 +54,54 @@ alarm_sns_topic_arn = ""
 # Security
 enable_bastion      = false
 allowed_admin_cidrs = []
+
+# -----------------------------------------------------------------------------
+# SECRETS MANAGEMENT CONFIGURATION
+# -----------------------------------------------------------------------------
+# Secrets are stored in AWS Secrets Manager with KMS encryption
+# Payment secrets use a separate KMS key for PCI-DSS compliance
+# -----------------------------------------------------------------------------
+
+# Secret retention (days before permanent deletion)
+secrets_recovery_window_days = 7
+
+# Enable automatic secret rotation (Lambda-based)
+enable_secret_rotation = false
+
+# Payment Secrets (PCI-DSS Scoped)
+# IMPORTANT: These are stored with separate KMS key for PCI compliance
+# stripe_secret_key       = "sk_live_xxxx"  # Set via environment variable
+# stripe_publishable_key  = "pk_live_xxxx"
+# stripe_webhook_secret   = "whsec_xxxx"
+# paypal_client_id        = "AXxxx"
+# paypal_client_secret    = "xxxx"
+# paypal_mode             = "live"
+
+# Email Secrets
+# email_host              = "smtp.gmail.com"
+# email_port              = 587
+# email_host_user         = "noreply@journeyoflife.org"
+# email_host_password     = "app-password"  # Set via environment variable
+# email_use_tls           = true
+
+# Integration Secrets
+# bitrix24_webhook_url    = "https://portal.bitrix24.com/rest/1/webhook/"
+# bitrix24_portal_id      = "portal.bitrix24.com"
+# bitrix24_contact_group_id = "123"
+
+# OAuth Secrets (Social Login)
+# google_oauth_client_id     = "xxx.apps.googleusercontent.com"
+# google_oauth_client_secret = "GOCSPX-xxx"
+# facebook_oauth_client_id   = "123456789"
+# facebook_oauth_client_secret = "xxx"
+
+# -----------------------------------------------------------------------------
+# HASHICORP VAULT (OPTIONAL)
+# -----------------------------------------------------------------------------
+# Use HashiCorp Vault instead of AWS Secrets Manager
+# Set enable_vault = true and configure vault_addr
+# -----------------------------------------------------------------------------
+
+enable_vault     = false
+vault_addr       = "https://vault.jol-hub.eu"
+vault_namespace  = "jol-hub/staging"

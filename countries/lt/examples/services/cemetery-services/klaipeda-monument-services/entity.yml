@@ -1,0 +1,123 @@
+# Example 12: Klaipėda Monument Services
+# Organization Configuration for JOL-HUB
+
+entity:
+  id: "lt-service-cemetery-002"
+  name: "Klaipėdos Paminklų Paslaugos"
+  name_en: "Klaipėda Monument Services"
+  type: "cemetery_service"
+  status: "active"
+  country: "lt"
+  
+  # Business Information
+  business:
+    registration_code: "789123456"
+    vat_registered: true
+    vat_rate: 21
+    established: "2008"
+    
+  # Location (Main Office & Workshop)
+  address:
+    street: "Paminklų g. 12"
+    city: "Klaipėda"
+    postal_code: "91123"
+    country: "Lithuania"
+    coordinates:
+      latitude: 55.7189
+      longitude: 21.1235
+      
+  # Contact Information
+  contact:
+    email: "info@klaipedamemorials.lt"
+    phone: "+370 46 345 678"
+    website: "https://klaipedamemorials.lt"
+    
+  # Bitrix24 Integration
+  bitrix24:
+    portal_domain: "jol-lithuania.bitrix24.eu"
+    contact_group_id: 61
+    deal_category_id: "cemetery_services"
+    
+  # Website Configuration
+  website:
+    domain: "klaipedamemorials.lt"
+    ssl_enabled: true
+    default_language: "lt"
+    supported_languages:
+      - "lt"
+      - "en"
+      - "ru"  # Russian-speaking minority in Klaipėda
+      - "de"  # Historical German heritage
+    theme: "service-professional"
+    
+  # Online Store Configuration
+  online_store:
+    enabled: true
+    products:
+      - category: "monuments"
+        name_lt: "Paminklai"
+        name_en: "Monuments"
+        materials:
+          - "granite"
+          - "marble"
+          - "basalt"
+      - category: "gravestones"
+        name_lt: "Antkapiai"
+        name_en: "Gravestones"
+      - category: "plaques"
+        name_lt: "Plokštės"
+        name_en: "Plaques"
+      - category: "inscriptions"
+        name_lt: "Užrašai"
+        name_en: "Inscriptions"
+      - category: "maintenance_plans"
+        name_lt: "Priežiūros planai"
+        name_en: "Maintenance Plans"
+    payment_methods:
+      - "stripe"
+      - "bank_link"
+    subscription_services:
+      enabled: true
+      
+  # Compliance Configuration
+  compliance:
+    level: "soc2_gdpr_pci"
+    pci_dss_level: "level_2"
+    deceased_person_data: true
+    audit_logging: true
+    data_retention:
+      service_records: 75
+      contract_records: 75
+      
+  # Service Configuration
+  services:
+    types:
+      - "monument_design"
+      - "monument_installation"
+      - "restoration"
+      - "inscription_services"
+      - "grave_maintenance"
+    operating_hours:
+      weekdays: "08:00-17:00"
+      saturday: "09:00-12:00"
+    service_areas:
+      - "Klaipėda city"
+      - "Klaipėda district"
+      - "Palanga"
+      - "Neringa"
+    cemeteries_served:
+      - "Klaipėdos miesto kapinės"
+      - "Jonaušės kapinės"
+      - "Lėbartų kapinės"
+      - "Gintaro kapinės"
+      
+  # Workshop Capabilities
+  workshop:
+    stone_cutting: true
+    engraving: true
+    custom_design: true
+    materials_available:
+      - "Lietuviškas granitas"
+      - "Ukrainietiškas granitas"
+      - "Marmuras"
+      - "Bazaltas"

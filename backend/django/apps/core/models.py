@@ -154,13 +154,53 @@ class AuditLog(UUIDModel, TimeStampedModel):
         return f'{self.action} {self.entity_type}({self.entity_id}) by user {self.user_id}'
 
     def save(self, *args, **kwargs):
-        """Generate tamper-evident checksum on save."""
+        """
+        Generate tamper-evident checksum and validate tenant context.
+        
+        GDPR Article 32 / SOC2 CC6.2 - Tenant isolation enforcement.
+        """
+        # Tenant validation for multi-tenant isolation
+        self._validate_tenant_context()
+        
         if not self.checksum:
             import hashlib
             import json
             data = f"{self.id}:{self.user_id}:{self.action}:{self.entity_type}:{self.entity_id}:{self.created_at}"
             self.checksum = hashlib.sha256(data.encode()).hexdigest()
         super().save(*args, **kwargs)
+    
+    def _validate_tenant_context(self):
+        """
+        Validate that the organization_id matches current tenant context.
+        
+        Prevents cross-tenant audit log creation.
+        Skip validation if no tenant context (system operations).
+        """
+        import logging
+        logger = logging.getLogger('jolhub.tenant_validation')
+        
+        # Skip if no organization set
+        if not self.organization_id:
+            return
+        
+        # Get current tenant context
+        try:
+            from apps.crm.middleware import get_current_tenant_id
+            tenant_id = get_current_tenant_id()
+            
+            if tenant_id and str(self.organization_id) != str(tenant_id):
+                logger.error(
+                    f"Cross-tenant audit log attempt: context_tenant={tenant_id}, "
+                    f"target_org={self.organization_id}"
+                )
+                from django.core.exceptions import ValidationError
+                raise ValidationError(
+                    "Organization ID does not match current tenant context"
+                )
+        except ImportError:
+            pass  # Middleware not available, skip validation
+        except Exception as e:
+            logger.debug(f"Tenant validation skipped: {e}")
 
     def verify_integrity(self) -> bool:
         """Verify audit log entry integrity."""

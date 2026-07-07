@@ -10,6 +10,9 @@
   },
   "scripts": {
     "build": "turbo run build",
+    "build:all": "turbo run build --filter='./apps/*'",
+    "build:entities": "turbo run build --filter='./apps/lt-*'",
+    "build:infrastructure": "turbo run build --filter='./apps/{admin-dashboard,master-site,parish-template}'",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "type-check": "turbo run type-check",
@@ -20,7 +23,9 @@
     "compliance:check": "pnpm --filter @jol-hub/admin-dashboard compliance:check",
     "compliance:full": "pnpm --filter @jol-hub/admin-dashboard compliance:full",
     "gdpr:validate": "pnpm --filter @jol-hub/admin-dashboard gdpr:validate",
-    "deploy:check": "pnpm --filter @jol-hub/admin-dashboard deploy:check"
+    "deploy:check": "pnpm --filter @jol-hub/admin-dashboard deploy:check",
+    "test": "turbo run test",
+    "test:coverage": "turbo run test -- --coverage"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.0.0",

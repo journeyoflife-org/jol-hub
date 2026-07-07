@@ -1,0 +1,75 @@
+# Estonia Apostolic Administration Entity Configuration
+# GDPR Article 44: Country-scoped data routing
+# Canon Law: CIC 535 - Sacramental records retention
+
+entity:
+  id: "ee-estonia-apostolic"
+  type: "diocese"
+  name: "Eesti Apostellik Administratuur"
+  name_en: "Estonian Apostolic Administration"
+  country: "ee"
+  
+  # Canonical information
+  canonical:
+    jurisdiction: "Estonian Apostolic Administration"
+    type: "apostolic_administration"
+    metropolitan: false
+    directly_subject_to: "Holy See"
+    established: "1924"
+    
+  # Contact information
+  contact:
+    address: "Vene 18, 10123 Tallinn, Eesti"
+    phone: "+372 644 2545"
+    email: "info@catholic.ee"
+    website: "https://elu-tee.ee/estonia-apostolic"
+    
+  # Hierarchy
+  hierarchy:
+    level: 1  # Top level in country
+    reports_to: "Holy See"
+    
+  # Localization
+  languages:
+    primary: "et"
+    supported: ["et", "en", "ru"]
+    
+  # Domain configuration
+  domain:
+    primary: "katoliku.elu-tee.ee"
+    aliases: []
+    
+  # Features enabled
+  features:
+    - "governance"
+    - "clergy_directory"
+    - "parish_finder"
+    - "news"
+    - "events"
+    - "donations"
+    
+  # Compliance
+  compliance:
+    gdpr: true
+    canon_law: true
+    dpa: "Andmekaitse Inspektsioon"
+    
+  # Statistics
+  statistics:
+    parishes: 12
+    priests: 15
+    catholics_estimate: 6000
+    
+  # Bitrix24 integration
+  integrations:
+    bitrix24:
+      portal: "elu-tee.bitrix24.ee"
+      sync_contacts: true
+      sync_donations: true
+      
+  # Audit
+  audit:
+    created_at: "2026-04-06T00:00:00Z"
+    created_by: "system"
+    last_modified: "2026-04-06T00:00:00Z"
+    version: "1.0.0"

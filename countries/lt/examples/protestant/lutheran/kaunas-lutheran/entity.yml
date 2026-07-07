@@ -1,0 +1,77 @@
+# Example 6: Kaunas Lutheran Church (Protestant)
+# Organization Configuration for JOL-HUB
+
+entity:
+  id: "lt-protestant-lutheran-001"
+  name: "Kauno evangelikų liuteronų bažnyčia"
+  name_en: "Kaunas Evangelical Lutheran Church"
+  type: "church_protestant"
+  status: "active"
+  country: "lt"
+  denomination: "lutheran"
+  
+  # Ecclesiastical Information
+  ecclesiastical:
+    denomination: "Evangelical Lutheran"
+    jurisdiction: "Evangelical Lutheran Church in Lithuania"
+    established: "1650"
+    
+  # Location
+  address:
+    street: "M. Valančiaus g. 7"
+    city: "Kaunas"
+    postal_code: "44275"
+    country: "Lithuania"
+    coordinates:
+      latitude: 54.8954
+      longitude: 23.8930
+      
+  # Contact Information
+  contact:
+    email: "info@liuteronai.lt"
+    phone: "+370 37 33 05 10"
+    website: "https://kaunas.liuteronai.lt"
+    
+  # Bitrix24 Integration
+  bitrix24:
+    portal_domain: "jol-lithuania.bitrix24.eu"
+    contact_group_id: 20
+    
+  # Website Configuration
+  website:
+    domain: "kaunas.liuteronai.lt"
+    ssl_enabled: true
+    default_language: "lt"
+    supported_languages:
+      - "lt"
+      - "de"  # Historical German connection
+      - "en"
+    theme: "protestant-modern"
+    
+  # Online Store Configuration
+  online_store:
+    enabled: true
+    products:
+      - category: "publications"
+        name_lt: "Leidiniai"
+      - category: "events"
+        name_lt: "Renginiai"
+    payment_methods:
+      - "stripe"
+      - "bank_link"
+      
+  # Compliance Configuration
+  compliance:
+    level: "gdpr"
+    audit_logging: true
+    
+  # Service Schedule
+  service_schedule:
+    sundays:
+      - time: "10:00"
+        language: "lt"
+        type: "holy_communion"
+    wednesdays:
+      - time: "18:00"
+        language: "lt"
+        type: "vespers"

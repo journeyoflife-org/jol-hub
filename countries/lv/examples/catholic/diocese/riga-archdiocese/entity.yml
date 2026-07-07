@@ -1,0 +1,75 @@
+# Latvia Riga Archdiocese Entity Configuration
+# GDPR Article 44: Country-scoped data routing
+# Canon Law: CIC 535 - Sacramental records retention
+
+entity:
+  id: "lv-diocese-riga"
+  type: "diocese"
+  name: "Rīgas arhidiecēze"
+  name_en: "Riga Archdiocese"
+  country: "lv"
+  
+  # Canonical information
+  canonical:
+    jurisdiction: "Riga Archdiocese"
+    type: "archdiocese"
+    metropolitan: true
+    province: "Riga"
+    established: "1918"
+    
+  # Contact information
+  contact:
+    address: "Klostera iela 2, Rīga, LV-1050, Latvija"
+    phone: "+371 6722 7343"
+    email: "riga@catholic.lv"
+    website: "https://dzives-cels.lv/riga-archdiocese"
+    
+  # Hierarchy
+  hierarchy:
+    level: 1  # Top level in country
+    reports_to: "Holy See"
+    
+  # Localization
+  languages:
+    primary: "lv"
+    supported: ["lv", "en", "ru"]
+    
+  # Domain configuration
+  domain:
+    primary: "riga.dzives-cels.lv"
+    aliases: []
+    
+  # Features enabled
+  features:
+    - "governance"
+    - "clergy_directory"
+    - "parish_finder"
+    - "news"
+    - "events"
+    - "donations"
+    
+  # Compliance
+  compliance:
+    gdpr: true
+    canon_law: true
+    dpa: "Datu valsts inspekcija"
+    
+  # Statistics
+  statistics:
+    parishes: 140
+    priests: 120
+    catholics_estimate: 400000
+    
+  # Bitrix24 integration
+  integrations:
+    bitrix24:
+      portal: "dzives-cels.bitrix24.lv"
+      sync_contacts: true
+      sync_donations: true
+      
+  # Audit
+  audit:
+    created_at: "2026-04-06T00:00:00Z"
+    created_by: "system"
+    last_modified: "2026-04-06T00:00:00Z"
+    version: "1.0.0"

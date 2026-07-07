@@ -1,0 +1,83 @@
+# =============================================================================
+# JOL-HUB Documentation Issue Template
+# =============================================================================
+
+name: Documentation Issue
+description: Report issues with documentation or request improvements
+title: "[DOCS] "
+labels: ["documentation", "needs-triage"]
+assignees: []
+projects: []
+
+body:
+  - type: dropdown
+    id: doc-type
+    attributes:
+      label: Documentation Type
+      description: What type of documentation is affected?
+      options:
+        - Architecture Documentation
+        - API Documentation
+        - User Guide
+        - Developer Guide
+        - Deployment Guide
+        - Compliance Documentation
+        - README/Getting Started
+        - Code Comments
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: Issue Type
+      description: What kind of documentation issue is this?
+      options:
+        - Missing Documentation
+        - Outdated/Incorrect Information
+        - Typo/Grammar Error
+        - Unclear/Confusing Content
+        - Broken Link
+        - Missing Examples
+        - Formatting Issue
+        - Enhancement Request
+    validations:
+      required: true
+
+  - type: textarea
+    id: location
+    attributes:
+      label: Documentation Location
+      description: Where is the documentation issue?
+      placeholder: "File path or URL: docs/architecture/..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-content
+    attributes:
+      label: Current Content
+      description: What does the documentation currently say?
+      placeholder: "The current documentation states..."
+
+  - type: textarea
+    id: expected-content
+    attributes:
+      label: Expected/Correct Content
+      description: What should the documentation say instead?
+      placeholder: "The documentation should say..."
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context about the documentation issue.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have searched for similar documentation issues
+          required: true

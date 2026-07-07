@@ -1,0 +1,97 @@
+# JOL-HUB Data Module .gitignore
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+notebooks/checkpoints/
+*.ipynb_checkpoints
+
+# Data files (never commit actual data)
+data/
+*.csv
+*.json
+*.parquet
+*.avro
+*.xlsx
+*.xls
+
+# Logs
+logs/
+*.log
+audit/
+
+# dbt
+dbt/target/
+dbt/.user.yml
+dbt/dbt_packages/
+
+# Airflow
+airflow/logs/
+airflow/airflow.db
+airflow/webserver_config.py
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets (extra protection)
+secrets/
+*.pem
+*.key
+credentials.json
+service-account.json
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+
+# Great Expectations
+great_expectations/uncommitted/
+great_expectations/.ipynb_checkpoints/

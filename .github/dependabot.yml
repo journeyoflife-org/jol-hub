@@ -1,0 +1,164 @@
+# =============================================================================
+# JOL-HUB Dependabot Configuration
+# =============================================================================
+# Automated dependency updates for all package ecosystems
+# =============================================================================
+
+version: 2
+
+updates:
+  # ===========================================================================
+  # Backend - Python Dependencies
+  # ===========================================================================
+  - package-ecosystem: "pip"
+    directory: "/backend/django"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Vilnius"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "JourneyOfLife"
+    labels:
+      - "dependencies"
+      - "backend"
+      - "python"
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    groups:
+      django:
+        patterns:
+          - "django*"
+          - "djangorestframework*"
+        update-types:
+          - "minor"
+          - "patch"
+      security:
+        patterns:
+          - "cryptography*"
+          - "argon2*"
+        update-types:
+          - "patch"
+    ignore:
+      # Ignore major version updates for Django (require manual review)
+      - dependency-name: "django"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "djangorestframework"
+        update-types: ["version-update:semver-major"]
+
+  # ===========================================================================
+  # Frontend - Node.js Dependencies
+  # ===========================================================================
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Vilnius"
+    open-pull-requests-limit: 15
+    reviewers:
+      - "JourneyOfLife"
+    labels:
+      - "dependencies"
+      - "frontend"
+      - "javascript"
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    groups:
+      react:
+        patterns:
+          - "react*"
+          - "next*"
+        update-types:
+          - "minor"
+          - "patch"
+      radix:
+        patterns:
+          - "@radix-ui/*"
+        update-types:
+          - "minor"
+          - "patch"
+      tailwind:
+        patterns:
+          - "tailwind*"
+          - "autoprefixer"
+          - "postcss"
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      # Ignore major version updates for Next.js (require manual review)
+      - dependency-name: "next"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+
+  # ===========================================================================
+  # Infrastructure - Terraform
+  # ===========================================================================
+  - package-ecosystem: "terraform"
+    directory: "/infra/terraform"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Vilnius"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "JourneyOfLife"
+    labels:
+      - "dependencies"
+      - "infrastructure"
+      - "terraform"
+
+  # ===========================================================================
+  # GitHub Actions
+  # ===========================================================================
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Vilnius"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "JourneyOfLife"
+    labels:
+      - "dependencies"
+      - "github-actions"
+      - "ci-cd"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    groups:
+      actions:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  # ===========================================================================
+  # Docker Dependencies
+  # ===========================================================================
+  - package-ecosystem: "docker"
+    directory: "/backend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Vilnius"
+    open-pull-requests-limit: 3
+    reviewers:
+      - "JourneyOfLife"
+    labels:
+      - "dependencies"
+      - "docker"
+      - "backend"

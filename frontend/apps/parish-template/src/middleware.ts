@@ -57,7 +57,7 @@ function getLocaleFromBrowser(request: NextRequest): SupportedLocale | null {
     .split(',')
     .map((lang) => {
       const [code, q = '1'] = lang.trim().split(';q=');
-      return { code: code.trim().toLowerCase(), quality: parseFloat(q) };
+      return { code: (code || '').trim().toLowerCase(), quality: parseFloat(q) };
     })
     .sort((a, b) => b.quality - a.quality);
 

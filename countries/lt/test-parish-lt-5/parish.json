@@ -1,0 +1,15 @@
+{
+  "id": "parish-6c120567",
+  "name": "Test Parish",
+  "subdomain": "test-parish-lt-5",
+  "country": "lt",
+  "diocese": "vilnius",
+  "template": "default",
+  "created_at": "2026-03-15T09:54:57.932912",
+  "status": "active",
+  "settings": {
+    "language": "lt",
+    "timezone": "Europe/Vilnius",
+    "currency": "EUR"
+  }
+}

@@ -1,0 +1,57 @@
+# -----------------------------------------------------------------------------
+# JOL-HUB Kubernetes Kustomization
+# -----------------------------------------------------------------------------
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: jol-hub
+
+resources:
+  # Base
+  - base/namespace.yaml
+  - base/configmap.yaml
+  - base/secrets.yaml
+  
+  # Security
+  - security/security.yaml
+  
+  # Networking
+  - networking/ingress.yaml
+  - networking/network-policy.yaml
+  
+  # Applications
+  - apps/database.yaml
+  - apps/backend.yaml
+  - apps/celery.yaml
+  - apps/frontend.yaml
+
+# Common Labels
+commonLabels:
+  app.kubernetes.io/part-of: journey-of-life
+  app.kubernetes.io/managed-by: kustomize
+
+# Images
+images:
+  - name: jol-hub/backend
+    newTag: v1.0.0
+  - name: jol-hub/frontend
+    newTag: v1.0.0
+  - name: jol-hub/admin-dashboard
+    newTag: v1.0.0
+
+# ConfigMap Generator
+configMapGenerator:
+  - name: jol-hub-config
+    behavior: merge
+    literals:
+      - ENVIRONMENT=production
+
+# Patches
+patches:
+  - target:
+      kind: Deployment
+      name: backend
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 3

@@ -1,0 +1,20 @@
+{
+  "name": "@jol-hub/ui",
+  "version": "1.0.0",
+  "exports": {
+    ".": "./src/index.ts",
+    "./components/donation": "./src/components/donation/index.ts",
+    "./components/*": "./src/components/*/index.ts"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@stripe/react-stripe-js": "^2.4.0",
+    "@stripe/stripe-js": "^2.2.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  }
+}

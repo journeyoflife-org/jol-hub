@@ -1,0 +1,113 @@
+# Example 1: Vilnius Cathedral Basilica
+# Organization Configuration for JOL-HUB
+
+entity:
+  id: "lt-catholic-basilica-001"
+  name: "Vilniaus Šv. Stanislovo ir Šv. Vladislovo arkikatedra bazilika"
+  name_en: "Vilnius Cathedral Basilica of St. Stanislaus and St. Ladislaus"
+  type: "basilica"
+  status: "active"
+  country: "lt"
+  
+  # Canonical Information
+  canonical:
+    rite: "roman"
+    jurisdiction: "Vilnius Archdiocese"
+    dedication: "St. Stanislaus and St. Ladislaus"
+    consecration_date: "1783"
+    basilica_status: "minor_basilica"
+    basilica_designation_date: "1922-03-04"
+    
+  # Location
+  address:
+    street: "Katedros a. 1"
+    city: "Vilnius"
+    postal_code: "01143"
+    country: "Lithuania"
+    coordinates:
+      latitude: 54.6859
+      longitude: 25.2878
+      
+  # Contact Information
+  contact:
+    email: "info@katedra.lt"
+    phone: "+370 5 261 0731"
+    website: "https://katedra.lt"
+    
+  # Diocesan Hierarchy
+  hierarchy:
+    parent_diocese: "lt-diocese-vilnius-arch"
+    parent_deanery: "lt-deanery-vilnius-city"
+    
+  # Bitrix24 Integration
+  bitrix24:
+    portal_domain: "vilniaus-arkivyskupija.bitrix24.eu"
+    contact_group_id: 1
+    deal_category_id: 1
+    
+  # Website Configuration
+  website:
+    domain: "katedra.lt"
+    ssl_enabled: true
+    default_language: "lt"
+    supported_languages:
+      - "lt"
+      - "en"
+      - "pl"
+    theme: "basilica-classic"
+    
+  # Online Store Configuration
+  online_store:
+    enabled: true
+    products:
+      - category: "mass_intentions"
+        name_lt: "Šv. Mišių užsakymas"
+        name_en: "Mass Intention Booking"
+      - category: "candles"
+        name_lt: "Žvakės"
+        name_en: "Candles"
+      - category: "pilgrimage"
+        name_lt: "Piligrimystės"
+        name_en: "Pilgrimages"
+      - category: "books"
+        name_lt: "Knygos"
+        name_en: "Books"
+    payment_methods:
+      - "stripe"
+      - "paypal"
+      - "bank_link"
+      
+  # Compliance Configuration
+  compliance:
+    level: "canonical"  # Canon Law + GDPR
+    canonical_records: true
+    sacramental_data_processing: true
+    legal_basis: "GDPR Art. 9(2)(d)"
+    audit_logging: true
+    data_retention:
+      sacramental_records: "permanent"
+      parishioner_data: 10
+      
+  # Mass Schedule
+  mass_schedule:
+    weekdays:
+      - time: "07:00"
+        language: "lt"
+      - time: "18:00"
+        language: "lt"
+    saturdays:
+      - time: "18:00"
+        language: "lt"
+    sundays:
+      - time: "09:00"
+        language: "lt"
+      - time: "11:00"
+        language: "lt"
+        type: "solemn"
+      - time: "18:00"
+        language: "lt"
+    holy_days:
+      - time: "09:00"
+        language: "lt"
+      - time: "18:00"
+        language: "lt"

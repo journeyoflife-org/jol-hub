@@ -164,3 +164,67 @@ output "opensearch_dashboard_endpoint" {
   description = "Dashboard endpoint of the OpenSearch domain"
   value       = var.enable_logging ? module.logging[0].opensearch_dashboard_endpoint : null
 }
+
+# -----------------------------------------------------------------------------
+# Secrets Management Outputs
+# -----------------------------------------------------------------------------
+
+output "secrets_kms_key_arn" {
+  description = "ARN of the KMS key for secrets encryption"
+  value       = module.secrets.secrets_kms_key_arn
+}
+
+output "django_secret_arn" {
+  description = "ARN of the Django secret key"
+  value       = module.secrets.django_secret_arn
+}
+
+output "database_url_secret_arn" {
+  description = "ARN of the database URL secret"
+  value       = module.secrets.database_url_secret_arn
+}
+
+output "stripe_secret_arn" {
+  description = "ARN of the Stripe keys secret (PCI-DSS scoped)"
+  value       = module.secrets.stripe_secret_arn
+}
+
+output "paypal_secret_arn" {
+  description = "ARN of the PayPal credentials secret (PCI-DSS scoped)"
+  value       = module.secrets.paypal_secret_arn
+}
+
+output "email_secret_arn" {
+  description = "ARN of the email credentials secret"
+  value       = module.secrets.email_secret_arn
+}
+
+output "bitrix24_secret_arn" {
+  description = "ARN of the Bitrix24 credentials secret"
+  value       = module.secrets.bitrix24_secret_arn
+}
+
+output "nextauth_secret_arn" {
+  description = "ARN of the NextAuth.js secret"
+  value       = module.secrets.nextauth_secret_arn
+}
+
+output "encryption_keys_secret_arn" {
+  description = "ARN of the encryption keys secret (GDPR Art. 32)"
+  value       = module.secrets.encryption_keys_secret_arn
+}
+
+output "secrets_read_policy_arn" {
+  description = "ARN of the IAM policy for reading application secrets"
+  value       = module.secrets.secrets_read_policy_arn
+}
+
+output "secrets_pci_read_policy_arn" {
+  description = "ARN of the IAM policy for reading PCI-DSS secrets"
+  value       = module.secrets.secrets_pci_read_policy_arn
+}
+
+output "all_secrets_map" {
+  description = "Map of all secret names to their ARNs"
+  value       = module.secrets.all_secrets
+}

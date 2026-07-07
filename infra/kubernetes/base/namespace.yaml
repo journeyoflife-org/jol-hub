@@ -1,0 +1,15 @@
+# -----------------------------------------------------------------------------
+# JOL-HUB Kubernetes Namespace
+# -----------------------------------------------------------------------------
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: jol-hub
+  labels:
+    name: jol-hub
+    app.kubernetes.io/name: jol-hub
+    app.kubernetes.io/part-of: journey-of-life
+    environment: production
+  annotations:
+    scheduler.alpha.kubernetes.io/defaultTolerations: '[]'
+    scheduler.alpha.kubernetes.io/tolerationsWhitelist: '[]'

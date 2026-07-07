@@ -1,0 +1,83 @@
+# Latvia Riga Lutheran Cathedral Entity Configuration
+# GDPR Article 44: Country-scoped data routing
+# Western Calendar: Lutheran liturgical year
+
+entity:
+  id: "lv-lutheran-riga-cathedral"
+  type: "protestant"
+  name: "Rīgas Doms"
+  name_en: "Riga Cathedral (Lutheran)"
+  country: "lv"
+  
+  # Canonical information
+  canonical:
+    jurisdiction: "Evangelical Lutheran Church of Latvia"
+    type: "cathedral"
+    dedication: "St. Mary"
+    calendar: "gregorian"
+    
+  # Contact information
+  contact:
+    address: "Doma laukums 1, Rīga, LV-1050, Latvija"
+    phone: "+371 6722 3715"
+    email: "doms@lutheran.lv"
+    website: "https://dzives-cels.lv/riga-lutheran-cathedral"
+    
+  # Hierarchy
+  hierarchy:
+    level: 2
+    parent_jurisdiction: "evangelical-lutheran-church-latvia"
+    
+  # Localization
+  languages:
+    primary: "lv"
+    supported: ["lv", "en", "de"]
+    
+  # Domain configuration
+  domain:
+    primary: "riga-cathedral.dzives-cels.lv"
+    aliases:
+      - "doms.dzives-cels.lv"
+    
+  # Features enabled
+  features:
+    - "services"
+    - "community"
+    - "events"
+    - "donations"
+    - "concerts"
+    
+  # Service schedule
+  schedule:
+    services:
+      - day: "sunday"
+        time: "11:00"
+        type: "main_service"
+        language: "lv"
+      - day: "wednesday"
+        time: "18:00"
+        type: "vespers"
+        
+  # Compliance
+  compliance:
+    gdpr: true
+    dpa: "Datu valsts inspekcija"
+    
+  # Statistics
+  statistics:
+    members_estimate: 10000
+    founded: "1211"
+    
+  # Integrations
+  integrations:
+    bitrix24:
+      portal: "dzives-cels.bitrix24.lv"
+      sync_contacts: true
+      sync_donations: true
+      
+  # Audit
+  audit:
+    created_at: "2026-04-06T00:00:00Z"
+    created_by: "system"
+    last_modified: "2026-04-06T00:00:00Z"
+    version: "1.0.0"

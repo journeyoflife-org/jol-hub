@@ -55,7 +55,7 @@ export default function CookiesPage() {
         <p>
           Pagal GDPR ir ePrivacy direktyvą, turite teisę sutikti arba atmesti slapukų naudojimą 
           (išskyrus būtinuosius). Savo pasirinkimą galite bet kada pakeisti paspaudę 
-          „Slapukų nuostatos" mygtuką svetainės apačioje.
+          „Slapukų nuostatos“ mygtuką svetainės apačioje.
         </p>
 
         <h2>Kaip išjungti slapukus?</h2>

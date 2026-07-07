@@ -1,0 +1,183 @@
+# Lithuania Liturgical Calendar Configuration
+# Roman Catholic Church - Lithuania Conference of Bishops
+# Compliance: GDPR Art. 5(1)(b) - Purpose Limitation for religious data
+
+country_code: "lt"
+country_name: "Lithuania"
+language: "lt"
+timezone: "Europe/Vilnius"
+
+# Liturgical Calendar Settings
+calendar:
+  type: "roman"
+  rite: "latin"
+  province: "Vilnius"
+  
+  # Liturgical seasons with Lithuanian names
+  seasons:
+    advent:
+      name_lt: "Adventas"
+      color: "purple"
+    christmas:
+      name_lt: "Kalėdos"
+      color: "white"
+    ordinary_time:
+      name_lt: "Eiliniai metai"
+      color: "green"
+    lent:
+      name_lt: "Gavėnia"
+      color: "purple"
+    easter:
+      name_lt: "Velykos"
+      color: "white"
+    pentecost:
+      name_lt: "Sekminės"
+      color: "red"
+
+  # Lithuanian specific feast days
+  local_feasts:
+    - date: "01-06"
+      name: "Trys Karaliai (Epifanija)"
+      name_en: "Epiphany"
+      rank: "solemnity"
+    - date: "02-02"
+      name: "Peršvč. Mergelės Marijos paaukojimas"
+      name_en: "Presentation of the Lord"
+      rank: "feast"
+    - date: "02-16"
+      name: "Lietuvos valstybės atkūrimo diena"
+      name_en: "Lithuanian State Restoration Day"
+      type: "national"
+    - name: "Šv. Kazimieras"
+      date: "03-04"
+      name_en: "St. Casimir (Patron of Lithuania)"
+      rank: "solemnity"
+      patron_saint: true
+    - date: "03-11"
+      name: "Lietuvos nepriklausomybės atkūrimo diena"
+      name_en: "Lithuanian Independence Restoration Day"
+      type: "national"
+    - date: "06-24"
+      name: "Rasos ir Joninės"
+      name_en: "St. John the Baptist"
+      rank: "solemnity"
+    - date: "07-06"
+      name: "Lietuvos valstybės diena (Mindaugo karūnavimas)"
+      name_en: "Statehood Day (Coronation of Mindaugas)"
+      type: "national"
+    - date: "08-15"
+      name: "Žolinė (Švč. Mergelės Marijos ėmimas į dangų)"
+      name_en: "Assumption of Mary"
+      rank: "solemnity"
+    - date: "11-01"
+      name: "Visų Šventųjų diena"
+      name_en: "All Saints Day"
+      rank: "solemnity"
+    - date: "11-02"
+      name: "Vėlinės"
+      name_en: "All Souls Day"
+      rank: "commemoration"
+    - date: "12-24"
+      name: "Kūčios"
+      name_en: "Christmas Eve"
+      rank: "solemnity"
+    - date: "12-25"
+      name: "Kalėdos"
+      name_en: "Christmas"
+      rank: "solemnity"
+    - date: "12-26"
+      name: "Šv. Steponas"
+      name_en: "St. Stephen"
+      rank: "feast"
+
+  # Holy days of obligation in Lithuania
+  holy_days_of_obligation:
+    - "01-01"  # Mary, Mother of God
+    - "01-06"  # Epiphany
+    - "03-19"  # St. Joseph
+    - "03-04"  # St. Casimir (Patron of Lithuania)
+    - "05-01"  # St. Joseph the Worker (when applicable)
+    - "08-15"  # Assumption
+    - "11-01"  # All Saints
+    - "12-08"  # Immaculate Conception
+    - "12-25"  # Christmas
+
+  # Easter calculation reference
+  easter_calculation: "gregorian"
+
+# Dioceses in Lithuania
+dioceses:
+  - name: "Vilniaus arkivyskupija"
+    name_en: "Vilnius Archdiocese"
+    type: "archdiocese"
+    cathedral: "Vilniaus Šv. Stanislovo ir Šv. Vladislovo arkikatedra bazilika"
+    bishop_title: "Arkivyskupas metropolitas"
+  - name: "Kauno arkivyskupija"
+    name_en: "Kaunas Archdiocese"
+    type: "archdiocese"
+    cathedral: "Kauno Šv. apaštalų Petro ir Pauliaus arkikatedra bazilija"
+    bishop_title: "Arkivyskupas metropolitas"
+  - name: "Kaišiadorių vyskupija"
+    name_en: "Kaišiadorys Diocese"
+    type: "diocese"
+    cathedral: "Kaišiadorių Kristaus Atsimainymo katedra"
+  - name: "Panevėžio vyskupija"
+    name_en: "Panevėžys Diocese"
+    type: "diocese"
+    cathedral: "Panevėžio Šv. apaštalų Petro ir Pauliaus katedra"
+  - name: "Šiaulių vyskupija"
+    name_en: "Šiauliai Diocese"
+    type: "diocese"
+    cathedral: "Šiaulių Šv. apaštalų Petro ir Pauliaus katedra"
+  - name: "Telsių vyskupija"
+    name_en: "Telšiai Diocese"
+    type: "diocese"
+    cathedral: "Telsių Šv. Antano Paduviečio katedra"
+  - name: "Vilkaviškio vyskupija"
+    name_en: "Vilkaviškis Diocese"
+    type: "diocese"
+    cathedral: "Vilkaviškio Šv. Kryžiaus atradimo katedra"
+  - name: "Klaipėdos tamezė"
+    name_en: "Klaipėda Territorial Prelature"
+    type: "prelature"
+    church: "Klaipėdos Šv. Juozapo bažnyčia"
+
+# Basilicas in Lithuania
+basilicas:
+  - name: "Vilniaus Šv. Stanislovo ir Šv. Vladislovo arkikatedra bazilika"
+    name_en: "Vilnius Cathedral Basilica of St. Stanislaus and St. Ladislaus"
+    location: "Vilnius"
+    status: "minor_basilica"
+  - name: "Kauno Šv. apaštalų Petro ir Pauliaus arkikatedra bazilija"
+    name_en: "Kaunas Cathedral Basilica of St. Peter and St. Paul"
+    location: "Kaunas"
+    status: "minor_basilica"
+  - name: "Šiluvos Švč. Mergelės Marijos Gimimo bazilika"
+    name_en: "Šiluva Basilica of the Nativity of the Blessed Virgin Mary"
+    location: "Šiluva"
+    status: "minor_basilica"
+  - name: "Žemaičių Kalvarijos Švč. Mergelės Marijos Apsilankymo bazilika"
+    name_en: "Žemaičių Kalvarija Basilica of the Visitation"
+    location: "Žemaičių Kalvarija"
+    status: "minor_basilica"
+  - name: "Troškūnų Švč. Trejybės bazilika"
+    name_en: "Troškūnai Basilica of the Holy Trinity"
+    location: "Troškūnai"
+    status: "minor_basilica"
+  - name: "Telšių Šv. Antano Paduviečio bazilika"
+    name_en: "Telšiai Basilica of St. Anthony of Padua"
+    location: "Telšiai"
+    status: "minor_basilica"
+  - name: "Kauno Šv. Mykolo Arkangelo bazilika"
+    name_en: "Kaunas Basilica of St. Michael the Archangel"
+    location: "Kaunas"
+    status: "minor_basilica"
+  - name: "Vilniaus Švč. Jėzaus Širdies bazilika"
+    name_en: "Vilnius Basilica of the Sacred Heart of Jesus"
+    location: "Vilnius"
+    status: "minor_basilica"
+
+# GDPR Compliance Note
+# This configuration contains liturgical data used for website functionality.
+# No personal data is stored in this configuration file.
+# Processing of sacramental records is subject to Canon Law and GDPR Art. 9(2)(d).

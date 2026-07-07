@@ -1,0 +1,99 @@
+# Latvia St. James Cathedral Riga Entity Configuration
+# GDPR Article 44: Country-scoped data routing
+# Canon Law: CIC 535 - Sacramental records retention
+
+entity:
+  id: "lv-cathedral-riga-st-james"
+  type: "cathedral"
+  name: "Rīgas Svētā Jēkaba katedrāle"
+  name_en: "St. James Cathedral Riga"
+  country: "lv"
+  
+  # Canonical information
+  canonical:
+    jurisdiction: "Riga Archdiocese"
+    type: "cathedral"
+    dedication: "St. James the Greater"
+    consecration_date: "1225"
+    status: "minor_basilica"
+    
+  # Contact information
+  contact:
+    address: "Jēkaba iela 9, Rīga, LV-1050, Latvija"
+    phone: "+371 6722 4433"
+    email: "katedrale@catholic.lv"
+    website: "https://dzives-cels.lv/st-james-cathedral"
+    
+  # Hierarchy
+  hierarchy:
+    level: 2
+    parent_diocese: "lv-diocese-riga"
+    deanery: "riga-city-deanery"
+    
+  # Localization
+  languages:
+    primary: "lv"
+    supported: ["lv", "en", "ru"]
+    
+  # Domain configuration
+  domain:
+    primary: "st-james-cathedral.dzives-cels.lv"
+    aliases:
+      - "katedrale.dzives-cels.lv"
+    
+  # Features enabled
+  features:
+    - "mass_schedules"
+    - "sacraments"
+    - "donations"
+    - "events"
+    - "tours"
+    - "concerts"
+    
+  # Mass schedule
+  schedule:
+    masses:
+      - day: "monday-friday"
+        times: ["07:00", "18:00"]
+        language: "lv"
+      - day: "saturday"
+        times: ["08:00", "18:00"]
+        language: "lv"
+      - day: "sunday"
+        times: ["08:00", "10:00", "12:00", "18:00"]
+        languages: ["lv", "en", "ru"]
+    confessions:
+      - day: "saturday"
+        times: ["17:00-17:45"]
+      - day: "sunday"
+        times: ["09:00-09:45"]
+        
+  # Sacraments
+  sacraments:
+    baptism: true
+    confirmation: true
+    eucharist: true
+    reconciliation: true
+    marriage: true
+    holy_orders: false
+    anointing_sick: true
+    
+  # Compliance
+  compliance:
+    gdpr: true
+    canon_law: true
+    dpa: "Datu valsts inspekcija"
+    
+  # Integrations
+  integrations:
+    bitrix24:
+      portal: "dzives-cels.bitrix24.lv"
+      sync_contacts: true
+      sync_donations: true
+      
+  # Audit
+  audit:
+    created_at: "2026-04-06T00:00:00Z"
+    created_by: "system"
+    last_modified: "2026-04-06T00:00:00Z"
+    version: "1.0.0"

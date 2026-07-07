@@ -1,0 +1,200 @@
+# Lithuania-Specific Compliance Configuration
+# GDPR Compliance for JOL-HUB Lithuania Operations
+# Reference: GDPR (EU) 2016/679, Lithuanian Law on Legal Protection of Personal Data
+
+country_code: "lt"
+country_name: "Republic of Lithuania"
+eu_member: true
+eea_member: true
+
+# Data Protection Authority
+dpa:
+  name: "Valstybinė duomenų apsaugos inspekcija"
+  name_en: "State Data Protection Inspectorate"
+  short: "VDATI"
+  website: "https://vdai.lrs.lt"
+  email: "info@vdai.lt"
+  address: "L. Sapiegos g. 17, LT-10312 Vilnius"
+
+# National Legal Framework
+legal_framework:
+  - name: "Lietuvos Respublikos asmens duomenų teisinės apsaugos įstatymas"
+    name_en: "Law on Legal Protection of Personal Data of the Republic of Lithuania"
+    reference: "Nr. IX-1296"
+    effective_date: "2003-01-01"
+    last_amended: "2023-07-01"
+  - name: "Lietuvos Respublikos visuomenės informavimo įstatymas"
+    name_en: "Law on Public Information of the Republic of Lithuania"
+    reference: "Nr. I-1418"
+    notes: "Applies to media and publishing activities"
+
+# GDPR Implementation Specifics
+gdpr_implementation:
+  # Article 6 - Lawful Basis
+  lawful_basis:
+    consent:
+      min_age: 14  # Lithuania reduced age of consent for data processing
+      parental_consent_required_below: 14
+      consent_validity_months: 24
+    legitimate_interest:
+      documentation_required: true
+      lia_template_required: true  # Legitimate Interest Assessment
+    public_interest:
+      includes_religious_organizations: true
+      canon_law_compliance: true
+
+  # Article 9 - Special Categories
+  special_categories:
+    religious_data:
+      explicitly_permitted: true
+      legal_basis: "Art. 9(2)(d) - Processing in course of legitimate activities"
+      additional_safeguards:
+        - "Canon Law compliance verification"
+        - "Encryption at rest (AES-256)"
+        - "Access control (4-tier RBAC)"
+        - "Audit logging (immutable)"
+    health_data:
+      # For funeral services and cemetery records
+      permitted_for:
+        - "funeral_services"
+        - "cemetery_records"
+      retention_period_years: 75
+      encryption_required: true
+
+  # Article 17 - Right to Erasure
+  right_to_erasure:
+    canonical_records_exception: true
+    sacramental_records:
+      baptism: "permanent_retention"
+      confirmation: "permanent_retention"
+      marriage: "permanent_retention"
+      death: "permanent_retention"
+      canonical_reason: "Canon 535 §1-5 - Parish registers must be preserved"
+    exception_reference: "GDPR Art. 17(3)(d)"
+
+  # Article 30 - Records of Processing Activities
+  records_of_processing:
+    required: true
+    template: "docs/compliance/ropa-lt-template.yml"
+    review_cycle_months: 12
+
+  # Article 44 - Data Transfers
+  data_transfers:
+    restricted_destinations:
+      - "us"  # United States (unless SCCs with supplementary measures)
+      - "ru"  # Russia
+      - "by"  # Belarus
+      - "cn"  # China
+    permitted_destinations:
+      - "at"  # Austria
+      - "be"  # Belgium
+      - "bg"  # Bulgaria
+      - "cy"  # Cyprus
+      - "cz"  # Czech Republic
+      - "de"  # Germany
+      - "dk"  # Denmark
+      - "ee"  # Estonia
+      - "es"  # Spain
+      - "fi"  # Finland
+      - "fr"  # France
+      - "gr"  # Greece
+      - "hr"  # Croatia
+      - "hu"  # Hungary
+      - "ie"  # Ireland
+      - "it"  # Italy
+      - "lt"  # Lithuania
+      - "lv"  # Latvia
+      - "mt"  # Malta
+      - "nl"  # Netherlands
+      - "pl"  # Poland
+      - "pt"  # Portugal
+      - "ro"  # Romania
+      - "se"  # Sweden
+      - "si"  # Slovenia
+      - "sk"  # Slovakia
+      - "va"  # Vatican City State
+
+# Consent Requirements
+consent:
+  cookie_consent:
+    law: "2002/58/EC (ePrivacy Directive) as transposed"
+    strict_necessary_exemption: true
+    analytics_opt_in: true
+    marketing_opt_in: true
+    consent_banner_language: "lt"
+    consent_version: "1.0"
+
+  # Consent text templates (Lithuanian)
+  consent_texts:
+    cookie_banner:
+      lt: "Mes naudojame slapukus, kad užtikrintume tinkamą svetainės veikimą. Tęsdami naršymą Jūs sutinkate su mūsų slapukų politika."
+      en: "We use cookies to ensure proper website functionality. By continuing to browse, you agree to our cookie policy."
+    privacy_notice:
+      lt: "Jūsų asmeniniai duomenys bus tvarkomi pagal GDPR reglamentą."
+      en: "Your personal data will be processed in accordance with GDPR."
+
+# Data Retention
+retention_periods:
+  sacramental_records: "permanent"  # Canon Law requirement
+  parishioner_records: 10  # years after last contact
+  donation_records: 7  # years (tax law requirement)
+  financial_records: 10  # years (Lithuanian tax law)
+  funeral_service_records: 75  # years
+  cemetery_records: 75  # years
+  website_analytics: 26  # months (GDPR best practice)
+  email_marketing: 36  # months
+  consent_records: 36  # months
+
+# Data Subject Rights
+data_subject_rights:
+  access_request:
+    response_deadline_days: 30
+    max_extension_days: 60
+    fee_allowed: false
+  rectification:
+    canonical_records_limitation: true
+  erasure:
+    canonical_exception: true
+  portability:
+    format: "JSON, XML"
+  objection:
+    direct_marketing_opt_out: true
+
+# Breach Notification
+breach_notification:
+  authority_notification_hours: 72
+  data_subject_notification:
+    required: true
+    threshold: "high_risk"
+  contact: "security@jol-hub.lt"
+
+# Children's Data
+children:
+  age_of_consent: 14
+  parental_verification_required: true
+  verification_method:
+    - "email_confirmation"
+    - "id_verification"
+
+# Religious Organizations Specific
+religious_organizations:
+  canonical_compliance:
+    canon_law_reference: "1983 Code of Canon Law"
+    relevant_canons:
+      - "Canon 220 - Right to good reputation"
+      - "Canon 223 §2 - Limitations on rights for public order"
+      - "Canon 535 §1-5 - Parish registers"
+      - "Canon 540 §5 - Parish records retention"
+    vatican_guidelines:
+      - "Pontifical Council for Social Communications (2002)"
+      - "The Church and Internet (2002)"
+
+# Audit Requirements
+audit:
+  internal_audit_frequency_months: 12
+  external_audit_required: true
+  external_audit_frequency_years: 2
+  standards:
+    - "ISO 27001"
+    - "SOC 2 Type II"
+    - "GDPR compliance audit"

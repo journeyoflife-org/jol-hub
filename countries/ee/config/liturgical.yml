@@ -1,0 +1,177 @@
+# Estonia Liturgical Calendar Configuration
+# Roman Catholic Church - Estonian Apostolic Administration
+# Compliance: GDPR Art. 5(1)(b) - Purpose Limitation for religious data
+
+country_code: "ee"
+country_name: "Estonia"
+language: "et"
+timezone: "Europe/Tallinn"
+
+# Liturgical Calendar Settings
+calendar:
+  type: "roman"
+  rite: "latin"
+  province: "Estonia Apostolic Administration"
+  
+  # Liturgical seasons with Estonian names
+  seasons:
+    advent:
+      name_et: "Advendiaeg"
+      color: "purple"
+    christmas:
+      name_et: "Jõuluaeg"
+      color: "white"
+    ordinary_time:
+      name_et: "Tavaline aeg"
+      color: "green"
+    lent:
+      name_et: "Suur paast"
+      color: "purple"
+    easter:
+      name_et: "Ülestõusmispühad"
+      color: "white"
+    pentecost:
+      name_et: "Nelipühad"
+      color: "red"
+
+  # Estonian specific feast days
+  local_feasts:
+    - date: "01-06"
+      name: "Kolmekuningapäev"
+      name_en: "Epiphany"
+      rank: "solemnity"
+    - date: "02-02"
+      name: "Kyünnenuppetulepüha"
+      name_en: "Presentation of the Lord"
+      rank: "feast"
+    - date: "02-24"
+      name: "Eesti Vabariigi aastapäev"
+      name_en: "Estonian Independence Day"
+      type: "national"
+    - date: "03-25"
+      name: "Paastukuuöeldused"
+      name_en: "Annunciation"
+      rank: "solemnity"
+    - date: "06-23"
+      name: "Võidupüha"
+      name_en: "Victory Day"
+      type: "national"
+    - date: "06-24"
+      name: "Jaanipäev"
+      name_en: "St. John's Day / Midsummer"
+      rank: "solemnity"
+    - date: "08-15"
+      name: "Neitsi Maarja taevaminek"
+      name_en: "Assumption of Mary"
+      rank: "solemnity"
+    - date: "11-01"
+      name: "Kõigi pühakute päev"
+      name_en: "All Saints Day"
+      rank: "solemnity"
+    - date: "11-02"
+      name: "Hingedepäev"
+      name_en: "All Souls Day"
+      rank: "commemoration"
+    - date: "12-24"
+      name: "Jõululaupäev"
+      name_en: "Christmas Eve"
+      rank: "solemnity"
+    - date: "12-25"
+      name: "Esimene jõulupüha"
+      name_en: "Christmas"
+      rank: "solemnity"
+    - date: "12-26"
+      name: "Teine jõulupüha"
+      name_en: "St. Stephen"
+      rank: "feast"
+
+  # Holy days of obligation in Estonia
+  holy_days_of_obligation:
+    - "01-01"  # Mary, Mother of God
+    - "01-06"  # Epiphany
+    - "03-19"  # St. Joseph
+    - "08-15"  # Assumption
+    - "11-01"  # All Saints
+    - "12-08"  # Immaculate Conception
+    - "12-25"  # Christmas
+
+  # Easter calculation reference
+  easter_calculation: "gregorian"
+
+# Dioceses in Estonia (Apostolic Administration)
+dioceses:
+  - name: "Eesti Apostellik Administratuur"
+    name_en: "Estonian Apostolic Administration"
+    type: "apostolic_administration"
+    cathedral: "Tallinna Peetri ja Pauli katedraal"
+    administrator_title: "Apostellik administraator"
+    directly_subject_to: "Holy See"
+
+# Catholic Churches in Estonia
+catholic_churches:
+  - name: "Tallinna Peetri ja Pauli katedraal"
+    name_en: "St. Peter and St. Paul Cathedral, Tallinn"
+    location: "Tallinn"
+    type: "cathedral"
+  - name: "Tallinna Püha Vaimu kirik"
+    name_en: "Church of the Holy Spirit, Tallinn"
+    location: "Tallinn"
+    type: "church"
+  - name: "Tartu Katoliku kirik"
+    name_en: "Catholic Church, Tartu"
+    location: "Tartu"
+    type: "church"
+  - name: "Narva Katoliku kirik"
+    name_en: "Catholic Church, Narva"
+    location: "Narva"
+    type: "church"
+
+# Orthodox Church Calendar (Julian)
+orthodox_calendar:
+  calendar_type: "julian"
+  jurisdictions:
+    - name: "Eesti Apostlik-Õigeusu Kirik"
+      name_en: "Estonian Apostolic Orthodox Church"
+      patriarchate: "Constantinople"
+    - name: "Moskva Patriarhaadi Eesti Õigeusu Kirik"
+      name_en: "Estonian Orthodox Church of Moscow Patriarchate"
+      patriarchate: "Moscow"
+  major_feasts:
+    - date: "01-07"  # Julian Christmas
+      name: "Jõulud"
+      name_en: "Christmas (Orthodox)"
+    - date: "04-XX"  # Variable Julian Easter
+      name: "Ülestõusmispühad"
+      name_en: "Easter (Orthodox)"
+
+# Lutheran Church Calendar (Majority historical)
+lutheran_calendar:
+  jurisdiction: "Eesti Evangeelne Luterlik Kirik"
+  name_en: "Estonian Evangelical Lutheran Church"
+  liturgical_year: "western"
+  major_feasts:
+    - "Jõulud"  # Christmas
+    - "Ülestõusmispühad"  # Easter
+    - "Nelipühad"  # Pentecost
+    - "Reformatsioonipüha"  # Reformation Sunday - Last Sunday of October
+
+# Lutheran Churches in Estonia
+lutheran_churches:
+  - name: "Tallinna Toomkirik"
+    name_en: "Tallinn Cathedral (St. Mary's)"
+    location: "Tallinn"
+    type: "cathedral"
+  - name: "Tartu Jaani kirik"
+    name_en: "St. John's Church, Tartu"
+    location: "Tartu"
+    type: "church"
+  - name: "Tallinna Niguliste kirik"
+    name_en: "St. Nicholas Church, Tallinn"
+    location: "Tallinn"
+    type: "church"
+    note: "Now a museum and concert hall"
+
+# GDPR Compliance Note
+# This configuration contains liturgical data used for website functionality.
+# No personal data is stored in this configuration file.
+# Processing of sacramental records is subject to Canon Law and GDPR Art. 9(2)(d).

@@ -1,0 +1,182 @@
+/* =============================================================================
+   JOL-HUB Admin Dashboard Styles
+   Sacred design system with liturgical colors
+   GDPR Article 44: Visual enforcement of data residency
+   ============================================================================= */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    /* Primary: Obsidian - Sacred */
+    --primary: 160 30% 14%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Accent: Gold - Reserved for Eucharist/important */
+    --accent: 45 70% 45%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 160 30% 14%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 160 30% 14%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 160 30% 14%;
+
+    /* Liturgical Colors - Catholic Church */
+    --liturgical-green: 120 40% 45%;
+    --liturgical-purple: 280 60% 40%;
+    --liturgical-red: 0 75% 50%;
+    --liturgical-white: 0 0% 98%;
+    --liturgical-rose: 350 70% 75%;
+    --liturgical-gold: 45 90% 55%;
+    --liturgical-black: 0 0% 10%;
+
+    /* Sacred Color Palette */
+    --sacred-obsidian: 160 30% 14%;
+    --sacred-gold: 45 70% 45%;
+    --sacred-parchment: 40 33% 97%;
+    --sacred-wine: 350 50% 30%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 45 70% 55%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 45 70% 45%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 45 70% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 45 70% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 45 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Liturgical color utilities */
+  .liturgical-green {
+    background-color: hsl(var(--liturgical-green));
+  }
+  .liturgical-purple {
+    background-color: hsl(var(--liturgical-purple));
+  }
+  .liturgical-red {
+    background-color: hsl(var(--liturgical-red));
+  }
+  .liturgical-white {
+    background-color: hsl(var(--liturgical-white));
+  }
+  .liturgical-rose {
+    background-color: hsl(var(--liturgical-rose));
+  }
+  .liturgical-gold {
+    background-color: hsl(var(--liturgical-gold));
+  }
+  
+  .text-liturgical-green {
+    color: hsl(var(--liturgical-green));
+  }
+  .text-liturgical-purple {
+    color: hsl(var(--liturgical-purple));
+  }
+  .text-liturgical-red {
+    color: hsl(var(--liturgical-red));
+  }
+  .text-liturgical-gold {
+    color: hsl(var(--liturgical-gold));
+  }
+
+  /* Sacred palette utilities */
+  .bg-sacred-obsidian {
+    background-color: hsl(var(--sacred-obsidian));
+  }
+  .bg-sacred-gold {
+    background-color: hsl(var(--sacred-gold));
+  }
+  .bg-sacred-parchment {
+    background-color: hsl(var(--sacred-parchment));
+  }
+  .text-sacred-gold {
+    color: hsl(var(--sacred-gold));
+  }
+}
+
+@layer components {
+  /* Tier badges - GDPR Article 44 visual hierarchy */
+  .tier-badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+  .tier-badge-global {
+    @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200;
+  }
+  .tier-badge-country {
+    @apply bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200;
+  }
+  .tier-badge-diocese {
+    @apply bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200;
+  }
+  .tier-badge-parish {
+    @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
+  }
+
+  /* Entity category styles */
+  .entity-catholic {
+    @apply border-l-4 border-l-liturgical-gold;
+  }
+  .entity-commercial {
+    @apply border-l-4 border-l-blue-500;
+  }
+
+  /* GDPR warning styles */
+  .gdpr-warning {
+    @apply border-yellow-500/50 bg-yellow-50 dark:bg-yellow-950/20;
+  }
+  .gdpr-restricted {
+    @apply border-red-500/50 bg-red-50 dark:bg-red-950/20;
+  }
+}

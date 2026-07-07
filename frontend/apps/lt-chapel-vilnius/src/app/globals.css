@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Chapel/Shrine Theme - Pilgrimage Colors */
+:root {
+  --background: #faf8f5;
+  --foreground: #1a1a2e;
+  --primary: #8b4513;
+  --primary-foreground: #ffffff;
+  --secondary: #a0522d;
+  --accent: #c9a959;
+  --muted: #f5f0e8;
+  --border: #d4c8b8;
+}
+
+.dark {
+  --background: #1a1a2e;
+  --foreground: #faf8f5;
+  --primary: #c9a959;
+  --primary-foreground: #1a1a2e;
+  --secondary: #d4a574;
+  --accent: #e8d4a8;
+  --muted: #2d2d3a;
+  --border: #3d3d4a;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Liturgical Colors */
+.bg-liturgical-gold { background-color: #c9a959; }
+.bg-liturgical-purple { background-color: #6b4c9a; }
+.bg-liturgical-green { background-color: #2e5a3a; }
+.bg-liturgical-red { background-color: #8b2942; }
+.bg-liturgical-white { background-color: #faf8f5; }
+.text-liturgical-gold { color: #c9a959; }
+
+/* Font Classes */
+.font-heading {
+  font-family: 'Crimson Text', serif;
+}
+
+/* Pilgrimage Theme */
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.text-primary {
+  color: var(--primary);
+}

@@ -1,10 +1,10 @@
 #!/bin/bash
-# FILE: /opt/jol/git/jol-hub/scripts/fix-dashboard.sh
+# FILE: /opt/jol/repos/jol-hub/scripts/fix-dashboard.sh
 
 echo "=== JOL Admin Dashboard Recovery ==="
 
 # Navigate to correct directory
-DASHBOARD_DIR="/opt/jol/git/jol-hub/frontend/apps/admin-dashboard"
+DASHBOARD_DIR="/opt/jol/repos/jol-hub/frontend/apps/admin-dashboard"
 cd "$DASHBOARD_DIR" || { echo "ERROR: Directory not found"; exit 1; }
 
 echo "[1/7] Current directory: $(pwd)"

@@ -1,0 +1,98 @@
+# Estonia St. Peter and St. Paul Cathedral Entity Configuration
+# GDPR Article 44: Country-scoped data routing
+# Canon Law: CIC 535 - Sacramental records retention
+
+entity:
+  id: "ee-cathedral-tallinn-st-peter-paul"
+  type: "cathedral"
+  name: "Tallinna Peetri ja Pauli katedraal"
+  name_en: "St. Peter and St. Paul Cathedral Tallinn"
+  country: "ee"
+  
+  # Canonical information
+  canonical:
+    jurisdiction: "Estonian Apostolic Administration"
+    type: "cathedral"
+    dedication: "St. Peter and St. Paul"
+    consecration_date: "1845"
+    status: "cathedral"
+    
+  # Contact information
+  contact:
+    address: "Vene 18, 10123 Tallinn, Eesti"
+    phone: "+372 644 2545"
+    email: "katedraal@catholic.ee"
+    website: "https://elu-tee.ee/st-peter-paul-cathedral"
+    
+  # Hierarchy
+  hierarchy:
+    level: 2
+    parent_diocese: "ee-estonia-apostolic"
+    deanery: "tallinn-deanery"
+    
+  # Localization
+  languages:
+    primary: "et"
+    supported: ["et", "en", "ru"]
+    
+  # Domain configuration
+  domain:
+    primary: "st-peter-paul-cathedral.elu-tee.ee"
+    aliases:
+      - "katedraal.elu-tee.ee"
+    
+  # Features enabled
+  features:
+    - "mass_schedules"
+    - "sacraments"
+    - "donations"
+    - "events"
+    - "tours"
+    
+  # Mass schedule
+  schedule:
+    masses:
+      - day: "monday-friday"
+        times: ["18:00"]
+        language: "et"
+      - day: "saturday"
+        times: ["18:00"]
+        language: "et"
+      - day: "sunday"
+        times: ["09:00", "11:00", "18:00"]
+        languages: ["et", "en", "ru"]
+    confessions:
+      - day: "saturday"
+        times: ["17:00-17:45"]
+      - day: "sunday"
+        times: ["08:00-08:45"]
+        
+  # Sacraments
+  sacraments:
+    baptism: true
+    confirmation: true
+    eucharist: true
+    reconciliation: true
+    marriage: true
+    holy_orders: false
+    anointing_sick: true
+    
+  # Compliance
+  compliance:
+    gdpr: true
+    canon_law: true
+    dpa: "Andmekaitse Inspektsioon"
+    
+  # Integrations
+  integrations:
+    bitrix24:
+      portal: "elu-tee.bitrix24.ee"
+      sync_contacts: true
+      sync_donations: true
+      
+  # Audit
+  audit:
+    created_at: "2026-04-06T00:00:00Z"
+    created_by: "system"
+    last_modified: "2026-04-06T00:00:00Z"
+    version: "1.0.0"

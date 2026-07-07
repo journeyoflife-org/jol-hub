@@ -372,3 +372,157 @@ variable "opensearch_master_password" {
   sensitive   = true
   default     = ""
 }
+
+# -----------------------------------------------------------------------------
+# Secrets Management Variables
+# -----------------------------------------------------------------------------
+
+variable "secrets_recovery_window_days" {
+  description = "Number of days to retain deleted secrets (7-30)"
+  type        = number
+  default     = 7
+}
+
+variable "enable_secret_rotation" {
+  description = "Enable automatic secret rotation"
+  type        = bool
+  default     = false
+}
+
+# Payment Secrets (PCI-DSS Scoped)
+variable "stripe_secret_key" {
+  description = "Stripe secret API key"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "stripe_publishable_key" {
+  description = "Stripe publishable API key"
+  type        = string
+  default     = ""
+}
+
+variable "stripe_webhook_secret" {
+  description = "Stripe webhook signing secret"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "paypal_client_id" {
+  description = "PayPal client ID"
+  type        = string
+  default     = ""
+}
+
+variable "paypal_client_secret" {
+  description = "PayPal client secret"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "paypal_mode" {
+  description = "PayPal mode (sandbox or live)"
+  type        = string
+  default     = "sandbox"
+}
+
+# Email Secrets
+variable "email_host" {
+  description = "SMTP server hostname"
+  type        = string
+  default     = "smtp.gmail.com"
+}
+
+variable "email_port" {
+  description = "SMTP server port"
+  type        = number
+  default     = 587
+}
+
+variable "email_host_user" {
+  description = "SMTP username"
+  type        = string
+  default     = ""
+}
+
+variable "email_host_password" {
+  description = "SMTP password"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "email_use_tls" {
+  description = "Use TLS for SMTP connection"
+  type        = bool
+  default     = true
+}
+
+# Integration Secrets
+variable "bitrix24_webhook_url" {
+  description = "Bitrix24 incoming webhook URL"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "bitrix24_portal_id" {
+  description = "Bitrix24 portal ID"
+  type        = string
+  default     = ""
+}
+
+variable "bitrix24_contact_group_id" {
+  description = "Bitrix24 contact group ID"
+  type        = string
+  default     = ""
+}
+
+# OAuth Secrets
+variable "google_oauth_client_id" {
+  description = "Google OAuth client ID"
+  type        = string
+  default     = ""
+}
+
+variable "google_oauth_client_secret" {
+  description = "Google OAuth client secret"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "facebook_oauth_client_id" {
+  description = "Facebook OAuth client ID"
+  type        = string
+  default     = ""
+}
+
+variable "facebook_oauth_client_secret" {
+  description = "Facebook OAuth client secret"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+# HashiCorp Vault
+variable "enable_vault" {
+  description = "Enable HashiCorp Vault integration"
+  type        = bool
+  default     = false
+}
+
+variable "vault_addr" {
+  description = "HashiCorp Vault server address"
+  type        = string
+  default     = ""
+}
+
+variable "vault_namespace" {
+  description = "HashiCorp Vault namespace (for Enterprise)"
+  type        = string
+  default     = ""
+}

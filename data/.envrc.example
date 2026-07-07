@@ -1,0 +1,17 @@
+export VIRTUAL_ENV=/opt/jol/venvs/jol-data
+export PATH=$VIRTUAL_ENV/bin:$PATH
+export AIRFLOW_HOME=/opt/jol/repos/jol-hub/data/airflow
+export DBT_PROJECT_DIR=/opt/jol/repos/jol-hub/data/dbt
+export PYTHONPATH=/opt/jol/repos/jol-hub/data/src:$PYTHONPATH
+
+# Database credentials (matches docker-compose.yml)
+export DB_HOST=localhost
+export DB_PORT=5432
+export DB_NAME=jolhub
+export DB_USER=jolhub
+export DB_PASSWORD=${DB_PASSWORD:-jolhub} 
+
+# uses env var, falls back to local default
+# export DB_PASSWORD=CHANGE_ME
+
+echo "Activated: jol-data (ETL/Analytics)"

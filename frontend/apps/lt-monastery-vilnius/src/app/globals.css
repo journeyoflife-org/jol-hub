@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Monastery Theme - Contemplative Colors */
+:root {
+  --background: #f8f6f0;
+  --foreground: #1a1a2e;
+  --primary: #2c3e50;
+  --primary-foreground: #ffffff;
+  --secondary: #34495e;
+  --accent: #8b4513;
+  --muted: #f1f0e8;
+  --border: #d4c8b8;
+}
+
+.dark {
+  --background: #1a1a2e;
+  --foreground: #f8f6f0;
+  --primary: #c9a959;
+  --primary-foreground: #1a1a2e;
+  --secondary: #8b7355;
+  --accent: #d4a574;
+  --muted: #2d2d3a;
+  --border: #3d3d4a;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Liturgical Colors */
+.bg-liturgical-gold { background-color: #c9a959; }
+.bg-liturgical-purple { background-color: #6b4c9a; }
+.bg-liturgical-green { background-color: #2e5a3a; }
+.bg-liturgical-red { background-color: #8b2942; }
+.bg-liturgical-white { background-color: #f8f6f0; }
+.text-liturgical-gold { color: #c9a959; }
+
+/* Font Classes */
+.font-heading {
+  font-family: 'Crimson Text', serif;
+}
+
+/* Contemplative Theme */
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.text-primary {
+  color: var(--primary);
+}

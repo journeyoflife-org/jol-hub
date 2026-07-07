@@ -146,4 +146,17 @@ export type {
   EncryptionConfig,
 } from './lib/pii-encryption';
 
+// Entity CRM Integration Hooks
+export { useEntityCRM } from './hooks/useEntityCRM';
+export type {
+  EntityType,
+  CRMContact,
+  CRMDeal,
+  AuditLogEntry,
+  EntityCRMMConfig,
+  EntityCRMMState,
+  EntityCRMOperations,
+  UseEntityCRMReturn,
+} from './hooks/useEntityCRM';
+
 // Types

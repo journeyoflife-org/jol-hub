@@ -1,0 +1,90 @@
+# Example 4: Vilnius City Deanery
+# Organization Configuration for JOL-HUB
+
+entity:
+  id: "lt-catholic-deanery-001"
+  name: "Vilniaus miesto dekanatas"
+  name_en: "Vilnius City Deanery"
+  type: "deanery"
+  status: "active"
+  country: "lt"
+  
+  # Canonical Information
+  canonical:
+    rite: "roman"
+    jurisdiction: "Vilnius Archdiocese"
+    jurisdiction_type: "deanery"
+    dean: "Rev. Msgr. Aldonas Gudavičius"
+    
+  # Hierarchical Structure
+  hierarchy:
+    parent_diocese: "lt-catholic-diocese-001"
+    
+  # Location (Deanery Office)
+  address:
+    street: "Šventaragio g. 2"
+    city: "Vilnius"
+    postal_code: "01128"
+    country: "Lithuania"
+    coordinates:
+      latitude: 54.6833
+      longitude: 25.2900
+      
+  # Contact Information
+  contact:
+    email: "vilniaus.dekanatas@vyc.vu.lt"
+    
+  # Parishes in Deanery
+  parishes:
+    - id: "lt-parish-st-teresa"
+      name: "Vilniaus Šv. Teresės bažnyčia"
+    - id: "lt-parish-st-john"
+      name: "Vilniaus Šv. Jono bažnyčia"
+    - id: "lt-parish-st-casimir"
+      name: "Vilniaus Šv. Kazimiero bažnyčia"
+    - id: "lt-parish-st-ann"
+      name: "Vilniaus Šv. Onos bažnyčia"
+    - id: "lt-parish-st-francis"
+      name: "Vilniaus Šv. Pranciškaus bažnyčia"
+    - id: "lt-parish-holy-cross"
+      name: "Vilniaus Šv. Kryžiaus bažnyčia"
+    - id: "lt-parish-st-michael"
+      name: "Vilniaus Šv. Arkangelo Mykolo bažnyčia"
+    - id: "lt-parish-st-raphael"
+      name: "Vilniaus Šv. Rapolo bažnyčia"
+    - id: "lt-parish-st-james"
+      name: "Vilniaus Šv. Jokūbo bažnyčia"
+    - id: "lt-parish-st-joseph"
+      name: "Vilniaus Šv. Juozapo bažnyčia"
+    - id: "lt-parish-st-peter-paul"
+      name: "Vilniaus Šv. Petro ir Povilo bažnyčia"
+    - id: "lt-parish-orthodox-church"
+      name: "Vilniaus Dievo Motinos (Orthodox)"
+    - id: "lt-parish-st-nicholas"
+      name: "Vilniaus Šv. Mikalojaus bažnyčia"
+    - id: "lt-parish-all-saints"
+      name: "Vilniaus Visų Šventųjų bažnyčia"
+    - id: "lt-parish-st-andrew"
+      name: "Vilniaus Šv. Andriejaus bažnyčia"
+    # ... additional parishes
+    
+  # Bitrix24 Integration (Shared CRM)
+  bitrix24:
+    portal_domain: "vilniaus-arkivyskupija.bitrix24.eu"
+    shared_crm: true
+    parish_access_level: "read_write"
+    contact_group_id: 2
+    
+  # Website Configuration
+  website:
+    domain: "vilnius-miesto-dekanatas.lt"
+    ssl_enabled: true
+    default_language: "lt"
+    theme: "deanery-shared"
+    
+  # Compliance Configuration
+  compliance:
+    level: "gdpr"
+    shared_parish_data: true
+    aggregated_reporting: true
+    audit_logging: true

@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
-import { Cormorant_Garamond, Source_Sans_Pro } from 'next/font/google';
+import { Cormorant_Garamond, Source_Sans_3 } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-heading',
 });
 
-const sourceSans = Source_Sans_Pro({
+const sourceSans = Source_Sans_3({
   subsets: ['latin'],
   weight: ['400', '600', '700'],
   variable: '--font-body',

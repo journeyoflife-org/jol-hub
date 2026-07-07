@@ -1,0 +1,192 @@
+# -----------------------------------------------------------------------------
+# JOL-HUB Kubernetes Security Manifests
+# -----------------------------------------------------------------------------
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: jol-hub-service-account
+  namespace: jol-hub
+  labels:
+    app.kubernetes.io/name: jol-hub
+automountServiceAccountToken: true
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: jol-hub-role
+  namespace: jol-hub
+  labels:
+    app.kubernetes.io/name: jol-hub
+rules:
+  # Allow reading configmaps and secrets
+  - apiGroups: [""]
+    resources: ["configmaps", "secrets"]
+    verbs: ["get", "list", "watch"]
+  # Allow managing pods
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch", "delete"]
+  # Allow managing deployments
+  - apiGroups: ["apps"]
+    resources: ["deployments"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: jol-hub-role-binding
+  namespace: jol-hub
+  labels:
+    app.kubernetes.io/name: jol-hub
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: jol-hub-role
+subjects:
+  - kind: ServiceAccount
+    name: jol-hub-service-account
+    namespace: jol-hub
+---
+# -----------------------------------------------------------------------------
+# Pod Security Policy (deprecated in K8s 1.25+, use Pod Security Standards)
+# -----------------------------------------------------------------------------
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: jol-hub
+  labels:
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/enforce-version: latest
+    pod-security.kubernetes.io/audit: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+# -----------------------------------------------------------------------------
+# External Secrets Operator Configuration
+# -----------------------------------------------------------------------------
+apiVersion: external-secrets.io/v1beta1
+kind: SecretStore
+metadata:
+  name: aws-secrets-manager
+  namespace: jol-hub
+spec:
+  provider:
+    aws:
+      service: SecretsManager
+      region: eu-west-1
+      auth:
+        jwt:
+          serviceAccountRef:
+            name: jol-hub-service-account
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: jol-hub-secrets
+  namespace: jol-hub
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: aws-secrets-manager
+    kind: SecretStore
+  target:
+    name: jol-hub-secrets
+    creationPolicy: Owner
+  data:
+    - secretKey: DJANGO_SECRET_KEY
+      remoteRef:
+        key: jol-hub/production/django
+        property: secret_key
+    - secretKey: DB_PASSWORD
+      remoteRef:
+        key: jol-hub/production/database
+        property: password
+    - secretKey: STRIPE_SECRET_KEY
+      remoteRef:
+        key: jol-hub/production/stripe
+        property: secret_key
+    - secretKey: STRIPE_WEBHOOK_SECRET
+      remoteRef:
+        key: jol-hub/production/stripe
+        property: webhook_secret
+---
+# -----------------------------------------------------------------------------
+# Cert-Manager Configuration
+# -----------------------------------------------------------------------------
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: admin@jol-hub.eu
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+      - http01:
+          ingress:
+            class: nginx
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging
+spec:
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: admin@jol-hub.eu
+    privateKeySecretRef:
+      name: letsencrypt-staging
+    solvers:
+      - http01:
+          ingress:
+            class: nginx
+---
+# -----------------------------------------------------------------------------
+# Limit Ranges
+# -----------------------------------------------------------------------------
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: jol-hub-limit-range
+  namespace: jol-hub
+spec:
+  limits:
+    - type: Container
+      default:
+        cpu: 500m
+        memory: 512Mi
+      defaultRequest:
+        cpu: 100m
+        memory: 128Mi
+      max:
+        cpu: 2000m
+        memory: 4Gi
+      min:
+        cpu: 50m
+        memory: 64Mi
+    - type: PersistentVolumeClaim
+      max:
+        storage: 100Gi
+      min:
+        storage: 1Gi
+---
+# -----------------------------------------------------------------------------
+# Resource Quotas
+# -----------------------------------------------------------------------------
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: jol-hub-resource-quota
+  namespace: jol-hub
+spec:
+  hard:
+    requests.cpu: "10"
+    requests.memory: 20Gi
+    limits.cpu: "20"
+    limits.memory: 40Gi
+    pods: "50"
+    services: "20"
+    secrets: "50"
+    configmaps: "50"
+    persistentvolumeclaims: "20"

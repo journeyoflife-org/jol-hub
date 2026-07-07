@@ -1,0 +1,47 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Raw data from JOL-HUB operational database
+    schema: public
+    tables:
+      - name: donations
+        description: Raw donation records
+        columns:
+          - name: id
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+          - name: donor_id
+            description: Foreign key to donors table
+            tests:
+              - not_null
+          - name: amount
+            description: Donation amount
+            tests:
+              - not_null
+          - name: currency
+            description: ISO currency code
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['EUR', 'USD', 'GBP', 'SEK', 'NOK', 'DKK', 'PLN', 'CZK']
+      
+      - name: users
+        description: User accounts
+        columns:
+          - name: id
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+          - name: email
+            description: User email address
+            tests:
+              - unique
+              - not_null
+          - name: created_at
+            description: Account creation timestamp
+            tests:
+              - not_null
