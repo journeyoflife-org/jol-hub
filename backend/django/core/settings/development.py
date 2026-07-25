@@ -12,6 +12,19 @@ from .base import *
 DEBUG = True
 
 # =============================================================================
+# D E B U G   T O O L B A R
+# =============================================================================
+
+# Add debug toolbar middleware only in development
+MIDDLEWARE.insert(0, 'debug_toolbar.middleware.DebugToolbarMiddleware')
+
+# Debug toolbar internal IPs
+INTERNAL_IPS = [
+    '127.0.0.1',
+    'localhost',
+]
+
+# =============================================================================
 # P O S T G R E S Q L   1 6   C O N F I G U R A T I O N
 # =============================================================================
 
@@ -20,9 +33,12 @@ DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DB_NAME', default='jolhub'),
-        'USER': env('DB_USER', default='jolhub'),
-        'PASSWORD': env('DB_PASSWORD', default='jolhub'),
+        'NAME': env('DB_NAME', default='jol_lt_platform_prod'),
+        'USER': env('DB_USER', default='jol_lt_app_user'),
+        # SECURITY: Never hardcode real credentials here. The actual value
+        # must come from backend/django/.env (gitignored). This default is a
+        # non-functional placeholder so the app fails loudly if .env is missing.
+        'PASSWORD': env('DB_PASSWORD', default='change-me-in-env'),
         'HOST': env('DB_HOST', default='localhost'),
         'PORT': env('DB_PORT', default='5432'),
         'CONN_MAX_AGE': 600,
@@ -70,16 +86,6 @@ SESSION_CACHE_ALIAS = 'default'
 CELERY_BROKER_URL = env('CELERY_BROKER_URL', default='redis://localhost:6379/0')
 CELERY_RESULT_BACKEND = env('CELERY_RESULT_BACKEND', default='redis://localhost:6379/1')
 CELERY_TASK_ALWAYS_EAGER = env.bool('CELERY_TASK_ALWAYS_EAGER', default=False)
-
-# =============================================================================
-# D E B U G   T O O L B A R
-# =============================================================================
-
-# Debug toolbar internal IPs
-INTERNAL_IPS = [
-    '127.0.0.1',
-    'localhost',
-]
 
 # =============================================================================
 # L O G G I N G   ( D E V E L O P M E N T )

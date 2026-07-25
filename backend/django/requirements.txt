@@ -55,6 +55,9 @@ packaging==26.0
 pandas==3.0.1
 pillow==12.1.1
 pluggy==1.6.0
+pymongo[srv]==4.13.2
+dnspython==2.7.0
+mongomock==4.3.0
 prometheus-client==0.21.1
 prompt_toolkit==3.0.52
 psycopg2-binary==2.9.11

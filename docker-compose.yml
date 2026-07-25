@@ -4,6 +4,7 @@
 # Services:
 #   • db: PostgreSQL 16
 #   • redis: Redis 7 (Celery broker + cache)
+#   • mongodb: MongoDB 7 (secondary document store for webhooks & audit logs)
 #   • backend: Django development server
 #   • celery-worker: Celery worker
 #   • celery-beat: Celery scheduler
@@ -16,15 +17,17 @@ services:
     image: postgres:16-alpine
     container_name: jolhub-db
     environment:
-      POSTGRES_DB: jolhub
-      POSTGRES_USER: jolhub
-      POSTGRES_PASSWORD: jolhub
+      POSTGRES_DB: jol_lt_platform_prod
+      POSTGRES_USER: jol_lt_app_user
+      # SECURITY: Override POSTGRES_PASSWORD via a local .env file.
+      # Never commit real credentials (SOC2 CC6.1 / GDPR Art. 32).
+      POSTGRES_PASSWORD: change-me
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U jolhub"]
+      test: ["CMD-SHELL", "pg_isready -U jol_lt_app_user"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -42,6 +45,31 @@ services:
       timeout: 5s
       retries: 5
 
+  mongodb:
+    image: mongo:7
+    container_name: jolhub-mongodb
+    # Bind only to loopback — NEVER expose 27017 to the public internet.
+    # SOC2 CC6.1 / ISO 27001 A.13.1
+    ports:
+      - "127.0.0.1:27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: jol_mongo_app
+      # SECURITY: Override via local .env. Never commit real credentials.
+      MONGO_INITDB_ROOT_PASSWORD: change-me
+      MONGO_INITDB_DATABASE: jolhub_documents
+    volumes:
+      - mongo_data:/data/db
+    # WiredTiger cache capped at 512 MB for dev to avoid host memory pressure.
+    command: >
+      mongod
+      --wiredTigerCacheSizeGB 0.5
+      --quiet
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   backend:
     build:
       context: ./backend
@@ -52,9 +80,13 @@ services:
              python manage.py runserver 0.0.0.0:8000"
     environment:
       DEBUG: "true"
-      DATABASE_URL: postgres://jolhub:jolhub@db:5432/jolhub
+      DATABASE_URL: postgres://jol_lt_app_user:change-me@db:5432/jol_lt_platform_prod
       REDIS_URL: redis://redis:6379/0
       DJANGO_SECRET_KEY: local-dev-secret-key-not-for-production
+      MONGODB_URI: mongodb://jol_mongo_app:change-me@mongodb:27017/jolhub_documents?authSource=admin&authMechanism=SCRAM-SHA-256
+      MONGODB_DB_NAME: jolhub_documents
+      MONGODB_TLS_ENABLED: "false"
+      MONGODB_TTL_DAYS: "90"
     volumes:
       - ./backend:/app
       - static_volume:/app/static
@@ -66,23 +98,30 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+      mongodb:
+        condition: service_healthy
 
   celery-worker:
     build:
       context: ./backend
       dockerfile: Dockerfile.dev
     container_name: jolhub-celery-worker
-    command: celery -A backend.django.core worker -l info -c 2
+    command: celery -A core worker -l info -c 2
     environment:
       DEBUG: "true"
-      DATABASE_URL: postgres://jolhub:jolhub@db:5432/jolhub
+      DATABASE_URL: postgres://jol_lt_app_user:change-me@db:5432/jol_lt_platform_prod
       REDIS_URL: redis://redis:6379/0
       DJANGO_SECRET_KEY: local-dev-secret-key-not-for-production
+      MONGODB_URI: mongodb://jol_mongo_app:change-me@mongodb:27017/jolhub_documents?authSource=admin&authMechanism=SCRAM-SHA-256
+      MONGODB_DB_NAME: jolhub_documents
+      MONGODB_TLS_ENABLED: "false"
+      MONGODB_TTL_DAYS: "90"
     volumes:
       - ./backend:/app
     depends_on:
       - db
       - redis
+      - mongodb
       - backend
 
   celery-beat:
@@ -90,21 +129,27 @@ services:
       context: ./backend
       dockerfile: Dockerfile.dev
     container_name: jolhub-celery-beat
-    command: celery -A backend.django.core beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    command: celery -A core beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
     environment:
       DEBUG: "true"
-      DATABASE_URL: postgres://jolhub:jolhub@db:5432/jolhub
+      DATABASE_URL: postgres://jol_lt_app_user:change-me@db:5432/jol_lt_platform_prod
       REDIS_URL: redis://redis:6379/0
       DJANGO_SECRET_KEY: local-dev-secret-key-not-for-production
+      MONGODB_URI: mongodb://jol_mongo_app:change-me@mongodb:27017/jolhub_documents?authSource=admin&authMechanism=SCRAM-SHA-256
+      MONGODB_DB_NAME: jolhub_documents
+      MONGODB_TLS_ENABLED: "false"
+      MONGODB_TTL_DAYS: "90"
     volumes:
       - ./backend:/app
     depends_on:
       - db
       - redis
+      - mongodb
       - backend
 
 volumes:
   postgres_data:
   redis_data:
+  mongo_data:
   static_volume:
   media_volume:
