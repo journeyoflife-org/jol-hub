@@ -71,10 +71,12 @@ The monorepo acts as the **authoritative source of truth** for shared platform l
          │
   ┌──────▼──────────────────────────────────────────────────────┐
   │                   Satellite Repositories                     │
-  │  jol-backend-platform · jol-frontend-platform               │
-  │  jol-analytics-ai · jol-infrastructure · jol-ecommerce      │
-  │  jol-bitrix24-integration · jol-domain-taxonomy             │
-  │  jol-link-registry · mcp-servers                            │
+  │  jol-auth · jol-analytics-ai · jol-bitrix24-integration      │
+  │  jol-compliance · jol-devops · jol-ecommerce-engine          │
+  │  jol-infrastructure · jol-link-registry · jol-mcp-servers     │
+  │  jol-repo-template · jol-scripts · jol-security             │
+  │  (stubs: jol-backend-platform · jol-frontend-platform        │
+  │         · jol-domain-taxonomy)                               │
   └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -158,17 +160,32 @@ jol-hub/
 
 All satellite repositories are cloned under `/opt/jol/repos/` and maintain their own lifecycle. JOL-HUB coordinates but does not own their internals.
 
+### Active Satellite Repositories
+
 | Repository | Local Path | IDE | Description |
 |---|---|---|---|
-| [jol-backend-platform](https://github.com/journeyoflife-org/jol-backend-platform) | `/opt/jol/repos/jol-backend-platform` | PyCharm | Core backend APIs and services |
-| [jol-frontend-platform](https://github.com/journeyoflife-org/jol-frontend-platform) | `/opt/jol/repos/jol-frontend-platform` | PhpStorm | Tenant-facing frontend platform |
-| [jol-infrastructure](https://github.com/journeyoflife-org/jol-infrastructure) | `/opt/jol/repos/jol-infrastructure` | PyCharm | Terraform, Ansible, CI/CD configs |
+| [jol-auth](https://github.com/journeyoflife-org/jol-auth) | `/opt/jol/repos/jol-auth` | PyCharm | OAuth 2.1 / OIDC authentication service |
 | [jol-analytics-ai](https://github.com/journeyoflife-org/jol-analytics-ai) | `/opt/jol/repos/jol-analytics-ai` | PyCharm | Analytics and AI enrichment services |
-| [jol-ecommerce-engine](https://github.com/journeyoflife-org/jol-ecommerce-engine) | `/opt/jol/repos/jol-ecommerce-engine` | PhpStorm | Product catalog, payments, VAT |
 | [jol-bitrix24-integration](https://github.com/journeyoflife-org/jol-bitrix24-integration) | `/opt/jol/repos/jol-bitrix24-integration` | PyCharm | Bitrix24 CRM integration layer |
-| [jol-domain-taxonomy](https://github.com/journeyoflife-org/jol-domain-taxonomy) | `/opt/jol/repos/jol-domain-taxonomy` | PyCharm | Canonical taxonomy and classifications |
+| [jol-compliance](https://github.com/journeyoflife-org/jol-compliance) | `/opt/jol/repos/jol-compliance` | PyCharm | GDPR / SOC 2 / ISO 27001 compliance engine |
+| [jol-devops](https://github.com/journeyoflife-org/jol-devops) | `/opt/jol/repos/jol-devops` | PyCharm | DevOps tooling, automation scripts, runbooks |
+| [jol-ecommerce-engine](https://github.com/journeyoflife-org/jol-ecommerce-engine) | `/opt/jol/repos/jol-ecommerce-engine` | PhpStorm | Product catalog, payments, VAT (PCI-DSS SAQ A) |
+| [jol-infrastructure](https://github.com/journeyoflife-org/jol-infrastructure) | `/opt/jol/repos/jol-infrastructure` | PyCharm | Terraform, Ansible, CI/CD configs |
 | [jol-link-registry](https://github.com/journeyoflife-org/jol-link-registry) | `/opt/jol/repos/jol-link-registry` | PyCharm | Platform-wide URL and link registry |
-| [mcp-servers](https://github.com/journeyoflife-org/mcp-servers) | `/opt/jol/mcp-servers` | PyCharm | MCP server orchestration layer |
+| [jol-mcp-servers](https://github.com/journeyoflife-org/jol-mcp-servers) | `/opt/jol/repos/jol-mcp-servers` | PyCharm | MCP server orchestration layer |
+| [jol-repo-template](https://github.com/journeyoflife-org/jol-repo-template) | `/opt/jol/repos/jol-repo-template` | PyCharm | Template repository for new satellite repos |
+| [jol-scripts](https://github.com/journeyoflife-org/jol-scripts) | `/opt/jol/repos/jol-scripts` | PyCharm | Shared utility and migration scripts |
+| [jol-security](https://github.com/journeyoflife-org/jol-security) | `/opt/jol/repos/jol-security` | PyCharm | Security scanning, WAF rules, pen-test tooling |
+
+### Stub Repositories (not yet populated)
+
+The following repositories exist on GitHub but contain only a placeholder README. They are reserved for future decomposition of the monolith.
+
+| Repository | Local Path | Status |
+|---|---|---|
+| [jol-backend-platform](https://github.com/journeyoflife-org/jol-backend-platform) | `/opt/jol/repos/jol-backend-platform` | Stub — reserved for backend microservice extraction |
+| [jol-frontend-platform](https://github.com/journeyoflife-org/jol-frontend-platform) | `/opt/jol/repos/jol-frontend-platform` | Stub — reserved for frontend monorepo extraction |
+| [jol-domain-taxonomy](https://github.com/journeyoflife-org/jol-domain-taxonomy) | `/opt/jol/repos/jol-domain-taxonomy` | Stub — reserved for canonical domain model extraction |
 
 ***
 
