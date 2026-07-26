@@ -121,5 +121,6 @@ Thumbs.db
 .tmp/
 *.bak
 *.backup
+*.dump
 data/.envrc
 .idea/

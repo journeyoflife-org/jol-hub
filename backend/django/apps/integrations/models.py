@@ -13,12 +13,14 @@ class WebhookEvent(BaseModel):
     """Stores incoming webhook payloads for idempotent processing."""
 
     STATUS_PENDING = 'pending'
+    STATUS_PROCESSING = 'processing'
     STATUS_PROCESSED = 'processed'
     STATUS_FAILED = 'failed'
     STATUS_IGNORED = 'ignored'
 
     STATUS_CHOICES = [
         (STATUS_PENDING, _('Pending')),
+        (STATUS_PROCESSING, _('Processing')),
         (STATUS_PROCESSED, _('Processed')),
         (STATUS_FAILED, _('Failed')),
         (STATUS_IGNORED, _('Ignored')),

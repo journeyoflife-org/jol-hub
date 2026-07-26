@@ -116,7 +116,6 @@ LOCAL_APPS = [
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     # Security middleware
     'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
@@ -170,7 +169,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DB_NAME', default='jolhub'),
+        'NAME': env('DB_NAME', default='jol_lt_platform_prod'),
         'USER': env('DB_USER', default='postgres'),
         'PASSWORD': env('DB_PASSWORD', default='postgres'),
         'HOST': env('DB_HOST', default='localhost'),
@@ -428,7 +427,7 @@ SERVER_EMAIL = env('SERVER_EMAIL', default='errors@journeyoflife.org')
 ADMINS = [('JOL Admin', env('ADMIN_EMAIL', default='admin@journeyoflife.org'))]
 
 # Email templates
-EMAIL_TEMPLATE_PATH = BASE_DIR / 'backend' / 'django' / 'templates' / 'emails'
+EMAIL_TEMPLATE_PATH = BASE_DIR / 'django' / 'templates' / 'emails'
 
 # =============================================================================
 # LOGGING CONFIGURATION
@@ -656,7 +655,7 @@ RECAPTCHA_PUBLIC_KEY = env('RECAPTCHA_PUBLIC_KEY', default='')
 RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_PRIVATE_KEY', default='')
 
 # Payment gateways
-STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY', default='')
+STRIPE_PUBLISHABLE_KEY = env('STRIPE_PUBLISHABLE_KEY', default='')
 STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY', default='')
 STRIPE_WEBHOOK_SECRET = env('STRIPE_WEBHOOK_SECRET', default='')
 
@@ -664,6 +663,61 @@ STRIPE_WEBHOOK_SECRET = env('STRIPE_WEBHOOK_SECRET', default='')
 PAYPAL_CLIENT_ID = env('PAYPAL_CLIENT_ID', default='')
 PAYPAL_CLIENT_SECRET = env('PAYPAL_CLIENT_SECRET', default='')
 PAYPAL_MODE = env('PAYPAL_MODE', default='sandbox')
+
+# =============================================================================
+# OBSERVABILITY / PROMETHEUS
+# =============================================================================
+
+# Comma-separated list of IPs allowed to access /metrics/ (empty = allow all).
+# In production this MUST be set, e.g. "10.0.0.0/8,172.16.0.0/12".
+_raw_prom_ips = env('PROMETHEUS_ALLOWED_IPS', default='')
+PROMETHEUS_ALLOWED_IPS = [ip.strip() for ip in _raw_prom_ips.split(',') if ip.strip()]
+
+# Optional bearer token for /metrics/ (empty = disabled).
+PROMETHEUS_AUTH_TOKEN = env('PROMETHEUS_AUTH_TOKEN', default='')
+
+# Directory for Prometheus multi-process metrics (Gunicorn workers).
+# Set to e.g. "/tmp/prometheus_multiproc" when running with multiple workers.
+PROMETHEUS_MULTIPROC_DIR = env('PROMETHEUS_MULTIPROC_DIR', default='')
+
+# =============================================================================
+# MONGODB CONFIGURATION
+# =============================================================================
+# MongoDB is used as a secondary document store for:
+#   - Raw Bitrix24 webhook payloads (unpredictable JSON schema)
+#   - High-volume audit / event logs (write-heavy, TTL-managed)
+# PostgreSQL remains the primary relational data store.
+#
+# SOC2 CC6.1 / GDPR Art. 32 — Connection string MUST be supplied via
+# environment variable; NEVER hardcode credentials.
+
+MONGODB_URI = env('MONGODB_URI', default='mongodb://localhost:27017')
+MONGODB_DB_NAME = env('MONGODB_DB_NAME', default='jolhub_documents')
+
+# TLS/SSL — enforced in production; can be disabled for local dev.
+MONGODB_TLS_ENABLED = env.bool('MONGODB_TLS_ENABLED', default=False)
+MONGODB_TLS_CA_FILE = env('MONGODB_TLS_CA_FILE', default='')
+
+# Connection pool tuning (defaults suit most workloads).
+MONGODB_MAX_POOL_SIZE = env.int('MONGODB_MAX_POOL_SIZE', default=50)
+MONGODB_MIN_POOL_SIZE = env.int('MONGODB_MIN_POOL_SIZE', default=5)
+MONGODB_MAX_IDLE_TIME_MS = env.int('MONGODB_MAX_IDLE_TIME_MS', default=60_000)
+MONGODB_CONNECT_TIMEOUT_MS = env.int('MONGODB_CONNECT_TIMEOUT_MS', default=10_000)
+MONGODB_SERVER_SELECTION_TIMEOUT_MS = env.int(
+    'MONGODB_SERVER_SELECTION_TIMEOUT_MS', default=5_000,
+)
+
+# GDPR data-minimisation — raw webhook payloads auto-expire after this many days.
+# SOC2 CC7.2 — Audit logs are retained longer; override per-collection if needed.
+MONGODB_TTL_DAYS = env.int('MONGODB_TTL_DAYS', default=90)
+
+# Observability — slow-query threshold (seconds) for the Prometheus histogram.
+MONGODB_SLOW_QUERY_THRESHOLD_S = env.float(
+    'MONGODB_SLOW_QUERY_THRESHOLD_S', default=0.1,
+)
+
+# Application version reported by the /health/ endpoint.
+APP_VERSION = env('APP_VERSION', default='1.0.0')
 
 # =============================================================================
 # RATE LIMITING SETTINGS

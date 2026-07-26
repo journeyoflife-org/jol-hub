@@ -13,13 +13,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Set working directory
-WORKDIR /app
+# Set working directory to Django project root
+WORKDIR /app/django
 
-# Install Python dependencies
-COPY requirements.txt .
+# Install Python dependencies from the canonical requirements file
+COPY django/requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+    pip install --no-cache-dir -r /tmp/requirements.txt
 
 # Install development dependencies
 RUN pip install --no-cache-dir \
@@ -32,7 +32,7 @@ RUN pip install --no-cache-dir \
 # Environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV DJANGO_SETTINGS_MODULE=django.core.settings.development
+ENV DJANGO_SETTINGS_MODULE=core.settings.development
 
 # Expose port
 EXPOSE 8000

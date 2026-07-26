@@ -75,107 +75,243 @@ class PayPalWebhookView(APIView):
 class Bitrix24WebhookView(APIView):
     """
     POST /api/v1/integrations/webhooks/bitrix24/
-    
-    Receives webhooks from Bitrix24 CRM with GDPR compliance.
-    
-    Features:
-    - HMAC signature verification
-    - GDPR Article 44 country routing
-    - Tamper-evident audit logging
-    - Circuit breaker for cascade failure prevention
-    - Idempotent processing
+
+    High-throughput Bitrix24 CRM webhook receiver.
+
+    Design goals (see architectural plan):
+    - Return ``202 Accepted`` within milliseconds — Bitrix24 enforces strict
+      timeouts and will aggressively retry on delay.
+    - Store raw, unpredictable JSON in MongoDB via
+      ``WebhookPayloadCollection`` (no schema validation, auto TTL expiry).
+    - Idempotency via Bitrix24 ``event_id`` or SHA-256 body hash.
+    - HMAC-SHA256 signature verification against
+      ``settings.BITRIX24_WEBHOOK_SECRET``.
+    - Structured error responses conforming to the project standard:
+      ``{"status": "error", "error": {"code": "...", "message": "..."}}``
     """
 
     permission_classes = [AllowAny]
     authentication_classes = []
-    
+
+    # -- helpers --
+
+    @staticmethod
+    def _error_response(
+        status_code: int,
+        code: str,
+        message: str,
+    ) -> Response:
+        """Return a standardised JSON error response.
+
+        Args:
+            status_code: HTTP status code.
+            code: Machine-readable i18n key (e.g. ``webhook.signature_invalid``).
+            message: Human-readable description.
+
+        Returns:
+            A ``Response`` with the structured error body.
+        """
+        return Response(
+            {
+                "status": "error",
+                "error": {"code": code, "message": message},
+            },
+            status=status_code,
+        )
+
     def _verify_signature(self, request) -> bool:
-        """Verify Bitrix24 webhook signature."""
-        secret = getattr(settings, 'BITRIX24_WEBHOOK_SECRET', '')
+        """Verify Bitrix24 HMAC-SHA256 webhook signature.
+
+        The signature is expected in the ``X-Bitrix24-Signature`` header as
+        a hex-encoded HMAC-SHA256 digest of the raw request body.
+
+        Returns:
+            ``True`` if the signature is valid, or if no secret is configured
+            (development mode). ``False`` otherwise.
+        """
+        return self._verify_signature_from_body(request.body, request)
+
+    def _verify_signature_from_body(
+        self,
+        raw_body: bytes,
+        request=None,
+    ) -> bool:
+        """Verify HMAC-SHA256 signature against raw body bytes.
+
+        Args:
+            raw_body: The raw request body bytes.
+            request: The DRF request (used to read the signature header).
+
+        Returns:
+            ``True`` if valid or no secret configured; ``False`` otherwise.
+        """
+        secret: str = getattr(settings, "BITRIX24_WEBHOOK_SECRET", "")
         if not secret:
-            logger.warning('BITRIX24_WEBHOOK_SECRET not configured - skipping signature verification')
+            logger.warning(
+                "BITRIX24_WEBHOOK_SECRET not configured — "
+                "skipping signature verification (development mode)."
+            )
             return True
-        
-        signature = request.headers.get('X-Bitrix24-Signature', '')
+
+        if request is None:
+            return False
+
+        signature: str = request.headers.get("X-Bitrix24-Signature", "")
         if not signature:
             return False
-        
-        # Compute expected HMAC-SHA256
-        expected = hmac.new(
-            secret.encode('utf-8'),
-            request.body,
+
+        expected: str = hmac.new(
+            secret.encode("utf-8"),
+            raw_body,
             hashlib.sha256,
         ).hexdigest()
-        
+
         return hmac.compare_digest(signature, expected)
-    
-    def _get_country(self, request, payload: dict) -> str:
-        """Extract country from webhook for GDPR routing."""
-        # Priority: Header > Payload > Default
-        return (
-            request.headers.get('X-Bitrix24-Country') or
-            payload.get('country') or
-            payload.get('data', {}).get('residency') or
-            'default'
+
+    @staticmethod
+    def _compute_idempotency_key(payload: dict, raw_body: bytes) -> str:
+        """Derive a deterministic idempotency key from the payload.
+
+        Priority:
+        1. Structured Bitrix24 fields:
+           ``auth.domain`` + ``event`` + ``data.FIELDS.ID`` + ``ts``
+        2. Fallback: SHA-256 hash of the raw request body.
+
+        Args:
+            payload: The parsed JSON payload.
+            raw_body: The raw ``request.body`` bytes.
+
+        Returns:
+            A string suitable for use as an idempotency key.
+        """
+        domain: str = payload.get("auth", {}).get("domain", "")
+        event: str = payload.get("event", "")
+        entity_id: str = str(
+            payload.get("data", {}).get("FIELDS", {}).get("ID", ""),
         )
-    
-    def post(self, request):
-        """Process incoming Bitrix24 webhook."""
-        # Verify signature
-        if not self._verify_signature(request):
-            logger.warning('Invalid Bitrix24 webhook signature')
-            return Response(
-                {'error': 'Invalid signature'},
-                status=status.HTTP_401_UNAUTHORIZED
+        ts: str = str(payload.get("ts", ""))
+
+        if domain and event and entity_id and ts:
+            return f"bitrix24:{domain}:{event}:{entity_id}:{ts}"
+
+        # Fallback — SHA-256 of raw body guarantees uniqueness.
+        return f"bitrix24:sha256:{hashlib.sha256(raw_body).hexdigest()}"
+
+    @staticmethod
+    def _get_country(request, payload: dict) -> str:
+        """Extract country code for GDPR Article 44 routing.
+
+        Priority: ``X-Bitrix24-Country`` header > ``payload.country`` >
+        ``payload.data.residency`` > ``'default'``.
+        """
+        return (
+            request.headers.get("X-Bitrix24-Country")
+            or payload.get("country")
+            or payload.get("data", {}).get("residency")
+            or "default"
+        )
+
+    # -- view --
+
+    def post(self, request) -> Response:
+        """Accept a Bitrix24 webhook and queue it for async processing.
+
+        Returns ``202 Accepted`` on success.  The raw payload is stored in
+        MongoDB and a Celery task is dispatched for background processing.
+        """
+        from apps.core.mongodb import WebhookPayloadCollection
+
+        # 1. Read raw body FIRST (caches it on the request object).
+        #    This MUST happen before ``request.data`` which also reads the
+        #    stream via DRF's JSONParser — accessing body after that raises
+        #    ``RawPostDataException``.
+        raw_body: bytes = request.body
+
+        # 2. HMAC-SHA256 signature verification (uses raw_body internally).
+        if not self._verify_signature_from_body(raw_body, request):
+            logger.warning(
+                "Bitrix24 webhook rejected: invalid HMAC signature."
             )
-        
-        payload = request.data
-        event_type = payload.get('event', 'unknown')
-        
-        # Extract GDPR country for routing
+            return self._error_response(
+                status.HTTP_401_UNAUTHORIZED,
+                "webhook.signature_invalid",
+                "HMAC signature verification failed.",
+            )
+
+        # 3. Parse JSON — DRF's JSONParser already parsed request.data.
+        #    We validate it's a dict (not a list or scalar).
+        try:
+            payload = request.data
+        except Exception:
+            return self._error_response(
+                status.HTTP_400_BAD_REQUEST,
+                "webhook.malformed_payload",
+                "Request body is not valid JSON.",
+            )
+
+        if not isinstance(payload, dict):
+            return self._error_response(
+                status.HTTP_400_BAD_REQUEST,
+                "webhook.malformed_payload",
+                "Request body must be a JSON object.",
+            )
+
+        # Validate required Bitrix24 fields.
+        event_type = payload.get("event")
+        if not event_type:
+            return self._error_response(
+                status.HTTP_400_BAD_REQUEST,
+                "webhook.malformed_payload",
+                "Missing required field: 'event'.",
+            )
+
+        # 4. Idempotency check via MongoDB.
+        idempotency_key = self._compute_idempotency_key(payload, raw_body)
+
+        existing = WebhookPayloadCollection.find_one(
+            {"idempotency_key": idempotency_key},
+        )
+        if existing is not None:
+            logger.info("Duplicate Bitrix24 webhook: %s", idempotency_key)
+            return self._error_response(
+                status.HTTP_409_CONFLICT,
+                "webhook.duplicate_event",
+                f"Event already received (idempotency_key={idempotency_key}).",
+            )
+
+        # 5. Store raw payload in MongoDB (auto-injects tenant_id,
+        #    created_at, updated_at).
         country = self._get_country(request, payload)
-        
-        # Generate idempotency key from event data
-        event_id = payload.get('data', {}).get('FIELDS', {}).get('ID', '')
-        timestamp = payload.get('ts', '')
-        domain = payload.get('auth', {}).get('domain', 'unknown')
-        idempotency_key = f"bitrix24:{domain}:{event_type}:{event_id}:{timestamp}"
-        
-        if not timestamp:
-            idempotency_key = f"bitrix24:{domain}:{event_type}:{event_id}:{datetime.now(timezone.utc).isoformat()}"
-        
-        # Create webhook event (idempotent)
-        event, created = WebhookEvent.objects.get_or_create(
-            idempotency_key=idempotency_key,
-            defaults={
-                'source': 'bitrix24',
-                'event_type': event_type,
-                'payload': {
-                    **payload,
-                    'country': country,  # Store country for routing
-                },
+        mongo_doc_id = WebhookPayloadCollection.insert_one(
+            {
+                "source": "bitrix24",
+                "event_type": event_type,
+                "idempotency_key": idempotency_key,
+                "country": country,
+                "raw_payload": payload,
             },
         )
-        
-        if not created:
-            logger.info(f"Duplicate Bitrix24 webhook: {idempotency_key}")
-            return Response({'status': 'duplicate', 'event_id': str(event.id)})
-        
-        # Log webhook receipt
-        logger.info(
-            f"Bitrix24 webhook received: {event_type} "
-            f"from {domain} (country={country})"
-        )
-        
-        # Delegate to Celery task for async processing
+
+        # 6. Dispatch Celery task for async processing.
         from .tasks import process_bitrix24_webhook
-        process_bitrix24_webhook.delay(str(event.id), country=country)
-        
-        return Response({
-            'status': 'received',
-            'event_id': str(event.id),
-            'country': country,
-        })
+        process_bitrix24_webhook.delay(str(mongo_doc_id), country=country)
+
+        logger.info(
+            "Bitrix24 webhook queued: %s from %s (country=%s)",
+            event_type,
+            payload.get("auth", {}).get("domain", "unknown"),
+            country,
+        )
+
+        # 7. Return 202 Accepted immediately.
+        return Response(
+            {
+                "status": "queued",
+                "event_id": str(mongo_doc_id),
+                "country": country,
+            },
+            status=status.HTTP_202_ACCEPTED,
+        )
 
 
 class Bitrix24WebhookHealthView(APIView):

@@ -316,11 +316,27 @@ class Contact(CRMTenantModel):
         help_text=_('Parishioner envelope number for donations'),
     )
     notes = models.TextField(_('notes'), blank=True)
-    
+
+    # Bitrix24 custom fields (UF_* mappings)
+    parish_code = models.CharField(
+        _('parish code'),
+        max_length=64,
+        null=True,
+        blank=True,
+        help_text=_('Bitrix24 UF_PARISH_CODE — parish identifier'),
+    )
+    family_id = models.CharField(
+        _('family ID'),
+        max_length=64,
+        null=True,
+        blank=True,
+        help_text=_('Bitrix24 UF_FAMILY_ID — links family members'),
+    )
+
     # Deceased tracking (Cemetery/Funeral data)
     is_deceased = models.BooleanField(_('is deceased'), default=False)
     date_of_death = models.DateField(_('date of death'), null=True, blank=True)
-    
+
     class Meta:
         verbose_name = _('contact')
         verbose_name_plural = _('contacts')
@@ -330,12 +346,18 @@ class Contact(CRMTenantModel):
             models.Index(fields=['organization', 'email']),
             models.Index(fields=['organization', 'envelope_number']),
             models.Index(fields=['organization', 'is_deceased']),
+            models.Index(fields=['organization', 'parish_code']),
         ]
         constraints = [
             models.UniqueConstraint(
                 fields=['organization', 'email'],
                 condition=~Q(email=''),
                 name='unique_email_per_org',
+            ),
+            models.UniqueConstraint(
+                fields=['organization', 'bitrix24_id'],
+                condition=~Q(bitrix24_id=''),
+                name='unique_contact_bitrix24_per_org',
             ),
         ]
     
@@ -350,6 +372,152 @@ class Contact(CRMTenantModel):
         """Validate special category data handling."""
         if self.religious_affiliation and self.data_classification != DataClassification.SPECIAL_CATEGORY:
             self.data_classification = DataClassification.SPECIAL_CATEGORY
+
+
+class Lead(CRMTenantModel):
+    """
+    CRM Lead for Bitrix24 sales pipeline tracking.
+
+    Leads represent potential contacts/deals that have NOT yet been
+    qualified. They are distinct from Contacts (GDPR Art. 4) because:
+
+    1. Leads are pre-consent — no PII processing beyond pipeline tracking.
+    2. Leads may convert to Contacts + Deals upon qualification.
+    3. Bitrix24 treats Leads and Contacts as separate entities.
+
+    Consent defaults to ``NOT_REQUIRED`` (pre-qualification pipeline).
+    Upon conversion to Contact, explicit consent MUST be obtained.
+    """
+
+    class LeadStatus(models.TextChoices):
+        """Bitrix24 lead lifecycle stages."""
+        NEW = 'NEW', _('New')
+        IN_PROCESS = 'IN_PROCESS', _('In Process')
+        PROCESSED = 'PROCESSED', _('Processed')
+        CONVERTED = 'CONVERTED', _('Converted')
+        JUNK = 'JUNK', _('Junk')
+        CLOSED = 'CLOSED', _('Closed')
+
+    class LeadSource(models.TextChoices):
+        """Lead acquisition channels."""
+        WEB = 'web', _('Website')
+        BITRIX24 = 'bitrix24', _('Bitrix24 CRM')
+        PHONE = 'phone', _('Phone Call')
+        EMAIL = 'email', _('Email Inquiry')
+        REFERRAL = 'referral', _('Referral')
+        SOCIAL = 'social', _('Social Media')
+        EVENT = 'event', _('Church Event')
+        OTHER = 'other', _('Other')
+
+    # Lead identification
+    title = models.CharField(
+        _('title'),
+        max_length=255,
+        help_text=_('Lead title / subject line'),
+    )
+
+    # Name fields (optional — may be anonymous inquiry)
+    first_name = models.CharField(_('first name'), max_length=128, blank=True)
+    last_name = models.CharField(_('last name'), max_length=128, blank=True)
+
+    # Contact information (PII)
+    email = models.EmailField(_('email'), blank=True)
+    phone = models.CharField(_('phone'), max_length=32, blank=True)
+
+    # Lead qualification
+    lead_status = models.CharField(
+        _('lead status'),
+        max_length=20,
+        choices=LeadStatus.choices,
+        default=LeadStatus.NEW,
+        db_index=True,
+    )
+    source = models.CharField(
+        _('source'),
+        max_length=32,
+        choices=LeadSource.choices,
+        default=LeadSource.BITRIX24,
+        blank=True,
+    )
+
+    # Financial estimation (for deal qualification)
+    estimated_value = models.DecimalField(
+        _('estimated value'),
+        max_digits=12,
+        decimal_places=2,
+        default=Decimal('0.00'),
+        help_text=_('Potential deal value upon conversion'),
+    )
+    currency = models.CharField(
+        _('currency'),
+        max_length=3,
+        default='EUR',
+    )
+
+    # Notes
+    notes = models.TextField(_('notes'), blank=True)
+
+    # Bitrix24 COMMENTS field
+    comments = models.TextField(
+        _('comments'),
+        blank=True,
+        help_text=_('Bitrix24 COMMENTS field'),
+    )
+
+    # Conversion tracking
+    converted_at = models.DateTimeField(
+        _('converted at'),
+        null=True,
+        blank=True,
+    )
+    converted_contact = models.ForeignKey(
+        Contact,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='converted_from_leads',
+        verbose_name=_('converted contact'),
+    )
+
+    class Meta:
+        verbose_name = _('lead')
+        verbose_name_plural = _('leads')
+        ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['organization', 'lead_status']),
+            models.Index(fields=['organization', 'source']),
+            models.Index(fields=['organization', 'created_at']),
+            models.Index(fields=['organization', 'email']),
+        ]
+        constraints = [
+            models.UniqueConstraint(
+                fields=['organization', 'bitrix24_id'],
+                condition=~Q(bitrix24_id=''),
+                name='unique_lead_bitrix24_per_org',
+            ),
+        ]
+
+    def __str__(self) -> str:
+        name = f"{self.first_name} {self.last_name}".strip()
+        return f"{self.title}" if not name else f"{self.title} — {name}"
+
+    @property
+    def full_name(self) -> str:
+        """Return concatenated first and last name."""
+        return f"{self.first_name} {self.last_name}".strip()
+
+    def mark_converted(self, contact: Contact) -> None:
+        """Mark lead as converted to a Contact.
+
+        Args:
+            contact: The Contact record created from this lead.
+        """
+        self.lead_status = self.LeadStatus.CONVERTED
+        self.converted_at = django_timezone.now()
+        self.converted_contact = contact
+        self.save(update_fields=[
+            'lead_status', 'converted_at', 'converted_contact', 'updated_at',
+        ])
 
 
 class Deal(CRMTenantModel):
