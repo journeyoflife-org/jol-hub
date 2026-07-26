@@ -22,8 +22,8 @@ We take security vulnerabilities seriously. Thank you for improving the security
 Instead, please report them through one of the following channels:
 
 1. **Email**: [security@journeyoflife.org](mailto:security@journeyoflife.org)
-2. **GitHub Security Advisory**: Use the [Security Advisories](https://github.com/JourneyOfLife/jol-hub/security/advisories) page
-3. **PGP Encrypted Email**: Use our public PGP key (available at [keys.jolhub.org/security.asc])
+2. **GitHub Security Advisory**: Use the [Security Advisories](https://github.com/journeyoflife-org/jol-hub/security/advisories) page
+3. **PGP Encrypted Email**: Use our public PGP key (fingerprint: `609F 7926 A825 4CDB`), available at [keys.jolhub.org/security.asc](https://keys.jolhub.org/security.asc)
 
 ### What to Include
 
@@ -130,5 +130,5 @@ For any security-related questions or concerns:
 
 ---
 
-*Last Updated: March 2026*
+*Last Updated: July 2026*
 *Policy Version: 1.0*
