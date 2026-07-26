@@ -1,26 +1,79 @@
-# Global Owners
+# =============================================================================
+# CODEOWNERS — JOL-HUB
+# =============================================================================
+#
+# COMPLIANCE: SOC 2 CC6.1 (Logical Access) / ISO 27001 A.8.2 (Access Rights)
+#
+# Current state: single-owner (bootstrap phase). The structure below is
+# ready for team-based segregation of duties once GitHub Teams are created.
+#
+# TODO — Create the following GitHub Teams and replace @JourneyOfLife:
+#
+#   @journeyoflife-org/backend     → backend/, data/
+#   @journeyoflife-org/frontend   → frontend/
+#   @journeyoflife-org/devops     → infra/, ops/, .github/workflows/
+#   @journeyoflife-org/security   → security-critical paths (below)
+#   @journeyoflife-org/data       → ai/, data/src/, countries/
+#
+# Until teams exist, @JourneyOfLife is the fallback for all paths.
+# =============================================================================
+
+# ---- Global fallback --------------------------------------------------------
+# Every file not explicitly listed below defaults to @JourneyOfLife.
 * @JourneyOfLife
 
-# Backend
-/backend/ @JourneyOfLife
+# ---- Backend ---------------------------------------------------------------
+# Django apps, models, migrations, settings, Celery tasks, API views.
+/backend/          @JourneyOfLife
+/backend/django/   @JourneyOfLife
 
-# Frontend
-/frontend/ @JourneyOfLife
+# ---- Frontend --------------------------------------------------------------
+# Turborepo monorepo: apps, packages, shared utilities.
+/frontend/         @JourneyOfLife
 
-# Infrastructure
-/infra/ @JourneyOfLife
+# ---- Infrastructure & DevOps ----------------------------------------------
+# Terraform, Kubernetes, Helm, CI/CD workflows, Docker.
+/infra/            @JourneyOfLife
+/ops/              @JourneyOfLife
+/.github/workflows/ @JourneyOfLife
+/docker-compose.yml @JourneyOfLife
+/backend/Dockerfile @JourneyOfLife
+/backend/Dockerfile.dev @JourneyOfLife
 
-# AI
-/ai/ @JourneyOfLife
+# ---- AI & Data ------------------------------------------------------------
+# AI models, data pipelines, dbt models, country configurations.
+/ai/               @JourneyOfLife
+/data/             @JourneyOfLife
+/countries/        @JourneyOfLife
 
-# Countries
-/countries/ @JourneyOfLife
+# ---- Domain & Entities -----------------------------------------------------
+# Entity definitions (Catholic, Orthodox, Protestant) and services.
+/entities/         @JourneyOfLife
 
-# Entities
-/entities/ @JourneyOfLife
+# ---- Security-critical paths ----------------------------------------------
+# These paths require additional scrutiny. When teams are created, assign
+# @journeyoflife-org/security as a REQUIRED reviewer (not just owner).
+#
+# SECURITY: Crypto, auth, secrets, and security policy changes must be
+# reviewed by someone other than the author (SOC 2 CC6.1 SoD).
+/.github/SECURITY.md         @JourneyOfLife
+/backend/django/core/settings/ @JourneyOfLife
+/backend/django/apps/core/   @JourneyOfLife
+/backend/django/.env.example @JourneyOfLife
+/infra/security/             @JourneyOfLife
 
-# Operations
-/ops/ @JourneyOfLife
+# ---- Tools & Scripts -------------------------------------------------------
+/tools/            @JourneyOfLife
+/scripts/          @JourneyOfLife
 
-# Tools
-/tools/ @JourneyOfLife
+# ---- Governance documents --------------------------------------------------
+# README, CONTRIBUTING, CODEOWNERS, LICENSE, pull request template.
+/README.md         @JourneyOfLife
+/CONTRIBUTING.md   @JourneyOfLife
+/.github/CODEOWNERS @JourneyOfLife
+/.github/pull_request_template.md @JourneyOfLife
+/LICENSE           @JourneyOfLife
+
+# ---- Dependabot & CI configuration -----------------------------------------
+/.github/dependabot.yml @JourneyOfLife
+/qodana.yaml            @JourneyOfLife

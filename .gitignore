@@ -11,6 +11,11 @@
 db.sqlite3
 backend/db.sqlite3
 
+# Database dumps (production data must never enter git)
+*.dump
+*.sql.gz
+*.dump.gz
+
 # Environment & Secrets (NEVER COMMIT)
 .env
 .env.*

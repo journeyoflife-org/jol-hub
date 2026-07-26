@@ -5,11 +5,11 @@ contact_links:
     about: Check our documentation for guides and API references
   
   - name: 💬 Community Discussions
-    url: https://github.com/JourneyOfLife/jol-hub/discussions
+    url: https://github.com/journeyoflife-org/jol-hub/discussions
     about: Ask questions and discuss with the community
   
   - name: 🔒 Security Policy
-    url: https://github.com/JourneyOfLife/jol-hub/security/policy
+    url: https://github.com/journeyoflife-org/jol-hub/security/policy
     about: View our security policy and responsible disclosure guidelines
   
   - name: 📧 Security Email
