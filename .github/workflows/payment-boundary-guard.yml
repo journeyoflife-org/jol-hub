@@ -1,0 +1,58 @@
+# =============================================================================
+# Payment Boundary Guard — Model A (ADR-0005, jol-m-infrastructure)
+# =============================================================================
+# E1 + E2 enforcement: jol-hub must NEVER reach Stripe directly. The
+# marketplace payments_app is the sole Stripe integrator; hub consumes the
+# internal payment API only (docs/payment-api-contract.md).
+#
+# Jobs below are REQUIRED status checks on main (armed STEP 19; see
+# jol-m-infrastructure/docs/payment-boundary-enforcement.md). No path
+# filter on purpose: residue can land anywhere in the tree.
+#
+# The vendored scripts/check-payment-boundary.sh is pinned by sha256 to
+# the record copy in jol-m-infrastructure. Updating the guard requires
+# landing the change in BOTH repos and bumping the pin in the same
+# change window (record-copy contract; exceptions need an ADR).
+# =============================================================================
+
+name: Payment Boundary Guard
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master, develop]
+
+jobs:
+  payment-boundary-guard:
+    name: Payment Boundary Guard (E1, ADR-0005)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Guard integrity — vendored copy matches pinned record hash
+        run: |
+          echo "8fa2dd12f12320dff268ee19d5b00422a1f5987203e34755c342e56068ed47a5  scripts/check-payment-boundary.sh" \
+            | sha256sum -c -
+
+      - name: Run E1 payment-boundary guard
+        run: bash scripts/check-payment-boundary.sh "$GITHUB_WORKSPACE"
+
+  dependency-guard:
+    name: Dependency Guard (E2, ADR-0005)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install test runner
+        run: pip install pytest
+
+      - name: Run E2 dependency guard
+        run: python -m pytest data/tests/test_dependency_guard.py -v
