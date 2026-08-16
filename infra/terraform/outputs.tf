@@ -184,11 +184,6 @@ output "database_url_secret_arn" {
   value       = module.secrets.database_url_secret_arn
 }
 
-output "stripe_secret_arn" {
-  description = "ARN of the Stripe keys secret (PCI-DSS scoped)"
-  value       = module.secrets.stripe_secret_arn
-}
-
 output "paypal_secret_arn" {
   description = "ARN of the PayPal credentials secret (PCI-DSS scoped)"
   value       = module.secrets.paypal_secret_arn

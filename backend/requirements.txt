@@ -45,8 +45,10 @@ whitenoise>=6.12.0
 cryptography>=46.0
 argon2-cffi>=23.1.0
 
-# Payments
-stripe>=14.0
+# Payments — Model A (ADR-0005): jol-hub NEVER integrates the payment
+# service provider directly; donations flow through the marketplace
+# payment boundary's internal API. The dependency-guard test
+# (data/tests/test_dependency_guard.py) fails if the PSP SDK is added.
 
 # Utilities
 Pillow>=12.0

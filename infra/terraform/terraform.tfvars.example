@@ -70,9 +70,11 @@ enable_secret_rotation = false
 
 # Payment Secrets (PCI-DSS Scoped)
 # IMPORTANT: These are stored with separate KMS key for PCI compliance
-# stripe_secret_key       = "sk_live_xxxx"  # Set via environment variable
-# stripe_publishable_key  = "pk_live_xxxx"
-# stripe_webhook_secret   = "whsec_xxxx"
+# Card-processor (PSP) variables purged STEP 18 (Model A / ADR-0005):
+# hub never holds PSP credentials; the marketplace payment boundary does.
+# stripe_secret_key       = "sk_live_xxxx"  # REMOVED — never re-add
+# stripe_publishable_key  = "pk_live_xxxx"  # REMOVED — never re-add
+# stripe_webhook_secret   = "whsec_xxxx"    # REMOVED — never re-add
 # paypal_client_id        = "AXxxx"
 # paypal_client_secret    = "xxxx"
 # paypal_mode             = "live"

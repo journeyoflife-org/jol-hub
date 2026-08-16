@@ -100,14 +100,8 @@ spec:
       remoteRef:
         key: jol-hub/production/database
         property: password
-    - secretKey: STRIPE_SECRET_KEY
-      remoteRef:
-        key: jol-hub/production/stripe
-        property: secret_key
-    - secretKey: STRIPE_WEBHOOK_SECRET
-      remoteRef:
-        key: jol-hub/production/stripe
-        property: webhook_secret
+    # Card-processor (PSP) remoteRefs purged STEP 18 (Model A / ADR-0005):
+    # hub never holds PSP credentials; the marketplace payment boundary does.
 ---
 # -----------------------------------------------------------------------------
 # Cert-Manager Configuration

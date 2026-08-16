@@ -5,7 +5,9 @@ app_name = 'integrations'
 
 urlpatterns = [
     # Payment webhooks
-    path('webhooks/stripe/', views.StripeWebhookView.as_view(), name='stripe-webhook'),
+    # Model A (ADR-0005): NO Stripe webhook endpoint in jol-hub. Stripe
+    # webhooks land ONLY on the marketplace payment boundary, which
+    # forwards signed per-product events to hub. Purged STEP 18.
     path('webhooks/paypal/', views.PayPalWebhookView.as_view(), name='paypal-webhook'),
     
     # Bitrix24 CRM webhooks (GDPR Article 44 compliant)

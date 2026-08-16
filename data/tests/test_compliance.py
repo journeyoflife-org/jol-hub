@@ -919,21 +919,45 @@ class TestSecretsManagement:
                 "PCI-DSS scoped KMS key required for payment secrets"
     
     def test_pci_secrets_isolation(self, project_root):
-        """Test PCI-DSS secrets are isolated."""
-        secrets_main = project_root / "infra" / "terraform" / "modules" / "secrets" / "main.tf"
-        
-        if secrets_main.exists():
-            content = secrets_main.read_text()
-            
-            # Stripe secrets must exist
-            assert "stripe" in content.lower(), "Stripe secrets must be defined"
-            
-            # PayPal secrets must exist
-            assert "paypal" in content.lower(), "PayPal secrets must be defined"
-            
-            # Must have PCI scope tag or separate key
-            assert "PCI" in content or "pci" in content.lower(), \
-                "Payment secrets must be PCI-DSS scoped"
+        """Model A (ADR-0005) sentry: hub must hold NO Stripe footprint.
+
+        Inverted by STEP 18: this test used to REQUIRE Stripe secrets in
+        hub infra (a Model-B residue, audit finding PB-05). It now fails
+        the moment any Stripe secret/config/dependency re-enters hub.
+        Stripe lives ONLY in the marketplace payment boundary.
+        """
+        forbidden_targets = [
+            project_root / "infra" / "terraform" / "modules" / "secrets" / "main.tf",
+            project_root / "infra" / "terraform" / "variables.tf",
+            project_root / "infra" / "kubernetes" / "base" / "secrets.yaml",
+            project_root / "infra" / "helm" / "jol-hub" / "templates" / "secrets.yaml",
+            project_root / "backend" / "django" / "core" / "settings" / "base.py",
+            project_root / "backend" / "django" / ".env.example",
+            project_root / "backend" / "django" / "requirements.txt",
+            project_root / "backend" / "requirements.txt",
+            project_root / "countries" / "lt" / "config" / "payment-providers.yml",
+        ]
+        for target in forbidden_targets:
+            if not target.exists():
+                continue  # deleted targets (providers config) stay deleted
+            content = target.read_text().lower()
+            assert "stripe" not in content, \
+                f"Model A violation: Stripe footprint in {target} (ADR-0005)"
+
+    def test_model_a_no_stripe_import_in_backend(self, project_root):
+        """Model A sentry: no server-side Stripe SDK usage in hub code."""
+        backend = project_root / "backend" / "django" / "apps"
+        offenders = []
+        for path in backend.rglob("*.py"):
+            if "__pycache__" in path.parts:
+                continue
+            for line in path.read_text().splitlines():
+                stripped = line.strip()
+                if stripped.startswith(("import stripe", "from stripe")):
+                    offenders.append(str(path))
+                    break
+        assert not offenders, \
+            f"Model A violation: Stripe SDK imported in {offenders} (ADR-0005)"
     
     def test_django_secrets_integration(self, project_root):
         """Test Django secrets integration module."""
@@ -1033,8 +1057,9 @@ class TestSecretsManagement:
         if variables_tf.exists():
             content = variables_tf.read_text()
             
-            # Must have secrets-related variables
-            assert "stripe" in content.lower() or "paypal" in content.lower() or \
+            # Must have secrets-related variables (Model A: Stripe lives in
+            # the marketplace boundary, never in hub variables — STEP 18).
+            assert "paypal" in content.lower() or \
                    "email" in content.lower(), \
                 "Payment/email secret variables must be defined"
     

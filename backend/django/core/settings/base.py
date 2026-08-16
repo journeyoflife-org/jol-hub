@@ -655,9 +655,11 @@ RECAPTCHA_PUBLIC_KEY = env('RECAPTCHA_PUBLIC_KEY', default='')
 RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_PRIVATE_KEY', default='')
 
 # Payment gateways
-STRIPE_PUBLISHABLE_KEY = env('STRIPE_PUBLISHABLE_KEY', default='')
-STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY', default='')
-STRIPE_WEBHOOK_SECRET = env('STRIPE_WEBHOOK_SECRET', default='')
+# Model A (ADR-0005, jol-m-infrastructure): jol-hub holds NO payment
+# service provider keys of any kind. Donations flow through the
+# marketplace payment boundary's internal API; card data goes donor
+# browser -> provider directly (SAQ-A). Re-introducing PSP secret
+# settings here is a PCI scope violation.
 
 # PayPal
 PAYPAL_CLIENT_ID = env('PAYPAL_CLIENT_ID', default='')

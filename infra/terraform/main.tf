@@ -292,9 +292,8 @@ module "secrets" {
   enable_secret_rotation = var.enable_secret_rotation
 
   # Payment secrets (PCI-DSS scoped)
-  stripe_secret_key       = var.stripe_secret_key
-  stripe_publishable_key  = var.stripe_publishable_key
-  stripe_webhook_secret   = var.stripe_webhook_secret
+  # Model A (ADR-0005): NO PSP-card-processor variables — the payment
+  # boundary in jol-m-marketplace solely holds those credentials (STEP 18).
   paypal_client_id        = var.paypal_client_id
   paypal_client_secret    = var.paypal_client_secret
   paypal_mode             = var.paypal_mode
