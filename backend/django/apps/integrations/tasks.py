@@ -78,18 +78,6 @@ def _audit_log(
 # ---------------------------------------------------------------------------
 
 
-@shared_task(name='apps.integrations.tasks.process_stripe_webhook')
-def process_stripe_webhook(event_id: str):
-    from .models import WebhookEvent
-    try:
-        event = WebhookEvent.objects.get(id=event_id)
-        event.status = WebhookEvent.STATUS_PROCESSED
-        event.processed_at = timezone.now()
-        event.save(update_fields=['status', 'processed_at', 'updated_at'])
-    except WebhookEvent.DoesNotExist:
-        pass
-
-
 @shared_task(name='apps.integrations.tasks.process_paypal_webhook')
 def process_paypal_webhook(event_id: str):
     from .models import WebhookEvent

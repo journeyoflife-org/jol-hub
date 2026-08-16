@@ -18,7 +18,12 @@ Usage:
     db_url = get_secret('database/url')
     
     # Get specific key from JSON secret
-    stripe_key = get_secret('payments/stripe', key='STRIPE_SECRET_KEY')
+    smtp_pass = get_secret('email/smtp', key='PASSWORD')
+
+Model A (ADR-0005): jol-hub holds NO Stripe credentials; donations flow
+through the marketplace payment boundary. get_stripe_keys() was purged
+(STEP 18) and must not return — data/tests/test_dependency_guard.py and
+the payment-boundary CI guard enforce this.
 """
 
 import json
@@ -215,36 +220,6 @@ def get_database_url() -> str:
     db_port = os.environ.get('DB_PORT', '5432')
     
     return f"postgres://{db_user}:{db_pass}@{db_host}:{db_port}/{db_name}"
-
-
-def get_stripe_keys() -> Dict[str, str]:
-    """Get Stripe API keys from Secrets Manager."""
-    secret_key = get_secret(
-        'payments/stripe',
-        key='STRIPE_SECRET_KEY',
-        environment_prefix='STRIPE_SECRET_KEY',
-        required=False,
-    ) or os.environ.get('STRIPE_SECRET_KEY', '')
-    
-    publishable_key = get_secret(
-        'payments/stripe',
-        key='STRIPE_PUBLISHABLE_KEY',
-        environment_prefix='STRIPE_PUBLISHABLE_KEY',
-        required=False,
-    ) or os.environ.get('STRIPE_PUBLISHABLE_KEY', '')
-    
-    webhook_secret = get_secret(
-        'payments/stripe',
-        key='STRIPE_WEBHOOK_SECRET',
-        environment_prefix='STRIPE_WEBHOOK_SECRET',
-        required=False,
-    ) or os.environ.get('STRIPE_WEBHOOK_SECRET', '')
-    
-    return {
-        'secret_key': secret_key,
-        'publishable_key': publishable_key,
-        'webhook_secret': webhook_secret,
-    }
 
 
 def get_paypal_credentials() -> Dict[str, str]:

@@ -22,7 +22,9 @@ Usage:
     db_url = vault.get_secret('database/url')
     
     # Get specific key from secret
-    stripe_key = vault.get_secret('payments/stripe', key='STRIPE_SECRET_KEY')
+    smtp_pass = vault.get_secret('email/smtp', key='PASSWORD')
+
+Model A (ADR-0005): jol-hub holds NO Stripe credentials (purged STEP 18).
 """
 
 import json

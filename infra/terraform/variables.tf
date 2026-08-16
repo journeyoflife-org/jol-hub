@@ -390,25 +390,9 @@ variable "enable_secret_rotation" {
 }
 
 # Payment Secrets (PCI-DSS Scoped)
-variable "stripe_secret_key" {
-  description = "Stripe secret API key"
-  type        = string
-  sensitive   = true
-  default     = ""
-}
-
-variable "stripe_publishable_key" {
-  description = "Stripe publishable API key"
-  type        = string
-  default     = ""
-}
-
-variable "stripe_webhook_secret" {
-  description = "Stripe webhook signing secret"
-  type        = string
-  sensitive   = true
-  default     = ""
-}
+# Model A (ADR-0005, STEP 18): card-processor (PSP) secret variables were
+# purged — hub never holds PSP credentials; the marketplace payment
+# boundary does. PayPal/email variables remain below.
 
 variable "paypal_client_id" {
   description = "PayPal client ID"
