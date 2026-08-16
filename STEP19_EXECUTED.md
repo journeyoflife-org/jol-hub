@@ -29,16 +29,36 @@ pytest data/tests/test_dependency_guard.py → 3 passed
 workflow YAML parse → OK
 ```
 
-## Protection arming (N1) — executed AFTER this merge
+## Protection arming (N1) — EXECUTED, with one incident closed
 
 Chicken-and-egg resolution: arming the two new contexts BEFORE this PR
 merged would block this PR forever (the jobs don't exist on main yet).
-Sequence executed: merge PR #77 → PUT required_status_checks → negative
-test. Applied contexts (evidence filled in the follow-up commit):
+Sequence executed: merge PR #77 → arm required checks → harden admin
+bypass → negative test.
+
+**Armed configuration (verified via API after application):**
 
 ```text
-contexts: ["Payment Boundary Guard (E1, ADR-0005)", "Dependency Guard (E2, ADR-0005)"]
+required_status_checks.contexts:
+  - "Payment Boundary Guard (E1, ADR-0005)"
+  - "Dependency Guard (E2, ADR-0005)"
+strict: true
+required_approving_review_count: 0   (solo-era; marketplace precedent)
+enforce_admins: true                 (POST .../protection/enforce_admins)
 ```
+
+API notes (evidence of method): PUT on required_status_checks returns
+404 with this token — PATCH applies contexts; enforce_admins toggles via
+POST on its sub-resource.
+
+**Incident OBS-19-1 (opened and closed within this step):** with
+enforce_admins still false, the first negative probe (PR #78) was
+ACCIDENTALLY MERGED by an `--admin` merge attempt used to test the
+block; the violation file reached main. Immediate remediation: revert
+PR #79 (merged, `ba2f7c63`), then enforce_admins=true + review count 0
+applied, then the probe re-run as PR #80. Root cause: admin bypass
+permitted under enforce_admins=false. Current state re-verified:
+bypass closed (see negative test below).
 
 Rationale for NOT including pre-existing hub jobs (e.g. `Backend - Unit &
 Integration Tests`) in the required set: they are red on main since
@@ -48,25 +68,35 @@ ALL merges including their own fixes. Guard contexts are green and
 deterministic. Broadening the required set is follow-up work once hub CI
 baseline is repaired.
 
-## Negative + positive tests
+## Negative + positive tests — EXECUTED
 
-- **Positive:** THIS PR — guard jobs run and pass on a clean tree (see
-  check runs on PR #77).
-- **Negative:** after arming, branch `negative-test-step19` introduces
-  `import stripe` in a python file; its PR's required guard check FAILS
-  and the PR CANNOT merge. Evidence (run URL + blocked mergeStateStatus)
-  recorded in the follow-up evidence commit; test PR then closed +
-  branch deleted.
+- **Positive:** PR #77 — guard jobs ran green in CI before merge
+  (`Payment Boundary Guard` SUCCESS, `Dependency Guard` SUCCESS), and
+  revert PR #79 merged THROUGH the armed gate (checks green, normal
+  path).
+- **Negative (definitive, PR #80, post-hardening):** probe file with
+  `import stripe` → E1 check **FAILURE**; normal merge attempt →
+  REFUSED ("base branch policy prohibits the merge"); `--admin` merge
+  attempt → **REFUSED**: `GraphQL: Repository rule violations found —
+  Required status check "Payment Boundary Guard (E1, ADR-0005)" is
+  failing`. PR #80 remained OPEN (unmergeable), then closed + branch
+  deleted without merge. The violation never reached main a second time.
+- Earlier partial negative evidence (PR #78, pre-hardening): E1 check
+  FAILURE on the same probe — the guard itself behaved correctly from
+  the first run; only the admin-bypass governance hole allowed the
+  accidental merge, and that hole is now closed and re-tested.
 
 ## Acceptance checklist
 
 - [x] Vendored guard byte-identical to record copy (sha256 pinned)
 - [x] Both guard jobs defined, required-check names finalized
 - [x] Local positive run green (guard exit 0, 3/3 pytest)
-- [ ] Protection armed with the two contexts (post-merge; follow-up commit)
-- [ ] Negative test blocked (post-arm; follow-up commit)
+- [x] Protection armed with the two contexts (API-verified above)
+- [x] Admin bypass closed (enforce_admins=true) — OBS-19-1 remediated
+- [x] Negative test blocked on BOTH normal and admin paths (PR #80)
 
 ## Rollback
 
-Revert the PR (removes workflow + vendored guard) and PUT the previous
-(required) contexts value. The STEP 18 sentry tests remain as a fallback.
+Revert the guard PR (#77), DELETE the two required contexts via API, and
+POST-disable enforce_admins if the bypass closure must unwind. The
+STEP 18 sentry tests remain as a fallback.
