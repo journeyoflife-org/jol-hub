@@ -57,6 +57,17 @@ spec:
       ports:
         - protocol: TCP
           port: 6379
+    # N2 (ADR-0005, STEP 21): sanctioned hub backend -> marketplace payment
+    # boundary flow. Fail-closed: the helm chart renders this row only when
+    # paymentsApi.cidr is supplied (mesh allocation owned by
+    # jol-m-infrastructure/security/network-policy.md). For kustomize
+    # deploys substitute that CIDR and uncomment:
+    # - to:
+    #     - ipBlock:
+    #         cidr: <MESH_PAYMENT_API_CIDR>
+    #   ports:
+    #     - protocol: TCP
+    #       port: 443
     - to:
         - namespaceSelector: {}
       ports:
