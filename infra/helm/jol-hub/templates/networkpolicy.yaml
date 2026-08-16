@@ -57,8 +57,8 @@ spec:
     # hub backend -> the marketplace payment boundary internal API ONLY.
     # Fail-closed: this row renders only when the WireGuard-mesh CIDR is
     # supplied (jol-m-infrastructure/security/network-policy.md owns the
-    # allocation). api.stripe.com stays unreachable: no external egress
-    # row exists anywhere in this policy.
+    # allocation). The card processor's API stays unreachable: no
+    # external egress row exists anywhere in this policy.
     - to:
         - ipBlock:
             cidr: {{ .Values.paymentsApi.cidr }}
