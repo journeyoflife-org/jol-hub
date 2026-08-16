@@ -52,6 +52,20 @@ spec:
       ports:
         - protocol: TCP
           port: 6379
+    {{- if .Values.paymentsApi.cidr }}
+    # Sanctioned cross-program flow — Model A (ADR-0005; N2 fix, STEP 21):
+    # hub backend -> the marketplace payment boundary internal API ONLY.
+    # Fail-closed: this row renders only when the WireGuard-mesh CIDR is
+    # supplied (jol-m-infrastructure/security/network-policy.md owns the
+    # allocation). api.stripe.com stays unreachable: no external egress
+    # row exists anywhere in this policy.
+    - to:
+        - ipBlock:
+            cidr: {{ .Values.paymentsApi.cidr }}
+      ports:
+        - protocol: TCP
+          port: {{ .Values.paymentsApi.port | default 443 }}
+    {{- end }}
     - to:
         - namespaceSelector: {}
       ports:

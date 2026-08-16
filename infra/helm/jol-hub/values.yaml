@@ -252,3 +252,12 @@ monitoring:
 logging:
   enabled: true
   format: json
+
+# Marketplace payment boundary (Model A, ADR-0005; N2 fix STEP 21).
+# cidr is the WireGuard-mesh allocation for the payment API, owned by
+# jol-m-infrastructure/security/network-policy.md. EMPTY = the egress row
+# does not render (fail-closed: donations degrade, Stripe stays
+# unreachable). NEVER point this at a public range.
+paymentsApi:
+  cidr: ""
+  port: 443
