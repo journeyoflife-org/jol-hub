@@ -1,26 +1,45 @@
 /**
- * Tenant resolution for the JOL template renderer.
+ * Tenant resolution for the JOL template renderer — STEP 5 "the spine".
  *
- * A tenant is resolved in priority order:
- *   1. `X-Tenant` request header (local dev / preview / platform routing).
- *   2. Subdomain of the tenant base domain (`*.gyvenimo-kelias.lt`).
+ * Chain: domain/subdomain → tenant → schema → template variant → locale
+ * → content. This module owns the first two links.
  *
- * SECURITY (GDPR Art. 9 / SOC 2 CC6.1): resolution is a closed lookup.
- * Unknown slugs return `null` — callers render a bare 404 and MUST NOT
- * echo the attempted slug or enumerate valid tenants.
+ * Resolution order (STEP 5 contract):
+ *   a. Exact hostname match (custom domains, VIP)
+ *   b. Subdomain extraction: *.gyvenimo-kelias.lt → slug lookup
+ *   c. X-Tenant header (API/admin/dev override)
+ *   d. X-Forwarded-Host honored as the effective host (Proxmox/nginx chains)
+ *
+ * Performance: in-memory LRU cache (5 min TTL, key = host|x-tenant);
+ * resolution is a closed lookup over static maps — well under the 5ms
+ * budget, no DB connections.
+ *
+ * SECURITY (GDPR Art. 9 / SOC 2 CC6.1): closed lookups only. Unknown
+ * slugs/domains return `null`; callers render a bare 404 and MUST NOT
+ * echo the attempted value or enumerate valid tenants. `Tenant.schema`
+ * is server-only and must never reach client payloads (ADR-001).
  */
-import { isKnownTenant, getTenantFixture, TENANT_FIXTURE_SCHEMA } from '@jol-hub/seed-data';
 import type { NextRequest } from 'next/server';
 
-export interface ResolvedTenant {
-  /** Tenant slug, e.g. `parish-st-john-vilnius`. */
-  tenantId: string;
-  /** Fixture payload schema version. */
-  schema: typeof TENANT_FIXTURE_SCHEMA;
-  /** Tenant vertical (drives layout selection). */
-  vertical: string;
-  /** Default locale for the tenant. */
-  locale: string;
+import { LruCache } from './lru';
+import { findTenantByDomain, findTenantBySlug } from './registry';
+import type { Tenant } from './types';
+import { SLUG_PATTERN } from './types';
+
+export type { Tenant, TenantSettings, Vertical, PackageTier } from './types';
+export { SLUG_PATTERN, schemaForTenant, normalizeVertical, FEATURES_BY_TIER } from './types';
+export { findTenantBySlug, findTenantByDomain } from './registry';
+
+/**
+ * Client-safe tenant view: `schema` stripped (ADR-001 — schema names are
+ * server-only secrets and must never be serialized into client payloads).
+ */
+export type PublicTenant = Omit<Tenant, 'schema'>;
+
+/** Strip server-only fields before a tenant crosses into client code. */
+export function toPublicTenant(tenant: Tenant): PublicTenant {
+  const { schema: _schema, ...publicTenant } = tenant;
+  return publicTenant;
 }
 
 /** Header used for explicit tenant selection (dev / preview / routing). */
@@ -29,19 +48,38 @@ export const TENANT_HEADER = 'x-tenant';
 /** Base domain whose subdomains map to tenant slugs. */
 export const TENANT_BASE_DOMAIN = process.env.TENANT_BASE_DOMAIN ?? 'gyvenimo-kelias.lt';
 
+/** Resolution cache — 5 min TTL per STEP 5. */
+const resolutionCache = new LruCache<Tenant | null>(512, 5 * 60 * 1000);
+
+/** Test/ops hook. */
+export function clearTenantCache(): void {
+  resolutionCache.clear();
+}
+
+/** Test/ops hook: number of cached resolutions (incl. negative entries). */
+export function tenantResolutionCacheSize(): number {
+  return resolutionCache.size;
+}
+
 /** Normalize a candidate slug: lowercase, trim, reject anything not URL-safe. */
 function normalizeSlug(candidate: string | null | undefined): string | null {
   if (!candidate) return null;
   const slug = candidate.trim().toLowerCase();
-  if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug)) return null;
+  if (!SLUG_PATTERN.test(slug)) return null;
   return slug;
 }
 
-/** Extract a tenant slug from a Host header value via subdomain parsing. */
-export function slugFromHost(host: string | null | undefined): string | null {
+/** Strip port + lowercase; drop a leading `www.` label. */
+function normalizeHost(host: string | null | undefined): string | null {
   if (!host) return null;
-  // Drop any port.
-  const hostname = host.split(':')[0]?.toLowerCase();
+  const hostname = host.split(',')[0]?.split(':')[0]?.trim().toLowerCase();
+  if (!hostname) return null;
+  return hostname.replace(/^www\./, '');
+}
+
+/** Extract a tenant slug from a host value via subdomain parsing. */
+export function slugFromHost(host: string | null | undefined): string | null {
+  const hostname = normalizeHost(host);
   if (!hostname) return null;
 
   const base = TENANT_BASE_DOMAIN.toLowerCase();
@@ -51,49 +89,106 @@ export function slugFromHost(host: string | null | undefined): string | null {
   if (!hostname.endsWith(suffix)) return null;
 
   const subdomain = hostname.slice(0, -suffix.length);
-  // Take the left-most label; ignore `www`.
-  const label = subdomain.split('.')[0];
-  if (!label || label === 'www') return null;
-  return normalizeSlug(label);
+  // Left-most non-www label (www.tenant.domain resolves as tenant).
+  const label = subdomain.split('.').find((part) => part && part !== 'www');
+  return normalizeSlug(label ?? null);
 }
 
 /** Read the tenant slug from the explicit X-Tenant header. */
-export function slugFromHeader(request: NextRequest): string | null {
-  return normalizeSlug(request.headers.get(TENANT_HEADER));
+export function slugFromHeader(getHeader: (name: string) => string | null): string | null {
+  return normalizeSlug(getHeader(TENANT_HEADER));
 }
 
+export interface ResolveInput {
+  host?: string | null;
+  forwardedHost?: string | null;
+  xTenant?: string | null;
+}
 
 /**
- * Core resolution logic over a plain header getter, so it can be reused
- * from Next.js server components (`next/headers`) where no `NextRequest`
- * instance exists.
+ * Core resolution logic (sync, pure, cacheable) over plain inputs so it is
+ * reusable from middleware, server components and tests.
+ */
+export function resolveTenantCore(input: ResolveInput): Tenant | null {
+  // X-Forwarded-Host wins: proxies (Proxmox/nginx) set it to the original.
+  const effectiveHost = normalizeHost(input.forwardedHost) ?? normalizeHost(input.host);
+  const xTenant = normalizeSlug(input.xTenant);
+  const cacheKey = `${effectiveHost ?? '-'}|${xTenant ?? '-'}`;
+
+  const cached = resolutionCache.get(cacheKey);
+  if (cached !== undefined) return cached;
+
+  let tenant: Tenant | null = null;
+
+  // (a) Exact hostname match (custom domains).
+  if (effectiveHost) {
+    tenant = findTenantByDomain(effectiveHost);
+  }
+
+  // (b) Subdomain of the tenant base domain → slug lookup.
+  if (!tenant && effectiveHost) {
+    const slug = slugFromHost(effectiveHost);
+    if (slug) tenant = findTenantBySlug(slug);
+  }
+
+  // (c) Explicit X-Tenant header (API/admin/dev override).
+  if (!tenant && xTenant) {
+    tenant = findTenantBySlug(xTenant);
+  }
+
+  resolutionCache.set(cacheKey, tenant);
+  return tenant;
+}
+
+/**
+ * STEP 5 public API: resolve a tenant from hostname + request headers.
+ * Async signature anticipates the registry API fallback (backend lookup);
+ * the static pilot registry resolves synchronously.
+ */
+export async function resolveTenant(hostname: string, headers: Headers): Promise<Tenant | null> {
+  return resolveTenantCore({
+    host: hostname,
+    forwardedHost: headers.get('x-forwarded-host'),
+    xTenant: headers.get(TENANT_HEADER),
+  });
+}
+
+/* ------------------------------------------------------------------------ */
+/* Backwards-compatible surfaces (STEP 1 consumers)                         */
+/* ------------------------------------------------------------------------ */
+
+/** Lightweight view kept for STEP-1 consumers; `tenantId` = slug. */
+export interface ResolvedTenant {
+  /** Tenant slug, e.g. `parish-st-john-vilnius`. */
+  tenantId: string;
+  /** Full STEP-5 tenant record (schema is server-only). */
+  tenant: Tenant;
+  /** Tenant vertical — canonical STEP-5 taxonomy. */
+  vertical: Tenant['vertical'];
+  /** Default locale for the tenant. */
+  locale: string;
+}
+
+function toResolved(tenant: Tenant): ResolvedTenant {
+  return { tenantId: tenant.slug, tenant, vertical: tenant.vertical, locale: tenant.locale };
+}
+
+/**
+ * Resolution over a plain header getter — reusable from Next.js server
+ * components (`next/headers`) where no `NextRequest` instance exists.
  */
 export function resolveTenantFromHeaders(
   getHeader: (name: string) => string | null,
 ): ResolvedTenant | null {
-  const slug = normalizeSlug(getHeader(TENANT_HEADER)) ?? slugFromHost(getHeader('host'));
-  if (!slug) return null;
-
-  // Closed lookup: never leak whether a slug *almost* matched.
-  if (!isKnownTenant(slug)) return null;
-
-  const fixture = getTenantFixture(slug);
-  if (!fixture) return null;
-
-  return {
-    tenantId: fixture.slug,
-    schema: TENANT_FIXTURE_SCHEMA,
-    vertical: fixture.vertical,
-    locale: fixture.locale,
-  };
+  const tenant = resolveTenantCore({
+    host: getHeader('host'),
+    forwardedHost: getHeader('x-forwarded-host'),
+    xTenant: getHeader(TENANT_HEADER),
+  });
+  return tenant ? toResolved(tenant) : null;
 }
 
-/**
- * Resolve the tenant for an incoming request.
- *
- * Returns `null` when no tenant can be resolved or when the resolved slug is
- * not present in the tenant registry. Callers must treat `null` as "not found".
- */
-export function resolveTenant(request: NextRequest): ResolvedTenant | null {
+/** Resolve the tenant for an incoming Next.js request. */
+export function resolveTenantRequest(request: NextRequest): ResolvedTenant | null {
   return resolveTenantFromHeaders((name) => request.headers.get(name));
 }
