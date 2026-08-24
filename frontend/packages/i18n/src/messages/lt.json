@@ -1,0 +1,120 @@
+{
+  "common": {
+    "appName": "JOL-HUB",
+    "loading": "Kraunama…",
+    "close": "Uždaryti",
+    "cancel": "Atšaukti",
+    "back": "Atgal",
+    "next": "Toliau",
+    "previous": "Ankstesnis",
+    "readMore": "Skaityti daugiau",
+    "viewAll": "Peržiūrėti visus",
+    "optional": "Nebūtina",
+    "required": "Būtina",
+    "copyright": "Visos teisės saugomos."
+  },
+  "navigation": {
+    "mainLabel": "Pagrindinė navigacija",
+    "mobileLabel": "Mobili navigacija",
+    "sidebarLabel": "Šoninė navigacija",
+    "breadcrumbLabel": "Naršymo kelias",
+    "footerLabel": "Poraštės navigacija",
+    "languageLabel": "Kalba",
+    "home": "Pradžia",
+    "menu": "Meniu",
+    "openMenu": "Atidaryti meniu",
+    "closeMenu": "Uždaryti meniu",
+    "contact": "Kontaktai",
+    "news": "Naujienos",
+    "events": "Renginiai",
+    "legal": "Teisinė informacija",
+    "navigationTitle": "Navigacija",
+    "contactTitle": "Kontaktai"
+  },
+  "forms": {
+    "nameLabel": "Vardas",
+    "emailLabel": "El. paštas",
+    "phoneLabel": "Telefonas",
+    "messageLabel": "Žinutė",
+    "websiteLabel": "Svetainė",
+    "selectPlaceholder": "Pasirinkite…",
+    "submit": "Siųsti",
+    "sending": "Siunčiama…",
+    "sent": "Ačiū! Jūsų žinutė išsiųsta."
+  },
+  "validation": {
+    "nameRequired": "Įveskite vardą",
+    "emailInvalid": "Neteisingas el. pašto adresas",
+    "phoneInvalid": "Neteisingas telefono numeris",
+    "messageTooShort": "Žinutė per trumpa (mažiausiai 10 simbolių)",
+    "consentRequired": "Būtina sutikti dėl duomenų tvarkymo",
+    "formHasErrors": "Formoje yra klaidų. Patikrinkite pažymėtus laukus."
+  },
+  "errors": {
+    "notFoundTitle": "Puslapis nerastas",
+    "notFoundBody": "Ieškomas adresas neegzistuoja arba yra nepasiekiamas. Patikrinkite nuorodą arba kreipkitės į jus dominančios įstaigos administraciją.",
+    "generic": "Įvyko klaida. Bandykite vėliau.",
+    "sendFailed": "Nepavyko išsiųsti. Bandykite vėliau."
+  },
+  "seo": {
+    "siteDescription": "Journey Of Life — kelionė per gyvenimą kartu."
+  },
+  "accessibility": {
+    "skipToContent": "Pereiti prie pagrindinio turinio",
+    "loadingStatus": "Kraunama…",
+    "avatarGroupLabel": "Grupė",
+    "avatarOverflow": "{count, plural, one {Dar # narys} few {Dar # nariai} other {Dar # narių}}",
+    "galleryLabel": "Nuotraukų galerija",
+    "previousImage": "Ankstesnė nuotrauka",
+    "nextImage": "Kita nuotrauka",
+    "closeLightbox": "Uždaryti nuotraukos peržiūrą",
+    "localeChanged": "Kalba pakeista į {language}"
+  },
+  "commerce": {
+    "priceLabel": "Kaina",
+    "durationLabel": "Trukmė",
+    "recurringBadge": "Pasikartojantis",
+    "bookingCta": "Rezervuoti",
+    "donateTitle": "Palaikykite mus",
+    "donateDescription": "Jūsų auka padeda išlaikyti bendruomenės tarnystes.",
+    "donateCta": "Aukoti",
+    "oneTime": "Vienkartinė",
+    "monthly": "Kas mėnesį",
+    "customAmount": "Kita suma",
+    "customPlaceholder": "Kita…",
+    "donateAmountCta": "Paaukoti {amount}",
+    "paymentsPending": "Mokėjimai dar neaktyvuoti (Stripe integracija ruošiama — ADR-007).",
+    "amountLabel": "Suma",
+    "amountLegend": "Suma (EUR)"
+  },
+  "privacyConsent": {
+    "consentTextBefore": "Sutinku, kad mano asmens duomenys būtų tvarkomi pagal",
+    "policyLinkLabel": "privatumo politiką",
+    "consentTextAfter": ".",
+    "policyTitle": "Privatumo politika",
+    "cookiesTitle": "Slapukai",
+    "consentTitle": "Sutikimai",
+    "dsrTitle": "Duomenų subjekto teisės"
+  },
+  "events": {
+    "locationLabel": "Vieta",
+    "timeLabel": "Laikas",
+    "dateLabel": "Data"
+  },
+  "compliance": {
+    "privacyIntro": "{name} tvarko asmens duomenis pagal Bendrąjį duomenų apsaugos reglamentą (GDPR), įskaitant Art. 9 nuostatas dėl ypatingų kategorijų duomenų.",
+    "privacySpecialData": "Sakramentų ir religinės bendruomenės narystės duomenys tvarkomi tik teisėtais pagrindais (sutikimas, kanonų teisės prievolės) ir nėra atskleidžiami tretiesiems asmenims be teisinio pagrindo.",
+    "privacyContact": "Dėl duomenų apsaugos klausimų kreipkitės: {contact}.",
+    "privacyContactGeneric": "Dėl duomenų apsaugos klausimų kreipkitės į įstaigos administraciją.",
+    "cookiesNecessary": "Ši svetainė naudoja tik būtinuosius slapukus, reikalingus saugiam veikimui ir sutikimų valdymui.",
+    "cookiesNoThirdParty": "Trečiųjų šalių rinkodaros ar stebėsenos slapukai nenaudojami be aiškaus išankstinio sutikimo.",
+    "consentManage": "Čia galite peržiūrėti ir keisti savo sutikimus duomenų tvarkymui.",
+    "consentVersioning": "Sutikimai versijuojami ir jų istorija saugoma audito tikslais; bet kurį sutikimą galite atšaukti bet kuriuo metu.",
+    "consentHelp": "Pagalba: {email}.",
+    "consentHelpGeneric": "Pagalbos kreipkitės į įstaigos administraciją.",
+    "dsrRights": "Turite teisę prašyti prieigos, ištaisymo, ištrynimo, tvarkymo apribojimo, duomenų perkeliamumo ir teisės nesutikti (GDPR 15–21 str.).",
+    "dsrTimeline": "Prašymus nagrinėjame per 30 dienų. Tapatybė patvirtinama prieš pateikiant bet kokius duomenis.",
+    "dsrSubmit": "Prašymus siųskite: {email}.",
+    "dsrSubmitGeneric": "Prašymus teikite įstaigos administracijai."
+  }
+}

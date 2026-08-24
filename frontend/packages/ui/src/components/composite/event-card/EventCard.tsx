@@ -2,7 +2,10 @@
  * EventCard — consistent card pattern with event metadata
  * (date via semantic `<time>`, location, recurring badge).
  */
+'use client';
+
 import { Calendar, Clock, MapPin } from 'lucide-react';
+import { useTranslations } from '@jol-hub/i18n/use-translations';
 
 import { cn } from '../../../lib/utils';
 import { accentTextClass } from '../../../lib/tenant-theme';
@@ -22,6 +25,8 @@ export function EventCard({
   tenant,
   className,
 }: EventCardProps) {
+  const t = useTranslations('commerce');
+
   return (
     <Card variant={href ? 'interactive' : 'default'} tenant={tenant} className={className}>
       <CardHeader>
@@ -37,7 +42,7 @@ export function EventCard({
           </CardTitle>
           {recurring && (
             <Badge variant="secondary" size="sm">
-              Pasikartojantis / Recurring
+              {t('recurringBadge')}
             </Badge>
           )}
         </div>

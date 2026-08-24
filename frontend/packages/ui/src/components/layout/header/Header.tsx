@@ -11,6 +11,7 @@
 
 import { useEffect, useState } from 'react';
 import { Menu } from 'lucide-react';
+import { useTranslations } from '@jol-hub/i18n/use-translations';
 
 import { cn } from '../../../lib/utils';
 import { MainNav } from '../main-nav';
@@ -27,11 +28,13 @@ export function Header({
   transparentOnScroll = false,
   className,
 }: HeaderProps) {
+  const tNav = useTranslations('navigation');
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    if (!transparentOnScroll) return;
+    // Explicit `return undefined` for `noImplicitReturns` consumers.
+    if (!transparentOnScroll) return undefined;
     const onScroll = (): void => setScrolled(window.scrollY > SCROLL_THRESHOLD_PX);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -62,7 +65,7 @@ export function Header({
               onClick={() => setMobileOpen(true)}
               aria-expanded={mobileOpen}
               aria-controls="mobile-nav-drawer"
-              aria-label="Atidaryti meniu / Open menu"
+              aria-label={tNav('openMenu')}
               className="inline-flex h-10 w-10 items-center justify-center rounded-md hover:bg-primary-700 focus-ring md:hidden"
             >
               <Menu aria-hidden="true" className="h-5 w-5" />

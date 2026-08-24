@@ -10,6 +10,7 @@
 
 import { useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { useTranslations } from '@jol-hub/i18n/use-translations';
 
 import { cn } from '../../../lib/utils';
 import type { MainNavProps, NavItem } from './MainNav.types';
@@ -89,9 +90,11 @@ function Dropdown({ item }: { item: NavItem }) {
   );
 }
 
-export function MainNav({ items, label = 'Pagrindinė navigacija / Main navigation', className }: MainNavProps) {
+export function MainNav({ items, label, className }: MainNavProps) {
+  const t = useTranslations('navigation');
+
   return (
-    <nav aria-label={label} className={className}>
+    <nav aria-label={label ?? t('mainLabel')} className={className}>
       <ul className="flex items-center gap-1">
         {items.map((item) =>
           item.children && item.children.length > 0 ? (

@@ -12,6 +12,7 @@
 
 import { useCallback, useState } from 'react';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { useTranslations } from '@jol-hub/i18n/use-translations';
 
 import { cn } from '../../../lib/utils';
 import { FocusTrap } from '../../accessibility/focus-trap';
@@ -23,7 +24,9 @@ const COLUMNS = {
   4: 'md:grid-cols-3 lg:grid-cols-4',
 } as const;
 
-export function Gallery({ images, label = 'Nuotraukų galerija / Photo gallery', columns = 3, className }: GalleryProps) {
+export function Gallery({ images, label, columns = 3, className }: GalleryProps) {
+  const tA11y = useTranslations('accessibility');
+  const tCommon = useTranslations('common');
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const close = useCallback(() => setOpenIndex(null), []);
@@ -40,7 +43,7 @@ export function Gallery({ images, label = 'Nuotraukų galerija / Photo gallery',
   const open = openIndex !== null ? images[openIndex] : null;
 
   return (
-    <section aria-label={label} className={className}>
+    <section aria-label={label ?? tA11y('galleryLabel')} className={className}>
       <ul className={cn('grid grid-cols-1 gap-4', COLUMNS[columns])}>
         {images.map((image, index) => (
           <li key={image.src}>
@@ -86,7 +89,7 @@ export function Gallery({ images, label = 'Nuotraukų galerija / Photo gallery',
                 <button
                   type="button"
                   onClick={() => step(-1)}
-                  aria-label="Ankstesnė nuotrauka / Previous image"
+                  aria-label={tA11y('previousImage')}
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 text-neutral-50 hover:bg-neutral-700 focus-ring"
                 >
                   <ChevronLeft aria-hidden="true" className="h-5 w-5" />
@@ -97,7 +100,7 @@ export function Gallery({ images, label = 'Nuotraukų galerija / Photo gallery',
                 <button
                   type="button"
                   onClick={() => step(1)}
-                  aria-label="Kita nuotrauka / Next image"
+                  aria-label={tA11y('nextImage')}
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 text-neutral-50 hover:bg-neutral-700 focus-ring"
                 >
                   <ChevronRight aria-hidden="true" className="h-5 w-5" />
@@ -105,7 +108,7 @@ export function Gallery({ images, label = 'Nuotraukų galerija / Photo gallery',
                 <button
                   type="button"
                   onClick={close}
-                  aria-label="Uždaryti / Close"
+                  aria-label={tCommon('close')}
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 text-neutral-50 hover:bg-neutral-700 focus-ring"
                 >
                   <X aria-hidden="true" className="h-5 w-5" />

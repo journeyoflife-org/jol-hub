@@ -6,11 +6,13 @@
  * - Consent checkbox with mandatory privacy-policy link (GDPR Art. 6/7)
  * - Honeypot field (hidden from AT and keyboard) for basic spam defence
  * - Submission results announced via an assertive live region
+ * - All user-facing strings from the message catalog (STEP 4)
  */
 'use client';
 
 import { useRef, useState } from 'react';
 import { z } from 'zod';
+import { useTranslations } from '@jol-hub/i18n/use-translations';
 
 import { accentTextClass } from '../../../lib/tenant-theme';
 import { LiveRegion } from '../../accessibility/live-region';
@@ -19,22 +21,35 @@ import { Input } from '../../primitives/input';
 import { Textarea } from '../../primitives/textarea';
 import type { ContactFormProps, ContactFormValues } from './ContactForm.types';
 
+/** Structural contract only — displayed messages come from the catalog. */
 export const contactFormSchema = z.object({
-  name: z.string().min(2, 'Įveskite vardą / Please enter your name'),
-  email: z.string().email('Neteisingas el. paštas / Invalid email address'),
+  name: z.string().min(2, 'name'),
+  email: z.string().email('email'),
   phone: z
     .string()
-    .regex(/^[+\d][\d\s()-]{0,20}$/, 'Neteisingas telefono numeris / Invalid phone number')
+    .regex(/^[+\d][\d\s()-]{0,20}$/, 'phone')
     .or(z.literal('')),
-  message: z.string().min(10, 'Žinutė per trumpa / Message is too short (min 10 characters)'),
-  consent: z.literal(true, {
-    errorMap: () => ({ message: 'Būtina sutikti dėl duomenų tvarkymo / Consent is required' }),
-  }),
+  message: z.string().min(10, 'message'),
+  consent: z.literal(true, { errorMap: () => ({ message: 'consent' }) }),
 });
+
+/** Zod field path → validation.* message key. */
+const FIELD_ERROR_KEYS: Record<keyof ContactFormValues, string> = {
+  name: 'nameRequired',
+  email: 'emailInvalid',
+  phone: 'phoneInvalid',
+  message: 'messageTooShort',
+  consent: 'consentRequired',
+};
 
 type FieldErrors = Partial<Record<keyof ContactFormValues, string>>;
 
 export function ContactForm({ onSubmit, privacyPolicyHref, tenant, title, className }: ContactFormProps) {
+  const tForms = useTranslations('forms');
+  const tValidation = useTranslations('validation');
+  const tErrors = useTranslations('errors');
+  const tConsent = useTranslations('privacyConsent');
+
   const [errors, setErrors] = useState<FieldErrors>({});
   const [attempted, setAttempted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -54,7 +69,7 @@ export function ContactForm({ onSubmit, privacyPolicyHref, tenant, title, classN
     const fieldErrors: FieldErrors = {};
     for (const issue of parsed.error.issues) {
       const key = issue.path[0] as keyof ContactFormValues;
-      if (!fieldErrors[key]) fieldErrors[key] = issue.message;
+      if (!fieldErrors[key]) fieldErrors[key] = tValidation(FIELD_ERROR_KEYS[key]);
     }
     return fieldErrors;
   };
@@ -66,14 +81,14 @@ export function ContactForm({ onSubmit, privacyPolicyHref, tenant, title, classN
 
     // Honeypot filled → silently pretend success (do not reveal detection).
     if (honeypotRef.current?.value) {
-      setStatus({ ok: true, message: 'Ačiū! Jūsų žinutė išsiųsta. / Thank you! Your message was sent.' });
+      setStatus({ ok: true, message: tForms('sent') });
       return;
     }
 
     const fieldErrors = validate(event.currentTarget);
     setErrors(fieldErrors);
     if (Object.keys(fieldErrors).length > 0) {
-      setStatus({ ok: false, message: 'Formoje yra klaidų. Patikslinkite pažymėtus laukus. / The form has errors. Please review the highlighted fields.' });
+      setStatus({ ok: false, message: tValidation('formHasErrors') });
       return;
     }
 
@@ -92,7 +107,7 @@ export function ContactForm({ onSubmit, privacyPolicyHref, tenant, title, classN
       setStatus(result);
       if (result.ok) event.currentTarget.reset();
     } catch {
-      setStatus({ ok: false, message: 'Nepavyko išsiųsti. Bandykite vėliau. / Sending failed. Please try again later.' });
+      setStatus({ ok: false, message: tErrors('sendFailed') });
     } finally {
       setSubmitting(false);
     }
@@ -112,7 +127,7 @@ export function ContactForm({ onSubmit, privacyPolicyHref, tenant, title, classN
         {/* Honeypot — hidden from humans and assistive technology. */}
         <div aria-hidden="true" className="hidden">
           <label htmlFor="contact-website">
-            Svetainė
+            {tForms('websiteLabel')}
             <input
               ref={honeypotRef}
               id="contact-website"
@@ -124,10 +139,10 @@ export function ContactForm({ onSubmit, privacyPolicyHref, tenant, title, classN
           </label>
         </div>
 
-        <Input id="contact-name" name="name" label="Vardas / Name" required error={errors.name} autoComplete="name" />
-        <Input id="contact-email" name="email" label="El. paštas / Email" type="email" required error={errors.email} autoComplete="email" />
-        <Input id="contact-phone" name="phone" label="Telefonas / Phone" type="tel" error={errors.phone} autoComplete="tel" />
-        <Textarea id="contact-message" name="message" label="Žinutė / Message" required error={errors.message} />
+        <Input id="contact-name" name="name" label={tForms('nameLabel')} required error={errors.name} autoComplete="name" />
+        <Input id="contact-email" name="email" label={tForms('emailLabel')} type="email" required error={errors.email} autoComplete="email" />
+        <Input id="contact-phone" name="phone" label={tForms('phoneLabel')} type="tel" error={errors.phone} autoComplete="tel" />
+        <Textarea id="contact-message" name="message" label={tForms('messageLabel')} required error={errors.message} />
 
         <div className="flex flex-col gap-1.5">
           <div className="flex items-start gap-2">
@@ -141,15 +156,11 @@ export function ContactForm({ onSubmit, privacyPolicyHref, tenant, title, classN
               className="mt-1 h-4 w-4 rounded border-neutral-300 text-primary focus-ring dark:border-neutral-700"
             />
             <label htmlFor="contact-consent" className="text-sm text-neutral-700 dark:text-neutral-200">
-              Sutinku, kad mano asmens duomenys būtų tvarkomi pagal{' '}
+              {tConsent('consentTextBefore')}{' '}
               <a href={privacyPolicyHref} className={accentTextClass(tenant)}>
-                privatumo politiką
+                {tConsent('policyLinkLabel')}
               </a>
-              . / I agree to the processing of my personal data in accordance with the{' '}
-              <a href={privacyPolicyHref} className={accentTextClass(tenant)}>
-                privacy policy
-              </a>
-              .
+              {tConsent('consentTextAfter')}
             </label>
           </div>
           {errors.consent && (
@@ -160,7 +171,7 @@ export function ContactForm({ onSubmit, privacyPolicyHref, tenant, title, classN
         </div>
 
         <Button type="submit" loading={submitting} tenant={tenant} className="self-start">
-          {submitting ? 'Siunčiama… / Sending…' : 'Siųsti / Send'}
+          {submitting ? tForms('sending') : tForms('submit')}
         </Button>
       </div>
 

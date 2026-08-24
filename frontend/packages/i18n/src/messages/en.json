@@ -1,0 +1,120 @@
+{
+  "common": {
+    "appName": "JOL-HUB",
+    "loading": "Loading…",
+    "close": "Close",
+    "cancel": "Cancel",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "readMore": "Read more",
+    "viewAll": "View all",
+    "optional": "Optional",
+    "required": "Required",
+    "copyright": "All rights reserved."
+  },
+  "navigation": {
+    "mainLabel": "Main navigation",
+    "mobileLabel": "Mobile navigation",
+    "sidebarLabel": "Sidebar navigation",
+    "breadcrumbLabel": "Breadcrumb",
+    "footerLabel": "Footer navigation",
+    "languageLabel": "Language",
+    "home": "Home",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "contact": "Contact",
+    "news": "News",
+    "events": "Events",
+    "legal": "Legal information",
+    "navigationTitle": "Navigation",
+    "contactTitle": "Contact"
+  },
+  "forms": {
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "messageLabel": "Message",
+    "websiteLabel": "Website",
+    "selectPlaceholder": "Select…",
+    "submit": "Send",
+    "sending": "Sending…",
+    "sent": "Thank you! Your message has been sent."
+  },
+  "validation": {
+    "nameRequired": "Please enter your name",
+    "emailInvalid": "Invalid email address",
+    "phoneInvalid": "Invalid phone number",
+    "messageTooShort": "Message is too short (minimum 10 characters)",
+    "consentRequired": "Consent to data processing is required",
+    "formHasErrors": "The form has errors. Please review the highlighted fields."
+  },
+  "errors": {
+    "notFoundTitle": "Page not found",
+    "notFoundBody": "The requested address does not exist or is unavailable. Please verify the link or contact the administration of the institution you are looking for.",
+    "generic": "Something went wrong. Please try again later.",
+    "sendFailed": "Sending failed. Please try again later."
+  },
+  "seo": {
+    "siteDescription": "Journey Of Life — a journey through life, together."
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content",
+    "loadingStatus": "Loading…",
+    "avatarGroupLabel": "Group",
+    "avatarOverflow": "{count, plural, one {# more} other {# more}}",
+    "galleryLabel": "Photo gallery",
+    "previousImage": "Previous image",
+    "nextImage": "Next image",
+    "closeLightbox": "Close image viewer",
+    "localeChanged": "Language changed to {language}"
+  },
+  "commerce": {
+    "priceLabel": "Price",
+    "durationLabel": "Duration",
+    "recurringBadge": "Recurring",
+    "bookingCta": "Book now",
+    "donateTitle": "Support us",
+    "donateDescription": "Your donation helps sustain our community ministries.",
+    "donateCta": "Donate",
+    "oneTime": "One-time",
+    "monthly": "Monthly",
+    "customAmount": "Custom amount",
+    "customPlaceholder": "Other…",
+    "donateAmountCta": "Donate {amount}",
+    "paymentsPending": "Payments are not yet enabled (Stripe integration pending — ADR-007).",
+    "amountLabel": "Amount",
+    "amountLegend": "Amount (EUR)"
+  },
+  "privacyConsent": {
+    "consentTextBefore": "I agree to the processing of my personal data in accordance with the",
+    "policyLinkLabel": "privacy policy",
+    "consentTextAfter": ".",
+    "policyTitle": "Privacy Policy",
+    "cookiesTitle": "Cookie Policy",
+    "consentTitle": "Consent",
+    "dsrTitle": "Data Subject Rights"
+  },
+  "events": {
+    "locationLabel": "Location",
+    "timeLabel": "Time",
+    "dateLabel": "Date"
+  },
+  "compliance": {
+    "privacyIntro": "{name} processes personal data under the General Data Protection Regulation (GDPR), including Art. 9 provisions on special categories of data.",
+    "privacySpecialData": "Sacramental and religious community membership data is processed only on lawful bases (consent, canon-law obligations) and is never disclosed to third parties without a legal basis.",
+    "privacyContact": "For data protection enquiries, contact: {contact}.",
+    "privacyContactGeneric": "For data protection enquiries, please contact the institution's administration.",
+    "cookiesNecessary": "This website uses only strictly necessary cookies required for secure operation and consent management.",
+    "cookiesNoThirdParty": "No third-party marketing or tracking cookies are used without explicit prior consent.",
+    "consentManage": "Here you can review and change your data processing consents.",
+    "consentVersioning": "Consents are versioned and their history is kept for audit purposes; you may withdraw any consent at any time.",
+    "consentHelp": "Help: {email}.",
+    "consentHelpGeneric": "For help, please contact the institution's administration.",
+    "dsrRights": "You have the right to request access, rectification, erasure, restriction of processing, data portability and to object (GDPR Art. 15–21).",
+    "dsrTimeline": "Requests are handled within 30 days. Identity is verified before any data is disclosed.",
+    "dsrSubmit": "Send requests to: {email}.",
+    "dsrSubmitGeneric": "Submit requests to the institution's administration."
+  }
+}

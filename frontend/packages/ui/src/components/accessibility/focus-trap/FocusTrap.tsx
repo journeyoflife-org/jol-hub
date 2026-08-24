@@ -35,9 +35,11 @@ export function FocusTrap({
   const previouslyFocused = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    if (!active) return;
+    // Explicit `return undefined` (not bare `return`): keeps the effect
+    // compatible with `noImplicitReturns` in consuming apps' tsconfigs.
+    if (!active) return undefined;
     const container = containerRef.current;
-    if (!container) return;
+    if (!container) return undefined;
 
     previouslyFocused.current =
       restoreFocusTo ?? (document.activeElement as HTMLElement | null);
