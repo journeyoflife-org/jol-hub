@@ -1,0 +1,220 @@
+{
+  "slug": "parish-st-john-vilnius",
+  "vertical": "parish",
+  "locale": "lt",
+  "name": {
+    "lt": "Vilniaus Šv. Jonų bažnyčia",
+    "en": "St. Johns Church Vilnius"
+  },
+  "tagline": {
+    "lt": "Parapija Vilniaus senamiesčio širdyje nuo 1387 m.",
+    "en": "A parish in the heart of Vilnius Old Town since 1387"
+  },
+  "identity": {
+    "entityId": "lt-parish-st-john-vilnius-001",
+    "jurisdiction": "Vilnius Archdiocese",
+    "established": "1387",
+    "address": "Šv. Jono g. 12, 01141 Vilnius, Lithuania",
+    "email": "jonai@vilnius.lt",
+    "phone": "+370 5 261 5454",
+    "domain": "svjonai.lt",
+    "theme": "parish-traditional"
+  },
+  "pages": [
+    {
+      "route": "/",
+      "title": { "lt": "Pradžia", "en": "Home" },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Vilniaus Šv. Jonų bažnyčia",
+            "en": "St. Johns Church Vilnius"
+          },
+          "subheading": {
+            "lt": "Šv. Jono Krikštytojo ir Šv. Jono Evangelisto globa",
+            "en": "Under the patronage of St. John the Baptist and St. John the Evangelist"
+          },
+          "body": {
+            "lt": "Vilniaus arkivyskupija · Vilniaus miesto dekanatas · Įkurta 1387 m.",
+            "en": "Vilnius Archdiocese · Vilnius City Deanery · Established 1387"
+          }
+        },
+        {
+          "type": "schedule",
+          "heading": { "lt": "Šv. Mišių tvarkaraštis", "en": "Mass Schedule" },
+          "entries": [
+            {
+              "day": "Pirmadienis - Penktadienis",
+              "dayEn": "Monday - Friday",
+              "times": ["07:30", "18:30"]
+            },
+            {
+              "day": "Šeštadienis",
+              "dayEn": "Saturday",
+              "times": ["09:00", "18:00"]
+            },
+            {
+              "day": "Sekmadienis",
+              "dayEn": "Sunday",
+              "times": ["09:00", "11:00", "18:00"],
+              "notes": "11:00 - pagrindinės Šv. Mišios"
+            },
+            {
+              "day": "Šventinės dienos",
+              "dayEn": "Holy Days",
+              "times": ["07:30", "09:00", "11:00", "18:00"],
+              "notes": "Patikslinkite tvarkaraštį šventėms"
+            }
+          ]
+        },
+        {
+          "type": "keyValue",
+          "heading": { "lt": "Kontaktai ir tarnystės", "en": "Contact & Ministries" },
+          "items": [
+            { "label": { "lt": "Adresas" }, "value": "Šv. Jono g. 12, 01141 Vilnius" },
+            { "label": { "lt": "Telefonas" }, "value": "+370 5 261 5454" },
+            { "label": { "lt": "El. paštas" }, "value": "jonai@vilnius.lt" },
+            { "label": { "lt": "Klebonas" }, "value": "Kun. Dr. Jonas Ivanauskas (klebonas@svjonai.lt)" },
+            { "label": { "lt": "Biuro laikas" }, "value": "I-V 09:00-17:00, VI-VII 10:00-12:00" },
+            {
+              "label": { "lt": "Išpažintis" },
+              "value": "Savaitgaliais 08:00-08:45, 17:00-17:45 arba susitarus"
+            }
+          ]
+        },
+        {
+          "type": "stats",
+          "heading": { "lt": "Parapijos statistika", "en": "Parish Statistics" },
+          "items": [
+            { "label": { "lt": "Registruotų parapijiečių" }, "value": 4200 },
+            { "label": { "lt": "Sekmadienio dalyvių (vid.)" }, "value": 850 },
+            { "label": { "lt": "Krikštai per metus" }, "value": 65 },
+            { "label": { "lt": "Santuokos per metus" }, "value": 32 }
+          ]
+        },
+        {
+          "type": "cta",
+          "links": [
+            { "label": { "lt": "Užsakyti Mišių intenciją" }, "href": "/shop" },
+            { "label": { "lt": "Sakramentai" }, "href": "/sacraments" },
+            { "label": { "lt": "Naujienos" }, "href": "/news" }
+          ]
+        }
+      ],
+      "meta": { "description": "Vilniaus Šv. Jonų bažnyčios parapija" }
+    },
+    {
+      "route": "/sacraments",
+      "title": { "lt": "Sakramentai", "en": "Sacraments" },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": { "lt": "Sakramentai", "en": "Sacraments" },
+          "items": [
+            {
+              "title": { "lt": "Krikštas", "en": "Baptism" },
+              "description": {
+                "lt": "Krikšto sakramentas - įėjimas į Bažnyčią",
+                "en": "Sacrament of Baptism - entry into the Church"
+              },
+              "tags": ["Pasiruošimas: 2-3 savaitės", "Tėvų ir krikštatėvių katechezė"]
+            },
+            {
+              "title": { "lt": "Pirmoji Komunija", "en": "First Communion" },
+              "description": {
+                "lt": "Eucharistijos sakramentas pirmą kartą",
+                "en": "First reception of the Eucharist"
+              },
+              "tags": ["Pasiruošimas: 2 metai", "Katechezės kursas"]
+            },
+            {
+              "title": { "lt": "Sutvirtinimas", "en": "Confirmation" },
+              "description": { "lt": "Sutvirtinimo sakramentas", "en": "Sacrament of Confirmation" },
+              "tags": ["Pasiruošimas: 1-2 metai"]
+            },
+            {
+              "title": { "lt": "Santuoka", "en": "Marriage" },
+              "description": { "lt": "Santuokos sakramentas", "en": "Sacrament of Holy Matrimony" },
+              "tags": ["Pasiruošimas: 6 mėnesiai", "Susitikimas su kunigu prieš 6 mėn."]
+            },
+            {
+              "title": { "lt": "Išpažintis", "en": "Confession" },
+              "description": {
+                "lt": "Atgailos sakramentas",
+                "en": "Sacrament of Reconciliation"
+              },
+              "tags": ["Be išankstinio pasiruošimo"]
+            },
+            {
+              "title": { "lt": "Ligonių patepimas", "en": "Anointing of the Sick" },
+              "description": {
+                "lt": "Ligonių patepimo sakramentas",
+                "en": "Sacrament of the Anointing of the Sick"
+              },
+              "tags": ["Kreiptis į parapijos biurą"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/news",
+      "title": { "lt": "Naujienos", "en": "News" },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": { "lt": "Parapijos naujienos", "en": "Parish News" },
+          "body": {
+            "lt": "Naujausios parapijos naujienos, skelbimai ir renginių apžvalgos. Prenumeruokite savaitinį laišką parapijos biure.",
+            "en": "Latest parish news, announcements and event highlights. Subscribe to the weekly letter at the parish office."
+          }
+        }
+      ]
+    },
+    {
+      "route": "/shop",
+      "title": { "lt": "Krautuvėlė", "en": "Shop" },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": { "lt": "Paslaugos ir prekės", "en": "Services & Products" },
+          "items": [
+            {
+              "title": { "lt": "Šv. Mišių intencijos", "en": "Mass Intentions" }
+            },
+            {
+              "title": { "lt": "Religiniai daiktai", "en": "Religious Items" }
+            },
+            {
+              "title": { "lt": "Salės nuoma", "en": "Hall Rental" }
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "heading": { "lt": "Salės nuoma", "en": "Hall Rental" },
+          "items": [
+            {
+              "title": { "lt": "Šv. Jono salė", "en": "St. John Hall" },
+              "subtitle": { "lt": "Iki 150 svečių", "en": "Up to 150 guests" },
+              "description": {
+                "lt": "Virtuvė, stalai ir kėdės, garso sistema, projektorius, įėjimas neįgaliesiems",
+                "en": "Kitchen, tables & chairs, sound system, projector, wheelchair access"
+              },
+              "price": 25,
+              "tags": ["EUR/val."]
+            },
+            {
+              "title": { "lt": "Mažoji salė", "en": "Small Hall" },
+              "subtitle": { "lt": "Iki 40 svečių", "en": "Up to 40 guests" },
+              "description": { "lt": "Virtuvė, stalai ir kėdės", "en": "Kitchen, tables & chairs" },
+              "price": 15,
+              "tags": ["EUR/val."]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

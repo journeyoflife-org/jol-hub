@@ -1,0 +1,140 @@
+{
+  "slug": "diocese-vilnius",
+  "vertical": "diocese",
+  "locale": "lt",
+  "name": {
+    "lt": "Vilniaus arkivyskupija",
+    "en": "Vilnius Archdiocese"
+  },
+  "tagline": {
+    "lt": "Metropolijos centras, įkurtas 1387 m., Šv. Kazimiero globoje",
+    "en": "Metropolitan see founded in 1387, under the patronage of St. Casimir"
+  },
+  "identity": {
+    "entityId": "lt-diocese-vilnius-001",
+    "jurisdiction": "Vilnius Archdiocese",
+    "established": "1387",
+    "address": "Šv. Jono g. 3, 01141 Vilnius, Lithuania",
+    "email": "info@vilniusarkivyskupija.lt",
+    "phone": "+370 5 261 0744",
+    "domain": "vilniusarkivyskupija.lt",
+    "theme": "diocese-classic"
+  },
+  "pages": [
+    {
+      "route": "/",
+      "title": { "lt": "Pradžia", "en": "Home" },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Vilniaus arkivyskupija",
+            "en": "Vilnius Archdiocese"
+          },
+          "subheading": {
+            "lt": "Metropolijos centras · Šv. Kazimiero globa",
+            "en": "Metropolitan see · Patron: St. Casimir"
+          },
+          "body": {
+            "lt": "Įkurta 1387 m. Katedra - Vilniaus arkikatedra bazilika.",
+            "en": "Erected in 1387. Cathedral: Vilnius Cathedral Basilica."
+          }
+        },
+        {
+          "type": "stats",
+          "heading": { "lt": "Arkivyskupija skaičiais", "en": "The Archdiocese in Numbers" },
+          "items": [
+            { "label": { "lt": "Parapijų" }, "value": 54 },
+            { "label": { "lt": "Kunigų" }, "value": 78 },
+            { "label": { "lt": "Diakonų" }, "value": 5 },
+            { "label": { "lt": "Parapijiečių" }, "value": 320000 },
+            { "label": { "lt": "Katalikų" }, "value": 580000 }
+          ]
+        },
+        {
+          "type": "cta",
+          "links": [
+            { "label": { "lt": "Dekanatų katalogas" }, "href": "/directory" },
+            { "label": { "lt": "Naujienos" }, "href": "/news" },
+            { "label": { "lt": "Pašaukimai" }, "href": "/vocations" }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/directory",
+      "title": { "lt": "Dekanatai", "en": "Deaneries" },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": { "lt": "Arkivyskupijos dekanatai", "en": "Archdiocesan Deaneries" },
+          "items": [
+            {
+              "title": { "lt": "Vilniaus I dekanatas", "en": "Vilnius I Deanery" },
+              "tags": ["12 parapijų"]
+            },
+            {
+              "title": { "lt": "Vilniaus II dekanatas", "en": "Vilnius II Deanery" },
+              "tags": ["15 parapijų"]
+            },
+            {
+              "title": { "lt": "Trakų dekanatas", "en": "Trakai Deanery" },
+              "tags": ["10 parapijų"]
+            },
+            {
+              "title": { "lt": "Šalčininkų dekanatas", "en": "Šalčininkai Deanery" },
+              "tags": ["8 parapijos"]
+            },
+            {
+              "title": { "lt": "Švenčionių dekanatas", "en": "Švenčionys Deanery" },
+              "tags": ["9 parapijos"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/news",
+      "title": { "lt": "Naujienos", "en": "News" },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": { "lt": "Arkivyskupijos naujienų portalas", "en": "Archdiocesan News Portal" },
+          "body": {
+            "lt": "Oficialūs pranešimai, ganytojiniai laiškai, liturginis kalendorius ir parapijų naujienos.",
+            "en": "Official announcements, pastoral letters, liturgical calendar and parish news."
+          }
+        }
+      ]
+    },
+    {
+      "route": "/vocations",
+      "title": { "lt": "Pašaukimai", "en": "Vocations" },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": { "lt": "Pašaukimų tarnyba", "en": "Vocations Office" },
+          "body": {
+            "lt": "Informacija apie kunigystės ir pašvęstojo gyvenimo pašaukimą, seminarija, palydėjimas ir kontaktai.",
+            "en": "Information about priestly and consecrated-life vocations, the seminary, accompaniment and contacts."
+          }
+        }
+      ]
+    },
+    {
+      "route": "/shop",
+      "title": { "lt": "Krautuvėlė", "en": "Shop" },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": { "lt": "Arkivyskupijos krautuvėlė", "en": "Archdiocesan Shop" },
+          "items": [
+            { "title": { "lt": "Vyskupijos leidiniai", "en": "Diocesan Publications" } },
+            { "title": { "lt": "Renginių bilietai", "en": "Event Tickets" } },
+            { "title": { "lt": "Rekolekcijos", "en": "Retreat Bookings" } }
+          ]
+        }
+      ]
+    }
+  ]
+}

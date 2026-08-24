@@ -1,0 +1,164 @@
+{
+  "slug": "greek-catholic-vilnius",
+  "vertical": "greek-catholic",
+  "locale": "lt",
+  "name": {
+    "lt": "Vilniaus Šv. Apaštalų Petro ir Povilo Graikų Katalikų Bažnyčia",
+    "en": "Vilnius Greek Catholic Church of Sts. Peter and Paul"
+  },
+  "tagline": {
+    "lt": "Bizantijos apeigų bendruomenė, vienybėje su Roma nuo 1991 m.",
+    "en": "A Byzantine-rite community in communion with Rome since 1991"
+  },
+  "identity": {
+    "entityId": "lt-greek-catholic-vilnius-001",
+    "jurisdiction": "Ukrainian Greek Catholic Church in communion with Rome",
+    "established": "1991",
+    "address": "M. Valančiaus g. 5, 03102 Vilnius, Lithuania",
+    "email": "info@greekcatholic.lt",
+    "phone": "+370 5 234 5678",
+    "domain": "greekcatholic.lt",
+    "theme": "byzantine-catholic"
+  },
+  "pages": [
+    {
+      "route": "/",
+      "title": { "lt": "Pradžia", "en": "Home" },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Graikų Katalikų Bažnyčia",
+            "en": "Greek Catholic Church"
+          },
+          "subheading": {
+            "lt": "Šv. Apaštalų Petro ir Povilo garbei",
+            "en": "Dedicated to the Holy Apostles Peter and Paul"
+          },
+          "body": {
+            "lt": "Ukrainos Graikų Katalikų Bažnyčia · Kijevo-Haličo eparchija · Bizantijos apeigos · Pašventinta 1997 m.",
+            "en": "Ukrainian Greek Catholic Church · Kyiv-Halych Eparchy · Byzantine Rite · Consecrated 1997"
+          }
+        },
+        {
+          "type": "list",
+          "heading": { "lt": "Pamaldų tvarka", "en": "Service Schedule" },
+          "items": [
+            {
+              "title": { "lt": "Sekmadienis", "en": "Sunday" },
+              "description": {
+                "lt": "06:30 Rytmetinės · 09:00 Šv. Liturgija (ankstyvoji) · 10:30 Šv. Liturgija (vėlyvoji) · 17:00 Vakarinės",
+                "en": "06:30 Matins · 09:00 Divine Liturgy (early) · 10:30 Divine Liturgy (late) · 17:00 Vespers"
+              }
+            },
+            {
+              "title": { "lt": "Šeštadienis", "en": "Saturday" },
+              "description": {
+                "lt": "09:00 Šv. Liturgija · 17:00 Visanaktinė budynė",
+                "en": "09:00 Divine Liturgy · 17:00 All-Night Vigil"
+              }
+            },
+            {
+              "title": { "lt": "Darbo dienos", "en": "Weekdays" },
+              "description": {
+                "lt": "08:00 Šv. Liturgija · 17:00 Vakarinės",
+                "en": "08:00 Divine Liturgy · 17:00 Vespers"
+              }
+            }
+          ]
+        },
+        {
+          "type": "keyValue",
+          "heading": { "lt": "Kontaktai", "en": "Contact" },
+          "items": [
+            { "label": { "lt": "Adresas" }, "value": "M. Valančiaus g. 5, 03102 Vilnius" },
+            { "label": { "lt": "Telefonas" }, "value": "+370 5 234 5678" },
+            { "label": { "lt": "El. paštas" }, "value": "info@greekcatholic.lt" },
+            { "label": { "lt": "Raštinė" }, "value": "I-V 10:00-18:00, savaitgaliais pagal susitarimą" }
+          ]
+        },
+        {
+          "type": "stats",
+          "heading": { "lt": "Bendruomenė", "en": "Community" },
+          "items": [
+            { "label": { "lt": "Parapijiečių" }, "value": 1200 },
+            { "label": { "lt": "Sekmadienio dalyvių (vid.)" }, "value": 350 },
+            { "label": { "lt": "Dvasininkų" }, "value": 3 },
+            { "label": { "lt": "Švenčių dalyvių" }, "value": 600 }
+          ]
+        },
+        {
+          "type": "cta",
+          "links": [
+            { "label": { "lt": "Ikonų galerija" }, "href": "/gallery" },
+            { "label": { "lt": "Krautuvėlė" }, "href": "/shop" }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/gallery",
+      "title": { "lt": "Ikonų galerija", "en": "Icon Gallery" },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": { "lt": "Žymiausios ikonos", "en": "Notable Icons" },
+          "items": [
+            {
+              "title": { "lt": "Vilniaus Dievo Motinos Ikona", "en": "Vilnius Icon of the Mother of God" },
+              "subtitle": { "lt": "Kijevas · XVIII a. · Ikonostatas" },
+              "description": {
+                "lt": "Stebuklinga Dievo Motinos ikona, bendruomenės globėja",
+                "en": "Miracle-working icon of the Theotokos, patron of the community"
+              }
+            },
+            {
+              "title": { "lt": "Šv. Apaštalai Petras ir Paulius", "en": "Holy Apostles Peter and Paul" },
+              "subtitle": { "lt": "Lvovas · XIX a. · Pagrindinis ikonostatas" },
+              "description": {
+                "lt": "Bažnyčios globėjų ikona",
+                "en": "Patron saints icon of the church"
+              }
+            },
+            {
+              "title": { "lt": "Šv. Josafatas Kuncevičius", "en": "St. Josaphat Kuntsevych" },
+              "subtitle": { "lt": "Polockas · XVII a. · Šoninė koplyčia" },
+              "description": {
+                "lt": "Bažnyčios vienybės globėjas, kankinys už Romos ir Konstantinopolio vienybę",
+                "en": "Patron of church unity, martyr for unity between Rome and Constantinople"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/shop",
+      "title": { "lt": "Krautuvėlė", "en": "Shop" },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": { "lt": "Bažnyčios krautuvėlė", "en": "Church Shop" },
+          "items": [
+            { "title": { "lt": "Ikonos", "en": "Icons" } },
+            { "title": { "lt": "Žvakės", "en": "Candles" } },
+            { "title": { "lt": "Knygos", "en": "Books" } },
+            { "title": { "lt": "Apeiginiai drabužiai", "en": "Vestments" } },
+            { "title": { "lt": "Muzika", "en": "Music" } }
+          ]
+        },
+        {
+          "type": "list",
+          "heading": { "lt": "Žvakės", "en": "Candles" },
+          "items": [
+            { "title": { "lt": "Maža žvakė", "en": "Small candle" }, "price": 0.5, "tags": ["dega 2 val."] },
+            { "title": { "lt": "Vidutinė žvakė", "en": "Medium candle" }, "price": 1, "tags": ["dega 4 val."] },
+            { "title": { "lt": "Didelė žvakė", "en": "Large candle" }, "price": 2, "tags": ["dega 8 val."] },
+            { "title": { "lt": "Votyvinė žvakė", "en": "Votive candle" }, "price": 3, "tags": ["dega 24 val."] },
+            { "title": { "lt": "Velykinė žvakė", "en": "Paschal candle" }, "price": 10, "tags": ["dega 48 val."] }
+          ]
+        }
+      ]
+    }
+  ]
+}

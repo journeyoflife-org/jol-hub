@@ -1,0 +1,257 @@
+{
+  "slug": "cemetery-vilnius",
+  "vertical": "cemetery",
+  "locale": "lt",
+  "name": {
+    "lt": "Vilniaus Kapinių Tarnyba",
+    "en": "Vilnius Cemetery Services"
+  },
+  "tagline": {
+    "lt": "Orus atminimas ir kapų priežiūra nuo 1900 m.",
+    "en": "Dignified remembrance and grave care since 1900"
+  },
+  "identity": {
+    "entityId": "lt-cemetery-vilnius-001",
+    "established": "1900",
+    "address": "Kapinių g. 1, 01140 Vilnius, Lithuania",
+    "email": "info@vilniuscemetery.lt",
+    "phone": "+370 5 210 6000",
+    "domain": "vilniuscemetery.lt",
+    "theme": "cemetery-serene"
+  },
+  "pages": [
+    {
+      "route": "/",
+      "title": { "lt": "Pradžia", "en": "Home" },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Vilniaus Kapinių Tarnyba",
+            "en": "Vilnius Cemetery Services"
+          },
+          "subheading": {
+            "lt": "Kapinių paslaugos nuo 1900 m.",
+            "en": "Cemetery services since 1900"
+          }
+        },
+        {
+          "type": "keyValue",
+          "heading": { "lt": "Kontaktai ir darbo laikas", "en": "Contact & Hours" },
+          "items": [
+            { "label": { "lt": "Adresas" }, "value": "Kapinių g. 1, 01140 Vilnius" },
+            { "label": { "lt": "Telefonas" }, "value": "+370 5 210 6000" },
+            { "label": { "lt": "Skubus numeris" }, "value": "+370 699 00600" },
+            { "label": { "lt": "El. paštas" }, "value": "info@vilniuscemetery.lt" },
+            { "label": { "lt": "Vasaros laikas" }, "value": "08:00 - 20:00" },
+            { "label": { "lt": "Žiemos laikas" }, "value": "08:00 - 17:00" },
+            { "label": { "lt": "Biuras" }, "value": "09:00 - 17:00" }
+          ]
+        },
+        {
+          "type": "list",
+          "heading": { "lt": "Paslaugos", "en": "Services" },
+          "items": [
+            {
+              "title": { "lt": "Laidojimo paslauga", "en": "Burial Service" },
+              "description": {
+                "lt": "Pilna laidojimo paslauga su kapo paruošimu",
+                "en": "Full burial service including grave preparation"
+              },
+              "price": 500
+            },
+            {
+              "title": { "lt": "Kremavimo kapas", "en": "Cremation Plot" },
+              "description": {
+                "lt": "Kapas kremuotiems palaikams",
+                "en": "Plot for cremated remains"
+              },
+              "price": 300
+            },
+            {
+              "title": { "lt": "Ekshumacija", "en": "Exhumation" },
+              "description": {
+                "lt": "Palaikų ekshumavimo paslauga",
+                "en": "Exhumation service"
+              },
+              "price": 800
+            },
+            {
+              "title": { "lt": "Paminklo įrengimas", "en": "Memorial Installation" },
+              "description": {
+                "lt": "Paminklo montavimas ir įrengimas",
+                "en": "Monument mounting and installation"
+              },
+              "price": 200
+            },
+            {
+              "title": { "lt": "Kapo kasimas", "en": "Grave Digging" },
+              "description": {
+                "lt": "Kapo paruošimas laidojimui",
+                "en": "Grave preparation for burial"
+              },
+              "price": 250
+            },
+            {
+              "title": { "lt": "Kapo restauravimas", "en": "Grave Restoration" },
+              "description": {
+                "lt": "Senų kapų atnaujinimo darbai",
+                "en": "Restoration works for historic graves"
+              },
+              "price": 400
+            }
+          ]
+        },
+        {
+          "type": "stats",
+          "heading": { "lt": "Kapinės skaičiais", "en": "The Cemetery in Numbers" },
+          "items": [
+            { "label": { "lt": "Įkurta" }, "value": 1900 },
+            { "label": { "lt": "Darbuotojų" }, "value": 45 },
+            { "label": { "lt": "Viso kapaviečių" }, "value": 45000 },
+            { "label": { "lt": "Aktyvių kapaviečių" }, "value": 38000 }
+          ]
+        },
+        {
+          "type": "cta",
+          "links": [
+            { "label": { "lt": "Kapų paieška" }, "href": "/locate" },
+            { "label": { "lt": "Priežiūros planai" }, "href": "/maintenance" },
+            { "label": { "lt": "Paminklai" }, "href": "/monuments" }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/locate",
+      "title": { "lt": "Kapų paieška", "en": "Grave Locator" },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": { "lt": "Kapavietės paieška", "en": "Grave Locator" },
+          "body": {
+            "lt": "Ieškokite kapavietės pagal vardą, pavardę arba sekciją. Sistema veikia vadovaujantis GDPR Art. 9 reikalavimais - asmens duomenys apie mirusiuosius atskleidžiami tik teisėtam interesui.",
+            "en": "Search for a grave by name or section. The system operates under GDPR Art. 9 requirements - personal data about the deceased is disclosed only for legitimate interest."
+          }
+        },
+        {
+          "type": "list",
+          "heading": { "lt": "Kapinių sekcijos", "en": "Cemetery Sections" },
+          "items": [
+            { "title": { "lt": "A sekcija" }, "tags": ["istorinė", "nuo 1900"] },
+            { "title": { "lt": "B sekcija" }, "tags": ["stačiatikių", "nuo 1920"] },
+            { "title": { "lt": "C sekcija" }, "tags": ["katalikų", "nuo 1950"] },
+            { "title": { "lt": "D sekcija" }, "tags": ["naujoji", "nuo 1990"] },
+            { "title": { "lt": "E sekcija" }, "tags": ["kremavimo", "nuo 2010"] }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/maintenance",
+      "title": { "lt": "Kapų priežiūra", "en": "Grave Maintenance" },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": { "lt": "Priežiūros planai", "en": "Maintenance Plans" },
+          "items": [
+            {
+              "title": { "lt": "Pagrindinė priežiūra", "en": "Basic Maintenance" },
+              "description": {
+                "lt": "Žolės pjovimas, lapų šalinimas, paminklo valymas",
+                "en": "Grass cutting, leaf removal, monument cleaning"
+              },
+              "price": 100,
+              "tags": ["kas ketvirtį", "25 EUR vizitas"]
+            },
+            {
+              "title": { "lt": "Standartinė priežiūra", "en": "Standard Maintenance" },
+              "description": {
+                "lt": "Žolės pjovimas, lapų šalinimas, paminklo valymas, gėlių priežiūra",
+                "en": "Grass cutting, leaf removal, monument cleaning, flower care"
+              },
+              "price": 420,
+              "tags": ["kas mėnesį", "35 EUR vizitas"]
+            },
+            {
+              "title": { "lt": "Premium priežiūra", "en": "Premium Maintenance" },
+              "description": {
+                "lt": "Pilna kapo priežiūra, sezoninis gėlių sodinimas, paminklo priežiūra",
+                "en": "Full grave care, seasonal flower planting, monument upkeep"
+              },
+              "price": 2600,
+              "tags": ["kas savaitę", "50 EUR vizitas"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/monuments",
+      "title": { "lt": "Paminklai", "en": "Monuments" },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": { "lt": "Paminklų katalogas", "en": "Monument Catalog" },
+          "items": [
+            {
+              "title": { "lt": "Klasikinis granitinis paminklas" },
+              "subtitle": { "lt": "Granitas · 120×60 cm" },
+              "price": 1500,
+              "tags": ["individualizacija galima"]
+            },
+            {
+              "title": { "lt": "Stačiatikių kryžius" },
+              "subtitle": { "lt": "Akmuo · 150×40 cm" },
+              "price": 1200,
+              "tags": ["individualizacija galima"]
+            },
+            {
+              "title": { "lt": "Modernus marmuro paminklas" },
+              "subtitle": { "lt": "Marmuras · 100×80 cm" },
+              "price": 2500,
+              "tags": ["individualizacija galima"]
+            },
+            {
+              "title": { "lt": "Bronzinė skulptūra" },
+              "subtitle": { "lt": "Bronza · 80×50 cm" },
+              "price": 5000,
+              "tags": ["individualizacija galima"]
+            },
+            {
+              "title": { "lt": "Krikščioniškas kryžius" },
+              "subtitle": { "lt": "Granitas · 180×60 cm" },
+              "price": 800,
+              "tags": ["individualizacija galima"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/shop",
+      "title": { "lt": "Parduotuvė", "en": "Shop" },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": { "lt": "Parduotuvė", "en": "Shop" },
+          "items": [
+            {
+              "title": { "lt": "Gėlių pristatymas", "en": "Flower Delivery" },
+              "description": {
+                "lt": "Sezoninės gėlės ir puokštės pristatomos tiesiai prie kapavietės",
+                "en": "Seasonal flowers and bouquets delivered to the gravesite"
+              }
+            },
+            {
+              "title": { "lt": "Paminklų katalogas", "en": "Monument Catalog" }
+            },
+            {
+              "title": { "lt": "Paslaugų užsakymas", "en": "Service Orders" }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

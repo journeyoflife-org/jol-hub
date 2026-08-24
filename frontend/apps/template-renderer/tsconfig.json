@@ -1,0 +1,37 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@jol-hub/ui": [
+        "../../packages/ui/src"
+      ],
+      "@jol-hub/seed-data": [
+        "../../packages/seed-data/src"
+      ],
+      "@jol-hub/tenant-resolver": [
+        "../../packages/tenant-resolver/src"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "jsx": "preserve",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "slug": "lutheran-kaunas",
+  "vertical": "protestant-church",
+  "locale": "lt",
+  "name": {
+    "lt": "Kauno evangelikų liuteronų bažnyčia",
+    "en": "Kaunas Evangelical Lutheran Church"
+  },
+  "tagline": {
+    "lt": "Augsburgo išpažinimo bendruomenė nuo 1795 m.",
+    "en": "An Augsburg Confession congregation since 1795"
+  },
+  "identity": {
+    "entityId": "lt-lutheran-kaunas-001",
+    "jurisdiction": "Evangelical Lutheran Church in Lithuania",
+    "established": "1795",
+    "address": "M. Valančiaus g. 9, 44275 Kaunas, Lithuania",
+    "email": "info@kaunaslutheran.lt",
+    "phone": "+370 37 331 234",
+    "domain": "kaunaslutheran.lt",
+    "theme": "lutheran-traditional"
+  },
+  "pages": [
+    {
+      "route": "/",
+      "title": { "lt": "Pradžia", "en": "Home" },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Kauno evangelikų liuteronų bažnyčia",
+            "en": "Kaunas Evangelical Lutheran Church"
+          },
+          "body": {
+            "lt": "Liuteronų reformacijos paveldas · Augsburgo išpažinimas · Įkurta 1795 m.",
+            "en": "Lutheran Reformation heritage · Augsburg Confession · Founded 1795"
+          }
+        },
+        {
+          "type": "schedule",
+          "heading": { "lt": "Pamaldų tvarka", "en": "Service Schedule" },
+          "entries": [
+            {
+              "day": "Sekmadienis",
+              "dayEn": "Sunday",
+              "times": ["10:00"],
+              "notes": "Pagrindinės pamaldos su Šv. Vakariene"
+            },
+            {
+              "day": "Sekmadienis",
+              "dayEn": "Sunday",
+              "times": ["18:00"],
+              "notes": "Vakarinės pamaldos"
+            },
+            {
+              "day": "Trečiadienis",
+              "dayEn": "Wednesday",
+              "times": ["18:30"],
+              "notes": "Biblijos studijos"
+            },
+            {
+              "day": "Pirmasis mėnesio sekmadienis",
+              "dayEn": "First Sunday of month",
+              "times": ["10:00"],
+              "notes": "Ypatingos pamaldos"
+            }
+          ]
+        },
+        {
+          "type": "keyValue",
+          "heading": { "lt": "Kontaktai", "en": "Contact" },
+          "items": [
+            { "label": { "lt": "Adresas" }, "value": "M. Valančiaus g. 9, 44275 Kaunas" },
+            { "label": { "lt": "Telefonas" }, "value": "+370 37 331 234" },
+            { "label": { "lt": "El. paštas" }, "value": "info@kaunaslutheran.lt" },
+            { "label": { "lt": "Biuras" }, "value": "I-V 10:00-16:00 (galima ir pagal susitarimą)" }
+          ]
+        },
+        {
+          "type": "list",
+          "heading": { "lt": "Vadovybė", "en": "Leadership" },
+          "items": [
+            {
+              "title": { "lt": "Vikaras Tomas Šernas" },
+              "subtitle": { "lt": "Kunigas", "en": "Pastor" },
+              "tags": ["pastor@kaunaslutheran.lt", "+370 37 331 234", "nuo 2015 m."]
+            },
+            {
+              "title": { "lt": "Asta Petronienė" },
+              "subtitle": { "lt": "Vyresnioji", "en": "Elder" },
+              "tags": ["vyresnioji@kaunaslutheran.lt"]
+            },
+            {
+              "title": { "lt": "Jonas Kavaliauskas" },
+              "subtitle": { "lt": "Diakonas", "en": "Deacon" },
+              "tags": ["diakonas@kaunaslutheran.lt"]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "heading": { "lt": "Valdymas", "en": "Governance" },
+          "body": {
+            "lt": "Bažnyčios taryba - 7 nariai, renkami 3 metų kadencijai. Kiti rinkimai - 2027 m. kovas. Bendruomenė priklauso Evangelikų Liuteronų Bažnyčiai Lietuvoje.",
+            "en": "Church council of 7 members elected for a 3-year term. Next election: March 2027. The congregation belongs to the Evangelical Lutheran Church in Lithuania."
+          }
+        },
+        {
+          "type": "cta",
+          "links": [
+            { "label": { "lt": "Bendruomenės renginiai" }, "href": "/events" },
+            { "label": { "lt": "Krautuvėlė" }, "href": "/shop" }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/events",
+      "title": { "lt": "Renginiai", "en": "Events" },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": { "lt": "Bendruomenės renginiai", "en": "Community Events" },
+          "body": {
+            "lt": "Koncertai, paskaitos, jaunimo vakarai ir ekumeniniai susitikimai. Bilietai į mokamus renginius - krautuvėlėje.",
+            "en": "Concerts, lectures, youth evenings and ecumenical gatherings. Tickets for paid events are available in the shop."
+          }
+        }
+      ]
+    },
+    {
+      "route": "/shop",
+      "title": { "lt": "Krautuvėlė", "en": "Shop" },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": { "lt": "Bendruomenės krautuvėlė", "en": "Community Shop" },
+          "items": [
+            { "title": { "lt": "Bendruomenės prekės", "en": "Community Merchandise" } },
+            { "title": { "lt": "Renginių bilietai", "en": "Event Tickets" } },
+            { "title": { "lt": "Aukos", "en": "Offerings" } }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -11,7 +11,7 @@
   "scripts": {
     "build": "turbo run build",
     "build:all": "turbo run build --filter='./apps/*'",
-    "build:entities": "turbo run build --filter='./apps/lt-*'",
+    "build:entities": "turbo run build --filter='./apps/template-renderer'",
     "build:infrastructure": "turbo run build --filter='./apps/{admin-dashboard,master-site,parish-template}'",
     "dev": "turbo run dev",
     "lint": "turbo run lint",

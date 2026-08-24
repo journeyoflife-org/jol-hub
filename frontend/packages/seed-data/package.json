@@ -1,0 +1,18 @@
+{
+  "name": "@jol-hub/seed-data",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tenant seed fixtures extracted from the legacy lt-* demo apps (STEP 1, ADR-002)",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}

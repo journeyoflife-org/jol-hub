@@ -1,0 +1,225 @@
+{
+  "slug": "funeral-vilnius",
+  "vertical": "funeral-home",
+  "locale": "lt",
+  "name": {
+    "lt": "Vilniaus Laidojimo Namai",
+    "en": "Vilnius Funeral Home"
+  },
+  "tagline": {
+    "lt": "Orus atsisveikinimas ir pagalba šeimai nuo 1995 m.",
+    "en": "Dignified farewell and family support since 1995"
+  },
+  "identity": {
+    "entityId": "lt-funeral-vilnius-001",
+    "established": "1995",
+    "address": "Laidojimo g. 15, Vilnius, Lithuania",
+    "email": "info@vilniusfuneral.lt",
+    "phone": "+370 5 210 5555",
+    "domain": "vilniusfuneral.lt",
+    "theme": "memorial-dignified"
+  },
+  "pages": [
+    {
+      "route": "/",
+      "title": { "lt": "Pradžia", "en": "Home" },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Vilniaus Laidojimo Namai",
+            "en": "Vilnius Funeral Home"
+          },
+          "subheading": {
+            "lt": "Tarnaujame Vilniaus šeimoms nuo 1995 m.",
+            "en": "Serving Vilnius families since 1995"
+          }
+        },
+        {
+          "type": "keyValue",
+          "heading": { "lt": "Kontaktai", "en": "Contact" },
+          "items": [
+            { "label": { "lt": "Adresas" }, "value": "Laidojimo g. 15, Vilnius" },
+            { "label": { "lt": "Visą parą" }, "value": "+370 5 210 5555" },
+            { "label": { "lt": "El. paštas" }, "value": "info@vilniusfuneral.lt" }
+          ]
+        },
+        {
+          "type": "stats",
+          "heading": { "lt": "Patirtis", "en": "Experience" },
+          "items": [
+            { "label": { "lt": "Tarnystės metų" }, "value": 29 },
+            { "label": { "lt": "Aptarnautų šeimų" }, "value": 8500 },
+            { "label": { "lt": "Įvertinimas" }, "value": 4.8 },
+            { "label": { "lt": "Išankstinių sutarčių" }, "value": 450 }
+          ]
+        },
+        {
+          "type": "cta",
+          "links": [
+            { "label": { "lt": "Nekrologai" }, "href": "/obituaries" },
+            { "label": { "lt": "Išankstinis planavimas" }, "href": "/pre-need" },
+            { "label": { "lt": "Paslaugos ir prekės" }, "href": "/shop" }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/obituaries",
+      "title": { "lt": "Nekrologai", "en": "Obituaries" },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": { "lt": "Nekrologų portalas", "en": "Obituary Portal" },
+          "body": {
+            "lt": "Atsisveikinimo pranešimai su šeimos sutikimu. Duomenys apie mirusiuosius tvarkomi pagal GDPR Art. 9 - skelbiami tik gavus artimųjų rašytinį sutikimą.",
+            "en": "Farewell notices published with family consent. Deceased data is processed under GDPR Art. 9 - published only with written next-of-kin consent."
+          }
+        },
+        {
+          "type": "list",
+          "heading": { "lt": "Gedėjimo pagalba", "en": "Grief Resources" },
+          "items": [
+            {
+              "title": { "lt": "Kaip kalbėti su vaikais apie mirtį", "en": "How to talk to children about death" },
+              "tags": ["šeima"]
+            },
+            {
+              "title": { "lt": "Gedėjimo stadijos", "en": "Stages of Grief" },
+              "tags": ["psichologinė pagalba"]
+            },
+            {
+              "title": { "lt": "Juridiniai klausimai po mirties", "en": "Legal matters after death" },
+              "tags": ["teisinė pagalba"]
+            },
+            {
+              "title": { "lt": "Palaikymo grupių sąrašas", "en": "Support groups list" },
+              "tags": ["bendruomenė"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/pre-need",
+      "title": { "lt": "Išankstinis planavimas", "en": "Pre-Need Planning" },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": { "lt": "Išankstinio planavimo programos", "en": "Pre-Need Plans" },
+          "items": [
+            {
+              "title": { "lt": "Pagrindinė programa", "en": "Basic Plan" },
+              "description": {
+                "lt": "Pagrindinis laidotuvių paketas, paprastas karstas, transportas",
+                "en": "Basic funeral package, simple casket, transport"
+              },
+              "price": 25,
+              "tags": ["EUR/mėn.", "vertė 2000 EUR", "96 mėn."]
+            },
+            {
+              "title": { "lt": "Tradicinė programa", "en": "Traditional Plan" },
+              "description": {
+                "lt": "Tradicinis laidotuvių paketas, kokybiškas karstas, gėlės, muzika",
+                "en": "Traditional funeral package, quality casket, flowers, music"
+              },
+              "price": 50,
+              "tags": ["EUR/mėn.", "vertė 4500 EUR", "96 mėn."]
+            },
+            {
+              "title": { "lt": "Premium programa", "en": "Premium Plan" },
+              "description": {
+                "lt": "Premium laidotuvių paketas, rankų darbo karstas, visos paslaugos, transliacija",
+                "en": "Premium funeral package, handcrafted casket, full services, streaming"
+              },
+              "price": 100,
+              "tags": ["EUR/mėn.", "vertė 9000 EUR", "96 mėn."]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/shop",
+      "title": { "lt": "Paslaugos ir prekės", "en": "Services & Products" },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": { "lt": "Laidotuvių paketai", "en": "Service Packages" },
+          "items": [
+            {
+              "title": { "lt": "Pagrindinis paketas", "en": "Basic Package" },
+              "description": {
+                "lt": "Paprastas, orus atsisveikinimas",
+                "en": "A simple, dignified farewell"
+              },
+              "price": 1500
+            },
+            {
+              "title": { "lt": "Tradicinis paketas", "en": "Traditional Package" },
+              "description": {
+                "lt": "Pilnas tradicinis atsisveikinimas",
+                "en": "Full traditional farewell"
+              },
+              "price": 3500
+            },
+            {
+              "title": { "lt": "Premium paketas", "en": "Premium Package" },
+              "description": {
+                "lt": "Išskirtinė atsisveikinimo ceremonija",
+                "en": "An exceptional farewell ceremony"
+              },
+              "price": 6500
+            },
+            {
+              "title": { "lt": "Kremavimo paketas", "en": "Cremation Package" },
+              "description": {
+                "lt": "Orus kremavimo paslaugų paketas",
+                "en": "A dignified cremation service package"
+              },
+              "price": 1200
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "heading": { "lt": "Karstai", "en": "Caskets" },
+          "items": [
+            {
+              "title": { "lt": "Klasikinis ąžuolinis karstas" },
+              "subtitle": { "lt": "Ąžuolas · Natūralus · Baltas atlasas" },
+              "price": 1200
+            },
+            {
+              "title": { "lt": "Pušinis karstas" },
+              "subtitle": { "lt": "Pušis · Lakuotas · Kreminis atlasas" },
+              "price": 600
+            },
+            {
+              "title": { "lt": "Premium riešutmedžio karstas" },
+              "subtitle": { "lt": "Riešutmedis · Rankinis poliravimas · Šilkinis atlasas" },
+              "price": 2500
+            },
+            {
+              "title": { "lt": "Metalinis karstas" },
+              "subtitle": { "lt": "Plienas · Bronzos spalva · Aksomas" },
+              "price": 1800
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "heading": { "lt": "Atminimo prekės", "en": "Memorial Products" },
+          "items": [
+            { "title": { "lt": "Atminimo kortelės (50 vnt.)" }, "price": 50 },
+            { "title": { "lt": "Kondolencijų knyga" }, "price": 35 },
+            { "title": { "lt": "Gėlių vainikas" }, "price": 150 },
+            { "title": { "lt": "Atminimo žvakidė" }, "price": 45 },
+            { "title": { "lt": "Antkapio plokštė" }, "price": 800 },
+            { "title": { "lt": "Urna dekoratyvinė" }, "price": 300 }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@jol-hub/tenant-resolver",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tenant resolution (X-Tenant header / subdomain) for the JOL template renderer",
+  "exports": {
+    ".": "./src/index.ts",
+    "./middleware": "./src/middleware.ts"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@jol-hub/seed-data": "workspace:*"
+  },
+  "peerDependencies": {
+    "next": ">=14.0.0"
+  },
+  "devDependencies": {
+    "next": "^14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "typescript": "^5.4.0"
+  }
+}

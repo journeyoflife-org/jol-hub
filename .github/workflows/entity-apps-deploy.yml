@@ -88,7 +88,7 @@ jobs:
             APPS_JSON=$(echo "$APPS" | tr ',' '\n' | jq -R -s -c 'split("\n") | map(select(length > 0))')
           else
             # All entity apps for the country
-            APPS_JSON='["admin-dashboard","master-site","parish-template","lt-basilica-vilnius-cathedral","lt-cathedral-kaunas","lt-cemetery-vilnius","lt-deanery-vilnius-city","lt-diocese-vilnius","lt-funeral-vilnius","lt-greek-catholic-vilnius","lt-lutheran-kaunas","lt-orthodox-vilnius-cathedral","lt-parish-st-john-vilnius"]'
+            APPS_JSON='["admin-dashboard","master-site","parish-template","template-renderer"]'
           fi
           
           echo "apps=$APPS_JSON" >> $GITHUB_OUTPUT
