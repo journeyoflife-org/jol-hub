@@ -1,0 +1,32 @@
+{
+  "lt": {
+    "commerce": {
+      "donateTitle": "Bažnyčios auka",
+      "donateDescription": "Jūsų auka palaiko bažnyčios tarnystę, sielovadą ir bendruomenės veiklas.",
+      "donateCta": "Aukoti bažnyčiai"
+    },
+    "forms": {
+      "messageLabel": "Žinutė parapijai"
+    }
+  },
+  "en": {
+    "commerce": {
+      "donateTitle": "Church offering",
+      "donateDescription": "Your gift sustains the church's ministry, pastoral care and community life.",
+      "donateCta": "Give to the church"
+    },
+    "forms": {
+      "messageLabel": "Message to the parish"
+    }
+  },
+  "ru": {
+    "commerce": {
+      "donateTitle": "Церковное пожертвование",
+      "donateDescription": "Ваше пожертвование поддерживает служение церкви, душепопечение и жизнь общины.",
+      "donateCta": "Пожертвовать церкви"
+    },
+    "forms": {
+      "messageLabel": "Сообщение приходу"
+    }
+  }
+}

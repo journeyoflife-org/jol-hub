@@ -19,6 +19,8 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from '@jol-hub/i18n/use-translations';
+import { useLocale } from '@jol-hub/i18n/use-locale';
 
 import { cn } from '../../../lib/utils';
 import { accentBgClass } from '../../../lib/tenant-theme';
@@ -30,10 +32,12 @@ const DEFAULT_PRESETS = [10, 20, 50, 100];
 export function DonationWidget({
   presets = DEFAULT_PRESETS,
   onConfigure,
-  title = 'Paaukoti / Donate',
+  title,
   tenant,
   className,
 }: DonationWidgetProps) {
+  const tCommerce = useTranslations('commerce');
+  const { formatCurrency } = useLocale();
   const [selected, setSelected] = useState<number | 'custom'>(presets[0] ?? 10);
   const [customAmount, setCustomAmount] = useState('');
   const [recurring, setRecurring] = useState(false);
@@ -43,13 +47,15 @@ export function DonationWidget({
 
   return (
     <div className={cn('rounded-lg border border-neutral-200 p-6 dark:border-neutral-800', className)}>
-      <h2 className="mb-4 font-heading text-xl font-semibold text-neutral-900 dark:text-neutral-50">{title}</h2>
+      <h2 className="mb-4 font-heading text-xl font-semibold text-neutral-900 dark:text-neutral-50">
+        {title ?? tCommerce('donateCta')}
+      </h2>
 
       <fieldset className="mb-4">
         <legend className="mb-2 text-sm font-medium text-neutral-700 dark:text-neutral-200">
-          Suma / Amount (EUR)
+          {tCommerce('amountLegend')}
         </legend>
-        <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Donation amount">
+        <div className="flex flex-wrap gap-2" role="radiogroup" aria-label={tCommerce('amountLabel')}>
           {presets.map((preset) => (
             <button
               key={preset}
@@ -69,13 +75,13 @@ export function DonationWidget({
           ))}
         </div>
         <label className="mt-2 flex items-center gap-2 text-sm">
-          Kita suma / Custom amount
+          {tCommerce('customAmount')}
           <input
             type="number"
             inputMode="decimal"
             min={1}
             step="0.01"
-            placeholder="Kita…"
+            placeholder={tCommerce('customPlaceholder')}
             value={customAmount}
             onFocus={() => setSelected('custom')}
             onChange={(event) => {
@@ -96,7 +102,7 @@ export function DonationWidget({
           className="h-4 w-4 rounded border-neutral-300 text-primary focus-ring dark:border-neutral-700"
         />
         <label htmlFor="donation-recurring" className="text-sm text-neutral-700 dark:text-neutral-200">
-          Kas mėnesį / Monthly recurring
+          {tCommerce('monthly')}
         </label>
       </div>
 
@@ -106,10 +112,12 @@ export function DonationWidget({
         onClick={() => onConfigure?.({ amount, recurring })}
         className="w-full"
       >
-        Paaukoti {amount > 0 ? `${amount.toFixed(2)} EUR` : ''} / Donate
+        {amount > 0
+          ? tCommerce('donateAmountCta', { amount: formatCurrency(amount) })
+          : tCommerce('donateCta')}
       </Button>
       <p className="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
-        Mokėjimai dar neaktyvuoti / Payments are not yet enabled (Stripe integration pending — ADR-007).
+        {tCommerce('paymentsPending')}
       </p>
     </div>
   );

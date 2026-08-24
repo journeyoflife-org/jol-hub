@@ -8,12 +8,16 @@
 'use client';
 
 import { X } from 'lucide-react';
+import { useTranslations } from '@jol-hub/i18n/use-translations';
 
 import { FocusTrap } from '../../accessibility/focus-trap';
 import type { MobileNavProps } from './MobileNav.types';
 
-export function MobileNav({ open, onClose, items, label = 'Mobili navigacija / Mobile navigation' }: MobileNavProps) {
+export function MobileNav({ open, onClose, items, label }: MobileNavProps) {
+  const t = useTranslations('navigation');
   if (!open) return null;
+
+  const navLabel = label ?? t('mobileLabel');
 
   return (
     <div className="fixed inset-0 z-50 md:hidden">
@@ -25,22 +29,22 @@ export function MobileNav({ open, onClose, items, label = 'Mobili navigacija / M
       <div
         role="dialog"
         aria-modal="true"
-        aria-label={label}
+        aria-label={navLabel}
         className="absolute inset-y-0 start-0 w-full max-w-xs overflow-y-auto bg-neutral-50 shadow-xl dark:bg-neutral-900"
       >
         <FocusTrap active onEscape={onClose}>
           <div className="flex items-center justify-between border-b border-neutral-200 p-4 dark:border-neutral-800">
-            <p className="font-heading font-semibold text-neutral-900 dark:text-neutral-50">Meniu / Menu</p>
+            <p className="font-heading font-semibold text-neutral-900 dark:text-neutral-50">{t('menu')}</p>
             <button
               type="button"
               onClick={onClose}
-              aria-label="Uždaryti meniu / Close menu"
+              aria-label={t('closeMenu')}
               className="inline-flex h-10 w-10 items-center justify-center rounded-md text-neutral-700 hover:bg-neutral-100 focus-ring dark:text-neutral-200 dark:hover:bg-neutral-800"
             >
               <X aria-hidden="true" className="h-5 w-5" />
             </button>
           </div>
-          <nav aria-label={label}>
+          <nav aria-label={navLabel}>
             <ul className="flex flex-col gap-1 p-4">
               {items.map((item) => (
                 <li key={item.href ?? item.label}>

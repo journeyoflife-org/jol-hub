@@ -3,6 +3,10 @@
  * and correct ARIA: current page is text (not a link) with
  * `aria-current="page"`.
  */
+'use client';
+
+import { useTranslations } from '@jol-hub/i18n/use-translations';
+
 import { cn } from '../../../lib/utils';
 import type { BreadcrumbItem, BreadcrumbsProps } from './Breadcrumbs.types';
 
@@ -19,11 +23,12 @@ function jsonLd(items: BreadcrumbItem[]): string {
   });
 }
 
-export function Breadcrumbs({ items, label = 'Breadcrumb', className }: BreadcrumbsProps) {
+export function Breadcrumbs({ items, label, className }: BreadcrumbsProps) {
+  const t = useTranslations('navigation');
   if (items.length === 0) return null;
 
   return (
-    <nav aria-label={label} className={className}>
+    <nav aria-label={label ?? t('breadcrumbLabel')} className={className}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLd(items) }}

@@ -25,24 +25,59 @@
       "types": "./src/middleware/language.ts",
       "default": "./src/middleware/language.ts"
     },
+    "./config": {
+      "types": "./src/config.ts",
+      "default": "./src/config.ts"
+    },
+    "./types": {
+      "types": "./src/types.ts",
+      "default": "./src/types.ts"
+    },
+    "./messages": {
+      "types": "./src/messages/index.ts",
+      "default": "./src/messages/index.ts"
+    },
+    "./provider": {
+      "types": "./src/components/translation-provider.tsx",
+      "default": "./src/components/translation-provider.tsx"
+    },
+    "./use-translations": {
+      "types": "./src/hooks/use-translations.ts",
+      "default": "./src/hooks/use-translations.ts"
+    },
+    "./use-locale": {
+      "types": "./src/hooks/use-locale-context.ts",
+      "default": "./src/hooks/use-locale-context.ts"
+    },
+    "./utils": {
+      "types": "./src/utils.ts",
+      "default": "./src/utils.ts"
+    },
     "./locales/*": "./src/locales/*"
   },
   "scripts": {
     "lint": "eslint src/",
     "type-check": "tsc --noEmit",
+    "i18n:check": "tsx scripts/check-parity.ts",
+    "i18n:find-hardcoded": "tsx scripts/find-hardcoded.ts",
+    "verify": "pnpm type-check && pnpm i18n:check && pnpm i18n:find-hardcoded",
     "clean": "rm -rf .turbo node_modules"
   },
   "dependencies": {
     "deepl-node": "^1.24.0",
     "i18next": "^23.10.0",
     "i18next-browser-languagedetector": "^7.2.0",
+    "intl-messageformat": "^11.2.14",
     "react-i18next": "^14.1.0"
   },
   "devDependencies": {
     "@types/next": "^9.0.0",
     "@types/node": "^20.11.0",
     "@types/react": "^18.2.0",
-    "react": "^18.2.0",
+    "next": "^14.2.20",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.1",
+    "tsx": "^4.23.12",
     "typescript": "^5.4.0"
   },
   "peerDependencies": {

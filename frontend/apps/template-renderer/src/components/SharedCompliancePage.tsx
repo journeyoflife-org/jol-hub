@@ -4,68 +4,98 @@
  * These routes are NOT part of tenant fixtures: they are shared UI that was
  * duplicated across all 12 legacy lt-* apps. Rendering them once here keeps
  * fixtures limited to differentiating content.
+ *
+ * STEP 4: ALL copy comes from the `compliance` message namespace in the
+ * request locale — GDPR Art. 12–14 (information in the data subject's
+ * language). Interpolation uses ICU via intl-messageformat (server-safe).
  */
+import IntlMessageFormat from 'intl-messageformat';
 import { Card, CardContent } from '@jol-hub/ui';
+import { getMessages, translate } from '@jol-hub/i18n';
+import type { MessageCatalog } from '@jol-hub/i18n';
+import type { SupportedLocale } from '@jol-hub/i18n';
 import type { TenantFixture } from '@jol-hub/seed-data';
 import type { SharedRoute } from '@/lib/content-loader';
+import { pickLocalized } from '@/lib/i18n-helpers';
 
 interface SharedCompliancePageProps {
   route: SharedRoute;
   fixture: TenantFixture;
   basePath: string;
+  locale: SupportedLocale;
 }
 
-export function SharedCompliancePage({ route, fixture }: SharedCompliancePageProps) {
-  const name = fixture.name.lt;
+/** ICU-format a catalog key with values (server-side). */
+function formatKey(
+  catalog: MessageCatalog,
+  locale: SupportedLocale,
+  key: string,
+  values: Record<string, string>,
+): string {
+  const pattern = translate(catalog, key);
+  return String(new IntlMessageFormat(pattern, locale).format(values));
+}
+
+export function SharedCompliancePage({ route, fixture, locale }: SharedCompliancePageProps) {
+  const catalog = getMessages(locale);
+  const name = pickLocalized(fixture.name, locale);
   const email = fixture.identity?.email;
   const phone = fixture.identity?.phone;
   const address = fixture.identity?.address;
 
-  const body: Record<SharedRoute, { title: string; paragraphs: string[] }> = {
+  const contact = [email, phone].filter(Boolean).join(', ');
+
+  const body: Record<SharedRoute, { titleKey: string; paragraphs: string[] }> = {
     '/privacy': {
-      title: 'Privatumo politika / Privacy Policy',
+      titleKey: 'privacyConsent.policyTitle',
       paragraphs: [
-        `${name} tvarko asmens duomenis pagal Bendrąjį duomenų apsaugos reglamentą (GDPR), įskaitant Art. 9 nuostatas dėl ypatingų kategorijų duomenų.`,
-        'Sakramentų ir religinės bendruomenės narystės duomenys tvarkomi tik teisėtais pagrindais (sutikimas, kanonų teisės prievolės) ir nėra atskleidžiami tretiesiems asmenims be teisinio pagrindo.',
+        formatKey(catalog, locale, 'compliance.privacyIntro', { name }),
+        translate(catalog, 'compliance.privacySpecialData'),
         email
-          ? `Dėl duomenų apsaugos klausimų kreipkitės: ${email}${phone ? `, tel. ${phone}` : ''}.`
-          : 'Dėl duomenų apsaugos klausimų kreipkitės į įstaigos administraciją.',
+          ? formatKey(catalog, locale, 'compliance.privacyContact', { contact })
+          : translate(catalog, 'compliance.privacyContactGeneric'),
       ],
     },
     '/cookies': {
-      title: 'Slapukų politika / Cookie Policy',
+      titleKey: 'privacyConsent.cookiesTitle',
       paragraphs: [
-        'Ši svetainė naudoja tik būtinuosius slapukus, reikalingus saugiam veikimui ir sutikimų valdymui.',
-        'Trečiųjų šalių rinkodaros ar stebėsenos slapukai nenaudojami be aiškaus išankstinio sutikimo.',
+        translate(catalog, 'compliance.cookiesNecessary'),
+        translate(catalog, 'compliance.cookiesNoThirdParty'),
       ],
     },
     '/consent': {
-      title: 'Sutikimų valdymas / Consent Management',
+      titleKey: 'privacyConsent.consentTitle',
       paragraphs: [
-        'Čia galite peržiūrėti ir keisti savo sutikimus duomenų tvarkymui.',
-        'Sutikimai versijuojami ir jų istorija saugoma audito tikslais; bet kurį sutikimą galite atšaukti bet kuriuo metu.',
-        email ? `Pagalba: ${email}.` : 'Pagalbos kreipkitės į įstaigos administraciją.',
+        translate(catalog, 'compliance.consentManage'),
+        translate(catalog, 'compliance.consentVersioning'),
+        email
+          ? formatKey(catalog, locale, 'compliance.consentHelp', { email })
+          : translate(catalog, 'compliance.consentHelpGeneric'),
       ],
     },
     '/dsr': {
-      title: 'Duomenų subjekto teisės / Data Subject Requests',
+      titleKey: 'privacyConsent.dsrTitle',
       paragraphs: [
-        'Turite teisę prašyti prieigos, ištaisymo, ištrynimo, tvarkymo apribojimo, duomenų perkeliamumo ir teisės nesutikti (GDPR 15-21 str.).',
-        'Prašymus nagrinėjame per 30 dienų. Tapatybė patvirtinama prieš pateikiant bet kokius duomenis.',
-        email ? `Prašymus siųskite: ${email}.` : 'Prašymus teikite įstaigos administracijai.',
+        translate(catalog, 'compliance.dsrRights'),
+        translate(catalog, 'compliance.dsrTimeline'),
+        email
+          ? formatKey(catalog, locale, 'compliance.dsrSubmit', { email })
+          : translate(catalog, 'compliance.dsrSubmitGeneric'),
       ],
     },
   };
 
-  const { title, paragraphs } = body[route];
+  const { titleKey, paragraphs } = body[route];
 
   return (
     <div className="max-w-3xl mx-auto space-y-6">
-      <h1 className="text-3xl font-heading font-bold text-primary">{title}</h1>
+      <h1 className="text-3xl font-heading font-bold text-primary">
+        {translate(catalog, titleKey)}
+      </h1>
       <Card>
         <CardContent className="p-6 space-y-4">
-          {paragraphs.map((paragraph) => (
-            <p key={paragraph} className="text-gray-700 leading-relaxed">
+          {paragraphs.map((paragraph, index) => (
+            <p key={index} className="text-gray-700 leading-relaxed">
               {paragraph}
             </p>
           ))}

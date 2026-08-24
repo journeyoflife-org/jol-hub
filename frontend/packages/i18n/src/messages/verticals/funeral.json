@@ -1,0 +1,44 @@
+{
+  "lt": {
+    "commerce": {
+      "donateTitle": "Parama",
+      "donateDescription": "Jūsų parama padeda šeimoms netekties metu ir palaiko mūsų tarnystę.",
+      "donateCta": "Paremti"
+    },
+    "forms": {
+      "messageLabel": "Užklausa",
+      "submit": "Susisiekti"
+    },
+    "navigation": {
+      "contact": "Susisiekite su mumis"
+    }
+  },
+  "en": {
+    "commerce": {
+      "donateTitle": "Support fund",
+      "donateDescription": "Your support helps families in bereavement and sustains our care.",
+      "donateCta": "Support us"
+    },
+    "forms": {
+      "messageLabel": "Enquiry",
+      "submit": "Get in touch"
+    },
+    "navigation": {
+      "contact": "Reach out to us"
+    }
+  },
+  "ru": {
+    "commerce": {
+      "donateTitle": "Фонд поддержки",
+      "donateDescription": "Ваша поддержка помогает семьям в утрате и поддерживает нашу заботу.",
+      "donateCta": "Поддержать"
+    },
+    "forms": {
+      "messageLabel": "Запрос",
+      "submit": "Связаться"
+    },
+    "navigation": {
+      "contact": "Обратитесь к нам"
+    }
+  }
+}

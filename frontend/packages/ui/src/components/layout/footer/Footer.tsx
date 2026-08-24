@@ -2,6 +2,10 @@
  * Footer — 4-column layout: brand / navigation / contact / legal.
  * Social links carry mandatory aria-labels; copyright year is dynamic.
  */
+'use client';
+
+import { useTranslations } from '@jol-hub/i18n/use-translations';
+
 import { cn } from '../../../lib/utils';
 import type { FooterProps } from './Footer.types';
 
@@ -14,6 +18,8 @@ export function Footer({
   copyrightHolder,
   className,
 }: FooterProps) {
+  const tNav = useTranslations('navigation');
+  const tCommon = useTranslations('common');
   const year = new Date().getFullYear();
 
   return (
@@ -21,8 +27,8 @@ export function Footer({
       <div className="container mx-auto grid grid-cols-1 gap-8 px-4 py-12 md:grid-cols-2 lg:grid-cols-4">
         <div>{brand}</div>
 
-        <nav aria-label="Poraštės navigacija / Footer navigation">
-          <h2 className="mb-3 font-heading text-lg font-semibold text-neutral-50">Navigacija / Navigation</h2>
+        <nav aria-label={tNav('footerLabel')}>
+          <h2 className="mb-3 font-heading text-lg font-semibold text-neutral-50">{tNav('navigationTitle')}</h2>
           <ul className="space-y-2 text-sm">
             {navigation.map((link) => (
               <li key={link.href}>
@@ -35,7 +41,7 @@ export function Footer({
         </nav>
 
         <div>
-          <h2 className="mb-3 font-heading text-lg font-semibold text-neutral-50">Kontaktai / Contact</h2>
+          <h2 className="mb-3 font-heading text-lg font-semibold text-neutral-50">{tNav('contactTitle')}</h2>
           <ul className="space-y-2 text-sm">
             {contact.map((line) => (
               <li key={line}>{line}</li>
@@ -58,8 +64,8 @@ export function Footer({
           )}
         </div>
 
-        <nav aria-label="Teisinė informacija / Legal">
-          <h2 className="mb-3 font-heading text-lg font-semibold text-neutral-50">Teisinė informacija / Legal</h2>
+        <nav aria-label={tNav('legal')}>
+          <h2 className="mb-3 font-heading text-lg font-semibold text-neutral-50">{tNav('legal')}</h2>
           <ul className="space-y-2 text-sm">
             {legal.map((link) => (
               <li key={link.href}>
@@ -73,7 +79,7 @@ export function Footer({
       </div>
 
       <div className="border-t border-neutral-800 py-4 text-center text-sm text-neutral-400">
-        © {year} {copyrightHolder}. Visos teisės saugomos / All rights reserved.
+        © {year} {copyrightHolder}. {tCommon('copyright')}
       </div>
     </footer>
   );

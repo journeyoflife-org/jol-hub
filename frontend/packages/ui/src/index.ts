@@ -159,4 +159,68 @@ export type {
   UseEntityCRMReturn,
 } from './hooks/useEntityCRM';
 
+// ==========================================================================
+// STEP 3/4 shared component library (tenant-aware, i18n-driven)
+// Primitive names above stay LEGACY (existing apps depend on them); the
+// new surfaces use distinct names or dedicated subpath barrels:
+//   '@jol-hub/ui/components/primitives' | '/composite' | '/layout' | '/accessibility'
+// ==========================================================================
+
+// Layout chrome
+export { Header } from './components/layout/header';
+export type { HeaderProps } from './components/layout/header';
+export { Footer } from './components/layout/footer';
+export type { FooterProps, FooterLink, SocialLink } from './components/layout/footer';
+export { MainNav } from './components/layout/main-nav';
+export type { MainNavProps, NavItem } from './components/layout/main-nav';
+export { MobileNav } from './components/layout/mobile-nav';
+export type { MobileNavProps } from './components/layout/mobile-nav';
+export { Breadcrumbs } from './components/layout/breadcrumbs';
+export type { BreadcrumbsProps, BreadcrumbItem } from './components/layout/breadcrumbs';
+export { Sidebar } from './components/layout/sidebar';
+export type { SidebarProps, SidebarSection } from './components/layout/sidebar';
+export { PageContainer } from './components/layout/page-container';
+export type { PageContainerProps } from './components/layout/page-container';
+
+// Accessibility primitives
+export { SkipLink } from './components/accessibility/skip-link';
+export type { SkipLinkProps } from './components/accessibility/skip-link';
+export { AnnouncerProvider, useAnnounce } from './components/accessibility/announcer';
+export type { AnnouncerProviderProps, AnnounceApi } from './components/accessibility/announcer';
+export { LiveRegion } from './components/accessibility/live-region';
+export type { LiveRegionProps } from './components/accessibility/live-region';
+export { FocusTrap } from './components/accessibility/focus-trap';
+export type { FocusTrapProps } from './components/accessibility/focus-trap';
+
+// Composites
+export { Hero } from './components/composite/hero';
+export type { HeroProps, HeroCta, HeroVariant } from './components/composite/hero';
+export { SectionHeader } from './components/composite/section-header';
+export type { SectionHeaderProps, SectionHeaderFullProps } from './components/composite/section-header';
+export { ContentBlock } from './components/composite/content-block';
+export type { ContentBlockProps, ContentNode } from './components/composite/content-block';
+export { FeatureGrid } from './components/composite/feature-grid';
+export type { FeatureGridProps, FeatureItem } from './components/composite/feature-grid';
+export { EventCard } from './components/composite/event-card';
+export type { EventCardProps } from './components/composite/event-card';
+export { NewsCard } from './components/composite/news-card';
+export type { NewsCardProps } from './components/composite/news-card';
+export { ServiceCard } from './components/composite/service-card';
+export type { ServiceCardProps } from './components/composite/service-card';
+export { TestimonialCard } from './components/composite/testimonial-card';
+export type { TestimonialCardProps } from './components/composite/testimonial-card';
+export { Gallery } from './components/composite/gallery';
+export type { GalleryProps, GalleryImage } from './components/composite/gallery';
+export { MapEmbed } from './components/composite/map-embed';
+export type { MapEmbedProps } from './components/composite/map-embed';
+// NOTE: legacy flat `ContactForm` / `donation/DonationWidget` above keep
+// their root-barrel names for back-compat; the STEP 3 versions are exposed
+// via the composite barrel: '@jol-hub/ui/components/composite'.
+export { contactFormSchema } from './components/composite/contact-form';
+export type { ContactFormValues } from './components/composite/contact-form';
+
+// i18n (STEP 4)
+export { LocaleSwitcher } from './components/locale-switcher';
+export type { LocaleSwitcherProps } from './components/locale-switcher';
+
 // Types

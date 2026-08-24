@@ -12,9 +12,11 @@
     "clean": "rm -rf .next .turbo node_modules"
   },
   "dependencies": {
+    "@jol-hub/i18n": "workspace:*",
     "@jol-hub/seed-data": "workspace:*",
     "@jol-hub/tenant-resolver": "workspace:*",
     "@jol-hub/ui": "workspace:*",
+    "intl-messageformat": "^11.2.14",
     "next": "^14.2.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0"

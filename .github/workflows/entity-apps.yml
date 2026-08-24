@@ -125,13 +125,50 @@ jobs:
           fi
 
   # ===========================================================================
+  # I18N VALIDATION (STEP 4) — hard gate before any app build
+  # ===========================================================================
+
+  i18n-validation:
+    name: i18n Key Parity + Hardcoded String Scan
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'frontend/pnpm-lock.yaml'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Message key parity (all locales + verticals)
+        run: pnpm --filter @jol-hub/i18n i18n:check
+
+      - name: Hardcoded string scan (shared UI + template-renderer)
+        run: pnpm --filter @jol-hub/i18n i18n:find-hardcoded
+
+  # ===========================================================================
   # BUILD APPS (MATRIX)
   # ===========================================================================
   
   build-apps:
     name: Build ${{ matrix.app }}
     runs-on: ubuntu-latest
-    needs: detect-apps
+    needs: [detect-apps, i18n-validation]
     if: needs.detect-apps.outputs.apps-count > 0
     
     strategy:

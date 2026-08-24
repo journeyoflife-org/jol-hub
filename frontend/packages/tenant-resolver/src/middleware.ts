@@ -29,6 +29,9 @@ export interface TenantMiddlewareOptions {
 
 const DEFAULT_EXCLUDED = /^\/(_next\/|favicon\.ico$|api\/)/;
 
+/** Locale codes that may prefix the tenant segment (STEP 4 i18n routing). */
+const LOCALE_PREFIX = /^\/(lt|ru|en)(?=\/|$)/;
+
 export function withTenantResolution(options: TenantMiddlewareOptions = {}) {
   const isExcludedPath = options.isExcludedPath ?? ((pathname: string) => DEFAULT_EXCLUDED.test(pathname));
 
@@ -45,16 +48,24 @@ export function withTenantResolution(options: TenantMiddlewareOptions = {}) {
       return NextResponse.next();
     }
 
+    // Preserve any locale prefix (STEP 4): /lt/... stays /lt/... .
+    const localeMatch = pathname.match(LOCALE_PREFIX);
+    const localePrefix = localeMatch ? localeMatch[0] : '';
+    const tenantPath = localePrefix ? pathname.slice(localePrefix.length) || '/' : pathname;
+
     // Already addressed by tenant path segment — nothing to rewrite.
-    if (pathname === `/${tenant.tenantId}` || pathname.startsWith(`/${tenant.tenantId}/`)) {
+    if (tenantPath === `/${tenant.tenantId}` || tenantPath.startsWith(`/${tenant.tenantId}/`)) {
+      // Expose downstream (server components, sitemap) via request headers.
+      request.headers.set('x-resolved-tenant', tenant.tenantId);
       return NextResponse.next();
     }
 
     const target = new URL(request.url);
-    target.pathname = `/${tenant.tenantId}${pathname === '/' ? '' : pathname}`;
+    target.pathname = `${localePrefix}/${tenant.tenantId}${tenantPath === '/' ? '' : tenantPath}`;
+    // Request header for downstream server components; response header for
+    // observability. Only the tenant serving THIS request is named.
+    request.headers.set('x-resolved-tenant', tenant.tenantId);
     const response = NextResponse.rewrite(target);
-    // Surface the resolved tenant to downstream handlers without leaking
-    // the registry (only the tenant that serves THIS request is named).
     response.headers.set('x-resolved-tenant', tenant.tenantId);
     return response;
   };

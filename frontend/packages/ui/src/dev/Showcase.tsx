@@ -19,6 +19,8 @@
 
 import { Bell, Church, Heart, Users } from 'lucide-react';
 
+import { TranslationProvider, getMessages } from '@jol-hub/i18n';
+
 import { SkipLink } from '../components/accessibility';
 import {
   Avatar,
@@ -66,8 +68,12 @@ const NAV_ITEMS = [
 ];
 
 export function Showcase() {
+  // Dev surface renders in the default locale with the parish vertical
+  // override merged in (exercises the full merge pipeline).
+  const messages = getMessages('lt', { vertical: 'parish' });
+
   return (
-    <>
+    <TranslationProvider locale="lt" messages={messages}>
       <SkipLink />
       <Header
         logo="Šv. Jonų parapija"
@@ -280,7 +286,7 @@ export function Showcase() {
         ]}
         copyrightHolder="Šv. Jonų parapija"
       />
-    </>
+    </TranslationProvider>
   );
 }
 

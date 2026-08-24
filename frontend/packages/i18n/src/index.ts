@@ -14,6 +14,41 @@ export {
 } from './config';
 
 // -----------------------------------------------------------------------------
+// STEP 4 — canonical constants, message pipeline, provider
+// All server/client safe (pure modules; the provider is a client-component
+// reference that RSC may render but never executes hooks server-side).
+// -----------------------------------------------------------------------------
+export {
+  LOCALE_NAMES,
+  LOCALE_PREFIXES,
+  LOCALE_HREFLANG,
+  LOCALE_COOKIE,
+  FALLBACK_ORDER,
+  PLANNED_LOCALES,
+  isSupportedLocale,
+  type PlannedLocale,
+  type LocaleCode,
+} from './config';
+
+export {
+  getMessages,
+  translate,
+  deepMerge,
+  mapTenantVertical,
+  type MessageCatalog,
+  type MessageNamespace,
+  type VerticalOverride,
+  type GetMessagesOptions,
+} from './messages';
+
+export { TranslationProvider, type TranslationProviderProps } from './components/translation-provider';
+
+// Client-only hooks live behind dedicated subpaths (keeps RSC bundles clean):
+//   useTranslations → '@jol-hub/i18n/use-translations'
+//   useLocale       → '@jol-hub/i18n/use-locale'
+// Locale-aware Intl formatters → '@jol-hub/i18n/utils'
+
+// -----------------------------------------------------------------------------
 // React i18next Re-exports
 // NOTE: These are client-side hooks/components — import from 'react-i18next'
 // directly in your 'use client' components.
@@ -52,7 +87,7 @@ export {
 
 // Main useTranslation hook + client-safe utilities
 export {
-  // Liturgical guard (client-safe, pure function)
+  // Liturgical guard (PURE module — keeps react-i18next out of server bundles)
   containsLiturgicalContent,
   // Liturgical terms dictionary
   LITURGICAL_TERMS,
@@ -61,7 +96,7 @@ export {
   // Types
   type DeepLTranslationResult,
   type TranslateOptions,
-} from './hooks/useTranslation';
+} from './lib/liturgical';
 
 // NOTE: Server-only DeepL functions (translateWithDeepL, translateBatchWithDeepL, getDeepLTranslator)
 // are available via '@jol-hub/i18n/server' import path
@@ -96,7 +131,6 @@ export {
   getAlternativeLocales,
   // Constants
   languageMiddlewareMatcher,
-  LOCALE_COOKIE,
   // Types
   type SupportedLocale as MiddlewareSupportedLocale,
 } from './middleware/language';

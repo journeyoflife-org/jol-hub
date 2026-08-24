@@ -6,13 +6,19 @@
  * must be top-level per ARIA, and this component is typically nested
  * inside `<main>` — the inner `<nav>` provides the landmark semantics.
  */
+'use client';
+
+import { useTranslations } from '@jol-hub/i18n/use-translations';
+
 import { cn } from '../../../lib/utils';
 import type { SidebarProps } from './Sidebar.types';
 
-export function Sidebar({ sections, label = 'Šoninė navigacija / Sidebar navigation', className }: SidebarProps) {
+export function Sidebar({ sections, label, className }: SidebarProps) {
+  const t = useTranslations('navigation');
+
   return (
     <div className={cn('w-full lg:w-64', className)}>
-      <nav aria-label={label} className="flex flex-col gap-6">
+      <nav aria-label={label ?? t('sidebarLabel')} className="flex flex-col gap-6">
         {sections.map((section) => (
           <div key={section.title}>
             <h2 className="mb-2 text-sm font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">

@@ -2,7 +2,11 @@
  * ServiceCard — commercial/service offering with optional price, duration
  * and booking CTA.
  */
+'use client';
+
 import { Clock } from 'lucide-react';
+import { useTranslations } from '@jol-hub/i18n/use-translations';
+import { useLocale } from '@jol-hub/i18n/use-locale';
 
 import { accentTextClass } from '../../../lib/tenant-theme';
 import { Button } from '../../primitives/button';
@@ -18,6 +22,9 @@ export function ServiceCard({
   tenant,
   className,
 }: ServiceCardProps) {
+  const t = useTranslations('commerce');
+  const { formatCurrency } = useLocale();
+
   return (
     <Card tenant={tenant} className={className}>
       <CardHeader>
@@ -37,8 +44,8 @@ export function ServiceCard({
       <CardFooter className="justify-between">
         {typeof price === 'number' ? (
           <p className="text-lg font-semibold">
-            <span className="sr-only">Kaina / Price: </span>
-            {price.toFixed(2)} EUR
+            <span className="sr-only">{t('priceLabel')}: </span>
+            {formatCurrency(price)}
           </p>
         ) : (
           <span />

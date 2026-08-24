@@ -1,0 +1,35 @@
+{
+  "lt": {
+    "commerce": {
+      "donateTitle": "Parama tarnystei",
+      "donateDescription": "Jūsų parama padeda išlaikyti švaros ir priežiūros tarnystę bendruomenėse.",
+      "donateCta": "Paremti tarnystę"
+    },
+    "forms": {
+      "messageLabel": "Paslaugos užklausa",
+      "submit": "Užsakyti paslaugą"
+    }
+  },
+  "en": {
+    "commerce": {
+      "donateTitle": "Support the service",
+      "donateDescription": "Your support keeps our cleaning and care service running for communities.",
+      "donateCta": "Support the service"
+    },
+    "forms": {
+      "messageLabel": "Service enquiry",
+      "submit": "Request a service"
+    }
+  },
+  "ru": {
+    "commerce": {
+      "donateTitle": "Поддержка службы",
+      "donateDescription": "Ваша поддержка помогает поддерживать службу уборки и ухода для общин.",
+      "donateCta": "Поддержать службу"
+    },
+    "forms": {
+      "messageLabel": "Запрос услуги",
+      "submit": "Заказать услугу"
+    }
+  }
+}
