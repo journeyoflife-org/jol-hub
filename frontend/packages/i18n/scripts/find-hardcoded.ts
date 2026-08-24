@@ -104,6 +104,11 @@ for (const target of TARGET_DIRS) {
       if (isNonRendered(rawLine) || isTranslated(rawLine)) return;
 
       for (const match of rawLine.matchAll(JSX_TEXT)) {
+        // `=>` (arrow function) is not a JSX tag close — otherwise generics
+        // like `() => Promise<X>` read as the JSX text ">Promise<".
+        const gtIndex = match.index ?? -1;
+        if (gtIndex > 0 && rawLine[gtIndex - 1] === '=') continue;
+
         const text = match[1].trim();
         // Ignore TypeScript syntax that mimics >text< (return types,
         // generics): `): Promise<void>` etc.
