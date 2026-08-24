@@ -273,7 +273,8 @@ async function processRetryQueue(): Promise<void> {
   for (const entry of readyEntries) {
     try {
       const country = entry.event.country || entry.event.data.residency || 'default';
-      const apiUrl = COUNTRY_API_URLS[country] || COUNTRY_API_URLS.default;
+      const defaultApiUrl = COUNTRY_API_URLS.default ?? API_URL;
+      const apiUrl = COUNTRY_API_URLS[country] || defaultApiUrl;
       
       await forwardToBackend(entry.event, apiUrl);
       
@@ -457,7 +458,8 @@ export async function POST(request: NextRequest) {
     }
 
     // GDPR Article 44: Route to country-specific backend
-    const apiUrl = COUNTRY_API_URLS[country] || COUNTRY_API_URLS.default;
+    const defaultApiUrl = COUNTRY_API_URLS.default ?? API_URL;
+    const apiUrl = COUNTRY_API_URLS[country] || defaultApiUrl;
     
     try {
       await forwardToBackend(body, apiUrl);

@@ -12,6 +12,9 @@ export * from './entities';
 // Re-export Bitrix24 types
 export * from './bitrix24';
 
+// Re-export AI service contract types
+export * from './ai';
+
 // =============================================================================
 // Common API Response Types
 // =============================================================================
