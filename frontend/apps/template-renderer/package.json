@@ -26,6 +26,7 @@
     "@jol-hub/bitrix-sdk": "workspace:*",
     "@jol-hub/commerce": "workspace:*",
     "@jol-hub/i18n": "workspace:*",
+    "@jol-hub/observability": "workspace:*",
     "@jol-hub/perf": "workspace:*",
     "@jol-hub/seed-data": "workspace:*",
     "@jol-hub/seo": "workspace:*",

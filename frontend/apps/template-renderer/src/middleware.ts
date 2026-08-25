@@ -25,8 +25,21 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 import { clientIp, isLoginRateLimited, isRateLimited } from '@/lib/rate-limit';
+import { createLogger } from '@jol-hub/observability';
 
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+
+/**
+ * STEP 16 — structured request logging (edge-safe: the observability core
+ * has no node:* imports). One JSON-lines record per request with method,
+ * path, status, duration and tenant; `requestId` correlates middleware,
+ * API-route and client telemetry records (SOC 2 CC7.2 traceability).
+ * LB health probes (/api/health) are exempt to avoid log flooding.
+ */
+const log = createLogger({
+  service: 'template-renderer-edge',
+  minLevel: 'info', // RULE: never debug in production paths
+});
 
 /**
  * Paths exempt from locale/tenant routing (static/dev/internal-404/API).
@@ -104,12 +117,41 @@ function publicRedirectUrl(
 }
 
 export default async function middleware(request: NextRequest): Promise<NextResponse> {
+  // STEP 16: request-scoped tracing + structured access log.
+  const requestId = crypto.randomUUID();
+  const started = Date.now();
+  const { pathname } = request.nextUrl;
+
+  const response = await handleRequest(request);
+  response.headers.set('x-request-id', requestId);
+
+  // LB probes are exempt from access logging (flooding guard).
+  if (pathname !== '/api/health') {
+    log.info('request handled', {
+      event: 'request.handled',
+      requestId,
+      method: request.method,
+      path: pathname,
+      status: response.status,
+      durationMs: Date.now() - started,
+    });
+  }
+  return response;
+}
+
+async function handleRequest(request: NextRequest): Promise<NextResponse> {
   const { pathname } = request.nextUrl;
 
   // 1. Rate limiting — per client IP, per tenant (before any work).
   const rateLimitTenant = resolveTenantRequest(request);
   const rateLimitKey = `${clientIp(request)}|${rateLimitTenant?.tenantId ?? '-'}`;
   if (isRateLimited(rateLimitKey)) {
+    // SECURITY EVENT (RULES): rate-limit hits are always logged.
+    log.warn('rate limit hit', {
+      event: 'security.rate-limit',
+      path: pathname,
+      tenant: rateLimitTenant?.tenantId ?? '-',
+    });
     return applySecurityHeaders(
       new NextResponse('Too Many Requests', { status: 429 }),
     );
@@ -168,7 +210,13 @@ export default async function middleware(request: NextRequest): Promise<NextResp
     return applySecurityHeaders(NextResponse.rewrite(target));
   }
 
-  console.info(`[tenant] ${tenant.tenantId} (${tenant.vertical}) ${request.method} ${pathname}`);
+  log.info('tenant resolved', {
+    event: 'tenant.resolved',
+    tenant: tenant.tenantId,
+    vertical: tenant.vertical,
+    method: request.method,
+    path: pathname,
+  });
 
   // 4b. STEP 10 — protected-area authentication gate (jol-auth OIDC).
   //     OPEN MODE: when auth is unconfigured the gate is skipped and the
@@ -177,6 +225,12 @@ export default async function middleware(request: NextRequest): Promise<NextResp
   if (isAuthConfigured() && PROTECTED_PATH.test(pathname)) {
     const token = await getToken({ req: request });
     if (!token || token.error) {
+      // SECURITY EVENT (RULES): failed access to a protected area.
+      log.warn('protected route access without valid session', {
+        event: 'security.auth-denied',
+        path: pathname,
+        reason: token?.error ?? 'no-session',
+      });
       const signInUrl = new URL('/api/auth/signin', request.url);
       signInUrl.searchParams.set('callbackUrl', pathname);
       return applySecurityHeaders(NextResponse.redirect(signInUrl));

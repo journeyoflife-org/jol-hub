@@ -10,6 +10,7 @@ let nextConfig = {
     '@jol-hub/bitrix-sdk',
     '@jol-hub/auth',
     '@jol-hub/seo',
+    '@jol-hub/observability',
     '@jol-hub/a11y',
   ],
   eslint: {

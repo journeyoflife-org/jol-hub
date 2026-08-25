@@ -28,6 +28,7 @@ import { ThemeProvider, THEME_INIT_SCRIPT } from '@jol-hub/ui/providers';
 import { isSupportedLocale } from '@jol-hub/i18n';
 import { DEFAULT_LOCALE, LOCALE_HEADER } from '@jol-hub/i18n/config';
 import { WebVitals } from '@/components/WebVitals';
+import { ObservabilityClient } from '@/components/ObservabilityClient';
 
 export const metadata: Metadata = {
   // White-label: tenant layouts define their own "%s | {tenant}" template;
@@ -62,6 +63,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>{children}</ThemeProvider>
         {/* STEP 13: Core Web Vitals RUM (consent-gated, non-blocking). */}
         <WebVitals />
+        {/* STEP 16: error tracking + deep perf telemetry (consent-gated). */}
+        <ObservabilityClient />
       </body>
     </html>
   );
