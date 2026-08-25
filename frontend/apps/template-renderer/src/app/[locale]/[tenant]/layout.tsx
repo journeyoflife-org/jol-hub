@@ -26,6 +26,7 @@ import {
 import type { SupportedLocale } from '@jol-hub/i18n';
 import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
 import { Footer, Header, LocaleSwitcher, CookieConsentBanner } from '@jol-hub/ui';
+import { SkipLink, AnnouncerProvider } from '@jol-hub/ui';
 import type { NavItem } from '@jol-hub/ui';
 import { findTenantBySlug, toPublicTenant } from '@jol-hub/tenant-resolver';
 import { loadTenantFixture } from '@/lib/content-loader';
@@ -114,6 +115,8 @@ export default function TenantLocaleLayout({
       ['privacyConsent.cookiesTitle', '/cookies'],
       ['privacyConsent.consentTitle', '/consent'],
       ['privacyConsent.dsrTitle', '/dsr'],
+      // STEP 12 (EAA): the accessibility statement is published per tenant.
+      ['accessibilityStatement.linkLabel', '/accessibility-statement'],
     ] as const
   ).map(([key, route]) => ({
     label: translate(messages, key),
@@ -123,53 +126,60 @@ export default function TenantLocaleLayout({
   return (
     <TranslationProvider locale={locale} messages={messages}>
       <TenantProvider tenant={toPublicTenant(registryTenant!)}>
-        <Header
-          logo={
-            <a href={basePath} className="font-heading text-lg font-bold focus-ring rounded-md">
-              {tenantName}
-            </a>
-          }
-          navItems={navItems}
-          tenant={tenantTheme}
-          actions={
-            <div className="flex items-center gap-2">
-              {/* STEP 10: jol-auth surface — renders nothing in open mode. */}
-              <AuthSlot basePath={basePath} tenantSlug={params.tenant} />
-              <LocaleSwitcher />
-            </div>
-          }
-        />
+        <AnnouncerProvider>
+          {/*
+            STEP 12 (WCAG 2.4.1): the skip link MUST be the first focusable
+            element so keyboard users bypass the repeated header/nav block.
+          */}
+          <SkipLink targetId="main-content" />
+          <Header
+            logo={
+              <a href={basePath} className="font-heading text-lg font-bold focus-ring rounded-md">
+                {tenantName}
+              </a>
+            }
+            navItems={navItems}
+            tenant={tenantTheme}
+            actions={
+              <div className="flex items-center gap-2">
+                {/* STEP 10: jol-auth surface — renders nothing in open mode. */}
+                <AuthSlot basePath={basePath} tenantSlug={params.tenant} />
+                <LocaleSwitcher />
+              </div>
+            }
+          />
 
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
 
-        <Footer
-          brand={
-            <div>
-              <p className="font-heading text-lg font-bold text-neutral-50">{tenantName}</p>
-              {tagline && <p className="mt-2 text-sm">{tagline}</p>}
-            </div>
-          }
-          navigation={navItems
-            .filter((item) => item.href)
-            .map((item) => ({ label: item.label, href: item.href as string }))}
-          contact={contactLines}
-          legal={legalLinks}
-          copyrightHolder={tenantName}
-          tenant={tenantTheme}
-        />
+          <Footer
+            brand={
+              <div>
+                <p className="font-heading text-lg font-bold text-neutral-50">{tenantName}</p>
+                {tagline && <p className="mt-2 text-sm">{tagline}</p>}
+              </div>
+            }
+            navigation={navItems
+              .filter((item) => item.href)
+              .map((item) => ({ label: item.label, href: item.href as string }))}
+            contact={contactLines}
+            legal={legalLinks}
+            copyrightHolder={tenantName}
+            tenant={tenantTheme}
+          />
 
-        {/*
-          GDPR/ePrivacy cookie consent — cross-cutting, so it lives in the
-          tenant layout (covers every tenant page, fixture or composed). No
-          non-essential storage/analytics is touched until consent is given.
-        */}
-        <CookieConsentBanner
-          privacyPolicyUrl={`${basePath}/privacy`}
-          cookiePolicyUrl={`${basePath}/cookies`}
-          language={locale}
-        />
+          {/*
+            GDPR/ePrivacy cookie consent — cross-cutting, so it lives in the
+            tenant layout (covers every tenant page, fixture or composed). No
+            non-essential storage/analytics is touched until consent is given.
+          */}
+          <CookieConsentBanner
+            privacyPolicyUrl={`${basePath}/privacy`}
+            cookiePolicyUrl={`${basePath}/cookies`}
+            language={locale}
+          />
+        </AnnouncerProvider>
       </TenantProvider>
     </TranslationProvider>
   );

@@ -65,8 +65,15 @@ export function TemplateRenderer({ fixture, page, basePath }: TemplateRendererPr
   // under the tenant prefix.
   const href = (target: string): string => (target.startsWith('/') ? `${basePath}${target}` : target);
 
+  // STEP 12 (WCAG 2.4.6): every page needs exactly one h1. The hero block
+  // renders its own; pages without a hero get the localized page title.
+  const hasHeroHeading = page.contentBlocks.some((block) => block.type === 'hero');
+
   return (
     <article data-tenant={fixture.slug} data-vertical={fixture.vertical} className="space-y-10">
+      {!hasHeroHeading && t(page.title) && (
+        <h1 className="text-3xl md:text-4xl font-heading font-bold text-primary">{t(page.title)}</h1>
+      )}
       {page.contentBlocks.map((block, index) => (
         <BlockView key={`${block.type}-${index}`} block={block} accent={accent} href={href} />
       ))}
