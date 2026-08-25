@@ -9,15 +9,16 @@
  * content happen in the route layer).
  *
  * SECURITY (GDPR Art. 9 / SOC 2 CC6.1 / CC6.3, ADR-001):
- * - Unknown tenants → rewrite to /404-tenant-not-found (URL preserved,
- *   identical generic body for "no tenant" and "unknown tenant" — no
- *   enumeration).
+ * - Unknown tenants → direct generic 404 from the gate (identical body to
+ *   app/not-found.tsx — no enumeration, no rewrite round-trip).
  * - X-Tenant-* headers are REQUEST headers: server-only, never emitted
  *   to the browser. The schema header is the RLS context for backend calls.
  */
 import { withTenantResolution } from '@jol-hub/tenant-resolver/middleware';
 import { resolveTenantRequest } from '@jol-hub/tenant-resolver';
 import { withLocaleResolution } from '@jol-hub/i18n/middleware';
+import { getMessages, translate } from '@jol-hub/i18n';
+import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
 import { isKnownTenant } from '@jol-hub/seed-data';
 import { getToken } from 'next-auth/jwt';
 import { isAuthConfigured } from '@jol-hub/auth/oidc';
@@ -139,6 +140,46 @@ export default async function middleware(request: NextRequest): Promise<NextResp
   return response;
 }
 
+/**
+ * STEP 1 (hygiene-gate fix) — direct 404 for unknown/unresolvable tenants.
+ *
+ * The gate used to REWRITE to /404-tenant-not-found, but middleware
+ * rewrites under x-forwarded-proto: https make the standalone server
+ * re-proxy the request internally against an https:// origin while the
+ * listener is plain HTTP (EPROTO → spurious 500 behind nginx). A direct
+ * response avoids the rendering pipeline entirely — robust and leak-free:
+ * the SAME generic copy as app/not-found.tsx, no echo of the attempted
+ * slug, no tenant enumeration (GDPR Art. 9 / SOC 2 CC6.1).
+ */
+function tenantNotFound(): NextResponse {
+  // Catalog strings are static — no user input reaches the markup.
+  const messages = getMessages(DEFAULT_LOCALE);
+  const title = translate(messages, 'errors.notFoundTitle');
+  const body = translate(messages, 'errors.notFoundBody');
+  const html = `<!doctype html>
+<html lang="${DEFAULT_LOCALE}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>404 — ${title}</title>
+</head>
+<body style="margin:0;font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;background:#fff;color:#111">
+<main style="max-width:28rem;text-align:center;padding:1.5rem">
+<p style="font-size:3.75rem;font-weight:700;margin:0">404</p>
+<h1 style="font-size:1.5rem;font-weight:700">${title}</h1>
+<p style="color:#4b5563">${body}</p>
+</main>
+</body>
+</html>`;
+  const response = new NextResponse(html, {
+    status: 404,
+    headers: { 'content-type': 'text/html; charset=utf-8' },
+  });
+  response.headers.set('Cache-Control', 'no-store');
+  return response;
+}
+
 async function handleRequest(request: NextRequest): Promise<NextResponse> {
   const { pathname } = request.nextUrl;
 
@@ -202,12 +243,16 @@ async function handleRequest(request: NextRequest): Promise<NextResponse> {
     return applySecurityHeaders(NextResponse.next());
   }
 
-  // 4. Tenant gate — unknown/unresolvable tenants get the internal 404
-  //    route via REWRITE (URL preserved; no registry leakage).
+  // 4. Tenant gate — unknown/unresolvable tenants get a DIRECT generic 404
+  //    (no rewrite: standalone re-proxies rewrites and breaks under
+  //    x-forwarded-proto; see tenantNotFound()). Registry never leaks.
   const tenant = resolveTenantRequest(request); // LRU-cached
   if (!tenant) {
-    const target = new URL('/404-tenant-not-found', request.url);
-    return applySecurityHeaders(NextResponse.rewrite(target));
+    log.info('unknown tenant request', {
+      event: 'tenant.unknown',
+      path: pathname,
+    });
+    return applySecurityHeaders(tenantNotFound());
   }
 
   log.info('tenant resolved', {
