@@ -31,6 +31,7 @@ import { loadTenantFixture } from '@/lib/content-loader';
 import { pickLocalized } from '@/lib/i18n-helpers';
 import { TenantProvider } from '@/lib/tenant-context';
 import { themeVerticalFor } from '@/lib/template-registry';
+import { AuthSlot } from '@/components/auth';
 
 interface TenantLocaleLayoutParams {
   locale: string;
@@ -106,7 +107,13 @@ export default function TenantLocaleLayout({
           }
           navItems={navItems}
           tenant={tenantTheme}
-          actions={<LocaleSwitcher />}
+          actions={
+            <div className="flex items-center gap-2">
+              {/* STEP 10: jol-auth surface — renders nothing in open mode. */}
+              <AuthSlot basePath={basePath} tenantSlug={params.tenant} />
+              <LocaleSwitcher />
+            </div>
+          }
         />
 
         <main id="main-content" className="flex-1">

@@ -19,10 +19,12 @@ import { withTenantResolution } from '@jol-hub/tenant-resolver/middleware';
 import { resolveTenantRequest } from '@jol-hub/tenant-resolver';
 import { withLocaleResolution } from '@jol-hub/i18n/middleware';
 import { isKnownTenant } from '@jol-hub/seed-data';
+import { getToken } from 'next-auth/jwt';
+import { isAuthConfigured } from '@jol-hub/auth/oidc';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-import { clientIp, isRateLimited } from '@/lib/rate-limit';
+import { clientIp, isLoginRateLimited, isRateLimited } from '@/lib/rate-limit';
 
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
@@ -42,6 +44,14 @@ const localeMiddleware = withLocaleResolution({
 });
 
 const tenantMiddleware = withTenantResolution();
+
+/**
+ * STEP 10 — protected tenant areas: `/[locale]/[tenant]/(admin|editor|
+ * settings|dashboard)…`. Middleware enforces AUTHENTICATION only; the full
+ * RBAC role check happens in the route layouts (defense in depth), which
+ * redirect insufficient roles to /403-forbidden.
+ */
+const PROTECTED_PATH = /^\/[a-z]{2,3}\/[a-z0-9-]+\/(admin|editor|settings|dashboard)(?:\/|$)/;
 
 /** Security headers on ALL responses (redirects and rewrites included). */
 function applySecurityHeaders<T extends NextResponse>(response: T): T {
@@ -93,7 +103,7 @@ function publicRedirectUrl(
   return url;
 }
 
-export default function middleware(request: NextRequest): NextResponse {
+export default async function middleware(request: NextRequest): Promise<NextResponse> {
   const { pathname } = request.nextUrl;
 
   // 1. Rate limiting — per client IP, per tenant (before any work).
@@ -122,6 +132,18 @@ export default function middleware(request: NextRequest): NextResponse {
   }
 
   if (EXCLUDED.test(pathname)) {
+    // STEP 10: auth callbacks are exempt from tenant routing but NOT from
+    // abuse protection — brute-force limit login attempts (5 per 15 min/IP,
+    // OWASP ASVS V2.2). Generic 429 body: never reveal account existence.
+    if (
+      request.method === 'POST' &&
+      pathname.startsWith('/api/auth/callback') &&
+      isLoginRateLimited(`login|${clientIp(request)}`)
+    ) {
+      return applySecurityHeaders(
+        new NextResponse('Too Many Requests', { status: 429 }),
+      );
+    }
     return applySecurityHeaders(NextResponse.next());
   }
 
@@ -134,6 +156,22 @@ export default function middleware(request: NextRequest): NextResponse {
   }
 
   console.info(`[tenant] ${tenant.tenantId} (${tenant.vertical}) ${request.method} ${pathname}`);
+
+  // 4b. STEP 10 — protected-area authentication gate (jol-auth OIDC).
+  //     OPEN MODE: when auth is unconfigured the gate is skipped and the
+  //     pages themselves render the quiet "authentication not enabled"
+  //     state (documented emergency rollback).
+  if (isAuthConfigured() && PROTECTED_PATH.test(pathname)) {
+    const token = await getToken({ req: request });
+    if (!token || token.error) {
+      const signInUrl = new URL('/api/auth/signin', request.url);
+      signInUrl.searchParams.set('callbackUrl', pathname);
+      return applySecurityHeaders(NextResponse.redirect(signInUrl));
+    }
+    // Request-only header for downstream server components (never emitted
+    // to the browser — same discipline as X-Tenant-*).
+    request.headers.set('x-user-sub', String(token.sub ?? ''));
+  }
 
   // 5. Locale negotiation (STEP 4) — may 307-redirect to canonical.
   const localeResponse = localeMiddleware(request);

@@ -20,11 +20,20 @@
     "./api": {
       "types": "./src/lib/bitrix-api.ts",
       "default": "./src/lib/bitrix-api.ts"
+    },
+    "./oidc": {
+      "types": "./src/oidc/index.ts",
+      "default": "./src/oidc/index.ts"
+    },
+    "./oidc/hooks": {
+      "types": "./src/oidc/hooks.ts",
+      "default": "./src/oidc/hooks.ts"
     }
   },
   "scripts": {
     "lint": "eslint src/",
     "type-check": "tsc --noEmit",
+    "test": "tsx --test src/oidc/__tests__/*.test.ts",
     "clean": "rm -rf .turbo node_modules"
   },
   "dependencies": {
@@ -34,6 +43,7 @@
     "@types/node": "^20.11.0",
     "@types/react": "^18.2.0",
     "next": "14.2.0",
+    "tsx": "^4.23.12",
     "typescript": "^5.4.0"
   },
   "peerDependencies": {

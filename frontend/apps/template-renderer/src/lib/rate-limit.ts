@@ -48,7 +48,41 @@ export function isRateLimited(key: string, now = Date.now()): boolean {
   return entry.count > MAX_REQUESTS;
 }
 
+// =============================================================================
+// LOGIN BRUTE-FORCE LIMITER (STEP 10)
+// =============================================================================
+
+/** Login attempts allowed per window per IP (spec: 5 per 15 min). */
+const LOGIN_MAX_ATTEMPTS = 5;
+const LOGIN_WINDOW_MS = 15 * 60 * 1000;
+/** Bounded map — same eviction discipline as the general limiter. */
+const LOGIN_MAX_KEYS = 10_000;
+
+const loginWindows = new Map<string, WindowEntry>();
+
+/**
+ * Returns `true` when the key exhausted its LOGIN budget (brute-force
+ * protection, OWASP ASVS V2.2 / ISO 27001 A.9.2). Callers should answer
+ * 429 with a GENERIC message — never reveal whether the account exists.
+ */
+export function isLoginRateLimited(key: string, now = Date.now()): boolean {
+  const entry = loginWindows.get(key);
+
+  if (!entry || now >= entry.resetAt) {
+    if (loginWindows.size >= LOGIN_MAX_KEYS) {
+      const oldest = loginWindows.keys().next().value;
+      if (oldest !== undefined) loginWindows.delete(oldest);
+    }
+    loginWindows.set(key, { count: 1, resetAt: now + LOGIN_WINDOW_MS });
+    return false;
+  }
+
+  entry.count += 1;
+  return entry.count > LOGIN_MAX_ATTEMPTS;
+}
+
 /** Test/ops hook. */
 export function resetRateLimiter(): void {
   windows.clear();
+  loginWindows.clear();
 }
