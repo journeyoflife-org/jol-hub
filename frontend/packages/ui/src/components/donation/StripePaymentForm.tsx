@@ -17,6 +17,7 @@ import { Button } from '../button';
 import { Card, CardContent, CardHeader, CardTitle } from '../card';
 import { Alert, AlertDescription } from '../alert';
 import type { StripePaymentFormProps } from './types';
+import { mapStripeError } from './stripe-error-mapping';
 
 // =============================================================================
 // STYLES
@@ -109,27 +110,8 @@ export function StripePaymentForm({
 
       if (error) {
         // Handle specific error types - map StripeJS error to our error type
-        const stripeErrorType: DonationError['type'] = 
-          error.type === 'card_error' ? 'card' :
-          error.type === 'validation_error' ? 'validation' :
-          error.type === 'authentication_error' ? 'authentication' :
-          'server';
-        
-        const stripeError: DonationError = {
-          type: stripeErrorType,
-          message: error.message || 'Payment failed',
-          code: error.code ?? undefined,
-          retryable: error.type === 'api_error' || error.type === 'card_error',
-        };
-
-        console.error('[STRIPE] Payment error:', {
-          type: error.type,
-          code: error.code,
-          declineCode: error.decline_code,
-        });
-
         setCardError(error.message ?? 'Payment failed');
-        onError(stripeError);
+        onError(mapStripeError(error));
       } else if (paymentIntent) {
         // Payment successful
         console.log('[STRIPE] Payment successful:', {
@@ -253,4 +235,3 @@ export function StripePaymentForm({
   );
 }
 
-export default StripePaymentForm;

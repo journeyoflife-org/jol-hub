@@ -206,4 +206,3 @@ export function DonationErrorComponent({
   );
 }
 
-export default DonationErrorComponent;

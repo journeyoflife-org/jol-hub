@@ -337,12 +337,3 @@ export interface StripeWebhookEvent {
 // =============================================================================
 // EXPORT
 // =============================================================================
-
-export default {
-  createPaymentIntent,
-  confirmDonation,
-  getTaxReceipt,
-  downloadTaxReceipt,
-  getDonationStatus,
-  cancelDonation,
-};
