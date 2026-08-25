@@ -10,6 +10,7 @@ const nextConfig = {
     '@jol-hub/bitrix-sdk',
     '@jol-hub/auth',
     '@jol-hub/seo',
+    '@jol-hub/a11y',
   ],
   eslint: {
     ignoreDuringBuilds: true,

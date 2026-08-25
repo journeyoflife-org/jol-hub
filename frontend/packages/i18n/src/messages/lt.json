@@ -259,5 +259,21 @@
     "editorTitle": "Turinio redaktorius",
     "editorModerationNote": "Pakeitimai patenka į moderavimo eilę — tiesioginis publikavimas neleidžiamas.",
     "editorEmpty": "Redaguojamų blokų kol kas nėra."
+  },
+  "accessibilityStatement": {
+    "linkLabel": "Prieinamumo pareiškimas",
+    "pageTitle": "Prieinamumo pareiškimas",
+    "intro": "Ši svetainė sukurta taip, kad ja galėtų naudotis kuo daugiau žmonių, įskaitant vyresnio amžiaus lankytojus ir žmones su negalia. Tai yra prieinamumo pareiškimas apie",
+    "conformanceTitle": "Atitikties deklaracija",
+    "conformanceText": "Siekiame visiško atitikimo Web turinio prieinamumo gairių (WCAG) 2.2 AA lygiui, kaip reikalauja Europos prieinamumo aktas (EAA 2025). WCAG 2.2 AA apibrėžia sėkmingus kriterijus, užtikrinančius, kad turinys būtų suvokiamas, valdomas, suprantamas ir patikimas visiems naudotojams.",
+    "measuresTitle": "Įgyvendintos priemonės",
+    "measuresText": "Klaviatūros navigacija su matomais fokusavimo indikatoriais ir perėjimo nuoroda į pagrindinį turinį; viena antraštė puslapyje be praleistų lygių; visos formos su susietomis etiketėmis ir klaidų pranešimais; spalvų kontrastas atitinka 4,5:1 (tekstas) ir 3:1 (grafiiniai elementai) reikalavimus; judesys gerbia „sumažinto judesio“ nustatymą; dinaminiai pranešimai skelbiami ekrano skaitytuvams per gyvuosius regionus.",
+    "limitationsTitle": "Žinomi apribojimai",
+    "limitationsText": "Trečiųjų šalių žemėlapiai ir vaizdo įrašų platformos gali turėti savo prieinamumo spragų — šalia jų visada pateikiame tekstinę alternatyvą (adresą, aprašymą). Kai kuriuos istorinius dokumentus (PDF) gali būti sunku perskaityti ekrano skaitytuvais — paprašius suteikiame alternatyvų formatą.",
+    "feedbackTitle": "Grįžtamasis ryšys",
+    "feedbackText": "Pastebėję prieinamumo kliūčių arba norėdami gauti turinį alternatyviu formatu, susisiekite su mumis. Atsakome per 5 darbo dienas.",
+    "feedbackCta": "Pranešti apie prieinamumo problemą",
+    "assessmentTitle": "Vertinimo metodas ir data",
+    "assessmentText": "Prieinamumas vertinamas automatiniais įrankiais (axe-core, WCAG 2.2 AA taisyklių rinkinys) ir rankiniu auditu pagal klaviatūros, ekrano skaitytuvų, mastelio ir kontrasto kontrolinius sąrašus. Paskutinio vertinimo data: {date}."
   }
 }

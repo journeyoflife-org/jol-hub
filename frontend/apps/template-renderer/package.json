@@ -10,9 +10,11 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "test": "tsx --test src/__tests__/*.test.ts",
+    "check-a11y": "tsx scripts/check-a11y-pages.ts",
     "clean": "rm -rf .next .turbo node_modules"
   },
   "dependencies": {
+    "@jol-hub/a11y": "workspace:*",
     "@jol-hub/auth": "workspace:*",
     "@jol-hub/bitrix-sdk": "workspace:*",
     "@jol-hub/commerce": "workspace:*",

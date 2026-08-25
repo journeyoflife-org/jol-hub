@@ -48,7 +48,16 @@ function kindFor(route: string): SeoPageKind {
 }
 
 /** Base route set every tenant exposes (registry-only tenants included). */
-const BASE_ROUTES: readonly string[] = ['/', '/about', '/contact', '/news', '/events', '/services'];
+const BASE_ROUTES: readonly string[] = [
+  '/',
+  '/about',
+  '/contact',
+  '/news',
+  '/events',
+  '/services',
+  // STEP 12 (EAA): the accessibility statement is public + indexable.
+  '/accessibility-statement',
+];
 
 /** Map a supported locale to its hreflang key (lt→lt-LT, en→en-LT, ru→ru-LT). */
 function localeHreflangKey(locale: string): string {
@@ -74,6 +83,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/news',
         '/events',
         '/services',
+        '/accessibility-statement',
       ]
     : [...BASE_ROUTES];
 

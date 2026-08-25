@@ -259,5 +259,21 @@
     "editorTitle": "Content editor",
     "editorModerationNote": "Changes enter the moderation queue — direct publishing is not allowed.",
     "editorEmpty": "No editable blocks yet."
+  },
+  "accessibilityStatement": {
+    "linkLabel": "Accessibility statement",
+    "pageTitle": "Accessibility statement",
+    "intro": "This website is designed to be usable by as many people as possible, including elderly visitors and people with disabilities. This is the accessibility statement for",
+    "conformanceTitle": "Conformance claim",
+    "conformanceText": "We aim for full conformance with the Web Content Accessibility Guidelines (WCAG) 2.2 level AA, as required by the European Accessibility Act (EAA 2025). WCAG 2.2 AA defines success criteria ensuring content is perceivable, operable, understandable and robust for all users.",
+    "measuresTitle": "Measures in place",
+    "measuresText": "Full keyboard navigation with visible focus indicators and a skip link to the main content; one heading per page with no skipped levels; all forms carry associated labels and error messages; colour contrast meets 4.5:1 (text) and 3:1 (graphical elements); motion respects the reduced-motion preference; dynamic updates are announced to screen readers via live regions.",
+    "limitationsTitle": "Known limitations",
+    "limitationsText": "Third-party maps and video platforms may have accessibility gaps of their own — we always provide a textual alternative (address, description) alongside them. Some legacy documents (PDF) may be difficult for screen readers; alternative formats are provided on request.",
+    "feedbackTitle": "Feedback",
+    "feedbackText": "If you encounter an accessibility barrier or would like content in an alternative format, please contact us. We respond within 5 working days.",
+    "feedbackCta": "Report an accessibility issue",
+    "assessmentTitle": "Assessment method and date",
+    "assessmentText": "Accessibility is assessed with automated tooling (axe-core against the WCAG 2.2 AA rule set) and manual audits covering keyboard, screen reader, zoom and contrast checklists. Latest assessment date: {date}."
   }
 }
