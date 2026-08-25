@@ -24,7 +24,7 @@ import {
 } from '@jol-hub/i18n';
 import type { SupportedLocale } from '@jol-hub/i18n';
 import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
-import { Footer, Header, LocaleSwitcher } from '@jol-hub/ui';
+import { Footer, Header, LocaleSwitcher, CookieConsentBanner } from '@jol-hub/ui';
 import type { NavItem } from '@jol-hub/ui';
 import { findTenantBySlug, toPublicTenant } from '@jol-hub/tenant-resolver';
 import { loadTenantFixture } from '@/lib/content-loader';
@@ -127,6 +127,17 @@ export default function TenantLocaleLayout({
           legal={legalLinks}
           copyrightHolder={tenantName}
           tenant={tenantTheme}
+        />
+
+        {/*
+          GDPR/ePrivacy cookie consent — cross-cutting, so it lives in the
+          tenant layout (covers every tenant page, fixture or composed). No
+          non-essential storage/analytics is touched until consent is given.
+        */}
+        <CookieConsentBanner
+          privacyPolicyUrl={`${basePath}/privacy`}
+          cookiePolicyUrl={`${basePath}/cookies`}
+          language={locale}
         />
       </TenantProvider>
     </TranslationProvider>

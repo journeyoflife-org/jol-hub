@@ -10,11 +10,12 @@
  *
  * Content link (fixture-first): a seed fixture's home page renders via
  * TemplateRenderer (the 12 pilot tenants keep their exact output); tenants
- * without a fixture home compose the STEP 6 default modules via PageComposer.
+ * without a fixture home render their vertical-specific template (STEP 7) —
+ * vertical accent, hero variant and default module composition.
  *
- * SEO: canonical + hreflang alternates + Open Graph (page-seo) and
- * Organization / WebSite JSON-LD. The organization `@type` follows the
- * vertical (ReligiousOrganization / LocalBusiness / FuneralHome).
+ * SEO: canonical + hreflang alternates + Open Graph (page-seo). Fixture homes
+ * emit Organization/WebSite JSON-LD here; vertical templates emit their own
+ * vertical-aware JSON-LD (BaseTemplate).
  */
 import type { Metadata } from 'next';
 import {
@@ -23,9 +24,7 @@ import {
   websiteEntity,
 } from '@/lib/json-ld';
 import { buildTenantMetadata, tenantDisplayName, tenantTagline } from '@/lib/page-seo';
-import { PageComposer } from '@/lib/page-composer';
-import { buildHomeConfig } from '@/lib/page-defaults';
-import { parsePageConfig, buildFallbackConfig } from '@/lib/page-config';
+import { getTemplateForTenant } from '@/lib/template-registry';
 import { renderFixtureRoute, resolveTenantRoute } from '@/lib/route-dispatch';
 
 // ISR intent: refresh home content within 5 minutes. See RENDERING.md for
@@ -58,40 +57,32 @@ export async function generateMetadata({
 export default async function TenantHomePage({ params }: { params: TenantHomeParams }) {
   const { tenant, fixture, locale, basePath } = resolveTenantRoute(params);
 
-  // Structured data: organization (vertical-aware @type) + WebSite. Identity
-  // contact fields come from the fixture when present (never fabricated).
-  const name = tenantDisplayName(tenant, fixture, locale);
-  const org = organizationEntity({
-    name,
-    url: basePath,
-    vertical: tenant.vertical,
-    address: fixture?.identity?.address,
-    phone: fixture?.identity?.phone,
-    email: fixture?.identity?.email,
-  });
-  const jsonLd = <JsonLd data={[org, websiteEntity(name, basePath)]} />;
-
-  // Fixture-first fidelity: the seed home page wins when present.
+  // Fixture-first fidelity: the seed home page wins when present, with
+  // Organization/WebSite JSON-LD (identity contact fields from the fixture —
+  // never fabricated).
   const fixtureHome = renderFixtureRoute(fixture, '/', basePath);
   if (fixtureHome) {
+    const name = tenantDisplayName(tenant, fixture, locale);
+    const org = organizationEntity({
+      name,
+      url: basePath,
+      vertical: tenant.vertical,
+      address: fixture?.identity?.address,
+      phone: fixture?.identity?.phone,
+      email: fixture?.identity?.email,
+    });
     return (
       <>
-        {jsonLd}
+        <JsonLd data={[org, websiteEntity(name, basePath)]} />
         {fixtureHome}
       </>
     );
   }
 
-  // STEP 6 composition. Defaults are built in-code (always valid); route them
-  // through the Zod parser anyway so an API-sourced config follows the exact
-  // same validated → fallback path (graceful degradation).
-  const parsed = parsePageConfig(buildHomeConfig(), '/');
-  const config = parsed.ok && parsed.config ? parsed.config : buildFallbackConfig('/');
-
-  return (
-    <>
-      {jsonLd}
-      <PageComposer config={config} tenant={tenant} locale={locale} basePath={basePath} />
-    </>
-  );
+  // STEP 7: vertical-specific template — vertical accent, hero variant and the
+  // vertical's default module composition. BaseTemplate emits the vertical-aware
+  // Organization/WebSite JSON-LD; template selection honors the registry's
+  // `templateOverride` entitlement.
+  const Template = await getTemplateForTenant(tenant);
+  return <Template tenant={tenant} locale={locale} basePath={basePath} />;
 }
