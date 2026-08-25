@@ -99,6 +99,9 @@ export const FEATURES_BY_TIER: Record<PackageTier, string[]> = {
     'events',
     'news',
     'booking',
+    // STEP 14: constrained 10% block editor (moderation-gated). CHEAP
+    // tenants are read-only.
+    'content-editing',
   ],
   vip: [
     'contact-form',
@@ -109,6 +112,7 @@ export const FEATURES_BY_TIER: Record<PackageTier, string[]> = {
     'events',
     'news',
     'booking',
+    'content-editing',
     'shop',
     'subscriptions',
     'custom-domain',
