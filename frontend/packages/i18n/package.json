@@ -60,7 +60,7 @@
     "type-check": "tsc --noEmit",
     "i18n:check": "tsx scripts/check-parity.ts",
     "i18n:find-hardcoded": "tsx scripts/find-hardcoded.ts",
-    "verify": "pnpm type-check && pnpm i18n:check && pnpm i18n:find-hardcoded",
+    "verify": "tsc --noEmit && tsx scripts/check-parity.ts && tsx scripts/find-hardcoded.ts",
     "clean": "rm -rf .turbo node_modules"
   },
   "dependencies": {
