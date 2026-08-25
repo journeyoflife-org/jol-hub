@@ -49,7 +49,7 @@ const log = createLogger({
  * limiting (step 1) still applies to them.
  */
 const EXCLUDED =
-  /^\/(_next\/|api\/|favicon\.ico$|robots\.txt$|sitemap\.xml$|dev\/|404-tenant-not-found(?:\/|$))/;
+  /^\/(_next\/|api\/|media\/|favicon\.ico$|robots\.txt$|sitemap\.xml$|dev\/|404-tenant-not-found(?:\/|$))/;
 
 const localeMiddleware = withLocaleResolution({
   // Registry callback: 2–3 letter path segments that ARE tenants must not
