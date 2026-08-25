@@ -57,12 +57,15 @@ function makeTenant(spec: PilotSpec): Tenant {
 /* ------------------------------------------------------------------------ */
 
 const WAVE1_PILOTS: PilotSpec[] = [
-  // Šiauliai (5 — includes the diocese, the regional VIP anchor tenant)
+  // Šiauliai (5 — includes the diocese, the regional VIP anchor tenant).
+  // STEP 17: Wave-0 reference cluster — the cathedral is VIP (stakeholder
+  // showcase) and Kražiai demos the CHEAP tier (simplicity + affordability).
   { slug: 'siauliai-diocese', lt: 'Šiaulių vyskupija', en: 'Diocese of Šiauliai', vertical: 'diocese', packageTier: 'vip' },
   { slug: 'siauliai-deanery', lt: 'Šiaulių dekanatas', en: 'Šiauliai Deanery', vertical: 'deanery', packageTier: 'normal' },
-  { slug: 'siauliai-church', lt: 'Šiaulių Šv. apaštalų Petro ir Pauliaus katedra', en: 'Šiauliai Cathedral Parish', vertical: 'church', packageTier: 'normal' },
+  { slug: 'siauliai-church', lt: 'Šiaulių Šv. apaštalų Petro ir Pauliaus katedra', en: 'Šiauliai Cathedral', vertical: 'cathedral', packageTier: 'vip' },
   { slug: 'siauliai-funeral', lt: 'Šiaulių laidojimo namai', en: 'Šiauliai Funeral Home', vertical: 'funeral', packageTier: 'normal' },
   { slug: 'siauliai-cleaning', lt: 'Šiaulių kapinių priežiūra', en: 'Šiauliai Cemetery Care', vertical: 'cemetery-cleaning', packageTier: 'normal' },
+  { slug: 'kraziai-church', lt: 'Kražių Švč. Mergelės Marijos Nekaltojo Prasidėjimo bažnyčia', en: 'Kražiai Church', vertical: 'church', packageTier: 'cheap' },
 
   // Joniškis (4 — church is Žagarė)
   { slug: 'joniskis-deanery', lt: 'Joniškio dekanatas', en: 'Joniškis Deanery', vertical: 'deanery', packageTier: 'normal' },
@@ -100,23 +103,28 @@ function fixtureTier(vertical: string): PackageTier {
     : 'normal';
 }
 
-const FIXTURE_DERIVED: Tenant[] = tenantFixtures.map((fixture) => {
-  const tier = fixtureTier(fixture.vertical);
-  return {
-    id: fixture.slug,
-    slug: fixture.slug,
-    name: fixture.name,
-    vertical: normalizeVertical(fixture.vertical),
-    schema: schemaForTenant(fixture.slug),
-    locale: fixture.locale,
-    packageTier: tier,
-    domain: null,
-    features: FEATURES_BY_TIER[tier],
-    settings: {},
-    createdAt: WAVE1_CREATED,
-    updatedAt: WAVE1_CREATED,
-  };
-});
+const FIXTURE_DERIVED: Tenant[] = tenantFixtures
+  // STEP 17 pilot precedence: Wave-0 reference sites exist BOTH as
+  // explicit pilot entries (authoritative tier/name) and as seed fixtures
+  // (content). The explicit entry wins; the fixture supplies pages only.
+  .filter((fixture) => !WAVE1_PILOTS.some((pilot) => pilot.slug === fixture.slug))
+  .map((fixture) => {
+    const tier = fixtureTier(fixture.vertical);
+    return {
+      id: fixture.slug,
+      slug: fixture.slug,
+      name: fixture.name,
+      vertical: normalizeVertical(fixture.vertical),
+      schema: schemaForTenant(fixture.slug),
+      locale: fixture.locale,
+      packageTier: tier,
+      domain: null,
+      features: FEATURES_BY_TIER[tier],
+      settings: {},
+      createdAt: WAVE1_CREATED,
+      updatedAt: WAVE1_CREATED,
+    };
+  });
 
 /* ------------------------------------------------------------------------ */
 /* Lookup structures (module-load time — resolution stays allocation-free)  */

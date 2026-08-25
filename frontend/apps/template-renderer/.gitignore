@@ -1,0 +1,8 @@
+# STEP 17 — Wave 0 deploy environments.
+# Real values are injected from Ansible Vault on the deploy host; only the
+# committed `.example` templates live in the repo.
+.env.production
+.env.staging
+
+# Standalone build output (deployed artifact, rebuilt on the host).
+.next/standalone
