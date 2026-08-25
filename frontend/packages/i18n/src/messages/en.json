@@ -197,5 +197,32 @@
     "listView": "List view",
     "register": "Register",
     "addressLabel": "Address"
+  },
+  "crm": {
+    "successReference": "Thank you! Your enquiry has been registered — reference {reference}.",
+    "followUp24h": "We'll contact you within 24 hours.",
+    "rotationRetry": "CRM is temporarily unavailable. Please retry in a moment.",
+    "rateLimited": "CRM is busy. Please retry in a moment.",
+    "errorGeneric": "We couldn't submit your enquiry. Please try again later.",
+    "leadTrackerTitle": "Recent leads",
+    "adminOnly": "This section is for tenant administrators only.",
+    "crmNotConfigured": "CRM is not configured yet.",
+    "crmUnavailable": "CRM is temporarily unavailable.",
+    "loading": "Loading…",
+    "noLeads": "No leads yet.",
+    "refresh": "Refresh",
+    "colName": "Name",
+    "colStatus": "Status",
+    "colDate": "Date",
+    "colLink": "Bitrix24",
+    "status_NEW": "New",
+    "status_IN_PROGRESS": "In progress",
+    "status_CONVERTED": "Converted",
+    "status_CLOSED": "Closed",
+    "openInBitrix": "Open in Bitrix24",
+    "pipelineTitle": "Sales pipeline",
+    "pipelineReadOnly": "Read-only view — modifications are made in Bitrix24.",
+    "noDeals": "No deals yet.",
+    "callLabel": "Call"
   }
 }

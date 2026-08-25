@@ -197,5 +197,32 @@
     "listView": "Список",
     "register": "Зарегистрироваться",
     "addressLabel": "Адрес"
+  },
+  "crm": {
+    "successReference": "Спасибо! Ваш запрос зарегистрирован — номер {reference}.",
+    "followUp24h": "Мы свяжемся с вами в течение 24 часов.",
+    "rotationRetry": "CRM временно недоступен. Пожалуйста, повторите попытку через мгновение.",
+    "rateLimited": "CRM занят. Повторите попытку через мгновение.",
+    "errorGeneric": "Не удалось отправить запрос. Пожалуйста, повторите попытку позже.",
+    "leadTrackerTitle": "Последние лиды",
+    "adminOnly": "Этот раздел только для администраторов.",
+    "crmNotConfigured": "CRM ещё не настроен.",
+    "crmUnavailable": "CRM временно недоступен.",
+    "loading": "Загрузка…",
+    "noLeads": "Лидов пока нет.",
+    "refresh": "Обновить",
+    "colName": "Имя",
+    "colStatus": "Статус",
+    "colDate": "Дата",
+    "colLink": "Bitrix24",
+    "status_NEW": "Новый",
+    "status_IN_PROGRESS": "В работе",
+    "status_CONVERTED": "Конвертирован",
+    "status_CLOSED": "Закрыт",
+    "openInBitrix": "Открыть в Bitrix24",
+    "pipelineTitle": "Воронка продаж",
+    "pipelineReadOnly": "Только для чтения — изменения вносятся в Bitrix24.",
+    "noDeals": "Сделок пока нет.",
+    "callLabel": "Позвонить"
   }
 }

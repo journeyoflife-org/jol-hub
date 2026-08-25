@@ -1,9 +1,17 @@
 /**
  * Bitrix24 CRM Integration for Donations
  * Syncs donor contacts and donation deals to Bitrix24
- * 
+ *
  * NOTE: These functions are typically called from Django backend.
  * This file provides client-side types and fallback implementations.
+ *
+ * @deprecated (STEP 9) Direct browser calls to Bitrix24 are FORBIDDEN —
+ * the webhook URL embeds a secret and CORS/token exposure breaks SOC 2
+ * CC6.1. The sanctioned path is frontend → jol-hub backend →
+ * jol-bitrix24-integration (see `@jol-hub/bitrix-sdk` CrmBackendClient).
+ * This module stays for its types/audit helpers while donations are pending
+ * (ADR-007); the direct `fetch` path below is intentionally disabled and
+ * MUST NOT be re-enabled.
  */
 
 import type { BitrixContactData, BitrixDealData, DonorData } from './types';
@@ -103,27 +111,15 @@ export async function createCrmDonationContact(
 }
 
 /**
- * Finds a contact by email
+ * Finds a contact by email.
+ *
+ * STEP 9: the previous implementation fetched the Bitrix24 webhook URL
+ * DIRECTLY from the browser — a forbidden pattern (secret exposure, CORS).
+ * Contact resolution now happens backend-side only; this client stub returns
+ * null so callers fall through to the server-managed path.
  */
-async function findContactByEmail(email: string): Promise<string | null> {
-  if (!BITRIX_WEBHOOK_URL) return null;
-  
-  try {
-    const response = await fetch(
-      `${BITRIX_WEBHOOK_URL}/crm.contact.list.json?filter[EMAIL]=${encodeURIComponent(email)}&select[]=ID`
-    );
-    
-    const data = await response.json();
-    
-    if (data.result && data.result.length > 0) {
-      return data.result[0].ID;
-    }
-    
-    return null;
-  } catch (error) {
-    console.error('[BITRIX CRM] Error finding contact:', error);
-    return null;
-  }
+async function findContactByEmail(_email: string): Promise<string | null> {
+  return null;
 }
 
 // =============================================================================
