@@ -33,12 +33,14 @@ export {
 export {
   getMessages,
   translate,
+  translateWithValues,
   deepMerge,
   mapTenantVertical,
   type MessageCatalog,
   type MessageNamespace,
   type VerticalOverride,
   type GetMessagesOptions,
+  type TranslationValues,
 } from './messages';
 
 export { TranslationProvider, type TranslationProviderProps } from './components/translation-provider';

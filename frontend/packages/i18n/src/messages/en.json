@@ -29,7 +29,8 @@
     "events": "Events",
     "legal": "Legal information",
     "navigationTitle": "Navigation",
-    "contactTitle": "Contact"
+    "contactTitle": "Contact",
+    "about": "About"
   },
   "forms": {
     "nameLabel": "Name",
@@ -54,7 +55,11 @@
     "notFoundTitle": "Page not found",
     "notFoundBody": "The requested address does not exist or is unavailable. Please verify the link or contact the administration of the institution you are looking for.",
     "generic": "Something went wrong. Please try again later.",
-    "sendFailed": "Sending failed. Please try again later."
+    "sendFailed": "Sending failed. Please try again later.",
+    "errorTitle": "Something went wrong",
+    "retry": "Try again",
+    "errorId": "Error reference",
+    "contactSupport": "Contact the office"
   },
   "seo": {
     "siteDescription": "Journey Of Life — a journey through life, together."
@@ -116,5 +121,26 @@
     "dsrTimeline": "Requests are handled within 30 days. Identity is verified before any data is disclosed.",
     "dsrSubmit": "Send requests to: {email}.",
     "dsrSubmitGeneric": "Submit requests to the institution's administration."
+  },
+  "collections": {
+    "servicesTitle": "Services",
+    "mapTitle": "Map",
+    "emptyNews": "No news published yet.",
+    "emptyEvents": "No events scheduled.",
+    "emptyServices": "No services listed yet.",
+    "searchLabel": "Search",
+    "categoryLabel": "Category",
+    "allCategories": "All categories",
+    "previousPage": "Previous page",
+    "nextPage": "Next page",
+    "pageInfo": "Page {page} of {totalPages}",
+    "backToList": "Back to list",
+    "relatedArticles": "Related articles",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "calendarView": "Calendar view",
+    "listView": "List view",
+    "register": "Register",
+    "addressLabel": "Address"
   }
 }

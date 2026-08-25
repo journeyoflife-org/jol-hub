@@ -29,7 +29,8 @@
     "events": "Renginiai",
     "legal": "Teisinė informacija",
     "navigationTitle": "Navigacija",
-    "contactTitle": "Kontaktai"
+    "contactTitle": "Kontaktai",
+    "about": "Apie mus"
   },
   "forms": {
     "nameLabel": "Vardas",
@@ -54,7 +55,11 @@
     "notFoundTitle": "Puslapis nerastas",
     "notFoundBody": "Ieškomas adresas neegzistuoja arba yra nepasiekiamas. Patikrinkite nuorodą arba kreipkitės į jus dominančios įstaigos administraciją.",
     "generic": "Įvyko klaida. Bandykite vėliau.",
-    "sendFailed": "Nepavyko išsiųsti. Bandykite vėliau."
+    "sendFailed": "Nepavyko išsiųsti. Bandykite vėliau.",
+    "errorTitle": "Įvyko netikėta klaida",
+    "retry": "Bandyti dar kartą",
+    "errorId": "Klaidos kodas",
+    "contactSupport": "Susisiekti su administracija"
   },
   "seo": {
     "siteDescription": "Journey Of Life — kelionė per gyvenimą kartu."
@@ -116,5 +121,26 @@
     "dsrTimeline": "Prašymus nagrinėjame per 30 dienų. Tapatybė patvirtinama prieš pateikiant bet kokius duomenis.",
     "dsrSubmit": "Prašymus siųskite: {email}.",
     "dsrSubmitGeneric": "Prašymus teikite įstaigos administracijai."
+  },
+  "collections": {
+    "servicesTitle": "Paslaugos",
+    "mapTitle": "Žemėlapis",
+    "emptyNews": "Naujienų kol kas nėra.",
+    "emptyEvents": "Renginių kol kas nėra.",
+    "emptyServices": "Paslaugų kol kas nėra.",
+    "searchLabel": "Paieška",
+    "categoryLabel": "Kategorija",
+    "allCategories": "Visos kategorijos",
+    "previousPage": "Ankstesnis puslapis",
+    "nextPage": "Kitas puslapis",
+    "pageInfo": "{page} psl. iš {totalPages}",
+    "backToList": "Grįžti į sąrašą",
+    "relatedArticles": "Susiję straipsniai",
+    "upcoming": "Artėjantys",
+    "past": "Įvykę",
+    "calendarView": "Kalendorius",
+    "listView": "Sąrašas",
+    "register": "Registruotis",
+    "addressLabel": "Adresas"
   }
 }
