@@ -320,11 +320,3 @@ export async function getDonationStats(
 // =============================================================================
 // EXPORT
 // =============================================================================
-
-export default {
-  createCrmDonationContact,
-  createCrmDonationDeal,
-  updateCrmDealStatus,
-  syncDonationToCrm,
-  getDonationStats,
-};

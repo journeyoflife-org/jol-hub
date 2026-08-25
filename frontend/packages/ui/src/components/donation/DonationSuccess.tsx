@@ -190,4 +190,3 @@ export function DonationSuccess({
   );
 }
 
-export default DonationSuccess;

@@ -329,4 +329,3 @@ export function useDonation(parishId: string): UseDonationReturn {
 
 const DJANGO_API_URL = process.env.NEXT_PUBLIC_DJANGO_API_URL || 'https://api.jol-hub.eu';
 
-export default useDonation;
