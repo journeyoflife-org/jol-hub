@@ -78,7 +78,16 @@ export function schemaForTenant(slug: string): string {
   return `t_${slug.replace(/-/g, '_')}`;
 }
 
-/** Feature baselines per package tier (supersets downwards). */
+/**
+ * Feature baselines per package tier (supersets downwards).
+ *
+ * Commerce capability flags (STEP 8) are package-tier-gated:
+ *   booking       — NORMAL/VIP (funeral / cleaning verticals).
+ *   shop          — VIP commercial verticals.
+ *   subscriptions — VIP (cemetery-care schedules).
+ * `donations` is NORMAL/VIP (churches/dioceses). Vertical-appropriateness is
+ * a composition concern — see `@jol-hub/commerce` gating.ts.
+ */
 export const FEATURES_BY_TIER: Record<PackageTier, string[]> = {
   cheap: ['contact-form', 'service-schedule', 'basic-seo'],
   normal: [
@@ -89,6 +98,7 @@ export const FEATURES_BY_TIER: Record<PackageTier, string[]> = {
     'gallery',
     'events',
     'news',
+    'booking',
   ],
   vip: [
     'contact-form',
@@ -98,6 +108,9 @@ export const FEATURES_BY_TIER: Record<PackageTier, string[]> = {
     'gallery',
     'events',
     'news',
+    'booking',
+    'shop',
+    'subscriptions',
     'custom-domain',
     'analytics',
     'api-access',
