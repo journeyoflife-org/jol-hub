@@ -24,6 +24,7 @@ import {
   websiteEntity,
 } from '@/lib/json-ld';
 import { buildTenantMetadata, tenantDisplayName, tenantTagline } from '@/lib/page-seo';
+import { absoluteUrl } from '@/lib/seo';
 import { getTemplateForTenant } from '@/lib/template-registry';
 import { renderFixtureRoute, resolveTenantRoute } from '@/lib/route-dispatch';
 
@@ -44,12 +45,12 @@ export async function generateMetadata({
   const { tenant, fixture, locale } = resolveTenantRoute(params);
   const name = tenantDisplayName(tenant, fixture, locale);
   const description = tenantTagline(fixture, locale) ?? name;
+  // Home: no title override — the tenant layout default IS the tenant name.
   return buildTenantMetadata({
     tenant,
     fixture,
     locale,
     route: '/',
-    title: name,
     description,
   });
 }
@@ -63,9 +64,11 @@ export default async function TenantHomePage({ params }: { params: TenantHomePar
   const fixtureHome = renderFixtureRoute(fixture, '/', basePath);
   if (fixtureHome) {
     const name = tenantDisplayName(tenant, fixture, locale);
+    // STEP 11: structured-data URLs are ABSOLUTE (protocol + public domain).
+    const homeUrl = absoluteUrl(basePath);
     const org = organizationEntity({
       name,
-      url: basePath,
+      url: homeUrl,
       vertical: tenant.vertical,
       address: fixture?.identity?.address,
       phone: fixture?.identity?.phone,
@@ -73,7 +76,7 @@ export default async function TenantHomePage({ params }: { params: TenantHomePar
     });
     return (
       <>
-        <JsonLd data={[org, websiteEntity(name, basePath)]} />
+        <JsonLd data={[org, websiteEntity(name, homeUrl)]} />
         {fixtureHome}
       </>
     );

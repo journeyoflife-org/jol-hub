@@ -14,6 +14,7 @@ import { getMessages, translate } from '@jol-hub/i18n';
 import { ServiceCard } from '@jol-hub/ui/components/composite';
 import { getServices } from '@/lib/collections';
 import { JsonLd, breadcrumbEntity, itemListEntity } from '@/lib/json-ld';
+import { absoluteUrl } from '@/lib/seo';
 import { buildTenantMetadata, tenantDisplayName } from '@/lib/page-seo';
 import { themeVerticalFor } from '@/lib/template-registry';
 import {
@@ -45,7 +46,7 @@ export async function generateMetadata({
     fixture,
     locale,
     route: '/services',
-    title: `${translate(messages, 'collections.servicesTitle')} | ${name}`,
+    title: translate(messages, 'collections.servicesTitle'),
     description: name,
   });
 }
@@ -62,8 +63,8 @@ export default async function TenantServicesListPage({
   const title = translate(messages, 'collections.servicesTitle');
 
   const breadcrumb = breadcrumbEntity([
-    { name: translate(messages, 'navigation.home'), url: basePath },
-    { name: title, url: `${basePath}/services` },
+    { name: translate(messages, 'navigation.home'), url: absoluteUrl(basePath) },
+    { name: title, url: absoluteUrl(`${basePath}/services`) },
   ]);
 
   // Fixture-first fidelity (fixtures ship no /services today — future-proof).
@@ -94,7 +95,7 @@ export default async function TenantServicesListPage({
           itemListEntity(
             listed.map((item) => ({
               name: item.title,
-              url: `${basePath}/services/${item.slug}`,
+              url: absoluteUrl(`${basePath}/services/${item.slug}`),
             })),
           ),
         ]}

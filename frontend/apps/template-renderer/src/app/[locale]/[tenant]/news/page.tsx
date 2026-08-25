@@ -19,6 +19,7 @@ import { NewsCard } from '@jol-hub/ui/components/composite';
 import { getNews, paginate } from '@/lib/collections';
 import type { NewsItem } from '@/lib/collections';
 import { JsonLd, breadcrumbEntity, itemListEntity } from '@/lib/json-ld';
+import { absoluteUrl } from '@/lib/seo';
 import { buildTenantMetadata, tenantDisplayName } from '@/lib/page-seo';
 import { themeVerticalFor } from '@/lib/template-registry';
 import {
@@ -60,7 +61,7 @@ export async function generateMetadata({
     fixture,
     locale,
     route: '/news',
-    title: `${newsLabel(locale)} | ${name}`,
+    title: newsLabel(locale),
     description: name,
   });
 }
@@ -78,8 +79,8 @@ export default async function TenantNewsListPage({
   const jsonLdBreadcrumb = (
     <JsonLd
       data={breadcrumbEntity([
-        { name: translate(messages, 'navigation.home'), url: basePath },
-        { name: newsLabel(locale), url: `${basePath}/news` },
+        { name: translate(messages, 'navigation.home'), url: absoluteUrl(basePath) },
+        { name: newsLabel(locale), url: absoluteUrl(`${basePath}/news`) },
       ])}
     />
   );
@@ -119,13 +120,13 @@ export default async function TenantNewsListPage({
       <JsonLd
         data={[
           breadcrumbEntity([
-            { name: translate(messages, 'navigation.home'), url: basePath },
-            { name: newsLabel(locale), url: `${basePath}/news` },
+            { name: translate(messages, 'navigation.home'), url: absoluteUrl(basePath) },
+            { name: newsLabel(locale), url: absoluteUrl(`${basePath}/news`) },
           ]),
           itemListEntity(
             paged.items.map((item) => ({
               name: item.title,
-              url: `${basePath}/news/${item.slug}`,
+              url: absoluteUrl(`${basePath}/news/${item.slug}`),
             })),
           ),
         ]}

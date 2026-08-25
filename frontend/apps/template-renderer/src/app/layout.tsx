@@ -25,9 +25,12 @@ import { isSupportedLocale } from '@jol-hub/i18n';
 import { DEFAULT_LOCALE, LOCALE_HEADER } from '@jol-hub/i18n/config';
 
 export const metadata: Metadata = {
+  // White-label: tenant layouts define their own "%s | {tenant}" template;
+  // '%s' passes child titles through unwrapped by the hub brand. The
+  // default covers title-less surfaces (error targets, dev).
   title: {
     default: 'JOL-HUB',
-    template: '%s | JOL-HUB',
+    template: '%s',
   },
   description: 'Journey Of Life multi-tenant platform',
   authors: [{ name: 'JOL-HUB' }],

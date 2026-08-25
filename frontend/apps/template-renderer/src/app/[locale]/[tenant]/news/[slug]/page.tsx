@@ -14,8 +14,11 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getMessages, translate, formatDate } from '@jol-hub/i18n';
+import { LOCALE_HREFLANG } from '@jol-hub/i18n';
+import { clampDescription } from '@jol-hub/seo';
 import { JsonLd, articleEntity, breadcrumbEntity } from '@/lib/json-ld';
-import { buildTenantMetadata, tenantDisplayName } from '@/lib/page-seo';
+import { tenantDisplayName } from '@/lib/page-seo';
+import { absoluteUrl, buildSeoAlternates } from '@/lib/seo';
 import { getNews, getNewsItem } from '@/lib/collections';
 import { themeVerticalFor } from '@/lib/template-registry';
 import { normalizeSlugParam } from '@/lib/slug';
@@ -42,14 +45,29 @@ export async function generateMetadata({
   if (!item) return {};
 
   const name = tenantDisplayName(tenant, fixture, locale);
-  return buildTenantMetadata({
-    tenant,
-    fixture,
-    locale,
-    route: `/news/${item.slug}`,
-    title: `${item.title} | ${name}`,
-    description: item.excerpt || item.title,
-  });
+  // STEP 11 SEO enhancement: article-type OG with published/modified times,
+  // absolute canonical + reciprocal hreflang, description clamped to the
+  // 150–160 char SERP window.
+  const seo = buildSeoAlternates(tenant.slug, `/news/${item.slug}`, locale);
+  const description = clampDescription(item.excerpt || item.title);
+
+  return {
+    title: item.title,
+    description,
+    alternates: { canonical: seo.canonical, languages: seo.languages },
+    openGraph: {
+      title: item.title,
+      description,
+      type: 'article',
+      locale: LOCALE_HREFLANG[locale],
+      siteName: name,
+      url: seo.canonical,
+      publishedTime: item.publishedAt,
+      modifiedTime: item.updatedAt ?? undefined,
+    },
+    twitter: { card: 'summary', title: item.title, description },
+    robots: { index: true, follow: true },
+  };
 }
 
 export default async function TenantNewsDetailPage({ params }: { params: TenantNewsDetailParams }) {
@@ -62,7 +80,8 @@ export default async function TenantNewsDetailPage({ params }: { params: TenantN
 
   const messages = getMessages(locale, { vertical: themeVerticalFor(tenant.vertical) });
   const tenantName = tenantDisplayName(tenant, fixture, locale);
-  const articleUrl = `${basePath}/news/${item.slug}`;
+  // STEP 11: structured-data URLs are ABSOLUTE (protocol + public domain).
+  const articleUrl = absoluteUrl(`${basePath}/news/${item.slug}`);
 
   // Related reading: other items, most recent first (pilot: empty → hidden).
   const others = (await getNews(tenant))
@@ -80,8 +99,8 @@ export default async function TenantNewsDetailPage({ params }: { params: TenantN
       <JsonLd
         data={[
           breadcrumbEntity([
-            { name: translate(messages, 'navigation.home'), url: basePath },
-            { name: translate(messages, 'navigation.news'), url: `${basePath}/news` },
+            { name: translate(messages, 'navigation.home'), url: absoluteUrl(basePath) },
+            { name: translate(messages, 'navigation.news'), url: absoluteUrl(`${basePath}/news`) },
             { name: item.title, url: articleUrl },
           ]),
           articleEntity({

@@ -19,6 +19,7 @@ import { getMessages, translate } from '@jol-hub/i18n';
 import type { SupportedLocale } from '@jol-hub/i18n';
 import type { TenantFixture } from '@jol-hub/seed-data';
 import { JsonLd, organizationEntity, webPageEntity } from '@/lib/json-ld';
+import { absoluteUrl } from '@/lib/seo';
 import { buildTenantMetadata, tenantDisplayName, tenantTagline } from '@/lib/page-seo';
 import { PageComposer } from '@/lib/page-composer';
 import { buildContactConfig } from '@/lib/page-defaults';
@@ -78,7 +79,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { tenant, fixture, locale } = resolveTenantRoute(params);
   const name = tenantDisplayName(tenant, fixture, locale);
-  const title = `${contactLabel(locale)} | ${name}`;
+  const title = contactLabel(locale);
   const description = tenantTagline(fixture, locale) ?? name;
   return buildTenantMetadata({ tenant, fixture, locale, route: '/contact', title, description });
 }
@@ -87,9 +88,10 @@ export default async function TenantContactPage({ params }: { params: TenantCont
   const { tenant, fixture, locale, basePath } = resolveTenantRoute(params);
   const name = tenantDisplayName(tenant, fixture, locale);
 
+  // STEP 11: structured-data URLs are ABSOLUTE (protocol + public domain).
   const org = organizationEntity({
     name,
-    url: basePath,
+    url: absoluteUrl(basePath),
     vertical: tenant.vertical,
     address: fixture?.identity?.address,
     phone: fixture?.identity?.phone,
@@ -100,7 +102,7 @@ export default async function TenantContactPage({ params }: { params: TenantCont
       data={webPageEntity({
         type: 'ContactPage',
         name: `${contactLabel(locale)} | ${name}`,
-        url: `${basePath}/contact`,
+        url: absoluteUrl(`${basePath}/contact`),
         about: org,
       })}
     />

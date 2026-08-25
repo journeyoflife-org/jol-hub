@@ -144,6 +144,19 @@ export default async function middleware(request: NextRequest): Promise<NextResp
         new NextResponse('Too Many Requests', { status: 429 }),
       );
     }
+    // STEP 11: SEO surfaces are exempt from tenant ROUTING but need tenant
+    // identity — resolve and inject `x-resolved-tenant` so sitemap.xml can
+    // scope to the requesting tenant. Absent/unresolvable → no header →
+    // empty sitemap (no registry enumeration, per the security posture).
+    if (pathname === '/sitemap.xml' || pathname === '/robots.txt') {
+      const seoTenant = resolveTenantRequest(request); // LRU-cached
+      if (seoTenant) {
+        request.headers.set('x-resolved-tenant', seoTenant.tenantId);
+        return applySecurityHeaders(
+          NextResponse.next({ request: { headers: request.headers } }),
+        );
+      }
+    }
     return applySecurityHeaders(NextResponse.next());
   }
 

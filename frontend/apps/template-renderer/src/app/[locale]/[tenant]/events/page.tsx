@@ -19,6 +19,7 @@ import { EventCard } from '@jol-hub/ui/components/composite';
 import { getEvents, splitEventsByTime, buildMonthGrid, eventsByDate } from '@/lib/collections';
 import type { EventItem } from '@/lib/collections';
 import { JsonLd, breadcrumbEntity, itemListEntity } from '@/lib/json-ld';
+import { absoluteUrl } from '@/lib/seo';
 import { buildTenantMetadata, tenantDisplayName } from '@/lib/page-seo';
 import { themeVerticalFor } from '@/lib/template-registry';
 import {
@@ -120,7 +121,7 @@ export async function generateMetadata({
     fixture,
     locale,
     route: '/events',
-    title: `${eventsLabel(locale)} | ${name}`,
+    title: eventsLabel(locale),
     description: name,
   });
 }
@@ -136,8 +137,8 @@ export default async function TenantEventsListPage({
   const messages = getMessages(locale, { vertical: themeVerticalFor(tenant.vertical) });
 
   const breadcrumb = breadcrumbEntity([
-    { name: translate(messages, 'navigation.home'), url: basePath },
-    { name: eventsLabel(locale), url: `${basePath}/events` },
+    { name: translate(messages, 'navigation.home'), url: absoluteUrl(basePath) },
+    { name: eventsLabel(locale), url: absoluteUrl(`${basePath}/events`) },
   ]);
 
   // Fixture-first fidelity: a fixture events page wins when present.
@@ -175,7 +176,7 @@ export default async function TenantEventsListPage({
           itemListEntity(
             listed.map((item) => ({
               name: item.title,
-              url: `${basePath}/events/${item.slug}`,
+              url: absoluteUrl(`${basePath}/events/${item.slug}`),
             })),
           ),
         ]}
