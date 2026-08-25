@@ -31,6 +31,11 @@ import parishStJohnVilnius from './fixtures/tenants/parish-st-john-vilnius.json'
 // STEP 17 — Wave 0 reference sites (Šiauliai stakeholder cluster). One
 // file, five fixtures; expanded into the same validated stream below.
 import referenceSites from './fixtures/tenants/reference-sites.json';
+// STEP 18 — Wave 1 pilot cluster (30 sites): deaneries, parish churches,
+// funeral homes and cemetery-care services across the five deaneries.
+import wave1Siauliai from './fixtures/tenants/wave1-siauliai.json';
+import wave1Joniskis from './fixtures/tenants/wave1-joniskis.json';
+import wave1KelmePakruojisRadviliskis from './fixtures/tenants/wave1-kelme-pakruojis-radviliskis.json';
 
 const rawFixtures: unknown[] = [
   basilicaVilniusCathedral,
@@ -46,6 +51,9 @@ const rawFixtures: unknown[] = [
   orthodoxVilniusCathedral,
   parishStJohnVilnius,
   ...(referenceSites as unknown[]),
+  ...(wave1Siauliai as unknown[]),
+  ...(wave1Joniskis as unknown[]),
+  ...(wave1KelmePakruojisRadviliskis as unknown[]),
 ];
 
 /** All tenant fixtures, parsed (throws at load time if any is invalid). */
