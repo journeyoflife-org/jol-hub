@@ -74,4 +74,5 @@ initial + date in the change log (SOC 2 CC8.1 / ISO 27001 A.8.32).
 
 **Abort rule:** any P0 alert or failed smoke test → `scripts/rollback.sh`
 immediately, then restore snapshot if rollback health check fails. No
-forward-fixing during the presentation window.
+forward-fixing during the presentation window. Full severity-graded
+procedure: [EMERGENCY-ROLLBACK.md](./EMERGENCY-ROLLBACK.md) (Appendix B).
