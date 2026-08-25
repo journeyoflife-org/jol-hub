@@ -13,6 +13,10 @@
  *
  * Tenant identity (name, nav, contacts) is rendered by
  * `app/[locale]/[tenant]/layout.tsx`.
+ *
+ * STEP 13 (Performance): mounts the consent-gated Web Vitals RUM reporter
+ * (~1KB client JS; metrics post to `/api/perf` only after analytics
+ * consent — GDPR Art. 6/7, see PERFORMANCE.md).
  */
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
@@ -23,6 +27,7 @@ import './globals.css';
 import { ThemeProvider, THEME_INIT_SCRIPT } from '@jol-hub/ui/providers';
 import { isSupportedLocale } from '@jol-hub/i18n';
 import { DEFAULT_LOCALE, LOCALE_HEADER } from '@jol-hub/i18n/config';
+import { WebVitals } from '@/components/WebVitals';
 
 export const metadata: Metadata = {
   // White-label: tenant layouts define their own "%s | {tenant}" template;
@@ -55,6 +60,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* FOUT prevention: apply persisted theme before first paint. */}
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <ThemeProvider>{children}</ThemeProvider>
+        {/* STEP 13: Core Web Vitals RUM (consent-gated, non-blocking). */}
+        <WebVitals />
       </body>
     </html>
   );

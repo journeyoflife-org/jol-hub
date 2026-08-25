@@ -1,0 +1,18 @@
+{
+  "name": "@jol-hub/perf",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Performance budget core for JOL: Lighthouse-format budget parsing, gzipped-size measurement, per-route first-load footprint analysis and CI gate reporting. Targets modest on-prem hardware (Dell R640) — no cloud CDN assumptions.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "test": "tsx --test src/__tests__/*.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsx": "^4.23.12",
+    "typescript": "^5.4.0"
+  }
+}

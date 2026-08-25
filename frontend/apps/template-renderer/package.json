@@ -11,6 +11,8 @@
     "type-check": "tsc --noEmit",
     "test": "tsx --test src/__tests__/*.test.ts",
     "check-a11y": "tsx scripts/check-a11y-pages.ts",
+    "check-perf": "tsx scripts/check-perf-budget.ts",
+    "analyze": "ANALYZE=true next build",
     "clean": "rm -rf .next .turbo node_modules"
   },
   "dependencies": {
@@ -19,6 +21,7 @@
     "@jol-hub/bitrix-sdk": "workspace:*",
     "@jol-hub/commerce": "workspace:*",
     "@jol-hub/i18n": "workspace:*",
+    "@jol-hub/perf": "workspace:*",
     "@jol-hub/seed-data": "workspace:*",
     "@jol-hub/seo": "workspace:*",
     "@jol-hub/tenant-resolver": "workspace:*",
@@ -32,6 +35,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "14.2.0",
     "@types/node": "^20.0.0",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
