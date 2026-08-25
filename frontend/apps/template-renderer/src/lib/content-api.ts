@@ -36,7 +36,13 @@ const BACKEND_SERVICE_TOKEN = process.env.BACKEND_SERVICE_TOKEN;
 const REVALIDATE = {
   page: 300,
   block: 600,
+  // News is ISR (60s); events/services are time/commercial-sensitive and
+  // fetch with no-store (rendered fresh per request — see RENDERING.md).
+  news: 60,
 } as const;
+
+/** Dynamic collection kinds (STEP 6). */
+export type CollectionKind = 'news' | 'events' | 'services';
 
 export type ContentApiErrorKind = 'not-found' | 'forbidden' | 'server-error';
 
@@ -168,4 +174,44 @@ export async function fetchTenantContentBlock(
     throw new ContentApiError('server-error', `Invalid block payload ${blockId} for ${tenant.slug}`);
   }
   return parsed.data;
+}
+
+/**
+ * Fetch a dynamic collection (news / events / services).
+ * Returns `null` when the content service is not configured (pilot) so the
+ * caller renders an accessible empty state. News is ISR-cached (60s);
+ * events/services are `no-store` (time- and price-sensitive).
+ */
+export async function fetchTenantCollection(
+  tenant: Tenant,
+  kind: CollectionKind,
+): Promise<unknown[] | null> {
+  if (!BACKEND_API_URL) return null;
+
+  const url = `${BACKEND_API_URL}/api/v1/tenants/${encodeURIComponent(tenant.slug)}/collections/${kind}`;
+  const init: RequestInit =
+    kind === 'news'
+      ? { headers: backendHeaders(tenant), next: { revalidate: REVALIDATE.news } }
+      : { headers: backendHeaders(tenant), cache: 'no-store' };
+  const raw = await fetchJson(url, init, url);
+  return Array.isArray(raw) ? raw : [];
+}
+
+/**
+ * Fetch a single collection item by slug (news article / event / service).
+ * Same pilot contract as {@link fetchTenantCollection}.
+ */
+export async function fetchTenantCollectionItem(
+  tenant: Tenant,
+  kind: CollectionKind,
+  slug: string,
+): Promise<unknown | null> {
+  if (!BACKEND_API_URL) return null;
+
+  const url = `${BACKEND_API_URL}/api/v1/tenants/${encodeURIComponent(tenant.slug)}/collections/${kind}/${encodeURIComponent(slug)}`;
+  const init: RequestInit =
+    kind === 'news'
+      ? { headers: backendHeaders(tenant), next: { revalidate: REVALIDATE.page } }
+      : { headers: backendHeaders(tenant), cache: 'no-store' };
+  return fetchJson(url, init, url);
 }

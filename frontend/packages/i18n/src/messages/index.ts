@@ -9,6 +9,7 @@
  */
 import type { SupportedLocale } from '../types';
 import { DEFAULT_LOCALE } from '../types';
+import IntlMessageFormat from 'intl-messageformat';
 
 import lt from './lt.json';
 import en from './en.json';
@@ -125,4 +126,28 @@ export function translate(catalog: MessageCatalog, key: string, fallback?: strin
   const [namespace, ...rest] = key.split('.');
   const value = namespace && rest.length > 0 ? catalog[namespace]?.[rest.join('.')] : undefined;
   return value ?? fallback ?? key;
+}
+
+/** Interpolation values for ICU messages. */
+export type TranslationValues = Record<string, string | number | boolean | Date>;
+
+/**
+ * Server-safe lookup WITH ICU interpolation, for server components that render
+ * parameterized messages (e.g. `collections.pageInfo`). Mirrors the client
+ * `useTranslations` behavior. Returns the key path itself when missing.
+ */
+export function translateWithValues(
+  catalog: MessageCatalog,
+  locale: SupportedLocale,
+  key: string,
+  values: TranslationValues,
+): string {
+  const [namespace, ...rest] = key.split('.');
+  const pattern =
+    namespace && rest.length > 0 ? catalog[namespace]?.[rest.join('.')] : undefined;
+  if (pattern === undefined) return key;
+  if (!pattern.includes('{')) return pattern;
+  const formatter = new IntlMessageFormat(pattern, locale);
+  const formatted = formatter.format(values);
+  return Array.isArray(formatted) ? formatted.join('') : String(formatted);
 }
