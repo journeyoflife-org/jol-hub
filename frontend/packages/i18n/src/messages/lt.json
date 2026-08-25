@@ -197,5 +197,32 @@
     "listView": "Sąrašas",
     "register": "Registruotis",
     "addressLabel": "Adresas"
+  },
+  "crm": {
+    "successReference": "Ačiū! Jūsų užklausa užregistruota — numeris {reference}.",
+    "followUp24h": "Susisieksime su jumis per 24 valandas.",
+    "rotationRetry": "CRM laikinai nepasiekiama. Prašome bandyti dar kartą po kelių akimirkų.",
+    "rateLimited": "CRM šiuo metu apkrautas. Bandykite po kelių akimirkų.",
+    "errorGeneric": "Nepavyko išsiųsti užklausos. Bandykite vėliau.",
+    "leadTrackerTitle": "Naujausi kontaktai",
+    "adminOnly": "Ši skiltis skirta tik administratoriams.",
+    "crmNotConfigured": "CRM dar neaktyvuotas.",
+    "crmUnavailable": "CRM laikinai nepasiekiama.",
+    "loading": "Kraunama…",
+    "noLeads": "Kontaktų kol kas nėra.",
+    "refresh": "Atnaujinti",
+    "colName": "Vardas",
+    "colStatus": "Būsena",
+    "colDate": "Data",
+    "colLink": "Bitrix24",
+    "status_NEW": "Naujas",
+    "status_IN_PROGRESS": "Vykdomas",
+    "status_CONVERTED": "Konvertuotas",
+    "status_CLOSED": "Uždarytas",
+    "openInBitrix": "Atidaryti Bitrix24",
+    "pipelineTitle": "Pardavimų piltuvėlis",
+    "pipelineReadOnly": "Rodoma tik skaitymui — keitimai atliekami Bitrix24.",
+    "noDeals": "Sandorių kol kas nėra.",
+    "callLabel": "Skambinti"
   }
 }

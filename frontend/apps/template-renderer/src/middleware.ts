@@ -26,9 +26,14 @@ import { clientIp, isRateLimited } from '@/lib/rate-limit';
 
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
-/** Paths exempt from locale/tenant routing (static/dev/internal-404). */
+/**
+ * Paths exempt from locale/tenant routing (static/dev/internal-404/API).
+ * `/api/*` are same-origin internal endpoints (e.g. the STEP-9 CRM proxies):
+ * tenant attribution travels in the validated request body/query, and rate
+ * limiting (step 1) still applies to them.
+ */
 const EXCLUDED =
-  /^\/(_next\/|favicon\.ico$|robots\.txt$|sitemap\.xml$|dev\/|404-tenant-not-found(?:\/|$))/;
+  /^\/(_next\/|api\/|favicon\.ico$|robots\.txt$|sitemap\.xml$|dev\/|404-tenant-not-found(?:\/|$))/;
 
 const localeMiddleware = withLocaleResolution({
   // Registry callback: 2–3 letter path segments that ARE tenants must not
