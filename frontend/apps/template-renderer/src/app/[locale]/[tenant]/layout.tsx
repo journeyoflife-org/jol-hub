@@ -16,6 +16,7 @@
  * `Tenant.schema` never crosses into the client bundle (ADR-001).
  */
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 import {
   TranslationProvider,
   getMessages,
@@ -29,6 +30,7 @@ import type { NavItem } from '@jol-hub/ui';
 import { findTenantBySlug, toPublicTenant } from '@jol-hub/tenant-resolver';
 import { loadTenantFixture } from '@/lib/content-loader';
 import { pickLocalized } from '@/lib/i18n-helpers';
+import { buildTenantBaseMetadata } from '@/lib/seo';
 import { TenantProvider } from '@/lib/tenant-context';
 import { themeVerticalFor } from '@/lib/template-registry';
 import { AuthSlot } from '@/components/auth';
@@ -36,6 +38,28 @@ import { AuthSlot } from '@/components/auth';
 interface TenantLocaleLayoutParams {
   locale: string;
   tenant: string;
+}
+
+/**
+ * STEP 11: tenant-level default metadata — title template "%s | {name}",
+ * description from the tenant tagline, ABSOLUTE home canonical + reciprocal
+ * hreflang (incl. x-default). Unknown tenants emit no metadata (404 path).
+ */
+export function generateMetadata({ params }: { params: TenantLocaleLayoutParams }): Metadata {
+  const locale: SupportedLocale = isSupportedLocale(params.locale)
+    ? params.locale
+    : DEFAULT_LOCALE;
+
+  const fixture = loadTenantFixture(params.tenant);
+  const registryTenant = findTenantBySlug(params.tenant);
+  if (!fixture && !registryTenant) return {};
+
+  const name = fixture
+    ? pickLocalized(fixture.name, locale)
+    : pickLocalized(registryTenant!.name, locale);
+  const tagline = fixture ? pickLocalized(fixture.tagline, locale) : undefined;
+
+  return buildTenantBaseMetadata({ tenantSlug: params.tenant, locale, name, tagline });
 }
 
 export default function TenantLocaleLayout({

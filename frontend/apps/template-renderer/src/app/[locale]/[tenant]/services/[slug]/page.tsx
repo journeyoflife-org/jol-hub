@@ -13,6 +13,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getMessages, translate } from '@jol-hub/i18n';
 import { JsonLd, serviceEntity, breadcrumbEntity } from '@/lib/json-ld';
+import { absoluteUrl } from '@/lib/seo';
 import { buildTenantMetadata, tenantDisplayName } from '@/lib/page-seo';
 import { getServiceItem } from '@/lib/collections';
 import { themeVerticalFor } from '@/lib/template-registry';
@@ -39,13 +40,12 @@ export async function generateMetadata({
   const item = await getServiceItem(tenant, slug);
   if (!item) return {};
 
-  const name = tenantDisplayName(tenant, fixture, locale);
   return buildTenantMetadata({
     tenant,
     fixture,
     locale,
     route: `/services/${item.slug}`,
-    title: `${item.title} | ${name}`,
+    title: item.title,
     description: item.description || item.title,
   });
 }
@@ -60,7 +60,8 @@ export default async function TenantServiceDetailPage({ params }: { params: Tena
 
   const messages = getMessages(locale, { vertical: themeVerticalFor(tenant.vertical) });
   const tenantName = tenantDisplayName(tenant, fixture, locale);
-  const serviceUrl = `${basePath}/services/${item.slug}`;
+  // STEP 11: structured-data URLs are ABSOLUTE (protocol + public domain).
+  const serviceUrl = absoluteUrl(`${basePath}/services/${item.slug}`);
 
   // Booking is a NORMAL/VIP entitlement; CHEAP never sees the CTA.
   const bookingAllowed = tenant.packageTier !== 'cheap' && item.bookable !== false;
@@ -70,10 +71,10 @@ export default async function TenantServiceDetailPage({ params }: { params: Tena
       <JsonLd
         data={[
           breadcrumbEntity([
-            { name: translate(messages, 'navigation.home'), url: basePath },
+            { name: translate(messages, 'navigation.home'), url: absoluteUrl(basePath) },
             {
               name: translate(messages, 'collections.servicesTitle'),
-              url: `${basePath}/services`,
+              url: absoluteUrl(`${basePath}/services`),
             },
             { name: item.title, url: serviceUrl },
           ]),
@@ -123,7 +124,7 @@ export default async function TenantServiceDetailPage({ params }: { params: Tena
         {bookingAllowed && (
           <div className="mt-8">
             <a
-              href={serviceUrl}
+              href={`${basePath}/services/${item.slug}`}
               className="inline-block rounded-md bg-primary px-6 py-3 font-medium text-white focus-ring"
             >
               {translate(messages, 'commerce.bookingCta')}

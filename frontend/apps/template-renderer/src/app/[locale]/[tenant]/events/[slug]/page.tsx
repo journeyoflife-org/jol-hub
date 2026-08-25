@@ -15,6 +15,7 @@ import { notFound } from 'next/navigation';
 import { getMessages, translate, formatDate, formatTime } from '@jol-hub/i18n';
 import { Badge } from '@jol-hub/ui';
 import { JsonLd, eventEntity, breadcrumbEntity } from '@/lib/json-ld';
+import { absoluteUrl } from '@/lib/seo';
 import { buildTenantMetadata, tenantDisplayName } from '@/lib/page-seo';
 import { getEventItem } from '@/lib/collections';
 import { themeVerticalFor } from '@/lib/template-registry';
@@ -41,13 +42,12 @@ export async function generateMetadata({
   const item = await getEventItem(tenant, slug);
   if (!item) return {};
 
-  const name = tenantDisplayName(tenant, fixture, locale);
   return buildTenantMetadata({
     tenant,
     fixture,
     locale,
     route: `/events/${item.slug}`,
-    title: `${item.title} | ${name}`,
+    title: item.title,
     description: item.description || item.title,
   });
 }
@@ -62,7 +62,8 @@ export default async function TenantEventDetailPage({ params }: { params: Tenant
 
   const messages = getMessages(locale, { vertical: themeVerticalFor(tenant.vertical) });
   const tenantName = tenantDisplayName(tenant, fixture, locale);
-  const eventUrl = `${basePath}/events/${item.slug}`;
+  // STEP 11: structured-data URLs are ABSOLUTE (protocol + public domain).
+  const eventUrl = absoluteUrl(`${basePath}/events/${item.slug}`);
 
   // Registration is a NORMAL/VIP entitlement; CHEAP never sees the CTA.
   const registrationAllowed = tenant.packageTier !== 'cheap' && Boolean(item.registrationUrl);
@@ -72,8 +73,8 @@ export default async function TenantEventDetailPage({ params }: { params: Tenant
       <JsonLd
         data={[
           breadcrumbEntity([
-            { name: translate(messages, 'navigation.home'), url: basePath },
-            { name: translate(messages, 'navigation.events'), url: `${basePath}/events` },
+            { name: translate(messages, 'navigation.home'), url: absoluteUrl(basePath) },
+            { name: translate(messages, 'navigation.events'), url: absoluteUrl(`${basePath}/events`) },
             { name: item.title, url: eventUrl },
           ]),
           eventEntity({

@@ -24,6 +24,7 @@ import { PageComposer } from '@/lib/page-composer';
 import { JsonLd, websiteEntity, type JsonValue } from '@/lib/json-ld';
 import { verticalThemeFor, verticalAccentStyle } from '@/lib/vertical-theme';
 import { pickLocalized } from '@/lib/i18n-helpers';
+import { absoluteUrl } from '@/lib/seo';
 import { buildVerticalHomeConfig } from '@/lib/vertical-defaults';
 import { TemplateRenderer } from '@/components/TemplateRenderer';
 import type { TemplateProps } from '@/lib/template-registry';
@@ -45,11 +46,13 @@ export function BaseTemplate({ tenant, locale, basePath, config, children }: Bas
   const name = pickLocalized(tenant.name, locale);
 
   // Baseline structured data with the vertical-specific Organization subtype.
-  const org: JsonValue = { '@type': theme.schemaType, name, url: basePath };
+  // STEP 11: structured-data URLs are ABSOLUTE (protocol + public domain).
+  const homeUrl = absoluteUrl(basePath);
+  const org: JsonValue = { '@type': theme.schemaType, name, url: homeUrl };
 
   return (
     <div data-vertical={tenant.vertical} style={verticalAccentStyle(tenant.vertical)}>
-      <JsonLd data={[org, websiteEntity(name, basePath)]} />
+      <JsonLd data={[org, websiteEntity(name, homeUrl)]} />
 
       {/*
         Analytics placeholder (GDPR consent-gated). Intentionally inert: no

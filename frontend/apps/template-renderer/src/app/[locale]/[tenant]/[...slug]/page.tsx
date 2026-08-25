@@ -27,7 +27,8 @@ import { findTenantPage, isSharedRoute } from '@/lib/content-loader';
 import { ContentApiError, fetchTenantPage } from '@/lib/content-api';
 import { SharedCompliancePage } from '@/components/SharedCompliancePage';
 import { TemplateRenderer } from '@/components/TemplateRenderer';
-import { buildAlternates, pickLocalized } from '@/lib/i18n-helpers';
+import { pickLocalized } from '@/lib/i18n-helpers';
+import { buildSeoAlternates } from '@/lib/seo';
 import { getTemplateForTenant } from '@/lib/template-registry';
 import { resolveTenantRoute } from '@/lib/route-dispatch';
 
@@ -78,7 +79,9 @@ export async function generateMetadata({
     fixture ? fixture.name : tenant.name,
     locale,
   );
-  const title = page ? `${pickLocalized(page.title, locale)} | ${tenantName}` : tenantName;
+  // SHORT title — the tenant layout template appends " | {tenant name}".
+  // No fixture page → omit so the layout default (tenant name) applies.
+  const title = page ? pickLocalized(page.title, locale) : undefined;
   const description =
     page?.meta?.description ??
     (fixture ? `${tenantName} — ${pickLocalized(fixture.tagline, locale)}` : tenantName);
@@ -86,7 +89,8 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: buildAlternates(params.tenant, route),
+    // STEP 11: absolute canonical + reciprocal hreflang (incl. x-default).
+    alternates: buildSeoAlternates(params.tenant, route, locale),
   };
 }
 

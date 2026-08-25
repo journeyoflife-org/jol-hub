@@ -18,6 +18,7 @@
     "@jol-hub/commerce": "workspace:*",
     "@jol-hub/i18n": "workspace:*",
     "@jol-hub/seed-data": "workspace:*",
+    "@jol-hub/seo": "workspace:*",
     "@jol-hub/tenant-resolver": "workspace:*",
     "@jol-hub/ui": "workspace:*",
     "intl-messageformat": "^11.2.14",

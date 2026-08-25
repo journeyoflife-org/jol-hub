@@ -446,6 +446,9 @@ importers:
       '@jol-hub/seed-data':
         specifier: workspace:*
         version: link:../../packages/seed-data
+      '@jol-hub/seo':
+        specifier: workspace:*
+        version: link:../../packages/seo
       '@jol-hub/tenant-resolver':
         specifier: workspace:*
         version: link:../../packages/tenant-resolver
@@ -604,6 +607,18 @@ importers:
         specifier: ^3.23.8
         version: 3.25.76
     devDependencies:
+      typescript:
+        specifier: ^5.4.0
+        version: 5.9.3
+
+  packages/seo:
+    devDependencies:
+      '@types/node':
+        specifier: ^20.11.0
+        version: 20.19.37
+      tsx:
+        specifier: ^4.23.12
+        version: 4.23.12
       typescript:
         specifier: ^5.4.0
         version: 5.9.3
