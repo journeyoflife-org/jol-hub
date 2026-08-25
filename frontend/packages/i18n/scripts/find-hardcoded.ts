@@ -15,7 +15,11 @@
  *
  * Deliberate exclusions (documented in packages/i18n/README.md):
  *   - any `dev` directory (verification surfaces render sample tenant content)
+ *   - test surfaces: `__tests__`/`e2e` dirs and `*.test.*`/`*.spec.*` files
+ *     (assertion fixtures are intentionally literal)
  *   - `*.types.ts` (type declarations only)
+ *   - JSX-text heuristic applies to `.tsx` only — the `>expr<` shape in
+ *     plain `.ts` (generics, comparisons) is not JSX
  *   - LEGACY flat components in packages/ui/src/components/*.{tsx}
  *     (service-schedule, photo-gallery, donation/, contact-form.tsx, ...) —
  *     deprecated parish-template/master-site surfaces, scheduled for
@@ -40,7 +44,10 @@ const TARGET_DIRS = [
   'apps/template-renderer/src',
 ];
 
-const SKIP_DIR_PARTS = new Set(['node_modules', '.next', 'dist', 'dev', '.turbo']);
+const SKIP_DIR_PARTS = new Set(['node_modules', '.next', 'dist', 'dev', '.turbo', '__tests__', 'e2e']);
+
+/** Test/spec files carry intentionally literal assertion fixtures. */
+const TEST_FILE = /\.(test|spec)\.(ts|tsx)$/;
 
 function collectFiles(dir: string): string[] {
   const results: string[] = [];
@@ -49,7 +56,7 @@ function collectFiles(dir: string): string[] {
     const stat = statSync(full);
     if (stat.isDirectory()) {
       if (!SKIP_DIR_PARTS.has(entry)) results.push(...collectFiles(full));
-    } else if (/\.(tsx|ts)$/.test(entry) && !entry.endsWith('.types.ts')) {
+    } else if (/\.(tsx|ts)$/.test(entry) && !entry.endsWith('.types.ts') && !TEST_FILE.test(entry)) {
       results.push(full);
     }
   }
@@ -99,11 +106,15 @@ function isNonRendered(line: string): boolean {
 for (const target of TARGET_DIRS) {
   const root = join(FRONTEND_ROOT, target);
   for (const file of collectFiles(root)) {
+    const isJsxFile = file.endsWith('.tsx');
     const lines = readFileSync(file, 'utf-8').split('\n');
     lines.forEach((rawLine, index) => {
       if (isNonRendered(rawLine) || isTranslated(rawLine)) return;
 
-      for (const match of rawLine.matchAll(JSX_TEXT)) {
+      // JSX-text shape only occurs in .tsx sources; in plain .ts the same
+      // `>…<` pattern is generics/comparisons, not markup.
+      if (isJsxFile) {
+        for (const match of rawLine.matchAll(JSX_TEXT)) {
         // `=>` (arrow function) is not a JSX tag close — otherwise generics
         // like `() => Promise<X>` read as the JSX text ">Promise<".
         const gtIndex = match.index ?? -1;
@@ -121,10 +132,13 @@ for (const target of TARGET_DIRS) {
             text,
           });
         }
+        }
       }
 
       for (const match of rawLine.matchAll(LITERAL_ATTR)) {
         const value = match[2];
+        // Interpolated values (`alt="${…}"`) are dynamic, not hardcoded copy.
+        if (value.startsWith('${')) continue;
         if (HUMAN_LETTERS.test(value)) {
           findings.push({
             file: relative(FRONTEND_ROOT, file),
