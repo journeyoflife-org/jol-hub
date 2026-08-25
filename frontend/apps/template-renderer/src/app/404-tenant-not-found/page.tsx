@@ -1,11 +1,11 @@
 /**
- * Internal 404 target for the STEP-5 tenant gate.
+ * Internal 404 target for the STEP-5 tenant gate (fallback route).
  *
- * The middleware REWRITES unresolvable/unknown tenant requests here
- * (URL preserved — no redirect, so probes learn nothing from the address
- * bar). Calling {@link notFound} delegates to the global not-found
- * boundary, which is what guarantees a real HTTP 404 status while the
- * rewrite keeps the original URL.
+ * NOTE (STEP 1 hygiene fix): the middleware now answers unknown tenants
+ * with a DIRECT generic 404 instead of rewriting here — middleware
+ * rewrites are re-proxied internally by the standalone server and break
+ * under x-forwarded-proto: https. This route is kept so direct hits still
+ * return a proper 404 via the not-found boundary.
  *
  * The body therefore comes from `app/not-found.tsx` — deliberately the SAME
  * generic message rendered for "tenant does not exist" and "page does not
