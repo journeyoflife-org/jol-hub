@@ -16,6 +16,7 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from '@jol-hub/i18n/use-translations';
+import { reportError } from '@/lib/error-tracking';
 
 interface TenantErrorProps {
   error: Error & { digest?: string };
@@ -34,7 +35,9 @@ export default function TenantErrorBoundary({ error, reset }: TenantErrorProps) 
   useEffect(() => {
     // Surface the digest for log correlation (observability picks up console).
     console.error(`[tenant:error] ${errorId}`, error);
-  }, [error, errorId]);
+    // STEP 16: report to the telemetry ingress (rendering category, redacted).
+    void reportError(error, { route: pathname });
+  }, [error, errorId, pathname]);
 
   return (
     <main role="alert" className="flex-1 flex items-center justify-center px-4 py-24">
