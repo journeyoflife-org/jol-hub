@@ -122,9 +122,9 @@ describe('resolveTenant — X-Forwarded-Host (Proxmox/nginx chains)', () => {
 
   it('honors the first hop of a comma-separated X-Forwarded-Host', () => {
     const tenant = resolveTenantCore({
-      forwardedHost: `kelme-church.${BASE}, proxy.local`,
+      forwardedHost: `kursenai-church.${BASE}, proxy.local`,
     });
-    assert.equal(tenant?.slug, 'kelme-church');
+    assert.equal(tenant?.slug, 'kursenai-church');
   });
 });
 

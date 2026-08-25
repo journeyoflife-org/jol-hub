@@ -66,6 +66,11 @@ const WAVE1_PILOTS: PilotSpec[] = [
   { slug: 'siauliai-funeral', lt: 'Šiaulių laidojimo namai', en: 'Šiauliai Funeral Home', vertical: 'funeral', packageTier: 'normal' },
   { slug: 'siauliai-cleaning', lt: 'Šiaulių kapinių priežiūra', en: 'Šiauliai Cemetery Care', vertical: 'cemetery-cleaning', packageTier: 'normal' },
   { slug: 'kraziai-church', lt: 'Kražių Švč. Mergelės Marijos Nekaltojo Prasidėjimo bažnyčia', en: 'Kražiai Church', vertical: 'church', packageTier: 'cheap' },
+  // STEP 18 (Wave 1): Kuršėnai cluster — parish church of the Šiauliai
+  // deanery per the diocese pilot hierarchy.
+  { slug: 'kursenai-church', lt: 'Kuršėnų Šv. Jono Krikštytojo bažnyčia', en: 'Kuršėnai St. John the Baptist Church', vertical: 'church', packageTier: 'normal' },
+  { slug: 'kursenai-funeral', lt: 'Kuršėnų laidojimo namai', en: 'Kuršėnai Funeral Home', vertical: 'funeral', packageTier: 'normal' },
+  { slug: 'kursenai-cleaning', lt: 'Kuršėnų kapinių priežiūra', en: 'Kuršėnai Cemetery Care', vertical: 'cemetery-cleaning', packageTier: 'normal' },
 
   // Joniškis (4 — church is Žagarė)
   { slug: 'joniskis-deanery', lt: 'Joniškio dekanatas', en: 'Joniškis Deanery', vertical: 'deanery', packageTier: 'normal' },
@@ -73,21 +78,21 @@ const WAVE1_PILOTS: PilotSpec[] = [
   { slug: 'joniskis-funeral', lt: 'Joniškio laidojimo namai', en: 'Joniškis Funeral Home', vertical: 'funeral', packageTier: 'normal' },
   { slug: 'joniskis-cleaning', lt: 'Joniškio kapinių priežiūra', en: 'Joniškis Cemetery Care', vertical: 'cemetery-cleaning', packageTier: 'normal' },
 
-  // Kelmė (4 — church is Kražiai)
+  // Kelmė (3 — the deanery's parish church is kraziai-church above;
+  // STEP 18 removed the duplicate kelme-church entry with a wrong dedication)
   { slug: 'kelme-deanery', lt: 'Kelmės dekanatas', en: 'Kelmė Deanery', vertical: 'deanery', packageTier: 'normal' },
-  { slug: 'kelme-church', lt: 'Kražių Šv. apaštalų Petro ir Pauliaus bažnyčia', en: 'Kražiai Church', vertical: 'church', packageTier: 'normal' },
   { slug: 'kelme-funeral', lt: 'Kelmės laidojimo namai', en: 'Kelmė Funeral Home', vertical: 'funeral', packageTier: 'normal' },
   { slug: 'kelme-cleaning', lt: 'Kelmės kapinių priežiūra', en: 'Kelmė Cemetery Care', vertical: 'cemetery-cleaning', packageTier: 'normal' },
 
-  // Pakruojis (4 — church is Lygumai)
+  // Pakruojis (4 — church is Lygumai Holy Trinity)
   { slug: 'pakruojis-deanery', lt: 'Pakruojo dekanatas', en: 'Pakruojis Deanery', vertical: 'deanery', packageTier: 'normal' },
-  { slug: 'pakruojis-church', lt: 'Lygumų Šv. apaštalų Petro ir Pauliaus bažnyčia', en: 'Lygumai Church', vertical: 'church', packageTier: 'normal' },
+  { slug: 'pakruojis-church', lt: 'Lygumų Šv. Trejybės bažnyčia', en: 'Lygumai Holy Trinity Church', vertical: 'church', packageTier: 'normal' },
   { slug: 'pakruojis-funeral', lt: 'Pakruojo laidojimo namai', en: 'Pakruojis Funeral Home', vertical: 'funeral', packageTier: 'normal' },
   { slug: 'pakruojis-cleaning', lt: 'Pakruojo kapinių priežiūra', en: 'Pakruojis Cemetery Care', vertical: 'cemetery-cleaning', packageTier: 'normal' },
 
-  // Radviliškis (4 — church is Baisogala)
+  // Radviliškis (4 — church is Baisogala Holy Trinity)
   { slug: 'radviliskis-deanery', lt: 'Radviliškio dekanatas', en: 'Radviliškis Deanery', vertical: 'deanery', packageTier: 'normal' },
-  { slug: 'radviliskis-church', lt: 'Baisogalos Šv. apaštalų Petro ir Pauliaus bažnyčia', en: 'Baisogala Church', vertical: 'church', packageTier: 'normal' },
+  { slug: 'radviliskis-church', lt: 'Baisogalos Šv. Trejybės bažnyčia', en: 'Baisogala Holy Trinity Church', vertical: 'church', packageTier: 'normal' },
   { slug: 'radviliskis-funeral', lt: 'Radviliškio laidojimo namai', en: 'Radviliškis Funeral Home', vertical: 'funeral', packageTier: 'normal' },
   { slug: 'radviliskis-cleaning', lt: 'Radviliškio kapinių priežiūra', en: 'Radviliškis Cemetery Care', vertical: 'cemetery-cleaning', packageTier: 'normal' },
 ];
