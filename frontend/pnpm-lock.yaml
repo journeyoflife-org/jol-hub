@@ -431,6 +431,9 @@ importers:
 
   apps/template-renderer:
     dependencies:
+      '@jol-hub/commerce':
+        specifier: workspace:*
+        version: link:../../packages/commerce
       '@jol-hub/i18n':
         specifier: workspace:*
         version: link:../../packages/i18n
@@ -515,6 +518,18 @@ importers:
       '@types/node':
         specifier: ^20.11.0
         version: 20.19.37
+      typescript:
+        specifier: ^5.4.0
+        version: 5.9.3
+
+  packages/commerce:
+    devDependencies:
+      '@types/node':
+        specifier: ^20.11.0
+        version: 20.19.37
+      tsx:
+        specifier: ^4.23.12
+        version: 4.23.12
       typescript:
         specifier: ^5.4.0
         version: 5.9.3
