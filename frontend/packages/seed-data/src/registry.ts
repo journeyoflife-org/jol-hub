@@ -28,6 +28,9 @@ import lutheranKaunas from './fixtures/tenants/lutheran-kaunas.json';
 import monasteryVilnius from './fixtures/tenants/monastery-vilnius.json';
 import orthodoxVilniusCathedral from './fixtures/tenants/orthodox-vilnius-cathedral.json';
 import parishStJohnVilnius from './fixtures/tenants/parish-st-john-vilnius.json';
+// STEP 17 — Wave 0 reference sites (Šiauliai stakeholder cluster). One
+// file, five fixtures; expanded into the same validated stream below.
+import referenceSites from './fixtures/tenants/reference-sites.json';
 
 const rawFixtures: unknown[] = [
   basilicaVilniusCathedral,
@@ -42,6 +45,7 @@ const rawFixtures: unknown[] = [
   monasteryVilnius,
   orthodoxVilniusCathedral,
   parishStJohnVilnius,
+  ...(referenceSites as unknown[]),
 ];
 
 /** All tenant fixtures, parsed (throws at load time if any is invalid). */

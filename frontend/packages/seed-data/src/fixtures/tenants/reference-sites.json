@@ -1,0 +1,637 @@
+[
+  {
+    "slug": "siauliai-diocese",
+    "vertical": "diocese",
+    "locale": "lt",
+    "name": {
+      "lt": "Šiaulių vyskupija",
+      "en": "Diocese of Šiauliai"
+    },
+    "tagline": {
+      "lt": "Tikėjimas, bendrystė ir tarnystė Šiaurės Lietuvoje nuo 1997 m.",
+      "en": "Faith, communion and service in Northern Lithuania since 1997"
+    },
+    "identity": {
+      "entityId": "lt-wave0-diocese-001",
+      "jurisdiction": "Šiauliai Diocese",
+      "established": "1997",
+      "address": "Aušros al. 42, 76283 Šiauliai, Lithuania",
+      "email": "info@siauliuvyskupija-demo.lt",
+      "phone": "+370 41 52 20 01",
+      "domain": "siauliai.gyvenimo-kelias.lt",
+      "theme": "diocese-solemn"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Šiaulių vyskupija", "en": "Diocese of Šiauliai" },
+            "subheading": {
+              "lt": "Ganytojiškumas, ugdymas ir bendrystė — 67 parapijos Šiaurės Lietuvoje",
+              "en": "Pastoral care, formation and communion — 67 parishes in Northern Lithuania"
+            }
+          },
+          {
+            "type": "stats",
+            "heading": { "lt": "Vyskupija skaičiais", "en": "The diocese in numbers" },
+            "items": [
+              { "label": { "lt": "Parapijų", "en": "Parishes" }, "value": 67 },
+              { "label": { "lt": "Dekanatų", "en": "Deaneries" }, "value": 7 },
+              { "label": { "lt": "Kunigų", "en": "Priests" }, "value": 52 },
+              { "label": { "lt": "Įkurta", "en": "Established" }, "value": "1997" }
+            ]
+          },
+          {
+            "type": "text",
+            "heading": { "lt": "Sveikinimas", "en": "Welcome" },
+            "body": {
+              "lt": "Šiaulių vyskupija — Bažnyčios dalis, tarnaujanti Žemaitijos ir Aukštaitijos sandūroje. Čia rasite vyskupo ganytojiškus laiškus, dekanatų naujienas, jaunimo ir šeimos centro programas bei piligriminių kelionių maršrutus. Kviečiame dalyvauti vyskupijos gyvenime — nuo atlaidų iki karitatyvinės tarnystės.",
+              "en": "The Diocese of Šiauliai serves at the crossroads of Samogitia and Aukštaitija. Here you will find pastoral letters, deanery news, youth and family programmes, and pilgrimage routes. We invite you to take part in the life of the diocese — from patronal feasts to charitable service."
+            }
+          },
+          {
+            "type": "cta",
+            "heading": { "lt": "Raskite savo parapiją", "en": "Find your parish" },
+            "links": [
+              { "label": { "lt": "Dekanatai", "en": "Deaneries" }, "href": "/dekanatai" },
+              { "label": { "lt": "Vyskupas", "en": "The Bishop" }, "href": "/vyskupas" },
+              { "label": { "lt": "Kontaktai", "en": "Contacts" }, "href": "/kontaktai" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Šiaulių vyskupija — 67 parapijos, 7 dekanatai. Ganytojiški laiškai, jaunimo ir šeimos programos, piligrimystės Šiaurės Lietuvoje."
+        }
+      },
+      {
+        "route": "/dekanatai",
+        "title": { "lt": "Dekanatai", "en": "Deaneries" },
+        "contentBlocks": [
+          {
+            "type": "list",
+            "heading": { "lt": "Vyskupijos dekanatai", "en": "Deaneries of the diocese" },
+            "items": [
+              {
+                "title": { "lt": "Šiaulių dekanatas", "en": "Šiauliai Deanery" },
+                "subtitle": { "lt": "Šiaulių miesto ir apylinkių parapijos", "en": "Parishes of Šiauliai city and surroundings" }
+              },
+              {
+                "title": { "lt": "Telšių dekanatas", "en": "Telšiai Deanery" },
+                "subtitle": { "lt": "Žemaitijos širdies parapijos", "en": "Parishes of the Samogitian heartland" }
+              },
+              {
+                "title": { "lt": "Jonaičio dekanatas", "en": "Jonaitis Deanery" },
+                "subtitle": { "lt": "Rytų vyskupijos parapijos", "en": "Parishes of the eastern deanery" }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "body": {
+              "lt": "Dekanatai koordinuoja parapijų bendradarbiavimą, kunigų susitikimus ir bendrus vyskupijos projektus. Kiekvienam dekanatui vadovauja dekanas, kurį skiria vyskupas.",
+              "en": "Deaneries coordinate cooperation between parishes, priests' meetings and joint diocesan projects. Each deanery is led by a dean appointed by the bishop."
+            }
+          }
+        ],
+        "meta": {
+          "description": "Šiaulių vyskupijos dekanatai — parapijų sąrašai, dekanų kontaktai, bendri projektai."
+        }
+      },
+      {
+        "route": "/vyskupas",
+        "title": { "lt": "Vyskupas", "en": "The Bishop" },
+        "contentBlocks": [
+          {
+            "type": "text",
+            "heading": { "lt": "Ganytojiškas laiškas", "en": "Pastoral letter" },
+            "body": {
+              "lt": "Broliškai sveikinu visus vyskupijos tikinčiuosius. Šie metai kviečia mus atsinaujinti maldoje, bendrystėje ir tarnystėje vargstantiems. Tegul kiekviena parapija tampa svetingumo ir vilties namais.",
+              "en": "I greet all the faithful of the diocese as brothers and sisters. This year invites us to renew ourselves in prayer, communion and service to those in need. May every parish become a home of hospitality and hope."
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Vyskupijos kurija", "en": "Diocesan curia" },
+            "items": [
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Aušros al. 42, 76283 Šiauliai" },
+              { "label": { "lt": "Raštinė", "en": "Chancery" }, "value": "+370 41 52 20 01" },
+              { "label": { "lt": "Priėmimo laikas", "en": "Office hours" }, "value": "I–V 9:00–16:00" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Šiaulių vyskupas — ganytojiški laiškai, kurijos kontaktai, priėmimo laikas."
+        }
+      },
+      {
+        "route": "/kontaktai",
+        "title": { "lt": "Kontaktai", "en": "Contacts" },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Susisiekite su kurija", "en": "Contact the curia" },
+            "items": [
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Aušros al. 42, 76283 Šiauliai, Lietuva" },
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 41 52 20 01" },
+              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "info@siauliuvyskupija-demo.lt" },
+              { "label": { "lt": "Darbo laikas", "en": "Office hours" }, "value": "Pirmadienis–penktadienis 9:00–16:00" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "siauliai-church",
+    "vertical": "cathedral",
+    "locale": "lt",
+    "name": {
+      "lt": "Šiaulių Šv. apaštalų Petro ir Pauliaus katedra",
+      "en": "Šiauliai Cathedral of Sts. Peter and Paul"
+    },
+    "tagline": {
+      "lt": "Vyskupijos motina ir galva — baroko perlas Šiaulių širdyje",
+      "en": "Mother and head of the diocese — a baroque pearl in the heart of Šiauliai"
+    },
+    "identity": {
+      "entityId": "lt-wave0-cathedral-001",
+      "jurisdiction": "Šiauliai Diocese",
+      "established": "1634",
+      "address": "Aušros al. 40, 76283 Šiauliai, Lithuania",
+      "email": "katedra@siauliuvyskupija-demo.lt",
+      "phone": "+370 41 52 20 02",
+      "domain": "siauliai-katedra.gyvenimo-kelias.lt",
+      "theme": "cathedral-classic"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Šiaulių Šv. apaštalų Petro ir Pauliaus katedra",
+              "en": "Šiauliai Cathedral of Sts. Peter and Paul"
+            },
+            "subheading": {
+              "lt": "Kviečiame melstis, švęsti ir pažinti miesto dvasinę širdį",
+              "en": "We invite you to pray, celebrate and discover the spiritual heart of the city"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": { "lt": "Šv. Mišių tvarkaraštis", "en": "Holy Mass schedule" },
+            "entries": [
+              {
+                "day": "Sekmadienis",
+                "dayEn": "Sunday",
+                "times": ["8:00", "10:00", "12:00", "18:00"],
+                "notes": "12:00 — Šeimų Mišios su vaikų liturgija"
+              },
+              {
+                "day": "Šiokiadienis",
+                "dayEn": "Weekdays",
+                "times": ["7:30", "18:00"]
+              },
+              {
+                "day": "Šeštadienis",
+                "dayEn": "Saturday",
+                "times": ["9:00", "18:00"],
+                "notes": "18:00 — sekmadienio Mišios iš vakaro"
+              }
+            ]
+          },
+          {
+            "type": "cta",
+            "heading": { "lt": "Dalyvaukite katedros gyvenime", "en": "Take part in cathedral life" },
+            "links": [
+              { "label": { "lt": "Renginiai", "en": "Events" }, "href": "/renginiai" },
+              { "label": { "lt": "Paaukoti", "en": "Donate" }, "href": "/aukos" },
+              { "label": { "lt": "Paveldas", "en": "Heritage" }, "href": "/paveldas" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Šiaulių katedra — Mišių tvarkaraštis, renginiai, vargonų muzikos vakarai ir paveldo pažinimas. Baroko perlas Šiaulių širdyje."
+        }
+      },
+      {
+        "route": "/renginiai",
+        "title": { "lt": "Renginiai", "en": "Events" },
+        "contentBlocks": [
+          {
+            "type": "list",
+            "heading": { "lt": "Artimiausi renginiai", "en": "Upcoming events" },
+            "items": [
+              {
+                "title": { "lt": "Vargonų muzikos vakaras", "en": "Organ music evening" },
+                "subtitle": { "lt": "Penktadienis, 19:00 — įėjimas laisvas", "en": "Friday, 19:00 — free entry" },
+                "description": {
+                  "lt": "J. S. Bacho ir lietuvių kompozitorių kūriniai katedros vargonais.",
+                  "en": "Works by J. S. Bach and Lithuanian composers on the cathedral organ."
+                }
+              },
+              {
+                "title": { "lt": "Šeimų sekmadienis", "en": "Family Sunday" },
+                "subtitle": { "lt": "Sekmadienis, 12:00", "en": "Sunday, 12:00" },
+                "description": {
+                  "lt": "Mišios su vaikų liturgija ir bendryste po pamaldų.",
+                  "en": "Mass with children's liturgy and fellowship afterwards."
+                }
+              },
+              {
+                "title": { "lt": "Adoracija", "en": "Adoration" },
+                "subtitle": { "lt": "Ketvirtadienis, 17:00–18:00", "en": "Thursday, 17:00–18:00" }
+              }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Katedros renginiai — vargonų muzikos vakarai, šeimų sekmadieniai, adoracija, piligrimų grupės."
+        }
+      },
+      {
+        "route": "/aukos",
+        "title": { "lt": "Paaukoti", "en": "Donate" },
+        "contentBlocks": [
+          {
+            "type": "text",
+            "heading": { "lt": "Jūsų auka palaiko katedros tarnystę", "en": "Your gift sustains the cathedral's ministry" },
+            "body": {
+              "lt": "Aukos skirtos katedros išlaikymui, paveldo restauravimui ir karitatyvinei veiklai. Galite paaukoti sekmadienio Mišių metu, raštinėje arba elektroniniu būdu — dėkojame už kiekvieną paramą.",
+              "en": "Donations support the upkeep of the cathedral, heritage restoration and charitable work. You can give during Sunday Mass, at the chancery or electronically — thank you for every gift."
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Paramos būdai", "en": "Ways to give" },
+            "items": [
+              { "label": { "lt": "Elektroninė auka", "en": "Online giving" }, "value": "Aktyvuojama su mokėjimų posisteme (ADR-007)" },
+              { "label": { "lt": "Raštinėje", "en": "At the chancery" }, "value": "I–V 9:00–16:00" },
+              { "label": { "lt": "Pavedimu", "en": "Bank transfer" }, "value": "Rekvizitai — raštinėje" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Palaikykite Šiaulių katedrą — aukos paveldo restauravimui, liturgijai ir karitatyvinei tarnystei."
+        }
+      },
+      {
+        "route": "/paveldas",
+        "title": { "lt": "Paveldas", "en": "Heritage" },
+        "contentBlocks": [
+          {
+            "type": "text",
+            "heading": { "lt": "Istorija", "en": "History" },
+            "body": {
+              "lt": "Pirmoji bažnyčia Šiauliuose pastatyta 1634 m. Dabartinė barokinė šventovė su masyviais bokštais yra miesto simbolis ir vyskupijos motina. Katedros vargonai, freskos ir altoriai yra saugomi kultūros paveldo objektai.",
+              "en": "The first church in Šiauliai was built in 1634. The present baroque sanctuary with its massive towers is the symbol of the city and the mother church of the diocese. The cathedral organ, frescoes and altars are protected heritage objects."
+            }
+          }
+        ],
+        "meta": {
+          "description": "Šiaulių katedros istorija nuo 1634 m. — baroko architektūra, vargonai, freskos ir paveldo apsauga."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "siauliai-funeral",
+    "vertical": "funeral-home",
+    "locale": "lt",
+    "name": {
+      "lt": "Šiaulių laidojimo namai „Rimtis“",
+      "en": "Šiauliai Funeral Home „Rimtis“"
+    },
+    "tagline": {
+      "lt": "Orumas ir pagarba sunkiausią akimirką — visą parą",
+      "en": "Dignity and respect in the hardest moment — around the clock"
+    },
+    "identity": {
+      "entityId": "lt-wave0-funeral-001",
+      "established": "2004",
+      "address": "Pramonės g. 15, 76103 Šiauliai, Lithuania",
+      "email": "info@rimtis-demo.lt",
+      "phone": "+370 41 52 30 03",
+      "domain": "siauliai-laidojimas.gyvenimo-kelias.lt",
+      "theme": "funeral-dignified"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Esame šalia, kai labiausiai reikia", "en": "We are with you when you need us most" },
+            "subheading": {
+              "lt": "Visos laidojimo paslaugos vienoje vietoje — skubus iškvietimas 24/7",
+              "en": "All funeral services in one place — urgent call-out 24/7"
+            }
+          },
+          {
+            "type": "text",
+            "body": {
+              "lt": "Dvidešimt metų rūpinamės, kad atsisveikinimas būtų orus, o šeima — išgirsta. Tvarkome visus dokumentus, pervežimą, karsto ir urnos parinkimą, atsisveikinimo salės nuomą bei ceremonijos koordinavimą su parapija ar civiliniu celebrantu.",
+              "en": "For twenty years we have ensured that farewells are dignified and families are heard. We handle all paperwork, transport, casket and urn selection, farewell-hall rental and ceremony coordination with the parish or a civil celebrant."
+            }
+          },
+          {
+            "type": "cta",
+            "heading": { "lt": "Skubus iškvietimas visą parą", "en": "Urgent call-out around the clock" },
+            "links": [
+              { "label": { "lt": "Skambinti: +370 41 52 30 03", "en": "Call: +370 41 52 30 03" }, "href": "/kontaktai" },
+              { "label": { "lt": "Rezervuoti konsultaciją", "en": "Book a consultation" }, "href": "/paslaugos" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Šiaulių laidojimo namai — pilnas laidojimo paslaugų ciklas 24/7: dokumentai, pervežimas, atsisveikinimo salė, ceremonijos koordinavimas."
+        }
+      },
+      {
+        "route": "/paslaugos",
+        "title": { "lt": "Paslaugos ir kainos", "en": "Services and prices" },
+        "contentBlocks": [
+          {
+            "type": "list",
+            "heading": { "lt": "Paslaugos", "en": "Services" },
+            "items": [
+              {
+                "title": { "lt": "Pilnas laidojimo organizavimas", "en": "Full funeral arrangement" },
+                "description": {
+                  "lt": "Dokumentai, karstas, transportas, salė, ceremonija — viskas vienoje sutartyje.",
+                  "en": "Paperwork, casket, transport, hall and ceremony — one contract."
+                },
+                "price": 1950
+              },
+              {
+                "title": { "lt": "Kremavimo organizavimas", "en": "Cremation arrangement" },
+                "description": {
+                  "lt": "Kremavimas, urna, palydėjimas ir urnos įteikimas šeimai.",
+                  "en": "Cremation, urn, escort and handing the urn to the family."
+                },
+                "price": 1450
+              },
+              {
+                "title": { "lt": "Atsisveikinimo salės nuoma", "en": "Farewell hall rental" },
+                "subtitle": { "lt": "3 val. su personalu", "en": "3 hours with staff" },
+                "price": 180
+              },
+              {
+                "title": { "lt": "Kaplų ir paminklų tvarkymas", "en": "Grave and monument care" },
+                "subtitle": { "lt": "Pagal atskirą sutartį", "en": "By separate agreement" }
+              }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Laidojimo paslaugų kainos Šiauliuose — skaidri kainodara, pilnas organizavimas, kremavimas, salės nuoma."
+        }
+      },
+      {
+        "route": "/nekrologai",
+        "title": { "lt": "Nekrologai", "en": "Obituaries" },
+        "contentBlocks": [
+          {
+            "type": "text",
+            "heading": { "lt": "Atsisveikiname", "en": "In remembrance" },
+            "body": {
+              "lt": "Nekrologų skiltis aktyvuojama su turinio posisteme. Šeimos gali pateikti atsisveikinimo tekstą ir nuotrauką — publikuojame tik gavus rašytinį sutikimą (BDAR 9 str.).",
+              "en": "The obituary section activates with the content plane. Families may submit farewell texts and a photograph — published only with written consent (GDPR Art. 9)."
+            }
+          }
+        ],
+        "meta": {
+          "description": "Nekrologai Šiauliuose — atsisveikinimai, laidotuvių datos, nuoširdi užuojauta šeimoms."
+        }
+      },
+      {
+        "route": "/kontaktai",
+        "title": { "lt": "Kontaktai", "en": "Contacts" },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Visą parą", "en": "Around the clock" },
+            "items": [
+              { "label": { "lt": "Skubus telefonas", "en": "Urgent phone" }, "value": "+370 41 52 30 03" },
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Pramonės g. 15, 76103 Šiauliai" },
+              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "info@rimtis-demo.lt" },
+              { "label": { "lt": "Darbo laikas", "en": "Office hours" }, "value": "I–VI 8:00–20:00, skubus iškvietimas — 24/7" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "siauliai-cleaning",
+    "vertical": "cemetery",
+    "locale": "lt",
+    "name": {
+      "lt": "Šiaulių kapinių priežiūra",
+      "en": "Šiauliai Cemetery Care"
+    },
+    "tagline": {
+      "lt": "Profesionali kapaviečių priežiūra — pagarba, kuri matoma",
+      "en": "Professional grave care — respect you can see"
+    },
+    "identity": {
+      "entityId": "lt-wave0-cleaning-001",
+      "established": "2015",
+      "address": "Kapų g. 2, 77115 Šiauliai, Lithuania",
+      "email": "info@kapiniuprieziura-demo.lt",
+      "phone": "+370 41 52 40 04",
+      "domain": "siauliai-prieziura.gyvenimo-kelias.lt",
+      "theme": "care-professional"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Kapavietės priežiūra be rūpesčių", "en": "Grave care without worry" },
+            "subheading": {
+              "lt": "Tvarkome, prižiūrime ir puošiame — reguliariai arba prieš šventes",
+              "en": "We tidy, maintain and decorate — regularly or before feast days"
+            }
+          },
+          {
+            "type": "stats",
+            "heading": { "lt": "Mūsų darbas", "en": "Our work" },
+            "items": [
+              { "label": { "lt": "Prižiūrimų kapaviečių", "en": "Graves maintained" }, "value": 640 },
+              { "label": { "lt": "Metų patirtis", "en": "Years of experience" }, "value": 10 },
+              { "label": { "lt": "Aptarnaujamos kapinės", "en": "Cemeteries served" }, "value": 4 }
+            ]
+          },
+          {
+            "type": "cta",
+            "heading": { "lt": "Užsakykite priežiūrą internetu", "en": "Book care online" },
+            "links": [
+              { "label": { "lt": "Paslaugos ir kainos", "en": "Services and prices" }, "href": "/paslaugos" },
+              { "label": { "lt": "Rezervuoti vizitą", "en": "Book a visit" }, "href": "/kontaktai" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Kapaviečių priežiūra Šiauliuose — tvarkymas, želdiniai, dekoravimas prieš Vėlines ir Motinos dieną. Kainos ir rezervacija internetu."
+        }
+      },
+      {
+        "route": "/paslaugos",
+        "title": { "lt": "Paslaugos ir kainos", "en": "Services and prices" },
+        "contentBlocks": [
+          {
+            "type": "list",
+            "heading": { "lt": "Priežiūros planai", "en": "Care plans" },
+            "items": [
+              {
+                "title": { "lt": "Vienkartinis tvarkymas", "en": "One-time care" },
+                "description": {
+                  "lt": "Nuvalymas, želdinių priežiūra, žvakių padėjimas prieš šventę.",
+                  "en": "Cleaning, plant care and candle placement before a feast day."
+                },
+                "price": 35
+              },
+              {
+                "title": { "lt": "Mėnesinė priežiūra", "en": "Monthly care" },
+                "description": {
+                  "lt": "Reguliarus lankymas, ataskaita su nuotrauka po kiekvieno vizito.",
+                  "en": "Regular visits with a photo report after each one."
+                },
+                "price": 25
+              },
+              {
+                "title": { "lt": "Metinis planas", "en": "Annual plan" },
+                "description": {
+                  "lt": "12 vizitų, sezoninis dekoravimas, Vėlinių ir Motinos dienos puošyba.",
+                  "en": "12 visits, seasonal decoration, All Saints' and Mother's Day styling."
+                },
+                "price": 240
+              },
+              {
+                "title": { "lt": "Paminklo plovimas", "en": "Monument washing" },
+                "subtitle": { "lt": "Švelnios, akmeniui saugios priemonės", "en": "Gentle, stone-safe products" },
+                "price": 45
+              }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Kapinių priežiūros kainos Šiauliuose — vienkartinis tvarkymas, mėnesinė ir metinė priežiūra, paminklų plovimas."
+        }
+      },
+      {
+        "route": "/kontaktai",
+        "title": { "lt": "Kontaktai ir rezervacija", "en": "Contacts and booking" },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Susisiekite", "en": "Get in touch" },
+            "items": [
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 41 52 40 04" },
+              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "info@kapiniuprieziura-demo.lt" },
+              { "label": { "lt": "Darbo laikas", "en": "Working hours" }, "value": "I–V 8:00–17:00, šeštadieniais — pagal susitarimą" }
+            ]
+          },
+          {
+            "type": "text",
+            "body": {
+              "lt": "Rezervacija internetu — pasirinkite datą, kapines ir planą, o patvirtinimą gausite el. paštu. Apmokėjimas po vizito arba išankstine sąskaita.",
+              "en": "Book online — choose a date, cemetery and plan, and receive confirmation by email. Pay after the visit or by invoice in advance."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "kraziai-church",
+    "vertical": "parish",
+    "locale": "lt",
+    "name": {
+      "lt": "Kražių Švč. Mergelės Marijos Nekaltojo Prasidėjimo bažnyčia",
+      "en": "Kražiai Church of the Immaculate Conception"
+    },
+    "tagline": {
+      "lt": "Maža parapija, didelė širdis — nuo 1777 m.",
+      "en": "A small parish with a big heart — since 1777"
+    },
+    "identity": {
+      "entityId": "lt-wave0-parish-001",
+      "jurisdiction": "Šiauliai Diocese",
+      "established": "1777",
+      "address": "Bažnyčios g. 3, 86142 Kražiai, Lithuania",
+      "email": "parapija@kraziai-demo.lt",
+      "phone": "+370 42 26 10 05",
+      "domain": "kraziai.gyvenimo-kelias.lt",
+      "theme": "parish-warm"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Sveiki atvykę į Kražių parapiją", "en": "Welcome to Kražiai parish" },
+            "subheading": {
+              "lt": "Kviečiame į bendrą maldą, atlaidus ir bendruomenės šventes",
+              "en": "Join us for common prayer, patronal feasts and community gatherings"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": { "lt": "Pamaldų laikai", "en": "Service times" },
+            "entries": [
+              {
+                "day": "Sekmadienis",
+                "dayEn": "Sunday",
+                "times": ["9:00", "11:30"]
+              },
+              {
+                "day": "Trečiadienis, penktadienis",
+                "dayEn": "Wednesday, Friday",
+                "times": ["18:00"]
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "heading": { "lt": "Parapijos gyvenimas", "en": "Parish life" },
+            "body": {
+              "lt": "Esame nedidelė, bet gyva bendruomenė: vaikų katechezė, jaunimo choras, Senelių dienos pietūs ir kasmetiniai Šv. Rokaus atlaidai. Naujus parapijiečius pasitinkame su džiaugsmu — užsukite po Mišių pasikalbėti prie arbatos.",
+              "en": "We are a small but lively community: children's catechesis, a youth choir, seniors' lunches and the annual patronal feast. We welcome new parishioners with joy — stay for tea after Mass."
+            }
+          }
+        ],
+        "meta": {
+          "description": "Kražių parapija — Mišių laikai, katechezė, jaunimo choras ir bendruomenės šventės nuo 1777 metų."
+        }
+      },
+      {
+        "route": "/kontaktai",
+        "title": { "lt": "Kontaktai", "en": "Contacts" },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Parapijos raštinė", "en": "Parish office" },
+            "items": [
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Bažnyčios g. 3, 86142 Kražiai" },
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 26 10 05" },
+              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "parapija@kraziai-demo.lt" },
+              { "label": { "lt": "Raštinės laikas", "en": "Office hours" }, "value": "Po sekmadienio Mišių ir trečiadieniais 16:00–18:00" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

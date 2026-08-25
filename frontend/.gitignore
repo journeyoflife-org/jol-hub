@@ -20,6 +20,12 @@ out
 .env.development.local
 .env.test.local
 .env.production.local
+# STEP 17: real deploy environments are NEVER committed — only *.example
+# templates live in the repo (values come from Vault at deploy time).
+.env.production
+.env.staging
+!.env.production.example
+!.env.staging.example
 
 # IDE
 .idea

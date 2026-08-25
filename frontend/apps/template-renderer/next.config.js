@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 let nextConfig = {
   reactStrictMode: true,
+  // STEP 17 (Wave 0): self-contained production output for Docker/PM2 on
+  // the Proxmox fleet — .next/standalone ships with a minimal server.js.
+  output: 'standalone',
   transpilePackages: [
     '@jol-hub/ui',
     '@jol-hub/i18n',
