@@ -13,6 +13,8 @@ import { renderWithProviders, mockTenant, mockCheapTenant } from '@jol-hub/testi
 import { toPublicTenant } from '@jol-hub/tenant-resolver';
 import { TenantProvider, useTenant, useTenantFeature } from '@/lib/tenant-context';
 import { CartProvider, useCart } from '@/components/commerce/cart-context';
+import { ThemeProvider, useTheme, THEME_STORAGE_KEY } from '@jol-hub/ui/providers';
+import type { ThemePreference } from '@jol-hub/ui/providers';
 
 describe('useTranslations', () => {
   it('useTranslations.should.resolve namespaced keys', () => {
@@ -118,5 +120,51 @@ describe('useCart (tenant-namespaced persistence)', () => {
     // Isolation: no other tenant key, no schema/global key.
     const keys = Object.keys(window.localStorage);
     expect(keys.filter((k) => k.startsWith('jol.cart.v1.'))).toEqual(['jol.cart.v1.test-church']);
+  });
+});
+
+describe('useTheme', () => {
+  function themeWrapper(defaultPreference: ThemePreference) {
+    return function Wrapper({ children }: { children: ReactNode }) {
+      return <ThemeProvider defaultPreference={defaultPreference}>{children}</ThemeProvider>;
+    };
+  }
+
+  beforeEach(() => {
+    window.localStorage.clear();
+    document.documentElement.classList.remove('light', 'dark');
+  });
+
+  it('useTheme.should.toggle dark class and persist without reload', () => {
+    const { result } = renderHook(() => useTheme(), { wrapper: themeWrapper('light') });
+    expect(result.current.resolvedTheme).toBe('light');
+
+    act(() => {
+      result.current.setTheme('dark');
+    });
+
+    // STEP 2 acceptance: light ↔ dark without a page reload — the class on
+    // <html> flips and the choice persists to localStorage.
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
+    expect(window.localStorage.getItem(THEME_STORAGE_KEY)).toBe('dark');
+    expect(result.current.resolvedTheme).toBe('dark');
+
+    act(() => {
+      result.current.toggleTheme();
+    });
+    expect(document.documentElement.classList.contains('light')).toBe(true);
+    expect(window.localStorage.getItem(THEME_STORAGE_KEY)).toBe('light');
+  });
+
+  it('useTheme.should.restore the stored preference on mount', () => {
+    window.localStorage.setItem(THEME_STORAGE_KEY, 'dark');
+    const { result } = renderHook(() => useTheme(), { wrapper: themeWrapper('light') });
+
+    act(() => {
+      // hydration-safe init effect runs
+    });
+
+    expect(result.current.theme).toBe('dark');
+    expect(result.current.resolvedTheme).toBe('dark');
   });
 });
