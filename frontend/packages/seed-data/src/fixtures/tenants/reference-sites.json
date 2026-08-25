@@ -460,6 +460,15 @@
             "subheading": {
               "lt": "Tvarkome, prižiūrime ir puošiame — reguliariai arba prieš šventes",
               "en": "We tidy, maintain and decorate — regularly or before feast days"
+            },
+            "image": {
+              "src": "/media/siauliai-cleaning-hero.jpg",
+              "alt": {
+                "lt": "Tvarkoma kapavietė su gėlėmis ir profesionaliais įrankiais",
+                "en": "A cared-for grave with flowers and professional tools"
+              },
+              "width": 1600,
+              "height": 914
             }
           },
           {
@@ -470,6 +479,47 @@
               { "label": { "lt": "Metų patirtis", "en": "Years of experience" }, "value": 10 },
               { "label": { "lt": "Aptarnaujamos kapinės", "en": "Cemeteries served" }, "value": 4 }
             ]
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Populiariausi planai", "en": "Most popular plans" },
+            "items": [
+              {
+                "title": { "lt": "Vienkartinis tvarkymas", "en": "One-time care" },
+                "description": {
+                  "lt": "Nuvalymas, želdinių priežiūra, žvakių padėjimas prieš šventę.",
+                  "en": "Cleaning, plant care and candle placement before a feast day."
+                },
+                "price": 35,
+                "tags": ["prieš Vėlines"]
+              },
+              {
+                "title": { "lt": "Mėnesinė priežiūra", "en": "Monthly care" },
+                "description": {
+                  "lt": "Reguliarus lankymas, ataskaita su nuotrauka po kiekvieno vizito.",
+                  "en": "Regular visits with a photo report after each one."
+                },
+                "price": 25,
+                "tags": ["foto ataskaita"]
+              },
+              {
+                "title": { "lt": "Metinis planas", "en": "Annual plan" },
+                "description": {
+                  "lt": "12 vizitų, sezoninis dekoravimas, Vėlinių ir Motinos dienos puošyba.",
+                  "en": "12 visits, seasonal decoration, All Saints' and Mother's Day styling."
+                },
+                "price": 240,
+                "tags": ["-17%"]
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "heading": { "lt": "Kodėl pasitiki mumis", "en": "Why families trust us" },
+            "body": {
+              "lt": "Kiekvieną vizitą užfiksuojame nuotrauka ir trumpa ataskaita el. paštu — artimieji mato rezultatą iš bet kur. Dirbame su švelniomis, akmeniui ir žalumynams saugiomis priemonėmis, o kainos sutartyje fiksuotos visam sezonui.",
+              "en": "Every visit is documented with a photo and a short email report — relatives see the result from anywhere. We use gentle, stone- and plant-safe products, and contract prices stay fixed for the whole season."
+            }
           },
           {
             "type": "cta",

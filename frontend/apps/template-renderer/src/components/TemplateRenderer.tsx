@@ -44,6 +44,15 @@ const FAMILY_ACCENT: Record<LayoutFamily, string> = {
   congregation: 'border-liturgical-green',
 };
 
+/**
+ * STEP 17 polish: cemetery care is a commercial, trust-driven vertical —
+ * it gets the fresh green accent while funeral homes keep the restrained
+ * memorial grey (same family, different brand voice).
+ */
+const VERTICAL_ACCENT_OVERRIDE: Partial<Record<Vertical, string>> = {
+  cemetery: 'border-liturgical-green',
+};
+
 /** Pick the display string for localized text (Lithuanian-first). */
 function t(text: LocalizedText | undefined): string {
   if (!text) return '';
@@ -59,7 +68,7 @@ interface TemplateRendererProps {
 
 export function TemplateRenderer({ fixture, page, basePath }: TemplateRendererProps) {
   const family = VERTICAL_FAMILY[fixture.vertical];
-  const accent = FAMILY_ACCENT[family];
+  const accent = VERTICAL_ACCENT_OVERRIDE[fixture.vertical] ?? FAMILY_ACCENT[family];
 
   // Tenant-relative links in fixtures (`/shop`, `/#candles`) are anchored
   // under the tenant prefix.
@@ -91,11 +100,26 @@ function BlockView({ block, accent, href }: BlockViewProps) {
   switch (block.type) {
     case 'hero':
       return (
-        <section className={`text-center py-8 border-b-2 ${accent}`}>
-          <h1 className="text-4xl font-heading font-bold text-primary mb-2">{t(block.heading)}</h1>
-          {block.heading.en && <p className="text-xl text-gray-600">{block.heading.en}</p>}
-          {block.subheading && <p className="text-lg text-gray-700 mt-3">{t(block.subheading)}</p>}
-          {block.body && <p className="text-gray-500 mt-2">{t(block.body)}</p>}
+        <section className={`py-8 border-b-2 ${accent}`}>
+          <div className={block.image ? 'grid md:grid-cols-2 gap-8 items-center' : 'text-center'}>
+            <div className={block.image ? 'text-center md:text-start' : ''}>
+              <h1 className="text-4xl font-heading font-bold text-primary mb-2">{t(block.heading)}</h1>
+              {block.heading.en && <p className="text-xl text-gray-600">{block.heading.en}</p>}
+              {block.subheading && <p className="text-lg text-gray-700 mt-3">{t(block.subheading)}</p>}
+              {block.body && <p className="text-gray-500 mt-2">{t(block.body)}</p>}
+            </div>
+            {block.image && (
+              // Explicit width/height (CLS) + localized alt (WCAG 1.1.1).
+              <img
+                src={block.image.src}
+                alt={t(block.image.alt)}
+                width={block.image.width}
+                height={block.image.height}
+                loading="eager"
+                className="w-full h-auto max-h-80 object-cover rounded-xl shadow-lg"
+              />
+            )}
+          </div>
         </section>
       );
 
@@ -215,7 +239,13 @@ function BlockView({ block, accent, href }: BlockViewProps) {
 
     case 'cta':
       return (
-        <section className="flex flex-wrap justify-center gap-4 py-8 bg-gray-100 dark:bg-gray-800 rounded-lg">
+        <section className="py-8 px-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+          {block.heading && (
+            <h2 className="text-2xl font-heading font-bold text-primary mb-5 text-center">
+              {t(block.heading)}
+            </h2>
+          )}
+          <div className="flex flex-wrap justify-center gap-4">
           {block.links.map((link, linkIndex) => (
             <a
               key={href(link.href)}
@@ -229,6 +259,7 @@ function BlockView({ block, accent, href }: BlockViewProps) {
               {t(link.label)}
             </a>
           ))}
+          </div>
         </section>
       );
 

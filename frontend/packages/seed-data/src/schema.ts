@@ -49,6 +49,18 @@ const HeroBlockSchema = z.object({
   heading: LocalizedTextSchema,
   subheading: LocalizedTextSchema.optional(),
   body: LocalizedTextSchema.optional(),
+  /**
+   * Optional hero photograph (STEP 17 polish). Explicit width/height are
+   * REQUIRED (CLS prevention, STEP 3 rule); alt is required for WCAG 1.1.1.
+   */
+  image: z
+    .object({
+      src: z.string().min(1),
+      alt: LocalizedTextSchema,
+      width: z.number().int().positive(),
+      height: z.number().int().positive(),
+    })
+    .optional(),
 });
 
 const TextBlockSchema = z.object({
