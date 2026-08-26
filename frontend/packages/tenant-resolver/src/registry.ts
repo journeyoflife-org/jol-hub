@@ -95,6 +95,18 @@ const WAVE1_PILOTS: PilotSpec[] = [
   { slug: 'radviliskis-church', lt: 'Baisogalos Šv. Trejybės bažnyčia', en: 'Baisogala Holy Trinity Church', vertical: 'church', packageTier: 'normal' },
   { slug: 'radviliskis-funeral', lt: 'Radviliškio laidojimo namai', en: 'Radviliškis Funeral Home', vertical: 'funeral', packageTier: 'normal' },
   { slug: 'radviliskis-cleaning', lt: 'Radviliškio kapinių priežiūra', en: 'Radviliškis Cemetery Care', vertical: 'cemetery-cleaning', packageTier: 'normal' },
+
+  // STEP 18b (Wave 1 reconciliation, DECISION-LOG O-002): each parish
+  // church also carries its own funeral home and cemetery-care service,
+  // per the ratified 31-site Wave-1 hierarchy.
+  { slug: 'zagare-funeral', lt: 'Žagarės laidojimo namai', en: 'Žagarė Funeral Home', vertical: 'funeral', packageTier: 'normal' },
+  { slug: 'zagare-cleaning', lt: 'Žagarės kapinių priežiūra', en: 'Žagarė Cemetery Care', vertical: 'cemetery-cleaning', packageTier: 'normal' },
+  { slug: 'kraziai-funeral', lt: 'Kražių laidojimo namai', en: 'Kražiai Funeral Home', vertical: 'funeral', packageTier: 'normal' },
+  { slug: 'kraziai-cleaning', lt: 'Kražių kapinių priežiūra', en: 'Kražiai Cemetery Care', vertical: 'cemetery-cleaning', packageTier: 'normal' },
+  { slug: 'lygumai-funeral', lt: 'Lygumų laidojimo namai', en: 'Lygumai Funeral Home', vertical: 'funeral', packageTier: 'normal' },
+  { slug: 'lygumai-cleaning', lt: 'Lygumų kapinių priežiūra', en: 'Lygumai Cemetery Care', vertical: 'cemetery-cleaning', packageTier: 'normal' },
+  { slug: 'baisogala-funeral', lt: 'Baisogalos laidojimo namai', en: 'Baisogala Funeral Home', vertical: 'funeral', packageTier: 'normal' },
+  { slug: 'baisogala-cleaning', lt: 'Baisogalos kapinių priežiūra', en: 'Baisogala Cemetery Care', vertical: 'cemetery-cleaning', packageTier: 'normal' },
 ];
 
 /* ------------------------------------------------------------------------ */
