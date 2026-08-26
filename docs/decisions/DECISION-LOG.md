@@ -24,6 +24,7 @@
 | O-004 | MASTER-PROMPT §3 estate table describes the pre-dismantlement frontend (12 `lt-*` demo apps). Reality since the demolition step: ONE template-renderer + seed fixtures; `master-site`/`parish-template` remain as legacy extraction candidates. Table is retained as ratified ground truth; this entry records the verified delta | Platform architect | RECORDED |
 | O-005 | Hygiene-gate candidate list staleness: `frontend/apps/parish-template/.env.local` no longer exists (app directory removed post-ratification); `backend/.env` / `backend/django/.env` exist in the working tree but are **untracked** (verified 2026-08-26: `git ls-files` returns only `.env.example` templates) | Platform architect | RECORDED |
 | O-006 | README reconciliation (SQLAlchemy/Alembic→Django, npm→pnpm) — MASTER-PROMPT §3 conflict item; not yet executed | Platform architect | OPEN |
+| O-007 | **Correction to O-005**: verified 2026-08-26, `frontend/apps/parish-template/` still EXISTS and contains `.env.local` (mode `600 jol:jol`, 2026-04-06, untracked — no git secret exposure). O-005's "app directory removed post-ratification" phrasing is inaccurate; the hygiene conclusion (0 tracked secret files) is unaffected. Full correction in `AUDIT-CLOSURE-PROFESSIONAL-OPINION-20260826.md` §3 | Platform architect | RECORDED 2026-08-26 |
 
 ## Hygiene-gate execution record (2026-08-26)
 
@@ -39,3 +40,12 @@ Executed against `docs/compliance/pre-work-hygiene-gate.md`:
 | 5 seal | HEAD SHA + this record serve as the repo seal pending the change-control issue |
 
 Rollback: revert the hygiene commit; all changes are moves/deletes of zero-value artifacts and one `.gitignore` line.
+
+
+## Audit closure reference (2026-08-26)
+
+Front-end audit findings F1–F6 re-verified independently at HEAD `bcb00f2f`
+(vitest 114/114 PASS; `tsc --noEmit` exit 0; closed-lookup trace; registry
+count = 32). Dispositions, residual risks and the professional certification
+statement with go-live conditions precedent: see
+`AUDIT-CLOSURE-PROFESSIONAL-OPINION-20260826.md` in this directory.
