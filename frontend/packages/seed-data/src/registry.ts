@@ -36,6 +36,9 @@ import referenceSites from './fixtures/tenants/reference-sites.json';
 import wave1Siauliai from './fixtures/tenants/wave1-siauliai.json';
 import wave1Joniskis from './fixtures/tenants/wave1-joniskis.json';
 import wave1KelmePakruojisRadviliskis from './fixtures/tenants/wave1-kelme-pakruojis-radviliskis.json';
+// STEP 18b — Wave 1 reconciliation (DECISION-LOG O-002): church-level
+// funeral homes and cemetery-care services for the four parish churches.
+import wave1ChurchServices from './fixtures/tenants/wave1-church-services.json';
 
 const rawFixtures: unknown[] = [
   basilicaVilniusCathedral,
