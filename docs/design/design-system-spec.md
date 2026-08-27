@@ -104,7 +104,9 @@ Canonical page list: `docs/seo/international-seo-strategy.md` 25-page table (ASS
 | CourseList / OnboardingSteps | 24 | ✗ build (trivial) |
 | ContactBlock, SupportForm | 25 | ✓ |
 
-**Component-build backlog** (gap → owner phase): StorefrontGrid/ProductCard/PriceDisplay, VendorDashboardShell, DonationForm/DonateActionBanner/ImpactList, ChatbotEntry shell, CemeteryMapCanvas, CourseList. Each backlog item inherits the full §2 assertion set as its acceptance gate.
+**Component-build backlog** (gap → owner phase): StorefrontGrid/ProductCard/PriceDisplay, VendorDashboardShell, ~~DonationForm/DonateActionBanner/ImpactList~~, ChatbotEntry shell, CemeteryMapCanvas, CourseList. Each backlog item inherits the full §2 assertion set as its acceptance gate.
+
+> **DEFERRED 2026-08-28 (DECISION-LOG D-053):** all donation components (DonationForm/DonateActionBanner/ImpactList and the full 2.3 component set) are EXCLUDED from every build plan until the owner explicitly unfreezes the payment track (D-052). The store/marketplace trio above is commerce UI, not payment-track work, and remains eligible under its own gates — but any component that touches the payment handoff stays deferred with the donation set.
 
 ## 7. Token versioning & change control
 

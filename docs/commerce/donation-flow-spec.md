@@ -46,7 +46,7 @@ tenant site (hub-rendered, package 16)
 1. **Default OFF**: donations disabled per tenant (renderer `donations` feature flag; donation-cta module returns null without it — as-built behavior already matches)
 2. **Enablement gate** (per tenant): change-controlled record (DECISION-LOG entry) + test-mode validation pass (M-2 dry-run pattern, a3e1f240) + owner authorization
 3. **LIVE gate** (per jurisdiction): SAQ A verification + change-controlled opening plan (ADR-009 §4) + LV/EE retention advice for those jurisdictions + DPIA flag-on prerequisites a/b/c
-4. **Build ordering** (DPIA-adjacent, 2.1 note): donation components (DonationForm v2, ConsentStep, CheckoutHandoffLink, DonationBanner, ImpactList, DonorFactTable) land AFTER the DPIA-gated AI safety patterns are proven — consent/gating machinery is reused, not rebuilt
+4. **Build ordering** (DPIA-adjacent, 2.1 note): donation components (DonationForm v2, ConsentStep, CheckoutHandoffLink, DonationBanner, ImpactList, DonorFactTable) land AFTER the DPIA-gated AI safety patterns are proven — consent/gating machinery is reused, not rebuilt. **SUPERSEDED IN PRIORITY 2026-08-28 (DECISION-LOG D-052/D-053): the entire payment track is FROZEN and donation components are DEFERRED — excluded from all build plans until explicit owner unfreeze; the DPIA-adjacent ordering applies only after unfreeze**
 5. **O-021 dependency**: the legacy PSP widget must be dispositioned (DONATION-WIDGET-DISPOSITION-O-021.md S1–S3) BEFORE donation components build starts — the guard extension (S3) is the build's entry gate
 
 ## 6. Test plan
