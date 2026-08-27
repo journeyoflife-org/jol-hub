@@ -72,7 +72,7 @@ per-commit stat verification → exit 0. No network/browser gates were claimed.
 ## 4. Ratified decisions (ratification appended to DECISION-LOG as D-006…D-009)
 
 - **D-006** — ccTLD-per-country + tenant subdomains; hub `jol-hub.com` kept, brand/marketplace role only (no tenant-competitor content); `6da34b18`.
-- **D-007** — Phase 0.1 Part 1 accepted under degraded scope; `JourneyOfLife/catholic-digital-ministry` and `JourneyOfLife/jol-master-website` classified POLICY VIOLATIONS; mechanics deferred to Part 2; standing instruction: no new work there, secrets = rotation candidates; `e56b1b43`.
+- **D-007** — Phase 0.1 Part 1 accepted under degraded scope; `JourneyOfLife/catholic-digital-ministry` and `JourneyOfLife/jol-master-website` classified POLICY VIOLATIONS; mechanics deferred to Part 2; standing instruction: no new work there, secrets = rotation candidates; `e56b1b43`. **SUPERSEDED-IN-PART 2026-08-28 (D-035): owner attested both repos were never created — content lives in jol-hub; the B1 classification is MOOT, O-009 CLOSED as no-migration-needed.**
 - **D-008** — Clergy-facing AI assistant: support-not-replace five-layer invariant; storage-free default with explicit logged consent as sole exception; on-prem only; `fc255391`.
 - **D-009** — Public FAQ chatbot: absolute-zero storage (no consent path); constant-composed crisis/grief paths; `safety.yml` + DPIA as formal launch blockers; `da674567`.
 
