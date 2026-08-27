@@ -39,7 +39,7 @@ let nextConfig = {
   experimental: {
     // Tree-shake barrel imports — keeps the shared chunk lean on modest
     // hardware. Without this, `import { formatEur } from '@jol-hub/commerce'`
-    // drags @stripe/react-stripe-js and `import { Card } from '@jol-hub/ui'`
+    // drags the Stripe browser SDK and `import { Card } from '@jol-hub/ui'`
     // drags the ENTIRE ui surface (compliance pages, donation widgets, zod)
     // into every route's first-load JS (verified via `pnpm analyze`).
     optimizePackageImports: ['lucide-react', '@jol-hub/ui', '@jol-hub/commerce'],

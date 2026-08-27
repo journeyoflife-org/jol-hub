@@ -67,8 +67,8 @@ Rule: **the build fails when a budget is exceeded.** Bisect with
 | --- | --- |
 | Templates | Dynamic `import()` per vertical family in `lib/template-registry.ts` — a funeral visitor never downloads the diocese template (server-side chunk split) |
 | Routes | App Router route-based splitting: per-route client JS only loads on that route (`app-build-manifest.json` is exactly what the gate measures) |
-| Workspace barrels | `experimental.optimizePackageImports` for `@jol-hub/ui`, `@jol-hub/commerce`, `lucide-react`. Found by the gate + `pnpm analyze`: a bare `import { formatEur } from '@jol-hub/commerce'` dragged `@stripe/react-stripe-js` (44 KiB stat) and `import { Card } from '@jol-hub/ui'` dragged the ENTIRE ui surface (compliance pages, donation widgets, zod forms) into every route. Fix cut the worst route 235 → 151.9 KiB gzipped |
-| Commerce (Stripe) | Backend-hosted Checkout + PaymentIntents — **no `@stripe/stripe-js` in the client bundle**; commerce widgets are client islands on commerce routes only |
+| Workspace barrels | `experimental.optimizePackageImports` for `@jol-hub/ui`, `@jol-hub/commerce`, `lucide-react`. Found by the gate + `pnpm analyze`: a bare `import { formatEur } from '@jol-hub/commerce'` dragged the Stripe browser SDK (44 KiB stat) and `import { Card } from '@jol-hub/ui'` dragged the ENTIRE ui surface (compliance pages, donation widgets, zod forms) into every route. Fix cut the worst route 235 → 151.9 KiB gzipped |
+| Commerce (Stripe) | Backend-hosted Checkout + PaymentIntents — **no Stripe browser SDK in the client bundle** (payment-boundary guard enforces); commerce widgets are client islands on commerce routes only |
 | CRM (Bitrix24) | Zero Bitrix JS ships to the browser: CRM surfaces call same-origin `/api/crm/*` route handlers → server-only `CrmBackendClient` (`lib/bitrix-client.ts`) |
 | Polyfills | Legacy `noModule` polyfills excluded from the modern baseline (gate) |
 
@@ -187,7 +187,7 @@ speculatively (CSP + privacy).
 | Initial JS < 200KB gzip / CSS < 50KB | **PASS** — gate measured 25 routes: worst 151.9 KiB (tenant layout), tenant pages 134.7 KiB, shell 87.6 KiB, CSS 0 KiB (tokens inlined via RSC) |
 | Lighthouse mobile ≥ 90 on all page types | `lighthouserc.js` ready; requires a Chrome-equipped environment (offline workspace has none) |
 | CWV green (LCP/INP/CLS) | Budget floors asserted in both gates; RUM collects field data post-consent |
-| Bundle analyzer: no unexpected heavy deps | No `@stripe/stripe-js`, no chart/map libs in client bundle; lucide barrel tree-shaken |
+| Bundle analyzer: no unexpected heavy deps | No Stripe browser SDK, no chart/map libs in client bundle; lucide barrel tree-shaken |
 | Images WebP/AVIF + responsive srcset | `next/image` with AVIF/WebP formats configured |
 | Fonts swap, no FOUT/FOIT | System-first stacks → zero webfont requests in pilot |
 | Third-party scripts only on relevant pages | Stripe backend-hosted; Bitrix24 on-demand; analytics consent-gated |

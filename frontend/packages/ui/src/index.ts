@@ -93,21 +93,9 @@ export type { PhotoGalleryProps, Photo } from './components/photo-gallery';
 export { ServiceSchedule } from './components/service-schedule';
 export type { ServiceScheduleProps, ScheduleItem } from './components/service-schedule';
 
-// Donation Widget (GDPR-compliant)
-export {
-  DonationWidget,
-  StripePaymentForm,
-  DonationSuccess,
-  DonationError,
-  useDonation,
-  createPaymentIntent,
-  confirmDonation,
-  getTaxReceipt,
-  downloadTaxReceipt,
-  createCrmDonationContact,
-  createCrmDonationDeal,
-  syncDonationToCrm,
-} from './components/donation';
+// Donation surface: the legacy PSP-integrated flat widget was REMOVED (O-021
+// STAGED-REMOVAL, ADR-009 Model A). The SAQ-A-eligible shell lives in the
+// composite barrel only: '@jol-hub/ui/components/composite'.
 
 // GDPR Cookie Consent
 export {
@@ -213,9 +201,10 @@ export { Gallery } from './components/composite/gallery';
 export type { GalleryProps, GalleryImage } from './components/composite/gallery';
 export { MapEmbed } from './components/composite/map-embed';
 export type { MapEmbedProps } from './components/composite/map-embed';
-// NOTE: legacy flat `ContactForm` / `donation/DonationWidget` above keep
-// their root-barrel names for back-compat; the STEP 3 versions are exposed
-// via the composite barrel: '@jol-hub/ui/components/composite'.
+// NOTE: legacy flat `ContactForm` above keeps its root-barrel name for
+// back-compat; the STEP 3 versions are exposed via the composite barrel:
+// '@jol-hub/ui/components/composite' (incl. the Model-A-compliant
+// DonationWidget shell, O-021).
 export { contactFormSchema } from './components/composite/contact-form';
 export type { ContactFormValues } from './components/composite/contact-form';
 
