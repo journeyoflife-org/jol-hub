@@ -37,7 +37,7 @@
 | O-012 | S-02: obsidian vault security review + relocation decision | Security owner | OPEN |
 | O-013 | DPIA for public-facing AI (MASTER-PROMPT §13 trigger) — launch-blocking | Platform owner | OPEN |
 | O-014 | Assumption Register consolidated into this file (below); no further doc-local registers | Platform architect | RECORDED 2026-08-27 |
-| O-016 | **Phantom ADR references**: QODER.md cites ADR-003 (SOPS patterns), ADR-005/ADR-007 (payment boundary) but no such files exist in `docs/decisions/` (verified 2026-08-27). Either reconstitute them or renumber the references change-controlled; until then ADR-003/005/007 numbers stay reserved and new ADRs continue at ADR-008+ | Platform architect | OPEN ACTION |
+| O-016 | **Cross-repo ADR namespace collision** (refined 2026-08-27, Interim Gate #2): QODER.md's ADR-003 (SOPS) / ADR-005/007 (payment boundary) citations resolve ACROSS REPOS — `jol-infrastructure/docs/adr/` holds its own ADR-001..006 (verified: ADR-003-secrets-management, ADR-005-gitops-workflow), whose numbers collide with jol-hub's `docs/decisions/ADR-*` (same numbers, different decisions). ADR-007 exists nowhere on disk. Fix: qualify cross-repo refs (`jol-infrastructure ADR-003`) or unify the namespace; jol-hub numbering continues at ADR-008+ | Platform architect | OPEN ACTION |
 
 ## Hygiene-gate execution record (2026-08-26)
 
