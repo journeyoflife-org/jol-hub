@@ -59,3 +59,5 @@ Unpushed: **1** (`6d84c17e`, batch 2) + this gate commit = 2 after commit. Remot
 | **DO-NOT-APPROVE** | Gate reopens with owner-specified corrections |
 
 STOP for owner sign-off. No further Phase 2 claims until recorded.
+
+> **SIGN-OFF RECORDED 2026-08-28 (DECISION-LOG D-038/D-039): owner chose APPROVE-INTERIM** — 2.1 + 2.2 accepted as delivered; 2.3 authorized as next task with explicit adjudication authority over O-021; Phase 2 remains OPEN until 2.3 lands.
