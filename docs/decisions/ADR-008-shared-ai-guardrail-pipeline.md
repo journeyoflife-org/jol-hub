@@ -3,8 +3,10 @@
 ---
 
 ## Status
-Proposed — pending platform-owner approval (Phase 3.5, docs-only; no runtime
-code changes in this ADR). Supersedes nothing; extends D-008/D-009.
+Accepted — ratified by platform owner 2026-08-27 (DECISION-LOG D-012, verbatim
+sign-off "ADR-008 shared AI guardrail pipeline: APPROVED"). Phase 3.5,
+docs-only; no runtime code changes in this ADR. Supersedes nothing; extends
+D-008/D-009. Consumer spec-reference migration queued per ASSUME-GUARD-003.
 
 ## Numbering note (verified, not assumed)
 Only ADR-001/002 exist on disk (verified 2026-08-27: `ls docs/decisions/`).
