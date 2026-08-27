@@ -49,3 +49,5 @@ Unpushed: **2** (`b58e93af`, `8751f15b` — the standing record-commit tails) + 
 | **DO-NOT-APPROVE** | Gate reopens with owner-specified corrections |
 
 STOP for owner sign-off. No Phase 2 closure claim until recorded.
+
+> **SIGN-OFF RECORDED 2026-08-28 (DECISION-LOG D-047): gate-phase2=APPROVE-CLOSE — PHASE 2 (Design & Spec Runway) CLOSED.** The program advances to implementation-gated work under its own gates.
