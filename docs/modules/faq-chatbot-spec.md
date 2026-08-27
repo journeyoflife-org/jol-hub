@@ -140,6 +140,16 @@ assess: crisis-path adequacy, minors, and the zero-storage claim.
 
 ## 5. Reuse vs. diverge (against fc255391 §6 pipeline)
 
+> **Implementation home (ADR-008, spec-reference migration ASSUME-GUARD-003,
+> 2026-08-28):** "reuse" rows below are satisfied by consuming the shared
+> package `frontend/packages/ai-guardrails` under the **FAQ consumer profile**
+> (harsher defaults: 500-token ceiling, ≤80-token answers, 6-turn cap, zero
+> storage, no side-effects); "diverge" rows stay consumer-owned code outside
+> the package. Hardening columns are enforced via the package's
+> contract-test assertions (`assertProfileSatisfied`); weakening any column
+> requires a change-controlled exception per §3, not silent inheritance. No
+> runtime code exists yet — gated implementation task per ADR-008 Decision §4.
+
 | Pipeline component | Disposition | Detail |
 |---|---|---|
 | Locale detection | **Reused verbatim** | lt/en/ru |
