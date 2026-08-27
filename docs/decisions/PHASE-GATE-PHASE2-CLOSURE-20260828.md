@@ -51,3 +51,7 @@ Unpushed: **2** (`b58e93af`, `8751f15b` — the standing record-commit tails) + 
 STOP for owner sign-off. No Phase 2 closure claim until recorded.
 
 > **SIGN-OFF RECORDED 2026-08-28 (DECISION-LOG D-047): gate-phase2=APPROVE-CLOSE — PHASE 2 (Design & Spec Runway) CLOSED.** The program advances to implementation-gated work under its own gates.
+
+## 6. Architect's professional opinion — priority signal (recorded at owner's request, 2026-08-28)
+
+Post-closure, **O-010 (safety.yml) remains the single highest-leverage owner item**: one owner-pasted file of crisis/safeguarding data unblocks visible surface on three packaged pages (11 Funeral, 12 Cemetery, 21 AI entry) AND both AI module launches (D-008/D-009 formal blockers) simultaneously — every other open item blocks at most one downstream thing. All other owner-side items (O-020 GitHub-side, D-030 revocation record, O-008 V2 paste, LV/EE retention, marketplace backlog) are comparatively unblocking. Standing constraint: the hotline data itself must be owner-pasted (never agent-generated/recalled); the agent-side half (schema, validation harness, consumer gating tests — DS-UX-11) is ready to execute on the owner's data + GO.
