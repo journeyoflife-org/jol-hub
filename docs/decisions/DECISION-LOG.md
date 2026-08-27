@@ -17,6 +17,7 @@
 | D-007 | 2026-08-27 | Phase 0.1 Part 1 accepted under degraded scope; `JourneyOfLife/catholic-digital-ministry` and `JourneyOfLife/jol-master-website` classified **POLICY VIOLATIONS** (rests on ratified org policy); transfer/archive/merge mechanics deferred to Part 2; standing instruction: no new work in either repo, their secrets are rotation candidates (`docs/audits/phase0-repo-reconciliation.md`, commit `e56b1b43`) | Ratified repo-placement policy | — |
 | D-008 | 2026-08-27 | AI Pastoral Assistant (clergy-facing) adopted: support-not-replace enforced as five-layer technical invariant; storage-free default with explicit logged consent as sole exception; on-prem inference only; LT golden-set launch gate (`docs/modules/ai-pastoral-assistant-spec.md`, commit `fc255391`) | MASTER-PROMPT §6 Phase 3.3 | — |
 | D-009 | 2026-08-27 | Tenant-facing public FAQ chatbot adopted: absolute-zero storage (no consent path); constant-composed crisis/grief paths (model never invoked); `safety.yml` + DPIA as **formal launch blockers** (absence verified 2026-08-27) (`docs/modules/faq-chatbot-spec.md`, commit `da674567`) | MASTER-PROMPT §6 Phase 3.3b | — |
+| D-010 | 2026-08-27 | **ADR-008 PROPOSED** (approval pending): extract the shared AI guardrail pipeline (classifier, refusal constants, disclosure constants, PII strip, outcome taxonomy) into `frontend/packages/ai-guardrails`; weakening of any consumer's harsher-defaults column = MAJOR release blocked without change-controlled exception; consumer profiles + contract tests enforce the da674567 §3 inheritance rule mechanically; docs-only — implementation is a later gated task (`docs/decisions/ADR-008-shared-ai-guardrail-pipeline.md`) | MASTER-PROMPT §6 Phase 3.5 | — |
 
 ## Open questions
 
@@ -36,6 +37,7 @@
 | O-012 | S-02: obsidian vault security review + relocation decision | Security owner | OPEN |
 | O-013 | DPIA for public-facing AI (MASTER-PROMPT §13 trigger) — launch-blocking | Platform owner | OPEN |
 | O-014 | Assumption Register consolidated into this file (below); no further doc-local registers | Platform architect | RECORDED 2026-08-27 |
+| O-016 | **Phantom ADR references**: QODER.md cites ADR-003 (SOPS patterns), ADR-005/ADR-007 (payment boundary) but no such files exist in `docs/decisions/` (verified 2026-08-27). Either reconstitute them or renumber the references change-controlled; until then ADR-003/005/007 numbers stay reserved and new ADRs continue at ADR-008+ | Platform architect | OPEN ACTION |
 
 ## Hygiene-gate execution record (2026-08-26)
 
@@ -97,3 +99,6 @@ statement with go-live conditions precedent: see
 | ASSUME-FAQ-004 | same | Rate limiter capacity at pilot traffic | OPEN | agent (load test) |
 | ASSUME-FAQ-005 | same | Confessionally-neutral condolence constants | OPEN | agent + clerical review |
 | ASSUME-FAQ-006 | same | Zero-storage covers minors exposure | OPEN | DPIA (O-013) |
+| ASSUME-GUARD-001 | `docs/decisions/ADR-008-shared-ai-guardrail-pipeline.md` | ADR-008 numbering holds: ADR-003/005/007 stay reserved-as-phantom; if reconstituted under different numbers, re-verify the numbering note | OPEN | agent (with O-016 resolution) |
+| ASSUME-GUARD-002 | same | `packages/ai-guardrails` slots into workspace verify chains + CODEOWNERS/repo-kit without kit changes | OPEN | agent (implementation gate) |
+| ASSUME-GUARD-003 | same | On approval, both AI specs get docs-only edits referencing the package (migration plan in ADR-008); no runtime code until the gated implementation task | OPEN | agent (post-approval) |
