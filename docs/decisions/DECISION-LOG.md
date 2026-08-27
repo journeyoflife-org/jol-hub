@@ -13,6 +13,10 @@
 | D-003 | 2026-08-24 | Frontend extraction into `jol-frontend-platform` **deferred** until Wave 0 exit criteria are met; build inside `jol-hub/frontend` meanwhile | `ADR-002-frontend-extraction-jol-frontend-platform.md` | Any earlier "extract immediately" proposals |
 | D-004 | 2026-08-26 | Framework matrix outcome: **Next.js 14 (incumbent) confirmed** — the scored matrix of MASTER-PROMPT §9 is satisfied by the verified jol-hub investment (one template-renderer + tenant resolution + config-driven fixtures); the formal scored-matrix document itself remains new work (` UNVERIFIED — manual check required` until authored) | MASTER-PROMPT §9, ADR-002 Decision 1 | The Astro-based Wave-1 proposal (2026-08-26) — rejected: duplicates the proven renderer, doubles the compliance surface |
 | D-005 | 2026-08-26 | Package prices are RATIFIED and immutable in code review: CHEAP €1,000 + €20/mo, NORMAL €2,000 + €20/mo, VIP €3,000 + €20/mo; page-count package definitions are banned | MASTER-PROMPT §6 | — |
+| D-006 | 2026-08-27 | International SEO & domain strategy ratified: **ccTLD per country + tenant subdomains** (weighted matrix 4.55 vs 2.95/2.60) reconciled with ADR-001; **KEEP `jol-hub.com`** as brand/marketplace hub ONLY — hub never publishes tenant-competing local content; LV/EE = config-level additions; hreflang extension rule to 27 locales (`docs/seo/international-seo-strategy.md`, commit `6da34b18`) | MASTER-PROMPT §6 Phase 1.1 (degraded scope, owner-authorized) | — |
+| D-007 | 2026-08-27 | Phase 0.1 Part 1 accepted under degraded scope; `JourneyOfLife/catholic-digital-ministry` and `JourneyOfLife/jol-master-website` classified **POLICY VIOLATIONS** (rests on ratified org policy); transfer/archive/merge mechanics deferred to Part 2; standing instruction: no new work in either repo, their secrets are rotation candidates (`docs/audits/phase0-repo-reconciliation.md`, commit `e56b1b43`) | Ratified repo-placement policy | — |
+| D-008 | 2026-08-27 | AI Pastoral Assistant (clergy-facing) adopted: support-not-replace enforced as five-layer technical invariant; storage-free default with explicit logged consent as sole exception; on-prem inference only; LT golden-set launch gate (`docs/modules/ai-pastoral-assistant-spec.md`, commit `fc255391`) | MASTER-PROMPT §6 Phase 3.3 | — |
+| D-009 | 2026-08-27 | Tenant-facing public FAQ chatbot adopted: absolute-zero storage (no consent path); constant-composed crisis/grief paths (model never invoked); `safety.yml` + DPIA as **formal launch blockers** (absence verified 2026-08-27) (`docs/modules/faq-chatbot-spec.md`, commit `da674567`) | MASTER-PROMPT §6 Phase 3.3b | — |
 
 ## Open questions
 
@@ -25,6 +29,13 @@
 | O-005 | Hygiene-gate candidate list staleness: `frontend/apps/parish-template/.env.local` no longer exists (app directory removed post-ratification); `backend/.env` / `backend/django/.env` exist in the working tree but are **untracked** (verified 2026-08-26: `git ls-files` returns only `.env.example` templates) | Platform architect | RECORDED |
 | O-006 | README reconciliation (SQLAlchemy/Alembic→Django, npm→pnpm) — MASTER-PROMPT §3 conflict item; not yet executed | Platform architect | OPEN |
 | O-007 | **Correction to O-005**: verified 2026-08-26, `frontend/apps/parish-template/` still EXISTS and contains `.env.local` (mode `600 jol:jol`, 2026-04-06, untracked — no git secret exposure). O-005's "app directory removed post-ratification" phrasing is inaccurate; the hygiene conclusion (0 tracked secret files) is unaffected. Full correction in `AUDIT-CLOSURE-PROFESSIONAL-OPINION-20260826.md` §3 | Platform architect | RECORDED 2026-08-26 |
+| O-008 | MASTER-PROMPT-V2.md commit parked — governance baseline incomplete; interim phase gate (2026-08-27) measured against the session-record draft pending commit | Platform owner | OPEN |
+| O-009 | Clone `catholic-digital-ministry`, `jol-master-website`, `jol-m-marketplace` to `/opt/jol/repos/` → unblocks Phase 0.1 Part 2 | Platform owner | OPEN |
+| O-010 | Author `countries/{lt,lv,ee}/config/safety.yml` (crisis/safeguarding/bereavement contacts) — **launch blocker for both AI modules** (D-008, D-009) | Platform owner + clerical review | OPEN |
+| O-011 | S-01 (audit `e56b1b43` §3.2): jol-qoder-history transcript archive — sanitize/purge decision (HIGH) | Security owner | OPEN |
+| O-012 | S-02: obsidian vault security review + relocation decision | Security owner | OPEN |
+| O-013 | DPIA for public-facing AI (MASTER-PROMPT §13 trigger) — launch-blocking | Platform owner | OPEN |
+| O-014 | Assumption Register consolidated into this file (below); no further doc-local registers | Platform architect | RECORDED 2026-08-27 |
 
 ## Hygiene-gate execution record (2026-08-26)
 
@@ -49,3 +60,40 @@ Front-end audit findings F1–F6 re-verified independently at HEAD `bcb00f2f`
 count = 32). Dispositions, residual risks and the professional certification
 statement with go-live conditions precedent: see
 `AUDIT-CLOSURE-PROFESSIONAL-OPINION-20260826.md` in this directory.
+
+## Assumption Register
+
+> Consolidated 2026-08-27 (O-014). All ASSUME- entries issued in phase
+> deliverables are tracked here; source document cited per row. **NEEDS-OWNER
+> = requires platform-owner action (offline host / account access / sourcing).**
+
+| ID | Source | Assumption (abridged) | Status | Action owner |
+|---|---|---|---|---|
+| ASSUME-SEO-001 | `docs/seo/international-seo-strategy.md` | jol-hub.com history/backlinks acceptable | OPEN | **NEEDS-OWNER** (networked audit) |
+| ASSUME-SEO-002/003 | same | No brand keyword volume; no volume figures cited | OPEN | **NEEDS-OWNER** (Keyword Planner) |
+| ASSUME-SEO-004 | same | No trademark collision | OPEN | **NEEDS-OWNER** (EUIPO) |
+| ASSUME-SEO-005 | same | Task-brief page inventory = future Phase 0 inventory | OPEN | agent (diff when inventory lands) |
+| ASSUME-SEO-006 | same | LV/EE domains registered & controlled | OPEN | **NEEDS-OWNER** (registrar) |
+| ASSUME-SEO-007 | same | Country SEO config as YAML | OPEN | agent (at implementation) |
+| ASSUME-SEO-008 | same | 27 markets fit hreflang rule; edge cases at onboarding | OPEN | agent (per-country review) |
+| ASSUME-SEO-009 | same | RU locale demand in LV/EE justifies launch inclusion | OPEN | agent (Search Console, +6 mo) |
+| ASSUME-PAST-001 | `docs/modules/ai-pastoral-assistant-spec.md` | qwen3-32b best available LT base | OPEN | agent (golden set §4.3) |
+| ASSUME-PAST-002 | same | Phase 0 would confirm jol-llm/jol-rag viable | OPEN | agent (Phase 0 sign-off) |
+| ASSUME-PAST-003 | same | Clergy role exists in jol-auth | OPEN | agent (implementation start) |
+| ASSUME-PAST-004 | same | RAG corpus suitable/licensed | OPEN | agent (corpus audit) |
+| ASSUME-PAST-005 | same | PII stripping best-effort | OPEN | agent (training + red-team) |
+| ASSUME-PAST-006 | same | Crisis hotlines obtainable → safety.yml | OPEN | **NEEDS-OWNER** (O-010, launch blocker) |
+| ASSUME-PAST-007 | same | 2.6 tok/s acceptable with streaming | OPEN | agent (GPU roadmap review) |
+| ASSUME-PAST-008 | same | FAQ chatbot is a distinct module | RESOLVED 2026-08-27 | delivered as Phase 3.3b (D-009) |
+| ASSUME-PAST-009 | same | 3-year safety-event retention | OPEN | legal review |
+| ASSUME-AUD-001 | `docs/audits/phase0-repo-reconciliation.md` | Local clones mirror remotes | OPEN | **NEEDS-OWNER** (network) |
+| ASSUME-AUD-002 | same | obsidian contains no personal data | OPEN | agent (O-012 review) |
+| ASSUME-AUD-003 | same | GitHub policy actually enforced | OPEN | **NEEDS-OWNER** (network) |
+| ASSUME-AUD-004 | same | Django pin 6.0.3 authoritative over recorded 6.0.7 | OPEN | agent (reconcile at sync; code-over-memory settled) |
+| ASSUME-AUD-005 | same | Violating repos' secrets un-leaked | OPEN | **NEEDS-OWNER** (needs O-009 clones) |
+| ASSUME-FAQ-001 | `docs/modules/faq-chatbot-spec.md` | safety.yml authored pre-launch | OPEN | **NEEDS-OWNER** (O-010, launch blocker) |
+| ASSUME-FAQ-002 | same | Corpus visibility flag exists at ingest | OPEN | agent (corpus audit) |
+| ASSUME-FAQ-003 | same | Consent-manager integration point exists | OPEN | agent (implementation start) |
+| ASSUME-FAQ-004 | same | Rate limiter capacity at pilot traffic | OPEN | agent (load test) |
+| ASSUME-FAQ-005 | same | Confessionally-neutral condolence constants | OPEN | agent + clerical review |
+| ASSUME-FAQ-006 | same | Zero-storage covers minors exposure | OPEN | DPIA (O-013) |
