@@ -13,6 +13,14 @@
 > `jol-m-marketplace` are absent from `/opt/jol/repos/`. Per task directive,
 > Part 1 audits every locally present repo and issues the B1 policy-violation
 > classification (rests on ratified org policy, not repo contents).
+>
+> **CORRECTION ADDENDUM 2026-08-28 (DECISION-LOG D-035):** owner attested that
+> `catholic-digital-ministry` and `jol-master-website` were never created — the
+> content lives in jol-hub. Evidence: authenticated-API 404 both; absent from
+> the authenticated 23-repo org enumeration. The B1 policy-violation rows below
+> are MOOT (voided corrected-forward); Phase 0.1 Part 2 has no subject matter
+> for them. This addendum corrects provenance without rewriting the historical
+> record.
 > **Deferred to Part 2** (requires repo contents): transfer/archive/merge
 > recommendation and inbound-link redirect strategy for the two violating
 > repos; any findings on `jol-m-marketplace`. Host is offline — no remote
@@ -111,8 +119,8 @@ topology).
 
 | Repo | Classification | Reason |
 |---|---|---|
-| `JourneyOfLife/catholic-digital-ministry` | **POLICY VIOLATION** | Production-grade ministry/web assets under the experimental account; content class (church/parish data) is plausibly personal-data-bearing → prohibited location |
-| `JourneyOfLife/jol-master-website` | **POLICY VIOLATION** | The master website is by definition a production asset; prohibited location |
+| `JourneyOfLife/catholic-digital-ministry` | **POLICY VIOLATION** — MOOT 2026-08-28 (D-035: repo never existed) | Production-grade ministry/web assets under the experimental account; content class (church/parish data) is plausibly personal-data-bearing → prohibited location |
+| `JourneyOfLife/jol-master-website` | **POLICY VIOLATION** — MOOT 2026-08-28 (D-035: repo never existed) | The master website is by definition a production asset; prohibited location |
 
 **Deferred to Part 2** (cannot be decided without inspecting contents):
 transfer vs archive vs merge for each, inbound-link 301/redirect strategy,
