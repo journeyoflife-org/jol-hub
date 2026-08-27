@@ -111,6 +111,9 @@ LOCAL_APPS = [
     
     # CRM app
     'apps.crm',
+
+    # Internal payment-event ingress (Model A, ADR-009; flag-gated)
+    'apps.payment_events',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -780,3 +783,17 @@ if 'LOGGING' in locals() and 'handlers' in LOGGING:
         }
         # Create logs directory if it doesn't exist
         os.makedirs(os.path.join(BASE_DIR, 'logs'), exist_ok=True)
+
+# =============================================================================
+# Internal payment-event ingress (ADR-009, docs/payment-api-contract.md v1.0.0)
+# Boundary CLOSED: the receiver is flag-gated and stores payment facts only.
+# The delivery key is injected from Vaultwarden at deploy time — never
+# committed (placeholder below, B8).
+# =============================================================================
+
+PAYMENT_EVENTS_ENABLED = env.bool('PAYMENT_EVENTS_ENABLED', default=False)
+PAYMENT_EVENTS_REPLAY_WINDOW_SECONDS = env.int(
+    'PAYMENT_EVENTS_REPLAY_WINDOW_SECONDS', default=300
+)
+HUB_PAYMENT_DELIVERY_KEY = env('HUB_PAYMENT_DELIVERY_KEY', default='')
+
