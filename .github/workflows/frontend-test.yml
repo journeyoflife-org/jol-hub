@@ -204,4 +204,4 @@ jobs:
       # (SOC 2 CC7.2 — failures must reach the owning team).
       - name: Notify (placeholder)
         if: failure()
-        run: echo "TODO: Slack/Discord webhook via repository secrets."
+        run: 'echo "TODO: Slack/Discord webhook via repository secrets."'
