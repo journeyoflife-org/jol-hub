@@ -126,3 +126,6 @@ Thumbs.db
 data/.envrc
 .idea/
 tsconfig.tsbuildinfo
+
+# Standing rule D-028 (2026-08-27): no transcript exports into any repo
+*qoder-history*/
