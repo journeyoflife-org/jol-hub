@@ -2,7 +2,7 @@
 
 | Attribute | Value |
 |---|---|
-| Version | **v1.0.0** (documents the wire format implemented at marketplace HEAD `4faef0a`) |
+| Version | **v1.1.0** (wire format unchanged: still the whitelist implemented at marketplace HEAD `4faef0a`; v1.1.0 adds a receiver-side normative logging obligation only — no sender change required) |
 | Parties | sender: `jol-m-marketplace` `payments_app` (`internal_forward.py`) · receiver: `jol-hub` backend |
 | Governance | ADR-009 (Model A, boundary CLOSED) · sender-side lineage: jol-m-infrastructure payment-boundary doc ("ADR-0005 §3" in sender code — see ASSUME-MKT-003) · closes O-017(1) |
 | Status | Contract ratified docs-only; receiver implementation is separate gated work (M-1); boundary stays CLOSED — dry-run/test-mode only until SAQ A |
@@ -135,6 +135,14 @@ X-JOL-Signature: 9b2f…hex…c41a
 | `401` | Timestamp window or signature failure | Delivered; no retry (key/clock incident path) |
 | `4xx` generally | Receiver-side rejection | No retry (`<500` = delivered) |
 | `5xx` / timeout | Receiver unavailable | Retried (≤8, 30 s base) |
+
+**Normative receiver obligations (added v1.1.0; DPIA O-013 condition C4,
+owner-confirmed location 2026-08-27):** receivers MUST NOT log raw request
+bodies of this endpoint — neither on success nor on any rejection path.
+Envelope contents are payment facts accepted under Art. 5(1)(c) minimization;
+capturing them in logs would recreate personal-data-adjacent residues the
+boundary is designed to exclude. This obligation binds every future change
+to the receiver (change-checklist item, DPIA §2 condition C4).
 
 ## 3. Art. 9 minimization — core design constraint
 
