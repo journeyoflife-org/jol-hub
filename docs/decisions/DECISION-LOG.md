@@ -125,7 +125,7 @@ statement with go-live conditions precedent: see
 | ASSUME-FAQ-006 | same | Zero-storage covers minors exposure | OPEN | DPIA (O-013) |
 | ASSUME-GUARD-001 | `docs/decisions/ADR-008-shared-ai-guardrail-pipeline.md` | ADR-008 numbering holds: ADR-003/005/007 stay reserved-as-phantom; if reconstituted under different numbers, re-verify the numbering note | OPEN | agent (with O-016 resolution) |
 | ASSUME-GUARD-002 | same | `packages/ai-guardrails` slots into workspace verify chains + CODEOWNERS/repo-kit without kit changes | OPEN | agent (implementation gate) |
-| ASSUME-GUARD-003 | same | On approval, both AI specs get docs-only edits referencing the package (migration plan in ADR-008); no runtime code until the gated implementation task | QUEUED 2026-08-27 (ADR-008 APPROVED per D-012; migration = next task, not yet executed) | agent (next task) |
+| ASSUME-GUARD-003 | same | On approval, both AI specs get docs-only edits referencing the package (migration plan in ADR-008); no runtime code until the gated implementation task | RESOLVED 2026-08-28 — migration EXECUTED (docs-only): implementation-home references added to pastoral spec §6 and FAQ spec §5; ADR-008 header updated; zero runtime code | closed |
 | ASSUME-MKT-001 | `docs/audits/phase0-marketplace.md` | Stripe test keys provisioned only outside git via the marketplace secret store; no live keys | OPEN | **NEEDS-OWNER** (marketplace confirmation / networked review) |
 | ASSUME-MKT-002 | same | Marketplace README CI/coverage/Lighthouse badge claims match reality | OPEN | **NEEDS-OWNER** (networked check) |
 | ASSUME-MKT-003 | same | internal_forward.py's "ADR-0005 §3" = jol-m-infrastructure payment-boundary doc, NOT the marketplace registry's storage ADR-0005 | OPEN | marketplace owner |

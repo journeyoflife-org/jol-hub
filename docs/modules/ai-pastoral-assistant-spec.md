@@ -218,6 +218,16 @@ Base: `/api/v1/pastoral` (Django DRF; auth = Bearer via jol-auth, role
 
 ## 6. Message processing pipeline (single source of truth)
 
+> **Implementation home (ADR-008, spec-reference migration ASSUME-GUARD-003,
+> 2026-08-28):** the classifier, refusal/disclosure constants, PII strip and
+> outcome taxonomy below will be realized as the shared package
+> `frontend/packages/ai-guardrails` — modules `classifier` / `constants` /
+> `pii` / `types` / `contracts`, clergy consumer profile, frozen v1.0.0 API
+> (`classify`, `refusalFor`, `disclosureFor`, `stripPii`,
+> `assertProfileSatisfied`). This section remains the functional source of
+> truth; the package is its implementation vehicle. No runtime code exists
+> yet — that is a separate gated implementation task (ADR-008 Decision §4).
+
 ```
 message → locale detect → PII strip (§3.4) → safety classifier
   ├─ crisis/safeguarding   → escalation path (§2.3), NO inference
