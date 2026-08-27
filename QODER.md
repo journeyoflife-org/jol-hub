@@ -100,7 +100,7 @@ compliance weight (GDPR, SOC 2 Type II, ISO 27001:2022, PCI-DSS SAQ A).
 - **On-prem only**: Proxmox/nginx assumptions; **no AWS assumptions**, no
   cloud CDN patterns, no AI brands named as requirements.
 
-### Payment boundary (ADR-005 / ADR-007 — cited ADRs referenced, not found in jol-hub or jol-infrastructure; reconstitution pending, see DECISION-LOG O-016; rules below remain in force)
+### Payment boundary (ADR-009 — ratified local decision; unrelated: jol-infrastructure ADR-005 is GitOps workflow; historical "ADR-0005 Model A" lineage absorbed by ADR-009, see O-016)
 
 - The pilot boundary is **CLOSED**: test mode only, no live transactions
   until SAQ A is verified.
