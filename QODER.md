@@ -100,7 +100,7 @@ compliance weight (GDPR, SOC 2 Type II, ISO 27001:2022, PCI-DSS SAQ A).
 - **On-prem only**: Proxmox/nginx assumptions; **no AWS assumptions**, no
   cloud CDN patterns, no AI brands named as requirements.
 
-### Payment boundary (ADR-005 / ADR-007)
+### Payment boundary (ADR-005 / ADR-007 — cited ADRs referenced, not found in jol-hub or jol-infrastructure; reconstitution pending, see DECISION-LOG O-016; rules below remain in force)
 
 - The pilot boundary is **CLOSED**: test mode only, no live transactions
   until SAQ A is verified.
@@ -115,7 +115,7 @@ compliance weight (GDPR, SOC 2 Type II, ISO 27001:2022, PCI-DSS SAQ A).
   committed; real values are injected from Vaultwarden/Ansible Vault at
   deploy time (`.env.production` / `.env.staging` are git-ignored).
 - Run `check-secrets` after builds; never print or echo secrets; SOPS/age
-  patterns per ADR-003 apply repo-wide.
+  patterns per jol-infrastructure ADR-003 (secrets management) apply repo-wide.
 
 ### Commits, branches, gates
 
