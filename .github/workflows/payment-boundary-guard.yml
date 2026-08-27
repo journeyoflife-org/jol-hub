@@ -33,7 +33,7 @@ jobs:
 
       - name: Guard integrity — vendored copy matches pinned record hash
         run: |
-          echo "8fa2dd12f12320dff268ee19d5b00422a1f5987203e34755c342e56068ed47a5  scripts/check-payment-boundary.sh" \
+          echo "add835e735be5c6aa3fb38ba4d4840fee0cf5719eaa55d9a3be44016b2c4f249  scripts/check-payment-boundary.sh" \
             | sha256sum -c -
 
       - name: Run E1 payment-boundary guard
