@@ -21,6 +21,14 @@
 
 ## 1. Hub domain evaluation — keep `jol-hub.com`
 
+> **TOPOLOGY ADDENDUM 2026-08-28 (DECISION-LOG D-051):** owner-provided domain
+> set ratified: `jol-hub.com` (brand/corporate/marketplace-hub, role unchanged)
+> · `gyvenimo-kelias.lt` (LT ccTLD) with pilot marketplace at
+> `jol-marketplace.gyvenimo-kelias.lt` (**APPROVED pilot-scope addition ON TOP
+> of this strategy** — hub-side marketplace-hub role unaffected) ·
+> `dzives-cels.lv` (LV) · `elu-tee.ee` (EE). Registrar ownership/control of the
+> three non-hub domains still pending verification (ASSUME-SEO-006).
+
 ### 1.1 Verdict
 
 **KEEP `jol-hub.com` as the hub domain. No rename.** A rename would require
@@ -131,7 +139,7 @@ scoped to the single resolved tenant (no enumeration).
 
 | Country | Domain | Alternates | x-default |
 |---|---|---|---|
-| Lithuania | `*.gyvenimo-kelias.lt` | `lt-LT`, `en-LT`, `ru-LT` | `lt-LT` (implemented) |
+| Lithuania | `*.gyvenimo-kelias.lt` | `lt-LT`, `en-LT`, `ru-LT` | `lt-LT` (implemented) · pilot marketplace at `jol-marketplace.gyvenimo-kelias.lt` (D-051) |
 | Latvia | `*.dzives-cels.lv` | `lv-LV`, `en-LV`, `ru-LV` | `lv-LV` |
 | Estonia | `*.elu-tee.ee` | `et-EE`, `en-EE`, `ru-EE` | `et-EE` |
 
