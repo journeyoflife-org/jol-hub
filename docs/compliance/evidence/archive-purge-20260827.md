@@ -15,6 +15,8 @@ No-remote state re-verified immediately before purge (both `git remote -v` empty
 
 Both archive directories moved to `/tmp/jol-archive-purge-20260827/` (dated recovery window — recoverable until the owner confirms permanent deletion; after confirmation, the window contents are deleted). Original paths verified absent. Defensive gitignore entries added in BOTH parent trees: `*qoder-history*/` with the standing-rule comment. Post-purge archive counts at original locations: **0 and 0**.
 
+**2026-08-28 UPDATE (D-033):** owner authorized permanent deletion; `/tmp/jol-archive-purge-20260827/` (both archives) deleted and verified absent (`ls`: No such file or directory). **Zero on-host copies remain.** The S-01/MS-01 purge is final.
+
 ## Git history — deliberately NOT rewritten
 
 Change-control integrity: rewriting history (filter-branch/filter-repo) is outside this program's authority and unnecessary here — neither archive was ever committed to a parent tree (verified: zero tracked files, zero history references) and neither had a remote, so **no published or shared history contains the transcripts**. The purge eliminates the working-tree exposure completely.
