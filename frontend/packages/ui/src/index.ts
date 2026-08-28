@@ -211,6 +211,18 @@ export { ServiceList } from './components/composite/service-list';
 export type { ServiceListProps } from './components/composite/service-list';
 export { CourseList } from './components/composite/course-list';
 export type { CourseListProps, CourseItem } from './components/composite/course-list';
+export { ProductCard } from './components/composite/product-card';
+export type { ProductCardProps } from './components/composite/product-card';
+export { StorefrontGrid } from './components/composite/storefront-grid';
+export type { StorefrontGridProps } from './components/composite/storefront-grid';
+export { VendorDashboardShell } from './components/composite/vendor-dashboard-shell';
+export type { VendorDashboardShellProps, VendorStat } from './components/composite/vendor-dashboard-shell';
+export { ChatbotEntry } from './components/composite/chatbot-entry';
+export type { ChatbotEntryProps } from './components/composite/chatbot-entry';
+export { CemeteryMapCanvas } from './components/composite/cemetery-map-canvas';
+export type { CemeteryMapCanvasProps, PlotCell } from './components/composite/cemetery-map-canvas';
+export { OnboardingSteps } from './components/composite/onboarding-steps';
+export type { OnboardingStepsProps, OnboardingStep } from './components/composite/onboarding-steps';
 // NOTE: legacy flat `ContactForm` above keeps its root-barrel name for
 // back-compat; the STEP 3 versions are exposed via the composite barrel:
 // '@jol-hub/ui/components/composite' (incl. the Model-A-compliant
