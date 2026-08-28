@@ -39,6 +39,8 @@ import {
   Textarea,
 } from '../components/primitives';
 import {
+  CemeteryMapCanvas,
+  ChatbotEntry,
   ContactForm,
   ContentBlock,
   CourseList,
@@ -51,10 +53,14 @@ import {
   Hero,
   MapBlock,
   NewsCard,
+  OnboardingSteps,
+  ProductCard,
   SectionHeader,
   ServiceCard,
   ServiceList,
+  StorefrontGrid,
   TestimonialCard,
+  VendorDashboardShell,
 } from '../components/composite';
 import { Breadcrumbs, Footer, Header, Sidebar } from '../components/layout';
 
@@ -224,6 +230,55 @@ export function Showcase() {
                   level: 'Pradedantiesiems',
                   href: '/courses/tikejimo-pagrindai',
                 },
+              ]}
+            />
+          </div>
+
+          <SectionHeader title="Parduotuvės tinklelis (rodoma, be atsiskaitymo)" headingLevel={2} className="mt-12" tenant={TENANT} />
+          <div className="mt-4">
+            <StorefrontGrid
+              tenant={TENANT}
+              items={[
+                { title: 'Žvakė', description: 'Rankų darbo vaško žvakė.', price: '4.50', currency: 'EUR' },
+                { title: 'Maldaknygė', description: 'Tradicinė maldaknygė.', price: '12.00', currency: 'EUR', availability: 'PreOrder' },
+              ]}
+            />
+          </div>
+
+          <SectionHeader title="Tiekėjo skydelis ir pagalbos įėjimas" headingLevel={2} className="mt-12" tenant={TENANT} />
+          <div className="mt-4 flex flex-col gap-6">
+            <VendorDashboardShell
+              tenant={TENANT}
+              vendorName="Bažnyčios krautuvėlė"
+              stats={[
+                { label: 'Prekės', value: '12' },
+                { label: 'Peržiūros', value: '340' },
+              ]}
+            />
+            <div>
+              {/* Showcase renders the ENABLED instance so axe can audit it;
+                  the component default is hidden (enabled=false). */}
+              <ChatbotEntry tenant={TENANT} enabled faqHref="/faq" />
+            </div>
+          </div>
+
+          <SectionHeader title="Kapinių žemėlapis ir eigos žingsniai" headingLevel={2} className="mt-12" tenant={TENANT} />
+          <div className="mt-4 grid gap-6 lg:grid-cols-2">
+            <CemeteryMapCanvas
+              title="Antakalnio kapinių sklypų apžvalga"
+              rows={4}
+              cols={6}
+              plots={[
+                { id: 'A-1', status: 'available' },
+                { id: 'A-2', status: 'reserved' },
+                { id: 'B-3', status: 'occupied' },
+              ]}
+            />
+            <OnboardingSteps
+              items={[
+                { title: 'Registracija', description: 'Sukurkite paskyrą.', status: 'done' },
+                { title: 'Pamokų pasirinkimas', status: 'current' },
+                { title: 'Mokymosi pradžia', status: 'upcoming' },
               ]}
             />
           </div>

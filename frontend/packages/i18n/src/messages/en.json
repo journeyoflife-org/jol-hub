@@ -145,7 +145,11 @@
     "vatIncluded": "Includes {rate}% VAT",
     "checkout": "Checkout",
     "termsLink": "Terms & conditions",
-    "refundLink": "Refund policy"
+    "refundLink": "Refund policy",
+    "availableAtLaunch": "Available at launch",
+    "emptyProducts": "No products yet.",
+    "outOfStockBadge": "Out of stock",
+    "preOrderBadge": "Pre-order"
   },
   "privacyConsent": {
     "consentTextBefore": "I agree to the processing of my personal data in accordance with the",
@@ -203,7 +207,11 @@
     "openInExternalMaps": "Open in external maps",
     "mapStaticNotice": "Static map — interactive maps are shown only with consent.",
     "courseLevelLabel": "Level",
-    "courseScheduleLabel": "Schedule"
+    "courseScheduleLabel": "Schedule",
+    "chatbotEntryLabel": "Frequently asked questions",
+    "plotAvailable": "Available",
+    "plotReserved": "Reserved",
+    "plotOccupied": "Occupied"
   },
   "crm": {
     "successReference": "Thank you! Your enquiry has been registered — reference {reference}.",

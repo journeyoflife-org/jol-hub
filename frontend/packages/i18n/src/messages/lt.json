@@ -145,7 +145,11 @@
     "vatIncluded": "Įskaičiuotas PVM {rate}%",
     "checkout": "Apmokėti",
     "termsLink": "Taisyklės",
-    "refundLink": "Grąžinimo politika"
+    "refundLink": "Grąžinimo politika",
+    "availableAtLaunch": "Bus prieinama atidarius",
+    "emptyProducts": "Prekių kol kas nėra.",
+    "outOfStockBadge": "Nebėra sandėlyje",
+    "preOrderBadge": "Išankstinis užsakymas"
   },
   "privacyConsent": {
     "consentTextBefore": "Sutinku, kad mano asmens duomenys būtų tvarkomi pagal",
@@ -203,7 +207,11 @@
     "openInExternalMaps": "Atidaryti išoriniame žemėlapyje",
     "mapStaticNotice": "Statinis žemėlapis — interaktyvūs žemėlapiai rodomi tik sutikus.",
     "courseLevelLabel": "Lygis",
-    "courseScheduleLabel": "Tvarkaraštis"
+    "courseScheduleLabel": "Tvarkaraštis",
+    "chatbotEntryLabel": "Dažniausiai užduodami klausimai",
+    "plotAvailable": "Laisva",
+    "plotReserved": "Rezervuota",
+    "plotOccupied": "Užimta"
   },
   "crm": {
     "successReference": "Ačiū! Jūsų užklausa užregistruota — numeris {reference}.",

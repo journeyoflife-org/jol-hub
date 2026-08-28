@@ -145,7 +145,11 @@
     "vatIncluded": "Включая {rate}% НДС",
     "checkout": "Оформить",
     "termsLink": "Условия",
-    "refundLink": "Политика возврата"
+    "refundLink": "Политика возврата",
+    "availableAtLaunch": "Будет доступно при запуске",
+    "emptyProducts": "Товаров пока нет.",
+    "outOfStockBadge": "Нет в наличии",
+    "preOrderBadge": "Предзаказ"
   },
   "privacyConsent": {
     "consentTextBefore": "Я согласен(на) на обработку моих персональных данных в соответствии с",
@@ -203,7 +207,11 @@
     "openInExternalMaps": "Открыть во внешней карте",
     "mapStaticNotice": "Статическая карта — интерактивные карты отображаются только с согласия.",
     "courseLevelLabel": "Уровень",
-    "courseScheduleLabel": "Расписание"
+    "courseScheduleLabel": "Расписание",
+    "chatbotEntryLabel": "Часто задаваемые вопросы",
+    "plotAvailable": "Свободно",
+    "plotReserved": "Зарезервировано",
+    "plotOccupied": "Занято"
   },
   "crm": {
     "successReference": "Спасибо! Ваш запрос зарегистрирован — номер {reference}.",
