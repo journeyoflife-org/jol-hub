@@ -37,8 +37,12 @@ export interface PrivacyPageProps {
   bitrix24Domain?: string;
   /** Country code for GDPR jurisdiction */
   countryCode?: string;
-  /** Entity type for specific processing activities */
-  entityType?: 'catholic' | 'orthodox' | 'protestant' | 'other_christian' | 'funeral' | 'cemetery';
+  /**
+   * Entity vertical for specific processing activities — STRUCTURAL
+   * vocabulary only (O-022 remediation): denomination never differentiates
+   * GDPR processing categories, so no denomination literals belong here.
+   */
+  entityType?: 'parish' | 'funeral' | 'cemetery' | 'other';
   /** Additional processing activities */
   additionalProcessingActivities?: ProcessingActivity[];
   /** Custom class name */
@@ -177,7 +181,7 @@ export function PrivacyPage({
   dpoEmail,
   bitrix24Domain,
   countryCode: _countryCode = 'lt',
-  entityType: _entityType = 'catholic',
+  entityType: _entityType = 'parish',
   additionalProcessingActivities = [],
   className,
   language = 'lt',

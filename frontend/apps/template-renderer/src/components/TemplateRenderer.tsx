@@ -15,43 +15,8 @@ import type {
   LocalizedText,
   TenantFixture,
   TenantPage,
-  Vertical,
 } from '@jol-hub/seed-data';
-
-/** Layout families grouped by vertical. */
-type LayoutFamily = 'sacred' | 'orthodox' | 'administrative' | 'memorial' | 'congregation';
-
-const VERTICAL_FAMILY: Record<Vertical, LayoutFamily> = {
-  parish: 'sacred',
-  basilica: 'sacred',
-  cathedral: 'sacred',
-  chapel: 'sacred',
-  monastery: 'sacred',
-  'orthodox-church': 'orthodox',
-  'greek-catholic': 'orthodox',
-  diocese: 'administrative',
-  deanery: 'administrative',
-  cemetery: 'memorial',
-  'funeral-home': 'memorial',
-  'protestant-church': 'congregation',
-};
-
-const FAMILY_ACCENT: Record<LayoutFamily, string> = {
-  sacred: 'border-liturgical-gold',
-  orthodox: 'border-liturgical-purple',
-  administrative: 'border-primary',
-  memorial: 'border-gray-400',
-  congregation: 'border-liturgical-green',
-};
-
-/**
- * STEP 17 polish: cemetery care is a commercial, trust-driven vertical —
- * it gets the fresh green accent while funeral homes keep the restrained
- * memorial grey (same family, different brand voice).
- */
-const VERTICAL_ACCENT_OVERRIDE: Partial<Record<Vertical, string>> = {
-  cemetery: 'border-liturgical-green',
-};
+import { FAMILY_ACCENT, VERTICAL_ACCENT_OVERRIDE, VERTICAL_FAMILY } from '../lib/layout-families';
 
 /** Pick the display string for localized text (Lithuanian-first). */
 function t(text: LocalizedText | undefined): string {
