@@ -22,6 +22,26 @@ import { spacingScale, spacingSemantic } from './spacing';
 import { breakpoints } from './breakpoints';
 import { radii } from './radii';
 import { shadows } from './shadows';
+import { resolveThemeProfile } from './themes';
+import type { ThemeRef } from './themes';
+
+/**
+ * Theme-profile color extension (design-system-spec §1.2/§1.3). Apps select a
+ * profile by REF — the swap is config-only, no component code changes:
+ *
+ * ```ts
+ * import { themeColorExtension } from '@jol-hub/ui/tokens';
+ * theme: { extend: { colors: { ...themeColorExtension('catholic') } } }
+ * ```
+ */
+export function themeColorExtension(ref: ThemeRef) {
+  const { palettes } = resolveThemeProfile(ref);
+  return {
+    primary: { ...palettes.primary },
+    secondary: { ...palettes.secondary },
+    accent: { ...palettes.accent },
+  };
+}
 
 export const jolThemeExtension = {
   screens: { ...breakpoints },

@@ -13,6 +13,7 @@
  */
 import { colorScales } from '../src/tokens/colors';
 import type { ColorScaleName } from '../src/tokens/colors';
+import { themeRegistry } from '../src/tokens/themes';
 
 /* ------------------------------------------------------------------ */
 /* WCAG 2.1 relative luminance                                         */
@@ -134,8 +135,48 @@ for (const pair of pairs) {
 }
 
 console.log('='.repeat(78));
+
+/* ------------------------------------------------------------------ */
+/* DS-A11Y-01 — theme profiles (computed from token values)            */
+/* ------------------------------------------------------------------ */
+/* Every registered theme profile must satisfy, for each palette:        */
+/*   1. an AA text color EXISTS on the palette DEFAULT (≥ 4.5:1 for      */
+/*      either light or dark text — the pair the renderer will use), and */
+/*   2. the PRIMARY palette DEFAULT holds ≥ 3:1 against a white surface  */
+/*      (links/headings/UI-indicator tier on light pages).               */
+/* Fails on ANY profile — new profiles cannot ship below AA.             */
+
+const WHITE = '#ffffff';
+const DARK_TEXT = stopValue('neutral', 900);
+
+console.log('DS-A11Y-01 theme-profile checks');
+console.log('-'.repeat(78));
+
+for (const [ref, profile] of Object.entries(themeRegistry)) {
+  for (const [paletteName, scale] of Object.entries(profile.palettes)) {
+    const onWhite = contrastRatio(WHITE, scale.DEFAULT);
+    const onDark = contrastRatio(DARK_TEXT, scale.DEFAULT);
+    const bestText = Math.max(onWhite, onDark);
+    const textPass = bestText >= 4.5;
+    if (!textPass) failures += 1;
+    console.log(
+      `[${textPass ? 'PASS' : 'FAIL'}] ${bestText.toFixed(2)}:1 (need 4.5:1)  ` +
+        `${ref}/${paletteName} ${scale.DEFAULT} — AA text color exists ` +
+        `(white ${onWhite.toFixed(2)}, dark ${onDark.toFixed(2)})`,
+    );
+  }
+  const primaryOnWhite = contrastRatio(profile.palettes.primary.DEFAULT, WHITE);
+  const primaryPass = primaryOnWhite >= 3.0;
+  if (!primaryPass) failures += 1;
+  console.log(
+    `[${primaryPass ? 'PASS' : 'FAIL'}] ${primaryOnWhite.toFixed(2)}:1 (need 3.0:1)  ` +
+      `${ref}/primary ${profile.palettes.primary.DEFAULT} on white — links/UI tier`,
+  );
+}
+
+console.log('='.repeat(78));
 if (failures > 0) {
   console.error(`${failures} contrast pair(s) below WCAG AA threshold.`);
   process.exit(1);
 }
-console.log(`All ${pairs.length} documented pairs pass WCAG AA.`);
+console.log(`All ${pairs.length} documented pairs + all theme profiles pass WCAG AA.`);
