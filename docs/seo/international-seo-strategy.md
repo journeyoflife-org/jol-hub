@@ -258,14 +258,14 @@ Per-page JSON-LD assignment for the 25-page inventory (task-brief list;
 |---|---|---|---|---|
 | 1 | Homepage (tenant) | vertical subtype of `Organization` (`ReligiousOrganization` / `FuneralHome` / `LocalBusiness`) + `WebSite` | name, url, address, sameAs | Implemented |
 | 2 | About / Mission | `AboutPage` + `Organization` | url, name | Implemented |
-| 3 | Basilica landing | `Church` (+ `CatholicChurch` where precise) + `PlaceOfWorship` | name, address, geo, parentOrganization (diocese) | Gap — extend `localBusinessEntity` |
-| 4 | Cathedral landing | `Church` (cathedral role via `additionalProperty`) | as #3 | Gap — as #3 |
+| 3 | Basilica landing | `Church` (+ `CatholicChurch` where precise) + `PlaceOfWorship` | name, address, geo, parentOrganization (diocese) | Implemented — `churchEntity` shared builder (Phase 2.2) |
+| 4 | Cathedral landing | `Church` (cathedral role via `additionalProperty`) | as #3 | Implemented — `churchEntity` (as #3) |
 | 5 | Diocese landing | `ReligiousOrganization` | name, address, memberOf/parent, numberOfEmployees optional | Partial — `ReligiousOrganization` path exists |
 | 6 | Deaneries landing | `ItemList` of `ReligiousOrganization` | itemListElement with member orgs | Gap — reuse ItemList builder |
-| 7 | Parish church landing | `Church` | as #3 | Gap — as #3 |
-| 8 | Protestant churches landing | `PlaceOfWorship` + `additionalProperty` denomination | name, address, denomination | Gap — as #3 |
-| 9 | Russian Orthodox churches landing | `Church` (Orthodox) + denomination property | as #3 | Gap — as #3 |
-| 10 | Other churches landing | `PlaceOfWorship` (denomination-agnostic) | name, address | Gap — as #3 |
+| 7 | Parish church landing | `Church` | as #3 | Implemented — `churchEntity` (as #3) |
+| 8 | Protestant churches landing | `PlaceOfWorship` + `additionalProperty` denomination | name, address, denomination | Implemented — `churchEntity` (as #3) |
+| 9 | Russian Orthodox churches landing | `Church` (Orthodox) + denomination property | as #3 | Implemented — `churchEntity` (as #3) |
+| 10 | Other churches landing | `PlaceOfWorship` (denomination-agnostic) | name, address | Implemented — `churchEntity` (as #3) |
 | 11 | Funeral services | `FuneralHome` + `Service` | name, address, telephone, areaServed, offers | Implemented path (`FuneralHome` vertical) |
 | 12 | Cemetery services | `LocalBusiness` + `Service` (cleaning/care); graves as `Product` where sold | geo, openingHours, offers | Gap — `localBusinessEntity` available |
 | 13 | Online store | `WebSite` + `Product` (+ `Offer`, VAT-inclusive) | name, image, offers.price+priceCurrency | Gap — `productEntity` builder available |
