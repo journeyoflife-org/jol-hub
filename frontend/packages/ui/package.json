@@ -18,10 +18,11 @@
   },
   "scripts": {
     "type-check": "tsc --noEmit",
+    "test": "tsx --test src/__tests__/*.test.ts",
     "generate:tokens": "tsx scripts/generate-css.ts",
     "check-contrast": "tsx scripts/check-contrast.ts",
     "check-a11y": "tsx scripts/check-a11y.tsx",
-    "verify": "tsc --noEmit && tsx scripts/check-contrast.ts && tsx scripts/check-a11y.tsx"
+    "verify": "tsc --noEmit && tsx --test src/__tests__/*.test.ts && tsx scripts/check-contrast.ts && tsx scripts/check-a11y.tsx"
   },
   "dependencies": {
     "@jol-hub/i18n": "workspace:*",

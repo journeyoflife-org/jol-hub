@@ -25,7 +25,7 @@
     "gdpr:validate": "pnpm --filter @jol-hub/admin-dashboard gdpr:validate",
     "deploy:check": "pnpm --filter @jol-hub/admin-dashboard deploy:check",
     "test": "turbo run test",
-    "test:unit": "corepack pnpm --filter @jol-hub/perf test && corepack pnpm --filter @jol-hub/seo test && corepack pnpm --filter @jol-hub/a11y test && corepack pnpm --filter @jol-hub/commerce test && corepack pnpm --filter @jol-hub/bitrix-sdk test && corepack pnpm --filter @jol-hub/auth test && corepack pnpm --filter @jol-hub/tenant-resolver test && corepack pnpm --filter @jol-hub/observability test && corepack pnpm --filter @jol-hub/template-renderer test && corepack pnpm --filter @jol-hub/template-renderer test:vitest",
+    "test:unit": "corepack pnpm --filter @jol-hub/perf test && corepack pnpm --filter @jol-hub/seo test && corepack pnpm --filter @jol-hub/ui test && corepack pnpm --filter @jol-hub/a11y test && corepack pnpm --filter @jol-hub/commerce test && corepack pnpm --filter @jol-hub/bitrix-sdk test && corepack pnpm --filter @jol-hub/auth test && corepack pnpm --filter @jol-hub/tenant-resolver test && corepack pnpm --filter @jol-hub/observability test && corepack pnpm --filter @jol-hub/template-renderer test && corepack pnpm --filter @jol-hub/template-renderer test:vitest",
     "test:e2e": "corepack pnpm --filter template-renderer test:e2e",
     "test:a11y": "corepack pnpm --filter @jol-hub/ui check-a11y && corepack pnpm --filter template-renderer check-a11y",
     "test:security": "corepack pnpm --filter template-renderer test:security",
