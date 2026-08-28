@@ -163,10 +163,16 @@ test('denomination is REQUIRED for protestant and orthodox (rows 8/9)', () => {
   assert.throws(() => churchEntity({ ...base('orthodox'), denomination: undefined }), /denomination/);
 });
 
-test('geo + parent are REQUIRED for basilica/cathedral/parish (row 3 props)', () => {
+test('geo + parent are EMITTED WHEN PRESENT for basilica/cathedral/parish (recommended props)', () => {
   for (const kind of ['basilica', 'cathedral', 'parish'] as const) {
-    assert.throws(() => churchEntity({ ...base(kind), geo: undefined }), /geo/);
-    assert.throws(() => churchEntity({ ...base(kind), parent: undefined }), /parent/);
+    // Present → emitted (row 3 recommended props).
+    const withData = asRecord(churchEntity(base(kind)));
+    assert.ok(withData.geo);
+    assert.ok(withData.parentOrganization);
+    // Absent → omitted gracefully (pilot data layer carries neither yet).
+    const withoutData = asRecord(churchEntity({ ...base(kind), geo: undefined, parent: undefined }));
+    assert.equal(withoutData.geo, undefined);
+    assert.equal(withoutData.parentOrganization, undefined);
   }
 });
 

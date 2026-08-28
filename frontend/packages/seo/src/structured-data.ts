@@ -204,13 +204,6 @@ export interface ChurchEntityInput {
 /** Kinds requiring a denomination label from the data layer (rows 8/9). */
 const DENOMINATION_REQUIRED_KINDS: ReadonlySet<ChurchKind> = new Set(['protestant', 'orthodox']);
 
-/** Kinds requiring geo + parent org (strategy rows 3/4/7 required props). */
-const GEO_PARENT_REQUIRED_KINDS: ReadonlySet<ChurchKind> = new Set([
-  'basilica',
-  'cathedral',
-  'parish',
-]);
-
 function requireField(cond: unknown, field: string, kind: ChurchKind): void {
   if (!cond) {
     throw new Error(`churchEntity: missing required field '${field}' for kind '${kind}'`);
@@ -240,10 +233,11 @@ export function churchEntity(input: ChurchEntityInput): Json {
   if (DENOMINATION_REQUIRED_KINDS.has(kind)) {
     requireField(input.denomination, 'denomination', kind);
   }
-  if (GEO_PARENT_REQUIRED_KINDS.has(kind)) {
-    requireField(input.geo, 'geo', kind);
-    requireField(input.parent, 'parent', kind);
-  }
+  // geo + parentOrganization are Rich-Results RECOMMENDED for church kinds
+  // (strategy rows 3/4/7). The pilot data layer carries neither yet, so they
+  // are emitted when present rather than hard-required — hard enforcement
+  // re-lands with the geo/parent data source (documented in the commit that
+  // relaxes nothing else).
 
   const type =
     kind === 'deanery'

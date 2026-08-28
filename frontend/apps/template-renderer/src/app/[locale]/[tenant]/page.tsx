@@ -23,6 +23,7 @@ import {
   organizationEntity,
   websiteEntity,
 } from '@/lib/json-ld';
+import { buildChurchLandingEntity } from '@/lib/church-landing';
 import { buildTenantMetadata, tenantDisplayName, tenantTagline } from '@/lib/page-seo';
 import { absoluteUrl } from '@/lib/seo';
 import { getTemplateForTenant } from '@/lib/template-registry';
@@ -66,14 +67,22 @@ export default async function TenantHomePage({ params }: { params: TenantHomePar
     const name = tenantDisplayName(tenant, fixture, locale);
     // STEP 11: structured-data URLs are ABSOLUTE (protocol + public domain).
     const homeUrl = absoluteUrl(basePath);
-    const org = organizationEntity({
-      name,
-      url: homeUrl,
-      vertical: tenant.vertical,
-      address: fixture?.identity?.address,
-      phone: fixture?.identity?.phone,
-      email: fixture?.identity?.email,
-    });
+    // Church-landing family (packages 03/04/07/08/09): church-kind verticals
+    // emit the shared churchEntity shape (FE-1 builder) INSTEAD of the generic
+    // Organization — denomination/tradition flows from fixture DATA.
+    const churchEntityData = fixture
+      ? buildChurchLandingEntity({ fixture, vertical: tenant.vertical, locale, homeUrl })
+      : undefined;
+    const org =
+      churchEntityData ??
+      organizationEntity({
+        name,
+        url: homeUrl,
+        vertical: tenant.vertical,
+        address: fixture?.identity?.address,
+        phone: fixture?.identity?.phone,
+        email: fixture?.identity?.email,
+      });
     return (
       <>
         <JsonLd data={[org, websiteEntity(name, homeUrl)]} />

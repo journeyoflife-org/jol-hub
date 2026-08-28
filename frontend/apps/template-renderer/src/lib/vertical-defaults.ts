@@ -68,8 +68,30 @@ export function buildVerticalHomeConfig(vertical: Vertical): PageConfig {
         ],
       };
 
-    // Sacred family (church, basilica, cathedral, orthodox, protestant, …):
-    // news + events + offering + contact.
+    // Church-landing family (packages 03 Basilica / 04 Cathedral /
+    // 08 Protestant / 09 Orthodox — 07 Parish proved the pattern): the
+    // reference structure is hero + content(60-40 fact card) + events +
+    // services + gallery + map + contact. NO donation-cta: the payment
+    // track is FROZEN (DECISION-LOG D-052) and donations default OFF.
+    case 'basilica':
+    case 'cathedral':
+    case 'orthodox':
+    case 'protestant':
+      return {
+        route: '/',
+        modules: [
+          hero,
+          module('home-content', 'content', {}, 'two-column-60-40'),
+          module('home-events', 'event-list', { limit: 3 }),
+          module('home-services', 'service-list', { limit: 4 }),
+          module('home-gallery', 'gallery', { limit: 6 }),
+          module('home-map', 'map'),
+          module('home-contact', 'contact-form'),
+        ],
+      };
+
+    // Sacred family (remaining church verticals): news + events + offering
+    // + contact (donation-cta stays entitlement-gated, default OFF).
     default:
       return {
         route: '/',
