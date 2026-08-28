@@ -57,6 +57,7 @@ const rawFixtures: unknown[] = [
   ...(wave1Siauliai as unknown[]),
   ...(wave1Joniskis as unknown[]),
   ...(wave1KelmePakruojisRadviliskis as unknown[]),
+  ...(wave1ChurchServices as unknown[]),
 ];
 
 /** All tenant fixtures, parsed (throws at load time if any is invalid). */
