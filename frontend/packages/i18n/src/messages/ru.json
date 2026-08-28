@@ -196,7 +196,14 @@
     "calendarView": "Календарь",
     "listView": "Список",
     "register": "Зарегистрироваться",
-    "addressLabel": "Адрес"
+    "addressLabel": "Адрес",
+    "viewAllEvents": "Посмотреть все события",
+    "viewAllServices": "Посмотреть все услуги",
+    "emptyCourses": "Курсов пока нет.",
+    "openInExternalMaps": "Открыть во внешней карте",
+    "mapStaticNotice": "Статическая карта — интерактивные карты отображаются только с согласия.",
+    "courseLevelLabel": "Уровень",
+    "courseScheduleLabel": "Расписание"
   },
   "crm": {
     "successReference": "Спасибо! Ваш запрос зарегистрирован — номер {reference}.",

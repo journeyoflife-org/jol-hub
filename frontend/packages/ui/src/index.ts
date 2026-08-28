@@ -201,6 +201,16 @@ export { Gallery } from './components/composite/gallery';
 export type { GalleryProps, GalleryImage } from './components/composite/gallery';
 export { MapEmbed } from './components/composite/map-embed';
 export type { MapEmbedProps } from './components/composite/map-embed';
+export { MapBlock } from './components/composite/map-block';
+export type { MapBlockProps } from './components/composite/map-block';
+export { EntityFactCard } from './components/composite/entity-fact-card';
+export type { EntityFactCardProps, EntityFact } from './components/composite/entity-fact-card';
+export { EventList } from './components/composite/event-list';
+export type { EventListProps } from './components/composite/event-list';
+export { ServiceList } from './components/composite/service-list';
+export type { ServiceListProps } from './components/composite/service-list';
+export { CourseList } from './components/composite/course-list';
+export type { CourseListProps, CourseItem } from './components/composite/course-list';
 // NOTE: legacy flat `ContactForm` above keeps its root-barrel name for
 // back-compat; the STEP 3 versions are exposed via the composite barrel:
 // '@jol-hub/ui/components/composite' (incl. the Model-A-compliant

@@ -101,10 +101,12 @@ Canonical page list: `docs/seo/international-seo-strategy.md` 25-page table (ASS
 | ChatbotEntry (FAQPage public shell only) | 21 | ✗ build (AI module spec governs) |
 | CemeteryMapCanvas (plot data never indexed) | 22 | ✗ build |
 | LegalPage, FAQAccordion | 23 | ✓ (SharedCompliancePage) |
-| CourseList / OnboardingSteps | 24 | ✗ build (trivial) |
+| CourseList / OnboardingSteps | 24 | ✓ CourseList (sprint 1); OnboardingSteps still open |
 | ContactBlock, SupportForm | 25 | ✓ |
 
-**Component-build backlog** (gap → owner phase): StorefrontGrid/ProductCard/PriceDisplay, VendorDashboardShell, ~~DonationForm/DonateActionBanner/ImpactList~~, ChatbotEntry shell, CemeteryMapCanvas, CourseList. Each backlog item inherits the full §2 assertion set as its acceptance gate.
+**Component-build backlog** (gap → owner phase): StorefrontGrid/ProductCard/PriceDisplay, VendorDashboardShell, ~~DonationForm/DonateActionBanner/ImpactList~~, ChatbotEntry shell, CemeteryMapCanvas, ~~CourseList~~. Each backlog item inherits the full §2 assertion set as its acceptance gate.
+
+> **SPRINT 1 DELIVERED (feat(ui) component backlog sprint 1):** EntityFactCard (packages 03/04/07/09), MapBlock static ePrivacy-safe variant (03/04/07/12), EventList + ServiceList wrappers per the 03/06 reference structures, CourseList (24) — all with externalized LT/EN/RU strings, README traceability, and Showcase axe coverage. Donation components remain struck through: DEFERRED by the payment-track freeze (DECISION-LOG D-053) — untouched this sprint.
 
 > **DEFERRED 2026-08-28 (DECISION-LOG D-053):** all donation components (DonationForm/DonateActionBanner/ImpactList and the full 2.3 component set) are EXCLUDED from every build plan until the owner explicitly unfreezes the payment track (D-052). The store/marketplace trio above is commerce UI, not payment-track work, and remains eligible under its own gates — but any component that touches the payment handoff stays deferred with the donation set.
 

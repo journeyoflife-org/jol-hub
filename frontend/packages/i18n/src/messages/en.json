@@ -196,7 +196,14 @@
     "calendarView": "Calendar view",
     "listView": "List view",
     "register": "Register",
-    "addressLabel": "Address"
+    "addressLabel": "Address",
+    "viewAllEvents": "View all events",
+    "viewAllServices": "View all services",
+    "emptyCourses": "No courses yet.",
+    "openInExternalMaps": "Open in external maps",
+    "mapStaticNotice": "Static map — interactive maps are shown only with consent.",
+    "courseLevelLabel": "Level",
+    "courseScheduleLabel": "Schedule"
   },
   "crm": {
     "successReference": "Thank you! Your enquiry has been registered — reference {reference}.",
