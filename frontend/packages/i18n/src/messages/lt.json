@@ -196,7 +196,14 @@
     "calendarView": "Kalendorius",
     "listView": "Sąrašas",
     "register": "Registruotis",
-    "addressLabel": "Adresas"
+    "addressLabel": "Adresas",
+    "viewAllEvents": "Peržiūrėti visus renginius",
+    "viewAllServices": "Peržiūrėti visas paslaugas",
+    "emptyCourses": "Kursų kol kas nėra.",
+    "openInExternalMaps": "Atidaryti išoriniame žemėlapyje",
+    "mapStaticNotice": "Statinis žemėlapis — interaktyvūs žemėlapiai rodomi tik sutikus.",
+    "courseLevelLabel": "Lygis",
+    "courseScheduleLabel": "Tvarkaraštis"
   },
   "crm": {
     "successReference": "Ačiū! Jūsų užklausa užregistruota — numeris {reference}.",

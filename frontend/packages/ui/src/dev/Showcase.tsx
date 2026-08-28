@@ -41,14 +41,19 @@ import {
 import {
   ContactForm,
   ContentBlock,
+  CourseList,
   DonationWidget,
+  EntityFactCard,
   EventCard,
+  EventList,
   FeatureGrid,
   Gallery,
   Hero,
+  MapBlock,
   NewsCard,
   SectionHeader,
   ServiceCard,
+  ServiceList,
   TestimonialCard,
 } from '../components/composite';
 import { Breadcrumbs, Footer, Header, Sidebar } from '../components/layout';
@@ -152,6 +157,74 @@ export function Showcase() {
               price={25}
               duration="1 val."
               bookingCta={{ label: 'Rezervuoti', href: '/shop#hall-rental' }}
+            />
+          </div>
+
+          <SectionHeader title="Faktų kortelė ir žemėlapis" headingLevel={2} className="mt-12" tenant={TENANT} />
+          <div className="mt-4 grid gap-6 lg:grid-cols-2">
+            <EntityFactCard
+              tenant={TENANT}
+              heading="Pagrindiniai faktai"
+              items={[
+                { label: 'Titulas', value: 'Šv. apaštalų Petro ir Povilo' },
+                { label: 'Stilius', value: 'Barokas' },
+                { label: 'Įsteigta', value: '1668 m.' },
+                { label: 'Vyskupija', value: 'Vilniaus arkivyskupija', href: '/lt/vilniaus-arkivyskupija' },
+              ]}
+            />
+            <MapBlock
+              tenant={TENANT}
+              title="Šv. apaštalų Petro ir Povilo bažnyčia"
+              latitude={54.6872}
+              longitude={25.3021}
+              addressLabel="Šv. Petro ir Povilo g. 1, Vilnius"
+              externalHref="https://example.com/maps?q=54.6872,25.3021"
+            />
+          </div>
+
+          <SectionHeader title="Renginių sąrašas" headingLevel={2} className="mt-12" tenant={TENANT} />
+          <div className="mt-4">
+            <EventList
+              tenant={TENANT}
+              viewAllHref="/events"
+              items={[
+                {
+                  title: 'Šv. Mišios už parapiją',
+                  startDateTime: '2026-08-30T11:00:00',
+                  dateLabel: '2026 m. rugpjūčio 30 d.',
+                  timeLabel: '11:00',
+                  location: 'Pagrindinė bažnyčia',
+                  href: '/events/parish-mass',
+                },
+              ]}
+            />
+          </div>
+
+          <SectionHeader title="Paslaugų sąrašas" headingLevel={2} className="mt-12" tenant={TENANT} />
+          <div className="mt-4">
+            <ServiceList
+              tenant={TENANT}
+              viewAllHref="/services"
+              items={[
+                { title: 'Salės nuoma', description: 'Šv. Jono salė iki 150 svečių.', price: 25, duration: '1 val.' },
+                { title: 'Gidų paslauga', description: 'Pažintinis turas po bažnyčią.' },
+              ]}
+            />
+          </div>
+
+          <SectionHeader title="Kursų sąrašas" headingLevel={2} className="mt-12" tenant={TENANT} />
+          <div className="mt-4">
+            <CourseList
+              tenant={TENANT}
+              items={[
+                {
+                  title: 'Tikėjimo pagrindai',
+                  description: 'Aštuonių užsiėmimų ciklas suaugusiesiems.',
+                  schedule: 'Antradieniais 18:00',
+                  level: 'Pradedantiesiems',
+                  href: '/courses/tikejimo-pagrindai',
+                },
+              ]}
             />
           </div>
 
