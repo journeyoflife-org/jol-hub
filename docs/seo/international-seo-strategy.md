@@ -267,7 +267,7 @@ Per-page JSON-LD assignment for the 25-page inventory (task-brief list;
 | 9 | Russian Orthodox churches landing | `Church` (Orthodox) + denomination property | as #3 | Implemented — `churchEntity` (as #3) |
 | 10 | Other churches landing | `PlaceOfWorship` (denomination-agnostic) | name, address | Implemented — `churchEntity` (as #3) |
 | 11 | Funeral services | `FuneralHome` + `Service` | name, address, telephone, areaServed, offers | Implemented path (`FuneralHome` vertical) |
-| 12 | Cemetery services | `LocalBusiness` + `Service` (cleaning/care); graves as `Product` where sold | geo, openingHours, offers | Gap — `localBusinessEntity` available |
+| 12 | Cemetery services | `LocalBusiness` + `Service` (cleaning/care); graves as `Product` where sold | geo, openingHours, offers | Implemented — renderer emits `LocalBusiness` from tenant DATA (identity); geo/openingHours/offers/Product emit when their source data lands (none in pilot — no fabrication) |
 | 13 | Online store | `WebSite` + `Product` (+ `Offer`, VAT-inclusive) | name, image, offers.price+priceCurrency | Gap — `productEntity` builder available |
 | 14 | Marketplace home | `WebSite` (+ `SearchAction` for VIP) | url, potentialAction | Gap — `websiteWithSearchEntity` available |
 | 15 | Marketplace vendor dashboard | **noindex** (authenticated surface; robots policy by kind) | — | Implemented posture (SEO.md hard rule 4) |

@@ -24,6 +24,7 @@ import {
   websiteEntity,
 } from '@/lib/json-ld';
 import { buildChurchLandingEntity } from '@/lib/church-landing';
+import { buildServicesLandingEntity } from '@/lib/services-landing';
 import { buildTenantMetadata, tenantDisplayName, tenantTagline } from '@/lib/page-seo';
 import { absoluteUrl } from '@/lib/seo';
 import { getTemplateForTenant } from '@/lib/template-registry';
@@ -73,8 +74,15 @@ export default async function TenantHomePage({ params }: { params: TenantHomePar
     const churchEntityData = fixture
       ? buildChurchLandingEntity({ fixture, vertical: tenant.vertical, locale, homeUrl })
       : undefined;
+    // Services family (packages 06/10/11/12): funeral/cemetery/other-church
+    // shapes from fixture DATA; deaneries keep the org entity (member
+    // ItemList emits when member data exists — absent in pilot).
+    const servicesEntityData = fixture
+      ? buildServicesLandingEntity({ fixture, vertical: tenant.vertical, locale, homeUrl })
+      : undefined;
     const org =
       churchEntityData ??
+      servicesEntityData ??
       organizationEntity({
         name,
         url: homeUrl,
