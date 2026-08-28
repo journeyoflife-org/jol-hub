@@ -14,7 +14,7 @@
 
 import { type ReactNode, useEffect, useRef } from 'react';
 import { I18nextProvider } from 'react-i18next';
-import { initI18n } from '../config';
+import { initI18n } from '../i18next';
 import type { SupportedLocale } from '../types';
 
 export interface I18nProviderProps {

@@ -1,4 +1,15 @@
 import type { Config } from 'tailwindcss';
+import { themeColorExtension } from '@jol-hub/ui/tokens';
+import type { ThemeRef } from '@jol-hub/ui/tokens';
+
+/**
+ * Theme selection (ADR-001 chain → theme_ref, design-system-spec §1.3):
+ * the palette is DATA, not code. Swapping the profile below is the entire
+ * theme change — zero component/template edits. Values live in
+ * `@jol-hub/ui` tokens/themes (catholic profile = the legacy scales of this
+ * template, copied value-for-value; parity pinned by the snapshot test).
+ */
+const THEME_REF: ThemeRef = 'catholic';
 
 const config: Config = {
   darkMode: ['class'],
@@ -9,45 +20,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: '#00843D',
-          50: '#E6F5EC',
-          100: '#CCEADA',
-          200: '#99D5B5',
-          300: '#66C08F',
-          400: '#33AB6A',
-          500: '#00843D',
-          600: '#006A31',
-          700: '#005025',
-          800: '#003518',
-          900: '#001B0C',
-        },
-        secondary: {
-          DEFAULT: '#FFCC00',
-          50: '#FFFBEB',
-          100: '#FFF7D6',
-          200: '#FFEFAD',
-          300: '#FFE785',
-          400: '#FFDF5C',
-          500: '#FFCC00',
-          600: '#CCA300',
-          700: '#997A00',
-          800: '#665200',
-          900: '#332900',
-        },
-        accent: {
-          DEFAULT: '#C8102E',
-          50: '#FCE8EB',
-          100: '#F9D1D7',
-          200: '#F3A3AF',
-          300: '#ED7587',
-          400: '#E7475F',
-          500: '#C8102E',
-          600: '#A00D25',
-          700: '#780A1C',
-          800: '#500713',
-          900: '#280409',
-        },
+        ...themeColorExtension(THEME_REF),
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

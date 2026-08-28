@@ -1,0 +1,140 @@
+{
+  "slug": "cathedral-kaunas",
+  "vertical": "cathedral",
+  "locale": "lt",
+  "name": {
+    "lt": "Kauno Šv. apaštalų Petro ir Pauliaus arkikatedra bazilija",
+    "en": "Kaunas Cathedral Basilica of St. Peter and St. Paul"
+  },
+  "tagline": {
+    "lt": "Kauno arkivyskupo sostinė, konsekruota 1650 m.",
+    "en": "Seat of the Archbishop of Kaunas, consecrated in 1650"
+  },
+  "identity": {
+    "entityId": "lt-catholic-cathedral-001",
+    "jurisdiction": "Kaunas Archdiocese",
+    "established": "1650",
+    "address": "Vilniaus g. 1, 44287 Kaunas, Lithuania",
+    "email": "info@kaunoarkikatedra.lt",
+    "phone": "+370 37 32 26 08",
+    "domain": "kaunoarkikatedra.lt",
+    "theme": "cathedral-classic"
+  },
+  "pages": [
+    {
+      "route": "/",
+      "title": { "lt": "Pradžia", "en": "Home" },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Kauno arkikatedra bazilija",
+            "en": "Kaunas Cathedral Basilica"
+          },
+          "subheading": {
+            "lt": "Šv. apaštalų Petro ir Pauliaus garbei",
+            "en": "Dedicated to St. Peter and St. Paul"
+          },
+          "body": {
+            "lt": "Kauno arkivyskupijos motininė bažnyčia ir arkivyskupo sostinė.",
+            "en": "Mother church of the Kaunas Archdiocese and seat of the Archbishop."
+          }
+        },
+        {
+          "type": "keyValue",
+          "heading": { "lt": "Kontaktai", "en": "Contact" },
+          "items": [
+            { "label": { "lt": "Adresas" }, "value": "Vilniaus g. 1, 44287 Kaunas" },
+            { "label": { "lt": "Telefonas" }, "value": "+370 37 32 26 08" },
+            { "label": { "lt": "El. paštas" }, "value": "info@kaunoarkikatedra.lt" },
+            { "label": { "lt": "Svetainė" }, "value": "https://kaunoarkikatedra.lt" }
+          ]
+        },
+        {
+          "type": "cta",
+          "links": [
+            { "label": { "lt": "Vyskupo žinutės" }, "href": "/bishops-messages" },
+            { "label": { "lt": "Renginiai" }, "href": "/events" },
+            { "label": { "lt": "Paveldas" }, "href": "/heritage" },
+            { "label": { "lt": "Paaukoti" }, "href": "/donate" }
+          ]
+        }
+      ],
+      "meta": {
+        "description": "Kauno Šv. apaštalų Petro ir Pauliaus arkikatedra bazilija"
+      }
+    },
+    {
+      "route": "/bishops-messages",
+      "title": { "lt": "Vyskupo žinutės", "en": "Bishop's Messages" },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": { "lt": "Vyskupo žinutės", "en": "Bishop's Messages" },
+          "body": {
+            "lt": "Kauno arkivyskupo ganytojiniai laiškai, homilijos ir kreipimaisi tikintiesiems.",
+            "en": "Pastoral letters, homilies and addresses of the Archbishop of Kaunas."
+          }
+        }
+      ]
+    },
+    {
+      "route": "/donate",
+      "title": { "lt": "Paaukoti", "en": "Donate" },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": { "lt": "Parama katedrai", "en": "Support the Cathedral" },
+          "body": {
+            "lt": "Jūsų auka padeda išlaikyti katedros paveldą, liturgiją ir karitatyvinę tarnystę.",
+            "en": "Your donation helps sustain the cathedral's heritage, liturgy and charitable ministry."
+          }
+        }
+      ]
+    },
+    {
+      "route": "/events",
+      "title": { "lt": "Renginiai", "en": "Events" },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": { "lt": "Arkivyskupijos renginių kalendorius", "en": "Diocesan Events Calendar" },
+          "body": {
+            "lt": "Bendras arkivyskupijos renginių kalendorius: piligrimystės, koncertai, jaunimo dienos ir atlaidai.",
+            "en": "Shared archdiocesan events calendar: pilgrimages, concerts, youth days and patronal feasts."
+          }
+        }
+      ]
+    },
+    {
+      "route": "/heritage",
+      "title": { "lt": "Paveldas", "en": "Heritage" },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": { "lt": "Katedros paveldas", "en": "Cathedral Heritage" },
+          "body": {
+            "lt": "Katedros istorija, architektūra ir sakralinio meno kolekcijos nuo 1650 m. iki šių dienų.",
+            "en": "Cathedral history, architecture and sacred art collections from 1650 to the present day."
+          }
+        }
+      ]
+    },
+    {
+      "route": "/shop",
+      "title": { "lt": "Krautuvėlė", "en": "Shop" },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": { "lt": "Katedros krautuvėlė", "en": "Cathedral Shop" },
+          "items": [
+            { "title": { "lt": "Mišių kortelės", "en": "Mass Cards" } },
+            { "title": { "lt": "Katedros suvenyrai", "en": "Cathedral Merchandise" } },
+            { "title": { "lt": "Koncertų bilietai", "en": "Concert Tickets" } },
+            { "title": { "lt": "Ekskursijos", "en": "Guided Tours" } }
+          ]
+        }
+      ]
+    }
+  ]
+}

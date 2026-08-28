@@ -1,0 +1,129 @@
+{
+  "slug": "chapel-vilnius",
+  "vertical": "chapel",
+  "locale": "lt",
+  "name": {
+    "lt": "Vilniaus Aušros Vartų koplyčia",
+    "en": "Vilnius Gate of Dawn Chapel"
+  },
+  "tagline": {
+    "lt": "Šventovė ir piligrimystės vieta nuo 1671 m.",
+    "en": "Shrine and pilgrimage site since 1671"
+  },
+  "identity": {
+    "entityId": "lt-chapel-vilnius-001",
+    "jurisdiction": "Vilnius Archdiocese",
+    "established": "1671",
+    "address": "Aušros Vartų g. 12, 01129 Vilnius, Lithuania",
+    "email": "ausrosvartai@vilnius.lt",
+    "phone": "+370 5 262 3333",
+    "domain": "ausrosvartai.lt",
+    "theme": "chapel-shrine"
+  },
+  "pages": [
+    {
+      "route": "/",
+      "title": { "lt": "Pradžia", "en": "Home" },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Aušros Vartų koplyčia",
+            "en": "Gate of Dawn Chapel"
+          },
+          "subheading": {
+            "lt": "Šventovė · piligrimystės vieta",
+            "en": "Shrine · pilgrimage site"
+          },
+          "body": {
+            "lt": "Švč. Mergelės Marijos, Gailestingumo Motinos, globa. Įkurta 1671 m., Vilniaus arkivyskupija.",
+            "en": "Under the patronage of the Blessed Virgin Mary, Mother of Mercy. Established 1671, Vilnius Archdiocese."
+          }
+        },
+        {
+          "type": "schedule",
+          "heading": { "lt": "Šv. Mišių tvarkaraštis", "en": "Mass Schedule" },
+          "entries": [
+            {
+              "day": "Darbo dienomis",
+              "dayEn": "Weekdays",
+              "times": ["07:00", "17:30"],
+              "notes": "Visos Mišios lenkiškai po lietuviškų"
+            },
+            {
+              "day": "Šeštadienis",
+              "dayEn": "Saturday",
+              "times": ["07:00", "08:00", "17:30"],
+              "notes": "08:00 - lenkų k."
+            },
+            {
+              "day": "Sekmadienis",
+              "dayEn": "Sunday",
+              "times": ["07:00", "08:00", "09:00", "11:00", "17:30"],
+              "notes": "08:00 - lenkų k., 09:00 - rusų k., 11:00 - pagrindinės lietuvių k."
+            },
+            {
+              "day": "Šventinės dienos",
+              "dayEn": "Holy Days",
+              "times": ["07:00", "09:00", "11:00", "17:30"],
+              "notes": "Daugiau Mišių per didžiąsias šventes"
+            }
+          ]
+        },
+        {
+          "type": "keyValue",
+          "heading": { "lt": "Lankymo laikas ir išpažintis", "en": "Visiting Hours & Confession" },
+          "items": [
+            { "label": { "lt": "Atidaryta" }, "value": "06:30 - 19:00 (kasdien)" },
+            {
+              "label": { "lt": "Išpažintis (darbo dienomis)" },
+              "value": "07:30 - 10:00, 16:00 - 18:00"
+            },
+            {
+              "label": { "lt": "Išpažintis (savaitgaliais)" },
+              "value": "07:30 - 12:00, 16:00 - 18:00"
+            },
+            { "label": { "lt": "Išpažinčių kalbos" }, "value": "LT, PL, RU, EN" },
+            { "label": { "lt": "Telefonas" }, "value": "+370 5 262 3333" },
+            { "label": { "lt": "El. paštas" }, "value": "ausrosvartai@vilnius.lt" }
+          ]
+        },
+        {
+          "type": "list",
+          "heading": { "lt": "Žvakių tarnystė", "en": "Candle Services" },
+          "items": [
+            {
+              "title": { "lt": "Votyvinė žvakė", "en": "Votive Candle" },
+              "price": 1
+            },
+            {
+              "title": { "lt": "Didelė žvakė", "en": "Large Candle" },
+              "price": 5
+            },
+            {
+              "title": { "lt": "Vigilijos žvakė", "en": "Vigil Candle" },
+              "price": 10
+            }
+          ]
+        },
+        {
+          "type": "stats",
+          "heading": { "lt": "Šventovė skaičiais", "en": "The Shrine in Numbers" },
+          "items": [
+            { "label": { "lt": "Lankytojų per dieną" }, "value": 200 },
+            { "label": { "lt": "Piligrimų per metus" }, "value": 50000 },
+            { "label": { "lt": "Sekmadienio Mišių dalyvių" }, "value": 400 },
+            { "label": { "lt": "Žvakių per metus" }, "value": 150000 }
+          ]
+        },
+        {
+          "type": "cta",
+          "links": [
+            { "label": { "lt": "Piligrimystės registracija" }, "href": "/#pilgrimage" },
+            { "label": { "lt": "Mišių intencijos" }, "href": "/#mass-intentions" }
+          ]
+        }
+      ]
+    }
+  ]
+}

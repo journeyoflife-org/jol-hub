@@ -1,0 +1,84 @@
+{
+  "slug": "basilica-vilnius-cathedral",
+  "vertical": "basilica",
+  "locale": "lt",
+  "name": {
+    "lt": "Vilniaus Šv. Stanislovo ir Šv. Vladislovo arkikatedra bazilika",
+    "en": "Vilnius Cathedral Basilica of St. Stanislaus and St. Ladislaus"
+  },
+  "tagline": {
+    "lt": "Vilniaus arkivyskupijos motininė bažnyčia, mažoji bazilika nuo 1922 m.",
+    "en": "Mother church of the Vilnius Archdiocese, minor basilica since 1922"
+  },
+  "identity": {
+    "entityId": "lt-catholic-basilica-001",
+    "jurisdiction": "Vilnius Archdiocese",
+    "established": "1783",
+    "address": "Katedros a. 1, 01143 Vilnius, Lithuania",
+    "email": "info@katedra.lt",
+    "phone": "+370 5 261 0731",
+    "domain": "katedra.lt",
+    "theme": "basilica-classic"
+  },
+  "pages": [
+    {
+      "route": "/",
+      "title": { "lt": "Pradžia", "en": "Home" },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Vilniaus arkikatedra bazilika",
+            "en": "Vilnius Cathedral Basilica"
+          },
+          "subheading": {
+            "lt": "Šv. Stanislovo ir Šv. Vladislovo garbei",
+            "en": "Dedicated to St. Stanislaus and St. Ladislaus"
+          },
+          "body": {
+            "lt": "Konsekruota 1783 m. Mažosios bazilikos titulas suteiktas 1922-03-04.",
+            "en": "Consecrated in 1783. Elevated to a minor basilica on 4 March 1922."
+          }
+        },
+        {
+          "type": "keyValue",
+          "heading": { "lt": "Kontaktai", "en": "Contact" },
+          "items": [
+            { "label": { "lt": "Adresas" }, "value": "Katedros a. 1, 01143 Vilnius" },
+            { "label": { "lt": "Telefonas" }, "value": "+370 5 261 0731" },
+            { "label": { "lt": "El. paštas" }, "value": "info@katedra.lt" },
+            { "label": { "lt": "Svetainė" }, "value": "https://katedra.lt" }
+          ]
+        },
+        {
+          "type": "list",
+          "heading": { "lt": "Katedros tarnystės", "en": "Cathedral Services" },
+          "items": [
+            {
+              "title": { "lt": "Šv. Mišių užsakymas", "en": "Mass Intention Booking" }
+            },
+            {
+              "title": { "lt": "Žvakės", "en": "Candles" }
+            },
+            {
+              "title": { "lt": "Piligrimystės", "en": "Pilgrimages" }
+            },
+            {
+              "title": { "lt": "Knygos", "en": "Books" }
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "links": [
+            { "label": { "lt": "Užsakyti Mišių intenciją" }, "href": "/#mass-intentions" },
+            { "label": { "lt": "Žvakių aukojimas" }, "href": "/#candles" }
+          ]
+        }
+      ],
+      "meta": {
+        "description": "Vilniaus Šv. Stanislovo ir Šv. Vladislovo arkikatedra bazilika"
+      }
+    }
+  ]
+}

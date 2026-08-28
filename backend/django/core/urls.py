@@ -60,6 +60,10 @@ urlpatterns = [
     path('api/v1/integrations/', include('apps.integrations.urls')),
     path('api/v1/financial/', include('apps.financial.urls')),
     path('api/v1/crm/', include('apps.crm.api.urls')),
+
+    # Internal ingress: marketplace payment events (contract v1.0.0;
+    # flag-gated receiver, ADR-009 Model A — hub never touches the PSP).
+    path('internal/v1/', include('apps.payment_events.urls')),
     
     # Allauth (social authentication)
     path('accounts/', include('allauth.urls')),

@@ -23,7 +23,6 @@ import {
   ServiceSchedule,
   PhotoGallery,
   ContactForm,
-  DonationWidget,
   Card,
   CardContent,
   CardHeader,
@@ -33,6 +32,10 @@ import {
   Badge,
   Separator,
 } from '@jol-hub/ui';
+// Model-A-compliant donation shell (O-021 STAGED-REMOVAL): the composite
+// widget reports the configured selection only; the charge path is the
+// marketplace checkout handoff (donation-flow-spec §1), never PSP-in-hub.
+import { DonationWidget } from '@jol-hub/ui/components/composite';
 import { 
   MapPin, 
   Phone, 
@@ -431,11 +434,8 @@ export default async function ParishTemplatePage(): Promise<JSX.Element> {
               </CardHeader>
               <CardContent>
                 <DonationWidget
-                  parishId={parish.id}
-                  parishName={parish.name}
-                  bankAccount={parish.bankAccount}
-                  language="lt"
-                  currency="EUR"
+                  title={parish.name}
+                  onConfigure={() => undefined}
                 />
               </CardContent>
             </Card>

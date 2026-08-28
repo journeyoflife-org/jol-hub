@@ -1,0 +1,607 @@
+[
+  {
+    "slug": "kelme-deanery",
+    "vertical": "deanery",
+    "locale": "lt",
+    "name": { "lt": "Kelmės dekanatas", "en": "Kelmė Deanery" },
+    "tagline": {
+      "lt": "Kražantės slėnio parapijos — istorijos ir tikėjimo kraštas",
+      "en": "Parishes of the Kražantė valley — a land of history and faith"
+    },
+    "identity": {
+      "entityId": "lt-wave1-deanery-003",
+      "jurisdiction": "Šiauliai Diocese",
+      "address": "Vytauto Didžiojo g. 5, 86128 Kelmė, Lithuania",
+      "email": "dekanas@kelme-dekanatas-demo.lt",
+      "phone": "+370 42 70 20 10"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Kelmės dekanatas", "en": "Kelmė Deanery" },
+            "subheading": {
+              "lt": "Nuo Kražių vienuolyno paveldo iki Kelmės ir Tytuvėnų parapijų",
+              "en": "From the Kražiai monastery heritage to the parishes of Kelmė and Tytuvėnai"
+            }
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Dekanato parapijos", "en": "Parishes of the deanery" },
+            "items": [
+              { "title": { "lt": "Kelmės Švč. Mergelės Marijos Ėmimo į dangų parapija", "en": "Kelmė Assumption of the Blessed Virgin Mary Parish" }, "subtitle": { "lt": "Kelmė", "en": "Kelmė" } },
+              { "title": { "lt": "Kražių Švč. Mergelės Marijos Nekaltojo Prasidėjimo parapija", "en": "Kražiai Immaculate Conception Parish" }, "subtitle": { "lt": "Kražiai", "en": "Kražiai" } },
+              { "title": { "lt": "Tytuvėnų Švč. Mergelės Marijos Angelų Karalienės parapija", "en": "Tytuvėnai Our Lady Queen of Angels Parish" }, "subtitle": { "lt": "Tytuvėnai", "en": "Tytuvėnai" } }
+            ]
+          },
+          {
+            "type": "text",
+            "heading": { "lt": "Paveldas ir tarnystė", "en": "Heritage and ministry" },
+            "body": {
+              "lt": "Dekanatas puoselėja Kražių vienuolyno ir Tytuvėnų piligriminės tradicijos paveldą: bendros piligrimystės, liturginiai chorai ir jaunimo katechezė vyksta ištisus metus.",
+              "en": "The deanery cherishes the Kražiai monastery and Tytuvėnai pilgrimage heritage: joint pilgrimages, liturgical choirs and youth catechesis run all year."
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Dekano raštinė", "en": "Dean's office" },
+            "items": [
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Vytauto Didžiojo g. 5, 86128 Kelmė" },
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 70 20 10" },
+              { "label": { "lt": "Priėmimas", "en": "Hours" }, "value": "II 10:00–14:00" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Kelmės dekanatas — parapijų sąrašas, Kražių ir Tytuvėnų paveldas, piligrimystės ir dekano raštinė."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "kelme-funeral",
+    "vertical": "funeral-home",
+    "locale": "lt",
+    "name": { "lt": "Kelmės laidojimo namai", "en": "Kelmė Funeral Home" },
+    "tagline": {
+      "lt": "Ramybė ir pagarba Kelmės krašto šeimoms",
+      "en": "Peace and respect for the families of Kelmė"
+    },
+    "identity": {
+      "entityId": "lt-wave1-funeral-004",
+      "established": "2008",
+      "address": "Liepų g. 3, 86141 Kelmė, Lithuania",
+      "email": "info@kelme-laidojimas-demo.lt",
+      "phone": "+370 42 70 30 30"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Kelmės laidojimo namai", "en": "Kelmė Funeral Home" },
+            "subheading": {
+              "lt": "Laidojimo ir kremavimo organizavimas bei kapų priežiūra Kelmės rajone",
+              "en": "Funeral and cremation arrangement plus grave care in the Kelmė district"
+            }
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Paslaugos ir kainos", "en": "Services and prices" },
+            "items": [
+              { "title": { "lt": "Pilnas laidojimo organizavimas", "en": "Full funeral arrangement" }, "price": 1700 },
+              { "title": { "lt": "Kremavimo organizavimas", "en": "Cremation arrangement" }, "price": 1250 },
+              { "title": { "lt": "Atsisveikinimo salė", "en": "Farewell hall" }, "price": 150 }
+            ]
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Visą parą", "en": "Around the clock" },
+            "items": [
+              { "label": { "lt": "Skubus telefonas", "en": "Urgent phone" }, "value": "+370 42 70 30 30" },
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Liepų g. 3, 86141 Kelmė" },
+              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "info@kelme-laidojimas-demo.lt" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Kelmės laidojimo namai — laidojimo ir kremavimo organizavimas 24/7 Kelmės rajone, skaidrios kainos."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "kelme-cleaning",
+    "vertical": "cemetery",
+    "locale": "lt",
+    "name": { "lt": "Kelmės kapinių priežiūra", "en": "Kelmė Cemetery Care" },
+    "tagline": {
+      "lt": "Kapavietės priežiūra su nuotraukų ataskaitomis",
+      "en": "Grave care with photo reports"
+    },
+    "identity": {
+      "entityId": "lt-wave1-cleaning-004",
+      "established": "2019",
+      "address": "Šaukėnų g. 8, 86150 Kelmė, Lithuania",
+      "email": "info@kelme-prieziura-demo.lt",
+      "phone": "+370 42 70 40 40"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Kapaviečių priežiūra Kelmėje", "en": "Grave care in Kelmė" },
+            "subheading": {
+              "lt": "Reguliari priežiūra ir šventinis puošimas — artimieji mato rezultatą",
+              "en": "Regular care and feast-day decoration — relatives see the result"
+            }
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Planai ir kainos", "en": "Plans and prices" },
+            "items": [
+              { "title": { "lt": "Vienkartinis tvarkymas", "en": "One-time care" }, "price": 28 },
+              { "title": { "lt": "Mėnesinė priežiūra", "en": "Monthly care" }, "price": 20 },
+              { "title": { "lt": "Metinis planas", "en": "Annual plan" }, "price": 200 }
+            ]
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Kontaktai", "en": "Contacts" },
+            "items": [
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 70 40 40" },
+              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "info@kelme-prieziura-demo.lt" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Kelmės kapinių priežiūra — vienkartinis, mėnesinis ir metinis tvarkymas su foto ataskaitomis."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "pakruojis-deanery",
+    "vertical": "deanery",
+    "locale": "lt",
+    "name": { "lt": "Pakruojo dekanatas", "en": "Pakruojis Deanery" },
+    "tagline": {
+      "lt": "Mūšos ir Lėvens parapijos — mažos, bet gyvos bendruomenės",
+      "en": "Parishes of the Mūša and Lėvuo — small but living communities"
+    },
+    "identity": {
+      "entityId": "lt-wave1-deanery-004",
+      "jurisdiction": "Šiauliai Diocese",
+      "address": "Vilniaus g. 8, 83154 Pakruojis, Lithuania",
+      "email": "dekanas@pakruojis-dekanatas-demo.lt",
+      "phone": "+370 42 80 20 10"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Pakruojo dekanatas", "en": "Pakruojis Deanery" },
+            "subheading": {
+              "lt": "Šešios parapijos tarp Pakruojo, Linkuvos ir Lygumų",
+              "en": "Six parishes between Pakruojis, Linkuva and Lygumai"
+            }
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Dekanato parapijos", "en": "Parishes of the deanery" },
+            "items": [
+              { "title": { "lt": "Pakruojo Šv. Jono Krikštytojo parapija", "en": "Pakruojis St. John the Baptist Parish" }, "subtitle": { "lt": "Pakruojis", "en": "Pakruojis" } },
+              { "title": { "lt": "Lygumų Šv. Trejybės parapija", "en": "Lygumai Holy Trinity Parish" }, "subtitle": { "lt": "Lygumai", "en": "Lygumai" } },
+              { "title": { "lt": "Linkuvos Švč. Mergelės Marijos Škaplierinės parapija", "en": "Linkuva Our Lady of the Scapular Parish" }, "subtitle": { "lt": "Linkuva", "en": "Linkuva" } }
+            ]
+          },
+          {
+            "type": "text",
+            "heading": { "lt": "Bendros iniciatyvos", "en": "Joint initiatives" },
+            "body": {
+              "lt": "Dekanato bendruomenės kartu organizuoja advento ir gavėnios rekolekcijas, ūkininkų padėkos dieną ir senelių globos lankymus su Caritas savanoriais.",
+              "en": "The deanery communities jointly organise Advent and Lent retreats, a farmers' thanksgiving day and care-home visits with Caritas volunteers."
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Dekano raštinė", "en": "Dean's office" },
+            "items": [
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Vilniaus g. 8, 83154 Pakruojis" },
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 80 20 10" },
+              { "label": { "lt": "Priėmimas", "en": "Hours" }, "value": "V 10:00–13:00" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Pakruojo dekanatas — parapijų sąrašas, bendros rekolekcijos ir Caritas iniciatyvos, dekano raštinė."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "pakruojis-church",
+    "vertical": "parish",
+    "locale": "lt",
+    "name": { "lt": "Lygumų Šv. Trejybės bažnyčia", "en": "Lygumai Holy Trinity Church" },
+    "tagline": {
+      "lt": "Lygumų miestelio širdis — medinė bažnyčia su didele istorija",
+      "en": "The heart of Lygumai — a wooden church with a great history"
+    },
+    "identity": {
+      "entityId": "lt-wave1-parish-004",
+      "jurisdiction": "Šiauliai Diocese",
+      "established": "1793",
+      "address": "Bažnyčios g. 1, 83311 Lygumai, Lithuania",
+      "email": "parapija@lygumai-demo.lt",
+      "phone": "+370 42 80 30 30"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Lygumų Šv. Trejybės parapija", "en": "Lygumai Holy Trinity Parish" },
+            "subheading": {
+              "lt": "Sekmadienio Mišios, katechezė vaikams ir bendruomenės šventės",
+              "en": "Sunday Mass, children's catechesis and community feasts"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": { "lt": "Pamaldų laikai", "en": "Service times" },
+            "entries": [
+              { "day": "Sekmadienis", "dayEn": "Sunday", "times": ["10:30"] },
+              { "day": "Penktadienis", "dayEn": "Friday", "times": ["17:00"] }
+            ]
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Raštinė", "en": "Parish office" },
+            "items": [
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Bažnyčios g. 1, 83311 Lygumai" },
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 80 30 30" },
+              { "label": { "lt": "Laikas", "en": "Hours" }, "value": "Po sekmadienio Mišių" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Lygumų Šv. Trejybės parapija — pamaldų laikai, katechezė ir bendruomenės šventės Lygumų miestelyje."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "pakruojis-funeral",
+    "vertical": "funeral-home",
+    "locale": "lt",
+    "name": { "lt": "Pakruojo laidojimo namai", "en": "Pakruojis Funeral Home" },
+    "tagline": {
+      "lt": "Su pagarba ir ramybe — Pakruojo krašto šeimoms",
+      "en": "With respect and calm — for the families of Pakruojis"
+    },
+    "identity": {
+      "entityId": "lt-wave1-funeral-005",
+      "established": "2010",
+      "address": "Krantinės g. 5, 83160 Pakruojis, Lithuania",
+      "email": "info@pakruojis-laidojimas-demo.lt",
+      "phone": "+370 42 80 40 40"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Pakruojo laidojimo namai", "en": "Pakruojis Funeral Home" },
+            "subheading": {
+              "lt": "Laidojimo organizavimas, kremavimas ir kapų priežiūra Pakruojo rajone",
+              "en": "Funeral arrangement, cremation and grave care in the Pakruojis district"
+            }
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Paslaugos ir kainos", "en": "Services and prices" },
+            "items": [
+              { "title": { "lt": "Pilnas laidojimo organizavimas", "en": "Full funeral arrangement" }, "price": 1700 },
+              { "title": { "lt": "Kremavimo organizavimas", "en": "Cremation arrangement" }, "price": 1250 }
+            ]
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Visą parą", "en": "Around the clock" },
+            "items": [
+              { "label": { "lt": "Skubus telefonas", "en": "Urgent phone" }, "value": "+370 42 80 40 40" },
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Krantinės g. 5, 83160 Pakruojis" },
+              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "info@pakruojis-laidojimas-demo.lt" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Pakruojo laidojimo namai — laidojimo ir kremavimo organizavimas 24/7 Pakruojo rajone."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "pakruojis-cleaning",
+    "vertical": "cemetery",
+    "locale": "lt",
+    "name": { "lt": "Pakruojo kapinių priežiūra", "en": "Pakruojis Cemetery Care" },
+    "tagline": {
+      "lt": "Tvarkingos kapavietės visais sezonais",
+      "en": "Tidy graves in every season"
+    },
+    "identity": {
+      "entityId": "lt-wave1-cleaning-005",
+      "established": "2020",
+      "address": "Malūno g. 7, 83170 Pakruojis, Lithuania",
+      "email": "info@pakruojis-prieziura-demo.lt",
+      "phone": "+370 42 80 50 50"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Kapaviečių priežiūra Pakruojyje", "en": "Grave care in Pakruojis" },
+            "subheading": {
+              "lt": "Priežiūra, tvarkymas ir puošimas su ataskaitomis artimiesiems",
+              "en": "Care, tidying and decoration with reports for relatives"
+            }
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Planai ir kainos", "en": "Plans and prices" },
+            "items": [
+              { "title": { "lt": "Vienkartinis tvarkymas", "en": "One-time care" }, "price": 28 },
+              { "title": { "lt": "Mėnesinė priežiūra", "en": "Monthly care" }, "price": 20 },
+              { "title": { "lt": "Metinis planas", "en": "Annual plan" }, "price": 200 }
+            ]
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Kontaktai", "en": "Contacts" },
+            "items": [
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 80 50 50" },
+              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "info@pakruojis-prieziura-demo.lt" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Pakruojo kapinių priežiūra — sezoninis tvarkymas ir priežiūra su ataskaitomis artimiesiems."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "radviliskis-deanery",
+    "vertical": "deanery",
+    "locale": "lt",
+    "name": { "lt": "Radviliškio dekanatas", "en": "Radviliškis Deanery" },
+    "tagline": {
+      "lt": "Geležinkelio krašto parapijos — nuo Radviliškio iki Baisogalos",
+      "en": "Parishes of the railway land — from Radviliškis to Baisogala"
+    },
+    "identity": {
+      "entityId": "lt-wave1-deanery-005",
+      "jurisdiction": "Šiauliai Diocese",
+      "address": "Kęstučio g. 11, 82124 Radviliškis, Lithuania",
+      "email": "dekanas@radviliskis-dekanatas-demo.lt",
+      "phone": "+370 42 90 20 10"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Radviliškio dekanatas", "en": "Radviliškis Deanery" },
+            "subheading": {
+              "lt": "Penkios parapijos, sujungtos bendra malda ir Caritas tarnyste",
+              "en": "Five parishes united in common prayer and Caritas service"
+            }
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Dekanato parapijos", "en": "Parishes of the deanery" },
+            "items": [
+              { "title": { "lt": "Radviliškio Švč. Mergelės Marijos Gimimo parapija", "en": "Radviliškis Nativity of the Blessed Virgin Mary Parish" }, "subtitle": { "lt": "Radviliškis", "en": "Radviliškis" } },
+              { "title": { "lt": "Baisogalos Šv. Trejybės parapija", "en": "Baisogala Holy Trinity Parish" }, "subtitle": { "lt": "Baisogala", "en": "Baisogala" } },
+              { "title": { "lt": "Šeduvos Šv. Kryžiaus Atradimo parapija", "en": "Šeduva Discovery of the Holy Cross Parish" }, "subtitle": { "lt": "Šeduva", "en": "Šeduva" } }
+            ]
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Dekano raštinė", "en": "Dean's office" },
+            "items": [
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Kęstučio g. 11, 82124 Radviliškis" },
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 90 20 10" },
+              { "label": { "lt": "Priėmimas", "en": "Hours" }, "value": "III 10:00–14:00" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Radviliškio dekanatas — parapijų sąrašas, bendra Caritas tarnystė ir dekano raštinės laikai."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "radviliskis-church",
+    "vertical": "parish",
+    "locale": "lt",
+    "name": { "lt": "Baisogalos Šv. Trejybės bažnyčia", "en": "Baisogala Holy Trinity Church" },
+    "tagline": {
+      "lt": "Dvaro parko pašonėje — parapija su gyva bendruomene",
+      "en": "Beside the manor park — a parish with a living community"
+    },
+    "identity": {
+      "entityId": "lt-wave1-parish-005",
+      "jurisdiction": "Šiauliai Diocese",
+      "established": "1635",
+      "address": "Bažnyčios g. 5, 82311 Baisogala, Lithuania",
+      "email": "parapija@baisogala-demo.lt",
+      "phone": "+370 42 90 30 30"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Baisogalos Šv. Trejybės parapija", "en": "Baisogala Holy Trinity Parish" },
+            "subheading": {
+              "lt": "Mišios, katechezė ir bendruomenės šventės Baisogalos miestelyje",
+              "en": "Mass, catechesis and community feasts in Baisogala"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": { "lt": "Pamaldų laikai", "en": "Service times" },
+            "entries": [
+              { "day": "Sekmadienis", "dayEn": "Sunday", "times": ["09:30", "11:30"] },
+              { "day": "Ketvirtadienis", "dayEn": "Thursday", "times": ["17:30"] }
+            ]
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Raštinė", "en": "Parish office" },
+            "items": [
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Bažnyčios g. 5, 82311 Baisogala" },
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 90 30 30" },
+              { "label": { "lt": "Laikas", "en": "Hours" }, "value": "Po sekmadienio Mišių" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Baisogalos Šv. Trejybės parapija — pamaldų laikai, katechezė ir bendruomenės šventės."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "radviliskis-funeral",
+    "vertical": "funeral-home",
+    "locale": "lt",
+    "name": { "lt": "Radviliškio laidojimo namai", "en": "Radviliškis Funeral Home" },
+    "tagline": {
+      "lt": "Pagarba ir pagalba Radviliškio krašto šeimoms",
+      "en": "Respect and help for the families of Radviliškis"
+    },
+    "identity": {
+      "entityId": "lt-wave1-funeral-006",
+      "established": "2007",
+      "address": "Stoties g. 14, 82130 Radviliškis, Lithuania",
+      "email": "info@radviliskis-laidojimas-demo.lt",
+      "phone": "+370 42 90 40 40"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Radviliškio laidojimo namai", "en": "Radviliškis Funeral Home" },
+            "subheading": {
+              "lt": "Visos laidojimo paslaugos Radviliškio rajone — visą parą",
+              "en": "All funeral services in the Radviliškis district — around the clock"
+            }
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Paslaugos ir kainos", "en": "Services and prices" },
+            "items": [
+              { "title": { "lt": "Pilnas laidojimo organizavimas", "en": "Full funeral arrangement" }, "price": 1750 },
+              { "title": { "lt": "Kremavimo organizavimas", "en": "Cremation arrangement" }, "price": 1300 }
+            ]
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Visą parą", "en": "Around the clock" },
+            "items": [
+              { "label": { "lt": "Skubus telefonas", "en": "Urgent phone" }, "value": "+370 42 90 40 40" },
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Stoties g. 14, 82130 Radviliškis" },
+              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "info@radviliskis-laidojimas-demo.lt" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Radviliškio laidojimo namai — laidojimo ir kremavimo organizavimas 24/7 Radviliškio rajone."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "radviliskis-cleaning",
+    "vertical": "cemetery",
+    "locale": "lt",
+    "name": { "lt": "Radviliškio kapinių priežiūra", "en": "Radviliškis Cemetery Care" },
+    "tagline": {
+      "lt": "Kapavietės priežiūra su ataskaitomis — ir užsienyje esantiems",
+      "en": "Grave care with reports — including for relatives abroad"
+    },
+    "identity": {
+      "entityId": "lt-wave1-cleaning-006",
+      "established": "2021",
+      "address": "Parko g. 21, 82140 Radviliškis, Lithuania",
+      "email": "info@radviliskis-prieziura-demo.lt",
+      "phone": "+370 42 90 50 50"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Kapaviečių priežiūra Radviliškyje", "en": "Grave care in Radviliškis" },
+            "subheading": {
+              "lt": "Reguliari priežiūra, tvarkymas ir šventinis puošimas",
+              "en": "Regular care, tidying and feast-day decoration"
+            }
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Planai ir kainos", "en": "Plans and prices" },
+            "items": [
+              { "title": { "lt": "Vienkartinis tvarkymas", "en": "One-time care" }, "price": 28 },
+              { "title": { "lt": "Mėnesinė priežiūra", "en": "Monthly care" }, "price": 20 },
+              { "title": { "lt": "Metinis planas", "en": "Annual plan" }, "price": 200 }
+            ]
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Kontaktai", "en": "Contacts" },
+            "items": [
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 90 50 50" },
+              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "info@radviliskis-prieziura-demo.lt" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Radviliškio kapinių priežiūra — vienkartinis, mėnesinis ir metinis tvarkymas su ataskaitomis."
+        }
+      }
+    ]
+  }
+]

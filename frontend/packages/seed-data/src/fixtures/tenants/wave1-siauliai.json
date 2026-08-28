@@ -1,0 +1,296 @@
+[
+  {
+    "slug": "siauliai-deanery",
+    "vertical": "deanery",
+    "locale": "lt",
+    "name": { "lt": "Šiaulių dekanatas", "en": "Šiauliai Deanery" },
+    "tagline": {
+      "lt": "Šiauliai Diocese",
+      "en": "Šiaulių vyskupijos parapijų bendrystė mieste ir apylinkėse"
+    },
+    "identity": {
+      "entityId": "lt-wave1-deanery-001",
+      "jurisdiction": "Šiauliai Diocese",
+      "address": "Aušros al. 42, 76283 Šiauliai, Lithuania",
+      "email": "dekanas@siauliai-dekanatas-demo.lt",
+      "phone": "+370 41 52 20 10"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Šiaulių dekanatas", "en": "Šiauliai Deanery" },
+            "subheading": {
+              "lt": "Aštuonios miesto ir apylinkių parapijos, sujungtos bendra malda ir tarnyste",
+              "en": "Eight parishes of the city and surroundings, united in common prayer and service"
+            }
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Dekanato parapijos", "en": "Parishes of the deanery" },
+            "items": [
+              {
+                "title": { "lt": "Šiaulių Šv. apaštalų Petro ir Pauliaus katedra", "en": "Šiauliai Cathedral of Sts. Peter and Paul" },
+                "subtitle": { "lt": "Dekanato centrinė šventovė", "en": "The deanery's central church" }
+              },
+              {
+                "title": { "lt": "Kuršėnų Šv. Jono Krikštytojo parapija", "en": "Kuršėnai St. John the Baptist Parish" },
+                "subtitle": { "lt": "Kuršėnai", "en": "Kuršėnai" }
+              },
+              {
+                "title": { "lt": "Šiaulių Šv. Ignaco Lojolos parapija", "en": "Šiauliai St. Ignatius Loyola Parish" },
+                "subtitle": { "lt": "Šiauliai", "en": "Šiauliai" }
+              },
+              {
+                "title": { "lt": "Ginkūnų Šv. Dvasios parapija", "en": "Ginkūnai Holy Spirit Parish" },
+                "subtitle": { "lt": "Ginkūnai", "en": "Ginkūnai" }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "heading": { "lt": "Bendros tarnystės", "en": "Shared ministries" },
+            "body": {
+              "lt": "Dekanatas koordinuoja bendrą katechezę, jaunimo ir šeimų centrus, Caritas tinklą bei ligonių lankymą. Dekano vizitacijos, bendros atlaidų iškilmės ir kunigų susitikimai vyksta pagal vyskupijos metinį planą.",
+              "en": "The deanery coordinates common catechesis, youth and family centres, the Caritas network and visits to the sick. Dean's visitations, joint patronal feasts and priests' meetings follow the diocesan annual plan."
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Dekano raštinė", "en": "Dean's office" },
+            "items": [
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Aušros al. 42, 76283 Šiauliai" },
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 41 52 20 10" },
+              { "label": { "lt": "Priėmimas", "en": "Office hours" }, "value": "III 10:00–14:00, V 14:00–17:00" },
+              { "label": { "lt": "Skubus sielovados numeris", "en": "Emergency pastoral line" }, "value": "+370 41 52 20 11" }
+            ]
+          },
+          {
+            "type": "cta",
+            "heading": { "lt": "Raskite savo parapiją", "en": "Find your parish" },
+            "links": [
+              { "label": { "lt": "Katedra", "en": "Cathedral" }, "href": "/" },
+              { "label": { "lt": "Kuršėnai", "en": "Kuršėnai" }, "href": "/" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Šiaulių dekanatas — parapijų sąrašas, bendros tarnystės, dekano raštinės laikai ir skubus sielovados numeris."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "kursenai-church",
+    "vertical": "parish",
+    "locale": "lt",
+    "name": { "lt": "Kuršėnų Šv. Jono Krikštytojo bažnyčia", "en": "Kuršėnai St. John the Baptist Church" },
+    "tagline": {
+      "lt": "Parapija prie Ventos — tikėjimo namai nuo XVI a.",
+      "en": "A parish by the Venta — a home of faith since the 16th century"
+    },
+    "identity": {
+      "entityId": "lt-wave1-parish-002",
+      "jurisdiction": "Šiauliai Diocese",
+      "established": "1595",
+      "address": "Bažnyčios g. 4, 81139 Kuršėnai, Lithuania",
+      "email": "parapija@kursenai-demo.lt",
+      "phone": "+370 41 55 20 20"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Kuršėnų Šv. Jono Krikštytojo parapija", "en": "Kuršėnai St. John the Baptist Parish" },
+            "subheading": {
+              "lt": "Kviečiame į Mišias, krikštą, santuoką ir bendrą maldą prie Ventos",
+              "en": "We invite you to Mass, baptism, marriage and common prayer by the Venta"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": { "lt": "Šv. Mišių laikai", "en": "Holy Mass times" },
+            "entries": [
+              { "day": "Sekmadienis", "dayEn": "Sunday", "times": ["09:00", "11:30"], "notes": "11:30 — giesmės su parapijos choru" },
+              { "day": "Antradienis, ketvirtadienis", "dayEn": "Tuesday, Thursday", "times": ["18:00"] },
+              { "day": "Pirmasis penktadienis", "dayEn": "First Friday", "times": ["18:00"], "notes": "Šv. Komunijos ir atgailos diena" }
+            ]
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Sakramentai", "en": "Sacraments" },
+            "items": [
+              { "title": { "lt": "Krikštas", "en": "Baptism" }, "description": { "lt": "Katechezė tėvams ir krikštadaviams — prieš kiekvieną krikštą.", "en": "Catechesis for parents and godparents before each baptism." } },
+              { "title": { "lt": "Santuoka", "en": "Marriage" }, "description": { "lt": "Pasirengimo kursai — registracija raštinėje prieš 3 mėn.", "en": "Preparation courses — register at the office 3 months ahead." } },
+              { "title": { "lt": "Ligoniuose", "en": "Anointing of the sick" }, "description": { "lt": "Kviečiame kunigą pas ligonį bet kuriuo paros metu.", "en": "Call the priest to the sick at any hour." } }
+            ]
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Parapijos raštinė", "en": "Parish office" },
+            "items": [
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Bažnyčios g. 4, 81139 Kuršėnai" },
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 41 55 20 20" },
+              { "label": { "lt": "Laikas", "en": "Hours" }, "value": "Po Mišių ir III 16:00–18:00" },
+              { "label": { "lt": "Klebonas", "en": "Parish priest" }, "value": "Kun. demonstracinis vardas (demo)" }
+            ]
+          },
+          {
+            "type": "cta",
+            "heading": { "lt": "Parapijos gyvenimas", "en": "Parish life" },
+            "links": [
+              { "label": { "lt": "Kontaktai", "en": "Contacts" }, "href": "/kontaktai" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Kuršėnų Šv. Jono Krikštytojo parapija — Mišių laikai, sakramentai, raštinės laikai ir parapijos naujienos."
+        }
+      },
+      {
+        "route": "/kontaktai",
+        "title": { "lt": "Kontaktai", "en": "Contacts" },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Susisiekite", "en": "Get in touch" },
+            "items": [
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Bažnyčios g. 4, 81139 Kuršėnai" },
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 41 55 20 20" },
+              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "parapija@kursenai-demo.lt" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "kursenai-funeral",
+    "vertical": "funeral-home",
+    "locale": "lt",
+    "name": { "lt": "Kuršėnų laidojimo namai", "en": "Kuršėnai Funeral Home" },
+    "tagline": {
+      "lt": "Su užuojauta ir orumu — visą parą",
+      "en": "With compassion and dignity — around the clock"
+    },
+    "identity": {
+      "entityId": "lt-wave1-funeral-002",
+      "established": "2009",
+      "address": "Ventos g. 18, 81121 Kuršėnai, Lithuania",
+      "email": "info@kursenai-laidojimas-demo.lt",
+      "phone": "+370 41 55 30 30"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Esame šalia, kai sunkiausia", "en": "We are with you in the hardest hour" },
+            "subheading": {
+              "lt": "Laidojimo organizavimas, kremavimas ir kapų priežiūra Kuršėnuose ir apylinkėse",
+              "en": "Funeral arrangement, cremation and grave care in Kuršėnai and surroundings"
+            }
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Paslaugos ir kainos", "en": "Services and prices" },
+            "items": [
+              { "title": { "lt": "Pilnas laidojimo organizavimas", "en": "Full funeral arrangement" }, "description": { "lt": "Dokumentai, karstas, transportas, salė, ceremonija.", "en": "Paperwork, casket, transport, hall and ceremony." }, "price": 1800 },
+              { "title": { "lt": "Kremavimo organizavimas", "en": "Cremation arrangement" }, "price": 1350 },
+              { "title": { "lt": "Atsisveikinimo salė", "en": "Farewell hall" }, "subtitle": { "lt": "3 val. su personalu", "en": "3 hours with staff" }, "price": 160 }
+            ]
+          },
+          {
+            "type": "text",
+            "heading": { "lt": "Pagalba netekties metu", "en": "Support in bereavement" },
+            "body": {
+              "lt": "Padedame paruošti dokumentus, suderinti ceremoniją su parapija arba civiliniu celebrantu, o šeimoms primename Bažnyčios žodį apie viltį ir prisikėlimą. Užuojautos metu — skambinkite bet kuriuo paros metu.",
+              "en": "We help with paperwork, coordinate the ceremony with the parish or a civil celebrant, and remind families of the Church's word on hope and resurrection. In bereavement — call at any hour."
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Visą parą", "en": "Around the clock" },
+            "items": [
+              { "label": { "lt": "Skubus telefonas", "en": "Urgent phone" }, "value": "+370 41 55 30 30" },
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Ventos g. 18, 81121 Kuršėnai" },
+              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "info@kursenai-laidojimas-demo.lt" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Kuršėnų laidojimo namai — pilnas laidojimo ir kremavimo organizavimas 24/7, skaidrios kainos, užuojauta šeimoms."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "kursenai-cleaning",
+    "vertical": "cemetery",
+    "locale": "lt",
+    "name": { "lt": "Kuršėnų kapinių priežiūra", "en": "Kuršėnai Cemetery Care" },
+    "tagline": {
+      "lt": "Tvarkinga kapavietė — be Jūsų rūpesčio",
+      "en": "A cared-for grave — without your worry"
+    },
+    "identity": {
+      "entityId": "lt-wave1-cleaning-002",
+      "established": "2017",
+      "address": "Kapų g. 6, 81144 Kuršėnai, Lithuania",
+      "email": "info@kursenai-prieziura-demo.lt",
+      "phone": "+370 41 55 40 40"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Kapaviečių priežiūra Kuršėnuose", "en": "Grave care in Kuršėnai" },
+            "subheading": {
+              "lt": "Reguliari priežiūra, sezoninis puošimas ir ataskaitos su nuotraukomis",
+              "en": "Regular care, seasonal decoration and photo reports"
+            }
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Planai ir kainos", "en": "Plans and prices" },
+            "items": [
+              { "title": { "lt": "Vienkartinis tvarkymas", "en": "One-time care" }, "price": 30 },
+              { "title": { "lt": "Mėnesinė priežiūra", "en": "Monthly care" }, "description": { "lt": "Su foto ataskaita po vizito.", "en": "With a photo report after each visit." }, "price": 22 },
+              { "title": { "lt": "Metinis planas", "en": "Annual plan" }, "description": { "lt": "12 vizitų ir šventinis puošimas.", "en": "12 visits and feast-day decoration." }, "price": 220 }
+            ]
+          },
+          {
+            "type": "text",
+            "body": {
+              "lt": "Dirbame su švelniomis, akmeniui ir žalumynams saugiomis priemonėmis. Artimieji užsienyje kiekvieną vizitą mato nuotraukoje — ramybė, kurią dovanojame.",
+              "en": "We use gentle, stone- and plant-safe products. Relatives abroad see every visit in a photo — the peace of mind we give."
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Kontaktai", "en": "Contacts" },
+            "items": [
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 41 55 40 40" },
+              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "info@kursenai-prieziura-demo.lt" },
+              { "label": { "lt": "Darbo laikas", "en": "Hours" }, "value": "I–V 8:00–17:00" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Kuršėnų kapinių priežiūra — vienkartinis tvarkymas, mėnesinė ir metinė priežiūra su foto ataskaitomis."
+        }
+      }
+    ]
+  }
+]

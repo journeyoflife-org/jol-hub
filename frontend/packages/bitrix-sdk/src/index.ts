@@ -1,4 +1,48 @@
+// =============================================================================
+// STEP 9 — hub-backed CRM surface (PREFERRED)
+//
+// The frontend NEVER talks to Bitrix24 directly: data flows
+//   frontend → jol-hub backend → jol-bitrix24-integration → Bitrix24 API.
+// Use `CrmBackendClient` + the CRM hooks below. No Bitrix24 tokens exist in
+// this path (SOC 2 CC6.1).
+// =============================================================================
+export {
+  CrmBackendClient,
+  backoffDelay,
+  classifyStatus,
+  type CrmApiError,
+  type CrmErrorKind,
+  type CrmResult,
+  type CrmBackendClientOptions,
+} from './backend-client';
+export { captureUtm, sanitizeUtmValue, UTM_MAX_LENGTH } from './utm';
+// NOTE: the React hooks (useCrmLead/useCrmDeals/useCrmTasks/useCreateLead)
+// live behind the client-only subpath `@jol-hub/bitrix-sdk/hooks` so server
+// modules (route handlers) can import this barrel without crossing the
+// React server/client boundary.
+export type {
+  Activity,
+  BitrixWebhookPayload,
+  Contact,
+  CreateLeadPayload,
+  CreateLeadResult,
+  CrmEntityType,
+  Deal,
+  DealStage,
+  DealStatus,
+  Lead,
+  LeadSource,
+  LeadStatus,
+  Task,
+  UtmParams,
+} from './crm-types';
+
 // Main SDK exports
+//
+// SECURITY WARNING (STEP 9): `Bitrix24Client` and the `api/*` classes are a
+// DIRECT Bitrix24 API surface that requires an access token. They are legacy
+// stubs for server-side tooling ONLY and MUST NOT be used from any browser
+// bundle — use `CrmBackendClient` (backend-proxied, token-free) instead.
 export { Bitrix24Client } from './client';
 export { Bitrix24Error, Bitrix24ApiError, Bitrix24AuthError } from './errors';
 

@@ -1,0 +1,162 @@
+{
+  "title": "JOL Frontend Health — STEP 16",
+  "uid": "jol-frontend-health",
+  "tags": ["jol", "frontend", "observability"],
+  "timezone": "utc",
+  "refresh": "1m",
+  "time": { "from": "now-6h", "to": "now" },
+  "templating": {
+    "list": [
+      {
+        "name": "tenant",
+        "type": "query",
+        "datasource": { "type": "loki", "uid": "loki" },
+        "query": "label_values({service=\"template-renderer-edge\"}, tenant)",
+        "refresh": 2,
+        "includeAll": true,
+        "multi": true
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "Frontend error rate (%)",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [
+        {
+          "expr": "100 * sum(rate({service=\"template-renderer\", level=\"error\"}[5m])) / sum(rate({service=\"template-renderer\"}[5m]))",
+          "legendFormat": "error %"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 1 }
+            ]
+          },
+          "unit": "percent"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "HTTP status distribution (edge)",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [
+        {
+          "expr": "sum by (status) (count_over_time({service=\"template-renderer-edge\", event=\"request.handled\"}[5m]))",
+          "legendFormat": "{{status}}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "Client errors by category (telemetry ingress)",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [
+        {
+          "expr": "sum by (category) (count_over_time({service=\"template-renderer\", event=\"client-error\"}[15m]))",
+          "legendFormat": "{{category}}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "table",
+      "title": "Top error fingerprints (last hour)",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [
+        {
+          "expr": "topk(10, sum by (fingerprint) (count_over_time({service=\"template-renderer\", event=\"client-error\"}[1h])))",
+          "instant": true
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "Per-tenant error rate (tenant health)",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 16 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [
+        {
+          "expr": "sum by (tenant) (count_over_time({service=\"template-renderer-edge\", level=\"warn\"}[15m]))",
+          "legendFormat": "{{tenant}}"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "timeseries",
+      "title": "Slowest tenants — request duration p95 (ms)",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 16 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [
+        {
+          "expr": "quantile_over_time(0.95, {service=\"template-renderer-edge\", event=\"request.handled\", tenant=~\"$tenant\"} | json | unwrap durationMs [15m]) by (tenant)",
+          "legendFormat": "{{tenant}}"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "timeseries",
+      "title": "Commerce health — booking/commerce error events",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 24 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [
+        {
+          "expr": "sum(count_over_time({service=\"template-renderer\", event=\"client-error\", category=\"commerce\"}[15m]))",
+          "legendFormat": "commerce errors"
+        },
+        {
+          "expr": "sum(count_over_time({service=\"template-renderer\"} |= \"booking\" |= \"error\" [15m]))",
+          "legendFormat": "booking errors"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "timeseries",
+      "title": "Auth health — denied access + rate-limit events",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 24 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [
+        {
+          "expr": "sum(count_over_time({service=\"template-renderer-edge\", event=\"security.auth-denied\"}[15m]))",
+          "legendFormat": "auth denied"
+        },
+        {
+          "expr": "sum(count_over_time({service=\"template-renderer-edge\", event=\"security.rate-limit\"}[15m]))",
+          "legendFormat": "rate-limit hits"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "timeseries",
+      "title": "Web Vitals — poor-rating share by metric (RUM)",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 32 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "expr": "sum by (name) (rate(web_vitals{rating=\"poor\"}[1h])) / sum by (name) (rate(web_vitals[1h]))",
+          "legendFormat": "{{name}}"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "percentunit", "max": 1 } }
+    }
+  ],
+  "schemaVersion": 39
+}
