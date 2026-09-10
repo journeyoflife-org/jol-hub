@@ -58,6 +58,7 @@
     "tailwind.config.ts"
   ],
   "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
     "access": "restricted"
   },
   "sideEffects": [
