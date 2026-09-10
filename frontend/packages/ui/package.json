@@ -13,7 +13,6 @@
     "./components/layout": "./src/components/layout/index.ts",
     "./components/accessibility": "./src/components/accessibility/index.ts",
     "./dev/showcase": "./src/dev/Showcase.tsx",
-    "./components/donation": "./src/components/donation/index.ts",
     "./components/*": "./src/components/*/index.ts"
   },
   "scripts": {
