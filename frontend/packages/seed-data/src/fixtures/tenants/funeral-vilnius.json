@@ -53,19 +53,22 @@
           "items": [
             {
               "label": {
-                "lt": "Adresas"
+                "lt": "Adresas",
+                "ru": "Adresas [TODO: verify — do not publish unverified]"
               },
               "value": "Laidojimo g. 15, Vilnius"
             },
             {
               "label": {
-                "lt": "Visą parą"
+                "lt": "Visą parą",
+                "ru": "Visą parą [TODO: verify — do not publish unverified]"
               },
               "value": "+370 5 210 5555"
             },
             {
               "label": {
-                "lt": "El. paštas"
+                "lt": "El. paštas",
+                "ru": "El. paštas [TODO: verify — do not publish unverified]"
               },
               "value": "info@vilniusfuneral.lt"
             }
@@ -81,25 +84,29 @@
           "items": [
             {
               "label": {
-                "lt": "Tarnystės metų"
+                "lt": "Tarnystės metų",
+                "ru": "Tarnystės metų [TODO: verify — do not publish unverified]"
               },
               "value": 29
             },
             {
               "label": {
-                "lt": "Aptarnautų šeimų"
+                "lt": "Aptarnautų šeimų",
+                "ru": "Aptarnautų šeimų [TODO: verify — do not publish unverified]"
               },
               "value": 8500
             },
             {
               "label": {
-                "lt": "Įvertinimas"
+                "lt": "Įvertinimas",
+                "ru": "Įvertinimas [TODO: verify — do not publish unverified]"
               },
               "value": 4.8
             },
             {
               "label": {
-                "lt": "Išankstinių sutarčių"
+                "lt": "Išankstinių sutarčių",
+                "ru": "Išankstinių sutarčių [TODO: verify — do not publish unverified]"
               },
               "value": 450
             }
@@ -110,19 +117,22 @@
           "links": [
             {
               "label": {
-                "lt": "Nekrologai"
+                "lt": "Nekrologai",
+                "ru": "Nekrologai [TODO: verify — do not publish unverified]"
               },
               "href": "/obituaries"
             },
             {
               "label": {
-                "lt": "Išankstinis planavimas"
+                "lt": "Išankstinis planavimas",
+                "ru": "Išankstinis planavimas [TODO: verify — do not publish unverified]"
               },
               "href": "/pre-need"
             },
             {
               "label": {
-                "lt": "Paslaugos ir prekės"
+                "lt": "Paslaugos ir prekės",
+                "ru": "Paslaugos ir prekės [TODO: verify — do not publish unverified]"
               },
               "href": "/shop"
             }
@@ -357,37 +367,45 @@
           "items": [
             {
               "title": {
-                "lt": "Klasikinis ąžuolinis karstas"
+                "lt": "Klasikinis ąžuolinis karstas",
+                "ru": "Klasikinis ąžuolinis karstas [TODO: verify — do not publish unverified]"
               },
               "subtitle": {
-                "lt": "Ąžuolas · Natūralus · Baltas atlasas"
+                "lt": "Ąžuolas · Natūralus · Baltas atlasas",
+                "ru": "Ąžuolas · Natūralus · Baltas atlasas [TODO: verify — do not publish unverified]"
               },
               "price": 1200
             },
             {
               "title": {
-                "lt": "Pušinis karstas"
+                "lt": "Pušinis karstas",
+                "ru": "Pušinis karstas [TODO: verify — do not publish unverified]"
               },
               "subtitle": {
-                "lt": "Pušis · Lakuotas · Kreminis atlasas"
+                "lt": "Pušis · Lakuotas · Kreminis atlasas",
+                "ru": "Pušis · Lakuotas · Kreminis atlasas [TODO: verify — do not publish unverified]"
               },
               "price": 600
             },
             {
               "title": {
-                "lt": "Premium riešutmedžio karstas"
+                "lt": "Premium riešutmedžio karstas",
+                "ru": "Premium riešutmedžio karstas [TODO: verify — do not publish unverified]"
               },
               "subtitle": {
-                "lt": "Riešutmedis · Rankinis poliravimas · Šilkinis atlasas"
+                "lt": "Riešutmedis · Rankinis poliravimas · Šilkinis atlasas",
+                "ru": "Riešutmedis · Rankinis poliravimas · Šilkinis atlasas [TODO: verify — do not publish unverified]"
               },
               "price": 2500
             },
             {
               "title": {
-                "lt": "Metalinis karstas"
+                "lt": "Metalinis karstas",
+                "ru": "Metalinis karstas [TODO: verify — do not publish unverified]"
               },
               "subtitle": {
-                "lt": "Plienas · Bronzos spalva · Aksomas"
+                "lt": "Plienas · Bronzos spalva · Aksomas",
+                "ru": "Plienas · Bronzos spalva · Aksomas [TODO: verify — do not publish unverified]"
               },
               "price": 1800
             }
@@ -403,37 +421,43 @@
           "items": [
             {
               "title": {
-                "lt": "Atminimo kortelės (50 vnt.)"
+                "lt": "Atminimo kortelės (50 vnt.)",
+                "ru": "Atminimo kortelės (50 vnt.) [TODO: verify — do not publish unverified]"
               },
               "price": 50
             },
             {
               "title": {
-                "lt": "Kondolencijų knyga"
+                "lt": "Kondolencijų knyga",
+                "ru": "Kondolencijų knyga [TODO: verify — do not publish unverified]"
               },
               "price": 35
             },
             {
               "title": {
-                "lt": "Gėlių vainikas"
+                "lt": "Gėlių vainikas",
+                "ru": "Gėlių vainikas [TODO: verify — do not publish unverified]"
               },
               "price": 150
             },
             {
               "title": {
-                "lt": "Atminimo žvakidė"
+                "lt": "Atminimo žvakidė",
+                "ru": "Atminimo žvakidė [TODO: verify — do not publish unverified]"
               },
               "price": 45
             },
             {
               "title": {
-                "lt": "Antkapio plokštė"
+                "lt": "Antkapio plokštė",
+                "ru": "Antkapio plokštė [TODO: verify — do not publish unverified]"
               },
               "price": 800
             },
             {
               "title": {
-                "lt": "Urna dekoratyvinė"
+                "lt": "Urna dekoratyvinė",
+                "ru": "Urna dekoratyvinė [TODO: verify — do not publish unverified]"
               },
               "price": 300
             }

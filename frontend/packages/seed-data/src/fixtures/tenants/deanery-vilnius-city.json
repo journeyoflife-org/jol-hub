@@ -53,25 +53,29 @@
           "items": [
             {
               "label": {
-                "lt": "Parapijų"
+                "lt": "Parapijų",
+                "ru": "Parapijų [TODO: verify — do not publish unverified]"
               },
               "value": 12
             },
             {
               "label": {
-                "lt": "Kunigų"
+                "lt": "Kunigų",
+                "ru": "Kunigų [TODO: verify — do not publish unverified]"
               },
               "value": 18
             },
             {
               "label": {
-                "lt": "Parapijiečių"
+                "lt": "Parapijiečių",
+                "ru": "Parapijiečių [TODO: verify — do not publish unverified]"
               },
               "value": 85000
             },
             {
               "label": {
-                "lt": "Katalikų dekanate"
+                "lt": "Katalikų dekanate",
+                "ru": "Katalikų dekanate [TODO: verify — do not publish unverified]"
               },
               "value": 120000
             }
@@ -82,13 +86,15 @@
           "links": [
             {
               "label": {
-                "lt": "Parapijų katalogas"
+                "lt": "Parapijų katalogas",
+                "ru": "Parapijų katalogas [TODO: verify — do not publish unverified]"
               },
               "href": "/directory"
             },
             {
               "label": {
-                "lt": "Bendri renginiai"
+                "lt": "Bendri renginiai",
+                "ru": "Bendri renginiai [TODO: verify — do not publish unverified]"
               },
               "href": "/events"
             }
@@ -119,7 +125,8 @@
                 "ru": "St. Peter and Paul Church [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "subtitle": {
-                "lt": "Klebonas: Kun. Artūras Ligenbergas"
+                "lt": "Klebonas: Kun. Artūras Ligenbergas",
+                "ru": "Klebonas: Kun. Artūras Ligenbergas [TODO: verify — do not publish unverified]"
               },
               "description": {
                 "lt": "Antakalnio g. 27, Vilnius · Mišios: I-V 07:00, 18:00; savaitgaliais 08:00, 10:00, 12:00, 18:00",
@@ -139,7 +146,8 @@
                 "ru": "St. Johns Church [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "subtitle": {
-                "lt": "Klebonas: Kun. Dr. Jonas Ivanauskas"
+                "lt": "Klebonas: Kun. Dr. Jonas Ivanauskas",
+                "ru": "Klebonas: Kun. Dr. Jonas Ivanauskas [TODO: verify — do not publish unverified]"
               },
               "description": {
                 "lt": "Šv. Jono g. 12, Vilnius · Mišios: I-V 07:30, 18:30; savaitgaliais 09:00, 11:00, 18:00",
@@ -159,7 +167,8 @@
                 "ru": "St. Casimir Church [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "subtitle": {
-                "lt": "Klebonas: Kun. Ričardas Doveika"
+                "lt": "Klebonas: Kun. Ričardas Doveika",
+                "ru": "Klebonas: Kun. Ričardas Doveika [TODO: verify — do not publish unverified]"
               },
               "description": {
                 "lt": "Didžioji g. 34, Vilnius · Mišios: I-V 07:00, 18:00; savaitgaliais 08:30, 10:30, 12:00, 18:00",
@@ -179,7 +188,8 @@
                 "ru": "Gate of Dawn Chapel [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "subtitle": {
-                "lt": "Rektorius: Kun. Paulius Spurga"
+                "lt": "Rektorius: Kun. Paulius Spurga",
+                "ru": "Rektorius: Kun. Paulius Spurga [TODO: verify — do not publish unverified]"
               },
               "description": {
                 "lt": "Aušros Vartų g. 12, Vilnius · Mišios: I-V 07:00, 17:30; savaitgaliais 07:00, 08:30, 10:00, 11:30, 17:30",
@@ -199,7 +209,8 @@
                 "ru": "St. Anne Church [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "subtitle": {
-                "lt": "Klebonas: Kun. Gintaras Vitkūnas"
+                "lt": "Klebonas: Kun. Gintaras Vitkūnas",
+                "ru": "Klebonas: Kun. Gintaras Vitkūnas [TODO: verify — do not publish unverified]"
               },
               "description": {
                 "lt": "M. Daukšos g. 1, Vilnius · Mišios: I-V 18:00; savaitgaliais 09:00, 11:00, 18:00",

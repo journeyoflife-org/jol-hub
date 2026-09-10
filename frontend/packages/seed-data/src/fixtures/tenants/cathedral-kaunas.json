@@ -59,25 +59,29 @@
           "items": [
             {
               "label": {
-                "lt": "Adresas"
+                "lt": "Adresas",
+                "ru": "Adresas [TODO: verify — do not publish unverified]"
               },
               "value": "Vilniaus g. 1, 44287 Kaunas"
             },
             {
               "label": {
-                "lt": "Telefonas"
+                "lt": "Telefonas",
+                "ru": "Telefonas [TODO: verify — do not publish unverified]"
               },
               "value": "+370 37 32 26 08"
             },
             {
               "label": {
-                "lt": "El. paštas"
+                "lt": "El. paštas",
+                "ru": "El. paštas [TODO: verify — do not publish unverified]"
               },
               "value": "info@kaunoarkikatedra.lt"
             },
             {
               "label": {
-                "lt": "Svetainė"
+                "lt": "Svetainė",
+                "ru": "Svetainė [TODO: verify — do not publish unverified]"
               },
               "value": "https://kaunoarkikatedra.lt"
             }
@@ -88,25 +92,29 @@
           "links": [
             {
               "label": {
-                "lt": "Vyskupo žinutės"
+                "lt": "Vyskupo žinutės",
+                "ru": "Vyskupo žinutės [TODO: verify — do not publish unverified]"
               },
               "href": "/bishops-messages"
             },
             {
               "label": {
-                "lt": "Renginiai"
+                "lt": "Renginiai",
+                "ru": "Renginiai [TODO: verify — do not publish unverified]"
               },
               "href": "/events"
             },
             {
               "label": {
-                "lt": "Paveldas"
+                "lt": "Paveldas",
+                "ru": "Paveldas [TODO: verify — do not publish unverified]"
               },
               "href": "/heritage"
             },
             {
               "label": {
-                "lt": "Paaukoti"
+                "lt": "Paaukoti",
+                "ru": "Paaukoti [TODO: verify — do not publish unverified]"
               },
               "href": "/donate"
             }

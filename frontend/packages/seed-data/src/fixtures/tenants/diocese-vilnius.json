@@ -59,31 +59,36 @@
           "items": [
             {
               "label": {
-                "lt": "Parapijų"
+                "lt": "Parapijų",
+                "ru": "Parapijų [TODO: verify — do not publish unverified]"
               },
               "value": 54
             },
             {
               "label": {
-                "lt": "Kunigų"
+                "lt": "Kunigų",
+                "ru": "Kunigų [TODO: verify — do not publish unverified]"
               },
               "value": 78
             },
             {
               "label": {
-                "lt": "Diakonų"
+                "lt": "Diakonų",
+                "ru": "Diakonų [TODO: verify — do not publish unverified]"
               },
               "value": 5
             },
             {
               "label": {
-                "lt": "Parapijiečių"
+                "lt": "Parapijiečių",
+                "ru": "Parapijiečių [TODO: verify — do not publish unverified]"
               },
               "value": 320000
             },
             {
               "label": {
-                "lt": "Katalikų"
+                "lt": "Katalikų",
+                "ru": "Katalikų [TODO: verify — do not publish unverified]"
               },
               "value": 580000
             }
@@ -94,19 +99,22 @@
           "links": [
             {
               "label": {
-                "lt": "Dekanatų katalogas"
+                "lt": "Dekanatų katalogas",
+                "ru": "Dekanatų katalogas [TODO: verify — do not publish unverified]"
               },
               "href": "/directory"
             },
             {
               "label": {
-                "lt": "Naujienos"
+                "lt": "Naujienos",
+                "ru": "Naujienos [TODO: verify — do not publish unverified]"
               },
               "href": "/news"
             },
             {
               "label": {
-                "lt": "Pašaukimai"
+                "lt": "Pašaukimai",
+                "ru": "Pašaukimai [TODO: verify — do not publish unverified]"
               },
               "href": "/vocations"
             }

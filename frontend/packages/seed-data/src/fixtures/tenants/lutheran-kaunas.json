@@ -96,25 +96,29 @@
           "items": [
             {
               "label": {
-                "lt": "Adresas"
+                "lt": "Adresas",
+                "ru": "Adresas [TODO: verify — do not publish unverified]"
               },
               "value": "M. Valančiaus g. 9, 44275 Kaunas"
             },
             {
               "label": {
-                "lt": "Telefonas"
+                "lt": "Telefonas",
+                "ru": "Telefonas [TODO: verify — do not publish unverified]"
               },
               "value": "+370 37 331 234"
             },
             {
               "label": {
-                "lt": "El. paštas"
+                "lt": "El. paštas",
+                "ru": "El. paštas [TODO: verify — do not publish unverified]"
               },
               "value": "info@kaunaslutheran.lt"
             },
             {
               "label": {
-                "lt": "Biuras"
+                "lt": "Biuras",
+                "ru": "Biuras [TODO: verify — do not publish unverified]"
               },
               "value": "I-V 10:00-16:00 (galima ir pagal susitarimą)"
             }
@@ -130,7 +134,8 @@
           "items": [
             {
               "title": {
-                "lt": "Vikaras Tomas Šernas"
+                "lt": "Vikaras Tomas Šernas",
+                "ru": "Vikaras Tomas Šernas [TODO: verify — do not publish unverified]"
               },
               "subtitle": {
                 "lt": "Kunigas",
@@ -145,7 +150,8 @@
             },
             {
               "title": {
-                "lt": "Asta Petronienė"
+                "lt": "Asta Petronienė",
+                "ru": "Asta Petronienė [TODO: verify — do not publish unverified]"
               },
               "subtitle": {
                 "lt": "Vyresnioji",
@@ -158,7 +164,8 @@
             },
             {
               "title": {
-                "lt": "Jonas Kavaliauskas"
+                "lt": "Jonas Kavaliauskas",
+                "ru": "Jonas Kavaliauskas [TODO: verify — do not publish unverified]"
               },
               "subtitle": {
                 "lt": "Diakonas",
@@ -189,13 +196,15 @@
           "links": [
             {
               "label": {
-                "lt": "Bendruomenės renginiai"
+                "lt": "Bendruomenės renginiai",
+                "ru": "Bendruomenės renginiai [TODO: verify — do not publish unverified]"
               },
               "href": "/events"
             },
             {
               "label": {
-                "lt": "Krautuvėlė"
+                "lt": "Krautuvėlė",
+                "ru": "Krautuvėlė [TODO: verify — do not publish unverified]"
               },
               "href": "/shop"
             }
