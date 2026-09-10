@@ -23,11 +23,12 @@ import sys
 from pathlib import Path
 
 # Files that must remain byte-identical to jol-hub@main
-GOVERNANCE_FILES = [
-    ".sops.yaml",
-    "scripts/sops-validate.py",
-    "secrets/README.md",
-]
+# Local paths (in spoke repo) -> remote paths (in jol-hub)
+GOVERNANCE_FILES = {
+    ".sops.yaml": "docs/templates/jol-frontend-repo-template/.sops.yaml",
+    "scripts/sops-validate.py": "docs/templates/jol-frontend-repo-template/scripts/sops-validate.py",
+    "secrets/README.md": "docs/templates/jol-frontend-repo-template/secrets/README.md",
+}
 
 # Base URL for raw GitHub content
 RAW_BASE = "https://raw.githubusercontent.com"
@@ -83,24 +84,24 @@ def main() -> int:
     print(f"Repository root: {repo_root}")
     print()
 
-    for rel_path in GOVERNANCE_FILES:
-        local_file = repo_root / rel_path
+    for local_rel, remote_rel in GOVERNANCE_FILES.items():
+        local_file = repo_root / local_rel
         if not local_file.exists():
-            print(f"  MISSING: {rel_path} (file does not exist locally)")
+            print(f"  MISSING: {local_rel} (file does not exist locally)")
             drift_detected = True
             continue
 
         local_hash = sha256_file(local_file)
-        remote_hash = sha256_remote(args.hub_repo, args.branch, rel_path)
+        remote_hash = sha256_remote(args.hub_repo, args.branch, remote_rel)
 
         if remote_hash is None:
-            print(f"  SKIP:    {rel_path} (could not fetch remote)")
+            print(f"  SKIP:    {local_rel} (could not fetch remote)")
             continue
 
         if local_hash == remote_hash:
-            print(f"  OK:      {rel_path}")
+            print(f"  OK:      {local_rel}")
         else:
-            print(f"  DRIFT:   {rel_path}")
+            print(f"  DRIFT:   {local_rel}")
             print(f"           local:  {local_hash[:16]}…")
             print(f"           remote: {remote_hash[:16]}…")
             drift_detected = True
