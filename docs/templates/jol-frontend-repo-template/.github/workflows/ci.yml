@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  # Call org reusable workflows
+  build:
+    uses: journeyoflife-org/.github/.github/workflows/frontend-build.yml@main
+    secrets: inherit
+
+  test:
+    uses: journeyoflife-org/.github/.github/workflows/frontend-test.yml@main
+    secrets: inherit
+
+  security:
+    uses: journeyoflife-org/.github/.github/workflows/security-scan.yml@main
+    secrets: inherit
+
+  payment-boundary:
+    uses: journeyoflife-org/.github/.github/workflows/payment-boundary-guard.yml@main
+    secrets: inherit
+
+  # Satellite kit drift check
+  drift-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check satellite kit drift
+        run: |
+          # Compare SHA-256 of .sops.yaml and sops-validate.py against jol-hub@main
+          HUB_SOPS=$(curl -sL https://raw.githubusercontent.com/journeyoflife-org/jol-hub/main/.sops.yaml | sha256sum | cut -d' ' -f1)
+          LOCAL_SOPS=$(sha256sum .sops.yaml | cut -d' ' -f1)
+          if [ "$HUB_SOPS" != "$LOCAL_SOPS" ]; then
+            echo "DRIFT DETECTED: .sops.yaml differs from jol-hub@main"
+            exit 1
+          fi
+          echo "Satellite kit drift check passed"

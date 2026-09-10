@@ -29,6 +29,7 @@ backend/db.sqlite3
 *.pem
 *.key
 secrets/
+!docs/templates/jol-frontend-repo-template/secrets/
 
 # === Python ===
 __pycache__/
