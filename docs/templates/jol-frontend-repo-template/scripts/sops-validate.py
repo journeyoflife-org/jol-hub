@@ -30,8 +30,8 @@ GOVERNANCE_FILES = {
     "secrets/README.md": "docs/templates/jol-frontend-repo-template/secrets/README.md",
 }
 
-# Base URL for raw GitHub content
-RAW_BASE = "https://raw.githubusercontent.com"
+# Base URL for GitHub API (no CDN caching issues)
+API_BASE = "https://api.github.com"
 
 
 def sha256_file(path: Path) -> str:
@@ -44,16 +44,20 @@ def sha256_file(path: Path) -> str:
 
 
 def sha256_remote(repo: str, branch: str, rel_path: str) -> str | None:
-    """Fetch remote file and compute its SHA-256. Returns None on failure."""
+    """Fetch remote file via GitHub API and compute its SHA-256. Returns None on failure."""
+    import base64
+    import json
     import urllib.request
     import urllib.error
 
-    url = f"{RAW_BASE}/{repo}/{branch}/{rel_path}"
+    url = f"{API_BASE}/repos/{repo}/contents/{rel_path}?ref={branch}"
     try:
-        with urllib.request.urlopen(url, timeout=15) as resp:
-            data = resp.read()
+        req = urllib.request.Request(url, headers={"Accept": "application/vnd.github.v3+json"})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            payload = json.loads(resp.read())
+        data = base64.b64decode(payload["content"])
         return hashlib.sha256(data).hexdigest()
-    except (urllib.error.URLError, OSError) as exc:
+    except (urllib.error.URLError, OSError, KeyError, json.JSONDecodeError) as exc:
         print(f"  WARN: could not fetch {url}: {exc}", file=sys.stderr)
         return None
 
