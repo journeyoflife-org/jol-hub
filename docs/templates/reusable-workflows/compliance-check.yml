@@ -1,0 +1,135 @@
+# =============================================================================
+# Reusable Workflow: Compliance Check
+# =============================================================================
+# Called by spoke repos via workflow_call. Runs all compliance gates:
+# theme literals (INV-7), secrets, a11y, performance budgets.
+#
+# Usage in spoke .github/workflows/ci.yml:
+#   jobs:
+#     compliance:
+#       uses: journeyoflife-org/.github/.github/workflows/compliance-check.yml@main
+# =============================================================================
+
+name: Compliance Check
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        description: 'Node.js version'
+        required: false
+        type: string
+        default: '20'
+      pnpm-version:
+        description: 'pnpm version'
+        required: false
+        type: string
+        default: '10.30.3'
+    secrets:
+      NPM_TOKEN:
+        required: false
+        description: 'GitHub Packages token for @jol-hub/* packages'
+
+env:
+  NODE_VERSION: ${{ inputs.node-version }}
+  PNPM_VERSION: ${{ inputs.pnpm-version }}
+
+jobs:
+  theme-literals:
+    name: Theme Literals (INV-7)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run theme literal guard
+        run: |
+          if [ -f scripts/check-theme-literals.sh ]; then
+            bash scripts/check-theme-literals.sh
+          else
+            echo "::warning::Theme literal guard not found at scripts/check-theme-literals.sh"
+          fi
+
+  secrets:
+    name: Secret Detection
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run secret scanner
+        run: |
+          if [ -f scripts/check-secrets.sh ]; then
+            bash scripts/check-secrets.sh
+          else
+            echo "::warning::Secret scanner not found at scripts/check-secrets.sh"
+          fi
+
+  a11y:
+    name: Accessibility (WCAG 2.2 AA)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Configure npm registry for @jol-hub packages
+        run: |
+          echo "@jol-hub:registry=https://npm.pkg.github.com" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=\${NODE_AUTH_TOKEN}" >> .npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run a11y page checker
+        run: pnpm check-a11y
+
+  perf-budget:
+    name: Performance Budget
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Configure npm registry for @jol-hub packages
+        run: |
+          echo "@jol-hub:registry=https://npm.pkg.github.com" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=\${NODE_AUTH_TOKEN}" >> .npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build for size analysis
+        run: pnpm build
+
+      - name: Run performance budget checker
+        run: pnpm check-perf
