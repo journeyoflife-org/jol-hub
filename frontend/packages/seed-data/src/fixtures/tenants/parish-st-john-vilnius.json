@@ -106,37 +106,43 @@
           "items": [
             {
               "label": {
-                "lt": "Adresas"
+                "lt": "Adresas",
+                "ru": "Adresas [TODO: verify — do not publish unverified]"
               },
               "value": "Šv. Jono g. 12, 01141 Vilnius"
             },
             {
               "label": {
-                "lt": "Telefonas"
+                "lt": "Telefonas",
+                "ru": "Telefonas [TODO: verify — do not publish unverified]"
               },
               "value": "+370 5 261 5454"
             },
             {
               "label": {
-                "lt": "El. paštas"
+                "lt": "El. paštas",
+                "ru": "El. paštas [TODO: verify — do not publish unverified]"
               },
               "value": "jonai@vilnius.lt"
             },
             {
               "label": {
-                "lt": "Klebonas"
+                "lt": "Klebonas",
+                "ru": "Klebonas [TODO: verify — do not publish unverified]"
               },
               "value": "Kun. Dr. Jonas Ivanauskas (klebonas@svjonai.lt)"
             },
             {
               "label": {
-                "lt": "Biuro laikas"
+                "lt": "Biuro laikas",
+                "ru": "Biuro laikas [TODO: verify — do not publish unverified]"
               },
               "value": "I-V 09:00-17:00, VI-VII 10:00-12:00"
             },
             {
               "label": {
-                "lt": "Išpažintis"
+                "lt": "Išpažintis",
+                "ru": "Išpažintis [TODO: verify — do not publish unverified]"
               },
               "value": "Savaitgaliais 08:00-08:45, 17:00-17:45 arba susitarus"
             }
@@ -152,25 +158,29 @@
           "items": [
             {
               "label": {
-                "lt": "Registruotų parapijiečių"
+                "lt": "Registruotų parapijiečių",
+                "ru": "Registruotų parapijiečių [TODO: verify — do not publish unverified]"
               },
               "value": 4200
             },
             {
               "label": {
-                "lt": "Sekmadienio dalyvių (vid.)"
+                "lt": "Sekmadienio dalyvių (vid.)",
+                "ru": "Sekmadienio dalyvių (vid.) [TODO: verify — do not publish unverified]"
               },
               "value": 850
             },
             {
               "label": {
-                "lt": "Krikštai per metus"
+                "lt": "Krikštai per metus",
+                "ru": "Krikštai per metus [TODO: verify — do not publish unverified]"
               },
               "value": 65
             },
             {
               "label": {
-                "lt": "Santuokos per metus"
+                "lt": "Santuokos per metus",
+                "ru": "Santuokos per metus [TODO: verify — do not publish unverified]"
               },
               "value": 32
             }
@@ -181,19 +191,22 @@
           "links": [
             {
               "label": {
-                "lt": "Užsakyti Mišių intenciją"
+                "lt": "Užsakyti Mišių intenciją",
+                "ru": "Užsakyti Mišių intenciją [TODO: verify — do not publish unverified]"
               },
               "href": "/shop"
             },
             {
               "label": {
-                "lt": "Sakramentai"
+                "lt": "Sakramentai",
+                "ru": "Sakramentai [TODO: verify — do not publish unverified]"
               },
               "href": "/sacraments"
             },
             {
               "label": {
-                "lt": "Naujienos"
+                "lt": "Naujienos",
+                "ru": "Naujienos [TODO: verify — do not publish unverified]"
               },
               "href": "/news"
             }

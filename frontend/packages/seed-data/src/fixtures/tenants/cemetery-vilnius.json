@@ -53,43 +53,50 @@
           "items": [
             {
               "label": {
-                "lt": "Adresas"
+                "lt": "Adresas",
+                "ru": "Adresas [TODO: verify — do not publish unverified]"
               },
               "value": "Kapinių g. 1, 01140 Vilnius"
             },
             {
               "label": {
-                "lt": "Telefonas"
+                "lt": "Telefonas",
+                "ru": "Telefonas [TODO: verify — do not publish unverified]"
               },
               "value": "+370 5 210 6000"
             },
             {
               "label": {
-                "lt": "Skubus numeris"
+                "lt": "Skubus numeris",
+                "ru": "Skubus numeris [TODO: verify — do not publish unverified]"
               },
               "value": "+370 699 00600"
             },
             {
               "label": {
-                "lt": "El. paštas"
+                "lt": "El. paštas",
+                "ru": "El. paštas [TODO: verify — do not publish unverified]"
               },
               "value": "info@vilniuscemetery.lt"
             },
             {
               "label": {
-                "lt": "Vasaros laikas"
+                "lt": "Vasaros laikas",
+                "ru": "Vasaros laikas [TODO: verify — do not publish unverified]"
               },
               "value": "08:00 - 20:00"
             },
             {
               "label": {
-                "lt": "Žiemos laikas"
+                "lt": "Žiemos laikas",
+                "ru": "Žiemos laikas [TODO: verify — do not publish unverified]"
               },
               "value": "08:00 - 17:00"
             },
             {
               "label": {
-                "lt": "Biuras"
+                "lt": "Biuras",
+                "ru": "Biuras [TODO: verify — do not publish unverified]"
               },
               "value": "09:00 - 17:00"
             }
@@ -193,25 +200,29 @@
           "items": [
             {
               "label": {
-                "lt": "Įkurta"
+                "lt": "Įkurta",
+                "ru": "Įkurta [TODO: verify — do not publish unverified]"
               },
               "value": 1900
             },
             {
               "label": {
-                "lt": "Darbuotojų"
+                "lt": "Darbuotojų",
+                "ru": "Darbuotojų [TODO: verify — do not publish unverified]"
               },
               "value": 45
             },
             {
               "label": {
-                "lt": "Viso kapaviečių"
+                "lt": "Viso kapaviečių",
+                "ru": "Viso kapaviečių [TODO: verify — do not publish unverified]"
               },
               "value": 45000
             },
             {
               "label": {
-                "lt": "Aktyvių kapaviečių"
+                "lt": "Aktyvių kapaviečių",
+                "ru": "Aktyvių kapaviečių [TODO: verify — do not publish unverified]"
               },
               "value": 38000
             }
@@ -222,19 +233,22 @@
           "links": [
             {
               "label": {
-                "lt": "Kapų paieška"
+                "lt": "Kapų paieška",
+                "ru": "Kapų paieška [TODO: verify — do not publish unverified]"
               },
               "href": "/locate"
             },
             {
               "label": {
-                "lt": "Priežiūros planai"
+                "lt": "Priežiūros planai",
+                "ru": "Priežiūros planai [TODO: verify — do not publish unverified]"
               },
               "href": "/maintenance"
             },
             {
               "label": {
-                "lt": "Paminklai"
+                "lt": "Paminklai",
+                "ru": "Paminklai [TODO: verify — do not publish unverified]"
               },
               "href": "/monuments"
             }
@@ -273,7 +287,8 @@
           "items": [
             {
               "title": {
-                "lt": "A sekcija"
+                "lt": "A sekcija",
+                "ru": "A sekcija [TODO: verify — do not publish unverified]"
               },
               "tags": [
                 "istorinė",
@@ -282,7 +297,8 @@
             },
             {
               "title": {
-                "lt": "B sekcija"
+                "lt": "B sekcija",
+                "ru": "B sekcija [TODO: verify — do not publish unverified]"
               },
               "tags": [
                 "stačiatikių",
@@ -291,7 +307,8 @@
             },
             {
               "title": {
-                "lt": "C sekcija"
+                "lt": "C sekcija",
+                "ru": "C sekcija [TODO: verify — do not publish unverified]"
               },
               "tags": [
                 "katalikų",
@@ -300,7 +317,8 @@
             },
             {
               "title": {
-                "lt": "D sekcija"
+                "lt": "D sekcija",
+                "ru": "D sekcija [TODO: verify — do not publish unverified]"
               },
               "tags": [
                 "naujoji",
@@ -309,7 +327,8 @@
             },
             {
               "title": {
-                "lt": "E sekcija"
+                "lt": "E sekcija",
+                "ru": "E sekcija [TODO: verify — do not publish unverified]"
               },
               "tags": [
                 "kremavimo",
@@ -409,10 +428,12 @@
           "items": [
             {
               "title": {
-                "lt": "Klasikinis granitinis paminklas"
+                "lt": "Klasikinis granitinis paminklas",
+                "ru": "Klasikinis granitinis paminklas [TODO: verify — do not publish unverified]"
               },
               "subtitle": {
-                "lt": "Granitas · 120×60 cm"
+                "lt": "Granitas · 120×60 cm",
+                "ru": "Granitas · 120×60 cm [TODO: verify — do not publish unverified]"
               },
               "price": 1500,
               "tags": [
@@ -421,10 +442,12 @@
             },
             {
               "title": {
-                "lt": "Stačiatikių kryžius"
+                "lt": "Stačiatikių kryžius",
+                "ru": "Stačiatikių kryžius [TODO: verify — do not publish unverified]"
               },
               "subtitle": {
-                "lt": "Akmuo · 150×40 cm"
+                "lt": "Akmuo · 150×40 cm",
+                "ru": "Akmuo · 150×40 cm [TODO: verify — do not publish unverified]"
               },
               "price": 1200,
               "tags": [
@@ -433,10 +456,12 @@
             },
             {
               "title": {
-                "lt": "Modernus marmuro paminklas"
+                "lt": "Modernus marmuro paminklas",
+                "ru": "Modernus marmuro paminklas [TODO: verify — do not publish unverified]"
               },
               "subtitle": {
-                "lt": "Marmuras · 100×80 cm"
+                "lt": "Marmuras · 100×80 cm",
+                "ru": "Marmuras · 100×80 cm [TODO: verify — do not publish unverified]"
               },
               "price": 2500,
               "tags": [
@@ -445,10 +470,12 @@
             },
             {
               "title": {
-                "lt": "Bronzinė skulptūra"
+                "lt": "Bronzinė skulptūra",
+                "ru": "Bronzinė skulptūra [TODO: verify — do not publish unverified]"
               },
               "subtitle": {
-                "lt": "Bronza · 80×50 cm"
+                "lt": "Bronza · 80×50 cm",
+                "ru": "Bronza · 80×50 cm [TODO: verify — do not publish unverified]"
               },
               "price": 5000,
               "tags": [
@@ -457,10 +484,12 @@
             },
             {
               "title": {
-                "lt": "Krikščioniškas kryžius"
+                "lt": "Krikščioniškas kryžius",
+                "ru": "Krikščioniškas kryžius [TODO: verify — do not publish unverified]"
               },
               "subtitle": {
-                "lt": "Granitas · 180×60 cm"
+                "lt": "Granitas · 180×60 cm",
+                "ru": "Granitas · 180×60 cm [TODO: verify — do not publish unverified]"
               },
               "price": 800,
               "tags": [

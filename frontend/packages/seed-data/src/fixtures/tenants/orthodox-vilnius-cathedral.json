@@ -177,25 +177,29 @@
           "items": [
             {
               "label": {
-                "lt": "Parapijiečių"
+                "lt": "Parapijiečių",
+                "ru": "Parapijiečių [TODO: verify — do not publish unverified]"
               },
               "value": 3500
             },
             {
               "label": {
-                "lt": "Sekmadienio dalyvių (vid.)"
+                "lt": "Sekmadienio dalyvių (vid.)",
+                "ru": "Sekmadienio dalyvių (vid.) [TODO: verify — do not publish unverified]"
               },
               "value": 600
             },
             {
               "label": {
-                "lt": "Dvasininkų"
+                "lt": "Dvasininkų",
+                "ru": "Dvasininkų [TODO: verify — do not publish unverified]"
               },
               "value": 4
             },
             {
               "label": {
-                "lt": "Švenčių dalyvių"
+                "lt": "Švenčių dalyvių",
+                "ru": "Švenčių dalyvių [TODO: verify — do not publish unverified]"
               },
               "value": 1500
             }
@@ -206,13 +210,15 @@
           "links": [
             {
               "label": {
-                "lt": "Ikonų galerija"
+                "lt": "Ikonų galerija",
+                "ru": "Ikonų galerija [TODO: verify — do not publish unverified]"
               },
               "href": "/gallery"
             },
             {
               "label": {
-                "lt": "Krautuvėlė"
+                "lt": "Krautuvėlė",
+                "ru": "Krautuvėlė [TODO: verify — do not publish unverified]"
               },
               "href": "/shop"
             }
@@ -243,7 +249,8 @@
                 "ru": "Vilnius Icon of the Mother of God [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "subtitle": {
-                "lt": "Vilnius · XVI a. · Pagrindinis ikonostatas"
+                "lt": "Vilnius · XVI a. · Pagrindinis ikonostatas",
+                "ru": "Vilnius · XVI a. · Pagrindinis ikonostatas [TODO: verify — do not publish unverified]"
               },
               "description": {
                 "lt": "Stebuklinga ikona, Vilniaus stačiatikių globėja",
@@ -258,7 +265,8 @@
                 "ru": "St. Nicholas the Wonderworker [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "subtitle": {
-                "lt": "Rusija · XVII a. · Šoninė koplyčia"
+                "lt": "Rusija · XVII a. · Šoninė koplyčia",
+                "ru": "Rusija · XVII a. · Šoninė koplyčia [TODO: verify — do not publish unverified]"
               },
               "description": {
                 "lt": "Ypač gerbiama Šv. Nikolajaus ikona",
@@ -273,7 +281,8 @@
                 "ru": "St. George the Victorious [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "subtitle": {
-                "lt": "Graikija · XVIII a. · Pagrindinis ikonostatas"
+                "lt": "Graikija · XVIII a. · Pagrindinis ikonostatas",
+                "ru": "Graikija · XVIII a. · Pagrindinis ikonostatas [TODO: verify — do not publish unverified]"
               },
               "description": {
                 "lt": "Katedros globėjo ikona",
