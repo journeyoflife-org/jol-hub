@@ -4,11 +4,13 @@
   "locale": "lt",
   "name": {
     "lt": "Vilniaus miesto dekanatas",
-    "en": "Vilnius City Deanery"
+    "en": "Vilnius City Deanery",
+    "ru": "Vilnius City Deanery [TODO: verify with parish/diocese — do not publish unverified]"
   },
   "tagline": {
     "lt": "Vilniaus arkivyskupijos miesto dekanatas nuo 1926 m.",
-    "en": "City deanery of the Vilnius Archdiocese since 1926"
+    "en": "City deanery of the Vilnius Archdiocese since 1926",
+    "ru": "City deanery of the Vilnius Archdiocese since 1926 [TODO: verify with parish/diocese — do not publish unverified]"
   },
   "identity": {
     "entityId": "lt-deanery-vilnius-city-001",
@@ -22,105 +24,193 @@
   "pages": [
     {
       "route": "/",
-      "title": { "lt": "Pradžia", "en": "Home" },
+      "title": {
+        "lt": "Pradžia",
+        "en": "Home",
+        "ru": "Home [TODO: verify with parish/diocese — do not publish unverified]"
+      },
       "contentBlocks": [
         {
           "type": "hero",
           "heading": {
             "lt": "Vilniaus miesto dekanatas",
-            "en": "Vilnius City Deanery"
+            "en": "Vilnius City Deanery",
+            "ru": "Vilnius City Deanery [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "body": {
             "lt": "Vilniaus arkivyskupija · Įkurtas 1926 m.",
-            "en": "Vilnius Archdiocese · Established 1926"
+            "en": "Vilnius Archdiocese · Established 1926",
+            "ru": "Vilnius Archdiocese · Established 1926 [TODO: verify with parish/diocese — do not publish unverified]"
           }
         },
         {
           "type": "stats",
-          "heading": { "lt": "Dekanatas skaičiais", "en": "The Deanery in Numbers" },
+          "heading": {
+            "lt": "Dekanatas skaičiais",
+            "en": "The Deanery in Numbers",
+            "ru": "The Deanery in Numbers [TODO: verify with parish/diocese — do not publish unverified]"
+          },
           "items": [
-            { "label": { "lt": "Parapijų" }, "value": 12 },
-            { "label": { "lt": "Kunigų" }, "value": 18 },
-            { "label": { "lt": "Parapijiečių" }, "value": 85000 },
-            { "label": { "lt": "Katalikų dekanate" }, "value": 120000 }
+            {
+              "label": {
+                "lt": "Parapijų"
+              },
+              "value": 12
+            },
+            {
+              "label": {
+                "lt": "Kunigų"
+              },
+              "value": 18
+            },
+            {
+              "label": {
+                "lt": "Parapijiečių"
+              },
+              "value": 85000
+            },
+            {
+              "label": {
+                "lt": "Katalikų dekanate"
+              },
+              "value": 120000
+            }
           ]
         },
         {
           "type": "cta",
           "links": [
-            { "label": { "lt": "Parapijų katalogas" }, "href": "/directory" },
-            { "label": { "lt": "Bendri renginiai" }, "href": "/events" }
+            {
+              "label": {
+                "lt": "Parapijų katalogas"
+              },
+              "href": "/directory"
+            },
+            {
+              "label": {
+                "lt": "Bendri renginiai"
+              },
+              "href": "/events"
+            }
           ]
         }
       ]
     },
     {
       "route": "/directory",
-      "title": { "lt": "Parapijų katalogas", "en": "Parish Directory" },
+      "title": {
+        "lt": "Parapijų katalogas",
+        "en": "Parish Directory",
+        "ru": "Parish Directory [TODO: verify with parish/diocese — do not publish unverified]"
+      },
       "contentBlocks": [
         {
           "type": "list",
-          "heading": { "lt": "Dekanato parapijos", "en": "Deanery Parishes" },
+          "heading": {
+            "lt": "Dekanato parapijos",
+            "en": "Deanery Parishes",
+            "ru": "Deanery Parishes [TODO: verify with parish/diocese — do not publish unverified]"
+          },
           "items": [
             {
               "title": {
                 "lt": "Vilniaus Šv. apaštalų Petro ir Pauliaus bažnyčia",
-                "en": "St. Peter and Paul Church"
+                "en": "St. Peter and Paul Church",
+                "ru": "St. Peter and Paul Church [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "subtitle": { "lt": "Klebonas: Kun. Artūras Ligenbergas" },
+              "subtitle": {
+                "lt": "Klebonas: Kun. Artūras Ligenbergas"
+              },
               "description": {
                 "lt": "Antakalnio g. 27, Vilnius · Mišios: I-V 07:00, 18:00; savaitgaliais 08:00, 10:00, 12:00, 18:00",
-                "en": "Antakalnio g. 27, Vilnius · Masses: Mon-Fri 07:00, 18:00; weekends 08:00, 10:00, 12:00, 18:00"
+                "en": "Antakalnio g. 27, Vilnius · Masses: Mon-Fri 07:00, 18:00; weekends 08:00, 10:00, 12:00, 18:00",
+                "ru": "Antakalnio g. 27, Vilnius · Masses: Mon-Fri 07:00, 18:00; weekends 08:00, 10:00, 12:00, 18:00 [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["parapija", "petropaulas@vilnius.lt", "+370 5 234 0111"]
+              "tags": [
+                "parapija",
+                "petropaulas@vilnius.lt",
+                "+370 5 234 0111"
+              ]
             },
             {
               "title": {
                 "lt": "Vilniaus Šv. Jonų bažnyčia",
-                "en": "St. Johns Church"
+                "en": "St. Johns Church",
+                "ru": "St. Johns Church [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "subtitle": { "lt": "Klebonas: Kun. Dr. Jonas Ivanauskas" },
+              "subtitle": {
+                "lt": "Klebonas: Kun. Dr. Jonas Ivanauskas"
+              },
               "description": {
                 "lt": "Šv. Jono g. 12, Vilnius · Mišios: I-V 07:30, 18:30; savaitgaliais 09:00, 11:00, 18:00",
-                "en": "Šv. Jono g. 12, Vilnius · Masses: Mon-Fri 07:30, 18:30; weekends 09:00, 11:00, 18:00"
+                "en": "Šv. Jono g. 12, Vilnius · Masses: Mon-Fri 07:30, 18:30; weekends 09:00, 11:00, 18:00",
+                "ru": "Šv. Jono g. 12, Vilnius · Masses: Mon-Fri 07:30, 18:30; weekends 09:00, 11:00, 18:00 [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["parapija", "jonai@vilnius.lt", "+370 5 261 5454"]
+              "tags": [
+                "parapija",
+                "jonai@vilnius.lt",
+                "+370 5 261 5454"
+              ]
             },
             {
               "title": {
                 "lt": "Vilniaus Šv. Kazimiero bažnyčia",
-                "en": "St. Casimir Church"
+                "en": "St. Casimir Church",
+                "ru": "St. Casimir Church [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "subtitle": { "lt": "Klebonas: Kun. Ričardas Doveika" },
+              "subtitle": {
+                "lt": "Klebonas: Kun. Ričardas Doveika"
+              },
               "description": {
                 "lt": "Didžioji g. 34, Vilnius · Mišios: I-V 07:00, 18:00; savaitgaliais 08:30, 10:30, 12:00, 18:00",
-                "en": "Didžioji g. 34, Vilnius · Masses: Mon-Fri 07:00, 18:00; weekends 08:30, 10:30, 12:00, 18:00"
+                "en": "Didžioji g. 34, Vilnius · Masses: Mon-Fri 07:00, 18:00; weekends 08:30, 10:30, 12:00, 18:00",
+                "ru": "Didžioji g. 34, Vilnius · Masses: Mon-Fri 07:00, 18:00; weekends 08:30, 10:30, 12:00, 18:00 [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["parapija", "kazimieras@vilnius.lt", "+370 5 262 3456"]
+              "tags": [
+                "parapija",
+                "kazimieras@vilnius.lt",
+                "+370 5 262 3456"
+              ]
             },
             {
               "title": {
                 "lt": "Aušros Vartų Dievo Motinos koplyčia",
-                "en": "Gate of Dawn Chapel"
+                "en": "Gate of Dawn Chapel",
+                "ru": "Gate of Dawn Chapel [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "subtitle": { "lt": "Rektorius: Kun. Paulius Spurga" },
+              "subtitle": {
+                "lt": "Rektorius: Kun. Paulius Spurga"
+              },
               "description": {
                 "lt": "Aušros Vartų g. 12, Vilnius · Mišios: I-V 07:00, 17:30; savaitgaliais 07:00, 08:30, 10:00, 11:30, 17:30",
-                "en": "Aušros Vartų g. 12, Vilnius · Masses: Mon-Fri 07:00, 17:30; weekends 07:00, 08:30, 10:00, 11:30, 17:30"
+                "en": "Aušros Vartų g. 12, Vilnius · Masses: Mon-Fri 07:00, 17:30; weekends 07:00, 08:30, 10:00, 11:30, 17:30",
+                "ru": "Aušros Vartų g. 12, Vilnius · Masses: Mon-Fri 07:00, 17:30; weekends 07:00, 08:30, 10:00, 11:30, 17:30 [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["šventovė", "ausros@vilnius.lt", "+370 5 261 1234"]
+              "tags": [
+                "šventovė",
+                "ausros@vilnius.lt",
+                "+370 5 261 1234"
+              ]
             },
             {
               "title": {
                 "lt": "Vilniaus Šv. Onos bažnyčia",
-                "en": "St. Anne Church"
+                "en": "St. Anne Church",
+                "ru": "St. Anne Church [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "subtitle": { "lt": "Klebonas: Kun. Gintaras Vitkūnas" },
+              "subtitle": {
+                "lt": "Klebonas: Kun. Gintaras Vitkūnas"
+              },
               "description": {
                 "lt": "M. Daukšos g. 1, Vilnius · Mišios: I-V 18:00; savaitgaliais 09:00, 11:00, 18:00",
-                "en": "M. Daukšos g. 1, Vilnius · Masses: Mon-Fri 18:00; weekends 09:00, 11:00, 18:00"
+                "en": "M. Daukšos g. 1, Vilnius · Masses: Mon-Fri 18:00; weekends 09:00, 11:00, 18:00",
+                "ru": "M. Daukšos g. 1, Vilnius · Masses: Mon-Fri 18:00; weekends 09:00, 11:00, 18:00 [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["parapija", "onuliukas@vilnius.lt", "+370 5 262 1234"]
+              "tags": [
+                "parapija",
+                "onuliukas@vilnius.lt",
+                "+370 5 262 1234"
+              ]
             }
           ]
         }
@@ -128,28 +218,57 @@
     },
     {
       "route": "/events",
-      "title": { "lt": "Renginiai", "en": "Events" },
+      "title": {
+        "lt": "Renginiai",
+        "en": "Events",
+        "ru": "Events [TODO: verify with parish/diocese — do not publish unverified]"
+      },
       "contentBlocks": [
         {
           "type": "text",
-          "heading": { "lt": "Bendras dekanato renginių kalendorius", "en": "Shared Deanery Events Calendar" },
+          "heading": {
+            "lt": "Bendras dekanato renginių kalendorius",
+            "en": "Shared Deanery Events Calendar",
+            "ru": "Shared Deanery Events Calendar [TODO: verify with parish/diocese — do not publish unverified]"
+          },
           "body": {
             "lt": "Visų dekanato parapijų bendri renginiai: procesijos, atlaidai, jaunimo susitikimai ir caritas akcijos. Bilietai į mokamus renginius - krautuvėlėje.",
-            "en": "Joint events of all deanery parishes: processions, patronal feasts, youth meetings and Caritas initiatives. Tickets for paid events are available in the shop."
+            "en": "Joint events of all deanery parishes: processions, patronal feasts, youth meetings and Caritas initiatives. Tickets for paid events are available in the shop.",
+            "ru": "Joint events of all deanery parishes: processions, patronal feasts, youth meetings and Caritas initiatives. Tickets for paid events are available in the shop. [TODO: verify with parish/diocese — do not publish unverified]"
           }
         }
       ]
     },
     {
       "route": "/shop",
-      "title": { "lt": "Krautuvėlė", "en": "Shop" },
+      "title": {
+        "lt": "Krautuvėlė",
+        "en": "Shop",
+        "ru": "Shop [TODO: verify with parish/diocese — do not publish unverified]"
+      },
       "contentBlocks": [
         {
           "type": "list",
-          "heading": { "lt": "Dekanato krautuvėlė", "en": "Deanery Shop" },
+          "heading": {
+            "lt": "Dekanato krautuvėlė",
+            "en": "Deanery Shop",
+            "ru": "Deanery Shop [TODO: verify with parish/diocese — do not publish unverified]"
+          },
           "items": [
-            { "title": { "lt": "Dekanato suvenyrai", "en": "Deanery Merchandise" } },
-            { "title": { "lt": "Renginių bilietai", "en": "Event Tickets" } }
+            {
+              "title": {
+                "lt": "Dekanato suvenyrai",
+                "en": "Deanery Merchandise",
+                "ru": "Deanery Merchandise [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "title": {
+                "lt": "Renginių bilietai",
+                "en": "Event Tickets",
+                "ru": "Event Tickets [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
           ]
         }
       ]
