@@ -1,12 +1,16 @@
 {
   "name": "@jol-hub/commerce",
   "version": "1.0.0",
-  "private": true,
   "description": "Commerce domain logic for JOL (booking, donations, subscriptions, shop). Framework-agnostic core: types, API client, cart/VAT math, EUR formatting, package-tier gating. React bindings live in the template renderer.",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
   },
   "scripts": {
+    "build": "tsup",
     "type-check": "tsc --noEmit",
     "test": "tsx --test src/__tests__/*.test.ts"
   },
@@ -14,5 +18,11 @@
     "@types/node": "^20.11.0",
     "tsx": "^4.23.12",
     "typescript": "^5.4.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "restricted"
   }
 }

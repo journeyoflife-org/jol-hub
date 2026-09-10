@@ -1,13 +1,27 @@
 {
   "name": "@jol-hub/testing",
   "version": "1.0.0",
-  "private": true,
   "description": "Shared test harness for the JOL frontend (STEP 15): vitest setup, provider-aware RTL render, deterministic mocks (tenant/auth/API) and reusable fixtures. Deterministic + isolated by contract: no network, no real time, no shared state.",
   "exports": {
-    ".": "./src/index.ts",
-    "./setup": "./src/setup.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./setup": {
+      "types": "./dist/setup.d.ts",
+      "import": "./dist/setup.mjs",
+      "require": "./dist/setup.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "restricted"
   },
   "scripts": {
+    "build": "tsup",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
