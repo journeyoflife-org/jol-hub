@@ -4,11 +4,13 @@
   "locale": "lt",
   "name": {
     "lt": "Kauno evangelikų liuteronų bažnyčia",
-    "en": "Kaunas Evangelical Lutheran Church"
+    "en": "Kaunas Evangelical Lutheran Church",
+    "ru": "Kaunas Evangelical Lutheran Church [TODO: verify with parish/diocese — do not publish unverified]"
   },
   "tagline": {
     "lt": "Augsburgo išpažinimo bendruomenė nuo 1795 m.",
-    "en": "An Augsburg Confession congregation since 1795"
+    "en": "An Augsburg Confession congregation since 1795",
+    "ru": "An Augsburg Confession congregation since 1795 [TODO: verify with parish/diocese — do not publish unverified]"
   },
   "identity": {
     "entityId": "lt-lutheran-kaunas-001",
@@ -23,122 +25,244 @@
   "pages": [
     {
       "route": "/",
-      "title": { "lt": "Pradžia", "en": "Home" },
+      "title": {
+        "lt": "Pradžia",
+        "en": "Home",
+        "ru": "Home [TODO: verify with parish/diocese — do not publish unverified]"
+      },
       "contentBlocks": [
         {
           "type": "hero",
           "heading": {
             "lt": "Kauno evangelikų liuteronų bažnyčia",
-            "en": "Kaunas Evangelical Lutheran Church"
+            "en": "Kaunas Evangelical Lutheran Church",
+            "ru": "Kaunas Evangelical Lutheran Church [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "body": {
             "lt": "Liuteronų reformacijos paveldas · Augsburgo išpažinimas · Įkurta 1795 m.",
-            "en": "Lutheran Reformation heritage · Augsburg Confession · Founded 1795"
+            "en": "Lutheran Reformation heritage · Augsburg Confession · Founded 1795",
+            "ru": "Lutheran Reformation heritage · Augsburg Confession · Founded 1795 [TODO: verify with parish/diocese — do not publish unverified]"
           }
         },
         {
           "type": "schedule",
-          "heading": { "lt": "Pamaldų tvarka", "en": "Service Schedule" },
+          "heading": {
+            "lt": "Pamaldų tvarka",
+            "en": "Service Schedule",
+            "ru": "Service Schedule [TODO: verify with parish/diocese — do not publish unverified]"
+          },
           "entries": [
             {
               "day": "Sekmadienis",
               "dayEn": "Sunday",
-              "times": ["10:00"],
+              "times": [
+                "10:00"
+              ],
               "notes": "Pagrindinės pamaldos su Šv. Vakariene"
             },
             {
               "day": "Sekmadienis",
               "dayEn": "Sunday",
-              "times": ["18:00"],
+              "times": [
+                "18:00"
+              ],
               "notes": "Vakarinės pamaldos"
             },
             {
               "day": "Trečiadienis",
               "dayEn": "Wednesday",
-              "times": ["18:30"],
+              "times": [
+                "18:30"
+              ],
               "notes": "Biblijos studijos"
             },
             {
               "day": "Pirmasis mėnesio sekmadienis",
               "dayEn": "First Sunday of month",
-              "times": ["10:00"],
+              "times": [
+                "10:00"
+              ],
               "notes": "Ypatingos pamaldos"
             }
           ]
         },
         {
           "type": "keyValue",
-          "heading": { "lt": "Kontaktai", "en": "Contact" },
+          "heading": {
+            "lt": "Kontaktai",
+            "en": "Contact",
+            "ru": "Contact [TODO: verify with parish/diocese — do not publish unverified]"
+          },
           "items": [
-            { "label": { "lt": "Adresas" }, "value": "M. Valančiaus g. 9, 44275 Kaunas" },
-            { "label": { "lt": "Telefonas" }, "value": "+370 37 331 234" },
-            { "label": { "lt": "El. paštas" }, "value": "info@kaunaslutheran.lt" },
-            { "label": { "lt": "Biuras" }, "value": "I-V 10:00-16:00 (galima ir pagal susitarimą)" }
+            {
+              "label": {
+                "lt": "Adresas"
+              },
+              "value": "M. Valančiaus g. 9, 44275 Kaunas"
+            },
+            {
+              "label": {
+                "lt": "Telefonas"
+              },
+              "value": "+370 37 331 234"
+            },
+            {
+              "label": {
+                "lt": "El. paštas"
+              },
+              "value": "info@kaunaslutheran.lt"
+            },
+            {
+              "label": {
+                "lt": "Biuras"
+              },
+              "value": "I-V 10:00-16:00 (galima ir pagal susitarimą)"
+            }
           ]
         },
         {
           "type": "list",
-          "heading": { "lt": "Vadovybė", "en": "Leadership" },
+          "heading": {
+            "lt": "Vadovybė",
+            "en": "Leadership",
+            "ru": "Leadership [TODO: verify with parish/diocese — do not publish unverified]"
+          },
           "items": [
             {
-              "title": { "lt": "Vikaras Tomas Šernas" },
-              "subtitle": { "lt": "Kunigas", "en": "Pastor" },
-              "tags": ["pastor@kaunaslutheran.lt", "+370 37 331 234", "nuo 2015 m."]
+              "title": {
+                "lt": "Vikaras Tomas Šernas"
+              },
+              "subtitle": {
+                "lt": "Kunigas",
+                "en": "Pastor",
+                "ru": "Pastor [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "pastor@kaunaslutheran.lt",
+                "+370 37 331 234",
+                "nuo 2015 m."
+              ]
             },
             {
-              "title": { "lt": "Asta Petronienė" },
-              "subtitle": { "lt": "Vyresnioji", "en": "Elder" },
-              "tags": ["vyresnioji@kaunaslutheran.lt"]
+              "title": {
+                "lt": "Asta Petronienė"
+              },
+              "subtitle": {
+                "lt": "Vyresnioji",
+                "en": "Elder",
+                "ru": "Elder [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "vyresnioji@kaunaslutheran.lt"
+              ]
             },
             {
-              "title": { "lt": "Jonas Kavaliauskas" },
-              "subtitle": { "lt": "Diakonas", "en": "Deacon" },
-              "tags": ["diakonas@kaunaslutheran.lt"]
+              "title": {
+                "lt": "Jonas Kavaliauskas"
+              },
+              "subtitle": {
+                "lt": "Diakonas",
+                "en": "Deacon",
+                "ru": "Deacon [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "diakonas@kaunaslutheran.lt"
+              ]
             }
           ]
         },
         {
           "type": "text",
-          "heading": { "lt": "Valdymas", "en": "Governance" },
+          "heading": {
+            "lt": "Valdymas",
+            "en": "Governance",
+            "ru": "Governance [TODO: verify with parish/diocese — do not publish unverified]"
+          },
           "body": {
             "lt": "Bažnyčios taryba - 7 nariai, renkami 3 metų kadencijai. Kiti rinkimai - 2027 m. kovas. Bendruomenė priklauso Evangelikų Liuteronų Bažnyčiai Lietuvoje.",
-            "en": "Church council of 7 members elected for a 3-year term. Next election: March 2027. The congregation belongs to the Evangelical Lutheran Church in Lithuania."
+            "en": "Church council of 7 members elected for a 3-year term. Next election: March 2027. The congregation belongs to the Evangelical Lutheran Church in Lithuania.",
+            "ru": "Church council of 7 members elected for a 3-year term. Next election: March 2027. The congregation belongs to the Evangelical Lutheran Church in Lithuania. [TODO: verify with parish/diocese — do not publish unverified]"
           }
         },
         {
           "type": "cta",
           "links": [
-            { "label": { "lt": "Bendruomenės renginiai" }, "href": "/events" },
-            { "label": { "lt": "Krautuvėlė" }, "href": "/shop" }
+            {
+              "label": {
+                "lt": "Bendruomenės renginiai"
+              },
+              "href": "/events"
+            },
+            {
+              "label": {
+                "lt": "Krautuvėlė"
+              },
+              "href": "/shop"
+            }
           ]
         }
       ]
     },
     {
       "route": "/events",
-      "title": { "lt": "Renginiai", "en": "Events" },
+      "title": {
+        "lt": "Renginiai",
+        "en": "Events",
+        "ru": "Events [TODO: verify with parish/diocese — do not publish unverified]"
+      },
       "contentBlocks": [
         {
           "type": "text",
-          "heading": { "lt": "Bendruomenės renginiai", "en": "Community Events" },
+          "heading": {
+            "lt": "Bendruomenės renginiai",
+            "en": "Community Events",
+            "ru": "Community Events [TODO: verify with parish/diocese — do not publish unverified]"
+          },
           "body": {
             "lt": "Koncertai, paskaitos, jaunimo vakarai ir ekumeniniai susitikimai. Bilietai į mokamus renginius - krautuvėlėje.",
-            "en": "Concerts, lectures, youth evenings and ecumenical gatherings. Tickets for paid events are available in the shop."
+            "en": "Concerts, lectures, youth evenings and ecumenical gatherings. Tickets for paid events are available in the shop.",
+            "ru": "Concerts, lectures, youth evenings and ecumenical gatherings. Tickets for paid events are available in the shop. [TODO: verify with parish/diocese — do not publish unverified]"
           }
         }
       ]
     },
     {
       "route": "/shop",
-      "title": { "lt": "Krautuvėlė", "en": "Shop" },
+      "title": {
+        "lt": "Krautuvėlė",
+        "en": "Shop",
+        "ru": "Shop [TODO: verify with parish/diocese — do not publish unverified]"
+      },
       "contentBlocks": [
         {
           "type": "list",
-          "heading": { "lt": "Bendruomenės krautuvėlė", "en": "Community Shop" },
+          "heading": {
+            "lt": "Bendruomenės krautuvėlė",
+            "en": "Community Shop",
+            "ru": "Community Shop [TODO: verify with parish/diocese — do not publish unverified]"
+          },
           "items": [
-            { "title": { "lt": "Bendruomenės prekės", "en": "Community Merchandise" } },
-            { "title": { "lt": "Renginių bilietai", "en": "Event Tickets" } },
-            { "title": { "lt": "Aukos", "en": "Offerings" } }
+            {
+              "title": {
+                "lt": "Bendruomenės prekės",
+                "en": "Community Merchandise",
+                "ru": "Community Merchandise [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "title": {
+                "lt": "Renginių bilietai",
+                "en": "Event Tickets",
+                "ru": "Event Tickets [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "title": {
+                "lt": "Aukos",
+                "en": "Offerings",
+                "ru": "Offerings [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
           ]
         }
       ]
