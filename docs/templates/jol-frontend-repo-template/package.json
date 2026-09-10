@@ -1,0 +1,57 @@
+{
+  "name": "jol-site-__VERTICAL__",
+  "version": "0.1.0",
+  "private": true,
+  "description": "JOL __VERTICAL_NAME__ — vertical front-end consuming @jol-hub/* platform packages",
+  "packageManager": "pnpm@10.30.3",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "check-a11y": "tsx scripts/check-a11y-pages.ts",
+    "check-perf": "tsx scripts/check-perf-budget.ts",
+    "check-secrets": "tsx scripts/check-secrets.ts",
+    "check-payment-boundary": "bash scripts/check-payment-boundary.sh",
+    "check-theme-literals": "bash scripts/check-theme-literals.sh",
+    "verify": "pnpm type-check && pnpm test && pnpm check-payment-boundary && pnpm check-theme-literals && pnpm check-secrets",
+    "clean": "rm -rf .next .turbo node_modules"
+  },
+  "dependencies": {
+    "@jol-hub/a11y": "^1.0.0",
+    "@jol-hub/auth": "^1.0.0",
+    "@jol-hub/commerce": "^1.0.0",
+    "@jol-hub/i18n": "^1.0.0",
+    "@jol-hub/observability": "^1.0.0",
+    "@jol-hub/perf": "^1.0.0",
+    "@jol-hub/seed-data": "^1.0.0",
+    "@jol-hub/seo": "^1.0.0",
+    "@jol-hub/tenant-resolver": "^1.0.0",
+    "@jol-hub/ui": "^1.0.0",
+    "next": "14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.0",
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.4.0",
+    "vitest": "^4.1.0"
+  }
+}

@@ -1,0 +1,8 @@
+# SOPS configuration for age encryption
+# See: https://github.com/getsops/sops
+
+creation_rules:
+  # Encrypt all YAML files in secrets/encrypted/
+  - path_regex: secrets/encrypted/.*\.yaml$
+    age: >-
+      age1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
