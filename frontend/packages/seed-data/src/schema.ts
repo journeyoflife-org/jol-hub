@@ -139,6 +139,137 @@ const CtaBlockSchema = z.object({
     .min(1),
 });
 
+/**
+ * Mass schedule block — emits Event JSON-LD with startDate.
+ * NOT openingHoursSpecification (that models visitor opening hours).
+ */
+const MassScheduleBlockSchema = z.object({
+  type: z.literal('massSchedule'),
+  heading: LocalizedTextSchema.optional(),
+  masses: z
+    .array(
+      z.object({
+        day: z.string().min(1),
+        dayEn: z.string().optional(),
+        time: z.string().min(1),
+        /** ISO 8601 date for JSON-LD startDate (e.g. "2026-09-13T10:00:00"). */
+        startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/),
+        language: z.string().optional(),
+        notes: LocalizedTextSchema.optional(),
+      }),
+    )
+    .min(1),
+});
+
+/** Image gallery block — WCAG 1.1.1 requires alt text for every image. */
+const GalleryBlockSchema = z.object({
+  type: z.literal('gallery'),
+  heading: LocalizedTextSchema.optional(),
+  images: z
+    .array(
+      z.object({
+        src: z.string().min(1),
+        alt: LocalizedTextSchema,
+        width: z.number().int().positive(),
+        height: z.number().int().positive(),
+        caption: LocalizedTextSchema.optional(),
+      }),
+    )
+    .min(1),
+});
+
+/** FAQ block — emits FAQPage JSON-LD. */
+const FaqBlockSchema = z.object({
+  type: z.literal('faq'),
+  heading: LocalizedTextSchema.optional(),
+  questions: z
+    .array(
+      z.object({
+        question: LocalizedTextSchema,
+        answer: LocalizedTextSchema,
+      }),
+    )
+    .min(1),
+});
+
+/**
+ * Sacrament list block — emits Service JSON-LD.
+ * Sacraments are liturgical services offered by the tenant.
+ */
+const SacramentListBlockSchema = z.object({
+  type: z.literal('sacramentList'),
+  heading: LocalizedTextSchema.optional(),
+  sacraments: z
+    .array(
+      z.object({
+        name: LocalizedTextSchema,
+        description: LocalizedTextSchema.optional(),
+        /** ISO 8601 duration or schedule description. */
+        schedule: LocalizedTextSchema.optional(),
+        requirements: LocalizedTextSchema.optional(),
+      }),
+    )
+    .min(1),
+});
+
+/**
+ * Clergy role list block — ROLES ONLY, never names.
+ * Clergy names are Art. 9 personal data and must come from the
+ * RLS-scoped content API, never from a committed fixture.
+ */
+const ClergyRoleListBlockSchema = z.object({
+  type: z.literal('clergyRoleList'),
+  heading: LocalizedTextSchema.optional(),
+  roles: z
+    .array(
+      z.object({
+        role: LocalizedTextSchema,
+        description: LocalizedTextSchema.optional(),
+        contact: z.string().email().optional(),
+      }),
+    )
+    .min(1),
+});
+
+/** Visiting info block — visitor opening hours (not mass times). */
+const VisitingInfoBlockSchema = z.object({
+  type: z.literal('visitingInfo'),
+  heading: LocalizedTextSchema.optional(),
+  hours: z
+    .array(
+      z.object({
+        day: z.string().min(1),
+        dayEn: z.string().optional(),
+        open: z.string().min(1),
+        close: z.string().min(1),
+        notes: LocalizedTextSchema.optional(),
+      }),
+    )
+    .min(1),
+  admission: LocalizedTextSchema.optional(),
+});
+
+/** Map location block — self-hosted tiles or static image. */
+const MapLocationBlockSchema = z.object({
+  type: z.literal('mapLocation'),
+  heading: LocalizedTextSchema.optional(),
+  /** Latitude in decimal degrees (WGS 84). */
+  lat: z.number().min(-90).max(90),
+  /** Longitude in decimal degrees (WGS 84). */
+  lng: z.number().min(-180).max(180),
+  /** Optional static map image (fallback for JS-disabled browsers). */
+  staticMap: z
+    .object({
+      src: z.string().min(1),
+      alt: LocalizedTextSchema,
+      width: z.number().int().positive(),
+      height: z.number().int().positive(),
+    })
+    .optional(),
+  /** Optional directions link (e.g. Google Maps). */
+  directionsUrl: z.string().url().optional(),
+});
+
 export const ContentBlockSchema = z.discriminatedUnion('type', [
   HeroBlockSchema,
   TextBlockSchema,
@@ -147,6 +278,13 @@ export const ContentBlockSchema = z.discriminatedUnion('type', [
   ListBlockSchema,
   StatsBlockSchema,
   CtaBlockSchema,
+  MassScheduleBlockSchema,
+  GalleryBlockSchema,
+  FaqBlockSchema,
+  SacramentListBlockSchema,
+  ClergyRoleListBlockSchema,
+  VisitingInfoBlockSchema,
+  MapLocationBlockSchema,
 ]);
 export type ContentBlock = z.infer<typeof ContentBlockSchema>;
 
