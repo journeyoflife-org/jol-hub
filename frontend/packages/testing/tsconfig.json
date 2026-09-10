@@ -5,8 +5,7 @@
     "outDir": "dist",
     "rootDir": "src",
     "types": ["node"],
-    // Workspace packages are consumed as TS source; some use classic React
-    // imports which are unused under react-jsx — not our code to reformat.
+    "incremental": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false
   },

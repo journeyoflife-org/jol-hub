@@ -1,21 +1,70 @@
 {
   "name": "@jol-hub/ui",
   "version": "1.0.0",
+  "description": "JOL design system: Radix-based primitives, composite components, layout families, design tokens, and Tailwind configuration.",
   "exports": {
-    ".": "./src/index.ts",
-    "./tokens": "./src/tokens/index.ts",
-    "./providers": "./src/providers/index.ts",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./tokens": {
+      "types": "./dist/tokens/index.d.ts",
+      "import": "./dist/tokens/index.mjs",
+      "require": "./dist/tokens/index.js"
+    },
+    "./providers": {
+      "types": "./dist/providers/index.d.ts",
+      "import": "./dist/providers/index.mjs",
+      "require": "./dist/providers/index.js"
+    },
     "./tailwind": "./tailwind.config.ts",
     "./styles/globals.css": "./src/styles/globals.css",
     "./styles/tokens.css": "./src/styles/tokens.css",
-    "./components/primitives": "./src/components/primitives/index.ts",
-    "./components/composite": "./src/components/composite/index.ts",
-    "./components/layout": "./src/components/layout/index.ts",
-    "./components/accessibility": "./src/components/accessibility/index.ts",
-    "./dev/showcase": "./src/dev/Showcase.tsx",
-    "./components/*": "./src/components/*/index.ts"
+    "./components/primitives": {
+      "types": "./dist/components/primitives/index.d.ts",
+      "import": "./dist/components/primitives/index.mjs",
+      "require": "./dist/components/primitives/index.js"
+    },
+    "./components/composite": {
+      "types": "./dist/components/composite/index.d.ts",
+      "import": "./dist/components/composite/index.mjs",
+      "require": "./dist/components/composite/index.js"
+    },
+    "./components/layout": {
+      "types": "./dist/components/layout/index.d.ts",
+      "import": "./dist/components/layout/index.mjs",
+      "require": "./dist/components/layout/index.js"
+    },
+    "./components/accessibility": {
+      "types": "./dist/components/accessibility/index.d.ts",
+      "import": "./dist/components/accessibility/index.mjs",
+      "require": "./dist/components/accessibility/index.js"
+    },
+    "./components/locale-switcher": {
+      "types": "./dist/components/locale-switcher/index.d.ts",
+      "import": "./dist/components/locale-switcher/index.mjs",
+      "require": "./dist/components/locale-switcher/index.js"
+    },
+    "./dev/showcase": {
+      "types": "./dist/dev/Showcase.d.ts",
+      "import": "./dist/dev/Showcase.mjs",
+      "require": "./dist/dev/Showcase.js"
+    }
   },
+  "files": [
+    "dist",
+    "src/styles",
+    "tailwind.config.ts"
+  ],
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "sideEffects": [
+    "./src/styles/*.css"
+  ],
   "scripts": {
+    "build": "tsup",
     "type-check": "tsc --noEmit",
     "test": "tsx --test src/__tests__/*.test.ts",
     "generate:tokens": "tsx scripts/generate-css.ts",

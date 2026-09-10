@@ -125,7 +125,7 @@ const FIXTURE_DERIVED: Tenant[] = tenantFixtures
   // explicit pilot entries (authoritative tier/name) and as seed fixtures
   // (content). The explicit entry wins; the fixture supplies pages only.
   .filter((fixture) => !WAVE1_PILOTS.some((pilot) => pilot.slug === fixture.slug))
-  .map((fixture) => {
+  .map((fixture: { slug: string; name: { lt: string; en?: string }; vertical: string; locale: string }) => {
     const tier = fixtureTier(fixture.vertical);
     return {
       id: fixture.slug,

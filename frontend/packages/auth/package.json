@@ -1,36 +1,47 @@
 {
   "name": "@jol-hub/auth",
   "version": "1.0.0",
-  "private": true,
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "description": "Authentication and authorization for JOL: NextAuth integration, Bitrix24 OAuth2, parish-level access guards, and OIDC hooks.",
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     },
     "./middleware": {
-      "types": "./src/middleware/parish-guard.ts",
-      "default": "./src/middleware/parish-guard.ts"
+      "types": "./dist/middleware/parish-guard.d.ts",
+      "import": "./dist/middleware/parish-guard.mjs",
+      "require": "./dist/middleware/parish-guard.js"
     },
     "./hooks": {
-      "types": "./src/hooks/useBitrixAuth.ts",
-      "default": "./src/hooks/useBitrixAuth.ts"
+      "types": "./dist/hooks/useBitrixAuth.d.ts",
+      "import": "./dist/hooks/useBitrixAuth.mjs",
+      "require": "./dist/hooks/useBitrixAuth.js"
     },
     "./api": {
-      "types": "./src/lib/bitrix-api.ts",
-      "default": "./src/lib/bitrix-api.ts"
+      "types": "./dist/lib/bitrix-api.d.ts",
+      "import": "./dist/lib/bitrix-api.mjs",
+      "require": "./dist/lib/bitrix-api.js"
     },
     "./oidc": {
-      "types": "./src/oidc/index.ts",
-      "default": "./src/oidc/index.ts"
+      "types": "./dist/oidc/index.d.ts",
+      "import": "./dist/oidc/index.mjs",
+      "require": "./dist/oidc/index.js"
     },
     "./oidc/hooks": {
-      "types": "./src/oidc/hooks.ts",
-      "default": "./src/oidc/hooks.ts"
+      "types": "./dist/oidc/hooks.d.ts",
+      "import": "./dist/oidc/hooks.mjs",
+      "require": "./dist/oidc/hooks.js"
     }
   },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "restricted"
+  },
   "scripts": {
+    "build": "tsup",
     "lint": "eslint src/",
     "type-check": "tsc --noEmit",
     "test": "tsx --test src/oidc/__tests__/*.test.ts",
