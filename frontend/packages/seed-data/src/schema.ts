@@ -16,10 +16,11 @@ import { z } from 'zod';
 /** BCP-47-style short locale tag; fixtures are Lithuanian-first. */
 export const LocaleSchema = z.string().regex(/^[a-z]{2}(-[A-Z]{2})?$/);
 
-/** Localized text: `lt` is mandatory, `en` optional. */
+/** Localized text: `lt` is mandatory, `en` and `ru` optional (3-locale parity). */
 export const LocalizedTextSchema = z.object({
   lt: z.string().min(1),
   en: z.string().optional(),
+  ru: z.string().optional(),
 });
 export type LocalizedText = z.infer<typeof LocalizedTextSchema>;
 
