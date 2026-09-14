@@ -9,19 +9,29 @@ import { cn } from '../lib/utils';
  * GDPR Cookie Consent Banner
  * Implements GDPR Art. 7 - Conditions for Consent
  * Implements ePrivacy Directive Art. 5(3) - Storage of information
+ *
+ * STEP 3 hygiene: localized catalogs live in cookie-consent-texts.ts and
+ * the storage helpers in cookie-consent-storage.ts (250-line rule).
+ * Re-exports below keep the existing barrel API stable.
  */
 
-// Consent categories as per GDPR best practices
-export type ConsentCategory = 'necessary' | 'analytics' | 'marketing' | 'functional';
-
-export interface ConsentPreferences {
-  necessary: boolean;  // Always true - essential for website function
-  analytics: boolean;
-  marketing: boolean;
-  functional: boolean;
-  timestamp: string;
-  version: string;
-}
+export type { ConsentCategory, ConsentPreferences } from './cookie-consent-texts';
+import { CONSENT_TEXTS, FALLBACK_CONSENT_TEXTS } from './cookie-consent-texts';
+import type { ConsentCategory, ConsentPreferences } from './cookie-consent-texts';
+export {
+  getStoredConsent,
+  storeConsent,
+  isConsentValid,
+  DEFAULT_CONSENT_VERSION,
+  DEFAULT_STORAGE_KEY,
+} from './cookie-consent-storage';
+import {
+  getStoredConsent,
+  storeConsent,
+  isConsentValid,
+  DEFAULT_CONSENT_VERSION,
+  DEFAULT_STORAGE_KEY,
+} from './cookie-consent-storage';
 
 export interface CookieConsentBannerProps {
   /** Callback when consent is updated */
@@ -44,121 +54,8 @@ export interface CookieConsentBannerProps {
   storageKey?: string;
 }
 
-// Localized consent texts
-const CONSENT_TEXTS: Record<string, {
-  title: string;
-  description: string;
-  acceptAll: string;
-  acceptNecessary: string;
-  settings: string;
-  save: string;
-  categories: {
-    necessary: { name: string; description: string };
-    analytics: { name: string; description: string };
-    marketing: { name: string; description: string };
-    functional: { name: string; description: string };
-  };
-}> = {
-  lt: {
-    title: 'Slapukų sutikimas',
-    description: 'Mes naudojame slapukus, kad užtikrintume tinkamą svetainės veikimą ir pagerintume Jūsų naršymo patirtį. Pasirinkite slapukų kategorijas, kurioms sutinkate.',
-    acceptAll: 'Sutikti su visais',
-    acceptNecessary: 'Tik būtinieji',
-    settings: 'Nustatymai',
-    save: 'Išsaugoti',
-    categories: {
-      necessary: { name: 'Būtinieji', description: 'Reikalingi svetainės veikimui. Negali būti išjungti.' },
-      analytics: { name: 'Analitiniai', description: 'Padeda mums suprasti, kaip naudojate svetainę.' },
-      marketing: { name: 'Rinkodaros', description: 'Naudojami reklamos ir marketingo tikslais.' },
-      functional: { name: 'Funkciniai', description: 'Užtikrina papildomas funkcijas, pvz., kalbos pasirinkimą.' },
-    },
-  },
-  en: {
-    title: 'Cookie Consent',
-    description: 'We use cookies to ensure proper website functionality and improve your browsing experience. Select the cookie categories you consent to.',
-    acceptAll: 'Accept All',
-    acceptNecessary: 'Necessary Only',
-    settings: 'Settings',
-    save: 'Save Preferences',
-    categories: {
-      necessary: { name: 'Necessary', description: 'Required for the website to function. Cannot be disabled.' },
-      analytics: { name: 'Analytics', description: 'Help us understand how you use the website.' },
-      marketing: { name: 'Marketing', description: 'Used for advertising and marketing purposes.' },
-      functional: { name: 'Functional', description: 'Enable additional features like language preference.' },
-    },
-  },
-  pl: {
-    title: 'Zgoda na pliki cookie',
-    description: 'Używamy plików cookie, aby zapewnić prawidłowe działanie strony i poprawić komfort przeglądania. Wybierz kategorie plików cookie, na które wyrażasz zgodę.',
-    acceptAll: 'Akceptuj wszystkie',
-    acceptNecessary: 'Tylko niezbędne',
-    settings: 'Ustawienia',
-    save: 'Zapisz preferencje',
-    categories: {
-      necessary: { name: 'Niezbędne', description: 'Wymagane do działania strony. Nie można wyłączyć.' },
-      analytics: { name: 'Analityczne', description: 'Pomagają nam zrozumieć, jak korzystasz ze strony.' },
-      marketing: { name: 'Marketingowe', description: 'Używane do celów reklamowych i marketingowych.' },
-      functional: { name: 'Funkcjonalne', description: 'Umożliwiają dodatkowe funkcje, np. wybór języka.' },
-    },
-  },
-  ru: {
-    title: 'Согласие на использование файлов cookie',
-    description: 'Мы используем файлы cookie для обеспечения надлежащей работы сайта и улучшения вашего опыта просмотра. Выберите категории файлов cookie, на которые вы соглашаетесь.',
-    acceptAll: 'Принять все',
-    acceptNecessary: 'Только необходимые',
-    settings: 'Настройки',
-    save: 'Сохранить настройки',
-    categories: {
-      necessary: { name: 'Необходимые', description: 'Необходимы для работы сайта. Не могут быть отключены.' },
-      analytics: { name: 'Аналитические', description: 'Помогают нам понять, как вы используете сайт.' },
-      marketing: { name: 'Маркетинговые', description: 'Используются для рекламы и маркетинга.' },
-      functional: { name: 'Функциональные', description: 'Обеспечивают дополнительные функции, например, выбор языка.' },
-    },
-  },
-};
-
-const DEFAULT_CONSENT_VERSION = '1.0';
-const DEFAULT_STORAGE_KEY = 'jol-cookie-consent';
-
-/**
- * Get stored consent preferences
- */
-export function getStoredConsent(storageKey: string = DEFAULT_STORAGE_KEY): ConsentPreferences | null {
-  if (typeof window === 'undefined') return null;
-  
-  try {
-    const stored = localStorage.getItem(storageKey);
-    if (stored) {
-      return JSON.parse(stored);
-    }
-  } catch {
-    // Ignore parsing errors
-  }
-  return null;
-}
-
-/**
- * Store consent preferences
- */
-export function storeConsent(preferences: ConsentPreferences, storageKey: string = DEFAULT_STORAGE_KEY): void {
-  if (typeof window === 'undefined') return;
-  localStorage.setItem(storageKey, JSON.stringify(preferences));
-}
-
-/**
- * Check if consent is valid (not expired, correct version)
- */
-export function isConsentValid(preferences: ConsentPreferences | null, currentVersion: string = DEFAULT_CONSENT_VERSION): boolean {
-  if (!preferences) return false;
-  if (preferences.version !== currentVersion) return false;
-  
-  // Check if consent is less than 24 months old (GDPR best practice)
-  const consentDate = new Date(preferences.timestamp);
-  const expiryDate = new Date(consentDate);
-  expiryDate.setMonth(expiryDate.getMonth() + 24);
-  
-  return new Date() < expiryDate;
-}
+// Localized consent texts live in ./cookie-consent-texts.ts;
+// storage helpers live in ./cookie-consent-storage.ts.
 
 /**
  * Cookie Consent Banner Component
@@ -183,20 +80,7 @@ export function CookieConsentBanner({
     functional: false,
   });
 
-  const texts = CONSENT_TEXTS[language] ?? CONSENT_TEXTS.en ?? {
-    title: 'Cookie Consent',
-    description: 'We use cookies to ensure proper website functionality and improve your browsing experience.',
-    acceptAll: 'Accept All',
-    acceptNecessary: 'Necessary Only',
-    settings: 'Settings',
-    save: 'Save Preferences',
-    categories: {
-      necessary: { name: 'Necessary', description: 'Required for the website to function.' },
-      analytics: { name: 'Analytics', description: 'Help us understand how you use the website.' },
-      marketing: { name: 'Marketing', description: 'Used for advertising and marketing purposes.' },
-      functional: { name: 'Functional', description: 'Enable additional features.' },
-    },
-  };
+  const texts = CONSENT_TEXTS[language] ?? CONSENT_TEXTS.en ?? FALLBACK_CONSENT_TEXTS;
 
   useEffect(() => {
     const stored = getStoredConsent(storageKey);
@@ -340,4 +224,3 @@ export function CookieConsentBanner({
   );
 }
 
-export default CookieConsentBanner;

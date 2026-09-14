@@ -29,6 +29,7 @@ backend/db.sqlite3
 *.pem
 *.key
 secrets/
+!docs/templates/jol-frontend-repo-template/secrets/
 
 # === Python ===
 __pycache__/
@@ -43,6 +44,7 @@ downloads/
 eggs/
 .eggs/
 lib/
+!/**/src/lib/
 lib64/
 parts/
 sdist/
@@ -120,7 +122,12 @@ Thumbs.db
 .temp/
 .tmp/
 *.bak
+*.bak.[0-9]*
 *.backup
 *.dump
 data/.envrc
 .idea/
+tsconfig.tsbuildinfo
+
+# Standing rule D-028 (2026-08-27): no transcript exports into any repo
+*qoder-history*/

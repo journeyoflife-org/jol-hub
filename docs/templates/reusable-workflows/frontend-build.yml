@@ -1,0 +1,84 @@
+# =============================================================================
+# Reusable Workflow: Frontend Build
+# =============================================================================
+# Called by spoke repos via workflow_call. Builds the Next.js app,
+# runs type-check and lint.
+#
+# Usage in spoke .github/workflows/ci.yml:
+#   jobs:
+#     build:
+#       uses: journeyoflife-org/.github/.github/workflows/frontend-build.yml@main
+#       with:
+#         node-version: '20'
+#         pnpm-version: '10.30.3'
+# =============================================================================
+
+name: Frontend Build
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        description: 'Node.js version'
+        required: false
+        type: string
+        default: '20'
+      pnpm-version:
+        description: 'pnpm version'
+        required: false
+        type: string
+        default: '10.30.3'
+    secrets:
+      NPM_TOKEN:
+        required: false
+        description: 'GitHub Packages token for @jol-hub/* packages'
+
+env:
+  NODE_VERSION: ${{ inputs.node-version }}
+  PNPM_VERSION: ${{ inputs.pnpm-version }}
+
+jobs:
+  build:
+    name: Build + Type Check + Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Configure npm registry for @jol-hub packages
+        run: |
+          echo "@jol-hub:registry=https://npm.pkg.github.com" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=\${NODE_AUTH_TOKEN}" >> .npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: TypeScript type check
+        run: pnpm type-check
+
+      - name: ESLint
+        run: pnpm lint
+
+      - name: Production build
+        run: pnpm build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-build
+          path: .next/
+          retention-days: 3

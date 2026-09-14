@@ -1,111 +1,84 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
-
+/**
+ * i18n configuration — STEP 4 (27-locale architecture, LT/EN/RU pilot).
+ *
+ * Design decisions (documented in packages/i18n/README.md):
+ * - Pilot locales: lt (primary/default), en, ru. Adding a locale is a
+ *   data change (message files + one array entry) — never a redesign.
+ * - Poland (pl) is an OPEN QUESTION: declared in PLANNED_LOCALES but
+ *   intentionally NOT enabled.
+ * - This module is PURE (no i18next/react imports) so it is safe for the
+ *   edge runtime, server components and client bundles alike. The legacy
+ *   i18next runtime lives in ./i18next.
+ * - The SupportedLocale union lives in ./types (single source of truth);
+ *   this module re-exports it so `import { ... } from config` is complete.
+ */
 import type { SupportedLocale } from './types';
-import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from './types';
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES, LOCALE_CONFIGS } from './types';
 
-// Import translation files directly for Next.js compatibility
-import ltCommon from './locales/lt/common.json';
-import ltLiturgical from './locales/lt/liturgical.json';
-import ltGdpr from './locales/lt/gdpr.json';
-import ruCommon from './locales/ru/common.json';
-import ruLiturgical from './locales/ru/liturgical.json';
-import ruGdpr from './locales/ru/gdpr.json';
-import enCommon from './locales/en/common.json';
-import enLiturgical from './locales/en/liturgical.json';
-import enGdpr from './locales/en/gdpr.json';
+/* ========================================================================== */
+/* STEP 4 canonical constants                                                 */
+/* ========================================================================== */
 
-// Translation resources
-const resources = {
-  lt: {
-    common: ltCommon,
-    liturgical: ltLiturgical,
-    gdpr: ltGdpr,
-  },
-  ru: {
-    common: ruCommon,
-    liturgical: ruLiturgical,
-    gdpr: ruGdpr,
-  },
-  en: {
-    common: enCommon,
-    liturgical: enLiturgical,
-    gdpr: enGdpr,
-  },
+/** Re-exported so config is the single import surface required by STEP 4. */
+export { DEFAULT_LOCALE, SUPPORTED_LOCALES, LOCALE_CONFIGS };
+export type { SupportedLocale };
+
+/** Native names, used by the locale switcher (never translate these). */
+export const LOCALE_NAMES: Record<SupportedLocale, string> = {
+  lt: 'Lietuvių',
+  en: 'English',
+  ru: 'Русский',
 };
 
-/**
- * Initialize i18next with configuration.
- * Optimized for Next.js with route-based i18n (/lt/, /ru/, /en/)
- */
-export function initI18n(initialLocale?: SupportedLocale): typeof i18n {
-  // Guard against re-initialization (singleton pattern)
-  if (i18n.isInitialized) {
-    // If locale differs, just change language on the existing instance
-    if (initialLocale && i18n.language !== initialLocale) {
-      void i18n.changeLanguage(initialLocale);
-    }
-    return i18n;
-  }
+/** URL path prefixes for the locale-prefixed routing strategy. */
+export const LOCALE_PREFIXES: Record<SupportedLocale, `/${SupportedLocale}`> = {
+  lt: '/lt',
+  en: '/en',
+  ru: '/ru',
+};
 
-  i18n
-    .use(LanguageDetector)
-    .use(initReactI18next)
-    .init({
-      resources,
-      lng: initialLocale || DEFAULT_LOCALE,
-      fallbackLng: DEFAULT_LOCALE,
-      supportedLngs: SUPPORTED_LOCALES,
-      defaultNS: 'common',
-      ns: ['common', 'liturgical', 'gdpr'],
+/** BCP-47 regional tags used for hreflang / og:locale. */
+export const LOCALE_HREFLANG: Record<SupportedLocale, string> = {
+  lt: 'lt-LT',
+  en: 'en-LT',
+  ru: 'ru-LT',
+};
 
-      debug: process.env.NODE_ENV === 'development',
+/** Cookie carrying the user's explicit language choice. Strictly-necessary
+ *  preference cookie — no consent banner required (e-Privacy Art. 5(3)
+ *  user-input exception); documented in the cookie policy regardless. */
+export const LOCALE_COOKIE = 'jol-hub-locale';
 
-      interpolation: {
-        escapeValue: false, // React already escapes values
-      },
-
-      detection: {
-        order: ['path', 'cookie', 'localStorage', 'navigator', 'htmlTag'],
-        lookupFromPathIndex: 0,
-        lookupCookie: 'jol-hub-locale',
-        lookupLocalStorage: 'jol-hub-locale',
-        caches: ['cookie', 'localStorage'],
-        cookieMinutes: 60 * 24 * 365, // 1 year
-        cookieDomain: process.env.NODE_ENV === 'production' ? '.jol-hub.eu' : undefined,
-      },
-
-      react: {
-        useSuspense: false, // Disable for SSR compatibility
-      },
-
-      // Liturgical terms should never be auto-translated
-      // They are handled through the liturgical namespace
-      nsSeparator: ':',
-      keySeparator: '.',
-    });
-
-  return i18n;
-}
+/** Request header carrying the resolved locale downstream (set by the
+ *  locale middleware; read by root layout and server components). */
+export const LOCALE_HEADER = 'x-locale';
 
 /**
- * Get the current locale.
+ * Negotiation fallback chain: an unsupported locale request never 404s —
+ * resolution falls back ru → en → lt (STEP 4 requirement). In practice
+ * resolution short-circuits on the first supported match; the chain
+ * documents the intent and order for future regional variants.
  */
-export function getCurrentLocale(): SupportedLocale {
-  const lng = i18n.language;
-  if (SUPPORTED_LOCALES.includes(lng as SupportedLocale)) {
-    return lng as SupportedLocale;
-  }
-  return DEFAULT_LOCALE;
-}
+export const FALLBACK_ORDER: readonly SupportedLocale[] = ['ru', 'en', 'lt'];
 
 /**
- * Change the locale.
+ * OPEN QUESTION — Poland (pl). Declared so the extension point is explicit,
+ * but NOT in SUPPORTED_LOCALES: no routing, no messages, no detection.
+ * Enabling = add messages/pl.json + move 'pl' into SUPPORTED_LOCALES.
  */
-export async function setLocale(locale: SupportedLocale): Promise<void> {
-  await i18n.changeLanguage(locale);
+export const PLANNED_LOCALES = ['pl'] as const;
+export type PlannedLocale = (typeof PLANNED_LOCALES)[number];
+/** Full horizon type — superset used by code that must anticipate scale. */
+export type LocaleCode = SupportedLocale | PlannedLocale;
+
+/** Type guard for the pilot set (runtime input is always `string`). */
+export function isSupportedLocale(value: string | null | undefined): value is SupportedLocale {
+  return !!value && (SUPPORTED_LOCALES as readonly string[]).includes(value);
 }
+
+/* ========================================================================== */
+/* Path helpers                                                               */
+/* ========================================================================== */
 
 /**
  * Get locale from URL path.
@@ -113,8 +86,8 @@ export async function setLocale(locale: SupportedLocale): Promise<void> {
  */
 export function getLocaleFromPath(pathname: string): SupportedLocale | null {
   const match = pathname.match(/^\/(lt|ru|en)(?:\/|$)/);
-  if (match && SUPPORTED_LOCALES.includes(match[1] as SupportedLocale)) {
-    return match[1] as SupportedLocale;
+  if (match && isSupportedLocale(match[1])) {
+    return match[1];
   }
   return null;
 }
@@ -125,14 +98,11 @@ export function getLocaleFromPath(pathname: string): SupportedLocale | null {
 export function localizePath(path: string, locale: SupportedLocale): string {
   // Remove existing locale prefix if present
   const cleanPath = path.replace(/^\/(lt|ru|en)\//, '/');
-  
+
   // Don't add locale for default if it's the root
   if (locale === DEFAULT_LOCALE && cleanPath === '/') {
     return cleanPath;
   }
-  
+
   return `/${locale}${cleanPath}`;
 }
-
-// Re-export i18n instance
-export { i18n };

@@ -1,0 +1,207 @@
+# =============================================================================
+# Frontend Testing Pipeline — STEP 15
+# =============================================================================
+# Test pyramid tiers as parallel jobs (spec TASK 9):
+#   unit        vitest (component/integration/security) + node:test suites
+#   build-gate  production build + STEP-13 budget gate + secret-leakage scan
+#   a11y        axe-core page scans against the built app
+#   security    security suite + production dependency audit
+#   e2e         Playwright critical flows (depends on unit)
+#
+# Additive to ci.yml (which owns lint/type-check/basic tests). Merge is
+# blocked while any tier is red.
+# =============================================================================
+
+name: Frontend Testing
+
+on:
+  push:
+    branches: [main, master, develop]
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/frontend-test.yml'
+  pull_request:
+    branches: [main, master, develop]
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/frontend-test.yml'
+
+env:
+  NODE_VERSION: '20'
+  PNPM_VERSION: '10.30.3'
+
+jobs:
+  # ===========================================================================
+  # UNIT + INTEGRATION + SECURITY SUITES (vitest + node:test)
+  # ===========================================================================
+  unit:
+    name: Unit + Integration (vitest, coverage)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'frontend/pnpm-lock.yaml'
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Logic suites (node:test, all packages)
+        run: pnpm test
+      - name: DOM tiers (vitest) with coverage
+        run: pnpm --filter template-renderer test:vitest:coverage
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: frontend/apps/template-renderer/coverage
+          retention-days: 14
+
+  # ===========================================================================
+  # BUILD + PERFORMANCE BUDGET + SECRET LEAKAGE
+  # ===========================================================================
+  build-gate:
+    name: Build + budget gate + secret scan
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'frontend/pnpm-lock.yaml'
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build template-renderer
+        run: pnpm --filter template-renderer build
+      - name: Core Web Vitals budget gate (STEP 13)
+        run: pnpm --filter template-renderer check-perf
+      - name: Secret-leakage scan of build output
+        run: pnpm --filter template-renderer check-secrets
+
+  # ===========================================================================
+  # ACCESSIBILITY (axe-core)
+  # ===========================================================================
+  a11y:
+    name: Accessibility (axe-core)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'frontend/pnpm-lock.yaml'
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: UI showcase scan (isolated components)
+        run: pnpm --filter @jol-hub/ui check-a11y
+      - name: Build renderer for page scans
+        run: pnpm --filter template-renderer build
+      - name: Serve built app
+        run: |
+          pnpm --filter template-renderer start &
+          sleep 5
+      - name: axe-core page scans
+        run: pnpm --filter template-renderer check-a11y
+        env:
+          A11Y_BASE_URL: http://localhost:3000
+
+  # ===========================================================================
+  # SECURITY (suite + dependency audit)
+  # ===========================================================================
+  security:
+    name: Security (XSS/RBAC/isolation + audit)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'frontend/pnpm-lock.yaml'
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Security test suite
+        run: pnpm test:security
+      - name: Production dependency audit
+        run: pnpm audit --prod --audit-level=high
+
+  # ===========================================================================
+  # E2E (Playwright — depends on unit)
+  # ===========================================================================
+  e2e:
+    name: E2E (Playwright, 3 browsers)
+    runs-on: ubuntu-latest
+    needs: unit
+    defaults:
+      run:
+        working-directory: frontend/apps/template-renderer
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'frontend/pnpm-lock.yaml'
+      - name: Install dependencies
+        working-directory: frontend
+        run: pnpm install --frozen-lockfile
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium firefox webkit
+      - name: Run E2E flows
+        run: npx playwright test
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: frontend/apps/template-renderer/playwright-report
+          retention-days: 14
+
+  # ===========================================================================
+  # SUMMARY GATE
+  # ===========================================================================
+  test-summary:
+    name: Frontend testing summary
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [unit, build-gate, a11y, security, e2e]
+    steps:
+      - name: Fail if any tier failed
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        run: |
+          echo "::error::One or more frontend test tiers failed — see artifacts."
+          exit 1
+      # Notifications: wire Slack/Discord webhooks here once secrets exist
+      # (SOC 2 CC7.2 — failures must reach the owning team).
+      - name: Notify (placeholder)
+        if: failure()
+        run: 'echo "TODO: Slack/Discord webhook via repository secrets."'

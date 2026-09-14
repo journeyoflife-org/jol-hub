@@ -1,0 +1,234 @@
+[
+  {
+    "slug": "joniskis-deanery",
+    "vertical": "deanery",
+    "locale": "lt",
+    "name": { "lt": "Joniškio dekanatas", "en": "Joniškis Deanery" },
+    "tagline": {
+      "lt": "Šiaurės lygumų parapijos — nuo Joniškio iki Žagarės",
+      "en": "Parishes of the northern plains — from Joniškis to Žagarė"
+    },
+    "identity": {
+      "entityId": "lt-wave1-deanery-002",
+      "jurisdiction": "Šiauliai Diocese",
+      "address": "Vilniaus g. 2, 84127 Joniškis, Lithuania",
+      "email": "dekanas@joniskis-dekanatas-demo.lt",
+      "phone": "+370 42 60 20 10"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Joniškio dekanatas", "en": "Joniškis Deanery" },
+            "subheading": {
+              "lt": "Septynios parapijos Šiaurės Lietuvoje — bendra malda, katechezė ir Caritas",
+              "en": "Seven parishes in Northern Lithuania — common prayer, catechesis and Caritas"
+            }
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Dekanato parapijos", "en": "Parishes of the deanery" },
+            "items": [
+              { "title": { "lt": "Joniškio Šv. apaštalo evangelisto Mato parapija", "en": "Joniškis St. Matthew the Apostle Parish" }, "subtitle": { "lt": "Joniškis", "en": "Joniškis" } },
+              { "title": { "lt": "Žagarės Šv. apaštalų Petro ir Pauliaus parapija", "en": "Žagarė Sts. Peter and Paul Parish" }, "subtitle": { "lt": "Žagarė", "en": "Žagarė" } },
+              { "title": { "lt": "Skaistgirio Šv. Jurgio parapija", "en": "Skaistgiris St. George Parish" }, "subtitle": { "lt": "Skaistgiris", "en": "Skaistgiris" } }
+            ]
+          },
+          {
+            "type": "text",
+            "heading": { "lt": "Dekanato tarnystės", "en": "Deanery ministries" },
+            "body": {
+              "lt": "Bendra jaunimo stovykla, šeimų dienos ir advento rekolekcijos visam dekanatui. Dekano vizitacijos pagal vyskupijos planą; kunigų susitikimai — pirmąjį mėnesio antradienį.",
+              "en": "A joint youth camp, family days and Advent retreats for the whole deanery. The dean's visitations follow the diocesan plan; priests meet on the first Tuesday of the month."
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Dekano raštinė", "en": "Dean's office" },
+            "items": [
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Vilniaus g. 2, 84127 Joniškis" },
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 60 20 10" },
+              { "label": { "lt": "Priėmimas", "en": "Hours" }, "value": "IV 10:00–14:00" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Joniškio dekanatas — parapijų sąrašas, bendros stovyklos, rekolekcijos ir dekano raštinės laikai."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "joniskis-church",
+    "vertical": "parish",
+    "locale": "lt",
+    "name": { "lt": "Žagarės Šv. apaštalų Petro ir Pauliaus bažnyčia", "en": "Žagarė Sts. Peter and Paul Church" },
+    "tagline": {
+      "lt": "Senojo miesto šviesa prie Švėtės upės",
+      "en": "The light of the old town by the Švėtė river"
+    },
+    "identity": {
+      "entityId": "lt-wave1-parish-003",
+      "jurisdiction": "Šiauliai Diocese",
+      "established": "1633",
+      "address": "Malūno g. 2, 84311 Žagarė, Lithuania",
+      "email": "parapija@zagare-demo.lt",
+      "phone": "+370 42 60 30 30"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Žagarės Šv. apaštalų Petro ir Pauliaus parapija", "en": "Žagarė Sts. Peter and Paul Parish" },
+            "subheading": {
+              "lt": "Žagarės vyšnių festivalio ir senųjų atlaidų namai",
+              "en": "Home of the Žagarė cherry festival and the old patronal feasts"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": { "lt": "Pamaldų laikai", "en": "Service times" },
+            "entries": [
+              { "day": "Sekmadienis", "dayEn": "Sunday", "times": ["10:00", "12:00"] },
+              { "day": "Trečiadienis", "dayEn": "Wednesday", "times": ["18:00"] }
+            ]
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Sakramentai ir pasiruošimas", "en": "Sacraments and preparation" },
+            "items": [
+              { "title": { "lt": "Krikštas", "en": "Baptism" }, "description": { "lt": "Sekmadieniais po 12:00 Mišių.", "en": "Sundays after the 12:00 Mass." } },
+              { "title": { "lt": "Santuoka", "en": "Marriage" }, "description": { "lt": "Registracija raštinėje prieš 3 mėn.", "en": "Register 3 months ahead." } },
+              { "title": { "lt": "Išpažintis", "en": "Confession" }, "description": { "lt": "Prieš kiekvienas Mišias.", "en": "Before every Mass." } }
+            ]
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Raštinė", "en": "Parish office" },
+            "items": [
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Malūno g. 2, 84311 Žagarė" },
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 60 30 30" },
+              { "label": { "lt": "Laikas", "en": "Hours" }, "value": "Po sekmadienio Mišių" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Žagarės Šv. apaštalų Petro ir Pauliaus parapija — pamaldų laikai, sakramentai ir parapijos kontaktai."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "joniskis-funeral",
+    "vertical": "funeral-home",
+    "locale": "lt",
+    "name": { "lt": "Joniškio laidojimo namai", "en": "Joniškis Funeral Home" },
+    "tagline": {
+      "lt": "Orumas, pagarba ir pagalba kiekvienai šeimai",
+      "en": "Dignity, respect and help for every family"
+    },
+    "identity": {
+      "entityId": "lt-wave1-funeral-003",
+      "established": "2006",
+      "address": "Parko g. 9, 84142 Joniškis, Lithuania",
+      "email": "info@joniskis-laidojimas-demo.lt",
+      "phone": "+370 42 60 40 40"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Joniškio laidojimo namai", "en": "Joniškis Funeral Home" },
+            "subheading": {
+              "lt": "Visos laidojimo paslaugos Joniškio rajone — visą parą",
+              "en": "All funeral services in the Joniškis district — around the clock"
+            }
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Paslaugos ir kainos", "en": "Services and prices" },
+            "items": [
+              { "title": { "lt": "Pilnas laidojimo organizavimas", "en": "Full funeral arrangement" }, "price": 1750 },
+              { "title": { "lt": "Kremavimo organizavimas", "en": "Cremation arrangement" }, "price": 1300 },
+              { "title": { "lt": "Kapų tvarkymas", "en": "Grave care" }, "subtitle": { "lt": "Pagal sutartį", "en": "By agreement" } }
+            ]
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Visą parą", "en": "Around the clock" },
+            "items": [
+              { "label": { "lt": "Skubus telefonas", "en": "Urgent phone" }, "value": "+370 42 60 40 40" },
+              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Parko g. 9, 84142 Joniškis" },
+              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "info@joniskis-laidojimas-demo.lt" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Joniškio laidojimo namai — laidojimo ir kremavimo organizavimas 24/7, skaidrios kainos Joniškio rajone."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "joniskis-cleaning",
+    "vertical": "cemetery",
+    "locale": "lt",
+    "name": { "lt": "Joniškio kapinių priežiūra", "en": "Joniškis Cemetery Care" },
+    "tagline": {
+      "lt": "Pagarba, kuri matoma — kiekvieną sezoną",
+      "en": "Respect you can see — every season"
+    },
+    "identity": {
+      "entityId": "lt-wave1-cleaning-003",
+      "established": "2018",
+      "address": "Sodų g. 12, 84155 Joniškis, Lithuania",
+      "email": "info@joniskis-prieziura-demo.lt",
+      "phone": "+370 42 60 50 50"
+    },
+    "pages": [
+      {
+        "route": "/",
+        "title": { "lt": "Pradžia", "en": "Home" },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": { "lt": "Kapaviečių priežiūra Joniškyje", "en": "Grave care in Joniškis" },
+            "subheading": {
+              "lt": "Tvarkymas, želdiniai ir šventinis puošimas su foto ataskaitomis",
+              "en": "Tidying, planting and feast-day decoration with photo reports"
+            }
+          },
+          {
+            "type": "list",
+            "heading": { "lt": "Planai ir kainos", "en": "Plans and prices" },
+            "items": [
+              { "title": { "lt": "Vienkartinis tvarkymas", "en": "One-time care" }, "price": 30 },
+              { "title": { "lt": "Mėnesinė priežiūra", "en": "Monthly care" }, "price": 22 },
+              { "title": { "lt": "Metinis planas", "en": "Annual plan" }, "price": 220 }
+            ]
+          },
+          {
+            "type": "keyValue",
+            "heading": { "lt": "Kontaktai", "en": "Contacts" },
+            "items": [
+              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 60 50 50" },
+              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "info@joniskis-prieziura-demo.lt" }
+            ]
+          }
+        ],
+        "meta": {
+          "description": "Joniškio kapinių priežiūra — tvarkymas, želdiniai ir šventinis puošimas su foto ataskaitomis artimiesiems."
+        }
+      }
+    ]
+  }
+]

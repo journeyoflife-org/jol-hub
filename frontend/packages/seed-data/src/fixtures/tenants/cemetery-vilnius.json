@@ -1,0 +1,550 @@
+{
+  "slug": "cemetery-vilnius",
+  "vertical": "cemetery",
+  "locale": "lt",
+  "name": {
+    "lt": "Vilniaus Kapinių Tarnyba",
+    "en": "Vilnius Cemetery Services",
+    "ru": "Vilnius Cemetery Services [TODO: verify with parish/diocese — do not publish unverified]"
+  },
+  "tagline": {
+    "lt": "Orus atminimas ir kapų priežiūra nuo 1900 m.",
+    "en": "Dignified remembrance and grave care since 1900",
+    "ru": "Dignified remembrance and grave care since 1900 [TODO: verify with parish/diocese — do not publish unverified]"
+  },
+  "identity": {
+    "entityId": "lt-cemetery-vilnius-001",
+    "established": "1900",
+    "address": "Kapinių g. 1, 01140 Vilnius, Lithuania",
+    "email": "info@vilniuscemetery.lt",
+    "phone": "+370 5 210 6000",
+    "domain": "vilniuscemetery.lt",
+    "theme": "cemetery-serene"
+  },
+  "pages": [
+    {
+      "route": "/",
+      "title": {
+        "lt": "Pradžia",
+        "en": "Home",
+        "ru": "Home [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Vilniaus Kapinių Tarnyba",
+            "en": "Vilnius Cemetery Services",
+            "ru": "Vilnius Cemetery Services [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "subheading": {
+            "lt": "Kapinių paslaugos nuo 1900 m.",
+            "en": "Cemetery services since 1900",
+            "ru": "Cemetery services since 1900 [TODO: verify with parish/diocese — do not publish unverified]"
+          }
+        },
+        {
+          "type": "keyValue",
+          "heading": {
+            "lt": "Kontaktai ir darbo laikas",
+            "en": "Contact & Hours",
+            "ru": "Contact & Hours [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "label": {
+                "lt": "Adresas",
+                "ru": "Adresas [TODO: verify — do not publish unverified]"
+              },
+              "value": "Kapinių g. 1, 01140 Vilnius"
+            },
+            {
+              "label": {
+                "lt": "Telefonas",
+                "ru": "Telefonas [TODO: verify — do not publish unverified]"
+              },
+              "value": "+370 5 210 6000"
+            },
+            {
+              "label": {
+                "lt": "Skubus numeris",
+                "ru": "Skubus numeris [TODO: verify — do not publish unverified]"
+              },
+              "value": "+370 699 00600"
+            },
+            {
+              "label": {
+                "lt": "El. paštas",
+                "ru": "El. paštas [TODO: verify — do not publish unverified]"
+              },
+              "value": "info@vilniuscemetery.lt"
+            },
+            {
+              "label": {
+                "lt": "Vasaros laikas",
+                "ru": "Vasaros laikas [TODO: verify — do not publish unverified]"
+              },
+              "value": "08:00 - 20:00"
+            },
+            {
+              "label": {
+                "lt": "Žiemos laikas",
+                "ru": "Žiemos laikas [TODO: verify — do not publish unverified]"
+              },
+              "value": "08:00 - 17:00"
+            },
+            {
+              "label": {
+                "lt": "Biuras",
+                "ru": "Biuras [TODO: verify — do not publish unverified]"
+              },
+              "value": "09:00 - 17:00"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "heading": {
+            "lt": "Paslaugos",
+            "en": "Services",
+            "ru": "Services [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "title": {
+                "lt": "Laidojimo paslauga",
+                "en": "Burial Service",
+                "ru": "Burial Service [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Pilna laidojimo paslauga su kapo paruošimu",
+                "en": "Full burial service including grave preparation",
+                "ru": "Full burial service including grave preparation [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 500
+            },
+            {
+              "title": {
+                "lt": "Kremavimo kapas",
+                "en": "Cremation Plot",
+                "ru": "Cremation Plot [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Kapas kremuotiems palaikams",
+                "en": "Plot for cremated remains",
+                "ru": "Plot for cremated remains [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 300
+            },
+            {
+              "title": {
+                "lt": "Ekshumacija",
+                "en": "Exhumation",
+                "ru": "Exhumation [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Palaikų ekshumavimo paslauga",
+                "en": "Exhumation service",
+                "ru": "Exhumation service [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 800
+            },
+            {
+              "title": {
+                "lt": "Paminklo įrengimas",
+                "en": "Memorial Installation",
+                "ru": "Memorial Installation [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Paminklo montavimas ir įrengimas",
+                "en": "Monument mounting and installation",
+                "ru": "Monument mounting and installation [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 200
+            },
+            {
+              "title": {
+                "lt": "Kapo kasimas",
+                "en": "Grave Digging",
+                "ru": "Grave Digging [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Kapo paruošimas laidojimui",
+                "en": "Grave preparation for burial",
+                "ru": "Grave preparation for burial [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 250
+            },
+            {
+              "title": {
+                "lt": "Kapo restauravimas",
+                "en": "Grave Restoration",
+                "ru": "Grave Restoration [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Senų kapų atnaujinimo darbai",
+                "en": "Restoration works for historic graves",
+                "ru": "Restoration works for historic graves [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 400
+            }
+          ]
+        },
+        {
+          "type": "stats",
+          "heading": {
+            "lt": "Kapinės skaičiais",
+            "en": "The Cemetery in Numbers",
+            "ru": "The Cemetery in Numbers [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "label": {
+                "lt": "Įkurta",
+                "ru": "Įkurta [TODO: verify — do not publish unverified]"
+              },
+              "value": 1900
+            },
+            {
+              "label": {
+                "lt": "Darbuotojų",
+                "ru": "Darbuotojų [TODO: verify — do not publish unverified]"
+              },
+              "value": 45
+            },
+            {
+              "label": {
+                "lt": "Viso kapaviečių",
+                "ru": "Viso kapaviečių [TODO: verify — do not publish unverified]"
+              },
+              "value": 45000
+            },
+            {
+              "label": {
+                "lt": "Aktyvių kapaviečių",
+                "ru": "Aktyvių kapaviečių [TODO: verify — do not publish unverified]"
+              },
+              "value": 38000
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "links": [
+            {
+              "label": {
+                "lt": "Kapų paieška",
+                "ru": "Kapų paieška [TODO: verify — do not publish unverified]"
+              },
+              "href": "/locate"
+            },
+            {
+              "label": {
+                "lt": "Priežiūros planai",
+                "ru": "Priežiūros planai [TODO: verify — do not publish unverified]"
+              },
+              "href": "/maintenance"
+            },
+            {
+              "label": {
+                "lt": "Paminklai",
+                "ru": "Paminklai [TODO: verify — do not publish unverified]"
+              },
+              "href": "/monuments"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/locate",
+      "title": {
+        "lt": "Kapų paieška",
+        "en": "Grave Locator",
+        "ru": "Grave Locator [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": {
+            "lt": "Kapavietės paieška",
+            "en": "Grave Locator",
+            "ru": "Grave Locator [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Ieškokite kapavietės pagal vardą, pavardę arba sekciją. Sistema veikia vadovaujantis GDPR Art. 9 reikalavimais - asmens duomenys apie mirusiuosius atskleidžiami tik teisėtam interesui.",
+            "en": "Search for a grave by name or section. The system operates under GDPR Art. 9 requirements - personal data about the deceased is disclosed only for legitimate interest.",
+            "ru": "Search for a grave by name or section. The system operates under GDPR Art. 9 requirements - personal data about the deceased is disclosed only for legitimate interest. [TODO: verify with parish/diocese — do not publish unverified]"
+          }
+        },
+        {
+          "type": "list",
+          "heading": {
+            "lt": "Kapinių sekcijos",
+            "en": "Cemetery Sections",
+            "ru": "Cemetery Sections [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "title": {
+                "lt": "A sekcija",
+                "ru": "A sekcija [TODO: verify — do not publish unverified]"
+              },
+              "tags": [
+                "istorinė",
+                "nuo 1900"
+              ]
+            },
+            {
+              "title": {
+                "lt": "B sekcija",
+                "ru": "B sekcija [TODO: verify — do not publish unverified]"
+              },
+              "tags": [
+                "stačiatikių",
+                "nuo 1920"
+              ]
+            },
+            {
+              "title": {
+                "lt": "C sekcija",
+                "ru": "C sekcija [TODO: verify — do not publish unverified]"
+              },
+              "tags": [
+                "katalikų",
+                "nuo 1950"
+              ]
+            },
+            {
+              "title": {
+                "lt": "D sekcija",
+                "ru": "D sekcija [TODO: verify — do not publish unverified]"
+              },
+              "tags": [
+                "naujoji",
+                "nuo 1990"
+              ]
+            },
+            {
+              "title": {
+                "lt": "E sekcija",
+                "ru": "E sekcija [TODO: verify — do not publish unverified]"
+              },
+              "tags": [
+                "kremavimo",
+                "nuo 2010"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/maintenance",
+      "title": {
+        "lt": "Kapų priežiūra",
+        "en": "Grave Maintenance",
+        "ru": "Grave Maintenance [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": {
+            "lt": "Priežiūros planai",
+            "en": "Maintenance Plans",
+            "ru": "Maintenance Plans [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "title": {
+                "lt": "Pagrindinė priežiūra",
+                "en": "Basic Maintenance",
+                "ru": "Basic Maintenance [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Žolės pjovimas, lapų šalinimas, paminklo valymas",
+                "en": "Grass cutting, leaf removal, monument cleaning",
+                "ru": "Grass cutting, leaf removal, monument cleaning [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 100,
+              "tags": [
+                "kas ketvirtį",
+                "25 EUR vizitas"
+              ]
+            },
+            {
+              "title": {
+                "lt": "Standartinė priežiūra",
+                "en": "Standard Maintenance",
+                "ru": "Standard Maintenance [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Žolės pjovimas, lapų šalinimas, paminklo valymas, gėlių priežiūra",
+                "en": "Grass cutting, leaf removal, monument cleaning, flower care",
+                "ru": "Grass cutting, leaf removal, monument cleaning, flower care [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 420,
+              "tags": [
+                "kas mėnesį",
+                "35 EUR vizitas"
+              ]
+            },
+            {
+              "title": {
+                "lt": "Premium priežiūra",
+                "en": "Premium Maintenance",
+                "ru": "Premium Maintenance [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Pilna kapo priežiūra, sezoninis gėlių sodinimas, paminklo priežiūra",
+                "en": "Full grave care, seasonal flower planting, monument upkeep",
+                "ru": "Full grave care, seasonal flower planting, monument upkeep [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 2600,
+              "tags": [
+                "kas savaitę",
+                "50 EUR vizitas"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/monuments",
+      "title": {
+        "lt": "Paminklai",
+        "en": "Monuments",
+        "ru": "Monuments [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": {
+            "lt": "Paminklų katalogas",
+            "en": "Monument Catalog",
+            "ru": "Monument Catalog [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "title": {
+                "lt": "Klasikinis granitinis paminklas",
+                "ru": "Klasikinis granitinis paminklas [TODO: verify — do not publish unverified]"
+              },
+              "subtitle": {
+                "lt": "Granitas · 120×60 cm",
+                "ru": "Granitas · 120×60 cm [TODO: verify — do not publish unverified]"
+              },
+              "price": 1500,
+              "tags": [
+                "individualizacija galima"
+              ]
+            },
+            {
+              "title": {
+                "lt": "Stačiatikių kryžius",
+                "ru": "Stačiatikių kryžius [TODO: verify — do not publish unverified]"
+              },
+              "subtitle": {
+                "lt": "Akmuo · 150×40 cm",
+                "ru": "Akmuo · 150×40 cm [TODO: verify — do not publish unverified]"
+              },
+              "price": 1200,
+              "tags": [
+                "individualizacija galima"
+              ]
+            },
+            {
+              "title": {
+                "lt": "Modernus marmuro paminklas",
+                "ru": "Modernus marmuro paminklas [TODO: verify — do not publish unverified]"
+              },
+              "subtitle": {
+                "lt": "Marmuras · 100×80 cm",
+                "ru": "Marmuras · 100×80 cm [TODO: verify — do not publish unverified]"
+              },
+              "price": 2500,
+              "tags": [
+                "individualizacija galima"
+              ]
+            },
+            {
+              "title": {
+                "lt": "Bronzinė skulptūra",
+                "ru": "Bronzinė skulptūra [TODO: verify — do not publish unverified]"
+              },
+              "subtitle": {
+                "lt": "Bronza · 80×50 cm",
+                "ru": "Bronza · 80×50 cm [TODO: verify — do not publish unverified]"
+              },
+              "price": 5000,
+              "tags": [
+                "individualizacija galima"
+              ]
+            },
+            {
+              "title": {
+                "lt": "Krikščioniškas kryžius",
+                "ru": "Krikščioniškas kryžius [TODO: verify — do not publish unverified]"
+              },
+              "subtitle": {
+                "lt": "Granitas · 180×60 cm",
+                "ru": "Granitas · 180×60 cm [TODO: verify — do not publish unverified]"
+              },
+              "price": 800,
+              "tags": [
+                "individualizacija galima"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/shop",
+      "title": {
+        "lt": "Parduotuvė",
+        "en": "Shop",
+        "ru": "Shop [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": {
+            "lt": "Parduotuvė",
+            "en": "Shop",
+            "ru": "Shop [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "title": {
+                "lt": "Gėlių pristatymas",
+                "en": "Flower Delivery",
+                "ru": "Flower Delivery [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Sezoninės gėlės ir puokštės pristatomos tiesiai prie kapavietės",
+                "en": "Seasonal flowers and bouquets delivered to the gravesite",
+                "ru": "Seasonal flowers and bouquets delivered to the gravesite [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "title": {
+                "lt": "Paminklų katalogas",
+                "en": "Monument Catalog",
+                "ru": "Monument Catalog [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "title": {
+                "lt": "Paslaugų užsakymas",
+                "en": "Service Orders",
+                "ru": "Service Orders [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

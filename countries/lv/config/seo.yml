@@ -1,0 +1,38 @@
+# LV SEO configuration — dzives-cels.lv
+# Governing: docs/seo/international-seo-strategy.md §2.2, §3.2
+
+country_code: lv
+domain: dzives-cels.lv
+default_locale: lv
+
+# hreflang alternates emitted per page
+alternates:
+  - locale: lv-LV
+    label: Latviešu
+  - locale: en-LV
+    label: English
+  - locale: ru-LV
+    label: Русский
+
+# x-default points to the national language
+x_default: lv-LV
+
+# IndexNow API key (per-tenant, stored in spoke secrets)
+index_now:
+  enabled: true
+  key_location: "secrets/encrypted/common/index-now-key.enc"
+
+# Sitemap
+sitemap:
+  enabled: true
+  per_tenant: true
+  max_urls_per_file: 50000
+
+# Robots
+robots:
+  noindex: true  # REMOVE after owner authorizes per-spoke go-live
+  disallow:
+    - /api/
+    - /admin/
+    - /_next/
+    - /secrets/

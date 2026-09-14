@@ -1,0 +1,269 @@
+{
+  "slug": "cathedral-kaunas",
+  "vertical": "cathedral",
+  "locale": "lt",
+  "name": {
+    "lt": "Kauno Šv. apaštalų Petro ir Pauliaus arkikatedra bazilija",
+    "en": "Kaunas Cathedral Basilica of St. Peter and St. Paul",
+    "ru": "Kaunas Cathedral Basilica of St. Peter and St. Paul [TODO: verify with parish/diocese — do not publish unverified]"
+  },
+  "tagline": {
+    "lt": "Kauno arkivyskupo sostinė, konsekruota 1650 m.",
+    "en": "Seat of the Archbishop of Kaunas, consecrated in 1650",
+    "ru": "Seat of the Archbishop of Kaunas, consecrated in 1650 [TODO: verify with parish/diocese — do not publish unverified]"
+  },
+  "identity": {
+    "entityId": "lt-catholic-cathedral-001",
+    "jurisdiction": "Kaunas Archdiocese",
+    "established": "1650",
+    "address": "Vilniaus g. 1, 44287 Kaunas, Lithuania",
+    "email": "info@kaunoarkikatedra.lt",
+    "phone": "+370 37 32 26 08",
+    "domain": "kaunoarkikatedra.lt",
+    "theme": "cathedral-classic"
+  },
+  "pages": [
+    {
+      "route": "/",
+      "title": {
+        "lt": "Pradžia",
+        "en": "Home",
+        "ru": "Home [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Kauno arkikatedra bazilija",
+            "en": "Kaunas Cathedral Basilica",
+            "ru": "Kaunas Cathedral Basilica [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "subheading": {
+            "lt": "Šv. apaštalų Petro ir Pauliaus garbei",
+            "en": "Dedicated to St. Peter and St. Paul",
+            "ru": "Dedicated to St. Peter and St. Paul [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Kauno arkivyskupijos motininė bažnyčia ir arkivyskupo sostinė.",
+            "en": "Mother church of the Kaunas Archdiocese and seat of the Archbishop.",
+            "ru": "Mother church of the Kaunas Archdiocese and seat of the Archbishop. [TODO: verify with parish/diocese — do not publish unverified]"
+          }
+        },
+        {
+          "type": "keyValue",
+          "heading": {
+            "lt": "Kontaktai",
+            "en": "Contact",
+            "ru": "Contact [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "label": {
+                "lt": "Adresas",
+                "ru": "Adresas [TODO: verify — do not publish unverified]"
+              },
+              "value": "Vilniaus g. 1, 44287 Kaunas"
+            },
+            {
+              "label": {
+                "lt": "Telefonas",
+                "ru": "Telefonas [TODO: verify — do not publish unverified]"
+              },
+              "value": "+370 37 32 26 08"
+            },
+            {
+              "label": {
+                "lt": "El. paštas",
+                "ru": "El. paštas [TODO: verify — do not publish unverified]"
+              },
+              "value": "info@kaunoarkikatedra.lt"
+            },
+            {
+              "label": {
+                "lt": "Svetainė",
+                "ru": "Svetainė [TODO: verify — do not publish unverified]"
+              },
+              "value": "https://kaunoarkikatedra.lt"
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "links": [
+            {
+              "label": {
+                "lt": "Vyskupo žinutės",
+                "ru": "Vyskupo žinutės [TODO: verify — do not publish unverified]"
+              },
+              "href": "/bishops-messages"
+            },
+            {
+              "label": {
+                "lt": "Renginiai",
+                "ru": "Renginiai [TODO: verify — do not publish unverified]"
+              },
+              "href": "/events"
+            },
+            {
+              "label": {
+                "lt": "Paveldas",
+                "ru": "Paveldas [TODO: verify — do not publish unverified]"
+              },
+              "href": "/heritage"
+            },
+            {
+              "label": {
+                "lt": "Paaukoti",
+                "ru": "Paaukoti [TODO: verify — do not publish unverified]"
+              },
+              "href": "/donate"
+            }
+          ]
+        }
+      ],
+      "meta": {
+        "description": "Kauno Šv. apaštalų Petro ir Pauliaus arkikatedra bazilija"
+      }
+    },
+    {
+      "route": "/bishops-messages",
+      "title": {
+        "lt": "Vyskupo žinutės",
+        "en": "Bishop's Messages",
+        "ru": "Bishop's Messages [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": {
+            "lt": "Vyskupo žinutės",
+            "en": "Bishop's Messages",
+            "ru": "Bishop's Messages [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Kauno arkivyskupo ganytojiniai laiškai, homilijos ir kreipimaisi tikintiesiems.",
+            "en": "Pastoral letters, homilies and addresses of the Archbishop of Kaunas.",
+            "ru": "Pastoral letters, homilies and addresses of the Archbishop of Kaunas. [TODO: verify with parish/diocese — do not publish unverified]"
+          }
+        }
+      ]
+    },
+    {
+      "route": "/donate",
+      "title": {
+        "lt": "Paaukoti",
+        "en": "Donate",
+        "ru": "Donate [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": {
+            "lt": "Parama katedrai",
+            "en": "Support the Cathedral",
+            "ru": "Support the Cathedral [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Jūsų auka padeda išlaikyti katedros paveldą, liturgiją ir karitatyvinę tarnystę.",
+            "en": "Your donation helps sustain the cathedral's heritage, liturgy and charitable ministry.",
+            "ru": "Your donation helps sustain the cathedral's heritage, liturgy and charitable ministry. [TODO: verify with parish/diocese — do not publish unverified]"
+          }
+        }
+      ]
+    },
+    {
+      "route": "/events",
+      "title": {
+        "lt": "Renginiai",
+        "en": "Events",
+        "ru": "Events [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": {
+            "lt": "Arkivyskupijos renginių kalendorius",
+            "en": "Diocesan Events Calendar",
+            "ru": "Diocesan Events Calendar [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Bendras arkivyskupijos renginių kalendorius: piligrimystės, koncertai, jaunimo dienos ir atlaidai.",
+            "en": "Shared archdiocesan events calendar: pilgrimages, concerts, youth days and patronal feasts.",
+            "ru": "Shared archdiocesan events calendar: pilgrimages, concerts, youth days and patronal feasts. [TODO: verify with parish/diocese — do not publish unverified]"
+          }
+        }
+      ]
+    },
+    {
+      "route": "/heritage",
+      "title": {
+        "lt": "Paveldas",
+        "en": "Heritage",
+        "ru": "Heritage [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": {
+            "lt": "Katedros paveldas",
+            "en": "Cathedral Heritage",
+            "ru": "Cathedral Heritage [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Katedros istorija, architektūra ir sakralinio meno kolekcijos nuo 1650 m. iki šių dienų.",
+            "en": "Cathedral history, architecture and sacred art collections from 1650 to the present day.",
+            "ru": "Cathedral history, architecture and sacred art collections from 1650 to the present day. [TODO: verify with parish/diocese — do not publish unverified]"
+          }
+        }
+      ]
+    },
+    {
+      "route": "/shop",
+      "title": {
+        "lt": "Krautuvėlė",
+        "en": "Shop",
+        "ru": "Shop [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": {
+            "lt": "Katedros krautuvėlė",
+            "en": "Cathedral Shop",
+            "ru": "Cathedral Shop [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "title": {
+                "lt": "Mišių kortelės",
+                "en": "Mass Cards",
+                "ru": "Mass Cards [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "title": {
+                "lt": "Katedros suvenyrai",
+                "en": "Cathedral Merchandise",
+                "ru": "Cathedral Merchandise [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "title": {
+                "lt": "Koncertų bilietai",
+                "en": "Concert Tickets",
+                "ru": "Concert Tickets [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "title": {
+                "lt": "Ekskursijos",
+                "en": "Guided Tours",
+                "ru": "Guided Tours [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

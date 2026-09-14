@@ -1,0 +1,29 @@
+{
+  "name": "@jol-hub/seo",
+  "version": "1.0.0",
+  "description": "SEO architecture core for JOL: canonicals, hreflang, metadata policy, JSON-LD generators, sitemap/robots builders, OG + IndexNow integration points. Pure, framework-agnostic, unit-tested.",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "type-check": "tsc --noEmit",
+    "test": "tsx --test src/__tests__/*.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsx": "^4.23.12",
+    "typescript": "^5.4.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  }
+}

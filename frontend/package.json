@@ -11,8 +11,9 @@
   "scripts": {
     "build": "turbo run build",
     "build:all": "turbo run build --filter='./apps/*'",
-    "build:entities": "turbo run build --filter='./apps/lt-*'",
+    "build:entities": "turbo run build --filter='./apps/template-renderer'",
     "build:infrastructure": "turbo run build --filter='./apps/{admin-dashboard,master-site,parish-template}'",
+    "build:packages": "turbo run build --filter='./packages/*'",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "type-check": "turbo run type-check",
@@ -25,9 +26,19 @@
     "gdpr:validate": "pnpm --filter @jol-hub/admin-dashboard gdpr:validate",
     "deploy:check": "pnpm --filter @jol-hub/admin-dashboard deploy:check",
     "test": "turbo run test",
-    "test:coverage": "turbo run test -- --coverage"
+    "test:unit": "corepack pnpm --filter @jol-hub/perf test && corepack pnpm --filter @jol-hub/seo test && corepack pnpm --filter @jol-hub/ui test && corepack pnpm --filter @jol-hub/a11y test && corepack pnpm --filter @jol-hub/commerce test && corepack pnpm --filter @jol-hub/bitrix-sdk test && corepack pnpm --filter @jol-hub/auth test && corepack pnpm --filter @jol-hub/tenant-resolver test && corepack pnpm --filter @jol-hub/observability test && corepack pnpm --filter @jol-hub/template-renderer test && corepack pnpm --filter @jol-hub/template-renderer test:vitest",
+    "test:e2e": "corepack pnpm --filter template-renderer test:e2e",
+    "test:a11y": "corepack pnpm --filter @jol-hub/ui check-a11y && corepack pnpm --filter template-renderer check-a11y",
+    "test:security": "corepack pnpm --filter template-renderer test:security",
+    "test:coverage": "turbo run test -- --coverage",
+    "changeset": "changeset",
+    "changeset:status": "changeset status",
+    "version": "changeset version",
+    "release": "pnpm build:packages && changeset publish"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.5.2",
+    "@changesets/cli": "^2.31.1",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.65.0",
     "eslint": "^8.57.0",
@@ -39,6 +50,7 @@
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",
+    "tsup": "^8.0.0",
     "turbo": "^2.0.0",
     "typescript": "^5.4.0"
   },

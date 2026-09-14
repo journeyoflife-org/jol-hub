@@ -1,0 +1,121 @@
+# =============================================================================
+# Reusable Workflow: Security Scan
+# =============================================================================
+# Called by spoke repos via workflow_call. Runs secret detection,
+# dependency SCA, and satellite kit drift check.
+#
+# Usage in spoke .github/workflows/ci.yml:
+#   jobs:
+#     security:
+#       uses: journeyoflife-org/.github/.github/workflows/security-scan.yml@main
+# =============================================================================
+
+name: Security Scan
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        description: 'Node.js version'
+        required: false
+        type: string
+        default: '20'
+      pnpm-version:
+        description: 'pnpm version'
+        required: false
+        type: string
+        default: '10.30.3'
+      hub-repo:
+        description: 'Canonical hub repo for drift check'
+        required: false
+        type: string
+        default: 'journeyoflife-org/jol-hub'
+      hub-branch:
+        description: 'Branch to compare against for drift check'
+        required: false
+        type: string
+        default: 'main'
+
+env:
+  NODE_VERSION: ${{ inputs.node-version }}
+  PNPM_VERSION: ${{ inputs.pnpm-version }}
+
+jobs:
+  secret-detection:
+    name: Secret Detection (Gitleaks)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  secret-scan-local:
+    name: Local Secret Scan (scripts/check-secrets.sh)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run local secret scanner
+        run: |
+          if [ -f scripts/check-secrets.sh ]; then
+            bash scripts/check-secrets.sh
+          else
+            echo "No local secret scanner found — skipping."
+          fi
+
+  satellite-drift:
+    name: Satellite Kit Drift Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run satellite kit drift checker
+        run: |
+          if [ -f scripts/sops-validate.py ]; then
+            python3 scripts/sops-validate.py \
+              --hub-repo "${{ inputs.hub-repo }}" \
+              --branch "${{ inputs.hub-branch }}"
+          else
+            echo "::warning::Satellite kit drift checker not found."
+          fi
+
+  dependency-audit:
+    name: Dependency SCA (pnpm audit)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Audit production dependencies
+        run: pnpm audit --prod --audit-level=high

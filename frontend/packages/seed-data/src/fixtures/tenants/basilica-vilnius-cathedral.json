@@ -1,0 +1,255 @@
+{
+  "slug": "basilica-vilnius-cathedral",
+  "vertical": "basilica",
+  "locale": "lt",
+  "name": {
+    "lt": "Vilniaus Šv. Stanislovo ir Šv. Vladislovo arkikatedra bazilika",
+    "en": "Vilnius Cathedral Basilica of St. Stanislaus and St. Ladislaus",
+    "ru": "Кафедральный собор Святого Станислава и Святого Владислава в Вильнюсе"
+  },
+  "tagline": {
+    "lt": "Vilniaus arkivyskupijos motininė bažnyčia, mažoji bazilika nuo 1922 m.",
+    "en": "Mother church of the Vilnius Archdiocese, minor basilica since 1922",
+    "ru": "[TODO: verify with parish/diocese — do not publish unverified] Материнская церковь Виленской архиепархии, малая базилика с 1922 г."
+  },
+  "identity": {
+    "entityId": "lt-catholic-basilica-001",
+    "jurisdiction": "Vilnius Archdiocese",
+    "established": "1783",
+    "address": "Katedros a. 1, 01143 Vilnius, Lithuania",
+    "email": "info@katedra.lt",
+    "phone": "+370 5 261 0731",
+    "domain": "katedra.lt",
+    "theme": "basilica-classic"
+  },
+  "pages": [
+    {
+      "route": "/",
+      "title": { "lt": "Pradžia", "en": "Home", "ru": "Главная" },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Vilniaus arkikatedra bazilika",
+            "en": "Vilnius Cathedral Basilica",
+            "ru": "Кафедральный собор в Вильнюсе"
+          },
+          "subheading": {
+            "lt": "Šv. Stanislovo ir Šv. Vladislovo garbei",
+            "en": "Dedicated to St. Stanislaus and St. Ladislaus",
+            "ru": "Во имя Святого Станислава и Святого Владислава"
+          },
+          "body": {
+            "lt": "[TODO: verify with parish/diocese — do not publish unverified] Konsekruota 1783 m. Mažosios bazilikos titulas suteiktas 1922-03-04.",
+            "en": "[TODO: verify with parish/diocese — do not publish unverified] Consecrated in 1783. Elevated to a minor basilica on 4 March 1922.",
+            "ru": "[TODO: verify with parish/diocese — do not publish unverified] Освящена в 1783 г. Титул малой базилики присвоен 4 марта 1922 г."
+          }
+        },
+        {
+          "type": "massSchedule",
+          "heading": {
+            "lt": "Šv. Mišių tvarkaraštis",
+            "en": "Mass Schedule",
+            "ru": "Расписание Месс"
+          },
+          "masses": [
+            {
+              "day": "Sekmadienis",
+              "dayEn": "Sunday",
+              "time": "10:00",
+              "startDate": "2026-09-13T10:00:00",
+              "language": "lt",
+              "notes": { "lt": "Su giedojimu", "en": "With singing", "ru": "С пением" }
+            },
+            {
+              "day": "Pirmadienis–Penktadienis",
+              "dayEn": "Monday–Friday",
+              "time": "08:00",
+              "startDate": "2026-09-14T08:00:00",
+              "language": "lt"
+            },
+            {
+              "day": "Šeštadienis",
+              "dayEn": "Saturday",
+              "time": "09:00",
+              "startDate": "2026-09-12T09:00:00",
+              "language": "lt"
+            }
+          ]
+        },
+        {
+          "type": "keyValue",
+          "heading": { "lt": "Kontaktai", "en": "Contact", "ru": "Контакты" },
+          "items": [
+            { "label": { "lt": "Adresas", "en": "Address", "ru": "Адрес" }, "value": "Katedros a. 1, 01143 Vilnius" },
+            { "label": { "lt": "Telefonas", "en": "Phone", "ru": "Телефон" }, "value": "+370 5 261 0731" },
+            { "label": { "lt": "El. paštas", "en": "Email", "ru": "Эл. почта" }, "value": "info@katedra.lt" },
+            { "label": { "lt": "Svetainė", "en": "Website", "ru": "Сайт" }, "value": "https://katedra.lt" }
+          ]
+        },
+        {
+          "type": "sacramentList",
+          "heading": {
+            "lt": "Sakramentai ir tarnystės",
+            "en": "Sacraments & Services",
+            "ru": "Таинства и служения"
+          },
+          "sacraments": [
+            {
+              "name": { "lt": "Šv. Mišių intencija", "en": "Mass Intention", "ru": "Намерение Мессы" },
+              "description": {
+                "lt": "Užsakymas Mišioms už gyvuosius ar mirusiuosius",
+                "en": "Booking Mass for the living or the deceased",
+                "ru": "[TODO: verify with parish/diocese — do not publish unverified] Заказ Мессы за живых или усопших"
+              }
+            },
+            {
+              "name": { "lt": "Išpažintis", "en": "Confession", "ru": "Исповедь" },
+              "schedule": {
+                "lt": "Šeštadieniais 9:30–10:30 arba pagal susitarimą",
+                "en": "Saturdays 9:30–10:30 or by appointment",
+                "ru": "[TODO: verify with parish/diocese — do not publish unverified] По субботам 9:30–10:30 или по договорённости"
+              }
+            },
+            {
+              "name": { "lt": "Krikštas", "en": "Baptism", "ru": "Крещение" },
+              "requirements": {
+                "lt": "Susisiekite su klebonu dėl datos",
+                "en": "Contact the parish priest for scheduling",
+                "ru": "[TODO: verify with parish/diocese — do not publish unverified] Свяжитесь с настоятелем для назначения даты"
+              }
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "heading": { "lt": "Katedros tarnystės", "en": "Cathedral Services", "ru": "Службы собора" },
+          "items": [
+            {
+              "title": { "lt": "Žvakės", "en": "Candles", "ru": "Свечи" }
+            },
+            {
+              "title": { "lt": "Piligrimystės", "en": "Pilgrimages", "ru": "Паломничество" }
+            },
+            {
+              "title": { "lt": "Knygos", "en": "Books", "ru": "Книги" }
+            }
+          ]
+        },
+        {
+          "type": "clergyRoleList",
+          "heading": {
+            "lt": "Tarnybos",
+            "en": "Ministries",
+            "ru": "Служения"
+          },
+          "roles": [
+            {
+              "role": { "lt": "Klebonas", "en": "Parish Priest", "ru": "Настоятель" },
+              "description": {
+                "lt": "Atsakingas už sielovadą ir administraciją",
+                "en": "Responsible for pastoral care and administration",
+                "ru": "[TODO: verify with parish/diocese — do not publish unverified] Отвечает за пастырское попечение и администрацию"
+              },
+              "contact": "klebonas@katedra.lt"
+            },
+            {
+              "role": { "lt": "Vikaras", "en": "Vicar", "ru": "Викарий" },
+              "description": {
+                "lt": "Padeda klebonui sielovados darbe",
+                "en": "Assists the parish priest in pastoral work",
+                "ru": "[TODO: verify with parish/diocese — do not publish unverified] Помогает настоятелю в пастырской работе"
+              }
+            }
+          ]
+        },
+        {
+          "type": "gallery",
+          "heading": {
+            "lt": "Galerija",
+            "en": "Gallery",
+            "ru": "Галерея"
+          },
+          "images": [
+            {
+              "src": "/images/basilica-exterior.jpg",
+              "alt": {
+                "lt": "Vilniaus arkikatedros bazilikos fasadas",
+                "en": "Façade of Vilnius Cathedral Basilica",
+                "ru": "Фасад Кафедрального собора Вильнюса"
+              },
+              "width": 1200,
+              "height": 800,
+              "caption": { "lt": "Fasadas", "en": "Façade", "ru": "Фасад" }
+            },
+            {
+              "src": "/images/basilica-interior.jpg",
+              "alt": {
+                "lt": "Arkikatedros vidus",
+                "en": "Cathedral interior",
+                "ru": "Интерьер собора"
+              },
+              "width": 1200,
+              "height": 800
+            }
+          ]
+        },
+        {
+          "type": "visitingInfo",
+          "heading": {
+            "lt": "Lankymo laikas",
+            "en": "Visiting Hours",
+            "ru": "Часы посещения"
+          },
+          "hours": [
+            {
+              "day": "Pirmadienis–Penktadienis",
+              "dayEn": "Monday–Friday",
+              "open": "07:00",
+              "close": "19:00"
+            },
+            {
+              "day": "Šeštadienis",
+              "dayEn": "Saturday",
+              "open": "08:00",
+              "close": "18:00"
+            },
+            {
+              "day": "Sekmadienis",
+              "dayEn": "Sunday",
+              "open": "07:00",
+              "close": "20:00",
+              "notes": { "lt": "Mišių metu lankytojai prašomi netrukdyti", "en": "Visitors asked not to disturb during Mass", "ru": "[TODO: verify with parish/diocese — do not publish unverified] Во время Мессы просим не беспокоить" }
+            }
+          ],
+          "admission": {
+            "lt": "Įėjimas laisvas. Gido paslaugos — pagal susitarimą.",
+            "en": "Free entry. Guide services by arrangement.",
+            "ru": "[TODO: verify with parish/diocese — do not publish unverified] Вход свободный. Услуги гида по договорённости."
+          }
+        },
+        {
+          "type": "mapLocation",
+          "heading": {
+            "lt": "Kaip mus rasti",
+            "en": "How to Find Us",
+            "ru": "Как нас найти"
+          },
+          "lat": 54.6862,
+          "lng": 25.2903,
+          "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=54.6862,25.2903"
+        },
+        {
+          "type": "cta",
+          "links": [
+            { "label": { "lt": "Užsakyti Mišių intenciją", "en": "Book Mass Intention", "ru": "Заказать намерение Мессы" }, "href": "/#mass-intentions" },
+            { "label": { "lt": "Žvakių aukojimas", "en": "Offer Candles", "ru": "Пожертвовать свечи" }, "href": "/#candles" }
+          ]
+        }
+      ],
+      "meta": {
+        "description": "Vilniaus Šv. Stanislovo ir Šv. Vladislovo arkikatedra bazilika"
+      }
+    }
+  ]
+}
