@@ -1,0 +1,17 @@
+# Code Owners — required reviewers for sensitive paths
+# See GitHub docs: https://docs.github.com/en/repositories/managing-your-repository/defining-the-merge-readiness-of-code-changes
+
+# Security-critical paths require security team review
+/.sops.yaml @journeyoflife-org/security-team
+/scripts/sops-validate.py @journeyoflife-org/security-team
+/secrets/ @journeyoflife-org/security-team
+
+# Governance documents require architect review
+/LICENSE @journeyoflife-org/architects
+/SECURITY.md @journeyoflife-org/security-team
+/CONTRIBUTING.md @journeyoflife-org/architects
+/CHANGELOG.md @journeyoflife-org/architects
+
+# Package dependencies require security + architect review
+/package.json @journeyoflife-org/security-team @journeyoflife-org/architects
+/pnpm-lock.yaml @journeyoflife-org/security-team
