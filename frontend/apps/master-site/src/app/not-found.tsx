@@ -11,7 +11,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import {
@@ -55,6 +55,20 @@ const MOCK_PARISHES = [
  * 404 Not Found page component.
  */
 export default function NotFoundPage(): JSX.Element {
+  return (
+    <Suspense
+      fallback={
+        <div className="bg-background flex min-h-screen items-center justify-center">
+          <p>Loading...</p>
+        </div>
+      }
+    >
+      <NotFoundContent />
+    </Suspense>
+  );
+}
+
+function NotFoundContent(): JSX.Element {
   const searchParams = useSearchParams();
   const attemptedPath = searchParams.get('path') ?? '';
   const [searchQuery, setSearchQuery] = useState('');

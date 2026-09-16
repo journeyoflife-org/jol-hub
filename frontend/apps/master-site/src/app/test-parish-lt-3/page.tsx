@@ -32,6 +32,9 @@ import {
   Church,
 } from 'lucide-react';
 
+// Skip static generation — test page with dynamic tenant resolution
+export const dynamic = 'force-dynamic';
+
 interface ParishPageProps {
   params: {
     parish: string;

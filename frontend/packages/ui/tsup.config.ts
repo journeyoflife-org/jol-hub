@@ -1,31 +1,18 @@
-import { defineConfig, type Options } from 'tsup';
-import { readFileSync, writeFileSync, readdirSync } from 'fs';
+import { defineConfig } from 'tsup';
+import { readFileSync, writeFileSync, readdirSync, statSync } from 'fs';
 import { join } from 'path';
 
-const BANNER = '"use client";\n';
-
-/**
- * Post-build hook — prepends `"use client";` to every JS file in dist/.
- *
- * Why: tsup with `splitting: true` creates shared chunks that lose the
- * per-source `'use client'` directive.  Next.js App Router needs the
- * directive on ANY module whose graph contains React hooks (useState,
- * useRef, useEffect …).  This ensures every emitted chunk carries it.
- */
-function addUseClientBanner(): Options['buildSuccess'] {
-  return function (config) {
-    const outDir = config.outDir ?? 'dist';
-    const files = readdirSync(outDir);
-    for (const file of files) {
-      if (file.endsWith('.js') || file.endsWith('.mjs') || file.endsWith('.cjs')) {
-        const filePath = join(outDir, file);
-        const content = readFileSync(filePath, 'utf8');
-        if (!content.startsWith('"use client"')) {
-          writeFileSync(filePath, BANNER + content);
-        }
-      }
+function walkJsFiles(dir: string): string[] {
+  const results: string[] = [];
+  for (const entry of readdirSync(dir)) {
+    const full = join(dir, entry);
+    if (statSync(full).isDirectory()) {
+      results.push(...walkJsFiles(full));
+    } else if (/\.(js|mjs|cjs)$/.test(entry)) {
+      results.push(full);
     }
-  };
+  }
+  return results;
 }
 
 export default defineConfig({
@@ -49,22 +36,16 @@ export default defineConfig({
   esbuildOptions(options) {
     options.jsx = 'automatic';
   },
-  async onSuccess() {
-    const outDir = 'dist';
-    const files = readdirSync(outDir);
-    for (const file of files) {
-      if (file.endsWith('.js') || file.endsWith('.mjs') || file.endsWith('.cjs')) {
-        const filePath = join(outDir, file);
-        const content = readFileSync(filePath, 'utf8');
-        if (!content.startsWith('"use client"')) {
-          writeFileSync(filePath, BANNER + content);
-        }
+  onSuccess: async () => {
+    const banner = '"use client";\n';
+    let count = 0;
+    for (const fp of walkJsFiles('dist')) {
+      const content = readFileSync(fp, 'utf8');
+      if (!content.startsWith('"use client"')) {
+        writeFileSync(fp, banner + content);
+        count++;
       }
     }
-    console.log(
-      '[use-client] Banner injected into',
-      files.filter((f) => f.endsWith('.js') || f.endsWith('.mjs') || f.endsWith('.cjs')).length,
-      'files'
-    );
+    console.log('[use-client] Banner injected into ' + count + ' files');
   },
 });
