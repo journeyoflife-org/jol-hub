@@ -9,14 +9,19 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('content', '0001_initial'),
-        ('organizations', '0001_initial'),
+        ("content", "0001_initial"),
+        ("organizations", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='mediafile',
-            name='organization',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='media_files', to='organizations.organization', verbose_name='organization'),
+            model_name="mediafile",
+            name="organization",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="media_files",
+                to="organizations.organization",
+                verbose_name="organization",
+            ),
         ),
     ]

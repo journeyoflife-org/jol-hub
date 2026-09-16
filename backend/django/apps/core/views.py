@@ -27,7 +27,6 @@ from .health import DeepHealthChecker
 from .models import AuditLog
 from .serializers import AuditLogSerializer
 
-
 # ---------------------------------------------------------------------------
 # Health & Readiness views
 # ---------------------------------------------------------------------------

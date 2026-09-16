@@ -166,6 +166,7 @@ EVENT_OPERATION_MAP: dict[str, str] = {
 # PII Masking (GDPR Art. 5(1)(f))
 # ---------------------------------------------------------------------------
 
+
 def mask_pii(value: str, field_type: str) -> str:
     """Mask PII for audit logs.
 
@@ -206,6 +207,7 @@ def mask_pii(value: str, field_type: str) -> str:
 # ---------------------------------------------------------------------------
 # Field Transformation Helpers
 # ---------------------------------------------------------------------------
+
 
 def extract_email(fields: dict[str, Any]) -> str:
     """Extract primary email from Bitrix24 ``EMAIL`` field.
@@ -320,6 +322,7 @@ def map_source_id(source_id: Optional[str]) -> str:
 # Field Validation
 # ---------------------------------------------------------------------------
 
+
 def validate_fields(
     fields: dict[str, Any],
     allowed: frozenset[str],
@@ -347,6 +350,7 @@ def validate_fields(
 # ---------------------------------------------------------------------------
 # Consent Detection
 # ---------------------------------------------------------------------------
+
 
 def detect_consent_from_fields(fields: dict[str, Any]) -> tuple[bool, str]:
     """Detect GDPR consent status from Bitrix24 custom fields.

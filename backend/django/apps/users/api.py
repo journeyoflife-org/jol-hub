@@ -16,15 +16,15 @@ from .serializers import (
 )
 
 __all__ = [
-    'UserViewSet',
-    'RegisterView',
-    'LoginView',
-    'LogoutView',
-    'MeView',
-    'ChangePasswordView',
-    'GDPRExportView',
-    'GDPRDeleteView',
-    'UserSerializer',
-    'RegisterSerializer',
-    'ChangePasswordSerializer',
+    "UserViewSet",
+    "RegisterView",
+    "LoginView",
+    "LogoutView",
+    "MeView",
+    "ChangePasswordView",
+    "GDPRExportView",
+    "GDPRDeleteView",
+    "UserSerializer",
+    "RegisterSerializer",
+    "ChangePasswordSerializer",
 ]

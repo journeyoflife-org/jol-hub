@@ -9,8 +9,10 @@ from rest_framework.permissions import IsAuthenticated
 
 from .models import Organization, OrganizationMember, Website
 from .serializers import (
-    OrganizationSerializer, OrganizationCreateSerializer,
-    OrganizationMemberSerializer, WebsiteSerializer,
+    OrganizationSerializer,
+    OrganizationCreateSerializer,
+    OrganizationMemberSerializer,
+    WebsiteSerializer,
 )
 
 
@@ -20,13 +22,17 @@ class OrganizationListCreateView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_serializer_class(self):
-        return OrganizationCreateSerializer if self.request.method == 'POST' else OrganizationSerializer
+        return (
+            OrganizationCreateSerializer
+            if self.request.method == "POST"
+            else OrganizationSerializer
+        )
 
     def get_queryset(self):
         qs = Organization.objects.filter(is_deleted=False)
-        country = self.request.query_params.get('country')
-        org_type = self.request.query_params.get('type')
-        status_filter = self.request.query_params.get('status')
+        country = self.request.query_params.get("country")
+        org_type = self.request.query_params.get("type")
+        status_filter = self.request.query_params.get("status")
         if country:
             qs = qs.filter(country=country)
         if org_type:
@@ -54,7 +60,7 @@ class OrganizationWebsiteView(generics.RetrieveUpdateAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_object(self):
-        org = Organization.objects.get(pk=self.kwargs['pk'], is_deleted=False)
+        org = Organization.objects.get(pk=self.kwargs["pk"], is_deleted=False)
         website, _ = Website.objects.get_or_create(organization=org)
         return website
 
@@ -67,6 +73,6 @@ class OrganizationMemberListView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         return OrganizationMember.objects.filter(
-            organization_id=self.kwargs['pk'],
+            organization_id=self.kwargs["pk"],
             is_deleted=False,
-        ).select_related('user')
+        ).select_related("user")

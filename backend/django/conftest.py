@@ -16,7 +16,6 @@ import pytest
 from django.test import RequestFactory
 from rest_framework.test import APIClient
 
-
 # ---------------------------------------------------------------------------
 # Bitrix24 webhook test helpers
 # ---------------------------------------------------------------------------
@@ -26,7 +25,9 @@ from rest_framework.test import APIClient
 BITRIX24_TEST_SECRET = "test-bitrix24-hmac-secret-key"
 
 
-def compute_bitrix24_signature(payload: dict[str, Any], secret: str = BITRIX24_TEST_SECRET) -> str:
+def compute_bitrix24_signature(
+    payload: dict[str, Any], secret: str = BITRIX24_TEST_SECRET
+) -> str:
     """Compute the HMAC-SHA256 signature for a Bitrix24 webhook payload.
 
     Args:
@@ -85,6 +86,7 @@ def build_bitrix24_payload(
 # ---------------------------------------------------------------------------
 # Fixtures
 # ---------------------------------------------------------------------------
+
 
 @pytest.fixture()
 def api_client() -> APIClient:

@@ -18,5 +18,5 @@ class CountryDetailView(generics.RetrieveAPIView):
     serializer_class = CountrySerializer
     permission_classes = [IsAuthenticated]
     queryset = Country.objects.filter(is_active=True)
-    lookup_field = 'code'
-    lookup_url_kwarg = 'code'
+    lookup_field = "code"
+    lookup_url_kwarg = "code"

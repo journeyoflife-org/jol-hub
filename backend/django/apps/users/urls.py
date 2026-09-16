@@ -15,14 +15,18 @@ Endpoints:
 from django.urls import path
 from . import views
 
-app_name = 'users'
+app_name = "users"
 
 urlpatterns = [
-    path('me/', views.MeView.as_view(), name='me'),
-    path('me/change-password/', views.ChangePasswordView.as_view(), name='change-password'),
-    path('me/gdpr/access/', views.GDPRDataAccessView.as_view(), name='gdpr-access'),
-    path('me/gdpr/export/', views.GDPRDataExportView.as_view(), name='gdpr-export'),
-    path('me/gdpr/delete/', views.GDPRDataDeleteView.as_view(), name='gdpr-delete'),
-    path('', views.UserListView.as_view(), name='user-list'),
-    path('<uuid:pk>/', views.UserDetailView.as_view(), name='user-detail'),
+    path("me/", views.MeView.as_view(), name="me"),
+    path(
+        "me/change-password/",
+        views.ChangePasswordView.as_view(),
+        name="change-password",
+    ),
+    path("me/gdpr/access/", views.GDPRDataAccessView.as_view(), name="gdpr-access"),
+    path("me/gdpr/export/", views.GDPRDataExportView.as_view(), name="gdpr-export"),
+    path("me/gdpr/delete/", views.GDPRDataDeleteView.as_view(), name="gdpr-delete"),
+    path("", views.UserListView.as_view(), name="user-list"),
+    path("<uuid:pk>/", views.UserDetailView.as_view(), name="user-detail"),
 ]

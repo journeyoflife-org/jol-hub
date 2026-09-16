@@ -19,10 +19,9 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(user_logged_in)
 def update_login_metadata(sender, request, user, **kwargs):
     """Track last login IP and increment login counter."""
-    ip = (
-        request.META.get('HTTP_X_FORWARDED_FOR', '').split(',')[0].strip()
-        or request.META.get('REMOTE_ADDR')
-    )
+    ip = request.META.get("HTTP_X_FORWARDED_FOR", "").split(",")[
+        0
+    ].strip() or request.META.get("REMOTE_ADDR")
     User.objects.filter(pk=user.pk).update(
         last_login_ip=ip or None,
         login_count=user.login_count + 1,

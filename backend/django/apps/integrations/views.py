@@ -34,21 +34,24 @@ class PayPalWebhookView(APIView):
     authentication_classes = []
 
     def post(self, request):
-        idempotency_key = request.META.get('HTTP_PAYPAL_TRANSMISSION_ID', get_random_string(64))
+        idempotency_key = request.META.get(
+            "HTTP_PAYPAL_TRANSMISSION_ID", get_random_string(64)
+        )
         event, created = WebhookEvent.objects.get_or_create(
             idempotency_key=idempotency_key,
             defaults={
-                'source': 'paypal',
-                'event_type': request.data.get('event_type', 'unknown'),
-                'payload': request.data,
+                "source": "paypal",
+                "event_type": request.data.get("event_type", "unknown"),
+                "payload": request.data,
             },
         )
         if not created:
-            return Response({'status': 'duplicate'})
+            return Response({"status": "duplicate"})
 
         from .tasks import process_paypal_webhook
+
         process_paypal_webhook.delay(str(event.id))
-        return Response({'status': 'received'})
+        return Response({"status": "received"})
 
 
 class Bitrix24WebhookView(APIView):
@@ -208,9 +211,7 @@ class Bitrix24WebhookView(APIView):
 
         # 2. HMAC-SHA256 signature verification (uses raw_body internally).
         if not self._verify_signature_from_body(raw_body, request):
-            logger.warning(
-                "Bitrix24 webhook rejected: invalid HMAC signature."
-            )
+            logger.warning("Bitrix24 webhook rejected: invalid HMAC signature.")
             return self._error_response(
                 status.HTTP_401_UNAUTHORIZED,
                 "webhook.signature_invalid",
@@ -273,6 +274,7 @@ class Bitrix24WebhookView(APIView):
 
         # 6. Dispatch Celery task for async processing.
         from .tasks import process_bitrix24_webhook
+
         process_bitrix24_webhook.delay(str(mongo_doc_id), country=country)
 
         logger.info(
@@ -296,36 +298,42 @@ class Bitrix24WebhookView(APIView):
 class Bitrix24WebhookHealthView(APIView):
     """
     GET /api/v1/integrations/webhooks/bitrix24/health/
-    
+
     Health check and circuit breaker status for Bitrix24 webhooks.
     """
-    
+
     permission_classes = [AllowAny]
     authentication_classes = []
-    
+
     def get(self, request):
         """Return webhook handler health status."""
         try:
             from integrations.bitrix24.webhooks import get_webhook_handler
+
             handler = get_webhook_handler()
-            
+
             # Get circuit breaker status
             circuit_status = handler.get_circuit_breaker_status()
-            
+
             # Verify audit chain integrity
             chain_verification = handler.verify_chain_integrity()
-            
-            return Response({
-                'status': 'healthy',
-                'service': 'bitrix24-webhook',
-                'timestamp': datetime.now(timezone.utc).isoformat(),
-                'circuit_breakers': circuit_status,
-                'audit_chain_valid': chain_verification.get('valid', False),
-                'audit_entry_count': chain_verification.get('entry_count', 0),
-            })
+
+            return Response(
+                {
+                    "status": "healthy",
+                    "service": "bitrix24-webhook",
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                    "circuit_breakers": circuit_status,
+                    "audit_chain_valid": chain_verification.get("valid", False),
+                    "audit_entry_count": chain_verification.get("entry_count", 0),
+                }
+            )
         except Exception as e:
             logger.error(f"Health check failed: {e}")
-            return Response({
-                'status': 'unhealthy',
-                'error': str(e),
-            }, status=status.HTTP_503_SERVICE_UNAVAILABLE)
+            return Response(
+                {
+                    "status": "unhealthy",
+                    "error": str(e),
+                },
+                status=status.HTTP_503_SERVICE_UNAVAILABLE,
+            )

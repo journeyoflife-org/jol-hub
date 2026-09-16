@@ -54,9 +54,19 @@ from prometheus_client import Counter, Gauge, Histogram  # noqa: E402
 # then coarser buckets up to 10s.  This lets Grafana dashboards easily spot
 # N+1 query issues or unindexed scans crossing the 100ms boundary.
 _BUCKETS = (
-    0.001, 0.005, 0.010, 0.025, 0.050, 0.075,
-    0.100,   # <-- slow-query threshold boundary
-    0.250, 0.500, 1.0, 2.5, 5.0, 10.0,
+    0.001,
+    0.005,
+    0.010,
+    0.025,
+    0.050,
+    0.075,
+    0.100,  # <-- slow-query threshold boundary
+    0.250,
+    0.500,
+    1.0,
+    2.5,
+    5.0,
+    10.0,
 )
 
 MONGO_QUERY_DURATION = Histogram(
@@ -159,7 +169,9 @@ class PrometheusCommandListener(_PyMongoCommandListener):
         ).observe(duration)
 
         slow_threshold: float = getattr(
-            settings, "MONGODB_SLOW_QUERY_THRESHOLD_S", 0.1,
+            settings,
+            "MONGODB_SLOW_QUERY_THRESHOLD_S",
+            0.1,
         )
         if duration >= slow_threshold:
             logger.warning(
@@ -180,7 +192,11 @@ class PrometheusCommandListener(_PyMongoCommandListener):
         command_name = event.command_name
         database = event.database_name
         failure = getattr(event, "failure", {})
-        error_code = str(failure.get("code", "unknown")) if isinstance(failure, dict) else "unknown"
+        error_code = (
+            str(failure.get("code", "unknown"))
+            if isinstance(failure, dict)
+            else "unknown"
+        )
         collection = self._pop_collection(event.request_id)
 
         MONGO_QUERY_ERRORS_TOTAL.labels(
@@ -222,6 +238,7 @@ class PrometheusCommandListener(_PyMongoCommandListener):
 # ---------------------------------------------------------------------------
 # Connection Manager (singleton, thread-safe, process-wide).
 # ---------------------------------------------------------------------------
+
 
 class MongoConnectionManager:
     """Singleton manager for the MongoDB ``MongoClient``.
@@ -355,7 +372,9 @@ class MongoConnectionManager:
             "maxIdleTimeMS": getattr(settings, "MONGODB_MAX_IDLE_TIME_MS", 60_000),
             "connectTimeoutMS": getattr(settings, "MONGODB_CONNECT_TIMEOUT_MS", 10_000),
             "serverSelectionTimeoutMS": getattr(
-                settings, "MONGODB_SERVER_SELECTION_TIMEOUT_MS", 5_000,
+                settings,
+                "MONGODB_SERVER_SELECTION_TIMEOUT_MS",
+                5_000,
             ),
             "event_listeners": [self._listener],
         }
@@ -413,6 +432,7 @@ mongo_manager = MongoConnectionManager.get_instance()
 # ---------------------------------------------------------------------------
 # Base Collection utility — enforces document structure for multi-tenancy.
 # ---------------------------------------------------------------------------
+
 
 class MongoBaseCollection:
     """Lightweight wrapper around a MongoDB collection.
@@ -486,6 +506,7 @@ class MongoBaseCollection:
         """
         try:
             from apps.crm.middleware import TenantContextMiddleware
+
             tenant = TenantContextMiddleware.get_tenant()
             if tenant is not None:
                 return str(tenant)
@@ -515,7 +536,9 @@ class MongoBaseCollection:
         cls._inject_metadata(document, tenant_id=tenant_id)
         result = cls._get_collection().insert_one(document, **kwargs)
         logger.debug(
-            "Inserted document %s into %s", result.inserted_id, cls.collection_name,
+            "Inserted document %s into %s",
+            result.inserted_id,
+            cls.collection_name,
         )
         return result.inserted_id
 
@@ -626,7 +649,10 @@ class MongoBaseCollection:
         update["$set"]["updated_at"] = datetime.now(timezone.utc).isoformat()
 
         return cls._get_collection().update_one(
-            filter, update, upsert=upsert, **kwargs,
+            filter,
+            update,
+            upsert=upsert,
+            **kwargs,
         )
 
     @classmethod
@@ -737,6 +763,7 @@ class MongoBaseCollection:
 # Concrete collection classes for the two initial use cases.
 # ---------------------------------------------------------------------------
 
+
 class WebhookPayloadCollection(MongoBaseCollection):
     """Stores raw Bitrix24 (and future) webhook payloads.
 
@@ -793,6 +820,7 @@ class AuditLogCollection(MongoBaseCollection):
 # ---------------------------------------------------------------------------
 # Django app lifecycle integration helpers.
 # ---------------------------------------------------------------------------
+
 
 def initialise_mongodb() -> None:
     """Initialise the MongoDB connection.
