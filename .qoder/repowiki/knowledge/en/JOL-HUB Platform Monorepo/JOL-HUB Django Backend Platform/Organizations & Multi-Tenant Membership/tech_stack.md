@@ -1,0 +1,1 @@
+Django + Django REST Framework generics; uses `django.db.models.JSONField` for flexible metadata/settings, `ImageField` for logos, and `DecimalField` for geolocation coordinates.

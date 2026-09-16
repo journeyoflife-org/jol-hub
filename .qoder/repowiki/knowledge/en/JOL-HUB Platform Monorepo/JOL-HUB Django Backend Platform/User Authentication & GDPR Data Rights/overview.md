@@ -1,0 +1,1 @@
+Django app providing the custom User model, JWT-based authentication endpoints, profile management, and GDPR-compliant data access/export/erasure APIs.

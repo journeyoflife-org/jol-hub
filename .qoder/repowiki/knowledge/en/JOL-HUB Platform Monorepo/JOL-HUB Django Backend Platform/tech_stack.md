@@ -1,0 +1,1 @@
+Django + Django REST Framework for all domain apps; Celery for background jobs shared across CRM sync, Bitrix24 integration, and payment event processing; PostgreSQL (primary ORM store) plus MongoDB via `core/mongodb.py`; environment secrets loaded through `core/secrets.py`/`vault.py`; Dockerized via `Dockerfile` / `Dockerfile.dev`.

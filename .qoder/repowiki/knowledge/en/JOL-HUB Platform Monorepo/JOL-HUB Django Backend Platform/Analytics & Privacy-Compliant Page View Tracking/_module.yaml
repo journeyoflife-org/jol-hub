@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: backend/analytics
+title: Analytics & Privacy-Compliant Page View Tracking
+scope:
+    - backend/django/apps/analytics/
+source_files: []
+depends_on: []
+related_to:
+    - path: backend/content
+    - path: backend/donations
+    - path: backend/financial

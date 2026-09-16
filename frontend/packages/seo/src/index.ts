@@ -1,5 +1,5 @@
 /**
- * @jol-hub/seo — SEO architecture core (STEP 11).
+ * @journeyoflife-org/seo — SEO architecture core (STEP 11).
  *
  * Pure, framework-agnostic, unit-tested SEO primitives: canonicals, hreflang
  * (reciprocal by construction), metadata/robots policy, JSON-LD generators,

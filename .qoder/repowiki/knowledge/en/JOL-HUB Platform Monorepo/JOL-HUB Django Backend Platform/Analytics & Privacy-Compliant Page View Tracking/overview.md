@@ -1,0 +1,1 @@
+Django app that records page-view events and aggregates daily analytics per organization, enforcing GDPR consent checks and k-anonymity on exposed endpoints.

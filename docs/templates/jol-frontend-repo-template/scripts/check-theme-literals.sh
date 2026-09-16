@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # Theme literal guard — INV-7 enforcement.
 # Fails CI if denomination or country literals are found in component code.
-# Spokes must consume themes from @jol-hub/ui tokens, not define their own.
+# Spokes must consume themes from @journeyoflife-org/ui tokens, not define their own.
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$REPO_ROOT"
 
 # Patterns that indicate theme/vertical logic is being defined locally
-# instead of being consumed from @jol-hub/* platform packages
+# instead of being consumed from @journeyoflife-org/* platform packages
 PATTERNS=(
   # Denomination literals in component code
   'catholic'
@@ -53,7 +53,7 @@ done
 if [ "$FOUND" -eq 1 ]; then
   echo ""
   echo "Denomination and country literals in component code suggest"
-  echo "vertical-specific logic that should be consumed from @jol-hub/* packages."
+  echo "vertical-specific logic that should be consumed from @journeyoflife-org/* packages."
   echo "See INV-7: spokes must not define their own theme logic."
   exit 1
 fi

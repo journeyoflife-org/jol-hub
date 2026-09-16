@@ -25,7 +25,7 @@ import {
   CardTitle,
   CardDescription,
   Separator,
-} from '@jol-hub/ui';
+} from '@journeyoflife-org/ui';
 import {
   Flower,
   Video,

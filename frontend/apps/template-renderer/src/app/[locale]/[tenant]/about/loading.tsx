@@ -9,7 +9,7 @@
  * collection detail routes into soft-200s (a documented Next.js limitation),
  * breaking the hard "slug not found → 404" SEO rule. See RENDERING.md.
  */
-import { Skeleton } from '@jol-hub/ui/components/primitives';
+import { Skeleton } from '@journeyoflife-org/ui/components/primitives';
 
 export default function AboutLoading() {
   return (

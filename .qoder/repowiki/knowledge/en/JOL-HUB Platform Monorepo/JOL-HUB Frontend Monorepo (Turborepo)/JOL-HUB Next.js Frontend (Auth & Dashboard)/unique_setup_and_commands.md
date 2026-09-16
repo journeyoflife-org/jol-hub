@@ -1,0 +1,1 @@
+Requires a `.env.local` file (see `.env.local.example`) defining `NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_APP_NAME`, `NEXT_PUBLIC_ACCESS_TOKEN_LIFETIME_S`, and `NEXT_PUBLIC_REFRESH_TOKEN_LIFETIME_S`; development runs via `npm run dev` (Next dev server), builds with `next build`, and type-checks with `tsc --noEmit`.

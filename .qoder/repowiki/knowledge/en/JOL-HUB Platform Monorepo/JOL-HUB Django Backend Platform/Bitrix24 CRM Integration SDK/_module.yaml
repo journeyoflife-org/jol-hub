@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: backend/bitrix24_integration
+title: Bitrix24 CRM Integration SDK
+scope:
+    - backend/integrations/bitrix24/
+source_files: []
+depends_on: []
+related_to:
+    - path: backend/crm
+    - path: backend/integrations_app

@@ -16,8 +16,8 @@ import {
   I18nProvider,
   LanguageSwitcher,
   CookieConsentBanner,
-} from '@jol-hub/i18n/client';
-import type { SupportedLocale } from '@jol-hub/i18n';
+} from '@journeyoflife-org/i18n/client';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
 
 // =============================================================================
 // TYPES

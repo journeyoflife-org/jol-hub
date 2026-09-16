@@ -1,0 +1,5 @@
+- Each compliance concern is encapsulated in a dedicated module exposing a small set of classes/dataclasses via the package `__init__.py` re-export list.
+- Entity-specific ROPA definitions are built by calling the shared `_create_base_activity` helper with an activity ID prefix (BAS/CAT/DIO/DEA/CHR/PRO/ORT/GRE/FUN/CEM/GEN) and consistent field layout (id, name, purpose, legal_basis, controller_name/contact, data_categories, data_subjects, recipients, retention_period_days, security_measures).
+- Country- or entity-scoped configuration is centralized in module-level constants/dictionaries (`COUNTRY_K_VALUES`, `RETENTION_RULES`, `JOL_HUB_PROCESSING_ACTIVITIES`, `activities_map`) and looked up by key rather than passed as parameters.
+- Sensitive operations (deletion, legal hold creation) log warnings/errors via the module logger and record an audit event through `AuditLogger.log_gdpr_request` before returning status dicts.
+- ROPA reports are serialized as dictionaries containing a `ropa_version`, `generated_at` timestamp, `controller`, and `processing_activities` list, then written to timestamped filenames under a configured output directory.

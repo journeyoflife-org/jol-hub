@@ -1,0 +1,5 @@
+- All fixture data is constructed via factory functions (e.g. `mockTenant`, `mockAdminSession`, `validBlocks`) that accept an `overrides` partial spread over a deterministic base, never using random or time-dependent values.
+- Time-sensitive fields use fixed ISO timestamps (e.g. `2099-01-01T00:00:00Z`, `2026-01-15T10:00:00Z`) instead of `Date.now()` to keep tests deterministic.
+- Network access is blocked at the source: the vitest setup forbids real timers/network, and API interactions go exclusively through MSW handlers bound to the reserved origin `http://backend.test`.
+- Cross-package contracts are mirrored locally (e.g. `MockAuthSession` mirrors `@jol-hub/auth/oidc`, `FixtureBlock` mirrors the renderer's `EditorBlock`) to avoid hard runtime dependencies on sibling packages.
+- Public surface is explicitly re-exported from `src/index.ts` while internal files remain private, keeping the package's contract stable across its subdirectories.

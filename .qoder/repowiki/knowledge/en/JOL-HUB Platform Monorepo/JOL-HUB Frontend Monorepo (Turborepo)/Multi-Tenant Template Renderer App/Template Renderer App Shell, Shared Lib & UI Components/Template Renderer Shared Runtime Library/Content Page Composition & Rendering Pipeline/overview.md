@@ -1,0 +1,1 @@
+Server-side pipeline that resolves tenants, loads fixtures or backend content, validates page configs, and composes tenant pages from ordered module lists rendered by vertical templates.

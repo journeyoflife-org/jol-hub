@@ -6,8 +6,8 @@
  * keeps the pages fully server-rendered and progressively enhanced — no
  * client JS is required to filter or paginate (WCAG 2.2 / SSR contract).
  */
-import { LOCALE_HREFLANG } from '@jol-hub/i18n';
-import type { SupportedLocale } from '@jol-hub/i18n';
+import { LOCALE_HREFLANG } from '@journeyoflife-org/i18n';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
 
 /** Next.js page `searchParams` prop shape. */
 export type SearchParams = { [key: string]: string | string[] | undefined };

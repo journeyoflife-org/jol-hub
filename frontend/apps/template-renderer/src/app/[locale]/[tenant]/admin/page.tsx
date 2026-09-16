@@ -3,20 +3,20 @@
  *
  * Role-aware overview: content moderation queue, analytics, settings and
  * user management. Sections render ONLY when the session's tenant role
- * carries the matching permission (RBAC matrix, `@jol-hub/auth/oidc`).
+ * carries the matching permission (RBAC matrix, `@journeyoflife-org/auth/oidc`).
  *
  * PILOT: with no backend data plane the sections render structured empty
  * states — nothing is fabricated. Tenant admins missing MFA see the SOC 2
  * CC6.2 enrollment prompt.
  */
-import { getMessages, translate, translateWithValues, isSupportedLocale } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
+import { getMessages, translate, translateWithValues, isSupportedLocale } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
 import {
   hasPermission,
   mfaRequiredButMissing,
   tenantRoleFor,
   type Permission,
-} from '@jol-hub/auth/oidc';
+} from '@journeyoflife-org/auth/oidc';
 import { getAuthSession, isAuthConfigured } from '@/lib/auth';
 import { resolveTenantRoute } from '@/lib/route-dispatch';
 

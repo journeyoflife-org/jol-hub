@@ -1,0 +1,6 @@
+Four independent utility modules under `src/lib/`, each exposing a small public API consumed by routes, middleware, or components:
+- `logger.ts` constructs a single `createLogger` instance from `@jol-hub/observability` bound to service `template-renderer` with environment-driven min level; used only on Node surfaces.
+- `error-tracking.ts` is a `'use client'` module that installs global `window.onerror` / `unhandledrejection` handlers, maintains a consent-gated breadcrumb buffer (`createBreadcrumbBuffer(20)`), deduplicates reports per fingerprint within a 10s window, and POSTs classified+redacted errors to `/api/telemetry/errors` with `keepalive`.
+- `rate-limit.ts` implements two in-memory fixed-window counters (general 120 req/10s and login brute-force 5 attempts/15min) backed by `Map<string, WindowEntry>` with bounded key eviction (max 10k keys) so it runs edge-compatible without external state.
+- `slug.ts` provides deterministic kebab-case slugification with a Lithuanian diacritic transliteration table, an allowlist regex `SLUG_PATTERN`, and a `normalizeSlugParam` validator that returns `null` for malformed input to prevent injection and avoid echoing user data.
+Dependency direction is outward-only: these modules depend on `@jol-hub/observability` and browser APIs but are not imported by each other, keeping them composable building blocks.

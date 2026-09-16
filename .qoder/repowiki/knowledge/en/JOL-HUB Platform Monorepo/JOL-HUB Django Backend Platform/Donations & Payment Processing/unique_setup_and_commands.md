@@ -1,0 +1,1 @@
+Requires the CRM middleware `apps.crm.middleware.get_current_tenant_id` to be present at runtime; if unavailable the tenant validation is silently skipped via an `ImportError` catch during `Donation.save()`. Refund operations depend on `apps.crm.models.AuditEntry.EventType.FINANCIAL_TRANSACTION` being available.

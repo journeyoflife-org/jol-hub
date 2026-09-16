@@ -14,9 +14,9 @@
  * somehow unresolved the copy stays generic.
  */
 import { headers } from 'next/headers';
-import { getMessages, translate, isSupportedLocale } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE, LOCALE_HEADER } from '@jol-hub/i18n/config';
-import type { SupportedLocale } from '@jol-hub/i18n';
+import { getMessages, translate, isSupportedLocale } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE, LOCALE_HEADER } from '@journeyoflife-org/i18n/config';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
 import { resolveCurrentTenant } from '@/lib/tenant-resolver';
 import { pickLocalized } from '@/lib/i18n-helpers';
 

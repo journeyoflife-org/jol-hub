@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Button, Input, Label } from '@jol-hub/ui';
+import { Button, Input, Label } from '@journeyoflife-org/ui';
 import { Flower } from 'lucide-react';
 import type { Obituary } from '../page';
 

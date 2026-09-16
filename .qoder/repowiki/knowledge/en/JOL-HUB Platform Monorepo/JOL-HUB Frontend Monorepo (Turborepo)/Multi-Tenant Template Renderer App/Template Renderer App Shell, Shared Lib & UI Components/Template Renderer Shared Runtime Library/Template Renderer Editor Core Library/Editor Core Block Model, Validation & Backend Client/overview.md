@@ -1,0 +1,1 @@
+Defines the editor's block data model, structural constraints and validation rules, a revision-aware block diff engine, and a typed HTTP client to the backend editor API.

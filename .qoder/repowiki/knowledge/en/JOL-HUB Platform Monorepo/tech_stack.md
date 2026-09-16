@@ -1,0 +1,1 @@
+Python 3.12 + Django + Celery (backend), TypeScript 5.x + Next.js + Turborepo (frontend), Airflow + dbt (data pipelines), Terraform + Kubernetes + Helm (infra), Docker Compose for local orchestration, JetBrains Qodana for cross-language code quality, Apache-2.0 licensed.

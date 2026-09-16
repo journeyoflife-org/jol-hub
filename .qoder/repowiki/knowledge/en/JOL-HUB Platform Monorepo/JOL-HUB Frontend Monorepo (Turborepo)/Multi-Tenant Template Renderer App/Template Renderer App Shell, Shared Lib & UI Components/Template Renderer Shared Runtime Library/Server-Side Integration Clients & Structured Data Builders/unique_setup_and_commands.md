@@ -1,0 +1,1 @@
+All backend-facing clients require the `BACKEND_API_URL` environment variable to be set; without it they operate in pilot mode (returning `null`/`false` so UI renders a quiet 'not configured' state). The editor client additionally reads `BACKEND_SERVICE_TOKEN` for service-to-service auth.

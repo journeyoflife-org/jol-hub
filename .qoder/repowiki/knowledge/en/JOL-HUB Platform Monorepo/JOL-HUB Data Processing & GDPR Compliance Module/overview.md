@@ -1,0 +1,1 @@
+Orchestrates JOL-HUB's multi-country ETL, dbt transformations, Airflow scheduling, and GDPR-compliant pseudonymization/retention into a unified data pipeline with centralized configuration and audit logging.

@@ -1,0 +1,1 @@
+Central integration monorepo that coordinates JOL-HUB's Django backend, Next.js frontend, data pipelines, infrastructure, country configs, docs, and satellite services into a single multi-tenant platform.

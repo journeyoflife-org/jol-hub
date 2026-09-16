@@ -1,0 +1,1 @@
+Resolves the current tenant and vertical theme at request time and exposes them via React context, plus provides per-vertical layout families, default page compositions, and localized text selection helpers.

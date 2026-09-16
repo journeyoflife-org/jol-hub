@@ -31,11 +31,11 @@ import {
   Button,
   Badge,
   Separator,
-} from '@jol-hub/ui';
+} from '@journeyoflife-org/ui';
 // Model-A-compliant donation shell (O-021 STAGED-REMOVAL): the composite
 // widget reports the configured selection only; the charge path is the
 // marketplace checkout handoff (donation-flow-spec §1), never PSP-in-hub.
-import { DonationWidget } from '@jol-hub/ui/components/composite';
+import { DonationWidget } from '@journeyoflife-org/ui/components/composite';
 import { 
   MapPin, 
   Phone, 

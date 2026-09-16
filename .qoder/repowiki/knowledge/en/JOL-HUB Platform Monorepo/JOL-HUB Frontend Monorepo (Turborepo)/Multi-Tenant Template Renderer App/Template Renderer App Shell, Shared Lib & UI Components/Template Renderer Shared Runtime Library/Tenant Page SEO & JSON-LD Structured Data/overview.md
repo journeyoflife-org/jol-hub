@@ -1,0 +1,1 @@
+Builds Next.js Metadata (canonical, hreflang alternates, Open Graph, Twitter cards) and renders schema.org JSON-LD entities for tenant pages in the template renderer.

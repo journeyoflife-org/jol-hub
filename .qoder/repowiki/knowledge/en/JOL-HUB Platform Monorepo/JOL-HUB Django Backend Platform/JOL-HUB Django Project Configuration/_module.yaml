@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: backend/django_core
+title: JOL-HUB Django Project Configuration
+scope:
+    - backend/django/core/
+    - backend/django/__init__.py
+    - backend/manage.py
+source_files: []
+depends_on: []
+related_to:
+    - path: infra

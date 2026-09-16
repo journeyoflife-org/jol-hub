@@ -1,0 +1,1 @@
+Type-safe TypeScript SDK that wraps the Bitrix24 REST API and exposes a hub-proxied CRM client with React hooks for lead, deal, task, and activity management.

@@ -1,0 +1,6 @@
+- Sensitive or cross-app functionality (GDPR DSAR, legal holds) is accessed through lazy imports of `apps.core.data_integration.get_data_integration()` inside view methods to avoid circular imports at module load time.
+- Client IP extraction follows a consistent pattern: read `HTTP_X_FORWARDED_FOR`, take the first comma-separated entry, fall back to `REMOTE_ADDR`.
+- Views declare rate limiting declaratively via `throttle_classes` attributes using shared throttles from `apps.core.throttling` rather than per-request throttle logic.
+- User-facing strings are wrapped with `django.utils.translation.gettext_lazy` (`_`) for internationalization.
+- Admin configuration extends `BaseUserAdmin` and uses `StackedInline` for the related `UserProfile`, grouping fields into named `fieldsets` sections.
+- Serializers extend `BaseModelSerializer` from `apps.core.serializers` and expose nested read-only relationships (e.g., `profile` in `UserSerializer`) instead of flattening related data.

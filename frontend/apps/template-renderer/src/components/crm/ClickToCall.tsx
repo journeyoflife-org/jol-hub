@@ -13,7 +13,7 @@
 'use client';
 
 import { useCallback } from 'react';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
 
 export interface ClickToCallProps {
   /** Dialable number (digits/+/spaces). Shown as-is unless `label` given. */

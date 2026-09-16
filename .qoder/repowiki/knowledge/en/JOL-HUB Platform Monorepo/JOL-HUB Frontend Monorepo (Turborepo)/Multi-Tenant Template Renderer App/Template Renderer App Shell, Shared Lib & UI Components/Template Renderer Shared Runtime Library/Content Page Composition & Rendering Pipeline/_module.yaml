@@ -1,0 +1,16 @@
+schema_version: 1
+module_path: frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/content_page_composition
+title: Content Page Composition & Rendering Pipeline
+scope:
+    - frontend/apps/template-renderer/src/lib/content-api.ts
+    - frontend/apps/template-renderer/src/lib/content-loader.ts
+    - frontend/apps/template-renderer/src/lib/collection-view.ts
+    - frontend/apps/template-renderer/src/lib/collections.ts
+    - frontend/apps/template-renderer/src/lib/page-composer.tsx
+    - frontend/apps/template-renderer/src/lib/page-config.ts
+    - frontend/apps/template-renderer/src/lib/page-defaults.ts
+    - frontend/apps/template-renderer/src/lib/route-dispatch.tsx
+    - frontend/apps/template-renderer/src/lib/template-registry.ts
+source_files: []
+depends_on: []
+related_to: []

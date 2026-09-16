@@ -1,0 +1,1 @@
+Build with `npm run build` (tsup), type-check with `npm run type-check` (`tsc --noEmit`), and run tests with `npm run test` (`tsx --test src/__tests__/*.test.ts`). The resolver reads `TENANT_BASE_DOMAIN` from environment (defaults to `gyvenimo-kelias.lt`) and can be configured to swap the static registry for a backend API via `BACKEND_API_URL`.

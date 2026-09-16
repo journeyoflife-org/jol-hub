@@ -1,0 +1,1 @@
+k-anonymity threshold can be overridden globally via the `GDPR_K_ANONYMITY_VALUE` environment variable; ROPA generator falls back to `/tmp/jol-hub/ropa/` if the default output path `/var/log/jol-hub/ropa` is not writable.

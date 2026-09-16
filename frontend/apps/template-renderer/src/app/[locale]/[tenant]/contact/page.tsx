@@ -15,9 +15,9 @@
  * SEO: ContactPage JSON-LD (about → Organization) + canonical/hreflang/OG.
  */
 import type { Metadata } from 'next';
-import { getMessages, translate } from '@jol-hub/i18n';
-import type { SupportedLocale } from '@jol-hub/i18n';
-import type { TenantFixture } from '@jol-hub/seed-data';
+import { getMessages, translate } from '@journeyoflife-org/i18n';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
+import type { TenantFixture } from '@journeyoflife-org/seed-data';
 import { JsonLd, organizationEntity, webPageEntity } from '@/lib/json-ld';
 import { absoluteUrl } from '@/lib/seo';
 import { buildTenantMetadata, tenantDisplayName, tenantTagline } from '@/lib/page-seo';

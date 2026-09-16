@@ -6,7 +6,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { Button, Input, Label, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Alert, AlertDescription, Separator } from '@jol-hub/ui';
+import { Button, Input, Label, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Alert, AlertDescription, Separator } from '@journeyoflife-org/ui';
 import { CreditCard, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 interface CemeteryService {

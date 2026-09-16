@@ -1,0 +1,6 @@
+- Public APIs are exposed through barrel `index.ts` files that re-export both values and their TypeScript types from each sub-module.
+- All user input flows through a closed allowlist (`ALLOWED_BLOCK_TYPES`, `ALLOWED_IMAGE_TYPES`, `SANITIZED_ALLOWED_TAGS`) rather than free-form HTML, and every output path escapes text before wrapping it in those tags.
+- Client components use a flat string-key map (e.g. `SAVE_STATE_KEY`, `labelKey`) to translate state enums into i18n keys under the `editor` namespace instead of dotted keys.
+- Server requests are made via direct `fetch` calls to `/api/editor/*` endpoints with `Content-Type: application/json`, and errors are swallowed or mapped to UI states rather than thrown.
+- Pure functions in `lib/editor` take readonly inputs and return new data structures (immutable block updates via `[...blocks]` + splice/map), keeping side effects isolated in component event handlers.
+- Validation is duplicated at two layers — UX-level checks in `blocks.validateDraft`/`MediaUploader.validateAndLoad` and security-level Zod schemas in `validation.ts` — so the UI guides users while the API rejects malformed drafts.

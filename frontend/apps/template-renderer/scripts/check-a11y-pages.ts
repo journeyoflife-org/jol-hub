@@ -3,7 +3,7 @@
  *
  * Fetches the CRITICAL tenant pages from a running renderer, strips the
  * hydration scripts (axe audits the semantic DOM; React hydration in jsdom
- * is noise) and runs the full audit suite from `@jol-hub/a11y`:
+ * is noise) and runs the full audit suite from `@journeyoflife-org/a11y`:
  *   - axe-core with the WCAG 2.0–2.2 A+AA tag set (color-contrast disabled
  *     under jsdom — enforced at token level instead; see axe-config.ts);
  *   - structural checkers: heading hierarchy, alt text, focus order,
@@ -24,7 +24,7 @@
  *   env A11Y_BASE_URL (default http://localhost:3000)
  *   env A11Y_TENANT   (default parish-st-john-vilnius)
  */
-import { auditHtml, formatReport, hasFailures, type A11yReport } from '@jol-hub/a11y';
+import { auditHtml, formatReport, hasFailures, type A11yReport } from '@journeyoflife-org/a11y';
 
 const BASE_URL = process.env.A11Y_BASE_URL ?? 'http://localhost:3000';
 const TENANT = process.env.A11Y_TENANT ?? 'parish-st-john-vilnius';

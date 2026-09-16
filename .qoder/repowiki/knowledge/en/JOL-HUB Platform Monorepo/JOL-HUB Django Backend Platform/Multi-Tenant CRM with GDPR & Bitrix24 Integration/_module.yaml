@@ -1,0 +1,12 @@
+schema_version: 1
+module_path: backend/crm
+title: Multi-Tenant CRM with GDPR & Bitrix24 Integration
+scope:
+    - backend/django/apps/crm/
+source_files: []
+depends_on: []
+related_to:
+    - path: backend/bitrix24_integration
+    - path: frontend/admin_dashboard_app
+    - path: frontend/shared_packages/bitrix_sdk
+    - path: frontend/template_renderer_app/api_routes

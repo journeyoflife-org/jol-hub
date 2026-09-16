@@ -1,0 +1,6 @@
+- Each DAG declares a module-level `default_args` dict with `owner`, retry/retry_delay, and email policies, then passes it to every `DAG(...)` constructor.
+- Business logic is imported lazily inside task callables (e.g. `from src.pipelines.country_sync import get_sync_pipeline`) rather than at module top level to keep DAG parsing fast.
+- Workflows are structured with `DummyOperator` `start` and `end` sentinel tasks and use `>>` chaining to express linear or grouped dependencies.
+- Per-country or per-step parallelism is expressed by looping over a constant list (e.g. `EU_COUNTRIES`) inside a `TaskGroup` to dynamically generate `PythonOperator` tasks.
+- Every DAG carries descriptive `tags` (such as `etl`, `gdpr`, `compliance`, `reporting`) to support filtering in the Airflow UI.
+- GDPR-sensitive operations log via an `AuditLogger`/`ROPAGenerator` and rely on Airflow's `mask_sensitive_data = True` setting to redact PII from task logs.

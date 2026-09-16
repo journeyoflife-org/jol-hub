@@ -1,12 +1,12 @@
 import type { Config } from 'tailwindcss';
-import { themeColorExtension } from '@jol-hub/ui/tokens';
-import type { ThemeRef } from '@jol-hub/ui/tokens';
+import { themeColorExtension } from '@journeyoflife-org/ui/tokens';
+import type { ThemeRef } from '@journeyoflife-org/ui/tokens';
 
 /**
  * Theme selection (ADR-001 chain → theme_ref, design-system-spec §1.3):
  * the palette is DATA, not code. Swapping the profile below is the entire
  * theme change — zero component/template edits. Values live in
- * `@jol-hub/ui` tokens/themes (catholic profile = the legacy scales of this
+ * `@journeyoflife-org/ui` tokens/themes (catholic profile = the legacy scales of this
  * template, copied value-for-value; parity pinned by the snapshot test).
  */
 const THEME_REF: ThemeRef = 'catholic';

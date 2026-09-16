@@ -1,0 +1,1 @@
+Zod for schema validation; DOMPurify referenced as the downstream sanitizer (allowlist mirrors `SANITIZED_ALLOWED_TAGS`); regex-based prohibited-pattern detection for emails, Lithuanian/international phone numbers, and bare URLs.

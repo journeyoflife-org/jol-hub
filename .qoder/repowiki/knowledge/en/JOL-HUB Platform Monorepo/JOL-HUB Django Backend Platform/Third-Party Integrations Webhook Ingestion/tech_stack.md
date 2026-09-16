@@ -1,0 +1,1 @@
+Django + Django REST Framework APIViews, Celery `@shared_task` with exponential backoff retry, PostgreSQL (via Django ORM) for webhook tracking, MongoDB (`apps.core.mongodb.WebhookPayloadCollection`) for raw payload storage, HMAC-SHA256 signature verification against `settings.BITRIX24_WEBHOOK_SECRET`, and BSON ObjectId references between MongoDB docs and PostgreSQL records.

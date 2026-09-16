@@ -1,0 +1,1 @@
+Django + Django REST Framework generic views; JSONField for flexible per-country config; BigAutoField primary keys via `AppConfig.default_auto_field`.

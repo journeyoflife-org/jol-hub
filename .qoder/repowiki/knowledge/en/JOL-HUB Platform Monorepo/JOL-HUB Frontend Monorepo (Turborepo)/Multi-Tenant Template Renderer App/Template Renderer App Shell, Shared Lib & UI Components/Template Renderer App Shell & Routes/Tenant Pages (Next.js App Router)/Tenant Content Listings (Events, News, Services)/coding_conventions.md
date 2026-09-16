@@ -1,0 +1,6 @@
+- Each route exports both `generateMetadata` and a default async component; metadata builds titles/descriptions via `buildTenantMetadata` using `resolveTenantRoute` params.
+- Content resolution follows a fixture-first pattern: `renderFixtureRoute(fixture, '/<route>', basePath)` is called before any data fetch, and returning a fixture response short-circuits rendering.
+- Time-sensitive or commercial routes declare `export const dynamic = 'force-dynamic'`; stable editorial content uses `export const revalidate = <seconds>` for ISR.
+- Detail pages normalize the slug with `normalizeSlugParam(params.slug)` and call `notFound()` when the slug is empty or the item lookup returns nothing, ensuring closed lookups only.
+- Structured data is emitted via `<JsonLd data={[breadcrumbEntity(...), <entity>]} />` where entity types match the content domain (event/article/service/itemList).
+- All URLs in structured data and links are built with `absoluteUrl(`${basePath}/...`)` rather than relative paths, and search-param-driven filters are read through `readString`/`readPage` from `@/lib/collection-view`.

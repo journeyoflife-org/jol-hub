@@ -1,0 +1,6 @@
+- All CRM entities inherit from `CRMTenantModel` and are scoped to an `Organization` via a `CRMTenantManager` that auto-applies `organization_id` filtering based on the current tenant context.
+- DRF ViewSets extend `TenantIsolatedViewSetMixin` to enforce row-level tenant isolation, inject `organization_id` on create, and validate object ownership through `TenantDataAccessValidator.validate_organization`.
+- Sensitive or financial endpoints decorate actions with dedicated throttle classes (`GDPRExportThrottle`, `GDPRDeleteThrottle`, `FinancialThrottle`, `CRMThrottle`) rather than global rate limits.
+- External Bitrix24 calls go through `CRMBitrix24Service` / `CRMBitrix24ServiceSync` which wrap the client in a per-tenant `CircuitBreakerState` and record failures/successes before returning typed `SyncResult` objects.
+- Every create/update/delete on CRM entities is captured automatically by Django signal handlers in `signals.py` that compute field-level diffs and persist them as `AuditEntry` rows with sequential `sequence_number` and SHA-256 hash chains verified via `AuditEntry.verify_chain`.
+- Field mappings between local CRM models and Bitrix24 are declared as class-level dictionaries (`CONTACT_FIELD_MAP`, `CUSTOM_FIELD_MAP`, deal stage/category maps) and applied uniformly in `_map_*_to_bitrix24` methods.

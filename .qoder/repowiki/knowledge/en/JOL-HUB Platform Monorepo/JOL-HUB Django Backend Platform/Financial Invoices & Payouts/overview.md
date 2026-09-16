@@ -1,0 +1,1 @@
+Django app modeling platform invoices and settlement payouts for organizations, exposing read-only REST endpoints with tenant-scoped access control.

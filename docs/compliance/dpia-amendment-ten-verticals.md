@@ -13,7 +13,7 @@ The DPIA covers the following minimum platform version:
 |---|---|---|
 | jol-hub (Tier-0) | `feat/pages-step6` @ `389fb760` | Git commit hash |
 | jol-frontend-repo-template | Same branch | SHA-256 satellite kit match |
-| @jol-hub/* packages | 1.0.0 (12 packages) | tsup build artifacts |
+| @journeyoflife-org/* packages | 1.0.0 (12 packages) | tsup build artifacts |
 | Proxmox VE | 9.2 | Infrastructure spec |
 | Ubuntu Server | 24.04 LTS | Golden image |
 | Node.js | 20.20.2 | Runtime spec |

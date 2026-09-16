@@ -1,0 +1,3 @@
+- Tenant-scoped routes are nested under `[locale]/[tenant]` so every page shares a common layout and error boundary.
+- Server-side data access is implemented as Next.js App Router route handlers under `api/` rather than client-side fetch calls.
+- Route segments use optional catch-all (`[[...slug]]`) and parameterized (`[slug]`) folders to keep URL shapes flexible across tenants.

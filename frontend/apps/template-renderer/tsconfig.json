@@ -6,13 +6,13 @@
       "@/*": [
         "./src/*"
       ],
-      "@jol-hub/ui": [
+      "@journeyoflife-org/ui": [
         "../../packages/ui/src"
       ],
-      "@jol-hub/seed-data": [
+      "@journeyoflife-org/seed-data": [
         "../../packages/seed-data/src"
       ],
-      "@jol-hub/tenant-resolver": [
+      "@journeyoflife-org/tenant-resolver": [
         "../../packages/tenant-resolver/src"
       ]
     },

@@ -30,7 +30,7 @@ package source.
    reusable professional template for all subsequent sites of that type,
    extensible from the LT pilot to LV, EE, and 27 EU countries.
 
-3. **Packages are not yet publishable.** Zero of twelve `@jol-hub/*`
+3. **Packages are not yet publishable.** Zero of twelve `@journeyoflife-org/*`
    packages have a build step, `dist/` output, or `files` allowlist;
    eleven carry `"private": true`; all export raw `./src/*.ts`. This is
    the critical path (BF-3).
@@ -62,7 +62,7 @@ package source.
 ### Topology: hub-and-spoke
 
 `jol-hub` remains the Tier-0 platform source, governance root, and
-integration test-bed. Twelve `@jol-hub/*` packages become published,
+integration test-bed. Twelve `@journeyoflife-org/*` packages become published,
 versioned artifacts consumed by ten spoke repositories under
 `journeyoflife-org`. Each spoke contains **only** vertical composition
 code — no shared logic, no duplicated packages.
@@ -97,8 +97,8 @@ both directions.
 
 | # | Invariant | Enforcement |
 |---|---|---|
-| INV-1 | **Single source of truth.** All shared code lives in `jol-hub` packages; spokes contain only vertical composition | CI: no `@jol-hub/*` source in spoke `src/` |
-| INV-2 | **Versioned packages.** All 12 `@jol-hub/*` packages published with semver, CHANGELOG, build artifacts | CI: `pnpm publish --dry-run` exit 0 per package |
+| INV-1 | **Single source of truth.** All shared code lives in `jol-hub` packages; spokes contain only vertical composition | CI: no `@journeyoflife-org/*` source in spoke `src/` |
+| INV-2 | **Versioned packages.** All 12 `@journeyoflife-org/*` packages published with semver, CHANGELOG, build artifacts | CI: `pnpm publish --dry-run` exit 0 per package |
 | INV-3 | **Payment boundary CLOSED.** No PSP SDK imports in any spoke or package (ADR-009) | `scripts/check-payment-boundary.sh` layer 4 |
 | INV-4 | **Schema-per-tenant.** Spokes never construct or reference tenant schemas directly (ADR-001) | CI: grep for `t_` schema literals in spoke source |
 | INV-5 | **Theme vertical.** No denomination literals in component code (DS-THEME-01, O-022/D-059) | `scripts/check-theme-literals.sh` |
@@ -107,7 +107,7 @@ both directions.
 | INV-8 | **Identical CI.** All spokes use the same reusable workflow from org `.github` | CI: workflow sha256 pin match |
 | INV-9 | **GDPR Art. 9.** Every spoke has a ROPA record and DPIA before go-live | CI: ROPA dir existence check per spoke |
 | INV-10 | **Accessibility.** WCAG 2.1 AA; axe-core exit 0 on every build | CI: `axe-core` in build pipeline |
-| INV-11 | **Reversibility.** The topology collapses back to Variant A (monorepo) only while INV-1 through INV-4 hold | CI: package resolution test (spoke can resolve all `@jol-hub/*` from hub workspace) |
+| INV-11 | **Reversibility.** The topology collapses back to Variant A (monorepo) only while INV-1 through INV-4 hold | CI: package resolution test (spoke can resolve all `@journeyoflife-org/*` from hub workspace) |
 
 ### Accepted risk
 
@@ -177,7 +177,7 @@ collapse is no longer mechanical. INV-11 is the early-warning test.
   specific processing.
 
 ### Annex C — Cross-repo dependencies
-- Spokes depend on `@jol-hub/*` packages via the registry (not git
+- Spokes depend on `@journeyoflife-org/*` packages via the registry (not git
   submodules, not path dependencies).
 - Package breaking changes require a semver major bump; spokes pin
   to major versions.

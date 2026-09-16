@@ -1,7 +1,7 @@
 /**
  * Mock auth sessions — STEP 15 (tenant-scoped RBAC fixtures).
  *
- * Shape mirrors `@jol-hub/auth/oidc` AuthSession (identity + tenant roles
+ * Shape mirrors `@journeyoflife-org/auth/oidc` AuthSession (identity + tenant roles
  * only — tokens NEVER appear in test fixtures either).
  */
 

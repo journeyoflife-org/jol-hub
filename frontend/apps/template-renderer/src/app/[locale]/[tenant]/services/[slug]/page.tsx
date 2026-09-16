@@ -11,7 +11,7 @@
  */
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getMessages, translate } from '@jol-hub/i18n';
+import { getMessages, translate } from '@journeyoflife-org/i18n';
 import { JsonLd, serviceEntity, breadcrumbEntity } from '@/lib/json-ld';
 import { absoluteUrl } from '@/lib/seo';
 import { buildTenantMetadata, tenantDisplayName } from '@/lib/page-seo';

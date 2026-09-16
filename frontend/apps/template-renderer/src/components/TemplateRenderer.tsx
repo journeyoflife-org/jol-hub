@@ -7,15 +7,15 @@
  *
  * ROLLBACK NOTE (STEP 1): if a legacy lt-* app must be restored, check it
  * out from git history (branch `feat/template-renderer-step1`). Its content
- * remains available as a fixture in `@jol-hub/seed-data` either way.
+ * remains available as a fixture in `@journeyoflife-org/seed-data` either way.
  */
-import { Badge, Card, CardContent } from '@jol-hub/ui';
+import { Badge, Card, CardContent } from '@journeyoflife-org/ui';
 import type {
   ContentBlock,
   LocalizedText,
   TenantFixture,
   TenantPage,
-} from '@jol-hub/seed-data';
+} from '@journeyoflife-org/seed-data';
 import { FAMILY_ACCENT, VERTICAL_ACCENT_OVERRIDE, VERTICAL_FAMILY } from '../lib/layout-families';
 
 /** Pick the display string for localized text (Lithuanian-first). */

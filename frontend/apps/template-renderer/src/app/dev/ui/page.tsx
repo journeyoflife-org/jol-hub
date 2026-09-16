@@ -16,7 +16,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { Showcase } from '@jol-hub/ui/dev/showcase';
+import { Showcase } from '@journeyoflife-org/ui/dev/showcase';
 
 // Evaluate the UI_PREVIEW gate per-request, never at prerender time.
 export const dynamic = 'force-dynamic';

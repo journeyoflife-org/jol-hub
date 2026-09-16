@@ -1,0 +1,6 @@
+- Each API resource file defines a pair of dataclasses — a response model with a `from_api` factory and a request params dataclass with a `to_api` serializer — keeping Bitrix24 wire format isolated from callers.
+- API methods call `self._client.get/post(...)` with explicit `entity_type` and `entity_id` arguments so the underlying `_request` can attach them to the audit log entry.
+- Mutating operations (create/update/delete/send) invoke `self._client.audit.log_data_operation` or `log_financial_transaction` after a successful response to record GDPR/PCI-DSS-compliant audit entries.
+- Domain-specific enums (`DealCategory`, `DonationType`, `EventType`, `SacramentType`, `EmailTemplateType`) are used for all Bitrix24 custom field values instead of raw strings.
+- Sub-APIs are attached to `Bitrix24Client` lazily via `@property` accessors that import the module on first use to avoid circular imports between `client.py` and `api/*`.
+- Webhook event handlers follow a uniform pattern: extract `FIELDS.ID` from the event payload, perform the DB change inside a `sync_to_async` function, then return a `{status: 'processed', ...}` dict.

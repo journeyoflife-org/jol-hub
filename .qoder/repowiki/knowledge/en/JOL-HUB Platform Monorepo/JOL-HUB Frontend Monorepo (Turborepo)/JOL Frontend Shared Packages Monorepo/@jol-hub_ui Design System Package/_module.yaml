@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: frontend/shared_packages/ui
+title: '@jol-hub/ui Design System Package'
+scope:
+    - frontend/packages/ui/
+source_files: []
+depends_on: []
+related_to:
+    - path: frontend/parish_template_app

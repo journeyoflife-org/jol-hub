@@ -2,7 +2,7 @@
  * bitrix-sdk STEP-9 tests - UTM sanitization, error taxonomy, backoff and
  * retry semantics of the hub-backed CRM client.
  *
- * Run via `pnpm --filter @jol-hub/bitrix-sdk test` (tsx --test).
+ * Run via `pnpm --filter @journeyoflife-org/bitrix-sdk test` (tsx --test).
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';

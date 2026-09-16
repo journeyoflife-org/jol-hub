@@ -48,12 +48,12 @@ export default defineConfig({
   },
   test: {
     environment: 'jsdom',
-    setupFiles: ['@jol-hub/testing/setup'],
+    setupFiles: ['@journeyoflife-org/testing/setup'],
     include: ['src/__tests__/vitest/**/*.test.{ts,tsx}'],
     // Workspace packages ship TS source — transform them in-pipeline.
     server: {
       deps: {
-        inline: ['@jol-hub/ui', '@jol-hub/i18n', '@jol-hub/testing'],
+        inline: ['@journeyoflife-org/ui', '@journeyoflife-org/i18n', '@journeyoflife-org/testing'],
       },
     },
     // Determinism guards (spec RULES): fail on accidental time/network use.

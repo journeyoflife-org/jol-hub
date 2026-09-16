@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: frontend/shared_packages/a11y
+title: WCAG 2.2 AA Accessibility Audit Library
+scope:
+    - frontend/packages/a11y/
+source_files: []
+depends_on: []
+related_to: []

@@ -1,0 +1,1 @@
+Requires `BITRIX24_WEBHOOK_SECRET` in Django settings for production signature verification; development mode silently skips verification when the setting is absent. Bitrix24 webhooks must return `202 Accepted` within milliseconds because Bitrix24 enforces strict timeouts and retries aggressively on delay.

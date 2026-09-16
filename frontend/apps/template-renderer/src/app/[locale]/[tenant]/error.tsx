@@ -15,7 +15,7 @@
 
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
 import { reportError } from '@/lib/error-tracking';
 
 interface TenantErrorProps {

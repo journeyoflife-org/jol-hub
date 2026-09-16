@@ -1,0 +1,1 @@
+Next.js 14 App Router, React 18, TypeScript, Tailwind CSS + PostCSS, Axios with custom interceptors for JWT handling, react-hook-form with Zod validation via @hookform/resolvers, js-cookie for refresh token storage, jose for JWT utilities.

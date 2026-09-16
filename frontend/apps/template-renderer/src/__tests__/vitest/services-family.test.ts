@@ -15,9 +15,9 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { TenantFixtureSchema } from '@jol-hub/seed-data';
-import type { TenantFixture } from '@jol-hub/seed-data';
-import { buildHreflangSet, verifyHreflangReciprocity } from '@jol-hub/seo';
+import { TenantFixtureSchema } from '@journeyoflife-org/seed-data';
+import type { TenantFixture } from '@journeyoflife-org/seed-data';
+import { buildHreflangSet, verifyHreflangReciprocity } from '@journeyoflife-org/seo';
 
 import { buildServicesLandingEntity } from '../../lib/services-landing';
 import { buildChurchLandingEntity } from '../../lib/church-landing';

@@ -1,0 +1,1 @@
+Django + Django REST Framework; uses `DecimalField` for monetary amounts, `JSONField` for gateway responses, and `BigAutoField` as default primary key via `AppConfig.default_auto_field`.

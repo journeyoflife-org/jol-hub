@@ -1,0 +1,5 @@
+- Public APIs are grouped by concern into separate files (`budget.ts`, `measure.ts`, `report.ts`) and re-exported through a single barrel `index.ts`.
+- External I/O (filesystem reads) is abstracted behind injected function parameters (e.g. `AssetReader`) rather than imported modules, keeping core logic pure and unit-testable.
+- Input validation is defensive and explicit: parsed inputs are checked against whitelists of allowed values (resource types, timing metrics) and throw descriptive errors on malformed data.
+- Size units are consistently tracked as raw bytes internally and converted to KiB only at boundaries via shared helpers (`bytesToKiB`, `formatKiB`) in `measure.ts`.
+- Constants for allowed enumerations and filter patterns are declared as `readonly` top-level values (e.g. `RESOURCE_TYPES`, `TIMING_METRICS`, `NON_USER_ROUTES`, `POLYFILL_RE`) rather than inline literals.

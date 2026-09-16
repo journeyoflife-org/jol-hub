@@ -9,8 +9,8 @@
  * self-gates via `useTenantFeature('donations')`.
  */
 import { DonationForm } from '@/components/commerce';
-import { isSupportedLocale } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
+import { isSupportedLocale } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
 import type { ModuleProps } from './types';
 
 export default function DonationCtaModule({ tenant, locale }: ModuleProps) {

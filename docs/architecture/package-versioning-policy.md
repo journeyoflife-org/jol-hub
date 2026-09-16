@@ -1,11 +1,11 @@
 # Package Versioning Policy
 
 > **Authoritative decision:** ADR-011 (2026-09-11), INV-5. This document
-> locks the versioning baseline for all `@jol-hub/*` platform packages.
+> locks the versioning baseline for all `@journeyoflife-org/*` platform packages.
 
 ## Baseline
 
-All 12 `@jol-hub/*` packages start at **`1.0.0`** as of 2026-09-11.
+All 12 `@journeyoflife-org/*` packages start at **`1.0.0`** as of 2026-09-11.
 
 This is the **platform version floor** (INV-5). No package may be published
 at a version below `1.0.0`. Spoke repositories consuming these packages

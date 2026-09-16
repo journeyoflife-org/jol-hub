@@ -8,8 +8,8 @@
  */
 'use client';
 
-import { useAuth } from '@jol-hub/auth/oidc/hooks';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
+import { useAuth } from '@journeyoflife-org/auth/oidc/hooks';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
 
 export function LoginButton() {
   const t = useTranslations('auth');

@@ -1,0 +1,1 @@
+Build with `npm run build` (tsup), type-check with `npm run type-check` (tsc --noEmit), and run unit tests with `npm run test` (tsx loading `src/__tests__/*.test.ts`). The package expects a Next.js `.next/app-build-manifest.json` layout at runtime when used by the consuming CLI script.

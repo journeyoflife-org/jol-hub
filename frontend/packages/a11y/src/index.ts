@@ -1,5 +1,5 @@
 /**
- * @jol-hub/a11y — WCAG 2.2 AA core (STEP 12).
+ * @journeyoflife-org/a11y — WCAG 2.2 AA core (STEP 12).
  *
  * axe-core configuration, jsdom audit runner, structural checkers and the
  * WCAG 2.2 AA criteria register. Consumed by the ui showcase gate, the

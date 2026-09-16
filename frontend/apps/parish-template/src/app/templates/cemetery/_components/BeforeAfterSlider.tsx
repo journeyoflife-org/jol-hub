@@ -7,7 +7,7 @@
 
 import { useState, useRef, useCallback } from 'react';
 import Image from 'next/image';
-import { Card, CardContent } from '@jol-hub/ui';
+import { Card, CardContent } from '@journeyoflife-org/ui';
 
 interface BeforeAfterSliderProps {
   beforeImage: string;

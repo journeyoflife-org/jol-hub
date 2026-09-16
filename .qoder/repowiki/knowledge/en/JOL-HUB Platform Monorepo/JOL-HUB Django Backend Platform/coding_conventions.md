@@ -1,0 +1,4 @@
+- Each domain app under `django/apps/` exposes a standard DRF surface: `models.py`, `serializers.py`, `views.py`, `urls.py`, and an `apps.py` registering the Django app.
+- Tenant isolation is applied uniformly by deriving the active `Organization` from the request context and filtering all ORM queries to that tenant.
+- Cross-process work (CRM sync, Bitrix24 webhooks, payment reconciliation) is offloaded to Celery tasks rather than handled synchronously in view code.
+- External integrations are encapsulated in the `integrations/` package and consumed by Django apps through service/client classes instead of direct HTTP calls scattered across views.

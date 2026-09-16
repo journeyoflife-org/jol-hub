@@ -1,0 +1,5 @@
+- Each utility exports a focused set of pure functions plus a module-level singleton (e.g. `logger`, `breadcrumbs`, `windows`) rather than class-based state.
+- In-memory maps are bounded by a `MAX_KEYS` constant and evict the oldest entry via `keys().next().value` before inserting new ones to defend against memory exhaustion.
+- Public inputs are validated against an explicit allowlist regex (`SLUG_PATTERN`) before any downstream use, returning `null` or rejecting instead of echoing untrusted values.
+- Side effects that must never break application flow are wrapped in try/catch and silently swallowed (error reporting, breadcrumb capture, telemetry POST).
+- Constants defining behavior thresholds (WINDOW_MS, MAX_REQUESTS, DEDUPE_WINDOW_MS, LOGIN_MAX_ATTEMPTS) are declared at module top as named constants rather than inline literals.

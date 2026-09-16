@@ -1,0 +1,1 @@
+Server-side React module components that render page sections from PageConfig, plus a central registry that maps module types to components with feature-gated entitlement checks.

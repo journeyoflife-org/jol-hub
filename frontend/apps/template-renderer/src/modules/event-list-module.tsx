@@ -4,15 +4,15 @@
  * Async server module: fetches events (RLS-scoped) and renders the next N
  * upcoming. Empty in pilot → collapses to null.
  */
-import { EventCard, SectionHeader } from '@jol-hub/ui/components/composite';
+import { EventCard, SectionHeader } from '@journeyoflife-org/ui/components/composite';
 import {
   getMessages,
   translate,
   isSupportedLocale,
   formatDate,
   formatTime,
-} from '@jol-hub/i18n';
-import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
+} from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
 import { getEvents, splitEventsByTime } from '@/lib/collections';
 import { themeVerticalFor } from '@/lib/template-registry';
 import { tenantThemeFor, type ModuleProps } from './types';

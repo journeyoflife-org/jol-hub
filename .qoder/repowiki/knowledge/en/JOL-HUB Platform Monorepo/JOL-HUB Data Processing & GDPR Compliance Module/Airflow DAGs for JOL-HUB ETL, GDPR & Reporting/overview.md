@@ -1,0 +1,1 @@
+Apache Airflow deployment defining scheduled and on-demand DAGs that orchestrate daily/weekly ETL, GDPR data deletion, and compliance reporting for the JOL-HUB multi-country donation platform.

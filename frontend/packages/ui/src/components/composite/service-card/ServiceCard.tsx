@@ -5,8 +5,8 @@
 'use client';
 
 import { Clock } from 'lucide-react';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
-import { useLocale } from '@jol-hub/i18n/use-locale';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
+import { useLocale } from '@journeyoflife-org/i18n/use-locale';
 
 import { accentTextClass } from '../../../lib/tenant-theme';
 import { Button } from '../../primitives/button';

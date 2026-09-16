@@ -1,0 +1,1 @@
+Next.js App Router server components with React Server Components; Zod schemas for all inbound payloads (page configs, collection items); dynamic `import()` for per-vertical template code-splitting; Next.js data cache with per-content-type `revalidate` windows (page 300s, block 600s, news 60s) and `no-store` for time-sensitive collections.

@@ -1,0 +1,5 @@
+- Each structural checker lives in its own file under `src/checkers/` and exports a single function returning an array of `A11yFinding` objects typed by `../types`.
+- Findings carry a stable `rule` string (checker id or axe rule id), a `wcag` success-criterion reference, a `severity` of `'fail' | 'warn'`, and a human-readable `message` — enabling uniform reporting across axe and custom checkers.
+- axe rule configuration is centralized in `axe-config.ts` via `buildAxeOptions`, which returns tag-based rule sets and jsdom-specific overrides rather than scattering rule toggles at call sites.
+- Checkers that cannot rely on a real browser (e.g. color contrast) are implemented as pure math functions (`parseHex`, `relativeLuminance`, `contrastRatio`, `meetsWcagAA`) instead of querying computed styles, since jsdom provides no layout engine.
+- The public surface is curated through `src/index.ts`, which re-exports only the intended API (audit runner, formatter, assertion helper, and each checker) while keeping internal types and constants behind explicit `export *` statements.

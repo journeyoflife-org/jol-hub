@@ -11,7 +11,7 @@
  * unknown slugs resolve to `null` → route layer renders a bare 404.
  */
 import { z } from 'zod';
-import type { Tenant } from '@jol-hub/tenant-resolver';
+import type { Tenant } from '@journeyoflife-org/tenant-resolver';
 import {
   ContentApiError,
   fetchTenantCollection,

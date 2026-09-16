@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes/tenant_pages
+title: Tenant Pages (Next.js App Router)
+scope:
+    - frontend/apps/template-renderer/src/app/[locale]/
+source_files: []
+depends_on: []
+related_to: []

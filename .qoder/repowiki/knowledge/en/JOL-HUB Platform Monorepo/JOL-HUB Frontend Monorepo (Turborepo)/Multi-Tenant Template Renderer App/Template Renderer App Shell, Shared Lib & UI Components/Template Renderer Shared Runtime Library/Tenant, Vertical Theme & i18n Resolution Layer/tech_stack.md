@@ -1,0 +1,1 @@
+Next.js React Server Components + Client Components (`'use client'`), TypeScript, Tailwind utility classes for accents, and design tokens exposed as CSS custom properties (`--jol-color-*`, `--vertical-accent`).

@@ -16,9 +16,9 @@
 'use client';
 
 import { useMemo } from 'react';
-import { CrmBackendClient, type LeadStatus } from '@jol-hub/bitrix-sdk';
-import { useCrmLeads } from '@jol-hub/bitrix-sdk/hooks';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
+import { CrmBackendClient, type LeadStatus } from '@journeyoflife-org/bitrix-sdk';
+import { useCrmLeads } from '@journeyoflife-org/bitrix-sdk/hooks';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
 
 /** Pilot polling cadence (spec: 30s acceptable). */
 const DEFAULT_POLL_MS = 30_000;

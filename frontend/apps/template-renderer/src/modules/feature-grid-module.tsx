@@ -21,8 +21,8 @@ import {
   BookOpen,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import { FeatureGrid, SectionHeader } from '@jol-hub/ui/components/composite';
-import type { FeatureItem } from '@jol-hub/ui/components/composite';
+import { FeatureGrid, SectionHeader } from '@journeyoflife-org/ui/components/composite';
+import type { FeatureItem } from '@journeyoflife-org/ui/components/composite';
 import { tenantThemeFor, type ModuleProps } from './types';
 
 /** Config-safe icon registry. Extend as the design vocabulary grows. */

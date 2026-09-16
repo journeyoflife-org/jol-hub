@@ -11,9 +11,9 @@
  */
 import type { ReactElement, ReactNode, ComponentType } from 'react';
 import { render, type RenderResult } from '@testing-library/react';
-import { TranslationProvider, getMessages } from '@jol-hub/i18n';
-import type { SupportedLocale } from '@jol-hub/i18n';
-import { ThemeProvider } from '@jol-hub/ui/providers';
+import { TranslationProvider, getMessages } from '@journeyoflife-org/i18n';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
+import { ThemeProvider } from '@journeyoflife-org/ui/providers';
 
 export interface RenderWithProvidersOptions {
   locale?: SupportedLocale;

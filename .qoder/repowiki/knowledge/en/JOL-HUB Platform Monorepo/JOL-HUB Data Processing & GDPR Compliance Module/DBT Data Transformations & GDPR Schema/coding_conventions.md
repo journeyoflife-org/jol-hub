@@ -1,0 +1,6 @@
+- Every SQL model begins with comment headers declaring purpose, GDPR classification, and a `{{ config(...) }}` block specifying `materialized`, `schema`, and `tags` (e.g. `gdpr`, `analytics`, `k_anonymity`, `reporting`).
+- Upstream data is accessed exclusively through DBT's `{{ source('raw', '...') }}` for base tables and `{{ ref('...') }}` for other models, never via hard-coded table names.
+- PII fields are conditionally masked using the `{{ var("include_pii", "false") }}` variable so builds default to anonymized output unless explicitly opted in.
+- Aggregations destined for public or cross-entity outputs enforce k-anonymity by rounding counts to multiples of 5 and filtering groups below a minimum donor/entity threshold.
+- Audit and compliance logic tags each record with `current_timestamp as report_generated_at` and includes explicit GDPR article references (Art. 7, 17, 30, 32) in comments and column names.
+- Soft-deleted rows are consistently excluded via `where deleted_at is null` across staging and intermediate models.

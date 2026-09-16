@@ -2,7 +2,7 @@
  * Commerce capability gating — STEP 8.
  *
  * Commercial modules are package-tier-gated (SOC 2 CC6.1 access control).
- * The tier → feature baseline lives in `@jol-hub/tenant-resolver`
+ * The tier → feature baseline lives in `@journeyoflife-org/tenant-resolver`
  * (FEATURES_BY_TIER); this helper answers "does this tenant's feature set
  * include a commerce capability?" so components can hide themselves or show
  * an upgrade prompt.

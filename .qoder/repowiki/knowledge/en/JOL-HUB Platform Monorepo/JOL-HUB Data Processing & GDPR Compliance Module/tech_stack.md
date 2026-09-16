@@ -1,0 +1,1 @@
+Apache Airflow for DAG orchestration, dbt for SQL-based transformation modeling, Great Expectations for data quality checks, and pytest for compliance validation — all consuming a shared PostgreSQL-backed schema defined in `sql/schema_setup/001_initial_schema.sql`.

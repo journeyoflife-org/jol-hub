@@ -2,7 +2,7 @@
 // PSP-integrated widget was removed; the composite widget reports the
 // configured selection only — the charge path is the marketplace checkout
 // handoff (donation-flow-spec §1), never PSP-in-hub.
-import { DonationWidget } from '@jol-hub/ui/components/composite';
+import { DonationWidget } from '@journeyoflife-org/ui/components/composite';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

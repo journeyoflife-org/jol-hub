@@ -1,0 +1,4 @@
+- New page sections are added by creating a server component in `src/modules/<name>-module.tsx`, registering it in `src/modules/registry.ts` with a `requiredFeature` entitlement, and referencing it from `PageConfig` — never imported directly by templates.
+- Vertical-specific UI is implemented as separate files under `src/templates/` and selected lazily via `getTemplateForTenant` so each tenant type ships as its own code chunk.
+- Commercially gated functionality uses a string-based feature flag checked against `tenant.features` (e.g. `gallery`, `contact-form`, `donations`, `template-override`) rather than per-tenant booleans.
+- Server-only logic (templates, modules, route handlers) is kept in RSC server components or Route Handlers; interactive client widgets are isolated behind `use client` boundaries inside modules so only needed interactivity is shipped.

@@ -4,7 +4,7 @@
  * Runs in CI environments where Chrome is available (GitHub runners /
  * a Chromium-equipped stage box). In the OFFLINE development workspace the
  * byte-budget gate is enforced by `pnpm check-perf` instead
- * (`scripts/check-perf-budget.ts` + `@jol-hub/perf`), which measures the
+ * (`scripts/check-perf-budget.ts` + `@journeyoflife-org/perf`), which measures the
  * real gzipped `.next/` output without a browser.
  *
  * Budgets come from `budget.json` (standard Lighthouse budget format —

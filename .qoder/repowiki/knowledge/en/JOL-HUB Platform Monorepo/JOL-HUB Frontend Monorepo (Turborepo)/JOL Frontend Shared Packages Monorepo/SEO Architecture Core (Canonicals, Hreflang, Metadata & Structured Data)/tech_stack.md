@@ -1,0 +1,1 @@
+TypeScript package built with tsup (ESM + CJS + d.ts), tested via `tsx --test`, published to GitHub Packages registry; consumes only Node stdlib (`URL`, `Date`).

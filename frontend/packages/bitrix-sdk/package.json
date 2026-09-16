@@ -1,5 +1,5 @@
 {
-  "name": "@jol-hub/bitrix-sdk",
+  "name": "@journeyoflife-org/bitrix-sdk",
   "version": "1.0.0",
   "description": "Bitrix24 REST API SDK: OAuth2 token lifecycle, lead/contact CRUD, webhook helpers and typed response shapes. Zero runtime deps beyond zod for validation.",
   "exports": {

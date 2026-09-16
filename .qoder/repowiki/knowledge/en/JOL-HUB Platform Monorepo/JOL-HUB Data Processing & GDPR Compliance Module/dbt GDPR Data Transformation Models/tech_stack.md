@@ -1,0 +1,1 @@
+dbt v2 project targeting PostgreSQL; uses Jinja templating for conditional PII masking via `{{ var('include_pii', 'false') }}` and retention days via `{{ var('user_data_retention_days', ...) }}`; relies on dbt built-in tests (`unique`, `not_null`, `accepted_values`) and JSON aggregation (`jsonb_agg`, `jsonb_build_object`) for data subject exports.

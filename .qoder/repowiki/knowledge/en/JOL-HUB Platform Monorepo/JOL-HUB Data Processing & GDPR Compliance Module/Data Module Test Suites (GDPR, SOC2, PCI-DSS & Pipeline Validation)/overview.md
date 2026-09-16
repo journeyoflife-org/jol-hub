@@ -1,0 +1,1 @@
+Pytest-based test suites that validate the data module's GDPR/SOC2/PCI-DSS compliance, pipeline imports, processors, validators, and enforce the no-Stripe dependency boundary.

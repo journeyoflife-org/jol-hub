@@ -7,7 +7,7 @@
  * never duplicated components. Content stays data-driven: list modules fetch
  * their collections (empty in pilot → they collapse), so nothing is fabricated.
  */
-import type { Vertical } from '@jol-hub/tenant-resolver';
+import type { Vertical } from '@journeyoflife-org/tenant-resolver';
 import type { Module, PageConfig } from './page-config';
 import { verticalThemeFor } from './vertical-theme';
 

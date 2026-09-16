@@ -1,0 +1,1 @@
+Shared runtime helpers for the template-renderer app: structured server logging, client-side error reporting with breadcrumbs, in-memory fixed-window rate limiting, and Lithuanian-aware slug generation/validation.

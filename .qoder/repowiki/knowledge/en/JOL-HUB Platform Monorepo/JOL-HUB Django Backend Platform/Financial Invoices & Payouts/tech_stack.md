@@ -1,0 +1,1 @@
+Django ORM with `DecimalField` for monetary amounts, JSONField for invoice line items, and Django REST Framework generics for API exposure.

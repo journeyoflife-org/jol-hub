@@ -18,8 +18,8 @@
  */
 import { NextResponse, type NextRequest } from 'next/server';
 import { z } from 'zod';
-import { SLUG_PATTERN } from '@jol-hub/tenant-resolver';
-import { sanitizeUtmValue, type UtmParams } from '@jol-hub/bitrix-sdk';
+import { SLUG_PATTERN } from '@journeyoflife-org/tenant-resolver';
+import { sanitizeUtmValue, type UtmParams } from '@journeyoflife-org/bitrix-sdk';
 import { isCrmConfigured, serverCrmClient } from '@/lib/bitrix-client';
 
 /**

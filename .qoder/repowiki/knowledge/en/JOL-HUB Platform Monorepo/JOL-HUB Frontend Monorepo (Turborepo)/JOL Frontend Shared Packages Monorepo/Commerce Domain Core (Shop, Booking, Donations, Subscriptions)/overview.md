@@ -1,0 +1,1 @@
+Framework-agnostic commerce domain package providing shared types, immutable cart math, EUR/VAT helpers, capability gating, and a tenant-scoped API client for shop, booking, donations, and subscriptions.

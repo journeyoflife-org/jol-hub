@@ -12,7 +12,7 @@
 
 import { useRef, useState } from 'react';
 import { z } from 'zod';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
 
 import { accentTextClass } from '../../../lib/tenant-theme';
 import { LiveRegion } from '../../accessibility/live-region';

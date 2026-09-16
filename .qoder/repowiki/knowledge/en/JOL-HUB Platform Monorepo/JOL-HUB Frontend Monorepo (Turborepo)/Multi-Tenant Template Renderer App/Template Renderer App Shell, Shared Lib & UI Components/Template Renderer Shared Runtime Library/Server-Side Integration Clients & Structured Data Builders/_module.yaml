@@ -1,0 +1,12 @@
+schema_version: 1
+module_path: frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/integrations
+title: Server-Side Integration Clients & Structured Data Builders
+scope:
+    - frontend/apps/template-renderer/src/lib/auth.ts
+    - frontend/apps/template-renderer/src/lib/bitrix-client.ts
+    - frontend/apps/template-renderer/src/lib/church-landing.ts
+    - frontend/apps/template-renderer/src/lib/services-landing.ts
+    - frontend/apps/template-renderer/src/lib/editor-client.ts
+source_files: []
+depends_on: []
+related_to: []

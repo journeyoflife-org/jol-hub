@@ -1,0 +1,1 @@
+None beyond standard Next.js build; the root layout relies on middleware having set the `x-locale` header (constant `LOCALE_HEADER`) before these components execute.

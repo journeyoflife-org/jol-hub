@@ -5,7 +5,7 @@
  * nothing without a quote. Tenant data is never used as a testimonial source
  * (no fabricated endorsements).
  */
-import { TestimonialCard } from '@jol-hub/ui/components/composite';
+import { TestimonialCard } from '@journeyoflife-org/ui/components/composite';
 import { tenantThemeFor, type ModuleProps } from './types';
 
 function asString(value: unknown): string | undefined {

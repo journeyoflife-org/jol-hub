@@ -1,0 +1,1 @@
+Next.js App Router with React Server Components and 'use client' boundaries; shared types from `@jol-hub/tenant-resolver`, `@jol-hub/i18n`, and `@jol-hub/seed-data`; Tailwind utility classes for layout containers and vertical rhythm.

@@ -1,5 +1,5 @@
 {
-  "name": "@jol-hub/seo",
+  "name": "@journeyoflife-org/seo",
   "version": "1.0.0",
   "description": "SEO architecture core for JOL: canonicals, hreflang, metadata policy, JSON-LD generators, sitemap/robots builders, OG + IndexNow integration points. Pure, framework-agnostic, unit-tested.",
   "exports": {

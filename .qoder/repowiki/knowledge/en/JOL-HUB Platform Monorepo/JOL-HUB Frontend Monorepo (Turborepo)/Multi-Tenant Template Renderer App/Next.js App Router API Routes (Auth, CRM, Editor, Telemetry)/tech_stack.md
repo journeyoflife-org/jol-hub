@@ -1,0 +1,1 @@
+Next.js App Router Route Handlers with `next/server` `NextResponse`; Zod schemas for input validation; NextAuth v4 for OIDC at `/api/auth/*`; `@jol-hub/observability` for health aggregation and redaction; `@jol-hub/tenant-resolver` slug pattern enforcement; `@jol-hub/bitrix-sdk` UTM sanitization; in-memory per-IP rate limiting via `@/lib/rate-limit`.

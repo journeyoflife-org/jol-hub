@@ -1,7 +1,7 @@
 # Package Publish Runbook
 
 > **Registry:** GitHub Packages (`https://npm.pkg.github.com`)
-> **Scope:** 12 `@jol-hub/*` packages in `frontend/packages/`
+> **Scope:** 12 `@journeyoflife-org/*` packages in `frontend/packages/`
 > **Decision:** D-065 (2026-09-11). GitHub Packages chosen over Verdaccio
 > for pilot speed; Verdaccio remains the fallback if EU-jurisdiction
 > becomes a hard requirement.
@@ -49,22 +49,22 @@ pnpm release
 Packages must be published in dependency order:
 
 **Wave 0 (leaves — no internal deps):**
-1. `@jol-hub/a11y`
-2. `@jol-hub/auth`
-3. `@jol-hub/bitrix-sdk`
-4. `@jol-hub/commerce`
-5. `@jol-hub/i18n`
-6. `@jol-hub/observability`
-7. `@jol-hub/perf`
-8. `@jol-hub/seed-data`
-9. `@jol-hub/seo`
+1. `@journeyoflife-org/a11y`
+2. `@journeyoflife-org/auth`
+3. `@journeyoflife-org/bitrix-sdk`
+4. `@journeyoflife-org/commerce`
+5. `@journeyoflife-org/i18n`
+6. `@journeyoflife-org/observability`
+7. `@journeyoflife-org/perf`
+8. `@journeyoflife-org/seed-data`
+9. `@journeyoflife-org/seo`
 
 **Wave 1 (depend on Wave 0):**
-10. `@jol-hub/tenant-resolver` (depends on `seed-data`)
-11. `@jol-hub/ui` (depends on `i18n`)
+10. `@journeyoflife-org/tenant-resolver` (depends on `seed-data`)
+11. `@journeyoflife-org/ui` (depends on `i18n`)
 
 **Wave 2 (depend on Wave 0 + Wave 1):**
-12. `@jol-hub/testing` (depends on `i18n`, `tenant-resolver`, `ui`)
+12. `@journeyoflife-org/testing` (depends on `i18n`, `tenant-resolver`, `ui`)
 
 Changesets handles this automatically via `updateInternalDependencies: patch`.
 
@@ -80,11 +80,11 @@ echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" > .npmrc
 echo '@jol-hub:registry=https://npm.pkg.github.com' >> .npmrc
 
 # Install each package
-pnpm add @jol-hub/a11y @jol-hub/seo @jol-hub/ui
+pnpm add @journeyoflife-org/a11y @journeyoflife-org/seo @journeyoflife-org/ui
 
 # Test imports
-node -e "import('@jol-hub/a11y').then(m => console.log('a11y OK:', Object.keys(m)))"
-node -e "import('@jol-hub/seo').then(m => console.log('seo OK:', Object.keys(m)))"
+node -e "import('@journeyoflife-org/a11y').then(m => console.log('a11y OK:', Object.keys(m)))"
+node -e "import('@journeyoflife-org/seo').then(m => console.log('seo OK:', Object.keys(m)))"
 ```
 
 ## Rollback

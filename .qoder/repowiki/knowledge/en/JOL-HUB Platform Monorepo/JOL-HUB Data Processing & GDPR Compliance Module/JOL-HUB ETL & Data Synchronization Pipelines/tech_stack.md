@@ -1,0 +1,1 @@
+Pure Python standard library (`dataclasses`, `enum`, `decimal`, `pathlib`, `csv`, `hashlib`) plus internal `src` packages for auditing, GDPR anonymization, encryption, and configuration; no external runtime dependencies beyond what `src/` provides.

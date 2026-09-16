@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: frontend/react_demo_app
+title: JOL-HUB Next.js Frontend (Auth & Dashboard)
+scope:
+    - frontend/react/
+source_files: []
+depends_on: []
+related_to:
+    - path: frontend/shared_packages/auth

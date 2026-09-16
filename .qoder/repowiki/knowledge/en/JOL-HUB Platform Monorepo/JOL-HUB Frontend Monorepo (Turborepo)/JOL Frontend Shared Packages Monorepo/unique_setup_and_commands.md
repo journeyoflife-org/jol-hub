@@ -1,0 +1,1 @@
+`pnpm build:packages` builds every package in dependency order via Turbo; `pnpm test:unit` runs tests for all packages sequentially; `pnpm release` builds packages then publishes them using changesets.

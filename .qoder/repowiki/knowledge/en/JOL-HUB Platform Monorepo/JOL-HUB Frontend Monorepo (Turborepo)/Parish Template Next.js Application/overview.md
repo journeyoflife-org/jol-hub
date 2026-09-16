@@ -1,0 +1,1 @@
+Next.js 14 application that renders multi-tenant parish website templates (parish, funeral, cemetery) with i18n, subdomain-based tenant isolation, and shared UI/i18n components.

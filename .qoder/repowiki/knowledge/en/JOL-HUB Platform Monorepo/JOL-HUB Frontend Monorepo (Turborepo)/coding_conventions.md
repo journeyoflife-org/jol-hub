@@ -1,0 +1,5 @@
+- Each app and package is an independent npm package with its own `package.json`, `tsconfig.json`, and Next.js configuration, consuming shared code only via workspace-resolved `@jol-hub/*` package names.
+- All apps follow the Next.js 14 App Router layout (`src/app/layout.tsx`, route groups like `(auth)`, `(dashboard)`), middleware-based auth guards, and Tailwind CSS styling.
+- Cross-cutting concerns (auth, SEO, i18n, observability, commerce, tenant resolution) are extracted into `packages/*` libraries rather than duplicated per app.
+- Turborepo tasks are declared centrally in `turbo.json` with `dependsOn: ["^build"]` so downstream apps automatically depend on upstream package builds.
+- Linting and formatting are enforced uniformly via ESLint + Prettier configured at the workspace root and applied by `lint-staged` on pre-commit hooks.

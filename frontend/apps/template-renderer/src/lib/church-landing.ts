@@ -8,12 +8,12 @@
  * DATA, controlled vocabulary), never a hardcoded literal (FE-5 / O-022
  * outcome governs). DS-THEME-01 scope note covers this layer.
  */
-import type { Vertical as FixtureVertical } from '@jol-hub/seed-data';
-import type { Vertical as ResolverVertical } from '@jol-hub/tenant-resolver';
-import type { SupportedLocale } from '@jol-hub/i18n';
-import { churchEntity } from '@jol-hub/seo';
-import type { ChurchKind } from '@jol-hub/seo';
-import type { TenantFixture } from '@jol-hub/seed-data';
+import type { Vertical as FixtureVertical } from '@journeyoflife-org/seed-data';
+import type { Vertical as ResolverVertical } from '@journeyoflife-org/tenant-resolver';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
+import { churchEntity } from '@journeyoflife-org/seo';
+import type { ChurchKind } from '@journeyoflife-org/seo';
+import type { TenantFixture } from '@journeyoflife-org/seed-data';
 import { pickLocalized } from './i18n-helpers';
 
 /**

@@ -17,8 +17,8 @@
  * Server component. `tenant` carries `schema` — it never leaves this boundary.
  */
 import type { ReactNode } from 'react';
-import type { Tenant } from '@jol-hub/tenant-resolver';
-import type { SupportedLocale } from '@jol-hub/i18n';
+import type { Tenant } from '@journeyoflife-org/tenant-resolver';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
 import type { PageConfig } from '@/lib/page-config';
 import { PageComposer } from '@/lib/page-composer';
 import { JsonLd, websiteEntity, type JsonValue } from '@/lib/json-ld';

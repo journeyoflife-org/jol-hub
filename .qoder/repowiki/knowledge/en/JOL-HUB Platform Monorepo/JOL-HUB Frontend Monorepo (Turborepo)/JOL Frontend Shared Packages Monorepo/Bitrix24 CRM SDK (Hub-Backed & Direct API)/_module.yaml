@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: frontend/shared_packages/bitrix_sdk
+title: Bitrix24 CRM SDK (Hub-Backed & Direct API)
+scope:
+    - frontend/packages/bitrix-sdk/
+source_files: []
+depends_on: []
+related_to:
+    - path: backend/crm
+    - path: frontend/admin_dashboard_app
+    - path: frontend/template_renderer_app/api_routes

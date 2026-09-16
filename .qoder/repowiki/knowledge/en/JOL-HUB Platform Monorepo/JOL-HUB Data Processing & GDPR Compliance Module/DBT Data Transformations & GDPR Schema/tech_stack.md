@@ -1,0 +1,1 @@
+DBT (Jinja templating with `config`, `source`, `ref`, `var` macros) targeting PostgreSQL, using `uuid-ossp`, `pgcrypto`, and `pg_trgm` extensions; SQL window functions (`row_number`, `lag`, `percentile_cont`) and JSONB for audit metadata.

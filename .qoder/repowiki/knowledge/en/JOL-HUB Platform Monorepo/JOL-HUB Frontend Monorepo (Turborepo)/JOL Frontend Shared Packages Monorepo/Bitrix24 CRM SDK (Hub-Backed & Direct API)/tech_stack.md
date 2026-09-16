@@ -1,0 +1,1 @@
+TypeScript compiled with tsup to ESM/CJS; runtime dependency on zod (for validation) and fetch-based HTTP; React declared as an optional peer dependency consumed only by the `hooks` subpath.

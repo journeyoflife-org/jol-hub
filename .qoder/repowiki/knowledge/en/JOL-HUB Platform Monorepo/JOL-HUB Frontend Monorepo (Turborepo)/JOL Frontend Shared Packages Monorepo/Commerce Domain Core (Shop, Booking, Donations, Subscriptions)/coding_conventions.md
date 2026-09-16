@@ -1,0 +1,6 @@
+- All monetary amounts are represented as integer `Cents` (EUR cents) rather than floats, with display/formatting delegated to `money.ts`.
+- Public APIs return a discriminated union `CommerceResult<T>` (`{ ok: true; data } | { ok: false; error }`) instead of throwing, with typed `CommerceApiError` carrying a `kind` and `retryable` flag.
+- Cart operations are pure, immutable functions that take a `Cart` and return a new `Cart` rather than mutating state in place.
+- Every API request includes an `X-Tenant` header derived from `tenantSlug` to enforce server-side RLS isolation per tenant.
+- Feature entitlements are expressed as string keys in a `Record<CommerceCapability, string>` map (`COMMERCE_FEATURES`) and checked via `hasCommerceCapability(features, capability)` against the raw feature array.
+- Idempotent GET requests retry up to `MAX_GET_RETRIES` with linear backoff (`RETRY_BASE_MS * attempt`), while POST mutations are never retried automatically to avoid duplicate charges or bookings.

@@ -1,0 +1,1 @@
+Django + Django REST Framework `APIView`s, PostgreSQL-backed models using `BigAutoField` primary keys, with aggregation via `django.db.models.Sum/Avg/Count` and optional k-anonymity threshold from project settings.

@@ -20,7 +20,7 @@ import {
   type BreadcrumbType,
   type ClassifiedError,
   type ErrorContext,
-} from '@jol-hub/observability';
+} from '@journeyoflife-org/observability';
 
 const CONSENT_STORAGE_KEY = 'jol-cookie-consent';
 const DEDUPE_WINDOW_MS = 10_000;

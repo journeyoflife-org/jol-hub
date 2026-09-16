@@ -9,9 +9,9 @@
  */
 import { describe, expect, it, vi } from 'vitest';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
-import { Badge, Button } from '@jol-hub/ui/components/primitives';
-import { ContactForm } from '@jol-hub/ui/components/composite';
-import { renderWithProviders } from '@jol-hub/testing';
+import { Badge, Button } from '@journeyoflife-org/ui/components/primitives';
+import { ContactForm } from '@journeyoflife-org/ui/components/composite';
+import { renderWithProviders } from '@journeyoflife-org/testing';
 
 describe('Button', () => {
   it('Button.should.render children and handle clicks', () => {

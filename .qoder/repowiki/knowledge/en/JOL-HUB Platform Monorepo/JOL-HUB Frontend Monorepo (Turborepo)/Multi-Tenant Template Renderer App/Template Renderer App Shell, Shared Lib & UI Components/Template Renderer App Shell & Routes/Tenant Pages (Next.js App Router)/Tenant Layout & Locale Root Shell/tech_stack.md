@@ -1,0 +1,1 @@
+Next.js App Router with Route Segment Config (`dynamic = 'force-dynamic'`), React Server Components for layout/page, and a client-side error boundary (`'use client'`). Internationalization via `@jol-hub/i18n` providers, tenant resolution via `@jol-hub/tenant-resolver`, and UI chrome from `@jol-hub/ui`.

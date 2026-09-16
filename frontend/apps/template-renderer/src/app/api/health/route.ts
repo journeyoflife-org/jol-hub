@@ -13,7 +13,7 @@
  * details are public-safe strings only.
  */
 import { NextResponse } from 'next/server';
-import { aggregateHealth, timed, withTimeout, type DependencyCheck } from '@jol-hub/observability';
+import { aggregateHealth, timed, withTimeout, type DependencyCheck } from '@journeyoflife-org/observability';
 import { isAuthConfigured } from '@/lib/auth';
 import { isCrmConfigured } from '@/lib/bitrix-client';
 import { isEditorConfigured } from '@/lib/editor-client';

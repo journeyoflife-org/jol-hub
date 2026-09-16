@@ -5,7 +5,7 @@
  * template renderer. All components are package-tier-gated via
  * `useTenantFeature` and show ADR-007 "payments pending" states until the
  * commerce backend + Stripe wiring land. Domain logic lives in
- * `@jol-hub/commerce`.
+ * `@journeyoflife-org/commerce`.
  */
 export { CartProvider, useCart } from './cart-context';
 export { BookingWidget } from './BookingWidget';

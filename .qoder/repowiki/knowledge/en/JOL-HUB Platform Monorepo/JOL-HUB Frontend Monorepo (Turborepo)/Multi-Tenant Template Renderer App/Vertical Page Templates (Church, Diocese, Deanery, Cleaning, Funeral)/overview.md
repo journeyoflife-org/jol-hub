@@ -1,0 +1,1 @@
+React server components that render tenant-specific home pages for each vertical (church, diocese, deanery, cleaning, funeral) by composing shared layout, structured data, and page modules.

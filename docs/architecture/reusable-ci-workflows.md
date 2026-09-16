@@ -82,7 +82,7 @@ Security scan additionally accepts:
 ## Secrets
 
 All workflows accept `NPM_TOKEN` (optional) for GitHub Packages authentication
-when installing `@jol-hub/*` packages.
+when installing `@journeyoflife-org/*` packages.
 
 ## Updating Workflows
 

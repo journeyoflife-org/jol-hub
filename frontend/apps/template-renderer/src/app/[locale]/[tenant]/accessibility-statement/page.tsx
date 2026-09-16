@@ -10,8 +10,8 @@
  * registry/fixture identity.
  */
 import type { Metadata } from 'next';
-import { getMessages, translate, translateWithValues, isSupportedLocale } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
+import { getMessages, translate, translateWithValues, isSupportedLocale } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
 import { buildTenantMetadata, tenantDisplayName } from '@/lib/page-seo';
 import { resolveTenantRoute } from '@/lib/route-dispatch';
 

@@ -1,0 +1,1 @@
+Django app providing tenant-isolated CRM models (Contact, Deal, Lead), a DRF API, GDPR-compliant audit logging, and bidirectional synchronization with Bitrix24 for church/parish operations.

@@ -1,7 +1,7 @@
 # Block Schema Extension — JSON-LD Mapping
 
 > **Decision:** Task 2.5 (2026-09-11). Seven new block types added to
-> `@jol-hub/seed-data` ContentBlockSchema. This document records the
+> `@journeyoflife-org/seed-data` ContentBlockSchema. This document records the
 > JSON-LD mapping and routing decisions.
 
 ## New Block Types

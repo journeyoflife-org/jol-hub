@@ -1,0 +1,1 @@
+Next.js App Router (RSC server components for templates and modules), Playwright for e2e, Vitest for unit/integration tests, Tailwind CSS for layout classes shared across templates and modules, and Turborepo caching via `.turbo/`.

@@ -1,0 +1,5 @@
+- Error responses are produced through a single `_error(status_code, code, detail)` helper that returns a `JsonResponse` with an `{error: {code, detail}}` shape, keeping the error contract uniform across all failure paths.
+- Validation is staged as a sequence of early-return checks (headers → timestamp window → HMAC → product → JSON parse → schema whitelist → dedupe) so each failure mode maps to a distinct error code without nested try/except chains.
+- Contract surface is declared as module-level constants (`ALLOWED_EVENT_TYPES`, `REQUIRED_FIELDS`, `EVENT_TYPES`) that are shared between the view validator and the model choices, keeping schema definitions in one place.
+- Secrets and toggles are read from Django settings via `getattr(settings, ..., default)` rather than imported at module load, allowing tests to override them per-test via fixtures.
+- Persistence is guarded by a uniqueness check on `event_id` before insert, implementing at-least-once delivery semantics where duplicates return 200 with a `duplicate` status instead of raising.

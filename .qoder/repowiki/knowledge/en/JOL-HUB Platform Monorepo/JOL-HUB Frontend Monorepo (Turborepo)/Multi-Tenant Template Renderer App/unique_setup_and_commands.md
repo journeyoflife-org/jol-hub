@@ -1,0 +1,1 @@
+Per-app scripts under `scripts/` include `deploy.sh` / `rollback.sh` for deployment, `check-a11y-pages.ts`, `check-perf-budget.ts`, and `check-secrets.ts`; Lighthouse config lives at `lighthouserc.js` with a `budget.json` performance budget.

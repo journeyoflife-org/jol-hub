@@ -1,0 +1,1 @@
+Django models + class-based views; HMAC-SHA256 envelope signing over `timestamp.sha256(body)`; pytest with `@pytest.mark.django_db` for offline receiver tests.

@@ -19,7 +19,7 @@
 
 import { Bell, Church, Heart, Users } from 'lucide-react';
 
-import { TranslationProvider, getMessages } from '@jol-hub/i18n';
+import { TranslationProvider, getMessages } from '@journeyoflife-org/i18n';
 
 import { SkipLink } from '../components/accessibility';
 import {

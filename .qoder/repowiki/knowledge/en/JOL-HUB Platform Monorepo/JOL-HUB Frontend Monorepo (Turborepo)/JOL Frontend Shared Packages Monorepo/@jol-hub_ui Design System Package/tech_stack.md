@@ -1,0 +1,1 @@
+React 18 + Next.js 14+ as peer dependencies; Radix UI primitives (`react-*` packages) for unstyled accessible behavior; Tailwind CSS 3 with `class-variance-authority`, `clsx`, and `tailwind-merge` for styling; tsup for dual ESM/CJS bundling with automatic JSX transform; TypeScript 5 for types; axe-core + jsdom for automated WCAG 2.2 AA accessibility checks.

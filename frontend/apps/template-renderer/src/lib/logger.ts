@@ -8,7 +8,7 @@
  * RULES honored: level resolved via `levelFromEnv` (never debug in
  * production); every emitted record is deep-redacted by the core.
  */
-import { createLogger, levelFromEnv } from '@jol-hub/observability';
+import { createLogger, levelFromEnv } from '@journeyoflife-org/observability';
 
 export const logger = createLogger({
   service: 'template-renderer',

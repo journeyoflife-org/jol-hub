@@ -44,7 +44,7 @@ cp frontend/packages/seed-data/src/fixtures/tenants/{closest}.json \
 
 # 3. Validate
 cd frontend
-pnpm --filter @jol-hub/seed-data build
+pnpm --filter @journeyoflife-org/seed-data build
 node -e "
 const {TenantFixtureSchema} = require('./packages/seed-data/dist/index.js');
 const d = require('./packages/seed-data/src/fixtures/tenants/{new-slug}.json');

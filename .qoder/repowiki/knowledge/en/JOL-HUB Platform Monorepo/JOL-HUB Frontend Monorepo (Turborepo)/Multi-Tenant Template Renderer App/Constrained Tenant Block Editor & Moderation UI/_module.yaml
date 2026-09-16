@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: frontend/template_renderer_app/editor
+title: Constrained Tenant Block Editor & Moderation UI
+scope:
+    - frontend/apps/template-renderer/src/components/editor/
+    - frontend/apps/template-renderer/src/lib/editor/
+source_files: []
+depends_on: []
+related_to:
+    - path: backend/content

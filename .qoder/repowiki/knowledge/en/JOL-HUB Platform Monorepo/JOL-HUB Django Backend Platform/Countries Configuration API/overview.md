@@ -1,0 +1,1 @@
+Django app exposing read-only REST endpoints for the platform's per-country configuration, including legal settings, supported payment methods, and feature flags.

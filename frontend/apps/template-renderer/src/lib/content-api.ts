@@ -19,13 +19,13 @@
  * Caching: Next.js data cache with per-content-type revalidation, plus an
  * in-flight request map for cross-call deduplication within a render pass.
  */
-import type { Tenant } from '@jol-hub/tenant-resolver';
+import type { Tenant } from '@journeyoflife-org/tenant-resolver';
 import {
   ContentBlockSchema,
   TenantPageSchema,
   type ContentBlock,
   type TenantPage,
-} from '@jol-hub/seed-data';
+} from '@journeyoflife-org/seed-data';
 
 /** Internal backend base URL (never a public origin). */
 const BACKEND_API_URL = process.env.BACKEND_API_URL;

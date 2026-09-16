@@ -2,7 +2,7 @@
  * Server-side auth helpers — STEP 10.
  *
  * SERVER-ONLY (never import from client components — use
- * `@jol-hub/auth/oidc/hooks` there). Reads the jol-auth session via
+ * `@journeyoflife-org/auth/oidc/hooks` there). Reads the jol-auth session via
  * next-auth's `getServerSession` and maps it to the renderer's
  * {@link AuthSession} (identity + tenant roles; tokens never appear).
  *
@@ -15,7 +15,7 @@ import {
   buildJolAuthOptions,
   isAuthConfigured as oidcConfigured,
   type AuthSession,
-} from '@jol-hub/auth/oidc';
+} from '@journeyoflife-org/auth/oidc';
 
 /** True when the OIDC stack (jol-auth) is configured. */
 export function isAuthConfigured(): boolean {

@@ -7,7 +7,7 @@
  * this endpoint is strictly read-only.
  */
 import { NextResponse, type NextRequest } from 'next/server';
-import { SLUG_PATTERN } from '@jol-hub/tenant-resolver';
+import { SLUG_PATTERN } from '@journeyoflife-org/tenant-resolver';
 import { isCrmConfigured, serverCrmClient } from '@/lib/bitrix-client';
 
 export async function GET(request: NextRequest) {

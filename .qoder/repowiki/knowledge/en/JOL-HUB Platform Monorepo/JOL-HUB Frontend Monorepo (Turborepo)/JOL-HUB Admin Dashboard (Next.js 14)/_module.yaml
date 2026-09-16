@@ -1,0 +1,12 @@
+schema_version: 1
+module_path: frontend/admin_dashboard_app
+title: JOL-HUB Admin Dashboard (Next.js 14)
+scope:
+    - frontend/apps/admin-dashboard/
+source_files: []
+depends_on: []
+related_to:
+    - path: backend/crm
+    - path: frontend/shared_packages/auth
+    - path: frontend/shared_packages/bitrix_sdk
+    - path: frontend/shared_packages/commerce

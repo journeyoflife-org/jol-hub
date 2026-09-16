@@ -1,0 +1,1 @@
+None — routes are auto-discovered by Next.js App Router based on their filesystem path under `src/app/api/`. Runtime behavior depends on env vars `BACKEND_API_URL`, `BACKEND_SERVICE_TOKEN`, and `APP_VERSION`.

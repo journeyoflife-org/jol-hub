@@ -1,0 +1,1 @@
+Next.js master-site application that serves the JOL-HUB root domain and routes parish subdomains to per-parish pages with tenant-scoped theming, context, and authentication.

@@ -1,0 +1,6 @@
+- Resolution inputs are normalized through dedicated helpers (`normalizeSlug`, `normalizeHost`, `slugFromHost`, `slugFromHeader`) that reject unknown values early instead of passing them to lookup maps.
+- Server-only fields (notably `schema`) are stripped via `toPublicTenant` before any value crosses into client-facing contexts, enforcing ADR-001 separation between server and client payloads.
+- Lookup functions return `null` for unknown keys rather than throwing, implementing closed enumeration-safe lookups over the static registry maps.
+- Feature sets are composed by merging tier baselines from `FEATURES_BY_TIER` with per-tenant `extraFeatures`, keeping feature gating centralized in `types.ts`.
+- Module-level singletons (LRU cache, `TENANTS`, `TENANT_BY_SLUG`, `TENANT_BY_DOMAIN`) are constructed once at import time so per-request resolution remains allocation-free.
+- Tests exercise the pure core (`resolveTenantCore`, `LruCache`) directly rather than the HTTP-facing wrappers, keeping unit tests framework-agnostic.

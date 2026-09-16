@@ -68,22 +68,22 @@ if [[ "${SKIP_TESTS}" -eq 1 ]]; then
   log "WARNING: --skip-tests used — record the justification in the change log."
 else
   log "running unit suites…"
-  corepack pnpm --filter @jol-hub/template-renderer test
-  corepack pnpm --filter @jol-hub/template-renderer test:vitest
+  corepack pnpm --filter @journeyoflife-org/template-renderer test
+  corepack pnpm --filter @journeyoflife-org/template-renderer test:vitest
   log "running E2E smoke (requires playwright browsers; set E2E_SKIP=1 on hosts without them)…"
   if [[ "${E2E_SKIP:-0}" -eq 1 ]]; then
     log "E2E skipped on this host (documented) — staging gate must have passed."
   else
-    corepack pnpm --filter @jol-hub/template-renderer test:e2e
+    corepack pnpm --filter @journeyoflife-org/template-renderer test:e2e
   fi
 fi
 
 log "production build (standalone)…"
-corepack pnpm --filter @jol-hub/template-renderer build
+corepack pnpm --filter @journeyoflife-org/template-renderer build
 
 log "budget + secret gates…"
-corepack pnpm --filter @jol-hub/template-renderer check-perf
-corepack pnpm --filter @jol-hub/template-renderer check-secrets
+corepack pnpm --filter @journeyoflife-org/template-renderer check-perf
+corepack pnpm --filter @journeyoflife-org/template-renderer check-secrets
 
 # -----------------------------------------------------------------------------
 # 2. Stage the release

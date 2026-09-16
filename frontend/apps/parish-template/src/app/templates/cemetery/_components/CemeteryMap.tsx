@@ -6,7 +6,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, CardContent, Badge } from '@jol-hub/ui';
+import { Card, CardContent, Badge } from '@journeyoflife-org/ui';
 import { MapPin, Info } from 'lucide-react';
 
 interface CemeterySection {

@@ -1,0 +1,1 @@
+axe-core ^4.11 for automated WCAG rule evaluation, jsdom ^24 as the headless DOM runner, tsup for dual ESM/CJS bundling with dts generation, and tsx for running tests directly.

@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/editor_blocks/editor_core
+title: 'Editor Core: Block Model, Validation & Backend Client'
+scope:
+    - frontend/apps/template-renderer/src/lib/editor/blocks.ts
+    - frontend/apps/template-renderer/src/lib/editor/diff.ts
+    - frontend/apps/template-renderer/src/lib/editor/editor-api.ts
+source_files: []
+depends_on: []
+related_to: []

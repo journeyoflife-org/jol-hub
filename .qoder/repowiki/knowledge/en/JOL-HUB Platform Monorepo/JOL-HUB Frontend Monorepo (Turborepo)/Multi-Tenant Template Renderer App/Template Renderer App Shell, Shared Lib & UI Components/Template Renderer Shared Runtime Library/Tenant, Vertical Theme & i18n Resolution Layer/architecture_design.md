@@ -1,0 +1,7 @@
+This leaf module sits in `frontend/apps/template-renderer/src/lib` as a data/resolution layer consumed by server components and client providers. It is split into three concerns:
+
+- Tenant resolution: `tenant-resolver.ts` is a thin server-only adapter over `@jol-hub/tenant-resolver`, reading `X-Tenant-*` headers via Next's `headers()` and returning either a full `Tenant` (for RLS propagation) or `null`. `tenant-context.tsx` wraps that resolved value in a `React.Context` (`TenantProvider`) for client components, exposing typed hooks `useTenant`, `useTenantFeature`, and `useTenantVertical`; it enforces that only the stripped `PublicTenant` crosses into the client bundle.
+- Vertical theming & layout mapping: `vertical-theme.ts` maps each canonical `Vertical` to a `VerticalTheme` (accent CSS variable, hero variant, schema.org type); `layout-families.ts` groups verticals into structural layout families (`sacred | eastern | administrative | memorial | congregation`) with accent overrides; `vertical-defaults.ts` composes default `PageConfig` home pages per vertical using shared STEP-6 modules, gated by entitlement.
+- i18n helper: `i18n-helpers.ts` provides `pickLocalized`, which selects English when available but always falls back to Lithuanian to satisfy GDPR Art. 12 accessibility requirements.
+
+Dependency direction is one-way: this module depends on external packages `@jol-hub/tenant-resolver`, `@jol-hub/seed-data`, `@jol-hub/i18n`, and `@jol-hub/ui`, and is consumed by route handlers and React components — it never imports from component code.

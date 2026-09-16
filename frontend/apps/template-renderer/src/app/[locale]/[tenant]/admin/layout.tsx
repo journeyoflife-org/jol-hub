@@ -8,7 +8,7 @@
  * "authentication not enabled" notice.
  */
 import { redirect } from 'next/navigation';
-import { hasRole } from '@jol-hub/auth/oidc';
+import { hasRole } from '@journeyoflife-org/auth/oidc';
 import { getAuthSession, isAuthConfigured } from '@/lib/auth';
 import { resolveTenantRoute } from '@/lib/route-dispatch';
 

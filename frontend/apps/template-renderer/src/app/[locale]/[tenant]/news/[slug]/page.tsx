@@ -13,9 +13,9 @@
  */
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getMessages, translate, formatDate } from '@jol-hub/i18n';
-import { LOCALE_HREFLANG } from '@jol-hub/i18n';
-import { clampDescription } from '@jol-hub/seo';
+import { getMessages, translate, formatDate } from '@journeyoflife-org/i18n';
+import { LOCALE_HREFLANG } from '@journeyoflife-org/i18n';
+import { clampDescription } from '@journeyoflife-org/seo';
 import { JsonLd, articleEntity, breadcrumbEntity } from '@/lib/json-ld';
 import { tenantDisplayName } from '@/lib/page-seo';
 import { absoluteUrl, buildSeoAlternates } from '@/lib/seo';

@@ -20,13 +20,13 @@
  */
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
-import '@jol-hub/ui/styles/tokens.css';
-import '@jol-hub/ui/styles/globals.css';
+import '@journeyoflife-org/ui/styles/tokens.css';
+import '@journeyoflife-org/ui/styles/globals.css';
 import './globals.css';
 
-import { ThemeProvider, THEME_INIT_SCRIPT } from '@jol-hub/ui/providers';
-import { isSupportedLocale } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE, LOCALE_HEADER } from '@jol-hub/i18n/config';
+import { ThemeProvider, THEME_INIT_SCRIPT } from '@journeyoflife-org/ui/providers';
+import { isSupportedLocale } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE, LOCALE_HEADER } from '@journeyoflife-org/i18n/config';
 import { WebVitals } from '@/components/WebVitals';
 import { ObservabilityClient } from '@/components/ObservabilityClient';
 

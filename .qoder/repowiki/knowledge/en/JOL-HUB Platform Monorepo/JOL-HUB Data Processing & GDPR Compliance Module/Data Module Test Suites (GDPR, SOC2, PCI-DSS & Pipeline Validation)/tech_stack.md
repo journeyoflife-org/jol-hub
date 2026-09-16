@@ -1,0 +1,1 @@
+Python + pytest; uses `importlib.metadata.distributions` to inspect installed packages, `pathlib.Path` for cross-repo path assertions, and optional `yaml` for loading country-specific `compliance.yml` configs.

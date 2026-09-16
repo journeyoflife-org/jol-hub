@@ -4,7 +4,7 @@
  * Apps consume this instead of hard-coding values:
  *
  * ```ts
- * import { jolThemeExtension } from '@jol-hub/ui/tokens';
+ * import { jolThemeExtension } from '@journeyoflife-org/ui/tokens';
  * export default { darkMode: 'class', theme: { extend: jolThemeExtension } };
  * ```
  *
@@ -30,7 +30,7 @@ import type { ThemeRef } from './themes';
  * profile by REF — the swap is config-only, no component code changes:
  *
  * ```ts
- * import { themeColorExtension } from '@jol-hub/ui/tokens';
+ * import { themeColorExtension } from '@journeyoflife-org/ui/tokens';
  * theme: { extend: { colors: { ...themeColorExtension('catholic') } } }
  * ```
  */

@@ -1,0 +1,6 @@
+- Client-only components and hooks are opt-in via the `'use client'` directive at the top of each file that uses React state, hooks, or browser APIs.
+- Authentication state is accessed exclusively through the `useAuth()` / `useAuthContext()` hook rather than direct context consumption, ensuring a consistent API surface across pages and components.
+- Form input validation is declared with a Zod schema and wired to react-hook-form via `zodResolver`, with error messages surfaced inline beneath each field.
+- Sensitive tokens follow a split-store pattern: access tokens live only in memory via `tokenStore.setAccess/getAccess`, while refresh tokens are persisted as cookies through `tokenStore.setRefresh/getRefresh`.
+- Route protection is applied in two layers: Next.js Edge middleware handles cookie-based redirect for SSR, and `useRequireAuth` (or `<AuthGuard>`) enforces client-side redirects after hydration completes.
+- API calls go through the shared `apiClient` Axios instance so that Authorization headers and 401 retry logic are uniform across all endpoints.

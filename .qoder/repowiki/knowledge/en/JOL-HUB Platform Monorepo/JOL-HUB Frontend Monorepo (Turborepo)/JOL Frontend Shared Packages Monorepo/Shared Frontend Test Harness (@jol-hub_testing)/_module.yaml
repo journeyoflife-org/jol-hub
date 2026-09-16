@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: frontend/shared_packages/testing
+title: Shared Frontend Test Harness (@jol-hub/testing)
+scope:
+    - frontend/packages/testing/
+source_files: []
+depends_on: []
+related_to: []

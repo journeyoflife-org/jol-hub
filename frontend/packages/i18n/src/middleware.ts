@@ -139,7 +139,7 @@ function isExcludedPath(pathname: string): boolean {
  * 
  * Usage:
  * ```ts
- * import { i18nMiddleware } from '@jol-hub/i18n/middleware';
+ * import { i18nMiddleware } from '@journeyoflife-org/i18n/middleware';
  * export function middleware(request: NextRequest) {
  *   return i18nMiddleware(request);
  * }

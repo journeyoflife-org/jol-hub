@@ -4,11 +4,11 @@
 
 /*
  * Global styles for the JOL vertical site.
- * Design tokens are consumed from @jol-hub/ui — do not redefine here.
+ * Design tokens are consumed from @journeyoflife-org/ui — do not redefine here.
  */
 
 :root {
-  /* Fallback tokens — override via @jol-hub/ui/tokens in production */
+  /* Fallback tokens — override via @journeyoflife-org/ui/tokens in production */
   --jol-color-primary: #1a1a2e;
   --jol-color-accent: #c9a227;
   --jol-color-surface: #ffffff;

@@ -1,0 +1,6 @@
+- Every SEO URL is constructed as an absolute protocol+domain string via `resolveSeoOrigin()` or `absoluteUrl()`, never relative paths.
+- Canonical and hreflang alternates are always generated through `buildSeoAlternates` (which wraps `buildHreflangSet`) so they stay reciprocal and include `x-default`.
+- JSON-LD entities are built by small typed factory functions returning plain `JsonValue` objects rather than ad-hoc literals, keeping schema.org structure consistent across page types.
+- Optional properties on entity inputs are conditionally attached only when truthy, producing minimal valid schema.org payloads.
+- The `JsonLd` component serializes data with `JSON.stringify` and escapes `<` to `\u003c` before writing via `dangerouslySetInnerHTML` to keep inline scripts safe.
+- Server-only code reads request headers exclusively through `next/headers` and is documented as server-side — client components never import these modules.

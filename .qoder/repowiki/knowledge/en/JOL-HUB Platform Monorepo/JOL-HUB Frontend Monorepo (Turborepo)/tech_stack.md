@@ -1,0 +1,1 @@
+pnpm workspaces + Turborepo v2 for task orchestration and caching; Next.js 14 App Router for every application; TypeScript across all apps and packages; Tailwind CSS configured per app; Changesets for versioning/publishing of `packages/*`; Vitest/Playwright tests live inside `template-renderer` and individual packages.

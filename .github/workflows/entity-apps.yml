@@ -156,10 +156,10 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Message key parity (all locales + verticals)
-        run: pnpm --filter @jol-hub/i18n i18n:check
+        run: pnpm --filter @journeyoflife-org/i18n i18n:check
 
       - name: Hardcoded string scan (shared UI + template-renderer)
-        run: pnpm --filter @jol-hub/i18n i18n:find-hardcoded
+        run: pnpm --filter @journeyoflife-org/i18n i18n:find-hardcoded
 
   # ===========================================================================
   # BUILD APPS (MATRIX)
@@ -210,10 +210,10 @@ jobs:
             turbo-${{ runner.os }}-
       
       - name: Build app
-        run: pnpm --filter @jol-hub/${{ matrix.app }} build
+        run: pnpm --filter @journeyoflife-org/${{ matrix.app }} build
       
       - name: Run type check
-        run: pnpm --filter @jol-hub/${{ matrix.app }} type-check || true
+        run: pnpm --filter @journeyoflife-org/${{ matrix.app }} type-check || true
       
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -259,7 +259,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
       
       - name: Validate entity configurations
         run: |

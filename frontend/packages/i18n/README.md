@@ -1,4 +1,4 @@
-# @jol-hub/i18n
+# @journeyoflife-org/i18n
 
 Internationalization for the JOL multi-tenant platform — STEP 4.
 

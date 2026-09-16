@@ -1,0 +1,17 @@
+schema_version: 1
+module_path: ""
+title: JOL-HUB Platform Monorepo
+scope:
+    - README.md
+    - CONTRIBUTING.md
+    - .gitignore
+    - .github/
+    - docker-compose.yml
+    - main.py
+    - qodana.yaml
+    - .gitattributes
+    - LICENSE
+    - QODER.md
+source_files: []
+depends_on: []
+related_to: []

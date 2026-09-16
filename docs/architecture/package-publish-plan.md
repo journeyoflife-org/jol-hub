@@ -1,25 +1,25 @@
 # Package Publish Plan — Hub-and-Spoke Topology
 
 > **Authoritative decision:** ADR-011 (2026-09-11). This document is the
-> technical plan for making the 12 `@jol-hub/*` packages publishable so
+> technical plan for making the 12 `@journeyoflife-org/*` packages publishable so
 > the ten spoke repositories can consume them as versioned dependencies.
 
 ## Current State (2026-09-11)
 
 | Package | Private | Exports | Build | Files |
 |---|---|---|---|---|
-| `@jol-hub/a11y` | true | 1 | false | false |
-| `@jol-hub/auth` | true | 6 | false | false |
-| `@jol-hub/bitrix-sdk` | true | 2 | false | false |
-| `@jol-hub/commerce` | true | 1 | false | false |
-| `@jol-hub/i18n` | true | 13 | false | false |
-| `@jol-hub/observability` | true | 1 | false | false |
-| `@jol-hub/perf` | true | 1 | false | false |
-| `@jol-hub/seed-data` | true | 1 | false | false |
-| `@jol-hub/seo` | true | 1 | false | false |
-| `@jol-hub/tenant-resolver` | true | 2 | false | false |
-| `@jol-hub/testing` | true | 2 | false | false |
-| `@jol-hub/ui` | **false** | 12 | false | false |
+| `@journeyoflife-org/a11y` | true | 1 | false | false |
+| `@journeyoflife-org/auth` | true | 6 | false | false |
+| `@journeyoflife-org/bitrix-sdk` | true | 2 | false | false |
+| `@journeyoflife-org/commerce` | true | 1 | false | false |
+| `@journeyoflife-org/i18n` | true | 13 | false | false |
+| `@journeyoflife-org/observability` | true | 1 | false | false |
+| `@journeyoflife-org/perf` | true | 1 | false | false |
+| `@journeyoflife-org/seed-data` | true | 1 | false | false |
+| `@journeyoflife-org/seo` | true | 1 | false | false |
+| `@journeyoflife-org/tenant-resolver` | true | 2 | false | false |
+| `@journeyoflife-org/testing` | true | 2 | false | false |
+| `@journeyoflife-org/ui` | **false** | 12 | false | false |
 
 **Summary:** 11 of 12 packages are `"private": true`; zero have a build
 step, `dist/` output, or `files` allowlist. All exports point at raw
@@ -46,24 +46,24 @@ resolve their dependencies from the registry.
 
 ### Wave 0 — Leaves (9 packages, parallelisable)
 
-1. `@jol-hub/a11y`
-2. `@jol-hub/auth`
-3. `@jol-hub/bitrix-sdk`
-4. `@jol-hub/commerce`
-5. `@jol-hub/i18n`
-6. `@jol-hub/observability`
-7. `@jol-hub/perf`
-8. `@jol-hub/seed-data`
-9. `@jol-hub/seo`
+1. `@journeyoflife-org/a11y`
+2. `@journeyoflife-org/auth`
+3. `@journeyoflife-org/bitrix-sdk`
+4. `@journeyoflife-org/commerce`
+5. `@journeyoflife-org/i18n`
+6. `@journeyoflife-org/observability`
+7. `@journeyoflife-org/perf`
+8. `@journeyoflife-org/seed-data`
+9. `@journeyoflife-org/seo`
 
 ### Wave 1 — First-level dependents (2 packages, parallelisable)
 
-10. `@jol-hub/tenant-resolver` (depends on `seed-data`)
-11. `@jol-hub/ui` (depends on `i18n`)
+10. `@journeyoflife-org/tenant-resolver` (depends on `seed-data`)
+11. `@journeyoflife-org/ui` (depends on `i18n`)
 
 ### Wave 2 — Second-level dependents (1 package)
 
-12. `@jol-hub/testing` (depends on `i18n`, `tenant-resolver`, `ui`)
+12. `@journeyoflife-org/testing` (depends on `i18n`, `tenant-resolver`, `ui`)
 
 ## Per-Package Work Required
 
@@ -83,7 +83,7 @@ For each package, the following changes are needed:
 
 ## Special Cases
 
-### `@jol-hub/ui` — The Hard One
+### `@journeyoflife-org/ui` — The Hard One
 
 - 12 export subpaths (not 17 — the dangling donation export was removed)
 - Includes a wildcard export: `"./components/*": "./src/components/*/index.ts"`
@@ -92,12 +92,12 @@ For each package, the following changes are needed:
 - **The wildcard cannot survive a build.** Must enumerate component
   directories explicitly. Generate the list by script so it cannot drift.
 
-### `@jol-hub/i18n` — Many Subpaths
+### `@journeyoflife-org/i18n` — Many Subpaths
 
 - 13 export subpaths (likely one per locale + barrel)
 - Need to verify all resolve after build
 
-### `@jol-hub/testing` — Dev-Only?
+### `@journeyoflife-org/testing` — Dev-Only?
 
 - Depends on `ui`, `tenant-resolver`, `i18n`
 - May not need to be published if it's only used in hub CI

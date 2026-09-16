@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes/tenant_pages/tenant_layout_and_root
+title: Tenant Layout & Locale Root Shell
+scope:
+    - frontend/apps/template-renderer/src/app/[locale]/page.tsx
+    - frontend/apps/template-renderer/src/app/[locale]/[tenant]/layout.tsx
+    - frontend/apps/template-renderer/src/app/[locale]/[tenant]/error.tsx
+source_files: []
+depends_on: []
+related_to: []

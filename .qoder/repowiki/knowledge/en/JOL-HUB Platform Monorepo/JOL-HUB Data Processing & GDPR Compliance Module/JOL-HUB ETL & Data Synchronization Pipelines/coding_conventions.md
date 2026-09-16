@@ -1,0 +1,6 @@
+- Each pipeline class accepts an optional `config` dataclass and an optional `audit_logger` in its constructor, defaulting to a module-level sentinel when not provided.
+- Every significant operation is wrapped in `self.audit_logger.log(AuditEvent(...))` calls at both start and completion boundaries, recording action names, resource types, and metadata.
+- Country-specific syncs are implemented by subclassing `CountrySyncTemplate` and overriding fetch/validate/load methods rather than duplicating the orchestration loop.
+- PII fields are classified via explicit enums (`CSVColumnType.PII`, `DataClassification.CONFIDENTIAL`) and processed through `KAnonymizer(k=5)` or `EncryptionService` before persistence.
+- Public APIs are explicitly gated by `__all__` lists in each sub-package's `__init__.py`, hiding internal helpers and schemas from consumers.
+- Configuration and result shapes are modeled as `@dataclass` objects (e.g., `CountrySyncConfig`, `ImportConfig`, `ImportProgress`, `DonationMetrics`) rather than plain dicts.

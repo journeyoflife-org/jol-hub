@@ -1,5 +1,5 @@
 {
-  "name": "@jol-hub/master-site",
+  "name": "@journeyoflife-org/master-site",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -11,10 +11,10 @@
     "clean": "rm -rf .next .turbo node_modules"
   },
   "dependencies": {
-    "@jol-hub/auth": "workspace:*",
-    "@jol-hub/bitrix-sdk": "workspace:*",
-    "@jol-hub/i18n": "workspace:*",
-    "@jol-hub/ui": "workspace:*",
+    "@journeyoflife-org/auth": "workspace:*",
+    "@journeyoflife-org/bitrix-sdk": "workspace:*",
+    "@journeyoflife-org/i18n": "workspace:*",
+    "@journeyoflife-org/ui": "workspace:*",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-checkbox": "^1.0.4",

@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: backend/payment_events
+title: Payment Events Ingress Receiver
+scope:
+    - backend/django/apps/payment_events/
+source_files: []
+depends_on: []
+related_to:
+    - path: backend/donations

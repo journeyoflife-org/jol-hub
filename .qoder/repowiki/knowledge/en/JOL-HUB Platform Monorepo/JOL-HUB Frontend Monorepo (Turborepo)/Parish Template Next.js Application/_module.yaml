@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: frontend/parish_template_app
+title: Parish Template Next.js Application
+scope:
+    - frontend/apps/parish-template/
+source_files: []
+depends_on: []
+related_to:
+    - path: frontend/shared_packages/i18n
+    - path: frontend/shared_packages/seo
+    - path: frontend/shared_packages/ui

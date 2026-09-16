@@ -1,0 +1,1 @@
+Next.js React components with `'use client'` directives for browser-only code; NextAuth `SessionProvider` for OIDC auth; `next/web-vitals` for Core Web Vitals RUM; `intl-messageformat` for ICU message interpolation; Tailwind CSS classes for styling via `@jol-hub/ui` primitives.

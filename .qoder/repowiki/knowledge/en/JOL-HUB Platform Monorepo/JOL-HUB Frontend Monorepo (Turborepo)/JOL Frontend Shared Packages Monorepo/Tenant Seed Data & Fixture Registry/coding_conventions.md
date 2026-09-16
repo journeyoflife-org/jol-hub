@@ -1,0 +1,6 @@
+- Every fixture JSON file must validate against `TenantFixtureSchema`; invalid data causes module-load failure rather than runtime errors.
+- Localized strings use the three-field `{ lt, en?, ru? }` shape defined by `LocalizedTextSchema`, with Lithuanian always required.
+- Content blocks are modeled as a Zod discriminated union keyed by a literal `type` field, keeping each block schema self-contained.
+- Images carry explicit `width` and `height` numbers alongside `alt` text to enforce CLS prevention and WCAG 1.1.1 compliance.
+- Clergy personal data (names) is excluded from fixtures; only role metadata is seeded, with actual names sourced from the RLS-scoped content API.
+- New tenant fixtures are added by dropping a JSON file into `fixtures/tenants/` and importing it in `registry.ts` so it is included in the central parsed registry.

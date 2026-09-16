@@ -9,8 +9,8 @@
  * (GDPR Art. 12 — information in the user's language, even on errors).
  */
 import { headers } from 'next/headers';
-import { getMessages, translate, isSupportedLocale } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE, LOCALE_HEADER } from '@jol-hub/i18n/config';
+import { getMessages, translate, isSupportedLocale } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE, LOCALE_HEADER } from '@journeyoflife-org/i18n/config';
 
 export default function NotFound() {
   const headerLocale = headers().get(LOCALE_HEADER);

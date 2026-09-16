@@ -1,5 +1,5 @@
 /**
- * @jol-hub/perf — Core Web Vitals budget core (STEP 13).
+ * @journeyoflife-org/perf — Core Web Vitals budget core (STEP 13).
  *
  * Lighthouse-format budget parsing, gzipped transfer-size measurement of
  * Next.js build output, and the CI gate report. Consumed by

@@ -1,0 +1,7 @@
+The package is a self-contained Next.js-compatible module built with tsup and published as `@jol-hub/tenant-resolver`. It exposes two entry points via `package.json` exports: the root (`index.ts`) provides the resolution core and public types, while `middleware.ts` wraps it for Next.js middleware. Internal layering:
+- `types.ts` defines the `Tenant`, `Vertical`, `PackageTier` contract, feature baselines (`FEATURES_BY_TIER`), slug validation (`SLUG_PATTERN`), and schema naming (`schemaForTenant`).
+- `registry.ts` builds the static tenant registry at module load by combining hand-authored Wave-1 pilot entries with derived fixtures from `@jol-hub/seed-data`, then indexes them into `ReadonlyMap` lookups by slug and domain.
+- `lru.ts` implements an edge-runtime-safe LRU cache with TTL (no Node APIs) used to memoize resolutions keyed on `effectiveHost|x-tenant`.
+- `index.ts` orchestrates resolution order — exact domain match → subdomain slug extraction → explicit `X-Tenant` header — behind `resolveTenantCore`, exposing both async `resolveTenant` and sync `resolveTenantFromHeaders` / `resolveTenantRequest` surfaces, plus a `toPublicTenant` helper that strips the server-only `schema` field before crossing into client code.
+- `middleware.ts` rewrites incoming requests to `/<locale>/<tenantId>/...` and injects `x-tenant-*` headers for downstream server components.
+Dependency direction is one-way: index → registry + lru + types; middleware → index; no external runtime dependencies beyond Next.js peer dependency.

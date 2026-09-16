@@ -1,5 +1,5 @@
 {
-  "name": "@jol-hub/commerce",
+  "name": "@journeyoflife-org/commerce",
   "version": "1.0.0",
   "description": "Commerce domain logic for JOL (booking, donations, subscriptions, shop). Framework-agnostic core: types, API client, cart/VAT math, EUR formatting, package-tier gating. React bindings live in the template renderer.",
   "exports": {

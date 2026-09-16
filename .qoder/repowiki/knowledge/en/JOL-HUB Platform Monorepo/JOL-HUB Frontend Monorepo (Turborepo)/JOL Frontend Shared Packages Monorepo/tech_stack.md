@@ -1,0 +1,1 @@
+Turborepo + pnpm workspaces as the monorepo runtime; tsup for library builds; TypeScript 5.x across all packages; Vitest for unit tests; ESLint + Prettier + Husky for shared lint/formatting; Changesets for versioning/publishing.

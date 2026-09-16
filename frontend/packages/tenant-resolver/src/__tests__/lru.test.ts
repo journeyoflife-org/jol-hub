@@ -2,7 +2,7 @@
  * LRU cache unit tests (STEP 5 performance contract: resolution cacheable,
  * 5 min TTL, bounded memory).
  *
- * Run: pnpm --filter @jol-hub/tenant-resolver test
+ * Run: pnpm --filter @journeyoflife-org/tenant-resolver test
  */
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';

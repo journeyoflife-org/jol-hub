@@ -1,0 +1,1 @@
+Zod for schema-based validation of draft blocks; DOMPurify as the final client-side HTML sanitization layer; structured text + marks (no raw HTML) as the canonical block representation.

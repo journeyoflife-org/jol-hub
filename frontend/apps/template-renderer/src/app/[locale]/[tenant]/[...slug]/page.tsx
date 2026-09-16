@@ -19,10 +19,10 @@
  */
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getMessages, translate, isSupportedLocale } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
-import type { SupportedLocale } from '@jol-hub/i18n';
-import type { TenantPage } from '@jol-hub/seed-data';
+import { getMessages, translate, isSupportedLocale } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
+import type { TenantPage } from '@journeyoflife-org/seed-data';
 import { findTenantPage, isSharedRoute } from '@/lib/content-loader';
 import { ContentApiError, fetchTenantPage } from '@/lib/content-api';
 import { SharedCompliancePage } from '@/components/SharedCompliancePage';

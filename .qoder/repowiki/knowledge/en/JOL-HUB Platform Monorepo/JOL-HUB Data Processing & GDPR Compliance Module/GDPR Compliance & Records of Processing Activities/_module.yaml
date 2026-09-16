@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: data_pipelines/gdpr_compliance
+title: GDPR Compliance & Records of Processing Activities
+scope:
+    - data/src/gdpr/
+    - data/exports/ropa/
+source_files: []
+depends_on: []
+related_to:
+    - path: data_pipelines/python_pipelines
+    - path: data_pipelines/test_suites

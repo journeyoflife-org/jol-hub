@@ -5,9 +5,9 @@
  * Booking CTAs are a NORMAL/VIP entitlement — hidden for CHEAP tenants
  * (commercial gating, per the package model).
  */
-import { ServiceCard, SectionHeader } from '@jol-hub/ui/components/composite';
-import { getMessages, translate, isSupportedLocale } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
+import { ServiceCard, SectionHeader } from '@journeyoflife-org/ui/components/composite';
+import { getMessages, translate, isSupportedLocale } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
 import { getServices } from '@/lib/collections';
 import { themeVerticalFor } from '@/lib/template-registry';
 import { tenantThemeFor, type ModuleProps } from './types';

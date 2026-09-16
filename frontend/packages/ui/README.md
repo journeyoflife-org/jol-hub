@@ -1,4 +1,4 @@
-# @jol-hub/ui
+# @journeyoflife-org/ui
 
 JOL Design System + shared component library for the JOL-HUB multi-tenant
 platform (all verticals: basilicas, cathedrals, dioceses, parishes,
@@ -69,7 +69,7 @@ CSS custom properties mirror every token: `--jol-color-<scale>-<stop>`,
 ## Theme switching API
 
 ```tsx
-import { ThemeProvider, useTheme, THEME_INIT_SCRIPT } from '@jol-hub/ui/providers';
+import { ThemeProvider, useTheme, THEME_INIT_SCRIPT } from '@journeyoflife-org/ui/providers';
 ```
 
 - `<ThemeProvider>` — React context; modes `light | dark | system`
@@ -84,8 +84,8 @@ import { ThemeProvider, useTheme, THEME_INIT_SCRIPT } from '@jol-hub/ui/provider
 Apps import, in this order:
 
 ```ts
-import '@jol-hub/ui/styles/tokens.css';  // generated custom properties
-import '@jol-hub/ui/styles/globals.css'; // reset, base, focus, a11y utils
+import '@journeyoflife-org/ui/styles/tokens.css';  // generated custom properties
+import '@journeyoflife-org/ui/styles/globals.css'; // reset, base, focus, a11y utils
 ```
 
 Globals include a targeted modern reset, `.sr-only` / `.not-sr-only`,

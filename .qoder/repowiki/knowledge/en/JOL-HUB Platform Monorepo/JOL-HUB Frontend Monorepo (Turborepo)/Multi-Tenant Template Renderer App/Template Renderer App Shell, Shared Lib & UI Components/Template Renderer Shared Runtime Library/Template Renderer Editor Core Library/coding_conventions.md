@@ -1,0 +1,3 @@
+- All editor functionality is exposed through the `@/lib/editor` barrel; consumers never import sibling files directly.
+- Rich text is represented as structured blocks with marks rather than raw HTML strings.
+- Rendering follows an escape-first strategy with URL allowlisting, then falls back to DOMPurify for any HTML output.

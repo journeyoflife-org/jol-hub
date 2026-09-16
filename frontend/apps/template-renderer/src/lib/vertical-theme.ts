@@ -11,8 +11,8 @@
  * All verticals share ONE component library; differentiation is data (accent,
  * variant, composition), never duplicated components.
  */
-import type { Vertical } from '@jol-hub/tenant-resolver';
-import type { HeroVariant } from '@jol-hub/ui';
+import type { Vertical } from '@journeyoflife-org/tenant-resolver';
+import type { HeroVariant } from '@journeyoflife-org/ui';
 
 export interface VerticalTheme {
   /** Value assigned to the `--vertical-accent` custom property. */

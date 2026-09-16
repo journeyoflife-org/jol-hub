@@ -1,5 +1,5 @@
 /**
- * @jol-hub/commerce — commerce domain core (STEP 8).
+ * @journeyoflife-org/commerce — commerce domain core (STEP 8).
  *
  * Framework-agnostic logic: types, API client, cart/VAT math, EUR formatting,
  * package-tier capability gating. React bindings (hooks + components) live in

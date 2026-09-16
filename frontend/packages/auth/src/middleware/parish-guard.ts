@@ -266,7 +266,7 @@ function checkParishAccess(
  * @example
  * ```typescript
  * // In your middleware.ts
- * import { createParishGuardMiddleware } from '@jol-hub/auth/middleware';
+ * import { createParishGuardMiddleware } from '@journeyoflife-org/auth/middleware';
  * 
  * const parishGuard = createParishGuardMiddleware({
  *   publicPaths: ['/', '/auth', '/api/auth'],

@@ -1,0 +1,6 @@
+- Security-sensitive constants (allowed tags, URL allowlist, block type enums, text length limits) are declared as `readonly` or `as const` tuples and imported rather than redefined, so sanitization and validation stay in lockstep.
+- URL safety is enforced centrally via `isSafeUrl` and reused by both the renderer (`renderMarkedText`, button href) and the Zod schemas (link refinement, button href check), avoiding ad-hoc URL checks.
+- All user-supplied text is escaped through `escapeHtml` before being concatenated into HTML strings, ensuring no raw markup can reach the output even if block types change.
+- Validation uses Zod `superRefine` / `.refine` for per-type constraints (length caps, required alt text, reason requirement) rather than separate validators, keeping one source of truth per block shape.
+- Moderation status values are modeled as discriminated union literals (`'pending' | 'scanning' | 'approved' | ...`) and helper predicates (`decisionRequiresReason`, `isArt9Item`) encode business rules instead of inline conditionals.
+- Prohibited-content scanning returns typed finding arrays (`ProhibitedFinding[]`) with stable `code` identifiers and `severity: 'warn'`, so callers can surface warnings without blocking autosave.

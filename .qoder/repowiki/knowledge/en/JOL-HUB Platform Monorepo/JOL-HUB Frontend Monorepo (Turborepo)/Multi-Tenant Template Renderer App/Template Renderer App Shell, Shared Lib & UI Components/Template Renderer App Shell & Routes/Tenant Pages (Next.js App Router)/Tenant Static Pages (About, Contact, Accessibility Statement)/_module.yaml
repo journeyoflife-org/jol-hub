@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes/tenant_pages/tenant_static_pages
+title: Tenant Static Pages (About, Contact, Accessibility Statement)
+scope:
+    - frontend/apps/template-renderer/src/app/[locale]/[tenant]/about/
+    - frontend/apps/template-renderer/src/app/[locale]/[tenant]/contact/
+    - frontend/apps/template-renderer/src/app/[locale]/[tenant]/accessibility-statement/
+source_files: []
+depends_on: []
+related_to: []

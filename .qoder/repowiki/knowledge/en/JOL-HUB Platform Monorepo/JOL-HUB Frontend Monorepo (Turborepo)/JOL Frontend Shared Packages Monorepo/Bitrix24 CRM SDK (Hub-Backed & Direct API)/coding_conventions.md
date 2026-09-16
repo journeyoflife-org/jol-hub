@@ -1,0 +1,6 @@
+- Each Bitrix24 REST domain is implemented as a class under `src/api/` that takes the parent `Bitrix24Client` via constructor injection and delegates to its `get`/`post` methods with the canonical method string (e.g. `crm.contact.get`).
+- The hub-backed client returns a discriminated union `CrmResult<T> = { ok: true; data } | { ok: false; error: CrmApiError }` instead of throwing, letting callers branch on `ok` without try/catch.
+- Errors are classified into the closed `CrmErrorKind` union via `classifyStatus(status)` and surfaced with human-safe messages produced by `messageFor(kind, detail)`, which truncates upstream detail to 200 chars.
+- Retries use exponential backoff driven by the pure `backoffDelay(attempt, baseMs)` helper, with GET requests retried on `rate-limit/server/network/timeout` and mutations retried only on `rate-limit` to avoid duplicate side effects.
+- Tenant isolation is enforced by passing `tenantSlug` to every backend request and forwarding it as the `X-Tenant` header; URL segments containing IDs are always `encodeURIComponent`d before interpolation.
+- React hooks in `src/hooks.ts` resolve their `CrmBackendClient` from an explicit option or a module-scoped registry set via `provideCrmClient`, and expose a uniform `{ available, data, loading, error, reload }` shape via the shared `useCrmQuery` primitive.

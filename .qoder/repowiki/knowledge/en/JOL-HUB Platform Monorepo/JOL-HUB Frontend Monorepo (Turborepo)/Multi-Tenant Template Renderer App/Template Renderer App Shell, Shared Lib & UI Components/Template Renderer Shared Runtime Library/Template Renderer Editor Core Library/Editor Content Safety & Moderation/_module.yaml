@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/editor_blocks/content_safety
+title: Editor Content Safety & Moderation
+scope:
+    - frontend/apps/template-renderer/src/lib/editor/moderation.ts
+    - frontend/apps/template-renderer/src/lib/editor/sanitize.ts
+    - frontend/apps/template-renderer/src/lib/editor/validation.ts
+source_files: []
+depends_on: []
+related_to: []

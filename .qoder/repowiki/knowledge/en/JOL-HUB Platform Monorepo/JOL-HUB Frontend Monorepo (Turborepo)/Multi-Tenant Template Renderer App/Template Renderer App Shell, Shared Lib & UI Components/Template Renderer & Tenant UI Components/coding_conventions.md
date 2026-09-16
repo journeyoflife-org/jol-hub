@@ -1,0 +1,6 @@
+- Each feature subdirectory exposes a barrel `index.ts` that re-exports only the public components and their props types, with a header comment documenting the STEP number and security/integration boundary.
+- New content blocks are added by extending the `BlockView` switch in `TemplateRenderer.tsx` and returning `null` for unknown types via an exhaustive `_exhaustive: never` guard to prevent leaking raw fixture payloads.
+- Localized strings are resolved through a local `t(LocalizedText)` helper that prefers Lithuanian (`lt`) over English (`en`), applied consistently to headings, body text, image alt attributes, and labels.
+- Client-side stateful features wrap pure logic from `@jol-hub/*` packages in a React Context Provider that persists data to `localStorage` keyed by tenant slug, isolating multi-tenant state at rest.
+- Telemetry and analytics components read consent from the `jol-cookie-consent` localStorage key and short-circuit all network calls when `analytics` is not true, treating missing/corrupt consent as opt-out.
+- All cross-origin or sensitive integrations (Bitrix24 CRM, Stripe commerce, OIDC auth) are routed through same-origin Next.js API routes (`/api/crm/*`, `/api/perf`, NextAuth endpoints); components never hold tokens or call external services directly.

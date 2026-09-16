@@ -45,7 +45,7 @@ valid tenants (GDPR Art. 9 information disclosure, SOC 2 CC6.1).
 Local development:
 
 ```bash
-pnpm --filter @jol-hub/template-renderer dev
+pnpm --filter @journeyoflife-org/template-renderer dev
 curl -H "X-Tenant: parish-st-john-vilnius" http://localhost:3000/
 ```
 

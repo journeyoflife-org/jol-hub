@@ -1,0 +1,1 @@
+The editor runs in pilot mode when `editorConfigured` is false — autosave reports 'not configured', publish stays local, and uploads show 'quarantine pending backend' without any real storage surface. A 2-hour session timeout (`EDITOR_LIMITS.sessionTimeoutMs`) auto-expires editing and requires re-auth before further mutations.

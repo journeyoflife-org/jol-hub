@@ -1,0 +1,5 @@
+- All contributors must use GitFlow branches (main/develop/feature/release/hotfix/fix) and Conventional Commits with scope prefixes like `feat(backend):` or `docs(readme):`.
+- Every commit must be GPG-signed and PRs to main require two approvals enforced via branch protection rules.
+- Secrets are never committed; sensitive values are loaded from `.env` locally and from a secrets manager in production, referenced uniformly as `DATABASE_URL`, `REDIS_URL`, `MONGODB_URI`, `DJANGO_SECRET_KEY`, etc.
+- Cross-cutting concerns (security reviews, compliance checks, code quality) are gated through GitHub workflows and CODEOWNERS rather than ad-hoc scripts.
+- Country-specific behavior is externalized into per-country config directories under `countries/` instead of being hard-coded in backend/frontend logic.

@@ -1,0 +1,1 @@
+Tests are run with `pytest` from the repository root; each file also supports direct execution via `if __name__ == "__main__": pytest.main([__file__, "-v"])`. The `test_compliance.py` suite expects a `countries/lt/config/compliance.yml` file to be present for country-scoped checks.

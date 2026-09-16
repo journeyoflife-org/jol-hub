@@ -1,0 +1,6 @@
+- Every route validates incoming data before any configuration check — malformed payloads always return 400 regardless of backend availability.
+- Tenant identifiers are validated against a strict regex pattern (`SLUG_PATTERN` or inline `[a-z0-9-]{1,64}`) and length-capped before being forwarded to downstream clients.
+- Optional integrations are gated by `isXxxConfigured()` checks that return `{ error: 'unconfigured' }` with status 503 when the corresponding backend is absent.
+- Backend errors are normalized by mapping `result.error.kind` (e.g. `auth`, `validation`, `auth-rotation`, `rate-limit`) to specific HTTP status codes (403/400/429/502/503) with a consistent `{ error, retryable? }` JSON shape.
+- Telemetry and perf ingestion routes use Zod schemas plus in-memory IP-based rate limiting (`clientIp` + `isRateLimited`) and silently drop failures so reporting never surfaces as client errors.
+- Pilot-mode endpoints accept and acknowledge requests with 204 responses when `BACKEND_API_URL` is unset, keeping the frontend functional without a backend.

@@ -1,0 +1,5 @@
+- Pages resolve tenant context through `resolveTenantRoute(params)` and derive display names/descriptions via `tenantDisplayName`/`tenantTagline` before building metadata with `buildTenantMetadata`.
+- Rendering uses a fixture-first strategy: call `renderFixtureRoute(fixture, '/<route>', basePath)` and return early if present; otherwise parse a default config via `parsePageConfig(buildXxxConfig(), '/<route>')` and compose with `PageComposer`.
+- Structured data is emitted by constructing an `organizationEntity` linked to the tenant and wrapping a `webPageEntity` (`AboutPage`/`ContactPage`) inside `<JsonLd>` with absolute URLs from `absoluteUrl(basePath + route)`.
+- User-facing strings are always looked up via `translate(getMessages(locale), key)` rather than hardcoded text, including route titles and section headings.
+- Loading boundaries are implemented as route-level `loading.tsx` files using `Skeleton` components with `aria-busy`/`aria-live` attributes, deliberately avoiding a tenant-level loading file to preserve hard 404 behavior.

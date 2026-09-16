@@ -1,5 +1,5 @@
 {
-  "name": "@jol-hub/observability",
+  "name": "@journeyoflife-org/observability",
   "version": "1.0.0",
   "description": "Observability core for the JOL frontend (STEP 16): zero-dependency structured JSON logging with PII redaction, error categorization/fingerprinting/breadcrumbs, client performance batching, and health aggregation. Pure logic — no React/Next imports; safe for server, client and edge.",
   "exports": {

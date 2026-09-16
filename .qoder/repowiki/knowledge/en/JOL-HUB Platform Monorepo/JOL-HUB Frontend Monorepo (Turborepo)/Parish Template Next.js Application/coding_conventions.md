@@ -1,0 +1,6 @@
+- Locale handling is centralized: supported locales are declared as a `const SUPPORTED_LOCALE = ['lt','ru','en'] as const` tuple and validated via a local `isSupportedLocale` type guard before rendering or redirecting.
+- Each template page exports a top-level `metadata` object using the Next.js Metadata API and declares a page-level `revalidate` value (e.g. 600s for home, 3600s for obituaries) to enable ISR.
+- Server components perform parallel async data fetching with `Promise.all([...])` and render loading placeholders via `Suspense` around heavy client components such as maps, livestream embeds, and forms.
+- Per-template feature components are colocated in a `_components/` directory next to their owning `page.tsx`, keeping each template self-contained while sharing only cross-cutting concerns through `@jol-hub/ui`.
+- Tenant context flows from the edge middleware into pages exclusively via HTTP headers (`x-subdomain`, `x-parish-locale`, `x-locale`) read with `next/headers`, never via cookies on the client side.
+- External integrations (Bitrix24, 1C-Bitrix CMS, Django API) are accessed through functions that fall back to mock data when environment variables are missing, so the app builds and previews without a live backend.

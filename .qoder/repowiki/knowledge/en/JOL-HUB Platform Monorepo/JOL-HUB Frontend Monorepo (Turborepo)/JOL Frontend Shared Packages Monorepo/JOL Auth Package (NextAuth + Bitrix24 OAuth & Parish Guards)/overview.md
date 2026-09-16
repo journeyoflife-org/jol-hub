@@ -1,0 +1,1 @@
+Shared authentication package providing NextAuth integration with a custom Bitrix24 OAuth2 provider, parish-level access middleware, OIDC utilities, and React session hooks for the JOL frontend.

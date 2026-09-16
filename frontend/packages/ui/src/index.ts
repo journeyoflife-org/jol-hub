@@ -95,7 +95,7 @@ export type { ServiceScheduleProps, ScheduleItem } from './components/service-sc
 
 // Donation surface: the legacy PSP-integrated flat widget was REMOVED (O-021
 // STAGED-REMOVAL, ADR-009 Model A). The SAQ-A-eligible shell lives in the
-// composite barrel only: '@jol-hub/ui/components/composite'.
+// composite barrel only: '@journeyoflife-org/ui/components/composite'.
 
 // GDPR Cookie Consent
 export {
@@ -151,7 +151,7 @@ export type {
 // STEP 3/4 shared component library (tenant-aware, i18n-driven)
 // Primitive names above stay LEGACY (existing apps depend on them); the
 // new surfaces use distinct names or dedicated subpath barrels:
-//   '@jol-hub/ui/components/primitives' | '/composite' | '/layout' | '/accessibility'
+//   '@journeyoflife-org/ui/components/primitives' | '/composite' | '/layout' | '/accessibility'
 // ==========================================================================
 
 // Layout chrome
@@ -225,7 +225,7 @@ export { OnboardingSteps } from './components/composite/onboarding-steps';
 export type { OnboardingStepsProps, OnboardingStep } from './components/composite/onboarding-steps';
 // NOTE: legacy flat `ContactForm` above keeps its root-barrel name for
 // back-compat; the STEP 3 versions are exposed via the composite barrel:
-// '@jol-hub/ui/components/composite' (incl. the Model-A-compliant
+// '@journeyoflife-org/ui/components/composite' (incl. the Model-A-compliant
 // DonationWidget shell, O-021).
 export { contactFormSchema } from './components/composite/contact-form';
 export type { ContactFormValues } from './components/composite/contact-form';

@@ -1,0 +1,1 @@
+No build or runtime commands; configurations are loaded at application startup by the parent system based on the `country_code` field in each file. The `lt/test-parish-lt-5/parish.json` serves as a seed fixture for test parish creation.

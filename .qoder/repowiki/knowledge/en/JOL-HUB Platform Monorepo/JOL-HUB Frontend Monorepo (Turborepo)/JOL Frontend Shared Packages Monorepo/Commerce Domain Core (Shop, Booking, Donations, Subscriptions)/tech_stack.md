@@ -1,0 +1,1 @@
+TypeScript compiled via tsup to ESM/CJS with source maps; tests run with `tsx --test`; published to GitHub Packages (`npm.pkg.github.com`).

@@ -1,0 +1,1 @@
+Tenant-context validation depends on `apps.crm.middleware.get_current_tenant_id`; when that middleware is absent (e.g., outside request context or during migrations) the save hook falls through silently via `ImportError`/exception catch, so tenant checks are best-effort unless the CRM middleware is installed.

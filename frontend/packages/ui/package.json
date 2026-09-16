@@ -1,5 +1,5 @@
 {
-  "name": "@jol-hub/ui",
+  "name": "@journeyoflife-org/ui",
   "version": "1.0.0",
   "description": "JOL design system: Radix-based primitives, composite components, layout families, design tokens, and Tailwind configuration.",
   "exports": {
@@ -74,7 +74,7 @@
     "verify": "tsc --noEmit && tsx --test src/__tests__/*.test.ts && tsx scripts/check-contrast.ts && tsx scripts/check-a11y.tsx"
   },
   "dependencies": {
-    "@jol-hub/i18n": "workspace:*",
+    "@journeyoflife-org/i18n": "workspace:*",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-checkbox": "^1.0.4",

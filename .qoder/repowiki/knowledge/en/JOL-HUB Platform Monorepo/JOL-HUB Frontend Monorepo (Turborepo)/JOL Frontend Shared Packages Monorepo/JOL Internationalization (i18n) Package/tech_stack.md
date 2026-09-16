@@ -1,0 +1,1 @@
+i18next + react-i18next for legacy runtime; intl-messageformat for ICU pluralization/formatting; DeepL SDK (deepl-node) for optional machine translation; Next.js Edge Runtime middleware; built with tsup targeting ESM/CJS; published to GitHub Packages registry.

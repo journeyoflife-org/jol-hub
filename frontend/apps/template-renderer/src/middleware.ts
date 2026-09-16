@@ -14,19 +14,19 @@
  * - X-Tenant-* headers are REQUEST headers: server-only, never emitted
  *   to the browser. The schema header is the RLS context for backend calls.
  */
-import { withTenantResolution } from '@jol-hub/tenant-resolver/middleware';
-import { resolveTenantRequest } from '@jol-hub/tenant-resolver';
-import { withLocaleResolution } from '@jol-hub/i18n/middleware';
-import { getMessages, translate } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
-import { isKnownTenant } from '@jol-hub/seed-data';
+import { withTenantResolution } from '@journeyoflife-org/tenant-resolver/middleware';
+import { resolveTenantRequest } from '@journeyoflife-org/tenant-resolver';
+import { withLocaleResolution } from '@journeyoflife-org/i18n/middleware';
+import { getMessages, translate } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
+import { isKnownTenant } from '@journeyoflife-org/seed-data';
 import { getToken } from 'next-auth/jwt';
-import { isAuthConfigured } from '@jol-hub/auth/oidc';
+import { isAuthConfigured } from '@journeyoflife-org/auth/oidc';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 import { clientIp, isLoginRateLimited, isRateLimited } from '@/lib/rate-limit';
-import { createLogger } from '@jol-hub/observability';
+import { createLogger } from '@journeyoflife-org/observability';
 
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 

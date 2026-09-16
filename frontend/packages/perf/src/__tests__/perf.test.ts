@@ -1,9 +1,9 @@
 /**
- * @jol-hub/perf tests — STEP 13.
+ * @journeyoflife-org/perf tests — STEP 13.
  *
  * Budget parsing/validation, gzipped footprint computation, gate
  * evaluation and polyfill exclusion. Run via
- * `pnpm --filter @jol-hub/perf test` (tsx --test).
+ * `pnpm --filter @journeyoflife-org/perf test` (tsx --test).
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';

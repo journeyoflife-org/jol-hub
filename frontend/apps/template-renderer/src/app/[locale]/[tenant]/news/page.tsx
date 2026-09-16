@@ -13,9 +13,9 @@
  * SEO: ItemList + BreadcrumbList JSON-LD, canonical/hreflang/OG.
  */
 import type { Metadata } from 'next';
-import { getMessages, translate, formatDate } from '@jol-hub/i18n';
-import type { SupportedLocale } from '@jol-hub/i18n';
-import { NewsCard } from '@jol-hub/ui/components/composite';
+import { getMessages, translate, formatDate } from '@journeyoflife-org/i18n';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
+import { NewsCard } from '@journeyoflife-org/ui/components/composite';
 import { getNews, paginate } from '@/lib/collections';
 import type { NewsItem } from '@/lib/collections';
 import { JsonLd, breadcrumbEntity, itemListEntity } from '@/lib/json-ld';

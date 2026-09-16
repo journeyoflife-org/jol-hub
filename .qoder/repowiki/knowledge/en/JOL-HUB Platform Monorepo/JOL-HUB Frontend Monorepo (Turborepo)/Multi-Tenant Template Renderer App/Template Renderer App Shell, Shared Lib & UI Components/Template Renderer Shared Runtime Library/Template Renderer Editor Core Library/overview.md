@@ -1,0 +1,1 @@
+Barrel library that wires the editor's pure block model, diffing, sanitization, moderation, validation, and backend client into a single escape-first rich-text editing surface for the template renderer app.

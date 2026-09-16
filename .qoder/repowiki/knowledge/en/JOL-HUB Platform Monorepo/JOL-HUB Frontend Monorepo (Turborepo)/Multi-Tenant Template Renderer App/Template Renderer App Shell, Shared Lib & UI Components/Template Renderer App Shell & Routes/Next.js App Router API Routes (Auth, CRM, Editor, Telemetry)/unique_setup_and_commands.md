@@ -1,0 +1,1 @@
+Routes rely on runtime env vars `BACKEND_API_URL` and `BACKEND_SERVICE_TOKEN` to gate backend forwarding; when unconfigured they enter pilot mode returning 204/503 so the app stays usable without a backend. The health probe enforces a 1.5s per-dependency timeout via `withTimeout` from `@jol-hub/observability`.

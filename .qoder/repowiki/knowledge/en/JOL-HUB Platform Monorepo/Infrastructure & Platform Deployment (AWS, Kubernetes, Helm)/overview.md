@@ -1,0 +1,1 @@
+Defines the JOL-HUB platform infrastructure on AWS via Terraform and ships application manifests for deployment to ECS or Kubernetes through Kustomize and a Helm chart.

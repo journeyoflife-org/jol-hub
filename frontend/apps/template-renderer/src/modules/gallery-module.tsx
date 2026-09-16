@@ -5,8 +5,8 @@
  * `alt` is mandatory per the ui contract (type-level enforcement). Renders
  * nothing when no valid images are provided.
  */
-import { Gallery } from '@jol-hub/ui/components/composite';
-import type { GalleryImage } from '@jol-hub/ui/components/composite';
+import { Gallery } from '@journeyoflife-org/ui/components/composite';
+import type { GalleryImage } from '@journeyoflife-org/ui/components/composite';
 import type { ModuleProps } from './types';
 
 function asString(value: unknown): string | undefined {

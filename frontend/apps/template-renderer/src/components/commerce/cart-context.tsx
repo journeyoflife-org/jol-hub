@@ -1,7 +1,7 @@
 /**
  * Cart React binding — STEP 8.
  *
- * Wraps the pure cart logic from `@jol-hub/commerce` with React state +
+ * Wraps the pure cart logic from `@journeyoflife-org/commerce` with React state +
  * localStorage persistence so the cart survives client navigation.
  *
  * GDPR Art. 9 / tenant isolation: the persisted cart is NAMESPACED by the
@@ -29,7 +29,7 @@ import {
   unitCount,
   type Cart,
   type CartItem,
-} from '@jol-hub/commerce';
+} from '@journeyoflife-org/commerce';
 import { useTenant } from '@/lib/tenant-context';
 
 const STORAGE_PREFIX = 'jol.cart.v1.';

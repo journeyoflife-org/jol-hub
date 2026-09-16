@@ -12,8 +12,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useAuth, useHasRole, useTenantRole } from '@jol-hub/auth/oidc/hooks';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
+import { useAuth, useHasRole, useTenantRole } from '@journeyoflife-org/auth/oidc/hooks';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
 
 export interface UserMenuProps {
   /** Tenant URL prefix, e.g. `/lt/siauliai-church`. */

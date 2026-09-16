@@ -6,8 +6,8 @@
  * is i18n-driven (no literals) and works without client JS (links + GET
  * forms), matching the SSR / progressive-enhancement contract.
  */
-import { getMessages, translate, translateWithValues } from '@jol-hub/i18n';
-import type { SupportedLocale } from '@jol-hub/i18n';
+import { getMessages, translate, translateWithValues } from '@journeyoflife-org/i18n';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
 import { collectionHref } from '@/lib/collection-view';
 
 export interface CollectionPageHeaderProps {

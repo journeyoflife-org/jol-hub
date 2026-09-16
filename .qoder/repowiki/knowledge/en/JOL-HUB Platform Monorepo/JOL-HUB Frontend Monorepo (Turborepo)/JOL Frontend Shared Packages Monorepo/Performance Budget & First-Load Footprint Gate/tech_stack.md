@@ -1,0 +1,1 @@
+TypeScript compiled with tsup (ESM + CJS, dts generation, source maps); tests run via `tsx --test`; published to GitHub Packages registry as `@jol-hub/perf`.

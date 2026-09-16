@@ -1,0 +1,1 @@
+Zero-dependency TypeScript library providing structured JSON logging with PII redaction, error categorization/fingerprinting/breadcrumbs, client performance batching, and health-check aggregation for the JOL frontend.

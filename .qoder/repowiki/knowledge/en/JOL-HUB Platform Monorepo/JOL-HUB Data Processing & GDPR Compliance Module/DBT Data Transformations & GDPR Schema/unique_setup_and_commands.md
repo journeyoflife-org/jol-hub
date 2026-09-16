@@ -1,0 +1,1 @@
+Schema provisioning requires running `data/sql/schema_setup/001_initial_schema.sql` first to create extensions and audit/GDPR tables; DBT models are built per layer via `dbt run --select tag=gdpr` or by folder (`staging`, `intermediate`, `marts`); PII visibility is toggled at build time through the `include_pii` variable (`dbt run --vars '{"include_pii": "true"}'`).

@@ -1,0 +1,1 @@
+Shared Next.js i18n package providing locale resolution, message catalogs with vertical overrides, React translation providers/hooks, and DeepL-assisted liturgical translation for the JOL multilingual platform.

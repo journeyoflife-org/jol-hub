@@ -10,10 +10,10 @@ them — automation catches ~40% of real-world a11y issues):
 
 | Gate | Command | Coverage |
 | --- | --- | --- |
-| Component showcase axe audit | `pnpm --filter @jol-hub/ui check-a11y` | every ui component, all variants |
-| Token contrast pairs | `pnpm --filter @jol-hub/ui check-contrast` | 26 documented fg/bg pairs, AA ratios |
+| Component showcase axe audit | `pnpm --filter @journeyoflife-org/ui check-a11y` | every ui component, all variants |
+| Token contrast pairs | `pnpm --filter @journeyoflife-org/ui check-contrast` | 26 documented fg/bg pairs, AA ratios |
 | Critical page axe audit | `pnpm --filter template-renderer check-a11y` | home, about, contact, news, events, services, accessibility-statement |
-| Structural checkers | inside the page gate (`@jol-hub/a11y`) | headings, alt text, focus order, form labels, ARIA, banned link text |
+| Structural checkers | inside the page gate (`@journeyoflife-org/a11y`) | headings, alt text, focus order, form labels, ARIA, banned link text |
 
 Result on 2026-08-25: **0 axe violations on all 7 critical pages; 0 on the
 component showcase; 26/26 contrast pairs pass.**
@@ -103,7 +103,7 @@ No time limits, no `meta refresh`, no auto-advancing content. PASS
 Playwright is not available offline; user-flow audits (login, booking,
 donation, contact submission) are covered by the manual passes above until
 the harness lands. Integration point: `buildAxeOptions({ browserHarness:
-true })` from `@jol-hub/a11y` re-enables the jsdom-exempt rules (e.g.
+true })` from `@journeyoflife-org/a11y` re-enables the jsdom-exempt rules (e.g.
 rendered color-contrast) for real-browser runs.
 
 ## Regression policy

@@ -1,0 +1,1 @@
+Django ORM with DRF viewsets, drf-spectacular OpenAPI annotations, django-filter, simplejwt for tenant extraction, cryptography Fernet (AES-128-CBC) for PII encryption, and an external `integrations.bitrix24` client for Bitrix24 CRM sync with circuit-breaker failover.

@@ -1,0 +1,1 @@
+Local development is started with `docker compose up -d` from the repository root, which provisions PostgreSQL 16, Redis 7, MongoDB 7, the Django dev server, a Celery worker, and a Celery Beat scheduler; Python venv lives at `/opt/jol/venvs/jol-hub` and frontend deps are installed via `npm install` inside `frontend/`.

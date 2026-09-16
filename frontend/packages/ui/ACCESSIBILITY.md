@@ -1,4 +1,4 @@
-# @jol-hub/ui — Accessibility Guidelines (WCAG 2.2 AA)
+# @journeyoflife-org/ui — Accessibility Guidelines (WCAG 2.2 AA)
 
 Every component in this library ships accessible by default and is gated by
 `pnpm check-a11y` (axe-core, WCAG 2.0–2.2 A+AA tags) plus
@@ -63,7 +63,7 @@ Every component in this library ships accessible by default and is gated by
 ## Verification workflow
 
 1. Add/modify component → update the `Showcase` page (all major variants).
-2. `pnpm --filter @jol-hub/ui verify` (type-check + contrast + axe).
+2. `pnpm --filter @journeyoflife-org/ui verify` (type-check + contrast + axe).
 3. App-level: re-run `pnpm --filter template-renderer check-a11y`.
 4. Record manual findings in `frontend/docs/a11y-audit.md`.
 

@@ -1,0 +1,1 @@
+`pnpm build` runs tsup to emit `dist/`; `pnpm verify` chains type-checking, unit tests (`tsx --test src/__tests__/*.test.ts`), contrast checking (`scripts/check-contrast.ts`), and axe-a11y auditing (`scripts/check-a11y.tsx`); `pnpm generate:tokens` regenerates `src/styles/tokens.css` from token definitions.

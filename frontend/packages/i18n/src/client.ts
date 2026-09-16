@@ -1,14 +1,14 @@
 'use client';
 
 /**
- * Client-only exports for @jol-hub/i18n
+ * Client-only exports for @journeyoflife-org/i18n
  *
- * Import from '@jol-hub/i18n/client' in any file that uses these in a
+ * Import from '@journeyoflife-org/i18n/client' in any file that uses these in a
  * Client Component (file must have 'use client' directive or be a client
  * component already).
  *
- * Server-safe utilities (getLocaleFromPath, types, middleware) remain in '@jol-hub/i18n'.
- * Server-only DeepL SDK functions are in '@jol-hub/i18n/server'.
+ * Server-safe utilities (getLocaleFromPath, types, middleware) remain in '@journeyoflife-org/i18n'.
+ * Server-only DeepL SDK functions are in '@journeyoflife-org/i18n/server'.
  */
 
 // i18next initialization (requires react-i18next — client only)

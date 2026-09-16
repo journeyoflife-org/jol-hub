@@ -1,0 +1,6 @@
+- Domain value sets are declared as class-level string constants (e.g. `TYPE_CHURCH`, `STATUS_ACTIVE`, `ROLE_ADMIN`) paired with a `*_CHOICES` list of `(value, _('Label'))` tuples for database fields.
+- Models inherit from `apps.core.models.BaseModel` and use `verbose_name=_('...')` with `gettext_lazy` for all field labels to support i18n.
+- Multi-tenant safety is enforced by overriding `save()` to call a private `_validate_tenant_context()` method that imports `get_current_tenant_id` lazily and raises `ValidationError` on cross-tenant writes.
+- DRF serializers subclass `BaseModelSerializer` from `apps.core.serializers` and split read/write contracts into separate serializer classes (e.g., `OrganizationSerializer` vs `OrganizationCreateSerializer`) rather than using `read_only_fields` alone.
+- Soft deletion is used throughout: queries filter `is_deleted=False` and `perform_destroy` calls `instance.soft_delete()` instead of hard deletes.
+- Admin registrations use `@admin.register(Model)` decorators with `list_display`, `list_filter`, `search_fields`, and `readonly_fields` configured per model.

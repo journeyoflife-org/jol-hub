@@ -1,7 +1,7 @@
 'use client';
 
 import { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from './toast';
-import { useToast } from '@jol-hub/ui';
+import { useToast } from '@journeyoflife-org/ui';
 
 export function Toaster() {
   const { toasts } = useToast();

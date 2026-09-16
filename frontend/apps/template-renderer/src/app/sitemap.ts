@@ -11,7 +11,7 @@
  *
  * STEP 11 additions:
  *   - ABSOLUTE URLs (protocol + public domain);
- *   - changefreq/priority from `@jol-hub/seo` SITEMAP_POLICY
+ *   - changefreq/priority from `@journeyoflife-org/seo` SITEMAP_POLICY
  *     (home=daily/1.0, news=daily/0.8, events=hourly/0.9, others monthly/0.5);
  *   - registry-only tenants (no fixture content) emit the base route set;
  *   - collection detail URLs (news/events/services) once the backend content
@@ -25,9 +25,9 @@
  */
 import type { MetadataRoute } from 'next';
 import { headers } from 'next/headers';
-import { SUPPORTED_LOCALES } from '@jol-hub/i18n';
-import { buildHreflangSet, SITEMAP_POLICY, type SeoPageKind } from '@jol-hub/seo';
-import { findTenantBySlug } from '@jol-hub/tenant-resolver';
+import { SUPPORTED_LOCALES } from '@journeyoflife-org/i18n';
+import { buildHreflangSet, SITEMAP_POLICY, type SeoPageKind } from '@journeyoflife-org/seo';
+import { findTenantBySlug } from '@journeyoflife-org/tenant-resolver';
 import { loadTenantFixture, SHARED_ROUTES } from '@/lib/content-loader';
 import { isContentApiConfigured } from '@/lib/content-api';
 import { getNews, getEvents, getServices } from '@/lib/collections';

@@ -1,0 +1,1 @@
+Next.js `Metadata` API for SEO; `next/headers` for request-origin resolution; schema.org vocabulary emitted as raw JSON-LD strings (no `schema-dts` dependency to support offline builds); validated against Google Rich Results test.

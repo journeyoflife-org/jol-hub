@@ -19,7 +19,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
 import { ALLOWED_IMAGE_TYPES, EDITOR_LIMITS, type MediaLibraryItem } from '@/lib/editor';
 
 const MAX_DIMENSION = 8192;
