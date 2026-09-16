@@ -39,13 +39,7 @@ function contactLabel(locale: SupportedLocale): string {
 }
 
 /** Tenant contact-info card from fixture identity (omits absent fields). */
-function ContactInfoCard({
-  fixture,
-  locale,
-}: {
-  fixture: TenantFixture;
-  locale: SupportedLocale;
-}) {
+function ContactInfoCard({ fixture, locale }: { fixture: TenantFixture; locale: SupportedLocale }) {
   const messages = getMessages(locale);
   const rows = [
     { label: translate(messages, 'collections.addressLabel'), value: fixture.identity?.address },
@@ -57,14 +51,14 @@ function ContactInfoCard({
 
   return (
     <section aria-labelledby="contact-info-heading" className="container mx-auto px-4">
-      <h2 id="contact-info-heading" className="text-2xl font-heading font-bold text-primary mb-4">
+      <h2 id="contact-info-heading" className="font-heading text-primary mb-4 text-2xl font-bold">
         {contactLabel(locale)}
       </h2>
       <dl className="grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
         {rows.map((row) => (
           <div key={row.label}>
             <dt className="text-sm text-gray-500">{row.label}</dt>
-            <dd className="font-medium break-words">{row.value}</dd>
+            <dd className="break-words font-medium">{row.value}</dd>
           </div>
         ))}
       </dl>
@@ -126,7 +120,7 @@ export default async function TenantContactPage({ params }: { params: TenantCont
       {jsonLd}
       <div className="space-y-12 py-12 md:py-16">
         <header className="container mx-auto px-4">
-          <h1 className="text-3xl md:text-4xl font-heading font-bold text-primary">
+          <h1 className="font-heading text-primary text-3xl font-bold md:text-4xl">
             {contactLabel(locale)}
           </h1>
         </header>

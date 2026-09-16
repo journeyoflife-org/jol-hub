@@ -82,15 +82,16 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const addItem = useCallback<CartContextValue['addItem']>(
     (item) => setCart((prev) => addToCart(prev, item)),
-    [],
+    []
   );
   const removeItem = useCallback<CartContextValue['removeItem']>(
     (productId, variant) => setCart((prev) => removeFromCart(prev, productId, variant)),
-    [],
+    []
   );
   const setQuantity = useCallback<CartContextValue['setQuantity']>(
-    (productId, quantity, variant) => setCart((prev) => setCartQuantity(prev, productId, quantity, variant)),
-    [],
+    (productId, quantity, variant) =>
+      setCart((prev) => setCartQuantity(prev, productId, quantity, variant)),
+    []
   );
   const clear = useCallback(() => setCart(emptyCart()), []);
   const openCart = useCallback(() => setIsOpen(true), []);
@@ -110,7 +111,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       openCart,
       closeCart,
     }),
-    [cart, addItem, removeItem, setQuantity, clear, isOpen, openCart, closeCart],
+    [cart, addItem, removeItem, setQuantity, clear, isOpen, openCart, closeCart]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

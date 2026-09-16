@@ -35,11 +35,7 @@ function hexToRgb(hex: string): [number, number, number] {
 
 export function relativeLuminance(hex: string): number {
   const [r, g, b] = hexToRgb(hex);
-  return (
-    0.2126 * channelToLinear(r) +
-    0.7152 * channelToLinear(g) +
-    0.0722 * channelToLinear(b)
-  );
+  return 0.2126 * channelToLinear(r) + 0.7152 * channelToLinear(g) + 0.0722 * channelToLinear(b);
 }
 
 export function contrastRatio(fg: string, bg: string): number {
@@ -73,42 +69,142 @@ const stopValue = (scale: ColorScaleName, stop: Stop): string => colorScales[sca
  */
 const pairs: ContrastPair[] = [
   // Body text — light & dark surfaces
-  { contract: 'body text on light surface', fg: ['neutral', 900], bg: ['neutral', 50], threshold: 4.5 },
-  { contract: 'body text on dark surface', fg: ['neutral', 50], bg: ['neutral', 950], threshold: 4.5 },
-  { contract: 'muted text on dark surface', fg: ['neutral', 300], bg: ['neutral', 950], threshold: 4.5 },
+  {
+    contract: 'body text on light surface',
+    fg: ['neutral', 900],
+    bg: ['neutral', 50],
+    threshold: 4.5,
+  },
+  {
+    contract: 'body text on dark surface',
+    fg: ['neutral', 50],
+    bg: ['neutral', 950],
+    threshold: 4.5,
+  },
+  {
+    contract: 'muted text on dark surface',
+    fg: ['neutral', 300],
+    bg: ['neutral', 950],
+    threshold: 4.5,
+  },
 
   // Primary — links/headings on light, text on primary surfaces
-  { contract: 'primary links/headings on light surface', fg: ['primary', 700], bg: ['neutral', 50], threshold: 4.5 },
-  { contract: 'light text on primary-800 (buttons)', fg: ['neutral', 50], bg: ['primary', 800], threshold: 4.5 },
-  { contract: 'dark-mode link on dark surface', fg: ['info', 300], bg: ['neutral', 950], threshold: 4.5 },
+  {
+    contract: 'primary links/headings on light surface',
+    fg: ['primary', 700],
+    bg: ['neutral', 50],
+    threshold: 4.5,
+  },
+  {
+    contract: 'light text on primary-800 (buttons)',
+    fg: ['neutral', 50],
+    bg: ['primary', 800],
+    threshold: 4.5,
+  },
+  {
+    contract: 'dark-mode link on dark surface',
+    fg: ['info', 300],
+    bg: ['neutral', 950],
+    threshold: 4.5,
+  },
 
   // Secondary (liturgical purple)
-  { contract: 'secondary text on light surface', fg: ['secondary', 800], bg: ['neutral', 50], threshold: 4.5 },
-  { contract: 'light text on secondary-800', fg: ['neutral', 50], bg: ['secondary', 800], threshold: 4.5 },
+  {
+    contract: 'secondary text on light surface',
+    fg: ['secondary', 800],
+    bg: ['neutral', 50],
+    threshold: 4.5,
+  },
+  {
+    contract: 'light text on secondary-800',
+    fg: ['neutral', 50],
+    bg: ['secondary', 800],
+    threshold: 4.5,
+  },
 
   // Status colors
-  { contract: 'success text on light surface', fg: ['success', 700], bg: ['neutral', 50], threshold: 4.5 },
-  { contract: 'light text on success-700', fg: ['neutral', 50], bg: ['success', 700], threshold: 4.5 },
-  { contract: 'warning text on light surface', fg: ['warning', 800], bg: ['neutral', 50], threshold: 4.5 },
-  { contract: 'light text on warning-800', fg: ['neutral', 50], bg: ['warning', 800], threshold: 4.5 },
-  { contract: 'error text on light surface', fg: ['error', 700], bg: ['neutral', 50], threshold: 4.5 },
+  {
+    contract: 'success text on light surface',
+    fg: ['success', 700],
+    bg: ['neutral', 50],
+    threshold: 4.5,
+  },
+  {
+    contract: 'light text on success-700',
+    fg: ['neutral', 50],
+    bg: ['success', 700],
+    threshold: 4.5,
+  },
+  {
+    contract: 'warning text on light surface',
+    fg: ['warning', 800],
+    bg: ['neutral', 50],
+    threshold: 4.5,
+  },
+  {
+    contract: 'light text on warning-800',
+    fg: ['neutral', 50],
+    bg: ['warning', 800],
+    threshold: 4.5,
+  },
+  {
+    contract: 'error text on light surface',
+    fg: ['error', 700],
+    bg: ['neutral', 50],
+    threshold: 4.5,
+  },
   { contract: 'light text on error-700', fg: ['neutral', 50], bg: ['error', 700], threshold: 4.5 },
-  { contract: 'info text on light surface', fg: ['info', 700], bg: ['neutral', 50], threshold: 4.5 },
+  {
+    contract: 'info text on light surface',
+    fg: ['info', 700],
+    bg: ['neutral', 50],
+    threshold: 4.5,
+  },
   { contract: 'light text on info-700', fg: ['neutral', 50], bg: ['info', 700], threshold: 4.5 },
 
   // Church-specific scales (text usage = 700/800/900 stops on 50)
-  { contract: 'accent(gold)-700 text on light surface', fg: ['accent', 700], bg: ['neutral', 50], threshold: 4.5 },
+  {
+    contract: 'accent(gold)-700 text on light surface',
+    fg: ['accent', 700],
+    bg: ['neutral', 50],
+    threshold: 4.5,
+  },
   { contract: 'altar-900 on altar-50', fg: ['altar', 900], bg: ['altar', 50], threshold: 4.5 },
   { contract: 'candle-900 on candle-50', fg: ['candle', 900], bg: ['candle', 50], threshold: 4.5 },
-  { contract: 'incense-900 on incense-50', fg: ['incense', 900], bg: ['incense', 50], threshold: 4.5 },
+  {
+    contract: 'incense-900 on incense-50',
+    fg: ['incense', 900],
+    bg: ['incense', 50],
+    threshold: 4.5,
+  },
   { contract: 'stone-900 on stone-50', fg: ['stone', 900], bg: ['stone', 50], threshold: 4.5 },
   { contract: 'wood-800 on wood-50', fg: ['wood', 800], bg: ['wood', 50], threshold: 4.5 },
 
   // Large text / UI components (3:1 tier)
-  { contract: 'gold DEFAULT accent on dark surface (large text)', fg: ['gold', 'DEFAULT'], bg: ['neutral', 950], threshold: 3.0 },
-  { contract: 'gold DEFAULT accent on primary-900 (large text)', fg: ['gold', 'DEFAULT'], bg: ['primary', 900], threshold: 3.0 },
-  { contract: 'focus ring (light) vs surface', fg: ['info', 600], bg: ['neutral', 50], threshold: 3.0 },
-  { contract: 'focus ring (dark) vs surface', fg: ['info', 400], bg: ['neutral', 950], threshold: 3.0 },
+  {
+    contract: 'gold DEFAULT accent on dark surface (large text)',
+    fg: ['gold', 'DEFAULT'],
+    bg: ['neutral', 950],
+    threshold: 3.0,
+  },
+  {
+    contract: 'gold DEFAULT accent on primary-900 (large text)',
+    fg: ['gold', 'DEFAULT'],
+    bg: ['primary', 900],
+    threshold: 3.0,
+  },
+  {
+    contract: 'focus ring (light) vs surface',
+    fg: ['info', 600],
+    bg: ['neutral', 50],
+    threshold: 3.0,
+  },
+  {
+    contract: 'focus ring (dark) vs surface',
+    fg: ['info', 400],
+    bg: ['neutral', 950],
+    threshold: 3.0,
+  },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -130,7 +226,7 @@ for (const pair of pairs) {
   const status = pass ? 'PASS' : 'FAIL';
   console.log(
     `[${status}] ${ratio.toFixed(2)}:1 (need ${pair.threshold.toFixed(1)}:1)  ` +
-      `${pair.fg[0]}-${pair.fg[1]} ${fg} on ${pair.bg[0]}-${pair.bg[1]} ${bg}  — ${pair.contract}`,
+      `${pair.fg[0]}-${pair.fg[1]} ${fg} on ${pair.bg[0]}-${pair.bg[1]} ${bg}  — ${pair.contract}`
   );
 }
 
@@ -162,7 +258,7 @@ for (const [ref, profile] of Object.entries(themeRegistry)) {
     console.log(
       `[${textPass ? 'PASS' : 'FAIL'}] ${bestText.toFixed(2)}:1 (need 4.5:1)  ` +
         `${ref}/${paletteName} ${scale.DEFAULT} — AA text color exists ` +
-        `(white ${onWhite.toFixed(2)}, dark ${onDark.toFixed(2)})`,
+        `(white ${onWhite.toFixed(2)}, dark ${onDark.toFixed(2)})`
     );
   }
   const primaryOnWhite = contrastRatio(profile.palettes.primary.DEFAULT, WHITE);
@@ -170,7 +266,7 @@ for (const [ref, profile] of Object.entries(themeRegistry)) {
   if (!primaryPass) failures += 1;
   console.log(
     `[${primaryPass ? 'PASS' : 'FAIL'}] ${primaryOnWhite.toFixed(2)}:1 (need 3.0:1)  ` +
-      `${ref}/primary ${profile.palettes.primary.DEFAULT} on white — links/UI tier`,
+      `${ref}/primary ${profile.palettes.primary.DEFAULT} on white — links/UI tier`
   );
 }
 

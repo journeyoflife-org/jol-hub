@@ -6,12 +6,7 @@
  */
 import { cn } from '../../../lib/utils';
 import { accentBorderClass, type TenantTheme } from '../../../lib/tenant-theme';
-import type {
-  CardMediaAspect,
-  CardMediaProps,
-  CardProps,
-  CardSlotProps,
-} from './Card.types';
+import type { CardMediaAspect, CardMediaProps, CardProps, CardSlotProps } from './Card.types';
 
 const VARIANTS: Record<'default' | 'outlined' | 'elevated', (tenant?: TenantTheme) => string> = {
   default: () => 'border border-neutral-200 dark:border-neutral-800',
@@ -33,10 +28,15 @@ export function Card({ variant = 'default', tenant, className, ...props }: CardP
       <div
         className={cn(
           'overflow-hidden rounded-lg bg-neutral-50 transition-shadow motion-reduce:transition-none',
-          'shadow-sm hover:shadow-lg focus-within:shadow-lg dark:bg-neutral-900',
+          'shadow-sm focus-within:shadow-lg hover:shadow-lg dark:bg-neutral-900',
           'hover:border-transparent',
-          cn('border', tenant?.vertical ? accentBorderClass(tenant) : 'border-neutral-200 dark:border-neutral-800'),
-          className,
+          cn(
+            'border',
+            tenant?.vertical
+              ? accentBorderClass(tenant)
+              : 'border-neutral-200 dark:border-neutral-800'
+          ),
+          className
         )}
         {...props}
       />
@@ -44,7 +44,11 @@ export function Card({ variant = 'default', tenant, className, ...props }: CardP
   }
   return (
     <div
-      className={cn('overflow-hidden rounded-lg bg-neutral-50 dark:bg-neutral-900', VARIANTS[variant](tenant), className)}
+      className={cn(
+        'overflow-hidden rounded-lg bg-neutral-50 dark:bg-neutral-900',
+        VARIANTS[variant](tenant),
+        className
+      )}
       {...props}
     />
   );
@@ -55,11 +59,15 @@ export function CardHeader({ className, ...props }: CardSlotProps) {
 }
 
 export function CardTitle({ className, ...props }: CardSlotProps) {
-  return <h3 className={cn('font-heading text-lg font-semibold leading-tight', className)} {...props} />;
+  return (
+    <h3 className={cn('font-heading text-lg font-semibold leading-tight', className)} {...props} />
+  );
 }
 
 export function CardDescription({ className, ...props }: CardSlotProps) {
-  return <p className={cn('text-sm text-neutral-600 dark:text-neutral-300', className)} {...props} />;
+  return (
+    <p className={cn('text-sm text-neutral-600 dark:text-neutral-300', className)} {...props} />
+  );
 }
 
 export function CardContent({ className, ...props }: CardSlotProps) {
@@ -72,8 +80,15 @@ export function CardFooter({ className, ...props }: CardSlotProps) {
 
 export function CardMedia({ aspect = 'video', className, alt, ...props }: CardMediaProps) {
   return (
-    <div className={cn('w-full overflow-hidden bg-neutral-100 dark:bg-neutral-800', ASPECTS[aspect])}>
-      <img alt={alt} loading="lazy" className={cn('h-full w-full object-cover', className)} {...props} />
+    <div
+      className={cn('w-full overflow-hidden bg-neutral-100 dark:bg-neutral-800', ASPECTS[aspect])}
+    >
+      <img
+        alt={alt}
+        loading="lazy"
+        className={cn('h-full w-full object-cover', className)}
+        {...props}
+      />
     </div>
   );
 }

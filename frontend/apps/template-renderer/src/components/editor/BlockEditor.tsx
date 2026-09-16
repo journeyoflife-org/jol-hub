@@ -44,7 +44,13 @@ import {
 
 /** DOMPurify attribute allowlist — matches the escape-first emitter. */
 const PURIFY_ALLOWED_ATTR = [
-  'href', 'rel', 'alt', 'type', 'data-media-id', 'data-spacer', 'data-block',
+  'href',
+  'rel',
+  'alt',
+  'type',
+  'data-media-id',
+  'data-spacer',
+  'data-block',
 ];
 
 export interface BlockEditorProps {
@@ -113,13 +119,17 @@ export function BlockEditor({ tenantSlug, pageId, editorConfigured, basePath }: 
   useEffect(() => {
     if (!editorConfigured) return;
     let cancelled = false;
-    fetch(`/api/editor/pages/${encodeURIComponent(pageId)}/draft?tenant=${encodeURIComponent(tenantSlug)}`)
+    fetch(
+      `/api/editor/pages/${encodeURIComponent(pageId)}/draft?tenant=${encodeURIComponent(tenantSlug)}`
+    )
       .then((response) => (response.ok ? response.json() : null))
       .then((data) => {
         if (cancelled || !data) return;
         setBlocks(Array.isArray(data.blocks) ? data.blocks : []);
         setRevision(data.revision ?? 0);
-        setHistory(Array.isArray(data.history) ? data.history.slice(0, EDITOR_LIMITS.maxRevisions) : []);
+        setHistory(
+          Array.isArray(data.history) ? data.history.slice(0, EDITOR_LIMITS.maxRevisions) : []
+        );
       })
       .catch(() => undefined);
     return () => {
@@ -138,13 +148,18 @@ export function BlockEditor({ tenantSlug, pageId, editorConfigured, basePath }: 
       const response = await fetch(`/api/editor/pages/${encodeURIComponent(pageId)}/draft`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tenantSlug, blocks: blocksRef.current, revision: revisionRef.current }),
+        body: JSON.stringify({
+          tenantSlug,
+          blocks: blocksRef.current,
+          revision: revisionRef.current,
+        }),
       });
       if (!response.ok) throw new Error(`save failed: ${response.status}`);
       const data = await response.json();
       dirtyRef.current = false;
       setRevision(data.revision ?? revisionRef.current + 1);
-      if (Array.isArray(data.history)) setHistory(data.history.slice(0, EDITOR_LIMITS.maxRevisions));
+      if (Array.isArray(data.history))
+        setHistory(data.history.slice(0, EDITOR_LIMITS.maxRevisions));
       setSaveState('saved');
     } catch {
       setSaveState('error');
@@ -204,9 +219,8 @@ export function BlockEditor({ tenantSlug, pageId, editorConfigured, basePath }: 
     if (!block) return;
     const marks = block.marks ?? [];
     const identical = marks.findIndex((m) => m.kind === kind && m.start === start && m.end === end);
-    const nextMarks = identical >= 0
-      ? marks.filter((_, i) => i !== identical)
-      : [...marks, { start, end, kind }];
+    const nextMarks =
+      identical >= 0 ? marks.filter((_, i) => i !== identical) : [...marks, { start, end, kind }];
     updateBlock(id, { marks: nextMarks });
   };
 
@@ -280,7 +294,7 @@ export function BlockEditor({ tenantSlug, pageId, editorConfigured, basePath }: 
         </button>
         <button
           type="button"
-          className="focus-ring rounded-md bg-primary px-3 py-1.5 font-medium text-white"
+          className="focus-ring bg-primary rounded-md px-3 py-1.5 font-medium text-white"
           onClick={() => void publish()}
           disabled={disabled || findings.length > 0 || publishState === 'pending'}
         >
@@ -309,7 +323,10 @@ export function BlockEditor({ tenantSlug, pageId, editorConfigured, basePath }: 
       {(findings.length > 0 || warnings.length > 0) && (
         <ul className="space-y-1 rounded-md border border-neutral-200 p-3 text-sm dark:border-neutral-800">
           {findings.map((finding) => (
-            <li key={`${finding.code}-${finding.blockId ?? 'page'}`} className="text-red-700 dark:text-red-400">
+            <li
+              key={`${finding.code}-${finding.blockId ?? 'page'}`}
+              className="text-red-700 dark:text-red-400"
+            >
               {finding.message}
             </li>
           ))}
@@ -332,7 +349,10 @@ export function BlockEditor({ tenantSlug, pageId, editorConfigured, basePath }: 
       ) : (
         <ol className="space-y-3">
           {blocks.map((block, index) => (
-            <li key={block.id} className="rounded-lg border border-neutral-200 p-3 dark:border-neutral-800">
+            <li
+              key={block.id}
+              className="rounded-lg border border-neutral-200 p-3 dark:border-neutral-800"
+            >
               <BlockControls
                 block={block}
                 index={index}
@@ -348,14 +368,18 @@ export function BlockEditor({ tenantSlug, pageId, editorConfigured, basePath }: 
             </li>
           ))}
           <li>
-            <AddBlockMenu disabled={disabled || blocks.length >= EDITOR_LIMITS.maxBlocks} onAdd={(type) => insertBlock(type, blocks.length)} label={t('addBlock')} />
+            <AddBlockMenu
+              disabled={disabled || blocks.length >= EDITOR_LIMITS.maxBlocks}
+              onAdd={(type) => insertBlock(type, blocks.length)}
+              label={t('addBlock')}
+            />
           </li>
         </ol>
       )}
 
       {/* Revision history (last 10) with structural diff */}
       <section aria-label={t('historyTitle')}>
-        <h2 className="mb-2 font-heading text-lg font-semibold">{t('historyTitle')}</h2>
+        <h2 className="font-heading mb-2 text-lg font-semibold">{t('historyTitle')}</h2>
         {history.length === 0 ? (
           <p className="text-sm text-neutral-500 dark:text-neutral-400">{t('historyEmpty')}</p>
         ) : (
@@ -363,7 +387,10 @@ export function BlockEditor({ tenantSlug, pageId, editorConfigured, basePath }: 
             {history.map((entry) => {
               const changes = diffBlocks(entry.blocks, blocks);
               return (
-                <li key={entry.revision} className="rounded-md border border-neutral-200 p-2 dark:border-neutral-800">
+                <li
+                  key={entry.revision}
+                  className="rounded-md border border-neutral-200 p-2 dark:border-neutral-800"
+                >
                   <span className="font-medium">
                     {t('revisionLabel')} {entry.revision}
                   </span>{' '}
@@ -406,7 +433,18 @@ interface BlockControlsProps {
   onInsert: (type: EditorBlockType, index: number) => void;
 }
 
-function BlockControls({ block, index, total, disabled, onChange, onToggleMark, onApplyLink, onMove, onRemove, onInsert }: BlockControlsProps) {
+function BlockControls({
+  block,
+  index,
+  total,
+  disabled,
+  onChange,
+  onToggleMark,
+  onApplyLink,
+  onMove,
+  onRemove,
+  onInsert,
+}: BlockControlsProps) {
   const t = useTranslations('editor');
   const textRef = useRef<HTMLTextAreaElement>(null);
 
@@ -417,16 +455,52 @@ function BlockControls({ block, index, total, disabled, onChange, onToggleMark, 
 
   const toolbar = (
     <div className="mb-2 flex flex-wrap items-center gap-1 text-xs">
-      <span className="mr-1 font-medium uppercase tracking-wide text-neutral-500">{block.type}</span>
-      <ToolbarButton label={t('moveUp')} disabled={disabled || index === 0} onClick={() => onMove(block.id, -1)} />
-      <ToolbarButton label={t('moveDown')} disabled={disabled || index === total - 1} onClick={() => onMove(block.id, 1)} />
-      <ToolbarButton label={t('addAbove')} disabled={disabled} onClick={() => onInsert('paragraph', index)} />
-      <ToolbarButton label={t('addBelow')} disabled={disabled} onClick={() => onInsert('paragraph', index + 1)} />
-      <ToolbarButton label={t('deleteBlock')} disabled={disabled} onClick={() => onRemove(block.id)} />
+      <span className="mr-1 font-medium uppercase tracking-wide text-neutral-500">
+        {block.type}
+      </span>
+      <ToolbarButton
+        label={t('moveUp')}
+        disabled={disabled || index === 0}
+        onClick={() => onMove(block.id, -1)}
+      />
+      <ToolbarButton
+        label={t('moveDown')}
+        disabled={disabled || index === total - 1}
+        onClick={() => onMove(block.id, 1)}
+      />
+      <ToolbarButton
+        label={t('addAbove')}
+        disabled={disabled}
+        onClick={() => onInsert('paragraph', index)}
+      />
+      <ToolbarButton
+        label={t('addBelow')}
+        disabled={disabled}
+        onClick={() => onInsert('paragraph', index + 1)}
+      />
+      <ToolbarButton
+        label={t('deleteBlock')}
+        disabled={disabled}
+        onClick={() => onRemove(block.id)}
+      />
       {(block.type === 'paragraph' || block.type === 'quote') && (
         <>
-          <ToolbarButton label={t('bold')} disabled={disabled} onClick={() => { const [s, e] = selection(); onToggleMark(block.id, 'bold', s, e); }} />
-          <ToolbarButton label={t('italic')} disabled={disabled} onClick={() => { const [s, e] = selection(); onToggleMark(block.id, 'italic', s, e); }} />
+          <ToolbarButton
+            label={t('bold')}
+            disabled={disabled}
+            onClick={() => {
+              const [s, e] = selection();
+              onToggleMark(block.id, 'bold', s, e);
+            }}
+          />
+          <ToolbarButton
+            label={t('italic')}
+            disabled={disabled}
+            onClick={() => {
+              const [s, e] = selection();
+              onToggleMark(block.id, 'italic', s, e);
+            }}
+          />
           <ToolbarButton
             label={t('link')}
             disabled={disabled}
@@ -505,7 +579,9 @@ function BlockControls({ block, index, total, disabled, onChange, onToggleMark, 
           className="focus-ring rounded-md border border-neutral-300 px-2 py-1.5 text-sm dark:border-neutral-700 dark:bg-neutral-900"
           value={block.size ?? 1}
           disabled={disabled}
-          onChange={(event) => onChange(block.id, { size: Number(event.target.value) as 1 | 2 | 3 | 4 })}
+          onChange={(event) =>
+            onChange(block.id, { size: Number(event.target.value) as 1 | 2 | 3 | 4 })
+          }
         >
           {[1, 2, 3, 4].map((size) => (
             <option key={size} value={size}>
@@ -514,14 +590,20 @@ function BlockControls({ block, index, total, disabled, onChange, onToggleMark, 
           ))}
         </select>
       )}
-      {block.type === 'divider' && (
-        <hr className="border-neutral-300 dark:border-neutral-700" />
-      )}
+      {block.type === 'divider' && <hr className="border-neutral-300 dark:border-neutral-700" />}
     </div>
   );
 }
 
-function ToolbarButton({ label, disabled, onClick }: { label: string; disabled?: boolean; onClick: () => void }) {
+function ToolbarButton({
+  label,
+  disabled,
+  onClick,
+}: {
+  label: string;
+  disabled?: boolean;
+  onClick: () => void;
+}) {
   return (
     <button
       type="button"
@@ -534,7 +616,15 @@ function ToolbarButton({ label, disabled, onClick }: { label: string; disabled?:
   );
 }
 
-function AddBlockMenu({ disabled, onAdd, label }: { disabled: boolean; onAdd: (type: EditorBlockType) => void; label: string }) {
+function AddBlockMenu({
+  disabled,
+  onAdd,
+  label,
+}: {
+  disabled: boolean;
+  onAdd: (type: EditorBlockType) => void;
+  label: string;
+}) {
   return (
     <div className="flex flex-wrap items-center gap-1 text-xs">
       <span className="mr-1 text-neutral-500">{label}:</span>

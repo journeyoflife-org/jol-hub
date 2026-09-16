@@ -55,7 +55,13 @@ export interface DashboardStats {
 
 export interface Activity {
   id: string;
-  type: 'parish_approved' | 'parish_pending' | 'user_registered' | 'donation' | 'content_updated' | 'security_alert';
+  type:
+    | 'parish_approved'
+    | 'parish_pending'
+    | 'user_registered'
+    | 'donation'
+    | 'content_updated'
+    | 'security_alert';
   message: string;
   timestamp: string;
   metadata?: Record<string, unknown>;

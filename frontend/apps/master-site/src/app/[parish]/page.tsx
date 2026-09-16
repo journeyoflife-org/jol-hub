@@ -1,12 +1,12 @@
 /**
  * Dynamic parish homepage for multi-tenant JOL-HUB.
- * 
+ *
  * Server Component that renders the parish landing page with:
  * - Hero section with parish name and liturgical season
  * - Quick actions (donate, service times, contact)
  * - Latest announcements
  * - Priest profile
- * 
+ *
  * PERFORMANCE:
  * - Static generation with ISR (1 hour)
  * - Edge Runtime compatible
@@ -14,7 +14,11 @@
 
 import { notFound } from 'next/navigation';
 import { resolveParish } from '@/lib/tenant/resolver';
-import { getCurrentLiturgicalSeason, type ParishConfig, type ServiceTime } from '@/lib/tenant/config';
+import {
+  getCurrentLiturgicalSeason,
+  type ParishConfig,
+  type ServiceTime,
+} from '@/lib/tenant/config';
 import {
   Button,
   Card,
@@ -73,13 +77,11 @@ interface Announcement {
 
 /**
  * Parish homepage component.
- * 
+ *
  * @param props - Page props
  * @returns JSX element
  */
-export default async function ParishPage(
-  props: ParishPageProps
-): Promise<JSX.Element> {
+export default async function ParishPage(props: ParishPageProps): Promise<JSX.Element> {
   const { params } = props;
 
   // Fetch parish configuration
@@ -98,7 +100,7 @@ export default async function ParishPage(
   const upcomingServices = getUpcomingServices(parish.serviceTimes);
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="bg-background min-h-screen">
       {/* Hero Section */}
       <HeroSection parish={parish} season={season} />
 
@@ -109,7 +111,7 @@ export default async function ParishPage(
       <div className="container mx-auto px-4 py-12">
         <div className="grid gap-8 lg:grid-cols-3">
           {/* Left Column - Announcements */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="space-y-8 lg:col-span-2">
             <AnnouncementsSection announcements={announcements} />
             <ServiceTimesSection serviceTimes={parish.serviceTimes} />
           </div>
@@ -133,13 +135,7 @@ export default async function ParishPage(
 /**
  * Hero section with parish name and liturgical season.
  */
-function HeroSection({
-  parish,
-  season,
-}: {
-  parish: ParishConfig;
-  season: string;
-}): JSX.Element {
+function HeroSection({ parish, season }: { parish: ParishConfig; season: string }): JSX.Element {
   const seasonDisplay = getSeasonDisplayName(season);
   const seasonColor = getSeasonColor(season);
 
@@ -167,24 +163,20 @@ function HeroSection({
           </Badge>
 
           {/* Parish Name */}
-          <h1 className="mb-4 text-4xl font-bold text-white lg:text-6xl"
-              style={{ fontFamily: 'var(--parish-heading-font)' }}>
+          <h1
+            className="mb-4 text-4xl font-bold text-white lg:text-6xl"
+            style={{ fontFamily: 'var(--parish-heading-font)' }}
+          >
             {parish.name}
           </h1>
 
           {/* Parish Description */}
           {parish.description && (
-            <p className="mx-auto max-w-2xl text-lg text-white/90">
-              {parish.description}
-            </p>
+            <p className="mx-auto max-w-2xl text-lg text-white/90">{parish.description}</p>
           )}
 
           {/* Diocese Info */}
-          {parish.diocese && (
-            <p className="mt-4 text-sm text-white/70">
-              {parish.diocese.name}
-            </p>
-          )}
+          {parish.diocese && <p className="mt-4 text-sm text-white/70">{parish.diocese.name}</p>}
 
           {/* Patron Saint */}
           {parish.patronSaint && (
@@ -220,7 +212,7 @@ function HeroSection({
  */
 function QuickActionsSection({ parish }: { parish: ParishConfig }): JSX.Element {
   return (
-    <section className="container mx-auto -mt-8 px-4 relative z-10">
+    <section className="container relative z-10 mx-auto -mt-8 px-4">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {/* Donate */}
         {parish.features.donations && (
@@ -234,7 +226,7 @@ function QuickActionsSection({ parish }: { parish: ParishConfig }): JSX.Element 
               </div>
               <div>
                 <h3 className="font-semibold">Donate</h3>
-                <p className="text-sm text-muted-foreground">Support our parish</p>
+                <p className="text-muted-foreground text-sm">Support our parish</p>
               </div>
             </CardContent>
           </Card>
@@ -251,7 +243,7 @@ function QuickActionsSection({ parish }: { parish: ParishConfig }): JSX.Element 
             </div>
             <div>
               <h3 className="font-semibold">Mass Times</h3>
-              <p className="text-sm text-muted-foreground">View schedule</p>
+              <p className="text-muted-foreground text-sm">View schedule</p>
             </div>
           </CardContent>
         </Card>
@@ -267,7 +259,7 @@ function QuickActionsSection({ parish }: { parish: ParishConfig }): JSX.Element 
             </div>
             <div>
               <h3 className="font-semibold">Contact</h3>
-              <p className="text-sm text-muted-foreground">Get in touch</p>
+              <p className="text-muted-foreground text-sm">Get in touch</p>
             </div>
           </CardContent>
         </Card>
@@ -284,7 +276,7 @@ function QuickActionsSection({ parish }: { parish: ParishConfig }): JSX.Element 
               </div>
               <div>
                 <h3 className="font-semibold">Events</h3>
-                <p className="text-sm text-muted-foreground">Upcoming activities</p>
+                <p className="text-muted-foreground text-sm">Upcoming activities</p>
               </div>
             </CardContent>
           </Card>
@@ -297,11 +289,7 @@ function QuickActionsSection({ parish }: { parish: ParishConfig }): JSX.Element 
 /**
  * Announcements section.
  */
-function AnnouncementsSection({
-  announcements,
-}: {
-  announcements: Announcement[];
-}): JSX.Element {
+function AnnouncementsSection({ announcements }: { announcements: Announcement[] }): JSX.Element {
   return (
     <section>
       <div className="mb-6 flex items-center justify-between">
@@ -325,13 +313,11 @@ function AnnouncementsSection({
                   </Badge>
                   <CardTitle className="text-lg">{announcement.title}</CardTitle>
                 </div>
-                <span className="text-sm text-muted-foreground">{announcement.date}</span>
+                <span className="text-muted-foreground text-sm">{announcement.date}</span>
               </div>
             </CardHeader>
             <CardContent>
-              <CardDescription className="text-base">
-                {announcement.content}
-              </CardDescription>
+              <CardDescription className="text-base">{announcement.content}</CardDescription>
             </CardContent>
           </Card>
         ))}
@@ -343,11 +329,7 @@ function AnnouncementsSection({
 /**
  * Service times section.
  */
-function ServiceTimesSection({
-  serviceTimes,
-}: {
-  serviceTimes: ServiceTime[];
-}): JSX.Element {
+function ServiceTimesSection({ serviceTimes }: { serviceTimes: ServiceTime[] }): JSX.Element {
   // Group by day
   const byDay = serviceTimes.reduce<Record<string, ServiceTime[]>>((acc, time) => {
     if (!acc[time.dayName]) {
@@ -428,11 +410,11 @@ function PriestProfileSection({ parish }: { parish: ParishConfig }): JSX.Element
           </Avatar>
           <div>
             <h3 className="font-semibold">{parish.priestName}</h3>
-            <p className="text-sm text-muted-foreground">Parish Administrator</p>
+            <p className="text-muted-foreground text-sm">Parish Administrator</p>
             {parish.contact.email && (
               <a
                 href={`mailto:${parish.contact.email}`}
-                className="mt-2 inline-flex items-center text-sm text-primary hover:underline"
+                className="text-primary mt-2 inline-flex items-center text-sm hover:underline"
               >
                 <Mail className="mr-1 h-4 w-4" />
                 Contact
@@ -457,7 +439,7 @@ function ContactSection({ parish }: { parish: ParishConfig }): JSX.Element {
       <CardContent className="space-y-4">
         {parish.contact.address && (
           <div className="flex items-start gap-3">
-            <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground" />
+            <MapPin className="text-muted-foreground mt-0.5 h-5 w-5 shrink-0" />
             <div className="text-sm">
               <p>{parish.contact.address.street}</p>
               <p>
@@ -470,7 +452,7 @@ function ContactSection({ parish }: { parish: ParishConfig }): JSX.Element {
 
         {parish.contact.phone && (
           <div className="flex items-center gap-3">
-            <Phone className="h-5 w-5 shrink-0 text-muted-foreground" />
+            <Phone className="text-muted-foreground h-5 w-5 shrink-0" />
             <a href={`tel:${parish.contact.phone}`} className="text-sm hover:underline">
               {parish.contact.phone}
             </a>
@@ -479,7 +461,7 @@ function ContactSection({ parish }: { parish: ParishConfig }): JSX.Element {
 
         {parish.contact.email && (
           <div className="flex items-center gap-3">
-            <Mail className="h-5 w-5 shrink-0 text-muted-foreground" />
+            <Mail className="text-muted-foreground h-5 w-5 shrink-0" />
             <a href={`mailto:${parish.contact.email}`} className="text-sm hover:underline">
               {parish.contact.email}
             </a>
@@ -490,7 +472,7 @@ function ContactSection({ parish }: { parish: ParishConfig }): JSX.Element {
           <>
             <Separator />
             <div className="flex items-start gap-3">
-              <Clock className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground" />
+              <Clock className="text-muted-foreground mt-0.5 h-5 w-5 shrink-0" />
               <div className="text-sm">
                 <p className="font-medium">Office Hours</p>
                 <p className="text-muted-foreground">
@@ -527,10 +509,10 @@ function QuickLinksSection(): JSX.Element {
             <a
               key={link.label}
               href={link.href}
-              className="flex items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors hover:bg-accent"
+              className="hover:bg-accent flex items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors"
             >
               {link.label}
-              <ChevronRight className="h-4 w-4 text-muted-foreground" />
+              <ChevronRight className="text-muted-foreground h-4 w-4" />
             </a>
           ))}
         </nav>
@@ -552,21 +534,24 @@ function getMockAnnouncements(): Announcement[] {
     {
       id: '1',
       title: 'Advent Preparation Begins',
-      content: 'Join us for special Advent prayers every evening at 6:00 PM. Confessions available before all Masses during Advent.',
+      content:
+        'Join us for special Advent prayers every evening at 6:00 PM. Confessions available before all Masses during Advent.',
       date: 'Dec 1, 2024',
       category: 'general',
     },
     {
       id: '2',
       title: 'Christmas Schedule Announcement',
-      content: 'Christmas Eve Masses at 4:00 PM (children\'s), 6:00 PM, 8:00 PM, and Midnight. Christmas Day Masses at 8:00 AM, 10:00 AM, and 12:00 PM.',
+      content:
+        "Christmas Eve Masses at 4:00 PM (children's), 6:00 PM, 8:00 PM, and Midnight. Christmas Day Masses at 8:00 AM, 10:00 AM, and 12:00 PM.",
       date: 'Dec 15, 2024',
       category: 'event',
     },
     {
       id: '3',
       title: 'Parish Food Drive',
-      content: 'Help those in need this Christmas season. Non-perishable food items can be dropped off at the parish office during office hours.',
+      content:
+        'Help those in need this Christmas season. Non-perishable food items can be dropped off at the parish office during office hours.',
       date: 'Dec 10, 2024',
       category: 'urgent',
     },
@@ -578,11 +563,9 @@ function getMockAnnouncements(): Announcement[] {
  */
 function getUpcomingServices(serviceTimes: ServiceTime[]): ServiceTime[] {
   const today = new Date().getDay();
-  
+
   // Get next 3 services
-  return serviceTimes
-    .filter((st) => st.dayOfWeek >= today)
-    .slice(0, 3);
+  return serviceTimes.filter((st) => st.dayOfWeek >= today).slice(0, 3);
 }
 
 // =============================================================================

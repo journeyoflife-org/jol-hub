@@ -29,7 +29,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
   if (crumbs.length === 0) return null;
 
   return (
-    <nav className="flex items-center text-sm text-muted-foreground" aria-label="Breadcrumb">
+    <nav className="text-muted-foreground flex items-center text-sm" aria-label="Breadcrumb">
       <ol className="flex items-center gap-1">
         {crumbs.map((crumb, index) => {
           const isLast = index === crumbs.length - 1;
@@ -37,24 +37,18 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
 
           return (
             <li key={crumb.id} className="flex items-center">
-              {index > 0 && (
-                <ChevronRight className="h-4 w-4 mx-1 text-muted-foreground/50" />
-              )}
+              {index > 0 && <ChevronRight className="text-muted-foreground/50 mx-1 h-4 w-4" />}
               {isLast ? (
-                <span className="flex items-center gap-1.5 font-medium text-foreground">
+                <span className="text-foreground flex items-center gap-1.5 font-medium">
                   <span>{icon}</span>
                   {crumb.name}
                 </span>
               ) : (
                 <Link
                   href={crumb.href}
-                  className="flex items-center gap-1.5 hover:text-foreground transition-colors"
+                  className="hover:text-foreground flex items-center gap-1.5 transition-colors"
                 >
-                  {index === 0 ? (
-                    <Home className="h-4 w-4" />
-                  ) : (
-                    <span>{icon}</span>
-                  )}
+                  {index === 0 ? <Home className="h-4 w-4" /> : <span>{icon}</span>}
                   {crumb.name}
                 </Link>
               )}

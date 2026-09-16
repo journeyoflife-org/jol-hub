@@ -18,7 +18,7 @@ export class LruCache<T> {
   constructor(
     private readonly maxSize = 512,
     private readonly ttlMs = 5 * 60 * 1000,
-    private readonly now: () => number = Date.now,
+    private readonly now: () => number = Date.now
   ) {}
 
   get(key: string): T | undefined {

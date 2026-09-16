@@ -65,7 +65,13 @@ export function localBusinessEntity(input: LocalBusinessInput): Json {
     ...(input.image ? { image: input.image } : {}),
     ...(input.address ? { address: postalAddressEntity(input.address) } : {}),
     ...(input.geo
-      ? { geo: { '@type': 'GeoCoordinates', latitude: input.geo.latitude, longitude: input.geo.longitude } }
+      ? {
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: input.geo.latitude,
+            longitude: input.geo.longitude,
+          },
+        }
       : {}),
     ...(input.telephone ? { telephone: input.telephone } : {}),
     ...(input.openingHours && input.openingHours.length > 0
@@ -280,7 +286,13 @@ export function churchEntity(input: ChurchEntityInput): Json {
     ...(input.image ? { image: input.image } : {}),
     address: postalAddressEntity(input.address),
     ...(input.geo
-      ? { geo: { '@type': 'GeoCoordinates', latitude: input.geo.latitude, longitude: input.geo.longitude } }
+      ? {
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: input.geo.latitude,
+            longitude: input.geo.longitude,
+          },
+        }
       : {}),
     ...(input.telephone ? { telephone: input.telephone } : {}),
     ...(input.openingHours && input.openingHours.length > 0
@@ -306,19 +318,65 @@ export function churchEntity(input: ChurchEntityInput): Json {
  * Display names are NEVER folded (locale strings stay UTF-8 intact).
  */
 const CYRILLIC_TO_LATIN: Record<string, string> = {
-  а: 'a', б: 'b', в: 'v', г: 'g', д: 'd', е: 'e', ё: 'yo', ж: 'zh', з: 'z',
-  и: 'i', й: 'y', к: 'k', л: 'l', м: 'm', н: 'n', о: 'o', п: 'p', р: 'r',
-  с: 's', т: 't', у: 'u', ф: 'f', х: 'kh', ц: 'ts', ч: 'ch', ш: 'sh',
-  щ: 'shch', ъ: '', ы: 'y', ь: '', э: 'e', ю: 'yu', я: 'ya',
+  а: 'a',
+  б: 'b',
+  в: 'v',
+  г: 'g',
+  д: 'd',
+  е: 'e',
+  ё: 'yo',
+  ж: 'zh',
+  з: 'z',
+  и: 'i',
+  й: 'y',
+  к: 'k',
+  л: 'l',
+  м: 'm',
+  н: 'n',
+  о: 'o',
+  п: 'p',
+  р: 'r',
+  с: 's',
+  т: 't',
+  у: 'u',
+  ф: 'f',
+  х: 'kh',
+  ц: 'ts',
+  ч: 'ch',
+  ш: 'sh',
+  щ: 'shch',
+  ъ: '',
+  ы: 'y',
+  ь: '',
+  э: 'e',
+  ю: 'yu',
+  я: 'ya',
 };
 
 const DIACRITIC_FOLD: Record<string, string> = {
   // LT
-  ą: 'a', č: 'c', ę: 'e', ė: 'e', į: 'i', š: 's', ų: 'u', ū: 'u', ž: 'z',
+  ą: 'a',
+  č: 'c',
+  ę: 'e',
+  ė: 'e',
+  į: 'i',
+  š: 's',
+  ų: 'u',
+  ū: 'u',
+  ž: 'z',
   // LV
-  ā: 'a', ē: 'e', ģ: 'g', ī: 'i', ķ: 'k', ļ: 'l', ņ: 'n',
+  ā: 'a',
+  ē: 'e',
+  ģ: 'g',
+  ī: 'i',
+  ķ: 'k',
+  ļ: 'l',
+  ņ: 'n',
   // EE
-  ä: 'a', ö: 'o', õ: 'o', ü: 'u',
+  ä: 'a',
+  ö: 'o',
+  õ: 'o',
+  ü: 'u',
 };
 
 export function churchSlug(name: string): string {

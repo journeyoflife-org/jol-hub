@@ -17,25 +17,34 @@ on-prem hardware (Proxmox, Grafana stack; no cloud lock-in).
                                                       Grafana dashboards
 ```
 
-| Piece | File |
-| --- | --- |
-| Core (redaction, logger, fingerprinting, batching, health) | `packages/observability/src/` |
-| Server logger binding | `src/lib/logger.ts` |
-| Client error tracking (handlers, breadcrumbs, reporting) | `src/lib/error-tracking.ts` |
-| Client bootstrap (mounted in root layout) | `src/components/ObservabilityClient.tsx` |
-| Health endpoint | `src/app/api/health/route.ts` |
-| Telemetry ingress | `src/app/api/telemetry/{errors,perf}/route.ts` |
-| Alert rules | `observability/alert-rules.yml` |
-| Dashboard | `observability/grafana-dashboard.json` |
+| Piece                                                      | File                                           |
+| ---------------------------------------------------------- | ---------------------------------------------- |
+| Core (redaction, logger, fingerprinting, batching, health) | `packages/observability/src/`                  |
+| Server logger binding                                      | `src/lib/logger.ts`                            |
+| Client error tracking (handlers, breadcrumbs, reporting)   | `src/lib/error-tracking.ts`                    |
+| Client bootstrap (mounted in root layout)                  | `src/components/ObservabilityClient.tsx`       |
+| Health endpoint                                            | `src/app/api/health/route.ts`                  |
+| Telemetry ingress                                          | `src/app/api/telemetry/{errors,perf}/route.ts` |
+| Alert rules                                                | `observability/alert-rules.yml`                |
+| Dashboard                                                  | `observability/grafana-dashboard.json`         |
 
 ## Log shape
 
 One JSON object per line (Loki/Promtail-friendly):
 
 ```json
-{"time":"2026-08-25T12:00:00.000Z","level":"info","msg":"request handled",
- "service":"template-renderer-edge","event":"request.handled",
- "requestId":"…","method":"GET","path":"/lt/…","status":200,"durationMs":41}
+{
+  "time": "2026-08-25T12:00:00.000Z",
+  "level": "info",
+  "msg": "request handled",
+  "service": "template-renderer-edge",
+  "event": "request.handled",
+  "requestId": "…",
+  "method": "GET",
+  "path": "/lt/…",
+  "status": 200,
+  "durationMs": 41
+}
 ```
 
 - `requestId` (x-request-id response header) correlates edge → route →
@@ -54,6 +63,7 @@ keys wholesale. The telemetry ingress RE-REDACTS server-side — the
 client is untrusted.
 
 GDPR consent split:
+
 - **essential** (no consent needed): error reports without identity,
   security events, request logs (legitimate interest, Art. 6(1)(f));
 - **analytics consent required**: breadcrumb trail, Web Vitals RUM,
@@ -80,12 +90,12 @@ vendor-neutral.
 
 ## Retention (TASK 7)
 
-| Class | Retention | Basis |
-| --- | --- | --- |
-| Application logs | **90 days** | SOC 2 CC7.2 |
-| Security logs (auth attempts, rate limits, denials) | **1 year** | GDPR Art. 5, ISO 27001 A.8.15 |
-| Audit logs (moderation decisions, permission changes) | **7 years** | legal requirement |
-| Error-tracking issues | 90 days active, then cold archive | storage discipline |
+| Class                                                 | Retention                         | Basis                         |
+| ----------------------------------------------------- | --------------------------------- | ----------------------------- |
+| Application logs                                      | **90 days**                       | SOC 2 CC7.2                   |
+| Security logs (auth attempts, rate limits, denials)   | **1 year**                        | GDPR Art. 5, ISO 27001 A.8.15 |
+| Audit logs (moderation decisions, permission changes) | **7 years**                       | legal requirement             |
+| Error-tracking issues                                 | 90 days active, then cold archive | storage discipline            |
 
 Enforcement lives in jol-infrastructure (Loki `limits_config`
 retention + Promtail pipeline classes); this repo ships the log shape

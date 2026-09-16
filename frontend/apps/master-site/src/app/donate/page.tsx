@@ -2,7 +2,7 @@
 // PSP-integrated widget was removed; the composite widget reports the
 // configured selection only — the charge path is the marketplace checkout
 // handoff (donation-flow-spec §1), never PSP-in-hub.
-import { DonationWidget } from '@journeyoflife-org/ui/components/composite';
+/* DonationWidget deferred — requires I18nProvider from [locale]/ layout */
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -12,16 +12,14 @@ export const metadata: Metadata = {
 
 export default function DonatePage() {
   return (
-    <main className="min-h-screen bg-gray-100 py-12 px-4">
-      <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
-          Paramos forma
-        </h1>
-        <DonationWidget
-          title="Šv. apaštalų Petro ir Povilo parapija"
-          presets={[10, 20, 50, 100, 200]}
-          onConfigure={() => undefined}
-        />
+    <main className="min-h-screen bg-gray-100 px-4 py-12">
+      <div className="mx-auto max-w-2xl">
+        <h1 className="mb-8 text-center text-3xl font-bold text-gray-800">Paramos forma</h1>
+        <div className="rounded-lg border-2 border-dashed border-gray-300 bg-white p-8 text-center">
+          <p className="text-gray-500">
+            Donation widget requires locale context. Use the localised route.
+          </p>
+        </div>
       </div>
     </main>
   );

@@ -30,7 +30,11 @@ const resourceSchema = z.object({
 });
 
 const sampleSchema = z.discriminatedUnion('kind', [
-  z.object({ kind: z.literal('navigation'), route: z.string().max(256), data: navigationPhaseSchema }),
+  z.object({
+    kind: z.literal('navigation'),
+    route: z.string().max(256),
+    data: navigationPhaseSchema,
+  }),
   z.object({
     kind: z.literal('resources'),
     route: z.string().max(256),

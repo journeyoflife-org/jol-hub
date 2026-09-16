@@ -26,7 +26,9 @@ export default async function AdminLayout({
     if (!session) {
       // Double-check (middleware normally catches this) — never render the
       // admin surface without a verified session.
-      redirect(`/api/auth/signin?callbackUrl=${encodeURIComponent(`/${params.locale}/${params.tenant}/admin`)}`);
+      redirect(
+        `/api/auth/signin?callbackUrl=${encodeURIComponent(`/${params.locale}/${params.tenant}/admin`)}`
+      );
     }
     if (!hasRole(session, tenant.slug, 'viewer')) {
       // Authenticated but no grant for THIS tenant — tenant-scoped RBAC.

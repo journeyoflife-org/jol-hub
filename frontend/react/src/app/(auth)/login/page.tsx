@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 /**
  * /login page — email + password form with MFA code field.
@@ -7,14 +7,14 @@
  * (from middleware) or to /dashboard.
  */
 
-import { useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
-import Link from 'next/link'
-import { useAuth } from '@/hooks/useAuth'
-import type { Metadata } from 'next'
+import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import Link from 'next/link';
+import { useAuth } from '@/hooks/useAuth';
+import type { Metadata } from 'next';
 
 // ---------------------------------------------------------------------------
 // Validation schema — mirrors Django backend field requirements
@@ -24,47 +24,47 @@ const schema = z.object({
   email: z.string().email('Enter a valid email address'),
   password: z.string().min(1, 'Password is required'),
   mfa_code: z.string().optional(),
-})
+});
 
-type FormValues = z.infer<typeof schema>
+type FormValues = z.infer<typeof schema>;
 
 // ---------------------------------------------------------------------------
 // Page component
 // ---------------------------------------------------------------------------
 
 export default function LoginPage() {
-  const { login, isAuthenticating, error, clearError } = useAuth()
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const [showMfa, setShowMfa] = useState(false)
+  const { login, isAuthenticating, error, clearError } = useAuth();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [showMfa, setShowMfa] = useState(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>({ resolver: zodResolver(schema) })
+  } = useForm<FormValues>({ resolver: zodResolver(schema) });
 
   const onSubmit = async (values: FormValues) => {
-    clearError()
+    clearError();
     try {
       await login({
         email: values.email,
         password: values.password,
         mfa_code: values.mfa_code || undefined,
-      })
-      const next = searchParams.get('next') ?? '/dashboard'
-      router.replace(next)
+      });
+      const next = searchParams.get('next') ?? '/dashboard';
+      router.replace(next);
     } catch {
       // If error mentions MFA, reveal the MFA field
       if (error?.toLowerCase().includes('mfa') || error?.toLowerCase().includes('otp')) {
-        setShowMfa(true)
+        setShowMfa(true);
       }
     }
-  }
+  };
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8 space-y-6">
+    <main className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
+      <div className="w-full max-w-md space-y-6 rounded-2xl bg-white p-8 shadow-lg">
         {/* Header */}
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900">Sign in to JOL-HUB</h1>
@@ -77,7 +77,7 @@ export default function LoginPage() {
         {error && (
           <div
             role="alert"
-            className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700"
+            className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
           >
             {error}
           </div>
@@ -87,7 +87,7 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
           {/* Email */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="email" className="mb-1 block text-sm font-medium text-gray-700">
               Email address
             </label>
             <input
@@ -97,14 +97,12 @@ export default function LoginPage() {
               {...register('email')}
               className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            {errors.email && (
-              <p className="mt-1 text-xs text-red-600">{errors.email.message}</p>
-            )}
+            {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email.message}</p>}
           </div>
 
           {/* Password */}
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="password" className="mb-1 block text-sm font-medium text-gray-700">
               Password
             </label>
             <input
@@ -122,7 +120,7 @@ export default function LoginPage() {
           {/* MFA code (conditionally shown) */}
           {showMfa && (
             <div>
-              <label htmlFor="mfa_code" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="mfa_code" className="mb-1 block text-sm font-medium text-gray-700">
                 Authenticator code
               </label>
               <input
@@ -140,7 +138,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={isAuthenticating}
-            className="w-full rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800 disabled:opacity-50 transition-colors"
+            className="w-full rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-800 disabled:opacity-50"
           >
             {isAuthenticating ? 'Signing in…' : 'Sign in'}
           </button>
@@ -157,5 +155,5 @@ export default function LoginPage() {
         </div>
       </div>
     </main>
-  )
+  );
 }

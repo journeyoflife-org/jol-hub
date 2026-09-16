@@ -6,7 +6,17 @@
 
 'use client';
 
-import { Bell, Search, Moon, Sun, User, LogOut, Settings, AlertTriangle, Shield } from 'lucide-react';
+import {
+  Bell,
+  Search,
+  Moon,
+  Sun,
+  User,
+  LogOut,
+  Settings,
+  AlertTriangle,
+  Shield,
+} from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useSession, signOut } from 'next-auth/react';
 import { Button } from '@/components/ui/button';
@@ -35,30 +45,25 @@ export function Header() {
   };
 
   const user = session?.user;
-  const initials = user?.name
-    ?.split(' ')
-    .map((n) => n[0])
-    .join('')
-    .toUpperCase() || 'U';
+  const initials =
+    user?.name
+      ?.split(' ')
+      .map((n) => n[0])
+      .join('')
+      .toUpperCase() || 'U';
 
   return (
-    <header className="h-16 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="flex items-center justify-between h-full px-6">
+    <header className="border-border bg-background/95 supports-[backdrop-filter]:bg-background/60 h-16 border-b backdrop-blur">
+      <div className="flex h-full items-center justify-between px-6">
         {/* Breadcrumb & Tier Indicator */}
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1">
-            <Badge 
-              variant="outline" 
-              className={cn(
-                'tier-badge',
-                `tier-badge-${tier}`
-              )}
-            >
+            <Badge variant="outline" className={cn('tier-badge', `tier-badge-${tier}`)}>
               {tier.toUpperCase()}
             </Badge>
           </div>
-          
-          <nav className="hidden md:flex items-center text-sm text-muted-foreground">
+
+          <nav className="text-muted-foreground hidden items-center text-sm md:flex">
             {breadcrumbs.map((crumb, index) => (
               <span key={crumb.id} className="flex items-center">
                 {index > 0 && <span className="mx-2">›</span>}
@@ -71,13 +76,13 @@ export function Header() {
         </div>
 
         {/* Search */}
-        <div className="flex items-center gap-4 flex-1 max-w-xl mx-4">
+        <div className="mx-4 flex max-w-xl flex-1 items-center gap-4">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Search className="text-muted-foreground absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" />
             <Input
               type="search"
               placeholder="Search entities, users, content..."
-              className="pl-10 w-full"
+              className="w-full pl-10"
             />
           </div>
         </div>
@@ -85,15 +90,15 @@ export function Header() {
         {/* Actions */}
         <div className="flex items-center gap-2">
           {/* Bitrix24 Sync Status */}
-          <div className="hidden md:flex items-center gap-1 px-2 py-1 rounded-md bg-muted/50 text-xs">
+          <div className="bg-muted/50 hidden items-center gap-1 rounded-md px-2 py-1 text-xs md:flex">
             <div
               className={cn(
-                'w-2 h-2 rounded-full',
+                'h-2 w-2 rounded-full',
                 bitrixStatus?.circuitBreakerState?.status === 'closed'
                   ? 'bg-green-500'
                   : bitrixStatus?.circuitBreakerState?.status === 'open'
-                  ? 'bg-red-500'
-                  : 'bg-yellow-500'
+                    ? 'bg-red-500'
+                    : 'bg-yellow-500'
               )}
             />
             <span className="text-muted-foreground">
@@ -105,7 +110,7 @@ export function Header() {
           <Button
             variant="ghost"
             size="icon"
-            className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950"
+            className="text-red-600 hover:bg-red-50 hover:text-red-700 dark:hover:bg-red-950"
           >
             <AlertTriangle className="h-5 w-5" />
           </Button>
@@ -113,7 +118,7 @@ export function Header() {
           {/* Notifications */}
           <Button variant="ghost" size="icon" className="relative">
             <Bell className="h-5 w-5" />
-            <span className="absolute top-1 right-1 w-2 h-2 bg-destructive rounded-full" />
+            <span className="bg-destructive absolute right-1 top-1 h-2 w-2 rounded-full" />
           </Button>
 
           {/* Theme Toggle */}
@@ -133,7 +138,7 @@ export function Header() {
                   <AvatarImage src={user?.image || ''} alt={user?.name || ''} />
                   <AvatarFallback>{initials}</AvatarFallback>
                 </Avatar>
-                <div className="hidden md:flex flex-col items-start">
+                <div className="hidden flex-col items-start md:flex">
                   <span className="text-sm font-medium">{user?.name}</span>
                 </div>
               </Button>
@@ -142,7 +147,7 @@ export function Header() {
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
                   <p className="text-sm font-medium">{user?.name}</p>
-                  <p className="text-xs text-muted-foreground">{user?.email}</p>
+                  <p className="text-muted-foreground text-xs">{user?.email}</p>
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />

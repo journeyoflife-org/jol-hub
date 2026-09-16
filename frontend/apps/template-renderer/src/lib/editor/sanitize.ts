@@ -23,7 +23,18 @@ import type { EditorBlock } from './blocks';
 
 /** The ONLY tags the renderer may ever emit (DOMPurify allowlist mirror). */
 export const SANITIZED_ALLOWED_TAGS = [
-  'p', 'h2', 'blockquote', 'strong', 'em', 'a', 'hr', 'br', 'button', 'div', 'span', 'img',
+  'p',
+  'h2',
+  'blockquote',
+  'strong',
+  'em',
+  'a',
+  'hr',
+  'br',
+  'button',
+  'div',
+  'span',
+  'img',
 ] as const;
 
 /** Hosts allowed for EXTERNAL links (internal `/…` paths are always fine). */
@@ -53,12 +64,16 @@ export function escapeHtml(value: string): string {
  * with an allowlist entry. Every other scheme/host is rejected —
  * javascript:, data:, vbscript:, http downgrade, unknown hosts.
  */
-export function isSafeUrl(href: string, allowlist: readonly string[] = DEFAULT_URL_ALLOWLIST): boolean {
+export function isSafeUrl(
+  href: string,
+  allowlist: readonly string[] = DEFAULT_URL_ALLOWLIST
+): boolean {
   const value = href.trim();
   if (!value) return false;
   // Internal path — but not protocol-relative (`//evil.com`).
   if (value.startsWith('/') && !value.startsWith('//')) {
     // No control chars / backslashes (browsers normalize `\` to `/`).
+    // eslint-disable-next-line no-control-regex -- sanitizer must reject control chars
     return !/[\\\u0000-\u001f]/.test(value);
   }
   let parsed: URL;
@@ -91,8 +106,12 @@ function renderMarkedText(text: string, block: Pick<EditorBlock, 'marks' | 'link
     const end = sorted[i + 1];
     if (start === undefined || end === undefined || end <= start) continue;
     const run = escapeHtml(text.slice(start, end));
-    const bold = (block.marks ?? []).some((m) => m.kind === 'bold' && m.start <= start && m.end >= end);
-    const italic = (block.marks ?? []).some((m) => m.kind === 'italic' && m.start <= start && m.end >= end);
+    const bold = (block.marks ?? []).some(
+      (m) => m.kind === 'bold' && m.start <= start && m.end >= end
+    );
+    const italic = (block.marks ?? []).some(
+      (m) => m.kind === 'italic' && m.start <= start && m.end >= end
+    );
     const link = (block.links ?? []).find((l) => l.start <= start && l.end >= end);
 
     let rendered = run;

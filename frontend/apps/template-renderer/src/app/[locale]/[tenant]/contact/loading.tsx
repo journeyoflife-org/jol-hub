@@ -10,7 +10,7 @@ import { Skeleton } from '@journeyoflife-org/ui/components/primitives';
 export default function ContactLoading() {
   return (
     <div aria-busy="true" aria-live="polite" className="flex flex-col">
-      <div className="container mx-auto px-4 py-12 space-y-8 max-w-3xl">
+      <div className="container mx-auto max-w-3xl space-y-8 px-4 py-12">
         {/* Header placeholder */}
         <Skeleton className="h-9 w-48" />
         {/* Contact-info card placeholder */}

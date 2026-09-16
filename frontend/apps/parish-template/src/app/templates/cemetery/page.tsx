@@ -1,14 +1,14 @@
 /**
  * CATEGORY C: Cemetery Cleaning Template (82 instances)
  * Route: /templates/cemetery/page.tsx
- * 
+ *
  * Features:
  * - Service areas map: Interactive map showing cemetery sections
  * - Before/After gallery: Comparison slider component
  * - Pricing calculator: Based on grave size, cleaning frequency
  * - Subscription signup: Recurring payment setup (Stripe)
  * - Photo upload: Customers upload photos of graves for quote requests
- * 
+ *
  * SEO: Next.js Metadata API
  * Accessibility: WCAG 2.1 AA
  */
@@ -53,7 +53,8 @@ import { SubscriptionSignup } from './_components/SubscriptionSignup';
 
 export const metadata: Metadata = {
   title: 'Cemetery Cleaning Services | JOL-HUB',
-  description: 'Professional grave maintenance and cleaning services. Keep your loved ones\' resting place beautiful year-round.',
+  description:
+    "Professional grave maintenance and cleaning services. Keep your loved ones' resting place beautiful year-round.",
   keywords: ['cemetery', 'grave cleaning', 'maintenance', 'memorial care', 'subscription'],
   openGraph: {
     title: 'Cemetery Cleaning Services',
@@ -103,7 +104,12 @@ async function getCemeteryServices(): Promise<CemeteryService[]> {
       description: 'Enhanced maintenance with seasonal planting',
       pricePerVisit: 25,
       frequency: 'monthly',
-      includes: ['All Basic services', 'Seasonal flower planting', 'Stone cleaning', 'Weed control'],
+      includes: [
+        'All Basic services',
+        'Seasonal flower planting',
+        'Stone cleaning',
+        'Weed control',
+      ],
     },
     {
       id: 'premium',
@@ -111,17 +117,47 @@ async function getCemeteryServices(): Promise<CemeteryService[]> {
       description: 'Complete memorial care with restoration',
       pricePerVisit: 45,
       frequency: 'monthly',
-      includes: ['All Standard services', 'Stone restoration', 'Fertilization', 'Winter preparation', 'Priority scheduling'],
+      includes: [
+        'All Standard services',
+        'Stone restoration',
+        'Fertilization',
+        'Winter preparation',
+        'Priority scheduling',
+      ],
     },
   ];
 }
 
 async function getCemeterySections(): Promise<CemeterySection[]> {
   return [
-    { id: 'A', name: 'Section A - Old Cemetery', coordinates: { lat: 54.6872, lng: 25.2797 }, totalGraves: 500, availableSlots: 0 },
-    { id: 'B', name: 'Section B - New Cemetery', coordinates: { lat: 54.6875, lng: 25.2800 }, totalGraves: 800, availableSlots: 45 },
-    { id: 'C', name: 'Section C - Family Plots', coordinates: { lat: 54.6870, lng: 25.2795 }, totalGraves: 200, availableSlots: 5 },
-    { id: 'D', name: 'Section D - Columbarium', coordinates: { lat: 54.6878, lng: 25.2805 }, totalGraves: 300, availableSlots: 50 },
+    {
+      id: 'A',
+      name: 'Section A - Old Cemetery',
+      coordinates: { lat: 54.6872, lng: 25.2797 },
+      totalGraves: 500,
+      availableSlots: 0,
+    },
+    {
+      id: 'B',
+      name: 'Section B - New Cemetery',
+      coordinates: { lat: 54.6875, lng: 25.28 },
+      totalGraves: 800,
+      availableSlots: 45,
+    },
+    {
+      id: 'C',
+      name: 'Section C - Family Plots',
+      coordinates: { lat: 54.687, lng: 25.2795 },
+      totalGraves: 200,
+      availableSlots: 5,
+    },
+    {
+      id: 'D',
+      name: 'Section D - Columbarium',
+      coordinates: { lat: 54.6878, lng: 25.2805 },
+      totalGraves: 300,
+      availableSlots: 50,
+    },
   ];
 }
 
@@ -141,14 +177,12 @@ function HeroSection(): JSX.Element {
           priority
         />
       </div>
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <Leaf className="h-12 w-12 mx-auto mb-4 text-white/80" />
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          Cemetery Cleaning Services
-        </h1>
-        <p className="text-xl text-white/90 max-w-2xl mx-auto">
-          Honoring your loved ones with professional grave maintenance.
-          Keep their resting place beautiful year-round.
+      <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+        <Leaf className="mx-auto mb-4 h-12 w-12 text-white/80" />
+        <h1 className="mb-4 text-4xl font-bold md:text-5xl">Cemetery Cleaning Services</h1>
+        <p className="mx-auto max-w-2xl text-xl text-white/90">
+          Honoring your loved ones with professional grave maintenance. Keep their resting place
+          beautiful year-round.
         </p>
       </div>
     </section>
@@ -162,35 +196,35 @@ function HeroSection(): JSX.Element {
 function ServicesOverview({ services }: { services: CemeteryService[] }): JSX.Element {
   return (
     <section className="py-12">
-      <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold mb-4">Our Services</h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          Choose the care plan that best suits your needs. All services include 
-          regular photo updates so you can see the results.
+      <div className="mb-10 text-center">
+        <h2 className="mb-4 text-3xl font-bold">Our Services</h2>
+        <p className="text-muted-foreground mx-auto max-w-2xl">
+          Choose the care plan that best suits your needs. All services include regular photo
+          updates so you can see the results.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {services.map((service) => (
           <Card key={service.id} className="flex flex-col">
             <CardHeader>
               <CardTitle>{service.name}</CardTitle>
               <CardDescription>{service.description}</CardDescription>
             </CardHeader>
-            <CardContent className="flex-1 flex flex-col">
+            <CardContent className="flex flex-1 flex-col">
               <div className="mb-4">
                 <span className="text-3xl font-bold">€{service.pricePerVisit}</span>
                 <span className="text-muted-foreground"> / visit</span>
               </div>
-              <ul className="space-y-2 mb-6 flex-1">
+              <ul className="mb-6 flex-1 space-y-2">
                 {service.includes.map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm">
-                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    <CheckCircle className="h-4 w-4 flex-shrink-0 text-green-500" />
                     {item}
                   </li>
                 ))}
               </ul>
               <Button className="w-full">
-                <Calendar className="h-4 w-4 mr-2" />
+                <Calendar className="mr-2 h-4 w-4" />
                 Subscribe Now
               </Button>
             </CardContent>
@@ -205,11 +239,10 @@ function ServicesOverview({ services }: { services: CemeteryService[] }): JSX.El
 // MAIN PAGE
 // =============================================================================
 
-export default async function CemeteryTemplatePage(_props?: { params?: { locale?: string } }): Promise<JSX.Element> {
-  const [services, sections] = await Promise.all([
-    getCemeteryServices(),
-    getCemeterySections(),
-  ]);
+export default async function CemeteryTemplatePage(_props?: {
+  params?: { locale?: string };
+}): Promise<JSX.Element> {
+  const [services, sections] = await Promise.all([getCemeteryServices(), getCemeterySections()]);
 
   // Before/After images
   const beforeAfterImages = [
@@ -235,35 +268,65 @@ export default async function CemeteryTemplatePage(_props?: { params?: { locale?
 
   // Gallery photos
   const galleryPhotos = [
-    { id: '1', src: '/images/cemetery/gallery-1.jpg', alt: 'Fresh flowers on grave', caption: 'Seasonal flower arrangements' },
-    { id: '2', src: '/images/cemetery/gallery-2.jpg', alt: 'Cleaned headstone', caption: 'Stone restoration' },
-    { id: '3', src: '/images/cemetery/gallery-3.jpg', alt: 'Well-maintained plot', caption: 'Regular maintenance' },
-    { id: '4', src: '/images/cemetery/gallery-4.jpg', alt: 'Cemetery path', caption: 'Grounds maintenance' },
-    { id: '5', src: '/images/cemetery/gallery-5.jpg', alt: 'Memorial candles', caption: 'Memorial services' },
-    { id: '6', src: '/images/cemetery/gallery-6.jpg', alt: 'Winter preparation', caption: 'Winter care' },
+    {
+      id: '1',
+      src: '/images/cemetery/gallery-1.jpg',
+      alt: 'Fresh flowers on grave',
+      caption: 'Seasonal flower arrangements',
+    },
+    {
+      id: '2',
+      src: '/images/cemetery/gallery-2.jpg',
+      alt: 'Cleaned headstone',
+      caption: 'Stone restoration',
+    },
+    {
+      id: '3',
+      src: '/images/cemetery/gallery-3.jpg',
+      alt: 'Well-maintained plot',
+      caption: 'Regular maintenance',
+    },
+    {
+      id: '4',
+      src: '/images/cemetery/gallery-4.jpg',
+      alt: 'Cemetery path',
+      caption: 'Grounds maintenance',
+    },
+    {
+      id: '5',
+      src: '/images/cemetery/gallery-5.jpg',
+      alt: 'Memorial candles',
+      caption: 'Memorial services',
+    },
+    {
+      id: '6',
+      src: '/images/cemetery/gallery-6.jpg',
+      alt: 'Winter preparation',
+      caption: 'Winter care',
+    },
   ];
 
   return (
     <main className="min-h-screen bg-slate-50">
       <HeroSection />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Services Overview */}
         <ServicesOverview services={services} />
 
         <Separator className="my-12" />
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 py-12">
+        <div className="grid grid-cols-1 gap-8 py-12 lg:grid-cols-3">
           {/* Left Column - Interactive Features */}
-          <div className="lg:col-span-2 space-y-12">
+          <div className="space-y-12 lg:col-span-2">
             {/* Interactive Map */}
             <section>
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold">
                 <MapPin className="h-6 w-6" />
                 Cemetery Sections
               </h2>
-              <Suspense fallback={<div className="h-96 bg-muted rounded-lg animate-pulse" />}>
+              <Suspense fallback={<div className="bg-muted h-96 animate-pulse rounded-lg" />}>
                 <CemeteryMap sections={sections} />
               </Suspense>
             </section>
@@ -272,7 +335,7 @@ export default async function CemeteryTemplatePage(_props?: { params?: { locale?
 
             {/* Before/After Gallery */}
             <section>
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold">
                 <Sparkles className="h-6 w-6" />
                 Our Work
               </h2>
@@ -292,7 +355,7 @@ export default async function CemeteryTemplatePage(_props?: { params?: { locale?
 
             {/* Pricing Calculator */}
             <section>
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold">
                 <Calculator className="h-6 w-6" />
                 Get a Quote
               </h2>
@@ -303,22 +366,18 @@ export default async function CemeteryTemplatePage(_props?: { params?: { locale?
 
             {/* Photo Gallery */}
             <section>
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold">
                 <Camera className="h-6 w-6" />
                 Gallery
               </h2>
-              <PhotoGallery
-                photos={galleryPhotos}
-                columns={3}
-                aspectRatio="square"
-              />
+              <PhotoGallery photos={galleryPhotos} columns={3} aspectRatio="square" />
             </section>
 
             <Separator />
 
             {/* Photo Upload for Quote */}
             <section>
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold">
                 <Upload className="h-6 w-6" />
                 Request Custom Quote
               </h2>
@@ -336,11 +395,11 @@ export default async function CemeteryTemplatePage(_props?: { params?: { locale?
                   Start Subscription
                 </CardTitle>
                 <CardDescription>
-                  Set up recurring care for your loved one\'s grave
+                  Set up recurring care for your loved one&apos;s grave
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Suspense fallback={<div className="h-64 bg-muted rounded animate-pulse" />}>
+                <Suspense fallback={<div className="bg-muted h-64 animate-pulse rounded" />}>
                   <SubscriptionSignup services={services} />
                 </Suspense>
               </CardContent>
@@ -352,36 +411,33 @@ export default async function CemeteryTemplatePage(_props?: { params?: { locale?
                 <CardTitle>Contact Us</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <a 
+                <a
                   href="tel:+37060099999"
-                  className="flex items-center gap-3 text-sm hover:text-primary transition-colors"
+                  className="hover:text-primary flex items-center gap-3 text-sm transition-colors"
                 >
-                  <Phone className="h-4 w-4 text-muted-foreground" />
+                  <Phone className="text-muted-foreground h-4 w-4" />
                   +370 600 99999
                 </a>
-                <a 
+                <a
                   href="mailto:cemetery@jol-hub.eu"
-                  className="flex items-center gap-3 text-sm hover:text-primary transition-colors"
+                  className="hover:text-primary flex items-center gap-3 text-sm transition-colors"
                 >
-                  <Mail className="h-4 w-4 text-muted-foreground" />
+                  <Mail className="text-muted-foreground h-4 w-4" />
                   cemetery@jol-hub.eu
                 </a>
                 <div className="flex items-start gap-3 text-sm">
-                  <MapPin className="h-4 w-4 text-muted-foreground mt-0.5" />
+                  <MapPin className="text-muted-foreground mt-0.5 h-4 w-4" />
                   <span>45 Memorial Road, Vilnius Cemetery</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
-                  <Clock className="h-4 w-4 text-muted-foreground" />
+                  <Clock className="text-muted-foreground h-4 w-4" />
                   <span>Mon-Fri: 8:00 - 17:00</span>
                 </div>
               </CardContent>
             </Card>
 
             {/* Contact Form */}
-            <ContactForm
-              parishId="cemetery-services"
-              recipientType="cemetery_admin"
-            />
+            <ContactForm parishId="cemetery-services" recipientType="cemetery_admin" />
 
             {/* Why Choose Us */}
             <Card>
@@ -399,7 +455,7 @@ export default async function CemeteryTemplatePage(_props?: { params?: { locale?
                     'Local, family-owned business',
                   ].map((item) => (
                     <li key={item} className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 flex-shrink-0 text-green-500" />
                       {item}
                     </li>
                   ))}

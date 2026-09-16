@@ -10,15 +10,7 @@ import { EntityForm } from '@/components/entities/EntityForm';
 import { CanonicalApproval } from '@/components/entities/CanonicalApproval';
 import { CommercialVerify } from '@/components/entities/CommercialVerify';
 import { SyncStatus } from '@/components/bitrix24/SyncStatus';
-import {
-  ArrowLeft,
-  Edit,
-  Trash2,
-  Shield,
-  Store,
-  Loader2,
-  AlertCircle,
-} from 'lucide-react';
+import { ArrowLeft, Edit, Trash2, Shield, Store, Loader2, AlertCircle } from 'lucide-react';
 import { useEntity } from '@/lib/hooks';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
@@ -33,7 +25,7 @@ export default function EntityDetailPage() {
   const params = useParams();
   const router = useRouter();
   const entityId = params.id as string;
-  
+
   const { data: entity, isLoading, error, refetch } = useEntity(entityId);
   const [isEditing, setIsEditing] = useState(false);
   const [showApprovalDialog, setShowApprovalDialog] = useState(false);
@@ -41,9 +33,9 @@ export default function EntityDetailPage() {
 
   if (isLoading) {
     return (
-      <div className="p-6 flex items-center justify-center min-h-[400px]">
+      <div className="flex min-h-[400px] items-center justify-center p-6">
         <div className="flex flex-col items-center gap-4">
-          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          <Loader2 className="text-primary h-8 w-8 animate-spin" />
           <p className="text-muted-foreground">Loading entity details...</p>
         </div>
       </div>
@@ -63,7 +55,7 @@ export default function EntityDetailPage() {
               </p>
             </div>
             <Button variant="outline" onClick={() => router.push('/dashboard/entities')}>
-              <ArrowLeft className="h-4 w-4 mr-2" />
+              <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Entities
             </Button>
           </CardContent>
@@ -76,7 +68,7 @@ export default function EntityDetailPage() {
   const isCommercial = entity.category === 'commercial';
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="space-y-6 p-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
@@ -96,11 +88,7 @@ export default function EntityDetailPage() {
               >
                 {entity.status}
               </Badge>
-              {isCatholic && (
-                <Badge className="bg-liturgical-gold text-black">
-                  ✝ Catholic
-                </Badge>
-              )}
+              {isCatholic && <Badge className="bg-liturgical-gold text-black">✝ Catholic</Badge>}
               {isCommercial && (
                 <Badge variant="outline" className="border-blue-500 text-blue-600">
                   🏢 Commercial
@@ -115,18 +103,18 @@ export default function EntityDetailPage() {
         <div className="flex items-center gap-2">
           {isCatholic && entity.status === 'pending' && (
             <Button onClick={() => setShowApprovalDialog(true)}>
-              <Shield className="h-4 w-4 mr-2" />
+              <Shield className="mr-2 h-4 w-4" />
               Canonical Approval
             </Button>
           )}
           {isCommercial && !entity.verified && (
             <Button variant="outline" onClick={() => setShowVerifyDialog(true)}>
-              <Store className="h-4 w-4 mr-2" />
+              <Store className="mr-2 h-4 w-4" />
               Verify Business
             </Button>
           )}
           <Button variant="outline" onClick={() => setIsEditing(!isEditing)}>
-            <Edit className="h-4 w-4 mr-2" />
+            <Edit className="mr-2 h-4 w-4" />
             Edit
           </Button>
           <Button variant="destructive" size="icon">
@@ -154,20 +142,20 @@ export default function EntityDetailPage() {
               </CardHeader>
               <CardContent className="space-y-3">
                 <div>
-                  <p className="text-sm text-muted-foreground">Name</p>
+                  <p className="text-muted-foreground text-sm">Name</p>
                   <p className="font-medium">{entity.name}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Type</p>
+                  <p className="text-muted-foreground text-sm">Type</p>
                   <p className="font-medium">{entity.type}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Country</p>
+                  <p className="text-muted-foreground text-sm">Country</p>
                   <p className="font-medium">{entity.country}</p>
                 </div>
                 {entity.diocese && (
                   <div>
-                    <p className="text-sm text-muted-foreground">Diocese</p>
+                    <p className="text-muted-foreground text-sm">Diocese</p>
                     <p className="font-medium">{entity.diocese}</p>
                   </div>
                 )}
@@ -181,15 +169,15 @@ export default function EntityDetailPage() {
               </CardHeader>
               <CardContent className="space-y-3">
                 <div>
-                  <p className="text-sm text-muted-foreground">Email</p>
+                  <p className="text-muted-foreground text-sm">Email</p>
                   <p className="font-medium">{entity.email || 'Not provided'}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Phone</p>
+                  <p className="text-muted-foreground text-sm">Phone</p>
                   <p className="font-medium">{entity.phone || 'Not provided'}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Address</p>
+                  <p className="text-muted-foreground text-sm">Address</p>
                   <p className="font-medium">{entity.address || 'Not provided'}</p>
                 </div>
               </CardContent>
@@ -202,14 +190,14 @@ export default function EntityDetailPage() {
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">GDPR Compliant</span>
+                  <span className="text-muted-foreground text-sm">GDPR Compliant</span>
                   <Badge variant={entity.gdprCompliant ? 'default' : 'destructive'}>
                     {entity.gdprCompliant ? 'Yes' : 'No'}
                   </Badge>
                 </div>
                 {isCatholic && (
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">Canonically Approved</span>
+                    <span className="text-muted-foreground text-sm">Canonically Approved</span>
                     <Badge variant={entity.canonicalApproval ? 'default' : 'secondary'}>
                       {entity.canonicalApproval ? 'Yes' : 'Pending'}
                     </Badge>
@@ -217,7 +205,7 @@ export default function EntityDetailPage() {
                 )}
                 {isCommercial && (
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">VAT Verified</span>
+                    <span className="text-muted-foreground text-sm">VAT Verified</span>
                     <Badge variant={entity.vatVerified ? 'default' : 'secondary'}>
                       {entity.vatVerified ? 'Yes' : 'Pending'}
                     </Badge>
@@ -254,9 +242,7 @@ export default function EntityDetailPage() {
           <Card>
             <CardHeader>
               <CardTitle>Compliance History</CardTitle>
-              <CardDescription>
-                GDPR Article 44 and Canon Law compliance records
-              </CardDescription>
+              <CardDescription>GDPR Article 44 and Canon Law compliance records</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">Compliance history will be displayed here.</p>
@@ -281,7 +267,7 @@ export default function EntityDetailPage() {
           }}
         />
       )}
-      
+
       {showVerifyDialog && (
         <CommercialVerify
           entityId={entityId}

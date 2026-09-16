@@ -191,10 +191,7 @@ interface TranslateResult {
   skipReason: SkipReason;
 }
 
-async function runTranslation(
-  text: string,
-  targetLang: SupportedLocale
-): Promise<TranslateResult> {
+async function runTranslation(text: string, targetLang: SupportedLocale): Promise<TranslateResult> {
   // 1. Guard checks
   const skipReason = getSkipReason(text);
   if (skipReason !== null) {
@@ -249,8 +246,11 @@ export function useTranslationWithDeepL(): UseTranslationWithDeepLReturn {
       setTranslationError(null);
 
       try {
-        const { translatedText, isAiTranslated: aiFlag, skipReason } =
-          await runTranslation(text, targetLang);
+        const {
+          translatedText,
+          isAiTranslated: aiFlag,
+          skipReason,
+        } = await runTranslation(text, targetLang);
 
         // Surface block reason as a human-readable prefix
         if (skipReason === 'sacred_text') {
@@ -317,7 +317,12 @@ export interface TranslateUserContentResult {
    * Reason the translation was skipped, or `'ai_translated'` on success,
    * or `'translation_failed'` on error.
    */
-  disclaimer: 'ai_translated' | 'sacred_text_warning' | 'requires_clergy_approval' | 'too_short' | 'translation_failed';
+  disclaimer:
+    | 'ai_translated'
+    | 'sacred_text_warning'
+    | 'requires_clergy_approval'
+    | 'too_short'
+    | 'translation_failed';
 }
 
 /**
@@ -346,14 +351,17 @@ export async function translateUserContent(
   targetLang: SupportedLocale
 ): Promise<TranslateUserContentResult> {
   try {
-    const { translatedText, isAiTranslated, skipReason } =
-      await runTranslation(text, targetLang);
+    const { translatedText, isAiTranslated, skipReason } = await runTranslation(text, targetLang);
 
     if (skipReason === 'sacred_text') {
       return { translatedText: text, isAiTranslated: false, disclaimer: 'sacred_text_warning' };
     }
     if (skipReason === 'requires_clergy_approval') {
-      return { translatedText: text, isAiTranslated: false, disclaimer: 'requires_clergy_approval' };
+      return {
+        translatedText: text,
+        isAiTranslated: false,
+        disclaimer: 'requires_clergy_approval',
+      };
     }
     if (skipReason === 'too_short') {
       return { translatedText: text, isAiTranslated: false, disclaimer: 'too_short' };

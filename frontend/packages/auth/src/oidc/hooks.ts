@@ -14,11 +14,7 @@
 
 import { useCallback } from 'react';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import {
-  hasPermission as rbacHasPermission,
-  hasRole as rbacHasRole,
-  tenantRoleFor,
-} from './rbac';
+import { hasPermission as rbacHasPermission, hasRole as rbacHasRole, tenantRoleFor } from './rbac';
 import type { AuthSession, Permission, TenantRoleName } from './types';
 
 /** Map the (extended) next-auth session to the renderer's AuthSession. */

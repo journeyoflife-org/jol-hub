@@ -17,13 +17,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import {
-  Store,
-  Loader2,
-  CheckCircle,
-  AlertTriangle,
-  ExternalLink,
-} from 'lucide-react';
+import { Store, Loader2, CheckCircle, AlertTriangle, ExternalLink } from 'lucide-react';
 import { useEntity, useVerifyEntity } from '@/lib/hooks';
 
 // =============================================================================
@@ -55,13 +49,7 @@ interface CommercialVerifyProps {
   onVerified: () => void;
 }
 
-
-export function CommercialVerify({
-  entityId,
-  open,
-  onClose,
-  onVerified,
-}: CommercialVerifyProps) {
+export function CommercialVerify({ entityId, open, onClose, onVerified }: CommercialVerifyProps) {
   const [isVerifyingVAT, setIsVerifyingVAT] = useState(false);
   const [vatValid, setVatValid] = useState<boolean | null>(null);
 
@@ -148,16 +136,16 @@ export function CommercialVerify({
 
         {entityLoading ? (
           <div className="flex items-center justify-center py-8">
-            <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+            <Loader2 className="text-muted-foreground h-6 w-6 animate-spin" />
           </div>
         ) : (
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {/* Entity Summary */}
-            <div className="p-4 rounded-lg bg-muted/50">
+            <div className="bg-muted/50 rounded-lg p-4">
               <div className="flex items-center justify-between">
                 <div>
                   <h4 className="font-medium">{entity?.name}</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     {entity?.type} • {entity?.country}
                   </p>
                 </div>
@@ -213,24 +201,20 @@ export function CommercialVerify({
                     onClick={verifyVAT}
                     disabled={isVerifyingVAT || !vatNumber}
                   >
-                    {isVerifyingVAT ? (
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                    ) : (
-                      'Verify'
-                    )}
+                    {isVerifyingVAT ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Verify'}
                   </Button>
                 </div>
                 {errors.vatNumber && (
                   <p className="text-sm text-red-500">{errors.vatNumber.message}</p>
                 )}
                 {vatValid === true && (
-                  <p className="text-sm text-green-600 flex items-center gap-1">
+                  <p className="flex items-center gap-1 text-sm text-green-600">
                     <CheckCircle className="h-4 w-4" />
                     VAT number is valid
                   </p>
                 )}
                 {vatValid === false && (
-                  <p className="text-sm text-red-500 flex items-center gap-1">
+                  <p className="flex items-center gap-1 text-sm text-red-500">
                     <AlertTriangle className="h-4 w-4" />
                     VAT number is invalid
                   </p>
@@ -257,9 +241,7 @@ export function CommercialVerify({
                   placeholder="https://company.example.com"
                   className={errors.website ? 'border-red-500' : ''}
                 />
-                {errors.website && (
-                  <p className="text-sm text-red-500">{errors.website.message}</p>
-                )}
+                {errors.website && <p className="text-sm text-red-500">{errors.website.message}</p>}
               </div>
 
               {/* Verification Notes */}
@@ -268,7 +250,7 @@ export function CommercialVerify({
                 <textarea
                   id="verificationNotes"
                   {...register('verificationNotes')}
-                  className="w-full min-h-[80px] rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  className="border-input bg-background min-h-[80px] w-full rounded-md border px-3 py-2 text-sm"
                   placeholder="Additional notes about this verification..."
                 />
               </div>
@@ -294,18 +276,15 @@ export function CommercialVerify({
               <Button type="button" variant="outline" onClick={handleClose}>
                 Cancel
               </Button>
-              <Button
-                type="submit"
-                disabled={isVerifying || vatValid === false}
-              >
+              <Button type="submit" disabled={isVerifying || vatValid === false}>
                 {isVerifying ? (
                   <>
-                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     Verifying...
                   </>
                 ) : (
                   <>
-                    <CheckCircle className="h-4 w-4 mr-2" />
+                    <CheckCircle className="mr-2 h-4 w-4" />
                     Verify Business
                   </>
                 )}
@@ -313,10 +292,10 @@ export function CommercialVerify({
             </DialogFooter>
 
             {/* Compliance Notice */}
-            <div className="text-xs text-muted-foreground">
+            <div className="text-muted-foreground text-xs">
               <p>
-                <strong>SOC2 CC6.1:</strong> Business verification ensures compliance
-                with financial regulations and prevents fraudulent registrations.
+                <strong>SOC2 CC6.1:</strong> Business verification ensures compliance with financial
+                regulations and prevents fraudulent registrations.
               </p>
             </div>
           </form>

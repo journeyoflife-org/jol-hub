@@ -38,7 +38,7 @@ export default async function ProfilePage({
     // Open mode (pilot): quiet notice, no fabricated identity.
     return (
       <main className="mx-auto max-w-2xl px-4 py-12">
-        <h1 className="mb-4 font-heading text-2xl font-bold">
+        <h1 className="font-heading mb-4 text-2xl font-bold">
           {translate(messages, 'auth.profileTitle')}
         </h1>
         <p className="rounded-lg border border-dashed border-neutral-300 p-6 text-sm text-neutral-500 dark:border-neutral-700">
@@ -53,7 +53,7 @@ export default async function ProfilePage({
 
   return (
     <main className="mx-auto max-w-2xl px-4 py-12">
-      <h1 className="mb-6 font-heading text-2xl font-bold">
+      <h1 className="font-heading mb-6 text-2xl font-bold">
         {translate(messages, 'auth.profileTitle')}
       </h1>
 
@@ -75,7 +75,9 @@ export default async function ProfilePage({
             {translate(messages, 'auth.profileRole')}
           </dt>
           <dd className="font-medium">
-            {grant ? translate(messages, `auth.role_${grant.role}`) : translate(messages, 'auth.noTenantRole')}
+            {grant
+              ? translate(messages, `auth.role_${grant.role}`)
+              : translate(messages, 'auth.noTenantRole')}
           </dd>
         </div>
         <div>

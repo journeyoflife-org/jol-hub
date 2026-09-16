@@ -22,7 +22,9 @@ export function LoginButton() {
   return (
     <button
       type="button"
-      onClick={() => void login(typeof window !== 'undefined' ? window.location.pathname : undefined)}
+      onClick={() =>
+        void login(typeof window !== 'undefined' ? window.location.pathname : undefined)
+      }
       className="focus-ring inline-flex h-9 items-center rounded-md border border-neutral-300 px-3 text-sm font-medium text-neutral-800 hover:bg-neutral-100 dark:border-neutral-700 dark:text-neutral-100 dark:hover:bg-neutral-800"
     >
       {t('signIn')}

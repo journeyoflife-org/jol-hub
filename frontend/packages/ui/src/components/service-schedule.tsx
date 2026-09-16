@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * ServiceSchedule Component
  * Displays Mass times, confession, and office hours
@@ -38,10 +40,7 @@ export interface ServiceScheduleProps {
 // COMPONENT
 // =============================================================================
 
-export function ServiceSchedule({
-  parishId,
-  className = '',
-}: ServiceScheduleProps): JSX.Element {
+export function ServiceSchedule({ parishId, className = '' }: ServiceScheduleProps): JSX.Element {
   const [schedule, setSchedule] = useState<ScheduleItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -80,7 +79,7 @@ export function ServiceSchedule({
     return (
       <Card className={className}>
         <CardContent className="flex items-center justify-center py-12">
-          <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+          <Loader2 className="text-muted-foreground h-8 w-8 animate-spin" />
         </CardContent>
       </Card>
     );
@@ -109,7 +108,7 @@ export function ServiceSchedule({
       </CardHeader>
       <CardContent>
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-4 mb-4">
+          <TabsList className="mb-4 grid w-full grid-cols-4">
             <TabsTrigger value="all">All</TabsTrigger>
             <TabsTrigger value="mass">Mass</TabsTrigger>
             <TabsTrigger value="confession">Confession</TabsTrigger>
@@ -129,7 +128,7 @@ export function ServiceSchedule({
                   key={dayIndex}
                   className={`rounded-lg border p-3 ${isToday ? 'bg-primary/5 border-primary/20' : ''}`}
                 >
-                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                  <h4 className="mb-2 flex items-center gap-2 font-semibold">
                     {dayName}
                     {isToday && (
                       <Badge variant="default" className="text-xs">
@@ -143,13 +142,13 @@ export function ServiceSchedule({
                       return (
                         <div
                           key={item.id}
-                          className="flex items-start gap-3 p-2 rounded-md bg-muted/50"
+                          className="bg-muted/50 flex items-start gap-3 rounded-md p-2"
                         >
-                          <div className={`p-1.5 rounded ${typeConfig.color}`}>
+                          <div className={`rounded p-1.5 ${typeConfig.color}`}>
                             {typeConfig.icon}
                           </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 flex-wrap">
+                          <div className="min-w-0 flex-1">
+                            <div className="flex flex-wrap items-center gap-2">
                               <span className="font-medium">{item.title}</span>
                               <Badge variant="outline" className="text-xs">
                                 {item.startTime}
@@ -162,14 +161,10 @@ export function ServiceSchedule({
                               )}
                             </div>
                             {item.location && (
-                              <p className="text-sm text-muted-foreground">
-                                {item.location}
-                              </p>
+                              <p className="text-muted-foreground text-sm">{item.location}</p>
                             )}
                             {item.notes && (
-                              <p className="text-sm text-muted-foreground mt-1">
-                                {item.notes}
-                              </p>
+                              <p className="text-muted-foreground mt-1 text-sm">{item.notes}</p>
                             )}
                           </div>
                         </div>
@@ -181,7 +176,7 @@ export function ServiceSchedule({
             })}
 
             {filteredSchedule.length === 0 && (
-              <div className="text-center py-8 text-muted-foreground">
+              <div className="text-muted-foreground py-8 text-center">
                 No services scheduled for this category
               </div>
             )}

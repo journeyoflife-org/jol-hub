@@ -1,5 +1,10 @@
 import type { Bitrix24Config, Bitrix24BatchResponse } from './types';
-import { Bitrix24ApiError, Bitrix24AuthError, Bitrix24RateLimitError, Bitrix24TimeoutError } from './errors';
+import {
+  Bitrix24ApiError,
+  Bitrix24AuthError,
+  Bitrix24RateLimitError,
+  Bitrix24TimeoutError,
+} from './errors';
 import { UserApi } from './api/user';
 import { DepartmentApi } from './api/department';
 import { CalendarApi } from './api/calendar';

@@ -44,7 +44,15 @@ const TARGET_DIRS = [
   'apps/template-renderer/src',
 ];
 
-const SKIP_DIR_PARTS = new Set(['node_modules', '.next', 'dist', 'dev', '.turbo', '__tests__', 'e2e']);
+const SKIP_DIR_PARTS = new Set([
+  'node_modules',
+  '.next',
+  'dist',
+  'dev',
+  '.turbo',
+  '__tests__',
+  'e2e',
+]);
 
 /** Test/spec files carry intentionally literal assertion fixtures. */
 const TEST_FILE = /\.(test|spec)\.(ts|tsx)$/;
@@ -56,7 +64,11 @@ function collectFiles(dir: string): string[] {
     const stat = statSync(full);
     if (stat.isDirectory()) {
       if (!SKIP_DIR_PARTS.has(entry)) results.push(...collectFiles(full));
-    } else if (/\.(tsx|ts)$/.test(entry) && !entry.endsWith('.types.ts') && !TEST_FILE.test(entry)) {
+    } else if (
+      /\.(tsx|ts)$/.test(entry) &&
+      !entry.endsWith('.types.ts') &&
+      !TEST_FILE.test(entry)
+    ) {
       results.push(full);
     }
   }
@@ -115,23 +127,23 @@ for (const target of TARGET_DIRS) {
       // `>…<` pattern is generics/comparisons, not markup.
       if (isJsxFile) {
         for (const match of rawLine.matchAll(JSX_TEXT)) {
-        // `=>` (arrow function) is not a JSX tag close — otherwise generics
-        // like `() => Promise<X>` read as the JSX text ">Promise<".
-        const gtIndex = match.index ?? -1;
-        if (gtIndex > 0 && rawLine[gtIndex - 1] === '=') continue;
+          // `=>` (arrow function) is not a JSX tag close — otherwise generics
+          // like `() => Promise<X>` read as the JSX text ">Promise<".
+          const gtIndex = match.index ?? -1;
+          if (gtIndex > 0 && rawLine[gtIndex - 1] === '=') continue;
 
-        const text = match[1].trim();
-        // Ignore TypeScript syntax that mimics >text< (return types,
-        // generics): `): Promise<void>` etc.
-        if (/^[):;,=]/.test(text) || /[(:,=]$/.test(text)) continue;
-        if (text.length >= 2 && HUMAN_LETTERS.test(text)) {
-          findings.push({
-            file: relative(FRONTEND_ROOT, file),
-            line: index + 1,
-            kind: 'jsx-text',
-            text,
-          });
-        }
+          const text = match[1].trim();
+          // Ignore TypeScript syntax that mimics >text< (return types,
+          // generics): `): Promise<void>` etc.
+          if (/^[):;,=]/.test(text) || /[(:,=]$/.test(text)) continue;
+          if (text.length >= 2 && HUMAN_LETTERS.test(text)) {
+            findings.push({
+              file: relative(FRONTEND_ROOT, file),
+              line: index + 1,
+              kind: 'jsx-text',
+              text,
+            });
+          }
         }
       }
 

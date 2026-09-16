@@ -61,13 +61,13 @@ const rawFixtures: unknown[] = [
 ];
 
 /** All tenant fixtures, parsed (throws at load time if any is invalid). */
-export const tenantFixtures: readonly TenantFixture[] = rawFixtures.map(
-  (raw) => TenantFixtureSchema.parse(raw),
+export const tenantFixtures: readonly TenantFixture[] = rawFixtures.map((raw) =>
+  TenantFixtureSchema.parse(raw)
 );
 
 /** Internal slug → fixture map. Never serialize its keys to HTTP responses. */
 export const tenantRegistry: ReadonlyMap<string, TenantFixture> = new Map(
-  tenantFixtures.map((fixture) => [fixture.slug, fixture]),
+  tenantFixtures.map((fixture) => [fixture.slug, fixture])
 );
 
 /** Default tenant used as fallback when a resolved slug has no fixture. */

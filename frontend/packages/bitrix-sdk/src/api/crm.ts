@@ -141,7 +141,12 @@ export const DEAL_CATEGORIES = {
 } as const;
 
 // Donation types
-export type DonationType = 'one_time' | 'recurring' | 'mass_offering' | 'candle_offering' | 'special_collection';
+export type DonationType =
+  | 'one_time'
+  | 'recurring'
+  | 'mass_offering'
+  | 'candle_offering'
+  | 'special_collection';
 export type PaymentMethod = 'stripe' | 'paypal' | 'bank_link' | 'cash';
 
 export interface CreateDonationDealParams {
@@ -191,7 +196,9 @@ export class ContactApi {
   /**
    * Update an existing contact
    */
-  async update(params: Bitrix24ContactUpdateParams): Promise<Bitrix24Response<{ result: boolean }>> {
+  async update(
+    params: Bitrix24ContactUpdateParams
+  ): Promise<Bitrix24Response<{ result: boolean }>> {
     return this.client.post('crm.contact.update', params as unknown as Record<string, unknown>);
   }
 
@@ -264,7 +271,10 @@ export class DealApi {
   /**
    * Update an existing deal
    */
-  async update(id: string, fields: Partial<Bitrix24DealAddParams>): Promise<Bitrix24Response<{ result: boolean }>> {
+  async update(
+    id: string,
+    fields: Partial<Bitrix24DealAddParams>
+  ): Promise<Bitrix24Response<{ result: boolean }>> {
     return this.client.post('crm.deal.update', { id, fields });
   }
 
@@ -281,7 +291,7 @@ export class DealApi {
    */
   async createDonation(params: CreateDonationDealParams): Promise<{ dealId: string }> {
     const title = this.generateDonationTitle(params);
-    
+
     const dealFields: Bitrix24DealAddParams = {
       TITLE: title,
       CONTACT_ID: params.contactId,

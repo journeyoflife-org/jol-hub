@@ -83,7 +83,10 @@ export async function signIn(
 /**
  * Sign out the user.
  */
-export async function signOut(_options?: { callbackUrl?: string; redirect?: boolean }): Promise<void> {
+export async function signOut(_options?: {
+  callbackUrl?: string;
+  redirect?: boolean;
+}): Promise<void> {
   // This is a placeholder - the actual implementation
   // should use signOut from next-auth
 }

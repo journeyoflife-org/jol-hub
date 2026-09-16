@@ -40,7 +40,7 @@ const FLAG_ICONS: Record<SupportedLocale, React.ReactNode> = {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 5 3"
       aria-hidden="true"
-      className="h-4 w-6 rounded-sm overflow-hidden"
+      className="h-4 w-6 overflow-hidden rounded-sm"
     >
       {/* Lithuania: Yellow, Green, Red */}
       <rect width="5" height="1" y="0" fill="#FDB913" />
@@ -53,7 +53,7 @@ const FLAG_ICONS: Record<SupportedLocale, React.ReactNode> = {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 5 3"
       aria-hidden="true"
-      className="h-4 w-6 rounded-sm overflow-hidden"
+      className="h-4 w-6 overflow-hidden rounded-sm"
     >
       {/* Russia: White, Blue, Red */}
       <rect width="5" height="1" y="0" fill="#FFFFFF" />
@@ -66,7 +66,7 @@ const FLAG_ICONS: Record<SupportedLocale, React.ReactNode> = {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 60 30"
       aria-hidden="true"
-      className="h-4 w-6 rounded-sm overflow-hidden"
+      className="h-4 w-6 overflow-hidden rounded-sm"
     >
       {/* UK flag (simplified) */}
       <rect width="60" height="30" fill="#012169" />
@@ -161,12 +161,16 @@ export function LanguageSwitcher({
 
       if (event.key === 'ArrowDown') {
         event.preventDefault();
-        const items = Array.from(menuRef.current?.querySelectorAll('[role="menuitem"]') ?? []) as HTMLElement[];
+        const items = Array.from(
+          menuRef.current?.querySelectorAll('[role="menuitem"]') ?? []
+        ) as HTMLElement[];
         const currentIndex = items.indexOf(document.activeElement as HTMLElement);
         items[(currentIndex + 1) % items.length]?.focus();
       } else if (event.key === 'ArrowUp') {
         event.preventDefault();
-        const items = Array.from(menuRef.current?.querySelectorAll('[role="menuitem"]') ?? []) as HTMLElement[];
+        const items = Array.from(
+          menuRef.current?.querySelectorAll('[role="menuitem"]') ?? []
+        ) as HTMLElement[];
         const currentIndex = items.indexOf(document.activeElement as HTMLElement);
         items[(currentIndex - 1 + items.length) % items.length]?.focus();
       } else if (event.key === 'Home') {
@@ -175,7 +179,9 @@ export function LanguageSwitcher({
         firstItem?.focus();
       } else if (event.key === 'End') {
         event.preventDefault();
-        const items = Array.from(menuRef.current?.querySelectorAll('[role="menuitem"]') ?? []) as HTMLElement[];
+        const items = Array.from(
+          menuRef.current?.querySelectorAll('[role="menuitem"]') ?? []
+        ) as HTMLElement[];
         items[items.length - 1]?.focus();
       }
     },
@@ -216,7 +222,7 @@ export function LanguageSwitcher({
           <button
             key={locale}
             onClick={() => switchLocale(locale)}
-            className={`flex items-center gap-1.5 px-2.5 py-1.5 text-sm rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary ${
+            className={`focus:ring-primary flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm transition-colors focus:outline-none focus:ring-2 ${
               currentLocale === locale
                 ? 'bg-primary text-primary-foreground font-medium'
                 : 'hover:bg-accent text-foreground hover:text-accent-foreground'
@@ -225,12 +231,8 @@ export function LanguageSwitcher({
             aria-pressed={currentLocale === locale}
           >
             {showFlags && FLAG_ICONS[locale]}
-            {showNativeName && (
-              <span>{LOCALE_CONFIGS[locale].nativeName}</span>
-            )}
-            {!showNativeName && (
-              <span className="uppercase font-mono">{locale}</span>
-            )}
+            {showNativeName && <span>{LOCALE_CONFIGS[locale].nativeName}</span>}
+            {!showNativeName && <span className="font-mono uppercase">{locale}</span>}
           </button>
         ))}
       </div>
@@ -248,17 +250,17 @@ export function LanguageSwitcher({
       <button
         ref={buttonRef}
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+        className="border-input bg-background hover:bg-accent hover:text-accent-foreground focus:ring-primary flex items-center gap-2 rounded-md border px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2"
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         aria-label={`${currentConfig.name} — change language`}
       >
         {showFlags && FLAG_ICONS[currentLocale]}
         {showNativeName && <span>{currentConfig.nativeName}</span>}
-        {!showNativeName && <span className="uppercase font-mono">{currentLocale}</span>}
+        {!showNativeName && <span className="font-mono uppercase">{currentLocale}</span>}
         {/* Chevron */}
         <svg
-          className={`h-4 w-4 text-muted-foreground transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          className={`text-muted-foreground h-4 w-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -274,7 +276,7 @@ export function LanguageSwitcher({
           ref={menuRef}
           role="listbox"
           aria-label="Available languages"
-          className="absolute right-0 mt-1 w-44 rounded-md border border-border bg-popover shadow-lg z-50 py-1 animate-in fade-in slide-in-from-top-2 duration-150"
+          className="border-border bg-popover animate-in fade-in slide-in-from-top-2 absolute right-0 z-50 mt-1 w-44 rounded-md border py-1 shadow-lg duration-150"
         >
           {SUPPORTED_LOCALES.map((locale) => {
             const config = LOCALE_CONFIGS[locale];
@@ -286,25 +288,23 @@ export function LanguageSwitcher({
                   role="menuitem"
                   aria-selected={isSelected}
                   onClick={() => switchLocale(locale)}
-                  className={`w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors focus:outline-none focus:bg-accent ${
+                  className={`focus:bg-accent flex w-full items-center gap-3 px-3 py-2 text-sm transition-colors focus:outline-none ${
                     isSelected
                       ? 'bg-accent text-accent-foreground font-semibold'
                       : 'text-popover-foreground hover:bg-accent hover:text-accent-foreground'
                   }`}
                 >
-                  {showFlags && (
-                    <span className="flex-shrink-0">{FLAG_ICONS[locale]}</span>
-                  )}
+                  {showFlags && <span className="flex-shrink-0">{FLAG_ICONS[locale]}</span>}
                   <div className="flex flex-col items-start">
                     <span>{config.nativeName}</span>
                     {config.nativeName !== config.name && (
-                      <span className="text-xs text-muted-foreground">{config.name}</span>
+                      <span className="text-muted-foreground text-xs">{config.name}</span>
                     )}
                   </div>
                   {/* Checkmark for selected */}
                   {isSelected && (
                     <svg
-                      className="ml-auto h-4 w-4 text-primary flex-shrink-0"
+                      className="text-primary ml-auto h-4 w-4 flex-shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -332,11 +332,7 @@ export function LanguageSwitcher({
 // COMPACT VARIANT (for mobile nav)
 // =============================================================================
 
-export function LanguageSwitcherCompact({
-  className = '',
-}: {
-  className?: string;
-}): JSX.Element {
+export function LanguageSwitcherCompact({ className = '' }: { className?: string }): JSX.Element {
   const router = useRouter();
   const pathname = usePathname();
   const { i18n } = useTranslation();
@@ -362,7 +358,7 @@ export function LanguageSwitcherCompact({
     <select
       value={currentLocale}
       onChange={handleChange}
-      className={`h-9 rounded-md border border-input bg-background px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary ${className}`}
+      className={`border-input bg-background focus:ring-primary h-9 rounded-md border px-3 py-1 text-sm focus:outline-none focus:ring-2 ${className}`}
       aria-label="Select language"
     >
       {SUPPORTED_LOCALES.map((locale) => (

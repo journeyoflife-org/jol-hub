@@ -12,7 +12,7 @@ export function TestimonialCard({ quote, author, role, tenant, className }: Test
       className={cn(
         'rounded-lg border-s-4 bg-neutral-50 p-6 shadow-sm dark:bg-neutral-900',
         accentBorderClass(tenant),
-        className,
+        className
       )}
     >
       <blockquote className="font-heading text-lg italic leading-relaxed text-neutral-800 dark:text-neutral-100">

@@ -46,7 +46,7 @@ export function useTranslations(namespace?: string) {
       const formatted = formatter.format(values ?? {});
       return Array.isArray(formatted) ? formatted.join('') : String(formatted);
     },
-    [locale, messages, namespace],
+    [locale, messages, namespace]
   );
 
   return t;

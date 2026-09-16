@@ -57,7 +57,9 @@ test('empty heading text fails', () => {
 // =============================================================================
 
 test('images without alt fail; alt="" and alt text pass', () => {
-  const findings = checkAltText('<img src="a.jpg"><img src="b.jpg" alt=""><img src="c.jpg" alt="Church">');
+  const findings = checkAltText(
+    '<img src="a.jpg"><img src="b.jpg" alt=""><img src="c.jpg" alt="Church">'
+  );
   assert.equal(findings.length, 1);
 });
 
@@ -92,7 +94,9 @@ test('unlabeled input fails; label-for, wrapping label and aria-label pass', () 
 });
 
 test('honeypot fields are exempt', () => {
-  const document = doc('<input type="text" name="website" tabindex="-1" aria-hidden="true" autocomplete="off">');
+  const document = doc(
+    '<input type="text" name="website" tabindex="-1" aria-hidden="true" autocomplete="off">'
+  );
   assert.equal(checkFormLabels(document).length, 0);
 });
 
@@ -114,7 +118,9 @@ test('focusable element inside aria-hidden fails', () => {
 });
 
 test('honeypot input (tabindex=-1) inside aria-hidden is exempt', () => {
-  const document = doc('<div aria-hidden="true"><input type="text" name="website" tabindex="-1"></div>');
+  const document = doc(
+    '<div aria-hidden="true"><input type="text" name="website" tabindex="-1"></div>'
+  );
   assert.equal(checkAriaUsage(document).filter((f) => f.severity === 'fail').length, 0);
 });
 
@@ -123,7 +129,7 @@ test('banned link text fails in all pilot languages', () => {
     const document = doc(`<a href="/x">${text}</a>`);
     assert.ok(
       checkAriaUsage(document).some((f) => f.rule === 'link-text'),
-      `expected "${text}" to be flagged`,
+      `expected "${text}" to be flagged`
     );
   }
 });

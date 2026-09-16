@@ -13,14 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import {
-  ArrowRightLeft,
-  Plus,
-  Trash2,
-  Save,
-  Loader2,
-  Info,
-} from 'lucide-react';
+import { ArrowRightLeft, Plus, Trash2, Save, Loader2, Info } from 'lucide-react';
 import { ENTITY_TYPES } from '@/lib/entityTypes';
 import type { FieldMapping } from '@/types';
 
@@ -66,11 +59,7 @@ const JOL_HUB_FIELDS = [
   { id: 'diocese', name: 'Diocese', type: 'string' },
 ];
 
-export function FieldMapper({
-  mappings,
-  onSave,
-  isLoading = false,
-}: FieldMapperProps) {
+export function FieldMapper({ mappings, onSave, isLoading = false }: FieldMapperProps) {
   const [localMappings, setLocalMappings] = useState<FieldMapping[]>(mappings);
   const [selectedEntityType, setSelectedEntityType] = useState<string>('');
   const [hasChanges, setHasChanges] = useState(false);
@@ -90,11 +79,7 @@ export function FieldMapper({
   };
 
   const updateMapping = (id: string, updates: Partial<FieldMapping>) => {
-    setLocalMappings(
-      localMappings.map((m) =>
-        m.id === id ? { ...m, ...updates } : m
-      )
-    );
+    setLocalMappings(localMappings.map((m) => (m.id === id ? { ...m, ...updates } : m)));
     setHasChanges(true);
   };
 
@@ -121,22 +106,15 @@ export function FieldMapper({
               <ArrowRightLeft className="h-5 w-5" />
               Field Mapping
             </CardTitle>
-            <CardDescription>
-              Configure field mappings between JOL-HUB and Bitrix24
-            </CardDescription>
+            <CardDescription>Configure field mappings between JOL-HUB and Bitrix24</CardDescription>
           </div>
           <div className="flex items-center gap-2">
-            {hasChanges && (
-              <Badge variant="secondary">Unsaved changes</Badge>
-            )}
-            <Button
-              onClick={handleSave}
-              disabled={!hasChanges || isLoading}
-            >
+            {hasChanges && <Badge variant="secondary">Unsaved changes</Badge>}
+            <Button onClick={handleSave} disabled={!hasChanges || isLoading}>
               {isLoading ? (
-                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               ) : (
-                <Save className="h-4 w-4 mr-2" />
+                <Save className="mr-2 h-4 w-4" />
               )}
               Save Mappings
             </Button>
@@ -163,8 +141,8 @@ export function FieldMapper({
         </div>
 
         {/* Mapping Table */}
-        <div className="border rounded-lg">
-          <div className="grid grid-cols-6 gap-4 p-4 bg-muted/50 text-sm font-medium">
+        <div className="rounded-lg border">
+          <div className="bg-muted/50 grid grid-cols-6 gap-4 p-4 text-sm font-medium">
             <div>Entity Type</div>
             <div>JOL-HUB Field</div>
             <div>Direction</div>
@@ -174,10 +152,7 @@ export function FieldMapper({
           </div>
 
           {filteredMappings.map((mapping) => (
-            <div
-              key={mapping.id}
-              className="grid grid-cols-6 gap-4 p-4 border-t items-center"
-            >
+            <div key={mapping.id} className="grid grid-cols-6 items-center gap-4 border-t p-4">
               {/* Entity Type */}
               <Select
                 value={mapping.entityType}
@@ -252,9 +227,7 @@ export function FieldMapper({
               <div className="flex justify-center">
                 <Switch
                   checked={mapping.enabled}
-                  onCheckedChange={(checked) =>
-                    updateMapping(mapping.id, { enabled: checked })
-                  }
+                  onCheckedChange={(checked) => updateMapping(mapping.id, { enabled: checked })}
                 />
               </div>
 
@@ -271,29 +244,29 @@ export function FieldMapper({
           ))}
 
           {filteredMappings.length === 0 && (
-            <div className="p-8 text-center text-muted-foreground">
-              No field mappings configured. Click "Add Mapping" to create one.
+            <div className="text-muted-foreground p-8 text-center">
+              No field mappings configured. Click &quot;Add Mapping&quot; to create one.
             </div>
           )}
         </div>
 
         {/* Add Mapping Button */}
         <Button variant="outline" onClick={addMapping} className="w-full">
-          <Plus className="h-4 w-4 mr-2" />
+          <Plus className="mr-2 h-4 w-4" />
           Add Mapping
         </Button>
 
         {/* Info Notice */}
-        <div className="flex items-start gap-2 p-4 rounded-lg bg-blue-50 dark:bg-blue-950/20 text-sm">
-          <Info className="h-4 w-4 text-blue-500 mt-0.5" />
+        <div className="flex items-start gap-2 rounded-lg bg-blue-50 p-4 text-sm dark:bg-blue-950/20">
+          <Info className="mt-0.5 h-4 w-4 text-blue-500" />
           <div>
             <p className="font-medium text-blue-800 dark:text-blue-200">
               Field Mapping Configuration
             </p>
-            <p className="text-blue-600 dark:text-blue-400 mt-1">
+            <p className="mt-1 text-blue-600 dark:text-blue-400">
               Configure how fields are mapped between JOL-HUB and Bitrix24.
-              "Bidirectional" sync will update both systems when either changes.
-              "To Bitrix24" only pushes local changes to the CRM.
+              &quot;Bidirectional&quot; sync will update both systems when either changes. &quot;To
+              Bitrix24&quot; only pushes local changes to the CRM.
             </p>
           </div>
         </div>

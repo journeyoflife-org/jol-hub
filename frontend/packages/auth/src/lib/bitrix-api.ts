@@ -1,9 +1,9 @@
 /**
  * Bitrix24 REST API Client for JOL-HUB
- * 
+ *
  * Provides a type-safe client for interacting with Bitrix24 REST API
  * with automatic token refresh, rate limiting, and error handling.
- * 
+ *
  * @see https://dev.1c-bitrix.ru/rest_help/
  */
 
@@ -142,10 +142,7 @@ class RateLimiter {
 
     if (elapsed >= this.refillInterval) {
       const refills = Math.floor(elapsed / this.refillInterval);
-      this.state.tokens = Math.min(
-        this.maxTokens,
-        this.state.tokens + refills * this.refillAmount
-      );
+      this.state.tokens = Math.min(this.maxTokens, this.state.tokens + refills * this.refillAmount);
       this.state.lastRefill = now - (elapsed % this.refillInterval);
     }
   }
@@ -154,10 +151,13 @@ class RateLimiter {
    * Schedules the next refill check.
    */
   private scheduleRefill(): void {
-    setTimeout(() => {
-      this.refillTokens();
-      this.processQueue();
-    }, this.refillInterval - (Date.now() - this.state.lastRefill));
+    setTimeout(
+      () => {
+        this.refillTokens();
+        this.processQueue();
+      },
+      this.refillInterval - (Date.now() - this.state.lastRefill)
+    );
   }
 
   /**
@@ -184,13 +184,13 @@ class RateLimiter {
 
 /**
  * Bitrix24 REST API Client.
- * 
+ *
  * Provides type-safe access to Bitrix24 REST API with:
  * - Automatic token refresh on expiration
  * - Rate limiting (2 requests/second)
  * - Retry logic for transient errors
  * - Comprehensive error handling
- * 
+ *
  * @example
  * ```typescript
  * const client = new BitrixApiClient({
@@ -201,7 +201,7 @@ class RateLimiter {
  *   clientSecret: 'client-secret',
  *   expiresAt: Date.now() + 3600000,
  * });
- * 
+ *
  * const user = await client.getCurrentUser();
  * console.log(user.NAME);
  * ```
@@ -258,7 +258,7 @@ export class BitrixApiClient {
    */
   private async doRefreshToken(): Promise<Bitrix24TokenResponse> {
     const url = `${this.config.authDomain}/oauth/token/`;
-    
+
     const params = new URLSearchParams({
       grant_type: 'refresh_token',
       client_id: this.config.clientId,
@@ -272,7 +272,7 @@ export class BitrixApiClient {
     const response = await fetch(`${url}?${params.toString()}`, {
       method: 'GET',
       headers: {
-        'Accept': 'application/json',
+        Accept: 'application/json',
       },
     });
 
@@ -288,7 +288,7 @@ export class BitrixApiClient {
     }
 
     const tokens = data as Bitrix24TokenResponse;
-    
+
     // Update config with new tokens
     this.config.accessToken = tokens.access_token;
     this.config.refreshToken = tokens.refresh_token;
@@ -302,15 +302,12 @@ export class BitrixApiClient {
 
   /**
    * Calls a Bitrix24 REST API method.
-   * 
+   *
    * @param method - The API method name (e.g., 'user.current')
    * @param params - Method parameters
    * @returns The API response result
    */
-  async callMethod<T = unknown>(
-    method: string,
-    params: BitrixApiParams = {}
-  ): Promise<T> {
+  async callMethod<T = unknown>(method: string, params: BitrixApiParams = {}): Promise<T> {
     // Check if token needs refresh
     if (this.isTokenExpired()) {
       await this.refreshAccessToken();
@@ -328,7 +325,7 @@ export class BitrixApiClient {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.config.accessToken}`,
+        Authorization: `Bearer ${this.config.accessToken}`,
       },
       body: JSON.stringify(params),
     });
@@ -338,18 +335,18 @@ export class BitrixApiClient {
     // Handle 401 Unauthorized - try to refresh token
     if (response.status === 401) {
       console.log(`[BITRIX API AUDIT] ${logTimestamp} - 401 received, refreshing token`);
-      
+
       try {
         await this.refreshAccessToken();
-        
+
         // Retry the request with new token
         await this.rateLimiter.acquire();
-        
+
         const retryResponse = await fetch(url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${this.config.accessToken}`,
+            Authorization: `Bearer ${this.config.accessToken}`,
           },
           body: JSON.stringify(params),
         });
@@ -358,14 +355,18 @@ export class BitrixApiClient {
 
         if (!retryResponse.ok) {
           const error = new Error(
-            (retryData as Bitrix24ApiError).error_description ?? 
-            `API call failed: ${method}`
+            (retryData as Bitrix24ApiError).error_description ?? `API call failed: ${method}`
           );
-          console.error(`[BITRIX API AUDIT] ${logTimestamp} - API call failed after retry:`, error.message);
+          console.error(
+            `[BITRIX API AUDIT] ${logTimestamp} - API call failed after retry:`,
+            error.message
+          );
           throw error;
         }
 
-        console.log(`[BITRIX API AUDIT] ${logTimestamp} - API call successful (after retry): ${method}`);
+        console.log(
+          `[BITRIX API AUDIT] ${logTimestamp} - API call successful (after retry): ${method}`
+        );
         return (retryData as Bitrix24ApiResponse<T>).result;
       } catch (refreshError) {
         console.error(`[BITRIX API AUDIT] ${logTimestamp} - Token refresh failed:`, refreshError);
@@ -376,8 +377,7 @@ export class BitrixApiClient {
 
     if (!response.ok) {
       const error = new Error(
-        (data as Bitrix24ApiError).error_description ?? 
-        `API call failed: ${method}`
+        (data as Bitrix24ApiError).error_description ?? `API call failed: ${method}`
       );
       console.error(`[BITRIX API AUDIT] ${logTimestamp} - API call failed:`, error.message);
       throw error;
@@ -422,12 +422,14 @@ export class BitrixApiClient {
    * Lists CRM contacts with optional filtering.
    * @see https://dev.1c-bitrix.ru/rest_help/crm/contacts/crm_contact_list.php
    */
-  async listCrmContacts(params: {
-    filter?: Record<string, string | number | boolean>;
-    select?: string[];
-    order?: Record<string, string>;
-    start?: number;
-  } = {}): Promise<BitrixCrmContact[]> {
+  async listCrmContacts(
+    params: {
+      filter?: Record<string, string | number | boolean>;
+      select?: string[];
+      order?: Record<string, string>;
+      start?: number;
+    } = {}
+  ): Promise<BitrixCrmContact[]> {
     return this.callMethod<BitrixCrmContact[]>('crm.contact.list', params);
   }
 
@@ -435,12 +437,14 @@ export class BitrixApiClient {
    * Gets tasks for the current user.
    * @see https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks_task_list.php
    */
-  async getTasks(params: {
-    filter?: Record<string, string | number | boolean>;
-    select?: string[];
-    order?: Record<string, string>;
-    start?: number;
-  } = {}): Promise<BitrixTask[]> {
+  async getTasks(
+    params: {
+      filter?: Record<string, string | number | boolean>;
+      select?: string[];
+      order?: Record<string, string>;
+      start?: number;
+    } = {}
+  ): Promise<BitrixTask[]> {
     interface TaskListResult {
       tasks: BitrixTask[];
     }
@@ -465,10 +469,12 @@ export class BitrixApiClient {
    * Gets department list.
    * @see https://dev.1c-bitrix.ru/rest_help/department/department_get.php
    */
-  async getDepartments(params: {
-    ID?: number | number[];
-    NAME?: string;
-  } = {}): Promise<unknown[]> {
+  async getDepartments(
+    params: {
+      ID?: number | number[];
+      NAME?: string;
+    } = {}
+  ): Promise<unknown[]> {
     return this.callMethod<unknown[]>('department.get', params);
   }
 
@@ -490,9 +496,7 @@ export class BitrixApiClient {
 /**
  * Creates a Bitrix24 API client instance.
  */
-export function createBitrixApiClient(
-  config: BitrixApiClientConfig
-): BitrixApiClient {
+export function createBitrixApiClient(config: BitrixApiClientConfig): BitrixApiClient {
   return new BitrixApiClient(config);
 }
 

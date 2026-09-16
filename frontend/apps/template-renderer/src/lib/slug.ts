@@ -45,13 +45,15 @@ export function slugify(input: string): string {
     .map((ch) => LT_TRANSLITERATION[ch] ?? ch)
     .join('');
 
-  return transliterated
-    .toLowerCase()
-    // Any remaining non-ASCII letters fold to nothing (keep [a-z0-9] only).
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
+  return (
+    transliterated
+      .toLowerCase()
+      // Any remaining non-ASCII letters fold to nothing (keep [a-z0-9] only).
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+  );
 }
 
 /** True when a candidate slug matches the public allowlist. */

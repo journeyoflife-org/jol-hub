@@ -59,10 +59,9 @@ export interface Bitrix24ListResponse<T> extends Bitrix24Response<T[]> {
 /**
  * Batch API response.
  */
-export interface Bitrix24BatchResponse<T extends Record<string, unknown>>
-  extends Bitrix24Response<{
-    [K in keyof T]: Bitrix24Response<T[K]>;
-  }> {
+export interface Bitrix24BatchResponse<T extends Record<string, unknown>> extends Bitrix24Response<{
+  [K in keyof T]: Bitrix24Response<T[K]>;
+}> {
   result_error?: Record<string, { error: string; error_description: string }>;
 }
 

@@ -192,7 +192,15 @@ export function useScoreBatch() {
 export function useReviewLeadScore() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: async ({ id, reviewOverride, reviewNotes }: { id: string; reviewOverride: number; reviewNotes: string }) => {
+    mutationFn: async ({
+      id,
+      reviewOverride,
+      reviewNotes,
+    }: {
+      id: string;
+      reviewOverride: number;
+      reviewNotes: string;
+    }) => {
       const res = await aiApi.reviewLeadScore(id, reviewOverride, reviewNotes);
       if (!res.success) throw new Error(res.error?.message ?? 'Review failed');
       return res.data!;
@@ -274,7 +282,15 @@ export function useEndChat() {
 export function useChatFeedback() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: async ({ messageId, isHelpful, note }: { messageId: string; isHelpful: boolean; note?: string }) => {
+    mutationFn: async ({
+      messageId,
+      isHelpful,
+      note,
+    }: {
+      messageId: string;
+      isHelpful: boolean;
+      note?: string;
+    }) => {
       const body: ChatFeedbackRequest = { is_helpful: isHelpful, note };
       const res = await aiApi.chatFeedback(messageId, body);
       if (!res.success) throw new Error(res.error?.message ?? 'Failed to submit feedback');

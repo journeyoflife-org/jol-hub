@@ -32,7 +32,7 @@ export interface MediaUploaderProps {
 type UploadPhase =
   | 'idle'
   | 'invalid'
-  | 'ready'        // validated, awaiting alt text + confirm
+  | 'ready' // validated, awaiting alt text + confirm
   | 'uploading'
   | 'quarantined'
   | 'error';
@@ -69,44 +69,56 @@ export function MediaUploader({ tenantSlug, editorConfigured }: MediaUploaderPro
     };
   }, [editorConfigured, tenantSlug]);
 
-  const validateAndLoad = useCallback((file: File) => {
-    setValidationError('');
-    setCandidate(null);
-    setAltText('');
-    setPhase('idle');
+  const validateAndLoad = useCallback(
+    (file: File) => {
+      setValidationError('');
+      setCandidate(null);
+      setAltText('');
+      setPhase('idle');
 
-    if (!ALLOWED_IMAGE_TYPES.includes(file.type as (typeof ALLOWED_IMAGE_TYPES)[number])) {
-      setValidationError(t('mediaBadType'));
-      setPhase('invalid');
-      return;
-    }
-    if (file.size > EDITOR_LIMITS.maxImageBytes) {
-      setValidationError(t('mediaTooLarge'));
-      setPhase('invalid');
-      return;
-    }
-
-    // Dimension check via an object URL (never injected into the DOM).
-    const objectUrl = URL.createObjectURL(file);
-    const probe = new Image();
-    probe.onload = () => {
-      URL.revokeObjectURL(objectUrl);
-      if (probe.naturalWidth === 0 || probe.naturalWidth > MAX_DIMENSION || probe.naturalHeight > MAX_DIMENSION) {
-        setValidationError(t('mediaBadDimensions'));
+      if (!ALLOWED_IMAGE_TYPES.includes(file.type as (typeof ALLOWED_IMAGE_TYPES)[number])) {
+        setValidationError(t('mediaBadType'));
         setPhase('invalid');
         return;
       }
-      const thumb = URL.createObjectURL(file);
-      setCandidate({ file, width: probe.naturalWidth, height: probe.naturalHeight, objectUrl: thumb });
-      setPhase('ready');
-    };
-    probe.onerror = () => {
-      URL.revokeObjectURL(objectUrl);
-      setValidationError(t('mediaUnreadable'));
-      setPhase('invalid');
-    };
-    probe.src = objectUrl;
-  }, [t]);
+      if (file.size > EDITOR_LIMITS.maxImageBytes) {
+        setValidationError(t('mediaTooLarge'));
+        setPhase('invalid');
+        return;
+      }
+
+      // Dimension check via an object URL (never injected into the DOM).
+      const objectUrl = URL.createObjectURL(file);
+      const probe = new Image();
+      probe.onload = () => {
+        URL.revokeObjectURL(objectUrl);
+        if (
+          probe.naturalWidth === 0 ||
+          probe.naturalWidth > MAX_DIMENSION ||
+          probe.naturalHeight > MAX_DIMENSION
+        ) {
+          setValidationError(t('mediaBadDimensions'));
+          setPhase('invalid');
+          return;
+        }
+        const thumb = URL.createObjectURL(file);
+        setCandidate({
+          file,
+          width: probe.naturalWidth,
+          height: probe.naturalHeight,
+          objectUrl: thumb,
+        });
+        setPhase('ready');
+      };
+      probe.onerror = () => {
+        URL.revokeObjectURL(objectUrl);
+        setValidationError(t('mediaUnreadable'));
+        setPhase('invalid');
+      };
+      probe.src = objectUrl;
+    },
+    [t]
+  );
 
   const canUpload = phase === 'ready' && altText.trim().length > 0;
 
@@ -194,7 +206,10 @@ export function MediaUploader({ tenantSlug, editorConfigured }: MediaUploaderPro
       </div>
 
       {phase === 'invalid' && (
-        <p role="alert" className="rounded-md border border-red-300 bg-red-50 p-3 text-sm text-red-800 dark:border-red-700 dark:bg-red-950 dark:text-red-200">
+        <p
+          role="alert"
+          className="rounded-md border border-red-300 bg-red-50 p-3 text-sm text-red-800 dark:border-red-700 dark:bg-red-950 dark:text-red-200"
+        >
           {validationError}
         </p>
       )}
@@ -220,7 +235,10 @@ export function MediaUploader({ tenantSlug, editorConfigured }: MediaUploaderPro
 
           <label className="block text-sm">
             <span className="mb-1 block">
-              {t('altTextLabel')} <span aria-hidden="true" className="text-red-600">*</span>
+              {t('altTextLabel')}{' '}
+              <span aria-hidden="true" className="text-red-600">
+                *
+              </span>
             </span>
             <input
               className="focus-ring w-full rounded-md border border-neutral-300 px-2 py-1.5 dark:border-neutral-700 dark:bg-neutral-900"
@@ -228,18 +246,25 @@ export function MediaUploader({ tenantSlug, editorConfigured }: MediaUploaderPro
               maxLength={EDITOR_LIMITS.maxTextLength.altText}
               onChange={(event) => setAltText(event.target.value)}
             />
-            <span className="mt-1 block text-xs text-neutral-500 dark:text-neutral-400">{t('altTextHint')}</span>
+            <span className="mt-1 block text-xs text-neutral-500 dark:text-neutral-400">
+              {t('altTextHint')}
+            </span>
           </label>
 
           {phase === 'uploading' && (
-            <progress value={progress} max={100} className="w-full" aria-label={t('mediaUploading')} />
+            <progress
+              value={progress}
+              max={100}
+              className="w-full"
+              aria-label={t('mediaUploading')}
+            />
           )}
 
           <button
             type="button"
             disabled={!canUpload}
             onClick={() => void upload()}
-            className="focus-ring rounded-md bg-primary px-4 py-2 text-sm font-medium text-white disabled:opacity-40"
+            className="focus-ring bg-primary rounded-md px-4 py-2 text-sm font-medium text-white disabled:opacity-40"
           >
             {t('mediaUploadButton')}
           </button>
@@ -252,14 +277,17 @@ export function MediaUploader({ tenantSlug, editorConfigured }: MediaUploaderPro
         </p>
       )}
       {phase === 'error' && (
-        <p role="alert" className="rounded-md border border-red-300 bg-red-50 p-3 text-sm text-red-800 dark:border-red-700 dark:bg-red-950 dark:text-red-200">
+        <p
+          role="alert"
+          className="rounded-md border border-red-300 bg-red-50 p-3 text-sm text-red-800 dark:border-red-700 dark:bg-red-950 dark:text-red-200"
+        >
           {t('mediaError')}
         </p>
       )}
 
       {/* Library */}
       <section aria-label={t('mediaLibraryTitle')}>
-        <h3 className="mb-2 font-heading text-base font-semibold">{t('mediaLibraryTitle')}</h3>
+        <h3 className="font-heading mb-2 text-base font-semibold">{t('mediaLibraryTitle')}</h3>
         {!editorConfigured ? (
           <p className="text-sm text-neutral-500 dark:text-neutral-400">{t('mediaLibraryPilot')}</p>
         ) : library.length === 0 ? (
@@ -267,10 +295,14 @@ export function MediaUploader({ tenantSlug, editorConfigured }: MediaUploaderPro
         ) : (
           <ul className="grid gap-2 sm:grid-cols-2">
             {library.map((item) => (
-              <li key={item.id} className="rounded-md border border-neutral-200 p-3 text-sm dark:border-neutral-800">
+              <li
+                key={item.id}
+                className="rounded-md border border-neutral-200 p-3 text-sm dark:border-neutral-800"
+              >
                 <p className="font-medium">{item.fileName}</p>
                 <p className="text-xs text-neutral-500 dark:text-neutral-400">
-                  {stateBadge[item.state]} · {(item.sizeBytes / 1024).toFixed(0)} KB · {item.altText}
+                  {stateBadge[item.state]} · {(item.sizeBytes / 1024).toFixed(0)} KB ·{' '}
+                  {item.altText}
                 </p>
               </li>
             ))}

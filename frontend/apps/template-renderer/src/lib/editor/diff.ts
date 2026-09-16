@@ -26,7 +26,13 @@ export interface BlockChange {
 
 /** Properties compared when detecting changes (order-independent). */
 const COMPARED_FIELDS: readonly (keyof EditorBlock)[] = [
-  'type', 'text', 'mediaId', 'altText', 'label', 'href', 'size',
+  'type',
+  'text',
+  'mediaId',
+  'altText',
+  'label',
+  'href',
+  'size',
 ];
 
 function fieldEqual(a: EditorBlock, b: EditorBlock, field: keyof EditorBlock): boolean {
@@ -37,7 +43,10 @@ function fieldEqual(a: EditorBlock, b: EditorBlock, field: keyof EditorBlock): b
  * Diff `before` → `after`. Deterministic ordering: added/moved/changed in
  * `after` order, then removals in `before` order.
  */
-export function diffBlocks(before: readonly EditorBlock[], after: readonly EditorBlock[]): BlockChange[] {
+export function diffBlocks(
+  before: readonly EditorBlock[],
+  after: readonly EditorBlock[]
+): BlockChange[] {
   const changes: BlockChange[] = [];
   const beforeById = new Map(before.map((block, index) => [block.id, { block, index }]));
   const afterById = new Map(after.map((block, index) => [block.id, { block, index }]));
@@ -58,8 +67,10 @@ export function diffBlocks(before: readonly EditorBlock[], after: readonly Edito
       });
     }
     const fields = COMPARED_FIELDS.filter((field) => !fieldEqual(previous.block, block, field));
-    const marksChanged = JSON.stringify(previous.block.marks ?? []) !== JSON.stringify(block.marks ?? []);
-    const linksChanged = JSON.stringify(previous.block.links ?? []) !== JSON.stringify(block.links ?? []);
+    const marksChanged =
+      JSON.stringify(previous.block.marks ?? []) !== JSON.stringify(block.marks ?? []);
+    const linksChanged =
+      JSON.stringify(previous.block.links ?? []) !== JSON.stringify(block.links ?? []);
     if (marksChanged) fields.push('marks');
     if (linksChanged) fields.push('links');
     if (fields.length > 0) {

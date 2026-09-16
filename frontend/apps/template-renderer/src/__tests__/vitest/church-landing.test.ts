@@ -26,7 +26,7 @@ const ORIGIN = 'https://gyvenimo-kelias.lt';
 function loadFixture(slug: string): TenantFixture {
   const raw = readFileSync(
     join(__dirname, '../../../../../packages/seed-data/src/fixtures/tenants', `${slug}.json`),
-    'utf-8',
+    'utf-8'
   );
   return TenantFixtureSchema.parse(JSON.parse(raw));
 }
@@ -74,7 +74,7 @@ describe('churchEntity coverage per type', () => {
         vertical: fixture.vertical,
         locale: 'lt',
         homeUrl: `${ORIGIN}/lt/basilica-vilnius-cathedral`,
-      }),
+      })
     );
     expect(entity['@type']).toEqual(['Church', 'PlaceOfWorship']);
     expect(entity.url).toBe(`${ORIGIN}/lt/basilica-vilnius-cathedral`);
@@ -91,7 +91,7 @@ describe('churchEntity coverage per type', () => {
         vertical: fixture.vertical,
         locale: 'lt',
         homeUrl: `${ORIGIN}/lt/cathedral-kaunas`,
-      }),
+      })
     );
     expect(entity['@type']).toEqual(['Church', 'PlaceOfWorship']);
     expect(asRecord(entity.parentOrganization).name).toBe(fixture.identity?.jurisdiction);
@@ -106,7 +106,7 @@ describe('churchEntity coverage per type', () => {
         vertical: fixture.vertical,
         locale: 'lt',
         homeUrl: `${ORIGIN}/lt/lutheran-kaunas`,
-      }),
+      })
     );
     expect(entity['@type']).toBe('PlaceOfWorship');
     const props = (entity.additionalProperty as Array<Record<string, unknown>>) ?? [];
@@ -123,7 +123,7 @@ describe('churchEntity coverage per type', () => {
         vertical: fixture.vertical,
         locale: 'lt',
         homeUrl: `${ORIGIN}/lt/orthodox-vilnius-cathedral`,
-      }),
+      })
     );
     expect(entity['@type']).toEqual(['Church', 'PlaceOfWorship']);
     const props = (entity.additionalProperty as Array<Record<string, unknown>>) ?? [];
@@ -172,8 +172,8 @@ describe('package 09: Cyrillic glyph coverage + lang handling', () => {
           vertical: 'orthodox-church',
           locale: 'lt',
           homeUrl: `${ORIGIN}/lt/x`,
-        }),
-      ),
+        })
+      )
     );
     expect(serialized).toContain(cyrillicName); // no transliteration/folding
     // Every Cyrillic glyph survives serialization (coverage assertion).
@@ -203,7 +203,7 @@ describe('package 09: Cyrillic glyph coverage + lang handling', () => {
 describe('hreflang reciprocity', () => {
   it('church-landing alternates are reciprocal across pilot locales', () => {
     const pages = ['lt', 'en', 'ru'].map((locale) =>
-      buildHreflangSet(ORIGIN, 'basilica-vilnius-cathedral', '/', locale),
+      buildHreflangSet(ORIGIN, 'basilica-vilnius-cathedral', '/', locale)
     );
     expect(verifyHreflangReciprocity(pages)).toEqual([]);
   });

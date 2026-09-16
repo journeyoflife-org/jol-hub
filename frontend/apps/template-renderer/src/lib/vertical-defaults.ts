@@ -15,14 +15,19 @@ function module(
   id: string,
   type: Module['type'],
   props: Record<string, unknown> = {},
-  layout: Module['layout'] = 'contained',
+  layout: Module['layout'] = 'contained'
 ): Module {
   return { id, type, props, layout, settings: {}, visible: true };
 }
 
 /** Hero module pre-configured with the vertical's hero treatment. */
 function heroModule(vertical: Vertical): Module {
-  return module('home-hero', 'hero', { variant: verticalThemeFor(vertical).heroVariant }, 'full-width');
+  return module(
+    'home-hero',
+    'hero',
+    { variant: verticalThemeFor(vertical).heroVariant },
+    'full-width'
+  );
 }
 
 /**

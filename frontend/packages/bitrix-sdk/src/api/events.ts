@@ -7,7 +7,7 @@ import type { Bitrix24Client } from '../client';
 import type { Bitrix24Response, Bitrix24ListResponse } from '../types';
 
 // Event Types
-export type EventType = 
+export type EventType =
   | 'mass'
   | 'sacrament'
   | 'funeral'

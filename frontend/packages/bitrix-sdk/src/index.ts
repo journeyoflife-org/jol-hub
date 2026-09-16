@@ -62,11 +62,7 @@ export type {
   Bitrix24BatchResponse,
 } from './types';
 
-export type {
-  Bitrix24User,
-  Bitrix24Department,
-  Bitrix24CalendarEvent,
-} from './api/types';
+export type { Bitrix24User, Bitrix24Department, Bitrix24CalendarEvent } from './api/types';
 
 // CRM Types
 export type {

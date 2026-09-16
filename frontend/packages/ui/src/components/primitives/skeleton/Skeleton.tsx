@@ -13,8 +13,8 @@ export function Skeleton({ className }: SkeletonProps) {
     <div
       aria-hidden="true"
       className={cn(
-        'animate-pulse rounded-md bg-neutral-200 dark:bg-neutral-800 motion-reduce:animate-none',
-        className,
+        'animate-pulse rounded-md bg-neutral-200 motion-reduce:animate-none dark:bg-neutral-800',
+        className
       )}
     />
   );

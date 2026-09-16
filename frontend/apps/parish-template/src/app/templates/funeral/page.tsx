@@ -1,7 +1,7 @@
 /**
  * CATEGORY B: Funeral Services Template (64 instances)
  * Route: /templates/funeral/page.tsx
- * 
+ *
  * Features:
  * - Obituary list: ISR (Incremental Static Regeneration) every 1 hour
  * - Search/filter by date, surname
@@ -9,7 +9,7 @@
  * - Livestream embed: YouTube/Facebook with password protection modal
  * - Condolence book: Guestbook with moderation (Django API)
  * - Contact form: Direct to funeral director (Bitrix24 CRM contact)
- * 
+ *
  * SEO: Next.js Metadata API
  * Accessibility: WCAG 2.1 AA
  */
@@ -26,15 +26,7 @@ import {
   CardDescription,
   Separator,
 } from '@journeyoflife-org/ui';
-import {
-  Flower,
-  Video,
-  BookOpen,
-  Phone,
-  Mail,
-  MapPin,
-  Heart,
-} from 'lucide-react';
+import { Flower, Video, BookOpen, Phone, Mail, MapPin, Heart } from 'lucide-react';
 import { ObituaryList } from './_components/ObituaryList';
 import { CondolenceBook } from './_components/CondolenceBook';
 import { FlowerOrderForm } from './_components/FlowerOrderForm';
@@ -46,7 +38,8 @@ import { LivestreamEmbed } from './_components/LivestreamEmbed';
 
 export const metadata: Metadata = {
   title: 'Funeral Services | JOL-HUB',
-  description: 'Compassionate funeral services. View obituaries, order flowers, and leave condolences.',
+  description:
+    'Compassionate funeral services. View obituaries, order flowers, and leave condolences.',
   keywords: ['funeral', 'obituary', 'condolences', 'memorial', 'services'],
   openGraph: {
     title: 'Funeral Services',
@@ -98,7 +91,7 @@ export interface Condolence {
 
 async function getObituaries(): Promise<Obituary[]> {
   const apiUrl = process.env.NEXT_PUBLIC_DJANGO_API_URL;
-  
+
   if (!apiUrl) {
     return getMockObituaries();
   }
@@ -140,7 +133,7 @@ function getMockObituaries(): Obituary[] {
       dateOfDeath: '2024-03-01',
       funeralDate: '2024-03-05',
       funeralTime: '11:00',
-      funeralLocation: 'St. Mary\'s Church, Vilnius',
+      funeralLocation: "St. Mary's Church, Vilnius",
       photo: '/images/obituaries/1.jpg',
       biography: 'Beloved mother, grandmother, and devoted parishioner for over 60 years.',
       hasStream: true,
@@ -170,7 +163,7 @@ function getMockObituaries(): Obituary[] {
       dateOfDeath: '2024-02-20',
       funeralDate: '2024-02-24',
       funeralTime: '14:00',
-      funeralLocation: 'St. Joseph\'s Church, Klaipeda',
+      funeralLocation: "St. Joseph's Church, Klaipeda",
       hasStream: false,
       isPublic: true,
     },
@@ -193,14 +186,12 @@ function HeroSection(): JSX.Element {
           priority
         />
       </div>
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <Heart className="h-12 w-12 mx-auto mb-4 text-white/80" />
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          Funeral Services
-        </h1>
-        <p className="text-xl text-white/90 max-w-2xl mx-auto">
-          Providing compassionate, dignified funeral services to help families
-          honour their loved ones and find comfort in community.
+      <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+        <Heart className="mx-auto mb-4 h-12 w-12 text-white/80" />
+        <h1 className="mb-4 text-4xl font-bold md:text-5xl">Funeral Services</h1>
+        <p className="mx-auto max-w-2xl text-xl text-white/90">
+          Providing compassionate, dignified funeral services to help families honour their loved
+          ones and find comfort in community.
         </p>
       </div>
     </section>
@@ -211,33 +202,34 @@ function HeroSection(): JSX.Element {
 // MAIN PAGE
 // =============================================================================
 
-export default async function FuneralTemplatePage(_props?: { params?: { locale?: string } }): Promise<JSX.Element> {
-  const [obituaries, director] = await Promise.all([
-    getObituaries(),
-    getFuneralDirectorInfo(),
-  ]);
+export default async function FuneralTemplatePage(_props?: {
+  params?: { locale?: string };
+}): Promise<JSX.Element> {
+  const [obituaries, director] = await Promise.all([getObituaries(), getFuneralDirectorInfo()]);
 
   return (
     <main className="min-h-screen bg-slate-50">
       <HeroSection />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Left Column - Obituaries and Stream */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="space-y-8 lg:col-span-2">
             {/* Obituary List with Search/Filter */}
             <section>
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold">
                 <BookOpen className="h-6 w-6" />
                 Recent Obituaries
               </h2>
-              <Suspense fallback={
-                <div className="animate-pulse space-y-4">
-                  {[1, 2, 3].map(i => (
-                    <div key={i} className="h-32 bg-muted rounded-lg" />
-                  ))}
-                </div>
-              }>
+              <Suspense
+                fallback={
+                  <div className="animate-pulse space-y-4">
+                    {[1, 2, 3].map((i) => (
+                      <div key={i} className="bg-muted h-32 rounded-lg" />
+                    ))}
+                  </div>
+                }
+              >
                 <ObituaryList obituaries={obituaries} />
               </Suspense>
             </section>
@@ -246,11 +238,11 @@ export default async function FuneralTemplatePage(_props?: { params?: { locale?:
 
             {/* Livestream Section */}
             <section>
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold">
                 <Video className="h-6 w-6" />
                 Live Broadcast
               </h2>
-              <Suspense fallback={<div className="h-64 bg-muted rounded-lg animate-pulse" />}>
+              <Suspense fallback={<div className="bg-muted h-64 animate-pulse rounded-lg" />}>
                 <LivestreamEmbed obituaries={obituaries} />
               </Suspense>
             </section>
@@ -259,11 +251,11 @@ export default async function FuneralTemplatePage(_props?: { params?: { locale?:
 
             {/* Condolence Book */}
             <section>
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold">
                 <Heart className="h-6 w-6" />
                 Condolence Book
               </h2>
-              <Suspense fallback={<div className="h-64 bg-muted rounded-lg animate-pulse" />}>
+              <Suspense fallback={<div className="bg-muted h-64 animate-pulse rounded-lg" />}>
                 <CondolenceBook obituaries={obituaries} />
               </Suspense>
             </section>
@@ -272,11 +264,11 @@ export default async function FuneralTemplatePage(_props?: { params?: { locale?:
 
             {/* Flower Ordering */}
             <section>
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold">
                 <Flower className="h-6 w-6" />
                 Order Flowers
               </h2>
-              <Suspense fallback={<div className="h-64 bg-muted rounded-lg animate-pulse" />}>
+              <Suspense fallback={<div className="bg-muted h-64 animate-pulse rounded-lg" />}>
                 <FlowerOrderForm obituaries={obituaries} />
               </Suspense>
             </section>
@@ -292,7 +284,7 @@ export default async function FuneralTemplatePage(_props?: { params?: { locale?:
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <div className="relative w-16 h-16 rounded-full overflow-hidden bg-muted flex-shrink-0">
+                  <div className="bg-muted relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-full">
                     <Image
                       src="/images/director.jpg"
                       alt={director.name}
@@ -303,26 +295,26 @@ export default async function FuneralTemplatePage(_props?: { params?: { locale?:
                   </div>
                   <div>
                     <p className="font-semibold">{director.name}</p>
-                    <p className="text-sm text-muted-foreground">Funeral Director</p>
+                    <p className="text-muted-foreground text-sm">Funeral Director</p>
                   </div>
                 </div>
                 <Separator />
-                <a 
+                <a
                   href={`tel:${director.phone}`}
-                  className="flex items-center gap-3 text-sm hover:text-primary transition-colors"
+                  className="hover:text-primary flex items-center gap-3 text-sm transition-colors"
                 >
-                  <Phone className="h-4 w-4 text-muted-foreground" />
+                  <Phone className="text-muted-foreground h-4 w-4" />
                   {director.phone}
                 </a>
-                <a 
+                <a
                   href={`mailto:${director.email}`}
-                  className="flex items-center gap-3 text-sm hover:text-primary transition-colors"
+                  className="hover:text-primary flex items-center gap-3 text-sm transition-colors"
                 >
-                  <Mail className="h-4 w-4 text-muted-foreground" />
+                  <Mail className="text-muted-foreground h-4 w-4" />
                   {director.email}
                 </a>
                 <div className="flex items-start gap-3 text-sm">
-                  <MapPin className="h-4 w-4 text-muted-foreground mt-0.5" />
+                  <MapPin className="text-muted-foreground mt-0.5 h-4 w-4" />
                   <span>{director.address}</span>
                 </div>
               </CardContent>
@@ -353,7 +345,7 @@ export default async function FuneralTemplatePage(_props?: { params?: { locale?:
                     'Document assistance',
                   ].map((service) => (
                     <li key={service} className="flex items-center gap-2">
-                      <span className="h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <span className="bg-primary h-1.5 w-1.5 flex-shrink-0 rounded-full" />
                       {service}
                     </li>
                   ))}

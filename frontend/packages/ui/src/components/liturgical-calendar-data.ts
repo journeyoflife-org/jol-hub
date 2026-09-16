@@ -58,7 +58,9 @@ export function getColorClass(color: string): string {
   return colors[color] ?? colors.green ?? 'bg-emerald-100 text-emerald-800 border-emerald-200';
 }
 
-export function getFeastBadgeVariant(type: FeastDay['type']): 'default' | 'secondary' | 'destructive' | 'outline' {
+export function getFeastBadgeVariant(
+  type: FeastDay['type']
+): 'default' | 'secondary' | 'destructive' | 'outline' {
   const variants: Record<FeastDay['type'], 'default' | 'secondary' | 'destructive' | 'outline'> = {
     solemnity: 'default',
     feast: 'secondary',

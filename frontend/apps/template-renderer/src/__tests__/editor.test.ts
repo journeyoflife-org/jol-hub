@@ -25,7 +25,12 @@ import {
   scanProhibitedPatterns,
 } from '../lib/editor/sanitize';
 import { diffBlocks, describeChange } from '../lib/editor/diff';
-import { blockSchema, decisionBodySchema, draftBodySchema, uploadBodySchema } from '../lib/editor/validation';
+import {
+  blockSchema,
+  decisionBodySchema,
+  draftBodySchema,
+  uploadBodySchema,
+} from '../lib/editor/validation';
 
 function block(partial: Partial<EditorBlock> & { type: EditorBlock['type'] }): EditorBlock {
   return { id: 'b1', ...partial };
@@ -66,7 +71,20 @@ test('only allowlisted tags are ever emitted', () => {
     block({ type: 'image', mediaId: 'm1', altText: 'Alt' }),
   ]);
   const emitted = [...html.matchAll(/<([a-z0-9]+)[\s/]/gi)].map((m) => m[1]?.toLowerCase());
-  const allowed = new Set(['p', 'h2', 'blockquote', 'strong', 'em', 'a', 'hr', 'br', 'button', 'div', 'span', 'img']);
+  const allowed = new Set([
+    'p',
+    'h2',
+    'blockquote',
+    'strong',
+    'em',
+    'a',
+    'hr',
+    'br',
+    'button',
+    'div',
+    'span',
+    'img',
+  ]);
   for (const tag of emitted) {
     assert.ok(allowed.has(tag as string), `unexpected tag <${tag}> in output`);
   }
@@ -78,7 +96,7 @@ test('marks render as <strong>/<em> over escaped text', () => {
       type: 'paragraph',
       text: 'bold <b>injection</b>',
       marks: [{ start: 0, end: 4, kind: 'bold' }],
-    }),
+    })
   );
   assert.ok(html.startsWith('<p><strong>bold</strong>'));
   assert.ok(html.includes('&lt;b&gt;injection&lt;/b&gt;'));
@@ -124,14 +142,16 @@ test('unsafe link hrefs are dropped from rendered output', () => {
       type: 'paragraph',
       text: 'click me',
       links: [{ start: 0, end: 5, href: 'javascript:alert(1)' }],
-    }),
+    })
   );
   assert.ok(!html.includes('javascript:'));
   assert.ok(!html.includes('<a '));
 });
 
 test('button blocks with unsafe targets lose the link', () => {
-  const html = renderBlockHtml(block({ type: 'button', label: 'Go', href: 'https://evil.example' }));
+  const html = renderBlockHtml(
+    block({ type: 'button', label: 'Go', href: 'https://evil.example' })
+  );
   assert.equal(html, '<button type="button">Go</button>');
 });
 
@@ -141,7 +161,7 @@ test('button blocks with unsafe targets lose the link', () => {
 
 test('validateDraft enforces block/image counts, lengths and alt text', () => {
   const blocks: EditorBlock[] = Array.from({ length: EDITOR_LIMITS.maxBlocks + 1 }, (_, i) =>
-    block({ id: `b${i}`, type: 'paragraph', text: 'x' }),
+    block({ id: `b${i}`, type: 'paragraph', text: 'x' })
   );
   blocks.push(block({ id: 'img1', type: 'image' })); // missing alt
   const findings = validateDraft(blocks);
@@ -154,14 +174,16 @@ test('validateDraft enforces block/image counts, lengths and alt text', () => {
 });
 
 test('heading text limit is enforced separately from paragraph', () => {
-  const findings = validateDraft([block({ type: 'heading', text: 'x'.repeat(EDITOR_LIMITS.maxTextLength.heading + 1) })]);
+  const findings = validateDraft([
+    block({ type: 'heading', text: 'x'.repeat(EDITOR_LIMITS.maxTextLength.heading + 1) }),
+  ]);
   assert.ok(findings.some((f) => f.code === 'text-too-long'));
 });
 
 test('image size limit uses the provided byte map', () => {
   const findings = validateDraft(
     [block({ id: 'img', type: 'image', mediaId: 'm1', altText: 'ok' })],
-    { m1: EDITOR_LIMITS.maxImageBytes + 1 },
+    { m1: EDITOR_LIMITS.maxImageBytes + 1 }
   );
   assert.ok(findings.some((f) => f.code === 'image-too-large'));
 });
@@ -180,7 +202,9 @@ test('block type allowlist is closed', () => {
 // =============================================================================
 
 test('scanProhibitedPatterns flags emails, phones and bare URLs', () => {
-  const findings = scanProhibitedPatterns('Contact me at info@parish.lt or +370 612 34567, see http://x.lt');
+  const findings = scanProhibitedPatterns(
+    'Contact me at info@parish.lt or +370 612 34567, see http://x.lt'
+  );
   const codes = findings.map((f) => f.code);
   assert.ok(codes.includes('prohibited-email'));
   assert.ok(codes.includes('prohibited-phone'));
@@ -243,7 +267,10 @@ test('draftBodySchema rejects disallowed block types and oversized text', () => 
   const tooMany = draftBodySchema.safeParse({
     tenantSlug: 'parish-x',
     revision: 1,
-    blocks: Array.from({ length: EDITOR_LIMITS.maxBlocks + 1 }, (_, i) => ({ id: `b${i}`, type: 'paragraph' })),
+    blocks: Array.from({ length: EDITOR_LIMITS.maxBlocks + 1 }, (_, i) => ({
+      id: `b${i}`,
+      type: 'paragraph',
+    })),
   });
   assert.equal(tooMany.success, false);
 
@@ -260,7 +287,12 @@ test('draftBodySchema rejects unsafe links and missing alt text', () => {
     tenantSlug: 'parish-x',
     revision: 0,
     blocks: [
-      { id: 'b', type: 'paragraph', text: 'x', links: [{ start: 0, end: 1, href: 'javascript:alert(1)' }] },
+      {
+        id: 'b',
+        type: 'paragraph',
+        text: 'x',
+        links: [{ start: 0, end: 1, href: 'javascript:alert(1)' }],
+      },
     ],
   });
   assert.equal(unsafeLink.success, false);
@@ -274,13 +306,10 @@ test('draftBodySchema rejects unsafe links and missing alt text', () => {
 });
 
 test('decisionBodySchema requires reasons for negative outcomes', () => {
-  assert.equal(
-    decisionBodySchema.safeParse({ tenantSlug: 't', action: 'reject' }).success,
-    false,
-  );
+  assert.equal(decisionBodySchema.safeParse({ tenantSlug: 't', action: 'reject' }).success, false);
   assert.equal(
     decisionBodySchema.safeParse({ tenantSlug: 't', action: 'reject', reason: 'spam' }).success,
-    true,
+    true
   );
   assert.equal(decisionBodySchema.safeParse({ tenantSlug: 't', action: 'approve' }).success, true);
 });
@@ -288,27 +317,43 @@ test('decisionBodySchema requires reasons for negative outcomes', () => {
 test('uploadBodySchema enforces type allowlist, 2MB and alt text', () => {
   assert.equal(
     uploadBodySchema.safeParse({
-      tenantSlug: 't', fileName: 'a.gif', mimeType: 'image/gif', sizeBytes: 10, altText: 'x',
+      tenantSlug: 't',
+      fileName: 'a.gif',
+      mimeType: 'image/gif',
+      sizeBytes: 10,
+      altText: 'x',
     }).success,
-    false,
+    false
   );
   assert.equal(
     uploadBodySchema.safeParse({
-      tenantSlug: 't', fileName: 'a.png', mimeType: 'image/png', sizeBytes: EDITOR_LIMITS.maxImageBytes + 1, altText: 'x',
+      tenantSlug: 't',
+      fileName: 'a.png',
+      mimeType: 'image/png',
+      sizeBytes: EDITOR_LIMITS.maxImageBytes + 1,
+      altText: 'x',
     }).success,
-    false,
+    false
   );
   assert.equal(
     uploadBodySchema.safeParse({
-      tenantSlug: 't', fileName: 'a.png', mimeType: 'image/png', sizeBytes: 10, altText: '',
+      tenantSlug: 't',
+      fileName: 'a.png',
+      mimeType: 'image/png',
+      sizeBytes: 10,
+      altText: '',
     }).success,
-    false,
+    false
   );
   assert.equal(
     uploadBodySchema.safeParse({
-      tenantSlug: 't', fileName: 'a.webp', mimeType: 'image/webp', sizeBytes: 10, altText: 'Alt',
+      tenantSlug: 't',
+      fileName: 'a.webp',
+      mimeType: 'image/webp',
+      sizeBytes: 10,
+      altText: 'Alt',
     }).success,
-    true,
+    true
   );
 });
 

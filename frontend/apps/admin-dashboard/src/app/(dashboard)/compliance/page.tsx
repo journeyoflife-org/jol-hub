@@ -33,7 +33,7 @@ export default function CompliancePage() {
   const { data: auditLogs } = useComplianceAudit();
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="space-y-6 p-6">
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -44,11 +44,11 @@ export default function CompliancePage() {
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" onClick={() => refetch()}>
-            <RefreshCw className="h-4 w-4 mr-2" />
+            <RefreshCw className="mr-2 h-4 w-4" />
             Refresh
           </Button>
           <Button variant="outline">
-            <Download className="h-4 w-4 mr-2" />
+            <Download className="mr-2 h-4 w-4" />
             Export Report
           </Button>
         </div>
@@ -65,9 +65,7 @@ export default function CompliancePage() {
             <div className="flex items-center gap-2">
               <Badge className="bg-green-100 text-green-800">Compliant</Badge>
             </div>
-            <p className="text-xs text-muted-foreground mt-2">
-              Article 44 data residency enforced
-            </p>
+            <p className="text-muted-foreground mt-2 text-xs">Article 44 data residency enforced</p>
           </CardContent>
         </Card>
 
@@ -80,9 +78,7 @@ export default function CompliancePage() {
             <div className="flex items-center gap-2">
               <Badge className="bg-green-100 text-green-800">Compliant</Badge>
             </div>
-            <p className="text-xs text-muted-foreground mt-2">
-              CC6.1 controls verified
-            </p>
+            <p className="text-muted-foreground mt-2 text-xs">CC6.1 controls verified</p>
           </CardContent>
         </Card>
 
@@ -95,24 +91,20 @@ export default function CompliancePage() {
             <div className="flex items-center gap-2">
               <Badge className="bg-green-100 text-green-800">Active</Badge>
             </div>
-            <p className="text-xs text-muted-foreground mt-2">
-              CIC 1300-1307 compliance
-            </p>
+            <p className="text-muted-foreground mt-2 text-xs">CIC 1300-1307 compliance</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Data Subjects</CardTitle>
-            <Database className="h-4 w-4 text-muted-foreground" />
+            <Database className="text-muted-foreground h-4 w-4" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
               {gdprStats?.dataSubjects?.toLocaleString() ?? '0'}
             </div>
-            <p className="text-xs text-muted-foreground">
-              Protected records
-            </p>
+            <p className="text-muted-foreground text-xs">Protected records</p>
           </CardContent>
         </Card>
       </div>
@@ -271,26 +263,26 @@ export default function CompliancePage() {
           <Card>
             <CardHeader>
               <CardTitle>Compliance Audit Log</CardTitle>
-              <CardDescription>
-                All GDPR-related actions and data access events
-              </CardDescription>
+              <CardDescription>All GDPR-related actions and data access events</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 {auditLogs?.map((log: any) => (
-                  <div
-                    key={log.id}
-                    className="flex items-start gap-3 p-3 rounded-lg bg-muted/50"
-                  >
-                    <div className={`mt-0.5 h-2 w-2 rounded-full ${
-                      log.type === 'consent' ? 'bg-blue-500' :
-                      log.type === 'deletion' ? 'bg-red-500' :
-                      log.type === 'export' ? 'bg-green-500' :
-                      'bg-gray-500'
-                    }`} />
+                  <div key={log.id} className="bg-muted/50 flex items-start gap-3 rounded-lg p-3">
+                    <div
+                      className={`mt-0.5 h-2 w-2 rounded-full ${
+                        log.type === 'consent'
+                          ? 'bg-blue-500'
+                          : log.type === 'deletion'
+                            ? 'bg-red-500'
+                            : log.type === 'export'
+                              ? 'bg-green-500'
+                              : 'bg-gray-500'
+                      }`}
+                    />
                     <div className="flex-1">
                       <p className="text-sm font-medium">{log.action}</p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-muted-foreground text-xs">
                         {log.user} • {format(new Date(log.timestamp), 'PPp')}
                       </p>
                     </div>

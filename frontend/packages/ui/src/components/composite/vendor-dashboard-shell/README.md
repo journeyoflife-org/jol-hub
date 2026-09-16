@@ -7,9 +7,9 @@ payout surfaces remain inert until the payment-track freeze is lifted (D-052).
 
 ## Consuming pages (traceability)
 
-| Package | Page | Usage |
-|---|---|---|
-| 15 | Vendor/marketplace dashboard (hub-render view) | page shell |
+| Package | Page                                           | Usage      |
+| ------- | ---------------------------------------------- | ---------- |
+| 15      | Vendor/marketplace dashboard (hub-render view) | page shell |
 
 Renderer module mapping: admin/marketplace hub-render surfaces (the
 transacting side lives in the marketplace tree, never here).

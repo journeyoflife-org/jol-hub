@@ -32,17 +32,17 @@ pages to true ISR/SSG with **no code changes**.
 
 ## Per-page strategy
 
-| Route                       | Intent | Export                     | Why                                                                    |
-| --------------------------- | ------ | -------------------------- | ---------------------------------------------------------------------- |
-| `[tenant]` (home)           | ISR    | `revalidate = 300`         | Content changes infrequently; 5 min staleness is acceptable.           |
-| `[tenant]/about`            | SSG    | `revalidate = 3600`        | Rarely changes; 1 h window.                                            |
-| `[tenant]/contact`          | SSG    | `revalidate = 3600`        | Contact details change rarely; 1 h window.                            |
-| `[tenant]/news` (list)      | ISR    | `revalidate = 60`          | News changes frequently; short staleness window.                       |
-| `[tenant]/news/[slug]`      | ISR    | `revalidate = 300`         | Detail tolerates a longer window than the list.                        |
-| `[tenant]/events` (list)    | SSR    | `dynamic = 'force-dynamic'`| Time-sensitive: "upcoming" is re-evaluated against the clock per hit.  |
-| `[tenant]/events/[slug]`    | SSR    | `dynamic = 'force-dynamic'`| Registration/availability must be fresh.                               |
-| `[tenant]/services` (list)  | SSR    | `dynamic = 'force-dynamic'`| Commercial pricing/availability must be fresh.                         |
-| `[tenant]/services/[slug]`  | SSR    | `dynamic = 'force-dynamic'`| Price/booking state must be fresh.                                     |
+| Route                      | Intent | Export                      | Why                                                                   |
+| -------------------------- | ------ | --------------------------- | --------------------------------------------------------------------- |
+| `[tenant]` (home)          | ISR    | `revalidate = 300`          | Content changes infrequently; 5 min staleness is acceptable.          |
+| `[tenant]/about`           | SSG    | `revalidate = 3600`         | Rarely changes; 1 h window.                                           |
+| `[tenant]/contact`         | SSG    | `revalidate = 3600`         | Contact details change rarely; 1 h window.                            |
+| `[tenant]/news` (list)     | ISR    | `revalidate = 60`           | News changes frequently; short staleness window.                      |
+| `[tenant]/news/[slug]`     | ISR    | `revalidate = 300`          | Detail tolerates a longer window than the list.                       |
+| `[tenant]/events` (list)   | SSR    | `dynamic = 'force-dynamic'` | Time-sensitive: "upcoming" is re-evaluated against the clock per hit. |
+| `[tenant]/events/[slug]`   | SSR    | `dynamic = 'force-dynamic'` | Registration/availability must be fresh.                              |
+| `[tenant]/services` (list) | SSR    | `dynamic = 'force-dynamic'` | Commercial pricing/availability must be fresh.                        |
+| `[tenant]/services/[slug]` | SSR    | `dynamic = 'force-dynamic'` | Price/booking state must be fresh.                                    |
 
 Data-fetch caching mirrors this (`lib/content-api.ts`): news fetches use
 `revalidate = 60`; events/services fetch with `cache: 'no-store'`.

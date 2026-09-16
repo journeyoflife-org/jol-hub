@@ -97,7 +97,9 @@ export default async function TenantNewsListPage({
   }
 
   const all = sortDesc(await getNews(tenant));
-  const categories = Array.from(new Set(all.map((item) => item.category).filter(Boolean))) as string[];
+  const categories = Array.from(
+    new Set(all.map((item) => item.category).filter(Boolean))
+  ) as string[];
 
   const activeCategory = readString(searchParams, 'category');
   const isVip = tenant.packageTier === 'vip';
@@ -109,7 +111,7 @@ export default async function TenantNewsListPage({
   if (query) {
     filtered = filtered.filter(
       (item) =>
-        item.title.toLowerCase().includes(query) || item.excerpt.toLowerCase().includes(query),
+        item.title.toLowerCase().includes(query) || item.excerpt.toLowerCase().includes(query)
     );
   }
 
@@ -127,7 +129,7 @@ export default async function TenantNewsListPage({
             paged.items.map((item) => ({
               name: item.title,
               url: absoluteUrl(`${basePath}/news/${item.slug}`),
-            })),
+            }))
           ),
         ]}
       />
@@ -148,7 +150,7 @@ export default async function TenantNewsListPage({
           method="get"
           action={`${basePath}/news`}
           role="search"
-          className="container mx-auto px-4 pb-4 flex gap-2"
+          className="container mx-auto flex gap-2 px-4 pb-4"
         >
           <label htmlFor="news-search" className="sr-only">
             {translate(messages, 'collections.searchLabel')}
@@ -159,12 +161,12 @@ export default async function TenantNewsListPage({
             name="q"
             defaultValue={query ?? ''}
             placeholder={translate(messages, 'collections.searchLabel')}
-            className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm focus-ring"
+            className="focus-ring flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm"
           />
           {activeCategory && <input type="hidden" name="category" value={activeCategory} />}
           <button
             type="submit"
-            className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-white focus-ring"
+            className="bg-primary focus-ring rounded-md px-4 py-2 text-sm font-medium text-white"
           >
             {translate(messages, 'collections.searchLabel')}
           </button>
@@ -174,7 +176,7 @@ export default async function TenantNewsListPage({
       {paged.items.length === 0 ? (
         <CollectionEmptyState messageKey="collections.emptyNews" locale={locale} />
       ) : (
-        <div className="container mx-auto px-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="container mx-auto grid gap-6 px-4 md:grid-cols-2 lg:grid-cols-3">
           {paged.items.map((item) => (
             <NewsCard
               key={item.slug}

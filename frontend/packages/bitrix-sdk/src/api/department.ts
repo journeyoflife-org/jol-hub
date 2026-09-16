@@ -12,7 +12,8 @@ export class DepartmentApi {
    * Get all departments.
    */
   async list(): Promise<Bitrix24Department[]> {
-    const response = await this.client.get<Bitrix24ListResponse<Bitrix24Department>>('department.get');
+    const response =
+      await this.client.get<Bitrix24ListResponse<Bitrix24Department>>('department.get');
     return response.result;
   }
 
@@ -30,9 +31,12 @@ export class DepartmentApi {
    * Get departments by parent ID.
    */
   async getByParent(parentId: string): Promise<Bitrix24Department[]> {
-    const response = await this.client.get<Bitrix24ListResponse<Bitrix24Department>>('department.get', {
-      PARENT_ID: parentId,
-    });
+    const response = await this.client.get<Bitrix24ListResponse<Bitrix24Department>>(
+      'department.get',
+      {
+        PARENT_ID: parentId,
+      }
+    );
     return response.result;
   }
 

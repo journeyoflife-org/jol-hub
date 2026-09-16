@@ -9,10 +9,7 @@ interface ToasterProps {
 export function Toaster({ className }: ToasterProps) {
   return (
     <div
-      className={cn(
-        'fixed bottom-0 right-0 z-50 p-4 flex flex-col gap-2',
-        className
-      )}
+      className={cn('fixed bottom-0 right-0 z-50 flex flex-col gap-2 p-4', className)}
       id="toaster"
     />
   );

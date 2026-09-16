@@ -73,7 +73,15 @@ test('redact: traceability fields survive (UUIDs + ISO timestamps)', () => {
 });
 
 test('redact: sensitive keys redact their values wholesale', () => {
-  for (const key of ['password', 'apiToken', 'NEXTAUTH_SECRET', 'authorization', 'x-api-key', 'sessionCookie', 'cardNumber']) {
+  for (const key of [
+    'password',
+    'apiToken',
+    'NEXTAUTH_SECRET',
+    'authorization',
+    'x-api-key',
+    'sessionCookie',
+    'cardNumber',
+  ]) {
     assert.equal(isSensitiveKey(key), true, key);
   }
   for (const key of ['tenant', 'requestId', 'status', 'route']) {
@@ -169,8 +177,16 @@ test('logger: levelFromEnv never allows debug in production', () => {
 
 test('logger: batching flushes immediately on error, buffers info', async () => {
   const batches: LogRecord[][] = [];
-  const batching = createBatchingSink({ transport: (records) => void batches.push(records), maxSize: 5 });
-  const logger = createLogger({ service: 'client', minLevel: 'debug', sink: batching.sink, now: () => new Date() });
+  const batching = createBatchingSink({
+    transport: (records) => void batches.push(records),
+    maxSize: 5,
+  });
+  const logger = createLogger({
+    service: 'client',
+    minLevel: 'debug',
+    sink: batching.sink,
+    now: () => new Date(),
+  });
 
   logger.info('buffered');
   assert.equal(batches.length, 0);
@@ -215,7 +231,9 @@ test('errors: fingerprint groups similar errors (volatile parts normalized)', ()
 });
 
 test('errors: classify returns bounded fields', () => {
-  const classified = classifyError(new Error('x'.repeat(2000)), { componentStack: 'y'.repeat(5000) });
+  const classified = classifyError(new Error('x'.repeat(2000)), {
+    componentStack: 'y'.repeat(5000),
+  });
   assert.ok(classified.message.length <= 512);
   assert.ok((classified.componentStack ?? '').length <= 2048);
 });
@@ -287,7 +305,10 @@ test('perf: slowest resources sorted, limited, query-stripped', () => {
 
 test('perf: metric batcher flushes on size', async () => {
   const batches: number[][] = [];
-  const batcher = createMetricBatcher<number>({ transport: (b) => void batches.push(b), maxBatch: 2 });
+  const batcher = createMetricBatcher<number>({
+    transport: (b) => void batches.push(b),
+    maxBatch: 2,
+  });
   batcher.add(1);
   batcher.add(2);
   await new Promise((resolve) => setTimeout(resolve, 5));
@@ -306,7 +327,7 @@ test('health: aggregation ok / degraded / down', () => {
       { name: 'crm', status: 'unconfigured', critical: false },
     ],
     '1.0.0',
-    't',
+    't'
   );
   assert.equal(ok.status, 'ok');
 
@@ -316,7 +337,7 @@ test('health: aggregation ok / degraded / down', () => {
       { name: 'crm', status: 'degraded', critical: false },
     ],
     '1.0.0',
-    't',
+    't'
   );
   assert.equal(degraded.status, 'degraded');
 
@@ -326,7 +347,7 @@ test('health: aggregation ok / degraded / down', () => {
       { name: 'crm', status: 'ok', critical: false },
     ],
     '1.0.0',
-    't',
+    't'
   );
   assert.equal(down.status, 'down');
 
@@ -337,7 +358,7 @@ test('health: aggregation ok / degraded / down', () => {
       { name: 'payments', status: 'down', critical: false },
     ],
     '1.0.0',
-    't',
+    't'
   );
   assert.notEqual(optionalDown.status, 'down');
 });
@@ -346,7 +367,7 @@ test('health: withTimeout resolves the fallback for slow probes', async () => {
   const result = await withTimeout(
     () => new Promise<string>((resolve) => setTimeout(() => resolve('slow'), 50)),
     10,
-    'timeout',
+    'timeout'
   );
   assert.equal(result, 'timeout');
 

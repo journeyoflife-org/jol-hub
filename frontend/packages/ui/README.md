@@ -33,15 +33,15 @@ src/tokens/
 
 **Color families**
 
-| Family | Role |
-| --- | --- |
-| `primary` | Institutional deep navy (headings, buttons, chrome) |
-| `secondary` | Liturgical purple |
-| `accent` / `gold` | Liturgical gold — decorative; use 700 for small text |
-| `neutral` | Surfaces & body text |
-| `success` / `warning` / `error` / `info` | Status |
-| `altar`, `candle`, `incense`, `stone`, `wood` | Church-specific semantics |
-| `vertical.*` | Per-vertical accent (one entry per tenant vertical) |
+| Family                                        | Role                                                 |
+| --------------------------------------------- | ---------------------------------------------------- |
+| `primary`                                     | Institutional deep navy (headings, buttons, chrome)  |
+| `secondary`                                   | Liturgical purple                                    |
+| `accent` / `gold`                             | Liturgical gold — decorative; use 700 for small text |
+| `neutral`                                     | Surfaces & body text                                 |
+| `success` / `warning` / `error` / `info`      | Status                                               |
+| `altar`, `candle`, `incense`, `stone`, `wood` | Church-specific semantics                            |
+| `vertical.*`                                  | Per-vertical accent (one entry per tenant vertical)  |
 
 CSS custom properties mirror every token: `--jol-color-<scale>-<stop>`,
 `--jol-surface`, `--jol-text`, `--jol-link`, `--jol-focus`,
@@ -84,7 +84,7 @@ import { ThemeProvider, useTheme, THEME_INIT_SCRIPT } from '@journeyoflife-org/u
 Apps import, in this order:
 
 ```ts
-import '@journeyoflife-org/ui/styles/tokens.css';  // generated custom properties
+import '@journeyoflife-org/ui/styles/tokens.css'; // generated custom properties
 import '@journeyoflife-org/ui/styles/globals.css'; // reset, base, focus, a11y utils
 ```
 
@@ -100,9 +100,9 @@ vendor files via `next/font/local` when they become available.
 
 ## Scripts
 
-| Command | Purpose |
-| --- | --- |
-| `pnpm type-check` | `tsc --noEmit` |
-| `pnpm generate:tokens` | regenerate `src/styles/tokens.css` |
-| `pnpm check-contrast` | WCAG AA verification (fails on violations) |
-| `pnpm verify` | type-check + check-contrast |
+| Command                | Purpose                                    |
+| ---------------------- | ------------------------------------------ |
+| `pnpm type-check`      | `tsc --noEmit`                             |
+| `pnpm generate:tokens` | regenerate `src/styles/tokens.css`         |
+| `pnpm check-contrast`  | WCAG AA verification (fails on violations) |
+| `pnpm verify`          | type-check + check-contrast                |

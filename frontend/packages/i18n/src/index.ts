@@ -8,10 +8,7 @@
 // initI18n, i18n, getCurrentLocale, setLocale are client-only
 // (they use react-i18next) → import from '@journeyoflife-org/i18n/client'
 // -----------------------------------------------------------------------------
-export {
-  getLocaleFromPath,
-  localizePath,
-} from './config';
+export { getLocaleFromPath, localizePath } from './config';
 
 // -----------------------------------------------------------------------------
 // STEP 4 — canonical constants, message pipeline, provider
@@ -43,7 +40,10 @@ export {
   type TranslationValues,
 } from './messages';
 
-export { TranslationProvider, type TranslationProviderProps } from './components/translation-provider';
+export {
+  TranslationProvider,
+  type TranslationProviderProps,
+} from './components/translation-provider';
 
 // Client-only hooks live behind dedicated subpaths (keeps RSC bundles clean):
 //   useTranslations → '@journeyoflife-org/i18n/use-translations'
@@ -69,11 +69,7 @@ export type {
   CookieCategory,
 } from './types';
 
-export {
-  SUPPORTED_LOCALES,
-  DEFAULT_LOCALE,
-  LOCALE_CONFIGS,
-} from './types';
+export { SUPPORTED_LOCALES, DEFAULT_LOCALE, LOCALE_CONFIGS } from './types';
 
 // -----------------------------------------------------------------------------
 // Components & Hooks
@@ -138,7 +134,4 @@ export {
 } from './middleware/language';
 
 // Legacy middleware export (for backward compatibility)
-export {
-  i18nMiddleware,
-  i18nMiddlewareMatcher,
-} from './middleware';
+export { i18nMiddleware, i18nMiddlewareMatcher } from './middleware';

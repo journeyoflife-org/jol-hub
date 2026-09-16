@@ -115,15 +115,13 @@ export default async function TenantNewsDetailPage({ params }: { params: TenantN
         ]}
       />
 
-      <article className="container mx-auto px-4 max-w-3xl py-12">
-        <a href={`${basePath}/news`} className="text-sm text-primary underline focus-ring rounded">
+      <article className="container mx-auto max-w-3xl px-4 py-12">
+        <a href={`${basePath}/news`} className="text-primary focus-ring rounded text-sm underline">
           {translate(messages, 'collections.backToList')}
         </a>
 
-        <header className="mt-4 mb-8">
-          <h1 className="text-3xl md:text-4xl font-heading font-bold text-primary">
-            {item.title}
-          </h1>
+        <header className="mb-8 mt-4">
+          <h1 className="font-heading text-primary text-3xl font-bold md:text-4xl">{item.title}</h1>
           <p className="mt-3 text-sm text-gray-500">
             <time dateTime={item.publishedAt}>{formatDate(item.publishedAt, locale)}</time>
             {item.author && <span> · {item.author}</span>}
@@ -131,17 +129,20 @@ export default async function TenantNewsDetailPage({ params }: { params: TenantN
           </p>
         </header>
 
-        {item.excerpt && <p className="text-lg text-gray-700 leading-relaxed">{item.excerpt}</p>}
+        {item.excerpt && <p className="text-lg leading-relaxed text-gray-700">{item.excerpt}</p>}
 
-        <div className="mt-6 space-y-4 text-gray-800 leading-relaxed">
+        <div className="mt-6 space-y-4 leading-relaxed text-gray-800">
           {bodyParagraphs.map((paragraph, index) => (
             <p key={`${index}`}>{paragraph}</p>
           ))}
         </div>
 
         {others.length > 0 && (
-          <aside className="mt-12 border-t pt-8" aria-label={translate(messages, 'collections.relatedArticles')}>
-            <h2 className="text-xl font-heading font-bold text-primary mb-4">
+          <aside
+            className="mt-12 border-t pt-8"
+            aria-label={translate(messages, 'collections.relatedArticles')}
+          >
+            <h2 className="font-heading text-primary mb-4 text-xl font-bold">
               {translate(messages, 'collections.relatedArticles')}
             </h2>
             <ul className="space-y-2">
@@ -149,7 +150,7 @@ export default async function TenantNewsDetailPage({ params }: { params: TenantN
                 <li key={entry.slug}>
                   <a
                     href={`${basePath}/news/${entry.slug}`}
-                    className="text-primary underline focus-ring rounded"
+                    className="text-primary focus-ring rounded underline"
                   >
                     {entry.title}
                   </a>

@@ -88,7 +88,7 @@ export function parsePageConfig(raw: unknown, route: string): ParseResult {
   const first = result.error.issues[0];
   const where = first ? first.path.join('.') : '(root)';
   console.error(
-    `[page-config] invalid config for ${route}: ${result.error.issues.length} issue(s), first at '${where}'`,
+    `[page-config] invalid config for ${route}: ${result.error.issues.length} issue(s), first at '${where}'`
   );
   return { ok: false, config: null, error: where };
 }

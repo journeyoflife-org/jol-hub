@@ -2,10 +2,10 @@
 
 /**
  * I18nProvider
- * 
+ *
  * Client-side wrapper that initialises i18next once and provides
  * the I18nextProvider context to all children.
- * 
+ *
  * Usage (in a Server Component layout):
  *   <I18nProvider locale="lt">
  *     {children}
@@ -32,9 +32,5 @@ export function I18nProvider({ locale, children }: I18nProviderProps): JSX.Eleme
     }
   }, [locale]);
 
-  return (
-    <I18nextProvider i18n={i18nRef.current}>
-      {children}
-    </I18nextProvider>
-  );
+  return <I18nextProvider i18n={i18nRef.current}>{children}</I18nextProvider>;
 }

@@ -38,7 +38,7 @@ function normalizeDate(date: Date | string | number): Date {
 export function formatDate(
   date: Date | string | number,
   locale: SupportedLocale = DEFAULT_LOCALE,
-  options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' },
+  options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' }
 ): string {
   return new Intl.DateTimeFormat(INTL_TAGS[locale], options).format(normalizeDate(date));
 }
@@ -47,7 +47,7 @@ export function formatDate(
 export function formatTime(
   date: Date | string | number,
   locale: SupportedLocale = DEFAULT_LOCALE,
-  options: Intl.DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit' },
+  options: Intl.DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit' }
 ): string {
   return new Intl.DateTimeFormat(INTL_TAGS[locale], options).format(normalizeDate(date));
 }
@@ -62,7 +62,7 @@ export function formatDateTime(
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
-  },
+  }
 ): string {
   return new Intl.DateTimeFormat(INTL_TAGS[locale], options).format(normalizeDate(date));
 }
@@ -71,7 +71,7 @@ export function formatDateTime(
 export function formatNumber(
   value: number,
   locale: SupportedLocale = DEFAULT_LOCALE,
-  options?: Intl.NumberFormatOptions,
+  options?: Intl.NumberFormatOptions
 ): string {
   return new Intl.NumberFormat(INTL_TAGS[locale], options).format(value);
 }
@@ -81,7 +81,11 @@ export function formatCurrency(
   amount: number,
   locale: SupportedLocale = DEFAULT_LOCALE,
   currency = 'EUR',
-  options?: Omit<Intl.NumberFormatOptions, 'style' | 'currency'>,
+  options?: Omit<Intl.NumberFormatOptions, 'style' | 'currency'>
 ): string {
-  return new Intl.NumberFormat(INTL_TAGS[locale], { ...options, style: 'currency', currency }).format(amount);
+  return new Intl.NumberFormat(INTL_TAGS[locale], {
+    ...options,
+    style: 'currency',
+    currency,
+  }).format(amount);
 }

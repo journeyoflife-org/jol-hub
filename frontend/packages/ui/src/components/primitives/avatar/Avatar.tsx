@@ -34,13 +34,19 @@ export function Avatar({ src, alt, name, size = 'md', className }: AvatarProps) 
       role="img"
       aria-label={name}
       className={cn(
-        'inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-full bg-primary-100 font-medium text-primary-800 dark:bg-primary-900 dark:text-primary-100',
+        'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-100 inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-full font-medium',
         SIZES[size],
-        className,
+        className
       )}
     >
       {src ? (
-        <img src={src} alt={alt ?? name} className="h-full w-full object-cover" width={64} height={64} />
+        <img
+          src={src}
+          alt={alt ?? name}
+          className="h-full w-full object-cover"
+          width={64}
+          height={64}
+        />
       ) : (
         <span aria-hidden="true">{initials(name)}</span>
       )}
@@ -54,10 +60,17 @@ export function AvatarGroup({ items, max = 4, label, className }: AvatarGroupPro
   const overflow = items.length - visible.length;
 
   return (
-    <span role="group" aria-label={label ?? t('avatarGroupLabel')} className={cn('inline-flex items-center', className)}>
+    <span
+      role="group"
+      aria-label={label ?? t('avatarGroupLabel')}
+      className={cn('inline-flex items-center', className)}
+    >
       {visible.map((item, index) => (
         <span key={`${item.name}-${index}`} className={cn(index > 0 && '-ms-2')}>
-          <Avatar {...item} className={cn('ring-2 ring-neutral-50 dark:ring-neutral-900', item.className)} />
+          <Avatar
+            {...item}
+            className={cn('ring-2 ring-neutral-50 dark:ring-neutral-900', item.className)}
+          />
         </span>
       ))}
       {overflow > 0 && (
@@ -65,7 +78,7 @@ export function AvatarGroup({ items, max = 4, label, className }: AvatarGroupPro
           role="img"
           aria-label={t('avatarOverflow', { count: overflow })}
           className={cn(
-            '-ms-2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-200 text-sm font-medium text-neutral-700 ring-2 ring-neutral-50 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-900',
+            '-ms-2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-200 text-sm font-medium text-neutral-700 ring-2 ring-neutral-50 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-900'
           )}
         >
           <span aria-hidden="true">+{overflow}</span>

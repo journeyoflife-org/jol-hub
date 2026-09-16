@@ -4,13 +4,7 @@
 // =============================================================================
 
 // Re-export from main hooks directory
-export {
-  useCountry,
-  useHierarchy,
-  useGDPR,
-  useBitrix24,
-  useBitrix24Realtime,
-} from '@/hooks';
+export { useCountry, useHierarchy, useGDPR, useBitrix24, useBitrix24Realtime } from '@/hooks';
 
 // Dashboard hooks
 export { useDashboardStats, useRecentActivity, useCountryStats } from './useDashboard';
@@ -19,11 +13,7 @@ export { useDashboardStats, useRecentActivity, useCountryStats } from './useDash
 export { useEntities, useEntity, useApproveEntity, useVerifyEntity } from './useEntities';
 
 // Analytics hooks
-export {
-  useAnalyticsOverview,
-  useEntityAnalytics,
-  useDonationAnalytics,
-} from './useAnalytics';
+export { useAnalyticsOverview, useEntityAnalytics, useDonationAnalytics } from './useAnalytics';
 
 // Compliance hooks
 export { useGDPRStats, useComplianceAudit } from './useCompliance';

@@ -22,21 +22,23 @@ export function CondolenceBook({ obituaries }: CondolenceBookProps) {
 
   if (submitted) {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-        <p className="text-green-800">Thank you for your condolence. It will be reviewed before publishing.</p>
+      <div className="rounded-lg border border-green-200 bg-green-50 p-6 text-center">
+        <p className="text-green-800">
+          Thank you for your condolence. It will be reviewed before publishing.
+        </p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 bg-white rounded-lg p-6 border">
+    <form onSubmit={handleSubmit} className="space-y-4 rounded-lg border bg-white p-6">
       <div>
         <Label htmlFor="obituary">Select Deceased</Label>
         <select
           id="obituary"
           value={selectedObituary}
           onChange={(e) => setSelectedObituary(e.target.value)}
-          className="w-full mt-1 p-2 border rounded-md"
+          className="mt-1 w-full rounded-md border p-2"
           required
         >
           <option value="">-- Select --</option>
@@ -49,12 +51,7 @@ export function CondolenceBook({ obituaries }: CondolenceBookProps) {
       </div>
       <div>
         <Label htmlFor="name">Your Name</Label>
-        <Input
-          id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
+        <Input id="name" value={name} onChange={(e) => setName(e.target.value)} required />
       </div>
       <div>
         <Label htmlFor="message">Your Condolence</Label>
@@ -63,11 +60,13 @@ export function CondolenceBook({ obituaries }: CondolenceBookProps) {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           rows={4}
-          className="w-full mt-1 p-2 border rounded-md"
+          className="mt-1 w-full rounded-md border p-2"
           required
         />
       </div>
-      <Button type="submit" className="w-full">Submit Condolence</Button>
+      <Button type="submit" className="w-full">
+        Submit Condolence
+      </Button>
     </form>
   );
 }

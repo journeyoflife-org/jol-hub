@@ -60,11 +60,14 @@ export function CookieConsentBanner({
     acceptSelected(preferences);
   };
 
-  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-    if (e.key === 'Escape' && showDetails) {
-      setShowDetails(false);
-    }
-  }, [showDetails]);
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === 'Escape' && showDetails) {
+        setShowDetails(false);
+      }
+    },
+    [showDetails]
+  );
 
   if (hasConsent || isLoading) {
     return null;
@@ -81,31 +84,28 @@ export function CookieConsentBanner({
       aria-labelledby="cookie-consent-title"
       aria-describedby="cookie-consent-description"
     >
-      <div className="absolute inset-0 bg-black/20 -z-10 sm:hidden" aria-hidden="true" />
+      <div className="absolute inset-0 -z-10 bg-black/20 sm:hidden" aria-hidden="true" />
 
       <div className="bg-background border-t shadow-2xl">
         <div className="container mx-auto max-w-6xl px-4 py-4 sm:py-6">
           {!showDetails ? (
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex-1 space-y-2">
-                <h2
-                  id="cookie-consent-title"
-                  className="text-lg font-semibold text-foreground"
-                >
+                <h2 id="cookie-consent-title" className="text-foreground text-lg font-semibold">
                   {t('privacySettings')}
                 </h2>
                 <p
                   id="cookie-consent-description"
-                  className="text-sm text-muted-foreground leading-relaxed"
+                  className="text-muted-foreground text-sm leading-relaxed"
                 >
                   {t('cookieConsent.description')}
                 </p>
               </div>
 
-              <div className="flex flex-col-reverse sm:flex-row gap-2 sm:gap-3 flex-shrink-0">
+              <div className="flex flex-shrink-0 flex-col-reverse gap-2 sm:flex-row sm:gap-3">
                 <a
                   href={privacyPolicyUrl}
-                  className="px-4 py-2.5 text-sm text-center text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+                  className="text-muted-foreground hover:text-foreground px-4 py-2.5 text-center text-sm underline underline-offset-4 transition-colors"
                   aria-label={t('common.learnMore')}
                 >
                   {t('common.learnMore')}
@@ -113,7 +113,7 @@ export function CookieConsentBanner({
 
                 <button
                   onClick={() => setShowDetails(true)}
-                  className="px-4 py-2.5 text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="border-input bg-background hover:bg-accent hover:text-accent-foreground focus:ring-ring rounded-md border px-4 py-2.5 text-sm font-medium transition-colors focus:outline-none focus:ring-2"
                   aria-label={t('cookieConsent.manageCookies')}
                 >
                   {t('cookieConsent.manageCookies')}
@@ -121,7 +121,7 @@ export function CookieConsentBanner({
 
                 <button
                   onClick={acceptNecessary}
-                  className="px-4 py-2.5 text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="border-input bg-background hover:bg-accent hover:text-accent-foreground focus:ring-ring rounded-md border px-4 py-2.5 text-sm font-medium transition-colors focus:outline-none focus:ring-2"
                   aria-label={t('cookieConsent.necessaryOnly')}
                 >
                   {t('cookieConsent.necessaryOnly')}
@@ -129,7 +129,7 @@ export function CookieConsentBanner({
 
                 <button
                   onClick={acceptAll}
-                  className="px-4 py-2.5 text-sm font-medium bg-green-600 text-white hover:bg-green-700 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                  className="rounded-md bg-green-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                   aria-label={t('cookieConsent.acceptAll')}
                 >
                   {t('cookieConsent.acceptAll')}
@@ -139,16 +139,27 @@ export function CookieConsentBanner({
           ) : (
             <div className="space-y-4">
               <div className="flex items-center justify-between border-b pb-3">
-                <h2 className="text-lg font-semibold text-foreground">
+                <h2 className="text-foreground text-lg font-semibold">
                   {t('cookieConsent.manageCookies')}
                 </h2>
                 <button
                   onClick={() => setShowDetails(false)}
-                  className="p-2 text-muted-foreground hover:text-foreground rounded-md hover:bg-accent transition-colors"
+                  className="text-muted-foreground hover:text-foreground hover:bg-accent rounded-md p-2 transition-colors"
                   aria-label={t('common.back')}
                 >
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <svg
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   </svg>
                 </button>
               </div>
@@ -177,22 +188,22 @@ export function CookieConsentBanner({
                 />
               </div>
 
-              <div className="flex justify-end gap-3 pt-2 border-t">
+              <div className="flex justify-end gap-3 border-t pt-2">
                 <button
                   onClick={acceptNecessary}
-                  className="px-4 py-2.5 text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="border-input bg-background hover:bg-accent hover:text-accent-foreground focus:ring-ring rounded-md border px-4 py-2.5 text-sm font-medium transition-colors focus:outline-none focus:ring-2"
                 >
                   {t('cookieConsent.necessaryOnly')}
                 </button>
                 <button
                   onClick={handleAcceptSelected}
-                  className="px-4 py-2.5 text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="border-input bg-background hover:bg-accent hover:text-accent-foreground focus:ring-ring rounded-md border px-4 py-2.5 text-sm font-medium transition-colors focus:outline-none focus:ring-2"
                 >
                   {t('cookieConsent.savePreferences')}
                 </button>
                 <button
                   onClick={acceptAll}
-                  className="px-4 py-2.5 text-sm font-medium bg-green-600 text-white hover:bg-green-700 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                  className="rounded-md bg-green-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                 >
                   {t('cookieConsent.acceptAll')}
                 </button>
@@ -229,7 +240,7 @@ function CategoryRow({
   requiredLabel = 'Required',
 }: CategoryRowProps): JSX.Element {
   return (
-    <div className="flex items-start gap-3 p-3 rounded-lg border border-border">
+    <div className="border-border flex items-start gap-3 rounded-lg border p-3">
       <input
         type="checkbox"
         checked={checked}
@@ -238,16 +249,16 @@ function CategoryRow({
         className="mt-1 h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 disabled:opacity-50"
         aria-label={title}
       />
-      <div className="flex-1 min-w-0">
+      <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-foreground">{title}</span>
+          <span className="text-foreground text-sm font-medium">{title}</span>
           {required && (
-            <span className="text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded">
+            <span className="text-muted-foreground bg-muted rounded px-1.5 py-0.5 text-xs">
               {requiredLabel}
             </span>
           )}
         </div>
-        <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{description}</p>
+        <p className="text-muted-foreground mt-0.5 text-xs leading-relaxed">{description}</p>
       </div>
     </div>
   );

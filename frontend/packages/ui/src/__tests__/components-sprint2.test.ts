@@ -42,7 +42,7 @@ function render(component: ReturnType<typeof createElement>): string {
 
 test('ProductCard renders display data with an INERT transaction CTA', () => {
   const markup = render(
-    createElement(ProductCard, { title: 'Žvakė', price: '4.50', currency: 'EUR' }),
+    createElement(ProductCard, { title: 'Žvakė', price: '4.50', currency: 'EUR' })
   );
   assert.match(markup, /Žvakė/);
   assert.match(markup, /4\.50/);
@@ -58,8 +58,11 @@ test('ProductCard renders display data with an INERT transaction CTA', () => {
 test('StorefrontGrid renders one li per product + resolved empty state', () => {
   const grid = render(
     createElement(StorefrontGrid, {
-      items: [{ title: 'A', price: '1.00' }, { title: 'B', price: '2.00' }],
-    }),
+      items: [
+        { title: 'A', price: '1.00' },
+        { title: 'B', price: '2.00' },
+      ],
+    })
   );
   assert.equal((grid.match(/<li/g) ?? []).length, 2);
   const empty = render(createElement(StorefrontGrid, { items: [] }));
@@ -71,7 +74,7 @@ test('VendorDashboardShell renders header + stats without any API surface', () =
     createElement(VendorDashboardShell, {
       vendorName: 'Krautuvėlė',
       stats: [{ label: 'Prekės', value: '12' }],
-    }),
+    })
   );
   assert.match(markup, /aria-label="Krautuvėlė"/);
   assert.match(markup, /<dt[^>]*>Prekės<\/dt>/);
@@ -105,7 +108,7 @@ test('CemeteryMapCanvas renders a static SVG grid with externalized legend', () 
       rows: 2,
       cols: 3,
       plots: [{ id: 'A-1', status: 'available' }],
-    }),
+    })
   );
   assert.match(markup, /role="img"/);
   assert.match(markup, /aria-label="Kapinių apžvalga"/);
@@ -130,7 +133,7 @@ test('OnboardingSteps renders ol semantics with aria-current on the active step'
         { title: 'Pasirinkimas', status: 'current' },
         { title: 'Pradžia', status: 'upcoming' },
       ],
-    }),
+    })
   );
   assert.match(markup, /<ol/);
   assert.equal((markup.match(/aria-current="step"/g) ?? []).length, 1);
@@ -148,7 +151,7 @@ test('sprint-2 keys exist in all three locale catalogs', () => {
   };
   for (const locale of ['lt', 'en', 'ru']) {
     const catalog = JSON.parse(
-      readFileSync(join(__dirname, '../../../i18n/src/messages', `${locale}.json`), 'utf-8'),
+      readFileSync(join(__dirname, '../../../i18n/src/messages', `${locale}.json`), 'utf-8')
     ) as Record<string, Record<string, string>>;
     for (const [ns, keys] of Object.entries(expected)) {
       for (const key of keys) {

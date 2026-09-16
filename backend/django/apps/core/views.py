@@ -17,11 +17,12 @@ GDPR Note:
 
 from __future__ import annotations
 
-from django.http import JsonResponse
 from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAdminUser
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from django.http import JsonResponse
 
 from .health import DeepHealthChecker
 from .models import AuditLog

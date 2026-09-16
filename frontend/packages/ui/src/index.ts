@@ -2,12 +2,24 @@
 export { cn } from './lib/utils';
 
 // Components
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './components/accordion';
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from './components/accordion';
 export { Alert, AlertTitle, AlertDescription } from './components/alert';
 export { Avatar, AvatarFallback, AvatarImage } from './components/avatar';
 export { Badge } from './components/badge';
 export { Button } from './components/button';
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './components/card';
+export {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from './components/card';
 export { Checkbox } from './components/checkbox';
 export {
   Dialog,
@@ -85,7 +97,11 @@ export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from './comp
 
 // Parish Templates - Shared Components
 export { LiturgicalCalendar } from './components/liturgical-calendar';
-export type { LiturgicalCalendarProps, LiturgicalSeason, FeastDay } from './components/liturgical-calendar';
+export type {
+  LiturgicalCalendarProps,
+  LiturgicalSeason,
+  FeastDay,
+} from './components/liturgical-calendar';
 export { ContactForm } from './components/contact-form';
 export type { ContactFormProps, ContactFormData } from './components/contact-form';
 export { PhotoGallery } from './components/photo-gallery';
@@ -128,11 +144,7 @@ export {
   hashForPseudonymization,
   usePIIEncryption,
 } from './lib/pii-encryption';
-export type {
-  EncryptedData,
-  PIIField,
-  EncryptionConfig,
-} from './lib/pii-encryption';
+export type { EncryptedData, PIIField, EncryptionConfig } from './lib/pii-encryption';
 
 // Entity CRM Integration Hooks
 export { useEntityCRM } from './hooks/useEntityCRM';
@@ -184,7 +196,10 @@ export type { FocusTrapProps } from './components/accessibility/focus-trap';
 export { Hero } from './components/composite/hero';
 export type { HeroProps, HeroCta, HeroVariant } from './components/composite/hero';
 export { SectionHeader } from './components/composite/section-header';
-export type { SectionHeaderProps, SectionHeaderFullProps } from './components/composite/section-header';
+export type {
+  SectionHeaderProps,
+  SectionHeaderFullProps,
+} from './components/composite/section-header';
 export { ContentBlock } from './components/composite/content-block';
 export type { ContentBlockProps, ContentNode } from './components/composite/content-block';
 export { FeatureGrid } from './components/composite/feature-grid';
@@ -216,7 +231,10 @@ export type { ProductCardProps } from './components/composite/product-card';
 export { StorefrontGrid } from './components/composite/storefront-grid';
 export type { StorefrontGridProps } from './components/composite/storefront-grid';
 export { VendorDashboardShell } from './components/composite/vendor-dashboard-shell';
-export type { VendorDashboardShellProps, VendorStat } from './components/composite/vendor-dashboard-shell';
+export type {
+  VendorDashboardShellProps,
+  VendorStat,
+} from './components/composite/vendor-dashboard-shell';
 export { ChatbotEntry } from './components/composite/chatbot-entry';
 export type { ChatbotEntryProps } from './components/composite/chatbot-entry';
 export { CemeteryMapCanvas } from './components/composite/cemetery-map-canvas';

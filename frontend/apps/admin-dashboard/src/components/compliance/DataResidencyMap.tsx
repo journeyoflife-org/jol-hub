@@ -3,13 +3,7 @@
 import { useMemo } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import {
-  Lock,
-  Unlock,
-  Shield,
-  CheckCircle,
-  MapPin,
-} from 'lucide-react';
+import { Lock, Unlock, Shield, CheckCircle, MapPin } from 'lucide-react';
 import { EU_COUNTRIES } from '@/lib/countries';
 import { cn } from '@/lib/utils';
 
@@ -34,10 +28,7 @@ interface DataResidencyMapProps {
   onCountryClick?: (countryCode: string) => void;
 }
 
-export function DataResidencyMap({
-  data,
-  onCountryClick,
-}: DataResidencyMapProps) {
+export function DataResidencyMap({ data, onCountryClick }: DataResidencyMapProps) {
   // Generate mock data if not provided
   const residencyData = useMemo(() => {
     if (data) return data;
@@ -75,12 +66,12 @@ export function DataResidencyMap({
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-green-100 dark:bg-green-900">
+              <div className="rounded-lg bg-green-100 p-2 dark:bg-green-900">
                 <Lock className="h-5 w-5 text-green-600" />
               </div>
               <div>
                 <p className="text-2xl font-bold">{stats.lockedCountries}</p>
-                <p className="text-sm text-muted-foreground">Countries Locked</p>
+                <p className="text-muted-foreground text-sm">Countries Locked</p>
               </div>
             </div>
           </CardContent>
@@ -89,12 +80,12 @@ export function DataResidencyMap({
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900">
+              <div className="rounded-lg bg-blue-100 p-2 dark:bg-blue-900">
                 <MapPin className="h-5 w-5 text-blue-600" />
               </div>
               <div>
                 <p className="text-2xl font-bold">{stats.totalCountries}</p>
-                <p className="text-sm text-muted-foreground">Total Countries</p>
+                <p className="text-muted-foreground text-sm">Total Countries</p>
               </div>
             </div>
           </CardContent>
@@ -103,12 +94,12 @@ export function DataResidencyMap({
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-900">
+              <div className="rounded-lg bg-purple-100 p-2 dark:bg-purple-900">
                 <Shield className="h-5 w-5 text-purple-600" />
               </div>
               <div>
                 <p className="text-2xl font-bold">{stats.avgCompliance}%</p>
-                <p className="text-sm text-muted-foreground">Avg Compliance</p>
+                <p className="text-muted-foreground text-sm">Avg Compliance</p>
               </div>
             </div>
           </CardContent>
@@ -117,12 +108,12 @@ export function DataResidencyMap({
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-yellow-100 dark:bg-yellow-900">
+              <div className="rounded-lg bg-yellow-100 p-2 dark:bg-yellow-900">
                 <CheckCircle className="h-5 w-5 text-yellow-600" />
               </div>
               <div>
                 <p className="text-2xl font-bold">{stats.totalEntities.toLocaleString()}</p>
-                <p className="text-sm text-muted-foreground">Protected Entities</p>
+                <p className="text-muted-foreground text-sm">Protected Entities</p>
               </div>
             </div>
           </CardContent>
@@ -133,9 +124,7 @@ export function DataResidencyMap({
       <Card>
         <CardHeader>
           <CardTitle>Data Residency by Country</CardTitle>
-          <CardDescription>
-            GDPR Article 44: All data is locked within EU borders
-          </CardDescription>
+          <CardDescription>GDPR Article 44: All data is locked within EU borders</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-3 md:grid-cols-3 lg:grid-cols-4">
@@ -145,14 +134,14 @@ export function DataResidencyMap({
                 <div
                   key={country.code}
                   className={cn(
-                    'p-4 rounded-lg border-2 cursor-pointer transition-all',
+                    'cursor-pointer rounded-lg border-2 p-4 transition-all',
                     country.locked
                       ? 'border-green-500/50 bg-green-50/50 dark:bg-green-950/20'
                       : 'border-red-500/50 bg-red-50/50 dark:bg-red-950/20'
                   )}
                   onClick={() => onCountryClick?.(country.code)}
                 >
-                  <div className="flex items-center justify-between mb-2">
+                  <div className="mb-2 flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <span className="text-2xl">{countryInfo?.flag}</span>
                       <span className="font-medium">{countryInfo?.name}</span>
@@ -180,7 +169,7 @@ export function DataResidencyMap({
                   </div>
 
                   <div className="mt-3">
-                    <div className="flex justify-between text-xs mb-1">
+                    <div className="mb-1 flex justify-between text-xs">
                       <span className="text-muted-foreground">Compliance</span>
                       <span>{country.complianceScore}%</span>
                     </div>
@@ -191,8 +180,8 @@ export function DataResidencyMap({
                         country.complianceScore >= 90
                           ? '[&>div]:bg-green-500'
                           : country.complianceScore >= 70
-                          ? '[&>div]:bg-yellow-500'
-                          : '[&>div]:bg-red-500'
+                            ? '[&>div]:bg-yellow-500'
+                            : '[&>div]:bg-red-500'
                       )}
                     />
                   </div>
@@ -207,15 +196,15 @@ export function DataResidencyMap({
       <Card className="border-green-500/50 bg-green-50 dark:bg-green-950/20">
         <CardContent className="py-4">
           <div className="flex items-start gap-3">
-            <Shield className="h-5 w-5 text-green-600 mt-0.5" />
+            <Shield className="mt-0.5 h-5 w-5 text-green-600" />
             <div>
               <p className="font-medium text-green-800 dark:text-green-200">
                 GDPR Article 44 Compliance
               </p>
-              <p className="text-sm text-green-600 dark:text-green-400 mt-1">
-                All data is processed and stored within the European Economic Area (EEA).
-                Data transfers outside the EEA are prohibited unless covered by an adequacy
-                decision or appropriate safeguards.
+              <p className="mt-1 text-sm text-green-600 dark:text-green-400">
+                All data is processed and stored within the European Economic Area (EEA). Data
+                transfers outside the EEA are prohibited unless covered by an adequacy decision or
+                appropriate safeguards.
               </p>
             </div>
           </div>

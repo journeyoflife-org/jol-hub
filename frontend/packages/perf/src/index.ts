@@ -19,8 +19,4 @@ export {
   type AppBuildManifest,
   type AssetReader,
 } from './measure';
-export {
-  evaluateFootprints,
-  formatGateReport,
-  polyfillBytesFrom,
-} from './report';
+export { evaluateFootprints, formatGateReport, polyfillBytesFrom } from './report';

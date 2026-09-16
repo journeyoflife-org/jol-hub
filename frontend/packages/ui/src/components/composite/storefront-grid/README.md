@@ -7,10 +7,10 @@ marketplace side until the payment-track freeze is lifted (D-052).
 
 ## Consuming pages (traceability)
 
-| Package | Page | Usage |
-|---|---|---|
-| 13 | Online store | primary catalog surface |
-| 12 | Cemetery services | products/graves grid where sold (display only) |
+| Package | Page              | Usage                                          |
+| ------- | ----------------- | ---------------------------------------------- |
+| 13      | Online store      | primary catalog surface                        |
+| 12      | Cemetery services | products/graves grid where sold (display only) |
 
 Renderer module mapping: `storefront` module (lands with the catalog data
 source; display-only until unfreeze).

@@ -31,10 +31,10 @@ export function Sidebar({ sections, label, className }: SidebarProps) {
                     href={link.href}
                     aria-current={link.active ? 'page' : undefined}
                     className={cn(
-                      'block rounded-md px-3 py-2 text-sm focus-ring transition-colors motion-reduce:transition-none',
+                      'focus-ring block rounded-md px-3 py-2 text-sm transition-colors motion-reduce:transition-none',
                       link.active
-                        ? 'bg-primary-100 font-medium text-primary-900 dark:bg-primary-900 dark:text-primary-100'
-                        : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
+                        ? 'bg-primary-100 text-primary-900 dark:bg-primary-900 dark:text-primary-100 font-medium'
+                        : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800'
                     )}
                   >
                     {link.label}

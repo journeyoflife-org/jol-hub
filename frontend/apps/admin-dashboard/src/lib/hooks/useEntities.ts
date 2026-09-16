@@ -83,7 +83,7 @@ export function useEntity(id: string) {
 // Hook for approving an entity
 export function useApproveEntity() {
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationFn: approveEntity,
     onSuccess: () => {
@@ -96,7 +96,7 @@ export function useApproveEntity() {
 // Hook for verifying an entity
 export function useVerifyEntity() {
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationFn: verifyEntity,
     onSuccess: () => {

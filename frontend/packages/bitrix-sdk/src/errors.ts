@@ -29,7 +29,10 @@ export class Bitrix24ApiError extends Bitrix24Error {
     this.details = details;
   }
 
-  static fromResponse(response: { error: string; error_description: string }, statusCode: number): Bitrix24ApiError {
+  static fromResponse(
+    response: { error: string; error_description: string },
+    statusCode: number
+  ): Bitrix24ApiError {
     return new Bitrix24ApiError(response.error, response.error_description, statusCode);
   }
 }

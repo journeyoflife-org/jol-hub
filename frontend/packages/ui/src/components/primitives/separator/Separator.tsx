@@ -5,7 +5,11 @@
 import { cn } from '../../../lib/utils';
 import type { SeparatorProps } from './Separator.types';
 
-export function Separator({ orientation = 'horizontal', decorative = true, className }: SeparatorProps) {
+export function Separator({
+  orientation = 'horizontal',
+  decorative = true,
+  className,
+}: SeparatorProps) {
   const ariaRole = decorative ? undefined : 'separator';
 
   if (orientation === 'vertical') {
@@ -13,7 +17,10 @@ export function Separator({ orientation = 'horizontal', decorative = true, class
       <span
         role={ariaRole}
         aria-orientation={decorative ? undefined : 'vertical'}
-        className={cn('inline-block h-full w-px self-stretch bg-neutral-200 dark:bg-neutral-800', className)}
+        className={cn(
+          'inline-block h-full w-px self-stretch bg-neutral-200 dark:bg-neutral-800',
+          className
+        )}
       />
     );
   }

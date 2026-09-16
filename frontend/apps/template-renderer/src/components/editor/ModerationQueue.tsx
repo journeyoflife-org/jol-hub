@@ -40,7 +40,12 @@ export interface ModerationQueueProps {
 
 type DecideState = 'idle' | 'busy' | 'done' | 'error';
 
-export function ModerationQueue({ tenantSlug, editorConfigured, authorized, reviewer }: ModerationQueueProps) {
+export function ModerationQueue({
+  tenantSlug,
+  editorConfigured,
+  authorized,
+  reviewer,
+}: ModerationQueueProps) {
   const t = useTranslations('editor');
   const [items, setItems] = useState<ModerationItem[]>([]);
   const [expanded, setExpanded] = useState<string | null>(null);
@@ -50,7 +55,9 @@ export function ModerationQueue({ tenantSlug, editorConfigured, authorized, revi
   const load = useCallback(async () => {
     if (!authorized || !editorConfigured) return;
     try {
-      const response = await fetch(`/api/editor/moderation?tenant=${encodeURIComponent(tenantSlug)}`);
+      const response = await fetch(
+        `/api/editor/moderation?tenant=${encodeURIComponent(tenantSlug)}`
+      );
       if (!response.ok) return;
       const data = await response.json();
       if (Array.isArray(data)) setItems(data);
@@ -86,7 +93,11 @@ export function ModerationQueue({ tenantSlug, editorConfigured, authorized, revi
   };
 
   if (!authorized) {
-    return <p className="text-sm text-neutral-500 dark:text-neutral-400">{t('moderationUnauthorized')}</p>;
+    return (
+      <p className="text-sm text-neutral-500 dark:text-neutral-400">
+        {t('moderationUnauthorized')}
+      </p>
+    );
   }
   if (!editorConfigured) {
     return <p className="text-sm text-neutral-500 dark:text-neutral-400">{t('moderationPilot')}</p>;
@@ -108,7 +119,10 @@ export function ModerationQueue({ tenantSlug, editorConfigured, authorized, revi
             const art9 = isArt9Item(item);
             const isOpen = expanded === item.id;
             return (
-              <li key={item.id} className="rounded-lg border border-neutral-200 p-4 dark:border-neutral-800">
+              <li
+                key={item.id}
+                className="rounded-lg border border-neutral-200 p-4 dark:border-neutral-800"
+              >
                 <div className="flex flex-wrap items-center gap-2 text-sm">
                   <span className="rounded bg-neutral-100 px-2 py-0.5 text-xs uppercase dark:bg-neutral-800">
                     {item.type === 'page-edit' ? t('itemPageEdit') : t('itemMediaUpload')}
@@ -119,7 +133,9 @@ export function ModerationQueue({ tenantSlug, editorConfigured, authorized, revi
                       {t('art9Badge')}
                     </span>
                   )}
-                  <span className="text-xs text-neutral-500 dark:text-neutral-400">{item.submittedAt}</span>
+                  <span className="text-xs text-neutral-500 dark:text-neutral-400">
+                    {item.submittedAt}
+                  </span>
                   <button
                     type="button"
                     className="focus-ring ml-auto rounded border border-neutral-300 px-2 py-0.5 text-xs dark:border-neutral-700"
@@ -134,7 +150,8 @@ export function ModerationQueue({ tenantSlug, editorConfigured, authorized, revi
                 {item.ai && (
                   <div className="mt-3 rounded-md border border-neutral-200 p-3 text-sm dark:border-neutral-800">
                     <p className="mb-1 font-medium">
-                      {t('aiTitle')} — {item.ai.approved ? t('aiRecommendApprove') : t('aiRecommendFlag')}
+                      {t('aiTitle')} —{' '}
+                      {item.ai.approved ? t('aiRecommendApprove') : t('aiRecommendFlag')}
                     </p>
                     {item.ai.flags.length === 0 ? (
                       <p className="text-neutral-500 dark:text-neutral-400">{t('aiNoFlags')}</p>
@@ -150,14 +167,21 @@ export function ModerationQueue({ tenantSlug, editorConfigured, authorized, revi
                         ))}
                       </ul>
                     )}
-                    <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400">{t('aiAdvisoryNote')}</p>
+                    <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                      {t('aiAdvisoryNote')}
+                    </p>
                   </div>
                 )}
 
                 {/* Malware scan state */}
                 {item.scan && (
                   <p className="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
-                    {t('scanLabel')}: {item.scan.clean === null ? t('scanPending') : item.scan.clean ? t('scanClean') : t('scanInfected')}
+                    {t('scanLabel')}:{' '}
+                    {item.scan.clean === null
+                      ? t('scanPending')
+                      : item.scan.clean
+                        ? t('scanClean')
+                        : t('scanInfected')}
                     {item.scan.engine ? ` (${item.scan.engine})` : ''}
                   </p>
                 )}
@@ -166,25 +190,49 @@ export function ModerationQueue({ tenantSlug, editorConfigured, authorized, revi
                   <div className="mt-3 space-y-3">
                     <DiffView item={item} />
                     <label className="block text-sm">
-                      <span className="mb-1 block text-xs text-neutral-500">{t('decisionReasonLabel')}</span>
+                      <span className="mb-1 block text-xs text-neutral-500">
+                        {t('decisionReasonLabel')}
+                      </span>
                       <textarea
                         className="focus-ring w-full rounded-md border border-neutral-300 px-2 py-1.5 text-sm dark:border-neutral-700 dark:bg-neutral-900"
                         rows={2}
                         value={reasons[item.id] ?? ''}
-                        onChange={(event) => setReasons((current) => ({ ...current, [item.id]: event.target.value }))}
+                        onChange={(event) =>
+                          setReasons((current) => ({ ...current, [item.id]: event.target.value }))
+                        }
                       />
                     </label>
                     <div className="flex flex-wrap gap-2 text-sm">
-                      <button type="button" disabled={decideState === 'busy'} onClick={() => void decide(item, 'approve')} className="focus-ring rounded-md bg-green-700 px-3 py-1.5 font-medium text-white disabled:opacity-40">
+                      <button
+                        type="button"
+                        disabled={decideState === 'busy'}
+                        onClick={() => void decide(item, 'approve')}
+                        className="focus-ring rounded-md bg-green-700 px-3 py-1.5 font-medium text-white disabled:opacity-40"
+                      >
                         {t('approve')}
                       </button>
-                      <button type="button" disabled={decideState === 'busy' || !(reasons[item.id] ?? '').trim()} onClick={() => void decide(item, 'reject')} className="focus-ring rounded-md bg-red-700 px-3 py-1.5 font-medium text-white disabled:opacity-40">
+                      <button
+                        type="button"
+                        disabled={decideState === 'busy' || !(reasons[item.id] ?? '').trim()}
+                        onClick={() => void decide(item, 'reject')}
+                        className="focus-ring rounded-md bg-red-700 px-3 py-1.5 font-medium text-white disabled:opacity-40"
+                      >
                         {t('reject')}
                       </button>
-                      <button type="button" disabled={decideState === 'busy' || !(reasons[item.id] ?? '').trim()} onClick={() => void decide(item, 'request-changes')} className="focus-ring rounded-md border border-neutral-300 px-3 py-1.5 dark:border-neutral-700">
+                      <button
+                        type="button"
+                        disabled={decideState === 'busy' || !(reasons[item.id] ?? '').trim()}
+                        onClick={() => void decide(item, 'request-changes')}
+                        className="focus-ring rounded-md border border-neutral-300 px-3 py-1.5 dark:border-neutral-700"
+                      >
                         {t('requestChanges')}
                       </button>
-                      <button type="button" disabled={decideState === 'busy'} onClick={() => void decide(item, 'escalate')} className="focus-ring rounded-md border border-neutral-300 px-3 py-1.5 dark:border-neutral-700">
+                      <button
+                        type="button"
+                        disabled={decideState === 'busy'}
+                        onClick={() => void decide(item, 'escalate')}
+                        className="focus-ring rounded-md border border-neutral-300 px-3 py-1.5 dark:border-neutral-700"
+                      >
                         {t('escalate')}
                       </button>
                     </div>
@@ -197,7 +245,10 @@ export function ModerationQueue({ tenantSlug, editorConfigured, authorized, revi
       )}
 
       {decideState === 'error' && (
-        <p role="alert" className="rounded-md border border-red-300 bg-red-50 p-3 text-sm text-red-800 dark:border-red-700 dark:bg-red-950 dark:text-red-200">
+        <p
+          role="alert"
+          className="rounded-md border border-red-300 bg-red-50 p-3 text-sm text-red-800 dark:border-red-700 dark:bg-red-950 dark:text-red-200"
+        >
           {t('decisionError')}
         </p>
       )}
@@ -226,7 +277,11 @@ function StatusBadge({ status }: { status: ModerationItem['status'] }) {
     escalated: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
     'art9-review': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
   };
-  return <span className={`rounded px-2 py-0.5 text-xs font-medium ${styles[status]}`}>{t(labelKey[status])}</span>;
+  return (
+    <span className={`rounded px-2 py-0.5 text-xs font-medium ${styles[status]}`}>
+      {t(labelKey[status])}
+    </span>
+  );
 }
 
 /** Before/after comparison — structural diff for page edits. */

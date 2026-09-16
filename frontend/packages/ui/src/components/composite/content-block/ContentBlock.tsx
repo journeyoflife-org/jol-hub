@@ -13,26 +13,36 @@ function NodeView({ node }: { node: ContentNode }) {
     case 'heading': {
       const Heading = `h${node.level}` as const;
       return (
-        <Heading className="mt-8 font-heading text-2xl font-semibold text-neutral-900 first:mt-0 dark:text-neutral-50">
+        <Heading className="font-heading mt-8 text-2xl font-semibold text-neutral-900 first:mt-0 dark:text-neutral-50">
           {node.text}
         </Heading>
       );
     }
     case 'paragraph':
-      return <p className="mt-4 leading-relaxed text-neutral-700 first:mt-0 dark:text-neutral-200">{node.text}</p>;
+      return (
+        <p className="mt-4 leading-relaxed text-neutral-700 first:mt-0 dark:text-neutral-200">
+          {node.text}
+        </p>
+      );
     case 'list': {
       const items = node.items.map((item, index) => <li key={index}>{item}</li>);
       return node.ordered ? (
-        <ol className="mt-4 list-decimal space-y-1 ps-6 text-neutral-700 dark:text-neutral-200">{items}</ol>
+        <ol className="mt-4 list-decimal space-y-1 ps-6 text-neutral-700 dark:text-neutral-200">
+          {items}
+        </ol>
       ) : (
-        <ul className="mt-4 list-disc space-y-1 ps-6 text-neutral-700 dark:text-neutral-200">{items}</ul>
+        <ul className="mt-4 list-disc space-y-1 ps-6 text-neutral-700 dark:text-neutral-200">
+          {items}
+        </ul>
       );
     }
     case 'blockquote':
       return (
-        <blockquote className="mt-4 border-s-4 border-liturgical-gold ps-4 italic text-neutral-700 dark:text-neutral-200">
+        <blockquote className="border-liturgical-gold mt-4 border-s-4 ps-4 italic text-neutral-700 dark:text-neutral-200">
           <p>{node.text}</p>
-          {node.citation && <footer className="mt-1 text-sm not-italic text-neutral-500">— {node.citation}</footer>}
+          {node.citation && (
+            <footer className="mt-1 text-sm not-italic text-neutral-500">— {node.citation}</footer>
+          )}
         </blockquote>
       );
     case 'image':
@@ -46,7 +56,11 @@ function NodeView({ node }: { node: ContentNode }) {
             loading="lazy"
             className="h-auto w-full rounded-lg"
           />
-          {node.caption && <figcaption className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">{node.caption}</figcaption>}
+          {node.caption && (
+            <figcaption className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+              {node.caption}
+            </figcaption>
+          )}
         </figure>
       );
     case 'embed':

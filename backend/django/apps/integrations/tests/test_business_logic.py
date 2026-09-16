@@ -18,6 +18,7 @@ import logging
 from typing import Any
 
 import pytest
+
 from apps.crm.models import ConsentStatus, Contact, Lead
 from apps.integrations.models import WebhookEvent
 from apps.integrations.tasks import (

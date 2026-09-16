@@ -51,7 +51,7 @@ export class ContentApiError extends Error {
   constructor(
     public readonly kind: ContentApiErrorKind,
     message: string,
-    public readonly status?: number,
+    public readonly status?: number
   ) {
     super(message);
     this.name = 'ContentApiError';
@@ -97,7 +97,7 @@ async function fetchJson(url: string, init: RequestInit, key: string): Promise<u
       throw new ContentApiError(
         'server-error',
         `Content backend error ${response.status}: ${url}`,
-        response.status,
+        response.status
       );
     }
     return (await response.json()) as unknown;
@@ -125,10 +125,7 @@ function encodeRoute(route: string): string {
  * Returns `null` when the content service is not configured (pilot:
  * fixture fallback) — throws {@link ContentApiError} otherwise on failure.
  */
-export async function fetchTenantPage(
-  tenant: Tenant,
-  route: string,
-): Promise<TenantPage | null> {
+export async function fetchTenantPage(tenant: Tenant, route: string): Promise<TenantPage | null> {
   if (!BACKEND_API_URL) return null;
 
   const url = `${BACKEND_API_URL}/api/v1/tenants/${encodeURIComponent(tenant.slug)}/pages/${encodeRoute(route) || 'index'}`;
@@ -138,7 +135,7 @@ export async function fetchTenantPage(
       headers: backendHeaders(tenant),
       next: { revalidate: REVALIDATE.page },
     },
-    url,
+    url
   );
 
   const parsed = TenantPageSchema.safeParse(raw);
@@ -155,7 +152,7 @@ export async function fetchTenantPage(
  */
 export async function fetchTenantContentBlock(
   tenant: Tenant,
-  blockId: string,
+  blockId: string
 ): Promise<ContentBlock | null> {
   if (!BACKEND_API_URL) return null;
 
@@ -166,12 +163,15 @@ export async function fetchTenantContentBlock(
       headers: backendHeaders(tenant),
       next: { revalidate: REVALIDATE.block },
     },
-    url,
+    url
   );
 
   const parsed = ContentBlockSchema.safeParse(raw);
   if (!parsed.success) {
-    throw new ContentApiError('server-error', `Invalid block payload ${blockId} for ${tenant.slug}`);
+    throw new ContentApiError(
+      'server-error',
+      `Invalid block payload ${blockId} for ${tenant.slug}`
+    );
   }
   return parsed.data;
 }
@@ -184,7 +184,7 @@ export async function fetchTenantContentBlock(
  */
 export async function fetchTenantCollection(
   tenant: Tenant,
-  kind: CollectionKind,
+  kind: CollectionKind
 ): Promise<unknown[] | null> {
   if (!BACKEND_API_URL) return null;
 
@@ -204,7 +204,7 @@ export async function fetchTenantCollection(
 export async function fetchTenantCollectionItem(
   tenant: Tenant,
   kind: CollectionKind,
-  slug: string,
+  slug: string
 ): Promise<unknown | null> {
   if (!BACKEND_API_URL) return null;
 

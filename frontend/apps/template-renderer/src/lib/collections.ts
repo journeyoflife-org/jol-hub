@@ -117,7 +117,7 @@ export async function getCollection<T>(
   kind: CollectionKind,
   // `any` input: collection schemas use `.default()`, so input ≠ output and a
   // strict `ZodType<T>` would widen T. T is the OUTPUT (parsed) type.
-  schema: z.ZodType<T, z.ZodTypeDef, any>,
+  schema: z.ZodType<T, z.ZodTypeDef, any>
 ): Promise<T[]> {
   try {
     const raw = await fetchTenantCollection(tenant, kind);
@@ -137,7 +137,7 @@ export async function getCollectionItem<T>(
   tenant: Tenant,
   kind: CollectionKind,
   schema: z.ZodType<T, z.ZodTypeDef, any>,
-  slug: string,
+  slug: string
 ): Promise<T | null> {
   try {
     const raw = await fetchTenantCollectionItem(tenant, kind, slug);
@@ -177,7 +177,7 @@ export function paginate<T>(items: T[], page: number, pageSize: number): PagedRe
 /** Filter events into upcoming vs past relative to `now`. */
 export function splitEventsByTime(
   events: EventItem[],
-  now: Date,
+  now: Date
 ): { upcoming: EventItem[]; past: EventItem[] } {
   const nowMs = now.getTime();
   const upcoming: EventItem[] = [];
@@ -236,7 +236,7 @@ export function eventsByDate(events: EventItem[]): Map<string, EventItem[]> {
     if (Number.isNaN(start)) continue;
     const d = new Date(start);
     const iso = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(
-      d.getUTCDate(),
+      d.getUTCDate()
     ).padStart(2, '0')}`;
     const bucket = map.get(iso);
     if (bucket) {

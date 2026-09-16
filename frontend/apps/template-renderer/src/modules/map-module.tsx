@@ -20,7 +20,8 @@ export default function MapModule({ content, locale }: ModuleProps) {
   if (!src) return null;
 
   const effectiveLocale = isSupportedLocale(locale) ? locale : DEFAULT_LOCALE;
-  const title = asString(content.title) ?? translate(getMessages(effectiveLocale), 'collections.mapTitle');
+  const title =
+    asString(content.title) ?? translate(getMessages(effectiveLocale), 'collections.mapTitle');
   const aspect =
     content.aspect === 'square' || content.aspect === 'wide' ? content.aspect : 'video';
 

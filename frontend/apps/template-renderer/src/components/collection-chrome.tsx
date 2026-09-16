@@ -18,8 +18,8 @@ export interface CollectionPageHeaderProps {
 
 export function CollectionPageHeader({ title, description }: CollectionPageHeaderProps) {
   return (
-    <header className="container mx-auto px-4 pt-10 pb-6">
-      <h1 className="text-3xl md:text-4xl font-heading font-bold text-primary">{title}</h1>
+    <header className="container mx-auto px-4 pb-6 pt-10">
+      <h1 className="font-heading text-primary text-3xl font-bold md:text-4xl">{title}</h1>
       {description && <p className="mt-2 text-gray-600">{description}</p>}
     </header>
   );
@@ -36,7 +36,14 @@ export interface PaginationProps {
 }
 
 /** Accessable pagination (nav + aria-current on the active page). */
-export function Pagination({ basePath, route, page, totalPages, locale, preserve }: PaginationProps) {
+export function Pagination({
+  basePath,
+  route,
+  page,
+  totalPages,
+  locale,
+  preserve,
+}: PaginationProps) {
   if (totalPages <= 1) return null;
   const messages = getMessages(locale);
   const pageInfo = translateWithValues(messages, locale, 'collections.pageInfo', {
@@ -50,10 +57,10 @@ export function Pagination({ basePath, route, page, totalPages, locale, preserve
   return (
     <nav
       aria-label={pageInfo}
-      className="container mx-auto px-4 flex items-center justify-between gap-4 py-6"
+      className="container mx-auto flex items-center justify-between gap-4 px-4 py-6"
     >
       {page > 1 ? (
-        <a href={hrefFor(page - 1)} className="text-primary underline focus-ring rounded">
+        <a href={hrefFor(page - 1)} className="text-primary focus-ring rounded underline">
           {translate(messages, 'collections.previousPage')}
         </a>
       ) : (
@@ -65,7 +72,7 @@ export function Pagination({ basePath, route, page, totalPages, locale, preserve
       <span className="text-sm text-gray-600">{pageInfo}</span>
 
       {page < totalPages ? (
-        <a href={hrefFor(page + 1)} className="text-primary underline focus-ring rounded">
+        <a href={hrefFor(page + 1)} className="text-primary focus-ring rounded underline">
           {translate(messages, 'collections.nextPage')}
         </a>
       ) : (
@@ -110,7 +117,11 @@ export function CategoryFilter({
     <div className="container mx-auto px-4 pb-4">
       <span className="sr-only">{translate(messages, 'collections.categoryLabel')}</span>
       <div className="flex flex-wrap gap-2">
-        <a href={collectionHref(basePath, route, { ...preserve, category: undefined })} className={linkClass(!active)} aria-current={active ? undefined : 'true'}>
+        <a
+          href={collectionHref(basePath, route, { ...preserve, category: undefined })}
+          className={linkClass(!active)}
+          aria-current={active ? undefined : 'true'}
+        >
           {translate(messages, 'collections.allCategories')}
         </a>
         {categories.map((category) => (

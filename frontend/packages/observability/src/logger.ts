@@ -69,7 +69,12 @@ export function createLogger(options: LoggerOptions): Logger {
   const sink = options.sink ?? defaultSink;
   const now = options.now ?? (() => new Date());
 
-  function emit(level: LogLevel, msg: string, fields: Record<string, unknown> | undefined, bindings: Record<string, unknown>): void {
+  function emit(
+    level: LogLevel,
+    msg: string,
+    fields: Record<string, unknown> | undefined,
+    bindings: Record<string, unknown>
+  ): void {
     if (LEVEL_WEIGHT[level] < minWeight) return;
 
     // Deep-redact caller-supplied content — callers can never bypass PII
@@ -88,7 +93,13 @@ export function createLogger(options: LoggerOptions): Logger {
     try {
       line = JSON.stringify(record);
     } catch {
-      line = JSON.stringify({ time: record.time, level, msg, service: options.service, error: 'unserializable-fields' });
+      line = JSON.stringify({
+        time: record.time,
+        level,
+        msg,
+        service: options.service,
+        error: 'unserializable-fields',
+      });
     }
     sink(line, record);
   }

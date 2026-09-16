@@ -8,11 +8,11 @@ contact while the payment-track freeze stands (DECISION-LOG D-052).
 
 ## Consuming pages (traceability)
 
-| Package | Page | Usage |
-|---|---|---|
-| 13 | Online store | catalog grid cells (via StorefrontGrid) |
-| 14 | Product detail | related-products strip |
-| 12 | Cemetery services | graves/products where sold (display only) |
+| Package | Page              | Usage                                     |
+| ------- | ----------------- | ----------------------------------------- |
+| 13      | Online store      | catalog grid cells (via StorefrontGrid)   |
+| 14      | Product detail    | related-products strip                    |
+| 12      | Cemetery services | graves/products where sold (display only) |
 
 Renderer module mapping: `storefront` module (when the marketplace catalog
 data source lands; display-only until unfreeze).

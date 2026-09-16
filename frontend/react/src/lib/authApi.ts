@@ -11,28 +11,25 @@
  *   POST /api/v1/users/me/change-password/
  */
 
-import apiClient from '@/lib/apiClient'
-import { tokenStore } from '@/lib/tokenStore'
+import apiClient from '@/lib/apiClient';
+import { tokenStore } from '@/lib/tokenStore';
 import type {
   LoginCredentials,
   RegisterPayload,
   TokenResponse,
   User,
   ChangePasswordPayload,
-} from '@/types/api'
+} from '@/types/api';
 
 // ---------------------------------------------------------------------------
 // Login — stores tokens, returns user
 // ---------------------------------------------------------------------------
 
 export async function login(credentials: LoginCredentials): Promise<User> {
-  const { data } = await apiClient.post<TokenResponse>(
-    '/auth/login/',
-    credentials,
-  )
-  tokenStore.setAccess(data.access)
-  tokenStore.setRefresh(data.refresh)
-  return data.user
+  const { data } = await apiClient.post<TokenResponse>('/auth/login/', credentials);
+  tokenStore.setAccess(data.access);
+  tokenStore.setRefresh(data.refresh);
+  return data.user;
 }
 
 // ---------------------------------------------------------------------------
@@ -40,13 +37,13 @@ export async function login(credentials: LoginCredentials): Promise<User> {
 // ---------------------------------------------------------------------------
 
 export async function logout(): Promise<void> {
-  const refresh = tokenStore.getRefresh()
+  const refresh = tokenStore.getRefresh();
   try {
     if (refresh) {
-      await apiClient.post('/auth/logout/', { refresh_token: refresh })
+      await apiClient.post('/auth/logout/', { refresh_token: refresh });
     }
   } finally {
-    tokenStore.clearAll()
+    tokenStore.clearAll();
   }
 }
 
@@ -55,8 +52,8 @@ export async function logout(): Promise<void> {
 // ---------------------------------------------------------------------------
 
 export async function register(payload: RegisterPayload): Promise<User> {
-  const { data } = await apiClient.post<User>('/auth/register/', payload)
-  return data
+  const { data } = await apiClient.post<User>('/auth/register/', payload);
+  return data;
 }
 
 // ---------------------------------------------------------------------------
@@ -64,8 +61,8 @@ export async function register(payload: RegisterPayload): Promise<User> {
 // ---------------------------------------------------------------------------
 
 export async function fetchMe(): Promise<User> {
-  const { data } = await apiClient.get<User>('/users/me/')
-  return data
+  const { data } = await apiClient.get<User>('/users/me/');
+  return data;
 }
 
 // ---------------------------------------------------------------------------
@@ -73,16 +70,14 @@ export async function fetchMe(): Promise<User> {
 // ---------------------------------------------------------------------------
 
 export async function updateMe(payload: Partial<User>): Promise<User> {
-  const { data } = await apiClient.patch<User>('/users/me/', payload)
-  return data
+  const { data } = await apiClient.patch<User>('/users/me/', payload);
+  return data;
 }
 
 // ---------------------------------------------------------------------------
 // Change password
 // ---------------------------------------------------------------------------
 
-export async function changePassword(
-  payload: ChangePasswordPayload,
-): Promise<void> {
-  await apiClient.post('/users/me/change-password/', payload)
+export async function changePassword(payload: ChangePasswordPayload): Promise<void> {
+  await apiClient.post('/users/me/change-password/', payload);
 }

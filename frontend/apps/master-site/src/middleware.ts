@@ -1,12 +1,12 @@
 /**
  * Multi-tenant middleware for JOL-HUB parish subdomains.
- * 
+ *
  * Handles 400,000+ parish subdomains with:
  * - Subdomain extraction and validation
  * - Parish resolution with caching headers
  * - URL rewriting to dynamic routes
  * - Security headers and CORS
- * 
+ *
  * PERFORMANCE: Edge Runtime compatible (< 50ms cold start)
  */
 
@@ -56,7 +56,7 @@ const MASTER_HOSTNAMES = new Set([
 
 /**
  * Next.js middleware for multi-tenant subdomain routing.
- * 
+ *
  * @param request - The incoming NextRequest
  * @returns NextResponse with appropriate routing and headers
  */
@@ -101,20 +101,17 @@ export function middleware(request: NextRequest): NextResponse {
  */
 function handleMasterSite(request: NextRequest): NextResponse {
   const response = NextResponse.next();
-  
+
   // Add security headers
   addSecurityHeaders(response);
-  
+
   return response;
 }
 
 /**
  * Handles requests to parish subdomains.
  */
-function handleParishSubdomain(
-  request: NextRequest,
-  subdomain: string
-): NextResponse {
+function handleParishSubdomain(request: NextRequest, subdomain: string): NextResponse {
   const { pathname } = request.nextUrl;
 
   // Check if this is a parish page request (not API/static)
@@ -127,7 +124,7 @@ function handleParishSubdomain(
 
   // Rewrite to dynamic parish route
   const url = request.nextUrl.clone();
-  
+
   // Rewrite / to /[parish]/page
   if (pathname === '/') {
     url.pathname = `/${subdomain}`;
@@ -137,17 +134,14 @@ function handleParishSubdomain(
   }
 
   const response = NextResponse.rewrite(url);
-  
+
   // Add parish context headers
   addParishHeaders(response, subdomain);
   addSecurityHeaders(response);
-  
+
   // Add caching headers for static content
   // Parish config is cached for 5 minutes
-  response.headers.set(
-    'Cache-Control',
-    'public, max-age=300, stale-while-revalidate=60'
-  );
+  response.headers.set('Cache-Control', 'public, max-age=300, stale-while-revalidate=60');
 
   return response;
 }
@@ -163,7 +157,7 @@ function addParishHeaders(response: NextResponse, subdomain: string): void {
   // Core parish headers
   response.headers.set('x-parish-subdomain', subdomain);
   response.headers.set('x-parish-id', subdomain); // TODO: Map to actual parish ID
-  
+
   // CORS header for parish-specific requests
   response.headers.set('Access-Control-Allow-Origin', `https://${subdomain}.jol-hub.eu`);
 }
@@ -174,21 +168,18 @@ function addParishHeaders(response: NextResponse, subdomain: string): void {
 function addSecurityHeaders(response: NextResponse): void {
   // Prevent MIME type sniffing
   response.headers.set('X-Content-Type-Options', 'nosniff');
-  
+
   // Prevent clickjacking
   response.headers.set('X-Frame-Options', 'SAMEORIGIN');
-  
+
   // XSS protection
   response.headers.set('X-XSS-Protection', '1; mode=block');
-  
+
   // Referrer policy
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  
+
   // Permissions policy
-  response.headers.set(
-    'Permissions-Policy',
-    'camera=(), microphone=(), geolocation=()'
-  );
+  response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
 }
 
 // =============================================================================
@@ -197,12 +188,12 @@ function addSecurityHeaders(response: NextResponse): void {
 
 /**
  * Extracts subdomain from hostname.
- * 
+ *
  * Examples:
  * - stmarys.jol-hub.eu -> stmarys
  * - www.jol-hub.eu -> null (master site)
  * - localhost -> null (development)
- * 
+ *
  * @param hostname - The request hostname
  * @returns Subdomain or null if master site
  */
@@ -241,13 +232,13 @@ function extractSubdomain(hostname: string): string | null {
 
 /**
  * Validates subdomain format.
- * 
+ *
  * Rules:
  * - 3-63 characters
  * - Lowercase alphanumeric and hyphens only
  * - Cannot start or end with hyphen
  * - No consecutive hyphens
- * 
+ *
  * @param subdomain - The subdomain to validate
  * @returns True if valid
  */
@@ -279,7 +270,7 @@ function isMasterHostname(hostname: string): boolean {
 
 /**
  * Middleware matcher configuration.
- * 
+ *
  * Skips:
  * - API routes (handled separately)
  * - Static files (_next/static, _next/image)

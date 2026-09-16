@@ -24,7 +24,7 @@ export function FeatureGrid({ features, columns = 3, tenant, className }: Featur
               aria-hidden="true"
               className={cn(
                 'inline-flex h-12 w-12 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800',
-                accentTextClass(tenant),
+                accentTextClass(tenant)
               )}
             >
               <Icon className="h-6 w-6" aria-hidden="true" />
@@ -34,7 +34,12 @@ export function FeatureGrid({ features, columns = 3, tenant, className }: Featur
             </h3>
             <p className="text-sm text-neutral-600 dark:text-neutral-300">{feature.description}</p>
             {feature.href && (
-              <span className={cn('text-sm font-medium underline-offset-4 hover:underline', accentTextClass(tenant))}>
+              <span
+                className={cn(
+                  'text-sm font-medium underline-offset-4 hover:underline',
+                  accentTextClass(tenant)
+                )}
+              >
                 {feature.linkLabel ?? 'Skaityti daugiau / Read more'}
               </span>
             )}
@@ -45,12 +50,15 @@ export function FeatureGrid({ features, columns = 3, tenant, className }: Featur
           <a
             key={feature.title}
             href={feature.href}
-            className="flex flex-col gap-3 rounded-lg border border-neutral-200 p-6 transition-shadow motion-reduce:transition-none hover:shadow-md focus-ring dark:border-neutral-800"
+            className="focus-ring flex flex-col gap-3 rounded-lg border border-neutral-200 p-6 transition-shadow hover:shadow-md motion-reduce:transition-none dark:border-neutral-800"
           >
             {body}
           </a>
         ) : (
-          <div key={feature.title} className="flex flex-col gap-3 rounded-lg border border-neutral-200 p-6 dark:border-neutral-800">
+          <div
+            key={feature.title}
+            className="flex flex-col gap-3 rounded-lg border border-neutral-200 p-6 dark:border-neutral-800"
+          >
             {body}
           </div>
         );

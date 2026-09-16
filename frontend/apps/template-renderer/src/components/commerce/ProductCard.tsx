@@ -49,7 +49,6 @@ export function ProductCard({ product, locale = 'lt' }: { product: Product; loca
       className="flex h-full flex-col rounded-lg border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900"
     >
       {product.imageUrl ? (
-        // eslint-disable-next-line @next/next/no-img-element
         <img
           src={product.imageUrl}
           alt={product.name}
@@ -117,7 +116,7 @@ export function ProductGrid({ products, locale = 'lt', filterable = true }: Prod
 
   const categories = useMemo(
     () => Array.from(new Set(products.map((p) => p.category).filter(Boolean))) as string[],
-    [products],
+    [products]
   );
 
   const visible = useMemo(() => {

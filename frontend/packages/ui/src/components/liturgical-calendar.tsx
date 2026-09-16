@@ -102,7 +102,7 @@ function getLiturgicalSeason(date: Date): LiturgicalSeason {
       name: 'Easter',
       color: 'white',
       icon: <Flame className="h-5 w-5" />,
-      description: 'The season of celebrating Christ\'s resurrection',
+      description: "The season of celebrating Christ's resurrection",
     };
   }
 
@@ -111,7 +111,7 @@ function getLiturgicalSeason(date: Date): LiturgicalSeason {
       name: 'Advent',
       color: 'purple',
       icon: <Star className="h-5 w-5" />,
-      description: 'Preparation for the celebration of Christ\'s birth',
+      description: "Preparation for the celebration of Christ's birth",
     };
   }
 
@@ -124,7 +124,7 @@ function getLiturgicalSeason(date: Date): LiturgicalSeason {
       name: 'Christmas',
       color: 'white',
       icon: <Star className="h-5 w-5" />,
-      description: 'Celebration of Christ\'s birth',
+      description: "Celebration of Christ's birth",
     };
   }
 
@@ -176,23 +176,14 @@ export function LiturgicalCalendar({
 
         {/* Upcoming Feasts */}
         <div>
-          <h4 className="mb-2 text-sm font-medium text-muted-foreground">
-            Upcoming Feast Days
-          </h4>
+          <h4 className="text-muted-foreground mb-2 text-sm font-medium">Upcoming Feast Days</h4>
           <div className="space-y-2">
             {upcomingFeasts.map((feast, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between rounded-md border p-2"
-              >
+              <div key={index} className="flex items-center justify-between rounded-md border p-2">
                 <span className="font-medium">{feast.name}</span>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-muted-foreground">
-                    {formatDate(feast.date)}
-                  </span>
-                  <Badge variant={getFeastBadgeVariant(feast.type)}>
-                    {feast.type}
-                  </Badge>
+                  <span className="text-muted-foreground text-sm">{formatDate(feast.date)}</span>
+                  <Badge variant={getFeastBadgeVariant(feast.type)}>{feast.type}</Badge>
                 </div>
               </div>
             ))}

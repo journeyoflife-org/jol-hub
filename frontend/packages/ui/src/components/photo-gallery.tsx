@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * PhotoGallery Component
  * Next.js Image optimization with lightbox modal
@@ -95,7 +97,7 @@ export function PhotoGallery({
 
   if (!photos.length) {
     return (
-      <div className={`text-center py-12 text-muted-foreground ${className}`}>
+      <div className={`text-muted-foreground py-12 text-center ${className}`}>
         No photos available
       </div>
     );
@@ -107,7 +109,7 @@ export function PhotoGallery({
         {photos.map((photo, index) => (
           <div
             key={photo.id}
-            className={`relative group overflow-hidden rounded-lg bg-muted ${ASPECT_RATIOS[aspectRatio]} ${
+            className={`bg-muted group relative overflow-hidden rounded-lg ${ASPECT_RATIOS[aspectRatio]} ${
               aspectRatio === 'auto' ? '' : ''
             }`}
           >
@@ -118,27 +120,27 @@ export function PhotoGallery({
               width={aspectRatio === 'auto' ? photo.width || 400 : undefined}
               height={aspectRatio === 'auto' ? photo.height || 300 : undefined}
               className={`object-cover transition-transform duration-300 group-hover:scale-105 ${
-                aspectRatio === 'auto' ? 'w-full h-auto' : ''
+                aspectRatio === 'auto' ? 'h-auto w-full' : ''
               }`}
               loading={lazyLoad && index > 3 ? 'lazy' : 'eager'}
               sizes={`(max-width: 640px) 100vw, (max-width: 1024px) 50vw, ${100 / columns}vw`}
             />
-            
+
             {/* Overlay */}
             {enableLightbox && (
               <button
                 onClick={() => openLightbox(index)}
-                className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/40 transition-colors duration-300 focus:bg-black/40 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+                className="focus:ring-primary absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 focus:bg-black/40 focus:outline-none focus:ring-2 focus:ring-inset group-hover:bg-black/40"
                 aria-label={`View ${photo.alt} in lightbox`}
               >
-                <ZoomIn className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity duration-300" />
+                <ZoomIn className="h-8 w-8 text-white opacity-0 transition-opacity duration-300 focus:opacity-100 group-hover:opacity-100" />
               </button>
             )}
 
             {/* Caption overlay */}
             {photo.caption && (
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <p className="text-white text-sm truncate">{photo.caption}</p>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <p className="truncate text-sm text-white">{photo.caption}</p>
               </div>
             )}
           </div>

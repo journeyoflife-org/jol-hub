@@ -6,11 +6,11 @@ and the abort rule in `WAVE0-CHECKLIST.md`.
 
 ## 1. STOP — assess severity
 
-| Level | Definition | Response time |
-| --- | --- | --- |
-| **P0** | Site down, data at risk, security breach | immediate rollback, all hands |
-| **P1** | Core flow broken (contact form, booking, auth) | rollback within 30 min |
-| **P2** | Degradation (slow page, visual defect) | schedule fix; rollback optional |
+| Level  | Definition                                     | Response time                   |
+| ------ | ---------------------------------------------- | ------------------------------- |
+| **P0** | Site down, data at risk, security breach       | immediate rollback, all hands   |
+| **P1** | Core flow broken (contact form, booking, auth) | rollback within 30 min          |
+| **P2** | Degradation (slow page, visual defect)         | schedule fix; rollback optional |
 
 Do not panic. One person owns the keyboard; everyone else communicates.
 

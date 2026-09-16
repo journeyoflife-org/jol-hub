@@ -64,7 +64,7 @@ export function contrastRatio(hexA: string, hexB: string): number {
  */
 export function meetsWcagAA(
   ratio: number,
-  usage: { largeText?: boolean; nonText?: boolean } = {},
+  usage: { largeText?: boolean; nonText?: boolean } = {}
 ): boolean {
   const threshold = usage.nonText ? AA_NON_TEXT : usage.largeText ? AA_LARGE_TEXT : AA_NORMAL_TEXT;
   return ratio >= threshold;

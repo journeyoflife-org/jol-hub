@@ -28,11 +28,16 @@ export function Footer({
         <div>{brand}</div>
 
         <nav aria-label={tNav('footerLabel')}>
-          <h2 className="mb-3 font-heading text-lg font-semibold text-neutral-50">{tNav('navigationTitle')}</h2>
+          <h2 className="font-heading mb-3 text-lg font-semibold text-neutral-50">
+            {tNav('navigationTitle')}
+          </h2>
           <ul className="space-y-2 text-sm">
             {navigation.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="underline-offset-4 hover:underline focus-ring rounded-sm">
+                <a
+                  href={link.href}
+                  className="focus-ring rounded-sm underline-offset-4 hover:underline"
+                >
                   {link.label}
                 </a>
               </li>
@@ -41,7 +46,9 @@ export function Footer({
         </nav>
 
         <div>
-          <h2 className="mb-3 font-heading text-lg font-semibold text-neutral-50">{tNav('contactTitle')}</h2>
+          <h2 className="font-heading mb-3 text-lg font-semibold text-neutral-50">
+            {tNav('contactTitle')}
+          </h2>
           <ul className="space-y-2 text-sm">
             {contact.map((line) => (
               <li key={line}>{line}</li>
@@ -54,7 +61,7 @@ export function Footer({
                   <a
                     href={item.href}
                     aria-label={item.label}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-neutral-800 hover:bg-neutral-700 focus-ring"
+                    className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full bg-neutral-800 hover:bg-neutral-700"
                   >
                     {item.icon}
                   </a>
@@ -65,11 +72,16 @@ export function Footer({
         </div>
 
         <nav aria-label={tNav('legal')}>
-          <h2 className="mb-3 font-heading text-lg font-semibold text-neutral-50">{tNav('legal')}</h2>
+          <h2 className="font-heading mb-3 text-lg font-semibold text-neutral-50">
+            {tNav('legal')}
+          </h2>
           <ul className="space-y-2 text-sm">
             {legal.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="underline-offset-4 hover:underline focus-ring rounded-sm">
+                <a
+                  href={link.href}
+                  className="focus-ring rounded-sm underline-offset-4 hover:underline"
+                >
                   {link.label}
                 </a>
               </li>

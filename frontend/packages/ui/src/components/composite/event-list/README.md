@@ -6,12 +6,12 @@ optional "view all" link. The page-composition heading comes from
 
 ## Consuming pages (traceability)
 
-| Package | Page | Usage |
-|---|---|---|
-| 03 | Basilica landing | `event-list` module (reference structure) |
-| 04 | Cathedral landing | same composition |
-| 06 | Deaneries landing | upcoming-deanery-events block |
-| 07 | Parish church landing | `event-list` module |
+| Package | Page                  | Usage                                     |
+| ------- | --------------------- | ----------------------------------------- |
+| 03      | Basilica landing      | `event-list` module (reference structure) |
+| 04      | Cathedral landing     | same composition                          |
+| 06      | Deaneries landing     | upcoming-deanery-events block             |
+| 07      | Parish church landing | `event-list` module                       |
 
 Renderer module mapping: `event-list`.
 

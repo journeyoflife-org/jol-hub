@@ -47,9 +47,7 @@ interface TenantLocaleLayoutParams {
  * hreflang (incl. x-default). Unknown tenants emit no metadata (404 path).
  */
 export function generateMetadata({ params }: { params: TenantLocaleLayoutParams }): Metadata {
-  const locale: SupportedLocale = isSupportedLocale(params.locale)
-    ? params.locale
-    : DEFAULT_LOCALE;
+  const locale: SupportedLocale = isSupportedLocale(params.locale) ? params.locale : DEFAULT_LOCALE;
 
   const fixture = loadTenantFixture(params.tenant);
   const registryTenant = findTenantBySlug(params.tenant);
@@ -70,9 +68,7 @@ export default function TenantLocaleLayout({
   children: React.ReactNode;
   params: TenantLocaleLayoutParams;
 }) {
-  const locale: SupportedLocale = isSupportedLocale(params.locale)
-    ? params.locale
-    : DEFAULT_LOCALE;
+  const locale: SupportedLocale = isSupportedLocale(params.locale) ? params.locale : DEFAULT_LOCALE;
 
   const fixture = loadTenantFixture(params.tenant);
   // STEP-5 registry covers tenants without fixture content yet (Wave 1).
@@ -134,7 +130,7 @@ export default function TenantLocaleLayout({
           <SkipLink targetId="main-content" />
           <Header
             logo={
-              <a href={basePath} className="font-heading text-lg font-bold focus-ring rounded-md">
+              <a href={basePath} className="font-heading focus-ring rounded-md text-lg font-bold">
                 {tenantName}
               </a>
             }

@@ -7,12 +7,7 @@
 
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useCallback, useEffect, useState } from 'react';
-import type { 
-  Bitrix24SyncStatus, 
-  Bitrix24SyncJob, 
-  Bitrix24Health,
-  SyncableEntity,
-} from '@/types';
+import type { Bitrix24SyncStatus, Bitrix24SyncJob, Bitrix24Health, SyncableEntity } from '@/types';
 
 const POLL_INTERVAL = 5000;
 
@@ -47,20 +42,27 @@ interface Bitrix24Context {
   health: Bitrix24Health | null;
   isLoading: boolean;
   error: Error | null;
-  
+
   // Actions
   syncEntity: (entityType: SyncableEntity, entityId: string) => Promise<void>;
   resolveConflict: (conflictId: string, resolution: 'local' | 'remote') => Promise<void>;
   retryFailedJobs: () => Promise<void>;
 }
 
-export function useBitrix24(entityId?: string): Bitrix24Context & { syncNow: () => void; refetch: () => void } {
+export function useBitrix24(
+  entityId?: string
+): Bitrix24Context & { syncNow: () => void; refetch: () => void } {
   const queryClient = useQueryClient();
 
   // Poll sync status
-  const { data: status, isLoading: statusLoading, error: statusError, refetch } = useQuery({
+  const {
+    data: status,
+    isLoading: statusLoading,
+    error: statusError,
+    refetch,
+  } = useQuery({
     queryKey: ['bitrix24', 'status', entityId],
-    queryFn: () => entityId ? fetchEntitySyncStatus(entityId) : fetchSyncStatus(),
+    queryFn: () => (entityId ? fetchEntitySyncStatus(entityId) : fetchSyncStatus()),
     refetchInterval: POLL_INTERVAL,
     staleTime: 2000,
   });
@@ -100,7 +102,13 @@ export function useBitrix24(entityId?: string): Bitrix24Context & { syncNow: () 
 
   // Sync entity mutation
   const syncMutation = useMutation({
-    mutationFn: async ({ entityType, entityId }: { entityType: SyncableEntity; entityId: string }) => {
+    mutationFn: async ({
+      entityType,
+      entityId,
+    }: {
+      entityType: SyncableEntity;
+      entityId: string;
+    }) => {
       const response = await fetch('/api/bitrix24/sync', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -116,7 +124,13 @@ export function useBitrix24(entityId?: string): Bitrix24Context & { syncNow: () 
 
   // Resolve conflict mutation
   const resolveConflictMutation = useMutation({
-    mutationFn: async ({ conflictId, resolution }: { conflictId: string; resolution: 'local' | 'remote' }) => {
+    mutationFn: async ({
+      conflictId,
+      resolution,
+    }: {
+      conflictId: string;
+      resolution: 'local' | 'remote';
+    }) => {
       const response = await fetch(`/api/bitrix24/conflicts/${conflictId}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },

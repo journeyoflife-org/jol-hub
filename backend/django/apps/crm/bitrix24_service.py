@@ -21,13 +21,6 @@ from decimal import Decimal
 from enum import Enum
 from typing import Any, Callable, Dict, Generic, List, Optional, TypeVar
 
-from apps.crm.middleware import get_current_tenant_context, get_current_tenant_id
-from apps.crm.models import AuditEntry, Contact, Deal
-from django.conf import settings
-from django.core.cache import cache
-from django.db import transaction
-from django.utils import timezone
-
 # Import from existing Bitrix24 integration
 from integrations.bitrix24 import Bitrix24Client, Bitrix24Config
 from integrations.bitrix24.client import (
@@ -36,6 +29,13 @@ from integrations.bitrix24.client import (
     Bitrix24Error,
     Bitrix24RateLimitError,
 )
+
+from apps.crm.middleware import get_current_tenant_context, get_current_tenant_id
+from apps.crm.models import AuditEntry, Contact, Deal
+from django.conf import settings
+from django.core.cache import cache
+from django.db import transaction
+from django.utils import timezone
 
 logger = logging.getLogger("jolhub.crm.bitrix24")
 

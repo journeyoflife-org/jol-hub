@@ -48,7 +48,7 @@ const NON_USER_ROUTES = /^\/(dev\/|not-found|_not-found)/;
  */
 export function computeRouteFootprints(
   manifest: AppBuildManifest,
-  readAsset: AssetReader,
+  readAsset: AssetReader
 ): RouteFootprint[] {
   const cache = new Map<string, number>();
   const sizeOf = (relPath: string): number => {

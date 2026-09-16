@@ -86,8 +86,10 @@ const translations = {
       identityDocument: 'Tapatybės dokumentas (neprivaloma)',
     },
     warnings: {
-      erasure: '⚠️ Įspėjimas: Ištrynus duomenis, prarasite prieigą prie visų paslaugų. Kai kurie duomenys gali būti saugomi pagal teisinius reikalavimus.',
-      sacramental: '📋 Pastaba: Sakramentiniai įrašai (Krikštas, Vedybos, Kunigystė) yra saugomi nuolat pagal Kanonų teisę ir negali būti ištrinti.',
+      erasure:
+        '⚠️ Įspėjimas: Ištrynus duomenis, prarasite prieigą prie visų paslaugų. Kai kurie duomenys gali būti saugomi pagal teisinius reikalavimus.',
+      sacramental:
+        '📋 Pastaba: Sakramentiniai įrašai (Krikštas, Vedybos, Kunigystė) yra saugomi nuolat pagal Kanonų teisę ir negali būti ištrinti.',
     },
   },
   en: {
@@ -137,12 +139,14 @@ const translations = {
       identityDocument: 'Identity Document (optional)',
     },
     warnings: {
-      erasure: '⚠️ Warning: Deleting your data will remove access to all services. Some data may be retained for legal requirements.',
-      sacramental: '📋 Note: Sacramental records (Baptism, Marriage, Holy Orders) are retained permanently under Canon Law and cannot be deleted.',
+      erasure:
+        '⚠️ Warning: Deleting your data will remove access to all services. Some data may be retained for legal requirements.',
+      sacramental:
+        '📋 Note: Sacramental records (Baptism, Marriage, Holy Orders) are retained permanently under Canon Law and cannot be deleted.',
     },
   },
   uk: {
-    title: 'Права суб\'єкта даних',
+    title: "Права суб'єкта даних",
     subtitle: 'Статті GDPR 15-22 - Подайте запит щодо своїх даних',
     selectRequestType: 'Оберіть тип запиту',
     yourDetails: 'Ваші дані',
@@ -182,14 +186,16 @@ const translations = {
       firstName: "Ім'я",
       lastName: 'Прізвище',
       email: 'Електронна пошта',
-      phone: 'Телефон (необов\'язково)',
+      phone: "Телефон (необов'язково)",
       descriptionLabel: 'Опис запиту',
       descriptionPlaceholder: 'Опишіть свій запит...',
-      identityDocument: 'Документ про особу (необов\'язково)',
+      identityDocument: "Документ про особу (необов'язково)",
     },
     warnings: {
-      erasure: '⚠️ Попередження: Видалення даних призведе до втрати доступу до всіх послуг. Деякі дані можуть зберігатися за юридичних вимог.',
-      sacramental: '📋 Примітка: Таїнні записи (Хрещення, Шлюб, Священство) зберігаються постійно згідно з Канонічним правом і не можуть бути видалені.',
+      erasure:
+        '⚠️ Попередження: Видалення даних призведе до втрати доступу до всіх послуг. Деякі дані можуть зберігатися за юридичних вимог.',
+      sacramental:
+        '📋 Примітка: Таїнні записи (Хрещення, Шлюб, Священство) зберігаються постійно згідно з Канонічним правом і не можуть бути видалені.',
     },
   },
 };
@@ -203,7 +209,7 @@ export function DSRPage({
   onSubmit,
 }: DSRPageProps) {
   const t = translations[language] || translations.en;
-  
+
   const [requestType, setRequestType] = useState<DSRRequest['type']>('access');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -242,12 +248,12 @@ export function DSRPage({
 
   if (isSubmitted) {
     return (
-      <div className={cn('max-w-2xl mx-auto py-8', className)}>
+      <div className={cn('mx-auto max-w-2xl py-8', className)}>
         <Card className="text-center">
-          <CardContent className="pt-8 pb-8">
-            <div className="text-6xl mb-4">✅</div>
-            <h2 className="text-2xl font-bold mb-2">{t.submitted}</h2>
-            <p className="text-gray-600 mb-6">{t.submittedDescription}</p>
+          <CardContent className="pb-8 pt-8">
+            <div className="mb-4 text-6xl">✅</div>
+            <h2 className="mb-2 text-2xl font-bold">{t.submitted}</h2>
+            <p className="mb-6 text-gray-600">{t.submittedDescription}</p>
             <p className="text-sm text-gray-500">
               {t.contactForHelp}{' '}
               <a href={`mailto:${contactEmail}`} className="text-blue-600 hover:underline">
@@ -261,9 +267,9 @@ export function DSRPage({
   }
 
   return (
-    <div className={cn('max-w-3xl mx-auto space-y-8 py-8', className)}>
+    <div className={cn('mx-auto max-w-3xl space-y-8 py-8', className)}>
       {/* Header */}
-      <div className="text-center space-y-2">
+      <div className="space-y-2 text-center">
         <h1 className="text-3xl font-bold">{t.title}</h1>
         <p className="text-gray-600">{t.subtitle}</p>
         <p className="text-sm text-gray-500">{entityName}</p>
@@ -283,7 +289,7 @@ export function DSRPage({
                   type="button"
                   onClick={() => setRequestType(key as DSRRequest['type'])}
                   className={cn(
-                    'p-4 rounded-lg border text-left transition-all',
+                    'rounded-lg border p-4 text-left transition-all',
                     requestType === key
                       ? 'border-blue-500 bg-blue-50'
                       : 'border-gray-200 hover:border-gray-300'
@@ -297,9 +303,9 @@ export function DSRPage({
 
             {/* Warnings */}
             {requestType === 'erasure' && (
-              <div className="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <div className="mt-4 rounded-lg border border-yellow-200 bg-yellow-50 p-4">
                 <p className="text-sm text-yellow-800">{t.warnings.erasure}</p>
-                <p className="text-sm text-yellow-700 mt-2">{t.warnings.sacramental}</p>
+                <p className="mt-2 text-sm text-yellow-700">{t.warnings.sacramental}</p>
               </div>
             )}
           </CardContent>

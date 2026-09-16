@@ -79,7 +79,9 @@ export default async function TenantServicesListPage({
   }
 
   const all = await getServices(tenant);
-  const categories = Array.from(new Set(all.map((item) => item.category).filter(Boolean))) as string[];
+  const categories = Array.from(
+    new Set(all.map((item) => item.category).filter(Boolean))
+  ) as string[];
   const activeCategory = readString(searchParams, 'category');
 
   const listed = activeCategory ? all.filter((item) => item.category === activeCategory) : all;
@@ -96,7 +98,7 @@ export default async function TenantServicesListPage({
             listed.map((item) => ({
               name: item.title,
               url: absoluteUrl(`${basePath}/services/${item.slug}`),
-            })),
+            }))
           ),
         ]}
       />
@@ -114,7 +116,7 @@ export default async function TenantServicesListPage({
       {listed.length === 0 ? (
         <CollectionEmptyState messageKey="collections.emptyServices" locale={locale} />
       ) : (
-        <div className="container mx-auto px-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3 pb-12">
+        <div className="container mx-auto grid gap-6 px-4 pb-12 md:grid-cols-2 lg:grid-cols-3">
           {listed.map((item) => (
             <ServiceCard
               key={item.slug}

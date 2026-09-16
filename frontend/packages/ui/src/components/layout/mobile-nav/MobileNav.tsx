@@ -21,11 +21,7 @@ export function MobileNav({ open, onClose, items, label }: MobileNavProps) {
 
   return (
     <div className="fixed inset-0 z-50 md:hidden">
-      <div
-        aria-hidden="true"
-        onClick={onClose}
-        className="absolute inset-0 bg-neutral-950/60"
-      />
+      <div aria-hidden="true" onClick={onClose} className="absolute inset-0 bg-neutral-950/60" />
       <div
         role="dialog"
         aria-modal="true"
@@ -34,12 +30,14 @@ export function MobileNav({ open, onClose, items, label }: MobileNavProps) {
       >
         <FocusTrap active onEscape={onClose}>
           <div className="flex items-center justify-between border-b border-neutral-200 p-4 dark:border-neutral-800">
-            <p className="font-heading font-semibold text-neutral-900 dark:text-neutral-50">{t('menu')}</p>
+            <p className="font-heading font-semibold text-neutral-900 dark:text-neutral-50">
+              {t('menu')}
+            </p>
             <button
               type="button"
               onClick={onClose}
               aria-label={t('closeMenu')}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-md text-neutral-700 hover:bg-neutral-100 focus-ring dark:text-neutral-200 dark:hover:bg-neutral-800"
+              className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-md text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800"
             >
               <X aria-hidden="true" className="h-5 w-5" />
             </button>
@@ -59,7 +57,7 @@ export function MobileNav({ open, onClose, items, label }: MobileNavProps) {
                             <a
                               href={child.href}
                               onClick={onClose}
-                              className="block rounded-md px-6 py-2 text-sm text-neutral-700 hover:bg-neutral-100 focus-ring dark:text-neutral-200 dark:hover:bg-neutral-800"
+                              className="focus-ring block rounded-md px-6 py-2 text-sm text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800"
                             >
                               {child.label}
                             </a>
@@ -72,7 +70,7 @@ export function MobileNav({ open, onClose, items, label }: MobileNavProps) {
                       href={item.href ?? '#'}
                       onClick={onClose}
                       aria-current={item.active ? 'page' : undefined}
-                      className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-900 hover:bg-neutral-100 focus-ring dark:text-neutral-50 dark:hover:bg-neutral-800"
+                      className="focus-ring block rounded-md px-3 py-2 text-sm font-medium text-neutral-900 hover:bg-neutral-100 dark:text-neutral-50 dark:hover:bg-neutral-800"
                     >
                       {item.label}
                     </a>

@@ -4,7 +4,7 @@
  * JOL-HUB GDPR Schema Validation Script
  * =============================================================================
  * Validates GDPR compliance in data schemas and API responses
- * 
+ *
  * Usage: pnpm gdpr:validate
  * =============================================================================
  */
@@ -35,21 +35,21 @@ const COLORS = {
 
 function getAllFiles(dir, extensions = ['.ts', '.tsx']) {
   const files = [];
-  
+
   if (!fs.existsSync(dir)) return files;
-  
+
   const items = fs.readdirSync(dir, { withFileTypes: true });
-  
+
   for (const item of items) {
     const fullPath = path.join(dir, item.name);
-    
+
     if (item.isDirectory()) {
       files.push(...getAllFiles(fullPath, extensions));
-    } else if (extensions.some(ext => item.name.endsWith(ext))) {
+    } else if (extensions.some((ext) => item.name.endsWith(ext))) {
       files.push(fullPath);
     }
   }
-  
+
   return files;
 }
 
@@ -75,7 +75,7 @@ const gdprChecks = [
     test: () => {
       const typesPath = path.join(SRC_DIR, 'types');
       if (!fs.existsSync(typesPath)) return false;
-      
+
       const files = getAllFiles(typesPath);
       for (const file of files) {
         const content = readFile(file);
@@ -94,15 +94,16 @@ const gdprChecks = [
     test: () => {
       const apiDir = path.join(SRC_DIR, 'app/api');
       if (!fs.existsSync(apiDir)) return false;
-      
+
       const files = getAllFiles(apiDir);
       for (const file of files) {
         const content = readFile(file);
-        if (content && (
-          content.includes('X-Country-Code') ||
-          content.includes('getCountry') ||
-          content.includes('useCountry')
-        )) {
+        if (
+          content &&
+          (content.includes('X-Country-Code') ||
+            content.includes('getCountry') ||
+            content.includes('useCountry'))
+        ) {
           return true;
         }
       }
@@ -120,17 +121,18 @@ const gdprChecks = [
     test: () => {
       const typesPath = path.join(SRC_DIR, 'types');
       if (!fs.existsSync(typesPath)) return false;
-      
+
       const files = getAllFiles(typesPath);
       for (const file of files) {
         const content = readFile(file);
         // Check for PII field patterns with sensitivity markers
-        if (content && (
-          content.includes('personalData') ||
-          content.includes('sensitive') ||
-          content.includes('PII') ||
-          content.includes('gdprSensitive')
-        )) {
+        if (
+          content &&
+          (content.includes('personalData') ||
+            content.includes('sensitive') ||
+            content.includes('PII') ||
+            content.includes('gdprSensitive'))
+        ) {
           return true;
         }
       }
@@ -150,12 +152,12 @@ const gdprChecks = [
         /passportNumber/i,
         /driversLicense/i,
       ];
-      
+
       // Allow patterns in comments or types, flag if used without proper context
       for (const file of files) {
         const content = readFile(file);
         if (!content) continue;
-        
+
         for (const pattern of suspiciousPatterns) {
           if (pattern.test(content)) {
             // Check if it's in a comment or type definition (acceptable)
@@ -163,12 +165,16 @@ const gdprChecks = [
             for (const line of lines) {
               if (pattern.test(line)) {
                 // If line contains these and isn't a comment/type, it might be problematic
-                if (!line.trim().startsWith('//') && 
-                    !line.trim().startsWith('*') &&
-                    !line.trim().startsWith('/*') &&
-                    !line.includes(': string') && // Type definition
-                    !line.includes(': number')) {
-                  console.log(`    ${COLORS.YELLOW}Warning: Potential unnecessary PII in ${path.relative(ROOT_DIR, file)}${COLORS.RESET}`);
+                if (
+                  !line.trim().startsWith('//') &&
+                  !line.trim().startsWith('*') &&
+                  !line.trim().startsWith('/*') &&
+                  !line.includes(': string') && // Type definition
+                  !line.includes(': number')
+                ) {
+                  console.log(
+                    `    ${COLORS.YELLOW}Warning: Potential unnecessary PII in ${path.relative(ROOT_DIR, file)}${COLORS.RESET}`
+                  );
                 }
               }
             }
@@ -206,12 +212,13 @@ const gdprChecks = [
       const files = getAllFiles(SRC_DIR);
       for (const file of files) {
         const content = readFile(file);
-        if (content && (
-          content.includes('zodResolver') ||
-          content.includes('z.object') ||
-          content.includes('z.string') ||
-          content.includes('.refine(')
-        )) {
+        if (
+          content &&
+          (content.includes('zodResolver') ||
+            content.includes('z.object') ||
+            content.includes('z.string') ||
+            content.includes('.refine('))
+        ) {
           return true;
         }
       }
@@ -230,12 +237,13 @@ const gdprChecks = [
       const files = getAllFiles(SRC_DIR);
       for (const file of files) {
         const content = readFile(file);
-        if (content && (
-          content.includes('createAuditLog') ||
-          content.includes('logSecurityEvent') ||
-          content.includes('audit(') ||
-          content.includes('security') && content.includes('log')
-        )) {
+        if (
+          content &&
+          (content.includes('createAuditLog') ||
+            content.includes('logSecurityEvent') ||
+            content.includes('audit(') ||
+            (content.includes('security') && content.includes('log')))
+        ) {
           return true;
         }
       }
@@ -254,12 +262,13 @@ const gdprChecks = [
       const files = getAllFiles(SRC_DIR);
       for (const file of files) {
         const content = readFile(file);
-        if (content && (
-          content.includes('delete') ||
-          content.includes('anonymize') ||
-          content.includes('erase') ||
-          content.includes('forget')
-        )) {
+        if (
+          content &&
+          (content.includes('delete') ||
+            content.includes('anonymize') ||
+            content.includes('erase') ||
+            content.includes('forget'))
+        ) {
           return true;
         }
       }
@@ -278,11 +287,12 @@ const gdprChecks = [
       const files = getAllFiles(SRC_DIR);
       for (const file of files) {
         const content = readFile(file);
-        if (content && (
-          content.includes('export') ||
-          content.includes('download') && content.includes('data') ||
-          content.includes('gdpr-export')
-        )) {
+        if (
+          content &&
+          (content.includes('export') ||
+            (content.includes('download') && content.includes('data')) ||
+            content.includes('gdpr-export'))
+        ) {
           return true;
         }
       }
@@ -297,9 +307,13 @@ const gdprChecks = [
 // =============================================================================
 
 function runValidation() {
-  console.log(`\n${COLORS.BOLD}${COLORS.BLUE}═══════════════════════════════════════════════════════════════${COLORS.RESET}`);
+  console.log(
+    `\n${COLORS.BOLD}${COLORS.BLUE}═══════════════════════════════════════════════════════════════${COLORS.RESET}`
+  );
   console.log(`${COLORS.BOLD}JOL-HUB GDPR Schema Validation${COLORS.RESET}`);
-  console.log(`${COLORS.BOLD}${COLORS.BLUE}═══════════════════════════════════════════════════════════════${COLORS.RESET}\n`);
+  console.log(
+    `${COLORS.BOLD}${COLORS.BLUE}═══════════════════════════════════════════════════════════════${COLORS.RESET}\n`
+  );
 
   let passed = 0;
   let failed = 0;
@@ -308,28 +322,40 @@ function runValidation() {
 
   for (const check of gdprChecks) {
     const result = check.test();
-    
+
     if (result) {
-      console.log(`  ${COLORS.GREEN}✓${COLORS.RESET} ${check.name} ${COLORS.BLUE}[${check.article}]${COLORS.RESET}`);
+      console.log(
+        `  ${COLORS.GREEN}✓${COLORS.RESET} ${check.name} ${COLORS.BLUE}[${check.article}]${COLORS.RESET}`
+      );
       passed++;
     } else {
-      console.log(`  ${COLORS.RED}✗${COLORS.RESET} ${check.name} ${COLORS.BLUE}[${check.article}]${COLORS.RESET}`);
+      console.log(
+        `  ${COLORS.RED}✗${COLORS.RESET} ${check.name} ${COLORS.BLUE}[${check.article}]${COLORS.RESET}`
+      );
       console.log(`    ${COLORS.RED}→ ${check.description}${COLORS.RESET}`);
       failed++;
     }
   }
 
   // Print summary
-  console.log(`\n${COLORS.BOLD}${COLORS.BLUE}═══════════════════════════════════════════════════════════════${COLORS.RESET}`);
+  console.log(
+    `\n${COLORS.BOLD}${COLORS.BLUE}═══════════════════════════════════════════════════════════════${COLORS.RESET}`
+  );
   console.log(`${COLORS.BOLD}Summary${COLORS.RESET}`);
-  console.log(`${COLORS.BOLD}${COLORS.BLUE}═══════════════════════════════════════════════════════════════${COLORS.RESET}`);
+  console.log(
+    `${COLORS.BOLD}${COLORS.BLUE}═══════════════════════════════════════════════════════════════${COLORS.RESET}`
+  );
   console.log(`  ${COLORS.GREEN}Passed: ${passed}${COLORS.RESET}`);
   console.log(`  ${COLORS.RED}Failed: ${failed}${COLORS.RESET}`);
   console.log();
 
   if (failed > 0) {
-    console.log(`${COLORS.RED}${COLORS.BOLD}✗ ${failed} GDPR check(s) need attention.${COLORS.RESET}\n`);
-    console.log(`${COLORS.YELLOW}Note: Some checks may not apply to all project phases.${COLORS.RESET}\n`);
+    console.log(
+      `${COLORS.RED}${COLORS.BOLD}✗ ${failed} GDPR check(s) need attention.${COLORS.RESET}\n`
+    );
+    console.log(
+      `${COLORS.YELLOW}Note: Some checks may not apply to all project phases.${COLORS.RESET}\n`
+    );
     process.exit(0); // Non-blocking for now
   } else {
     console.log(`${COLORS.GREEN}${COLORS.BOLD}✓ All GDPR checks passed!${COLORS.RESET}\n`);

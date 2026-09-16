@@ -1,10 +1,10 @@
 /**
  * DeepL Server-Side Module
- * 
+ *
  * This module is ONLY for server-side usage (Server Actions, Route Handlers, API routes).
  * It imports the deepl-node SDK which requires Node.js built-in modules (fs, path, etc.)
  * that are not available in the browser.
- * 
+ *
  * DO NOT import this in client components or hooks.
  */
 
@@ -26,8 +26,7 @@ let _translator: deepl.Translator | null = null;
 export function getDeepLTranslator(): deepl.Translator {
   if (_translator) return _translator;
 
-  const apiKey =
-    process.env.DEEPL_API_KEY ?? process.env.NEXT_PUBLIC_DEEPL_API_KEY;
+  const apiKey = process.env.DEEPL_API_KEY ?? process.env.NEXT_PUBLIC_DEEPL_API_KEY;
 
   if (!apiKey) {
     throw new Error(
@@ -82,12 +81,7 @@ export async function translateWithDeepL(
     ...(context !== undefined ? { context } : {}),
   };
 
-  const result = await translator.translateText(
-    text,
-    sourceLang,
-    targetCode,
-    sdkOptions
-  );
+  const result = await translator.translateText(text, sourceLang, targetCode, sdkOptions);
 
   const items: deepl.TextResult[] = Array.isArray(result) ? result : [result];
 
@@ -130,12 +124,7 @@ export async function translateBatchWithDeepL(
     ...(context !== undefined ? { context } : {}),
   };
 
-  const result = await translator.translateText(
-    texts,
-    sourceLang,
-    targetCode,
-    sdkOptions
-  );
+  const result = await translator.translateText(texts, sourceLang, targetCode, sdkOptions);
 
   const items: deepl.TextResult[] = Array.isArray(result) ? result : [result];
 

@@ -6,9 +6,9 @@ active step; statuses drive visual treatment only.
 
 ## Consuming pages (traceability)
 
-| Package | Page | Usage |
-|---|---|---|
-| 24 | Courses/education page | enrollment journey steps |
+| Package | Page                   | Usage                    |
+| ------- | ---------------------- | ------------------------ |
+| 24      | Courses/education page | enrollment journey steps |
 
 Renderer module mapping: `onboarding` module.
 

@@ -16,12 +16,7 @@ export interface Bitrix24SyncStatus {
   recentActivity?: Array<{ success: boolean; message: string; timestamp: string }>;
 }
 
-export type SyncStatus = 
-  | 'idle'
-  | 'syncing'
-  | 'completed'
-  | 'failed'
-  | 'partial';
+export type SyncStatus = 'idle' | 'syncing' | 'completed' | 'failed' | 'partial';
 
 // Circuit Breaker Pattern for fault tolerance
 export interface CircuitBreakerState {
@@ -45,12 +40,7 @@ export interface Bitrix24SyncJob {
   conflicts?: SyncConflict[];
 }
 
-export type SyncableEntity = 
-  | 'parish'
-  | 'user'
-  | 'donation'
-  | 'contact'
-  | 'deal';
+export type SyncableEntity = 'parish' | 'user' | 'donation' | 'contact' | 'deal';
 
 export interface SyncError {
   code: string;

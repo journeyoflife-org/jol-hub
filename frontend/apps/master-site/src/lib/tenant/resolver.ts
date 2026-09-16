@@ -1,11 +1,11 @@
 /**
  * Parish resolver for multi-tenant subdomain routing.
- * 
+ *
  * Resolves parish configuration from subdomain with:
  * - Subdomain validation and sanitization
  * - Mock data for development (10 test parishes)
  * - TODO: Redis/API integration for production (400k+ parishes)
- * 
+ *
  * PERFORMANCE: Edge Runtime compatible (< 50ms cold start)
  */
 
@@ -26,7 +26,7 @@ import {
 /**
  * Mock parish data for development and testing.
  * TODO: Replace with Redis/API lookup in production.
- * 
+ *
  * In production, this data should be fetched from:
  * - Redis cache (primary)
  * - Bitrix24 API (fallback)
@@ -38,7 +38,8 @@ const MOCK_PARISHES: Record<string, ParishConfig> = {
     id: '1',
     name: "St. Mary's Parish",
     subdomain: 'stmarys',
-    description: 'Historic parish in the heart of Vilnius, serving the Catholic community since 1346.',
+    description:
+      'Historic parish in the heart of Vilnius, serving the Catholic community since 1346.',
     dioceseId: 'vilnius',
     deanery: 'Vilnius Old Town',
     language: 'lt',
@@ -66,7 +67,14 @@ const MOCK_PARISHES: Record<string, ParishConfig> = {
       { dayOfWeek: 0, dayName: 'Sunday', time: '12:00', type: 'mass', language: 'Lithuanian' },
       { dayOfWeek: 0, dayName: 'Sunday', time: '18:00', type: 'mass', language: 'Lithuanian' },
       { dayOfWeek: 3, dayName: 'Wednesday', time: '18:00', type: 'mass', language: 'Lithuanian' },
-      { dayOfWeek: 6, dayName: 'Saturday', time: '09:00', type: 'confession', language: 'Lithuanian', notes: 'Confessions available' },
+      {
+        dayOfWeek: 6,
+        dayName: 'Saturday',
+        time: '09:00',
+        type: 'confession',
+        language: 'Lithuanian',
+        notes: 'Confessions available',
+      },
       { dayOfWeek: 6, dayName: 'Saturday', time: '18:00', type: 'mass', language: 'Lithuanian' },
     ],
     officeHours: { days: 'Mon-Fri', hours: '09:00-17:00' },
@@ -91,7 +99,7 @@ const MOCK_PARISHES: Record<string, ParishConfig> = {
   // Kaunas Diocese
   stjohn: {
     id: '2',
-    name: "St. John the Baptist Parish",
+    name: 'St. John the Baptist Parish',
     subdomain: 'stjohn',
     description: 'A vibrant parish community in Kaunas dedicated to St. John the Baptist.',
     dioceseId: 'kaunas',
@@ -120,7 +128,13 @@ const MOCK_PARISHES: Record<string, ParishConfig> = {
       { dayOfWeek: 0, dayName: 'Sunday', time: '11:00', type: 'mass', language: 'English' },
       { dayOfWeek: 0, dayName: 'Sunday', time: '19:00', type: 'mass', language: 'Lithuanian' },
       { dayOfWeek: 2, dayName: 'Tuesday', time: '18:00', type: 'mass', language: 'Lithuanian' },
-      { dayOfWeek: 5, dayName: 'Friday', time: '17:00', type: 'confession', language: 'Lithuanian' },
+      {
+        dayOfWeek: 5,
+        dayName: 'Friday',
+        time: '17:00',
+        type: 'confession',
+        language: 'Lithuanian',
+      },
       { dayOfWeek: 6, dayName: 'Saturday', time: '18:00', type: 'mass', language: 'Lithuanian' },
     ],
     officeHours: { days: 'Mon-Fri', hours: '08:00-16:00' },
@@ -365,7 +379,7 @@ const MOCK_PARISHES: Record<string, ParishConfig> = {
 
   'st-therese': {
     id: '8',
-    name: "St. Thérèse of Lisieux Parish",
+    name: 'St. Thérèse of Lisieux Parish',
     subdomain: 'st-therese',
     description: 'Carmelite spirituality parish in Vilnius.',
     dioceseId: 'vilnius',
@@ -432,7 +446,14 @@ const MOCK_PARISHES: Record<string, ParishConfig> = {
     serviceTimes: [
       { dayOfWeek: 0, dayName: 'Sunday', time: '09:00', type: 'mass', language: 'Lithuanian' },
       { dayOfWeek: 0, dayName: 'Sunday', time: '11:00', type: 'mass', language: 'English' },
-      { dayOfWeek: 5, dayName: 'Friday', time: '15:00', type: 'mass', language: 'Lithuanian', notes: 'Divine Mercy Chaplet' },
+      {
+        dayOfWeek: 5,
+        dayName: 'Friday',
+        time: '15:00',
+        type: 'mass',
+        language: 'Lithuanian',
+        notes: 'Divine Mercy Chaplet',
+      },
       { dayOfWeek: 6, dayName: 'Saturday', time: '18:00', type: 'mass', language: 'Lithuanian' },
     ],
     officeHours: { days: 'Mon-Fri', hours: '09:00-17:00' },
@@ -503,13 +524,13 @@ const MOCK_PARISHES: Record<string, ParishConfig> = {
 
 /**
  * Resolves parish configuration from subdomain.
- * 
+ *
  * In production, this function should:
  * 1. Check Redis cache first (fastest)
  * 2. Query Bitrix24 API if not cached
  * 3. Fall back to database
  * 4. Cache result for 5 minutes
- * 
+ *
  * @param subdomain - The parish subdomain (e.g., "stmarys")
  * @returns ParishConfig if found, null otherwise
  */
@@ -530,7 +551,7 @@ export async function resolveParish(subdomain: string): Promise<ParishConfig | n
 
   // Mock lookup for development
   const parish = MOCK_PARISHES[sanitizedSubdomain];
-  
+
   if (!parish) {
     console.log(`[RESOLVER] Parish not found for subdomain: ${sanitizedSubdomain}`);
     return null;
@@ -554,8 +575,8 @@ export async function resolveParish(subdomain: string): Promise<ParishConfig | n
  */
 export async function resolveParishById(parishId: string): Promise<ParishConfig | null> {
   // TODO: Production implementation with Redis/database lookup
-  const parish = Object.values(MOCK_PARISHES).find(p => p.id === parishId);
-  
+  const parish = Object.values(MOCK_PARISHES).find((p) => p.id === parishId);
+
   if (!parish) {
     return null;
   }
@@ -579,7 +600,7 @@ export async function resolveDiocese(dioceseId: string): Promise<DioceseConfig |
 
 /**
  * Lists all available parishes (for directory/discovery).
- * 
+ *
  * In production, this should use pagination and search.
  */
 export async function listParishes(
@@ -593,13 +614,13 @@ export async function listParishes(
 
   // Filter by diocese if specified
   if (options.dioceseId) {
-    parishes = parishes.filter(p => p.dioceseId === options.dioceseId);
+    parishes = parishes.filter((p) => p.dioceseId === options.dioceseId);
   }
 
   // Apply pagination
   const offset = options.offset ?? 0;
   const limit = options.limit ?? parishes.length;
-  
+
   return parishes.slice(offset, offset + limit);
 }
 
@@ -608,12 +629,13 @@ export async function listParishes(
  */
 export async function searchParishes(query: string): Promise<ParishConfig[]> {
   const normalizedQuery = query.toLowerCase().trim();
-  
-  return Object.values(MOCK_PARISHES).filter(parish =>
-    parish.name.toLowerCase().includes(normalizedQuery) ||
-    parish.subdomain.toLowerCase().includes(normalizedQuery) ||
-    parish.description?.toLowerCase().includes(normalizedQuery) ||
-    (parish.contact as any)?.city?.toLowerCase().includes(normalizedQuery)
+
+  return Object.values(MOCK_PARISHES).filter(
+    (parish) =>
+      parish.name.toLowerCase().includes(normalizedQuery) ||
+      parish.subdomain.toLowerCase().includes(normalizedQuery) ||
+      parish.description?.toLowerCase().includes(normalizedQuery) ||
+      (parish.contact as any)?.city?.toLowerCase().includes(normalizedQuery)
   );
 }
 
@@ -623,38 +645,38 @@ export async function searchParishes(query: string): Promise<ParishConfig[]> {
 
 /**
  * TODO: Production Redis Implementation
- * 
+ *
  * import { Redis } from '@upstash/redis';
- * 
+ *
  * const redis = new Redis({
  *   url: process.env.UPSTASH_REDIS_REST_URL!,
  *   token: process.env.UPSTASH_REDIS_REST_TOKEN!,
  * });
- * 
+ *
  * export async function resolveParish(subdomain: string): Promise<ParishConfig | null> {
  *   // Check cache first
  *   const cacheKey = getSubdomainCacheKey(subdomain);
  *   const cached = await redis.get<string>(cacheKey);
- *   
+ *
  *   if (cached) {
  *     return JSON.parse(cached);
  *   }
- *   
+ *
  *   // Fetch from Bitrix24 API
  *   const parish = await fetchParishFromBitrix24(subdomain);
- *   
+ *
  *   if (parish) {
  *     // Cache for 5 minutes
  *     await redis.setex(cacheKey, 300, JSON.stringify(parish));
  *   }
- *   
+ *
  *   return parish;
  * }
  */
 
 /**
  * TODO: Bitrix24 API Integration
- * 
+ *
  * async function fetchParishFromBitrix24(subdomain: string): Promise<ParishConfig | null> {
  *   // Query Bitrix24 departments where UF_SUBDOMAIN = subdomain
  *   const response = await fetch(
@@ -665,13 +687,13 @@ export async function searchParishes(query: string): Promise<ParishConfig[]> {
  *       },
  *     }
  *   );
- *   
+ *
  *   const data = await response.json();
- *   
+ *
  *   if (!data.result || data.result.length === 0) {
  *     return null;
  *   }
- *   
+ *
  *   return transformBitrixDepartmentToParish(data.result[0]);
  * }
  */

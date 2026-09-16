@@ -10,6 +10,7 @@ from typing import Any, Optional
 
 from celery import shared_task
 from celery.utils.log import get_task_logger
+
 from django.core.exceptions import ValidationError
 from django.db import InterfaceError, OperationalError
 from django.utils import timezone
@@ -131,8 +132,9 @@ def process_bitrix24_webhook(
         mongo_doc_id: MongoDB ``_id`` (string) of the raw payload.
         country: Country code for GDPR Article 44 routing.
     """
-    from apps.core.mongodb import WebhookPayloadCollection
     from bson import ObjectId
+
+    from apps.core.mongodb import WebhookPayloadCollection
 
     from .models import WebhookEvent
 

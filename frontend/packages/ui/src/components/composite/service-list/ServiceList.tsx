@@ -16,7 +16,11 @@ export function ServiceList({ items, viewAllHref, tenant, className }: ServiceLi
   const t = useTranslations('collections');
 
   if (items.length === 0) {
-    return <p className={cn('text-sm text-neutral-600 dark:text-neutral-300', className)}>{t('emptyServices')}</p>;
+    return (
+      <p className={cn('text-sm text-neutral-600 dark:text-neutral-300', className)}>
+        {t('emptyServices')}
+      </p>
+    );
   }
 
   return (
@@ -33,7 +37,7 @@ export function ServiceList({ items, viewAllHref, tenant, className }: ServiceLi
           href={viewAllHref}
           className={cn(
             'focus-ring inline-flex min-h-[24px] items-center self-start rounded-sm text-sm underline-offset-2 hover:underline',
-            accentTextClass(tenant),
+            accentTextClass(tenant)
           )}
         >
           {t('viewAllServices')}

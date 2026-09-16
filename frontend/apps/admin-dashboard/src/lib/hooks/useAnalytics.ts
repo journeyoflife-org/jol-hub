@@ -36,13 +36,10 @@ async function fetchAnalyticsOverview(timeRange: string): Promise<AnalyticsOverv
   return response.json();
 }
 
-async function fetchEntityAnalytics(
-  timeRange: string,
-  country?: string
-): Promise<EntityAnalytics> {
+async function fetchEntityAnalytics(timeRange: string, country?: string): Promise<EntityAnalytics> {
   const params = new URLSearchParams({ timeRange });
   if (country) params.set('country', country);
-  
+
   const response = await fetch(`/api/analytics/entities?${params.toString()}`);
   if (!response.ok) throw new Error('Failed to fetch entity analytics');
   return response.json();
@@ -54,7 +51,7 @@ async function fetchDonationAnalytics(
 ): Promise<DonationAnalytics> {
   const params = new URLSearchParams({ timeRange });
   if (country) params.set('country', country);
-  
+
   const response = await fetch(`/api/analytics/donations?${params.toString()}`);
   if (!response.ok) throw new Error('Failed to fetch donation analytics');
   return response.json();

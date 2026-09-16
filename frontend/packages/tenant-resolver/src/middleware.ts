@@ -47,7 +47,8 @@ function injectTenantHeaders(headers: Headers, tenant: ResolvedTenant): void {
 }
 
 export function withTenantResolution(options: TenantMiddlewareOptions = {}) {
-  const isExcludedPath = options.isExcludedPath ?? ((pathname: string) => DEFAULT_EXCLUDED.test(pathname));
+  const isExcludedPath =
+    options.isExcludedPath ?? ((pathname: string) => DEFAULT_EXCLUDED.test(pathname));
 
   return function tenantResolutionMiddleware(request: NextRequest): NextResponse {
     const { pathname } = request.nextUrl;

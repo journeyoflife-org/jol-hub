@@ -54,8 +54,10 @@ export interface EditorClientOptions {
 }
 
 function classify(status: number): EditorApiError {
-  if (status === 400 || status === 422) return { kind: 'validation', message: `HTTP ${status}`, retryable: false };
-  if (status === 401 || status === 403) return { kind: 'auth', message: `HTTP ${status}`, retryable: false };
+  if (status === 400 || status === 422)
+    return { kind: 'validation', message: `HTTP ${status}`, retryable: false };
+  if (status === 401 || status === 403)
+    return { kind: 'auth', message: `HTTP ${status}`, retryable: false };
   return { kind: 'server', status, retryable: status >= 500 || status === 429 };
 }
 
@@ -72,7 +74,12 @@ export class EditorApiClient {
     this.timeoutMs = options.timeoutMs ?? 8000;
   }
 
-  private async request<T>(method: 'GET' | 'POST', path: string, tenantSlug: string, body?: unknown): Promise<EditorResult<T>> {
+  private async request<T>(
+    method: 'GET' | 'POST',
+    path: string,
+    tenantSlug: string,
+    body?: unknown
+  ): Promise<EditorResult<T>> {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), this.timeoutMs);
     try {
@@ -100,21 +107,44 @@ export class EditorApiClient {
 
   /** GET draft (idempotent → single retry on transient failure). */
   async getDraft(tenantSlug: string, pageId: string): Promise<EditorResult<DraftResponse>> {
-    const first = await this.request<DraftResponse>('GET', `/pages/${encodeURIComponent(pageId)}/draft`, tenantSlug);
+    const first = await this.request<DraftResponse>(
+      'GET',
+      `/pages/${encodeURIComponent(pageId)}/draft`,
+      tenantSlug
+    );
     if (!first.ok && first.error.retryable) {
-      return this.request<DraftResponse>('GET', `/pages/${encodeURIComponent(pageId)}/draft`, tenantSlug);
+      return this.request<DraftResponse>(
+        'GET',
+        `/pages/${encodeURIComponent(pageId)}/draft`,
+        tenantSlug
+      );
     }
     return first;
   }
 
   /** Save draft — NEVER auto-retried (duplicate safety). */
-  saveDraft(tenantSlug: string, pageId: string, blocks: EditorBlock[], revision: number): Promise<EditorResult<DraftResponse>> {
-    return this.request<DraftResponse>('POST', `/pages/${encodeURIComponent(pageId)}/draft`, tenantSlug, { blocks, revision });
+  saveDraft(
+    tenantSlug: string,
+    pageId: string,
+    blocks: EditorBlock[],
+    revision: number
+  ): Promise<EditorResult<DraftResponse>> {
+    return this.request<DraftResponse>(
+      'POST',
+      `/pages/${encodeURIComponent(pageId)}/draft`,
+      tenantSlug,
+      { blocks, revision }
+    );
   }
 
   /** Submit for moderation — NEVER auto-retried. */
   publish(tenantSlug: string, pageId: string): Promise<EditorResult<{ itemId: string }>> {
-    return this.request<{ itemId: string }>('POST', `/pages/${encodeURIComponent(pageId)}/publish`, tenantSlug, {});
+    return this.request<{ itemId: string }>(
+      'POST',
+      `/pages/${encodeURIComponent(pageId)}/publish`,
+      tenantSlug,
+      {}
+    );
   }
 
   /** Moderation queue (admin-scoped by the backend). */
@@ -128,9 +158,14 @@ export class EditorApiClient {
 
   /** Human decision — NEVER auto-retried; every call is audit-logged. */
   decide(tenantSlug: string, decision: ModerationDecision): Promise<EditorResult<void>> {
-    return this.request<void>('POST', `/moderation/${encodeURIComponent(decision.itemId)}/${decision.action}`, tenantSlug, {
-      reason: decision.reason,
-    });
+    return this.request<void>(
+      'POST',
+      `/moderation/${encodeURIComponent(decision.itemId)}/${decision.action}`,
+      tenantSlug,
+      {
+        reason: decision.reason,
+      }
+    );
   }
 
   /** Tenant media library (approved assets only leave quarantine). */
@@ -149,7 +184,7 @@ export class EditorApiClient {
    */
   registerUpload(
     tenantSlug: string,
-    meta: { fileName: string; mimeType: string; sizeBytes: number; altText: string },
+    meta: { fileName: string; mimeType: string; sizeBytes: number; altText: string }
   ): Promise<EditorResult<MediaLibraryItem>> {
     return this.request<MediaLibraryItem>('POST', '/media/upload', tenantSlug, meta);
   }

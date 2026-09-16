@@ -41,15 +41,19 @@ export function checkAriaUsage(document: Document): A11yFinding[] {
   const findings: A11yFinding[] = [];
 
   // 1. Div/span with interactive roles — native elements preferred.
-  document.querySelectorAll('div[role="button"], span[role="button"], div[role="link"], span[role="link"]').forEach((el) => {
-    findings.push({
-      rule: 'aria-usage',
-      wcag: '4.1.2',
-      severity: 'warn',
-      message: `role="${el.getAttribute('role')}" on <${el.tagName.toLowerCase()}> — prefer a native <button>/<a>.`,
-      snippet: el.outerHTML.slice(0, 120),
+  document
+    .querySelectorAll(
+      'div[role="button"], span[role="button"], div[role="link"], span[role="link"]'
+    )
+    .forEach((el) => {
+      findings.push({
+        rule: 'aria-usage',
+        wcag: '4.1.2',
+        severity: 'warn',
+        message: `role="${el.getAttribute('role')}" on <${el.tagName.toLowerCase()}> — prefer a native <button>/<a>.`,
+        snippet: el.outerHTML.slice(0, 120),
+      });
     });
-  });
 
   // 2. Icon-only buttons without an accessible name.
   document.querySelectorAll('button, a[role="button"]').forEach((node) => {
@@ -74,20 +78,25 @@ export function checkAriaUsage(document: Document): A11yFinding[] {
   });
 
   // 3. Focusable content hidden from assistive tech.
-  document.querySelectorAll('[aria-hidden="true"] a[href], [aria-hidden="true"] button, [aria-hidden="true"] input, [aria-hidden="true"] select, [aria-hidden="true"] textarea, [aria-hidden="true"] [tabindex="0"]').forEach((node) => {
-    const el = node as HTMLElement;
-    // tabindex="-1" removes the element from the tab order (e.g. honeypot
-    // anti-spam fields): keyboard users cannot reach it, so it is NOT a
-    // violation (matches axe's aria-hidden-focus behavior).
-    if (el.getAttribute('tabindex') === '-1') return;
-    findings.push({
-      rule: 'aria-usage',
-      wcag: '4.1.2',
-      severity: 'fail',
-      message: 'Focusable element inside aria-hidden="true" — keyboard users reach what screen readers cannot see.',
-      snippet: el.outerHTML.slice(0, 120),
+  document
+    .querySelectorAll(
+      '[aria-hidden="true"] a[href], [aria-hidden="true"] button, [aria-hidden="true"] input, [aria-hidden="true"] select, [aria-hidden="true"] textarea, [aria-hidden="true"] [tabindex="0"]'
+    )
+    .forEach((node) => {
+      const el = node as HTMLElement;
+      // tabindex="-1" removes the element from the tab order (e.g. honeypot
+      // anti-spam fields): keyboard users cannot reach it, so it is NOT a
+      // violation (matches axe's aria-hidden-focus behavior).
+      if (el.getAttribute('tabindex') === '-1') return;
+      findings.push({
+        rule: 'aria-usage',
+        wcag: '4.1.2',
+        severity: 'fail',
+        message:
+          'Focusable element inside aria-hidden="true" — keyboard users reach what screen readers cannot see.',
+        snippet: el.outerHTML.slice(0, 120),
+      });
     });
-  });
 
   // 4. Non-descriptive link text (2.4.4).
   document.querySelectorAll('a').forEach((node) => {

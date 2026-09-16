@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * Client-side PII Encryption Utilities
  * AES-256-GCM encryption for sensitive form data
@@ -82,7 +84,7 @@ export interface EncryptedData {
 /**
  * PII Field types that require encryption
  */
-export type PIIField = 
+export type PIIField =
   | 'firstName'
   | 'lastName'
   | 'email'
@@ -111,15 +113,12 @@ const ENCRYPTION_VERSION = '1.0';
 
 /**
  * Encrypt sensitive form data using AES-256-GCM
- * 
+ *
  * @param data - Plain text data to encrypt
  * @param encryptionKey - Organization-specific encryption key
  * @returns Encrypted data object
  */
-export async function encryptPII(
-  data: string,
-  encryptionKey: string
-): Promise<EncryptedData> {
+export async function encryptPII(data: string, encryptionKey: string): Promise<EncryptedData> {
   const encoder = new TextEncoder();
   const salt = generateSalt();
   const iv = generateIV();
@@ -141,7 +140,7 @@ export async function encryptPII(
 
 /**
  * Decrypt sensitive form data
- * 
+ *
  * @param encryptedData - Encrypted data object
  * @param encryptionKey - Organization-specific encryption key
  * @returns Decrypted plain text
@@ -167,7 +166,7 @@ export async function decryptPII(
 
 /**
  * Encrypt an object containing PII fields
- * 
+ *
  * @param formData - Form data object
  * @param config - Encryption configuration
  * @param encryptionKey - Organization-specific encryption key
@@ -205,9 +204,11 @@ export async function encryptFormData<T extends Record<string, unknown>>(
  * Check if Web Crypto API is available
  */
 export function isEncryptionAvailable(): boolean {
-  return typeof crypto !== 'undefined' && 
-         typeof crypto.subtle !== 'undefined' &&
-         typeof crypto.subtle.encrypt === 'function';
+  return (
+    typeof crypto !== 'undefined' &&
+    typeof crypto.subtle !== 'undefined' &&
+    typeof crypto.subtle.encrypt === 'function'
+  );
 }
 
 /**
@@ -240,17 +241,20 @@ export function usePIIEncryption(config: EncryptionConfig) {
   React.useEffect(() => {
     // Fetch organization's public encryption key from backend
     fetch(`/api/organizations/${config.organizationId}/encryption-key`)
-      .then(res => res.json())
-      .then(data => setEncryptionKey(data.key))
+      .then((res) => res.json())
+      .then((data) => setEncryptionKey(data.key))
       .catch(console.error);
   }, [config.organizationId]);
 
-  const encrypt = React.useCallback(async <T extends Record<string, unknown>>(
-    formData: T
-  ): Promise<Record<string, unknown> | null> => {
-    if (!encryptionKey) return null;
-    return encryptFormData(formData, config, encryptionKey);
-  }, [config, encryptionKey]);
+  const encrypt = React.useCallback(
+    async <T extends Record<string, unknown>>(
+      formData: T
+    ): Promise<Record<string, unknown> | null> => {
+      if (!encryptionKey) return null;
+      return encryptFormData(formData, config, encryptionKey);
+    },
+    [config, encryptionKey]
+  );
 
   return {
     encrypt,

@@ -12,7 +12,12 @@ import { getServices } from '@/lib/collections';
 import { themeVerticalFor } from '@/lib/template-registry';
 import { tenantThemeFor, type ModuleProps } from './types';
 
-export default async function ServiceListModule({ tenant, locale, content, basePath }: ModuleProps) {
+export default async function ServiceListModule({
+  tenant,
+  locale,
+  content,
+  basePath,
+}: ModuleProps) {
   const items = await getServices(tenant);
   if (items.length === 0) return null;
 

@@ -40,7 +40,7 @@ export interface HealthReport {
 export function aggregateHealth(
   checks: readonly DependencyCheck[],
   version: string,
-  timestamp = new Date().toISOString(),
+  timestamp = new Date().toISOString()
 ): HealthReport {
   const criticalDown = checks.some((check) => check.critical && check.status === 'down');
   const anyDegraded = checks.some((check) => check.status === 'degraded');
@@ -67,7 +67,11 @@ export function aggregateHealth(
  * callers pass a sentinel (e.g. a `timeout` status) so the health check
  * never hangs the load balancer probe.
  */
-export async function withTimeout<T>(probe: () => Promise<T>, timeoutMs: number, fallback: T): Promise<T> {
+export async function withTimeout<T>(
+  probe: () => Promise<T>,
+  timeoutMs: number,
+  fallback: T
+): Promise<T> {
   let timer: ReturnType<typeof setTimeout> | undefined;
   try {
     return await Promise.race<T>([

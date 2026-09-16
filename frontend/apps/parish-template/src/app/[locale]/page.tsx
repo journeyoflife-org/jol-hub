@@ -52,9 +52,7 @@ interface LocaleHomePageProps {
   params: { locale: string };
 }
 
-export default async function LocaleHomePage({
-  params,
-}: LocaleHomePageProps): Promise<never> {
+export default async function LocaleHomePage({ params }: LocaleHomePageProps): Promise<never> {
   const { locale } = params;
 
   if (!isSupportedLocale(locale)) {

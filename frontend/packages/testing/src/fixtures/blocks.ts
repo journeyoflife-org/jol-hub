@@ -46,7 +46,12 @@ export const XSS_PAYLOADS: readonly string[] = [
 export function hostileBlocks(): FixtureBlock[] {
   return [
     { id: 'h1', type: 'paragraph', text: XSS_PAYLOADS[0] },
-    { id: 'h2', type: 'paragraph', text: 'link', links: [{ start: 0, end: 4, href: 'javascript:alert(1)' }] },
+    {
+      id: 'h2',
+      type: 'paragraph',
+      text: 'link',
+      links: [{ start: 0, end: 4, href: 'javascript:alert(1)' }],
+    },
     { id: 'h3', type: 'image', mediaId: 'm1' }, // missing alt text
   ];
 }

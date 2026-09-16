@@ -80,9 +80,7 @@ export const SERVICE_TYPES = {
 // BITRIX24 API INTEGRATION
 // =============================================================================
 
-export async function fetchScheduleFromBitrix(
-  parishId: string
-): Promise<ScheduleItem[]> {
+export async function fetchScheduleFromBitrix(parishId: string): Promise<ScheduleItem[]> {
   const webhookUrl = process.env.NEXT_PUBLIC_BITRIX_WEBHOOK_URL;
 
   if (!webhookUrl) {
@@ -94,12 +92,12 @@ export async function fetchScheduleFromBitrix(
     // Fetch calendar events from Bitrix24
     const response = await fetch(
       `${webhookUrl}calendar.event.get.json?` +
-      new URLSearchParams({
-        type: 'user',
-        ownerId: parishId,
-        from: new Date().toISOString().slice(0, 10),
-        to: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10),
-      })
+        new URLSearchParams({
+          type: 'user',
+          ownerId: parishId,
+          from: new Date().toISOString().slice(0, 10),
+          to: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10),
+        })
     );
 
     if (!response.ok) {
@@ -136,22 +134,151 @@ export async function fetchScheduleFromBitrix(
 // Mock data for development/fallback
 export function getMockSchedule(): ScheduleItem[] {
   return [
-    { id: '1', type: 'mass', title: 'Sunday Mass', dayOfWeek: 0, startTime: '09:00', location: 'Main Church', language: 'Lithuanian' },
-    { id: '2', type: 'mass', title: 'Sunday Mass', dayOfWeek: 0, startTime: '11:00', location: 'Main Church', language: 'Polish' },
-    { id: '3', type: 'mass', title: 'Sunday Mass', dayOfWeek: 0, startTime: '18:00', location: 'Main Church', language: 'Lithuanian' },
-    { id: '4', type: 'mass', title: 'Daily Mass', dayOfWeek: 1, startTime: '08:00', location: 'Chapel', language: 'Lithuanian' },
-    { id: '5', type: 'mass', title: 'Daily Mass', dayOfWeek: 2, startTime: '08:00', location: 'Chapel', language: 'Lithuanian' },
-    { id: '6', type: 'mass', title: 'Daily Mass', dayOfWeek: 3, startTime: '08:00', location: 'Chapel', language: 'Lithuanian' },
-    { id: '7', type: 'mass', title: 'Daily Mass', dayOfWeek: 4, startTime: '08:00', location: 'Chapel', language: 'Lithuanian' },
-    { id: '8', type: 'mass', title: 'Daily Mass', dayOfWeek: 5, startTime: '08:00', location: 'Chapel', language: 'Lithuanian' },
-    { id: '9', type: 'mass', title: 'Saturday Mass', dayOfWeek: 6, startTime: '09:00', location: 'Main Church', language: 'Lithuanian' },
-    { id: '10', type: 'confession', title: 'Confession', dayOfWeek: 6, startTime: '15:00', endTime: '16:00', location: 'Confessional', notes: 'Or by appointment' },
-    { id: '11', type: 'office', title: 'Parish Office', dayOfWeek: 1, startTime: '09:00', endTime: '17:00', location: 'Parish House' },
-    { id: '12', type: 'office', title: 'Parish Office', dayOfWeek: 2, startTime: '09:00', endTime: '17:00', location: 'Parish House' },
-    { id: '13', type: 'office', title: 'Parish Office', dayOfWeek: 3, startTime: '09:00', endTime: '17:00', location: 'Parish House' },
-    { id: '14', type: 'office', title: 'Parish Office', dayOfWeek: 4, startTime: '09:00', endTime: '17:00', location: 'Parish House' },
-    { id: '15', type: 'office', title: 'Parish Office', dayOfWeek: 5, startTime: '09:00', endTime: '16:00', location: 'Parish House' },
-    { id: '16', type: 'adoration', title: 'Eucharistic Adoration', dayOfWeek: 4, startTime: '16:00', endTime: '17:00', location: 'Chapel' },
+    {
+      id: '1',
+      type: 'mass',
+      title: 'Sunday Mass',
+      dayOfWeek: 0,
+      startTime: '09:00',
+      location: 'Main Church',
+      language: 'Lithuanian',
+    },
+    {
+      id: '2',
+      type: 'mass',
+      title: 'Sunday Mass',
+      dayOfWeek: 0,
+      startTime: '11:00',
+      location: 'Main Church',
+      language: 'Polish',
+    },
+    {
+      id: '3',
+      type: 'mass',
+      title: 'Sunday Mass',
+      dayOfWeek: 0,
+      startTime: '18:00',
+      location: 'Main Church',
+      language: 'Lithuanian',
+    },
+    {
+      id: '4',
+      type: 'mass',
+      title: 'Daily Mass',
+      dayOfWeek: 1,
+      startTime: '08:00',
+      location: 'Chapel',
+      language: 'Lithuanian',
+    },
+    {
+      id: '5',
+      type: 'mass',
+      title: 'Daily Mass',
+      dayOfWeek: 2,
+      startTime: '08:00',
+      location: 'Chapel',
+      language: 'Lithuanian',
+    },
+    {
+      id: '6',
+      type: 'mass',
+      title: 'Daily Mass',
+      dayOfWeek: 3,
+      startTime: '08:00',
+      location: 'Chapel',
+      language: 'Lithuanian',
+    },
+    {
+      id: '7',
+      type: 'mass',
+      title: 'Daily Mass',
+      dayOfWeek: 4,
+      startTime: '08:00',
+      location: 'Chapel',
+      language: 'Lithuanian',
+    },
+    {
+      id: '8',
+      type: 'mass',
+      title: 'Daily Mass',
+      dayOfWeek: 5,
+      startTime: '08:00',
+      location: 'Chapel',
+      language: 'Lithuanian',
+    },
+    {
+      id: '9',
+      type: 'mass',
+      title: 'Saturday Mass',
+      dayOfWeek: 6,
+      startTime: '09:00',
+      location: 'Main Church',
+      language: 'Lithuanian',
+    },
+    {
+      id: '10',
+      type: 'confession',
+      title: 'Confession',
+      dayOfWeek: 6,
+      startTime: '15:00',
+      endTime: '16:00',
+      location: 'Confessional',
+      notes: 'Or by appointment',
+    },
+    {
+      id: '11',
+      type: 'office',
+      title: 'Parish Office',
+      dayOfWeek: 1,
+      startTime: '09:00',
+      endTime: '17:00',
+      location: 'Parish House',
+    },
+    {
+      id: '12',
+      type: 'office',
+      title: 'Parish Office',
+      dayOfWeek: 2,
+      startTime: '09:00',
+      endTime: '17:00',
+      location: 'Parish House',
+    },
+    {
+      id: '13',
+      type: 'office',
+      title: 'Parish Office',
+      dayOfWeek: 3,
+      startTime: '09:00',
+      endTime: '17:00',
+      location: 'Parish House',
+    },
+    {
+      id: '14',
+      type: 'office',
+      title: 'Parish Office',
+      dayOfWeek: 4,
+      startTime: '09:00',
+      endTime: '17:00',
+      location: 'Parish House',
+    },
+    {
+      id: '15',
+      type: 'office',
+      title: 'Parish Office',
+      dayOfWeek: 5,
+      startTime: '09:00',
+      endTime: '16:00',
+      location: 'Parish House',
+    },
+    {
+      id: '16',
+      type: 'adoration',
+      title: 'Eucharistic Adoration',
+      dayOfWeek: 4,
+      startTime: '16:00',
+      endTime: '17:00',
+      location: 'Chapel',
+    },
   ];
 }
 
@@ -160,13 +287,16 @@ export function getMockSchedule(): ScheduleItem[] {
 // =============================================================================
 
 export function groupByDay(schedule: ScheduleItem[]): Record<number, ScheduleItem[]> {
-  return schedule.reduce((acc, item) => {
-    if (!acc[item.dayOfWeek]) {
-      acc[item.dayOfWeek] = [];
-    }
-    acc[item.dayOfWeek]!.push(item);
-    return acc;
-  }, {} as Record<number, ScheduleItem[]>);
+  return schedule.reduce(
+    (acc, item) => {
+      if (!acc[item.dayOfWeek]) {
+        acc[item.dayOfWeek] = [];
+      }
+      acc[item.dayOfWeek]!.push(item);
+      return acc;
+    },
+    {} as Record<number, ScheduleItem[]>
+  );
 }
 
 export function sortByTime(items: ScheduleItem[]): ScheduleItem[] {

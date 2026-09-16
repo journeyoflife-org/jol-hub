@@ -15,10 +15,10 @@ function isSupportedLocale(v: string): v is SupportedLocale {
 // Mark as dynamic route (don't statically generate all locales at build time)
 export const dynamicParams = true;
 
-export default async function ParishPage({ 
-  params 
-}: { 
-  params: Promise<{ locale: string }> | { locale: string } 
+export default async function ParishPage({
+  params,
+}: {
+  params: Promise<{ locale: string }> | { locale: string };
 }) {
   // Handle both async and sync params (Next.js version differences)
   const resolvedParams = await Promise.resolve(params);
@@ -55,7 +55,7 @@ export default async function ParishPage({
     <main style={{ padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
       <h1>{t.heading}</h1>
       <p>Language: {locale}</p>
-      
+
       <section style={{ marginTop: '2rem' }}>
         <h2>{t.schedule}</h2>
         <p>Coming soon: Integration with Bitrix24 Calendar</p>

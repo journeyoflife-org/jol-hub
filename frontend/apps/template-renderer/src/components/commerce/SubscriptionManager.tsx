@@ -13,7 +13,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { formatEur, getSubscriptionPlans, isCommerceConfigured, type SubscriptionPlan } from '@journeyoflife-org/commerce';
+import {
+  formatEur,
+  getSubscriptionPlans,
+  isCommerceConfigured,
+  type SubscriptionPlan,
+} from '@journeyoflife-org/commerce';
 import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
 import { Button } from '@journeyoflife-org/ui/components/primitives';
 import { useTenant, useTenantFeature } from '@/lib/tenant-context';
@@ -54,7 +59,7 @@ export function SubscriptionManager({ locale = 'lt' }: SubscriptionManagerProps)
       aria-label={t('subscriptionTitle')}
       className="rounded-lg border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
     >
-      <h2 className="mb-4 font-heading text-xl font-semibold text-neutral-900 dark:text-neutral-50">
+      <h2 className="font-heading mb-4 text-xl font-semibold text-neutral-900 dark:text-neutral-50">
         {t('subscriptionTitle')}
       </h2>
 

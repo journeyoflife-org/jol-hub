@@ -48,7 +48,11 @@ export function resolveSeoOrigin(): string {
  * Absolute canonical + reciprocal hreflang alternates for one tenant page.
  * Drop-in replacement for the STEP-6 relative `buildAlternates`.
  */
-export function buildSeoAlternates(tenantSlug: string, route: string, currentLocale: string): HreflangSet {
+export function buildSeoAlternates(
+  tenantSlug: string,
+  route: string,
+  currentLocale: string
+): HreflangSet {
   return buildHreflangSet(resolveSeoOrigin(), tenantSlug, route, currentLocale, PILOT_HREFLANG);
 }
 

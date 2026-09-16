@@ -44,7 +44,13 @@ const FIELD_ERROR_KEYS: Record<keyof ContactFormValues, string> = {
 
 type FieldErrors = Partial<Record<keyof ContactFormValues, string>>;
 
-export function ContactForm({ onSubmit, privacyPolicyHref, tenant, title, className }: ContactFormProps) {
+export function ContactForm({
+  onSubmit,
+  privacyPolicyHref,
+  tenant,
+  title,
+  className,
+}: ContactFormProps) {
   const tForms = useTranslations('forms');
   const tValidation = useTranslations('validation');
   const tErrors = useTranslations('errors');
@@ -121,7 +127,9 @@ export function ContactForm({ onSubmit, privacyPolicyHref, tenant, title, classN
   return (
     <form onSubmit={handleSubmit} onBlur={handleBlur} noValidate className={className}>
       {title && (
-        <h2 className="mb-4 font-heading text-2xl font-semibold text-neutral-900 dark:text-neutral-50">{title}</h2>
+        <h2 className="font-heading mb-4 text-2xl font-semibold text-neutral-900 dark:text-neutral-50">
+          {title}
+        </h2>
       )}
       <div className="flex flex-col gap-4">
         {/* Honeypot — hidden from humans and assistive technology. */}
@@ -139,10 +147,38 @@ export function ContactForm({ onSubmit, privacyPolicyHref, tenant, title, classN
           </label>
         </div>
 
-        <Input id="contact-name" name="name" label={tForms('nameLabel')} required error={errors.name} autoComplete="name" />
-        <Input id="contact-email" name="email" label={tForms('emailLabel')} type="email" required error={errors.email} autoComplete="email" />
-        <Input id="contact-phone" name="phone" label={tForms('phoneLabel')} type="tel" error={errors.phone} autoComplete="tel" />
-        <Textarea id="contact-message" name="message" label={tForms('messageLabel')} required error={errors.message} />
+        <Input
+          id="contact-name"
+          name="name"
+          label={tForms('nameLabel')}
+          required
+          error={errors.name}
+          autoComplete="name"
+        />
+        <Input
+          id="contact-email"
+          name="email"
+          label={tForms('emailLabel')}
+          type="email"
+          required
+          error={errors.email}
+          autoComplete="email"
+        />
+        <Input
+          id="contact-phone"
+          name="phone"
+          label={tForms('phoneLabel')}
+          type="tel"
+          error={errors.phone}
+          autoComplete="tel"
+        />
+        <Textarea
+          id="contact-message"
+          name="message"
+          label={tForms('messageLabel')}
+          required
+          error={errors.message}
+        />
 
         <div className="flex flex-col gap-1.5">
           <div className="flex items-start gap-2">
@@ -153,9 +189,12 @@ export function ContactForm({ onSubmit, privacyPolicyHref, tenant, title, classN
               aria-required="true"
               aria-invalid={errors.consent ? true : undefined}
               aria-describedby={errors.consent ? 'contact-consent-error' : undefined}
-              className="mt-1 h-4 w-4 rounded border-neutral-300 text-primary focus-ring dark:border-neutral-700"
+              className="text-primary focus-ring mt-1 h-4 w-4 rounded border-neutral-300 dark:border-neutral-700"
             />
-            <label htmlFor="contact-consent" className="text-sm text-neutral-700 dark:text-neutral-200">
+            <label
+              htmlFor="contact-consent"
+              className="text-sm text-neutral-700 dark:text-neutral-200"
+            >
               {tConsent('consentTextBefore')}{' '}
               <a href={privacyPolicyHref} className={accentTextClass(tenant)}>
                 {tConsent('policyLinkLabel')}
@@ -164,7 +203,7 @@ export function ContactForm({ onSubmit, privacyPolicyHref, tenant, title, classN
             </label>
           </div>
           {errors.consent && (
-            <p id="contact-consent-error" className="text-sm text-error-700 dark:text-error-400">
+            <p id="contact-consent-error" className="text-error-700 dark:text-error-400 text-sm">
               {errors.consent}
             </p>
           )}

@@ -17,14 +17,22 @@ export function CourseList({ items, tenant, className }: CourseListProps) {
   const t = useTranslations('collections');
 
   if (items.length === 0) {
-    return <p className={cn('text-sm text-neutral-600 dark:text-neutral-300', className)}>{t('emptyCourses')}</p>;
+    return (
+      <p className={cn('text-sm text-neutral-600 dark:text-neutral-300', className)}>
+        {t('emptyCourses')}
+      </p>
+    );
   }
 
   return (
     <ul className={cn('grid gap-4 sm:grid-cols-2', className)}>
       {items.map((course) => (
         <li key={course.title} className="list-none">
-          <Card variant={course.href ? 'interactive' : 'default'} tenant={tenant} className="h-full">
+          <Card
+            variant={course.href ? 'interactive' : 'default'}
+            tenant={tenant}
+            className="h-full"
+          >
             <CardHeader>
               <CardTitle>
                 {course.href ? (

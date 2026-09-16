@@ -14,7 +14,13 @@ const ASPECTS = {
 
 export function MapEmbed({ src, title, aspect = 'video', className }: MapEmbedProps) {
   return (
-    <div className={cn('w-full overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800', ASPECTS[aspect], className)}>
+    <div
+      className={cn(
+        'w-full overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800',
+        ASPECTS[aspect],
+        className
+      )}
+    >
       <iframe
         title={title}
         src={src}

@@ -12,7 +12,7 @@ function module(
   id: string,
   type: Module['type'],
   props: Record<string, unknown> = {},
-  layout: Module['layout'] = 'contained',
+  layout: Module['layout'] = 'contained'
 ): Module {
   return { id, type, props, layout, settings: {}, visible: true };
 }
@@ -36,7 +36,10 @@ export function buildHomeConfig(route = '/'): PageConfig {
 export function buildAboutConfig(route = '/about'): PageConfig {
   return {
     route,
-    modules: [module('about-hero', 'hero', {}, 'full-width'), module('about-content', 'content', {})],
+    modules: [
+      module('about-hero', 'hero', {}, 'full-width'),
+      module('about-content', 'content', {}),
+    ],
   };
 }
 

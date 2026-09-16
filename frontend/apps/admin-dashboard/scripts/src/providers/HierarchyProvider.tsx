@@ -7,7 +7,7 @@ const defaultHierarchy: HierarchyType = {
   tier: 'country',
   country: 'lt',
   scopeId: null,
-  dataResidency: 'lt'
+  dataResidency: 'lt',
 };
 
 export const HierarchyContext = createContext<HierarchyType | null>(null);
@@ -15,9 +15,5 @@ export const HierarchyContext = createContext<HierarchyType | null>(null);
 export function HierarchyProvider({ children }: { children: ReactNode }) {
   const [hierarchy] = useState<HierarchyType>(defaultHierarchy);
 
-  return (
-    <HierarchyContext.Provider value={hierarchy}>
-      {children}
-    </HierarchyContext.Provider>
-  );
+  return <HierarchyContext.Provider value={hierarchy}>{children}</HierarchyContext.Provider>;
 }

@@ -17,12 +17,15 @@ export class CalendarApi {
     from: string;
     to: string;
   }): Promise<Bitrix24CalendarEvent[]> {
-    const response = await this.client.get<Bitrix24Response<Bitrix24CalendarEvent[]>>('calendar.event.get', {
-      type: params.type,
-      ownerId: params.ownerId,
-      from: params.from,
-      to: params.to,
-    });
+    const response = await this.client.get<Bitrix24Response<Bitrix24CalendarEvent[]>>(
+      'calendar.event.get',
+      {
+        type: params.type,
+        ownerId: params.ownerId,
+        from: params.from,
+        to: params.to,
+      }
+    );
     return response.result;
   }
 
@@ -30,9 +33,12 @@ export class CalendarApi {
    * Get a specific event by ID.
    */
   async getEvent(id: string): Promise<Bitrix24CalendarEvent> {
-    const response = await this.client.get<Bitrix24Response<Bitrix24CalendarEvent>>('calendar.event.getbyid', {
-      id,
-    });
+    const response = await this.client.get<Bitrix24Response<Bitrix24CalendarEvent>>(
+      'calendar.event.getbyid',
+      {
+        id,
+      }
+    );
     return response.result;
   }
 
@@ -40,9 +46,12 @@ export class CalendarApi {
    * Create a new calendar event.
    */
   async createEvent(event: Omit<Bitrix24CalendarEvent, 'ID'>): Promise<string> {
-    const response = await this.client.post<Bitrix24Response<{ id: string }>>('calendar.event.add', {
-      fields: event,
-    });
+    const response = await this.client.post<Bitrix24Response<{ id: string }>>(
+      'calendar.event.add',
+      {
+        fields: event,
+      }
+    );
     return response.result.id;
   }
 
@@ -70,11 +79,17 @@ export class CalendarApi {
   /**
    * Get calendar sections.
    */
-  async getSections(params: { type: 'user' | 'group' | 'company'; ownerId?: string }): Promise<Bitrix24CalendarSection[]> {
-    const response = await this.client.get<Bitrix24Response<Bitrix24CalendarSection[]>>('calendar.section.get', {
-      type: params.type,
-      ownerId: params.ownerId,
-    });
+  async getSections(params: {
+    type: 'user' | 'group' | 'company';
+    ownerId?: string;
+  }): Promise<Bitrix24CalendarSection[]> {
+    const response = await this.client.get<Bitrix24Response<Bitrix24CalendarSection[]>>(
+      'calendar.section.get',
+      {
+        type: params.type,
+        ownerId: params.ownerId,
+      }
+    );
     return response.result;
   }
 
@@ -82,9 +97,12 @@ export class CalendarApi {
    * Create a new calendar section.
    */
   async createSection(section: Omit<Bitrix24CalendarSection, 'ID'>): Promise<string> {
-    const response = await this.client.post<Bitrix24Response<{ id: string }>>('calendar.section.add', {
-      fields: section,
-    });
+    const response = await this.client.post<Bitrix24Response<{ id: string }>>(
+      'calendar.section.add',
+      {
+        fields: section,
+      }
+    );
     return response.result.id;
   }
 }

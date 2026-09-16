@@ -12,11 +12,7 @@
  * (`border-vertical-parish`, `bg-vertical-basilica`, ...) — no hex values
  * exist outside `tokens/`.
  */
-import {
-  colorScales,
-  liturgicalClassic,
-  verticalAccents,
-} from './colors';
+import { colorScales, liturgicalClassic, verticalAccents } from './colors';
 import { fontFamilies, fontSizes, fontWeights, letterSpacings } from './typography';
 import { spacingScale, spacingSemantic } from './spacing';
 import { breakpoints } from './breakpoints';

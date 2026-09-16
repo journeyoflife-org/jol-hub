@@ -32,7 +32,9 @@ export function SectionHeader({
   return (
     <div className={cn('mb-8 flex flex-col gap-2', ALIGN[align], className)}>
       {eyebrow && (
-        <p className={cn('text-sm font-semibold uppercase tracking-wider', accentTextClass(tenant))}>
+        <p
+          className={cn('text-sm font-semibold uppercase tracking-wider', accentTextClass(tenant))}
+        >
           {eyebrow}
         </p>
       )}
@@ -40,14 +42,22 @@ export function SectionHeader({
         {title}
       </Heading>
       {description && (
-        <p className={cn('max-w-2xl text-neutral-600 dark:text-neutral-300', align === 'center' && 'mx-auto')}>
+        <p
+          className={cn(
+            'max-w-2xl text-neutral-600 dark:text-neutral-300',
+            align === 'center' && 'mx-auto'
+          )}
+        >
           {description}
         </p>
       )}
       {action && (
         <a
           href={action.href}
-          className={cn('mt-1 font-medium underline-offset-4 hover:underline focus-ring rounded-sm', accentTextClass(tenant))}
+          className={cn(
+            'focus-ring mt-1 rounded-sm font-medium underline-offset-4 hover:underline',
+            accentTextClass(tenant)
+          )}
         >
           {action.label}
         </a>

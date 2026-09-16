@@ -29,7 +29,9 @@ export function VendorDashboardShell({
               {stats.map((stat) => (
                 <div key={stat.label}>
                   <dt className="text-neutral-600 dark:text-neutral-300">{stat.label}</dt>
-                  <dd className="text-lg font-medium text-neutral-900 dark:text-neutral-100">{stat.value}</dd>
+                  <dd className="text-lg font-medium text-neutral-900 dark:text-neutral-100">
+                    {stat.value}
+                  </dd>
                 </div>
               ))}
             </dl>

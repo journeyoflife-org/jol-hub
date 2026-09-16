@@ -29,10 +29,9 @@ export interface ModuleProps {
 }
 
 /** A module renders to a ReactElement (async modules return a Promise). */
-export type ModuleComponent = (props: ModuleProps) =>
-  | ReactElement
-  | null
-  | Promise<ReactElement | null>;
+export type ModuleComponent = (
+  props: ModuleProps
+) => ReactElement | null | Promise<ReactElement | null>;
 
 /**
  * Client-safe theming subset for ui components. NEVER pass the full tenant

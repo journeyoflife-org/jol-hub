@@ -10,7 +10,7 @@ export default function UnauthorizedPage() {
     <div className="w-full max-w-md">
       <Card>
         <CardHeader className="text-center">
-          <div className="mx-auto mb-4 h-16 w-16 bg-amber-100 rounded-full flex items-center justify-center">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
             <ShieldX className="h-8 w-8 text-amber-600" />
           </div>
           <CardTitle>Access Denied</CardTitle>
@@ -23,7 +23,9 @@ export default function UnauthorizedPage() {
             <Button className="w-full">Go to Dashboard</Button>
           </Link>
           <Link href="/auth/login">
-            <Button variant="outline" className="w-full">Sign In with Different Account</Button>
+            <Button variant="outline" className="w-full">
+              Sign In with Different Account
+            </Button>
           </Link>
         </CardContent>
       </Card>

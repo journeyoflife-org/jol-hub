@@ -25,8 +25,8 @@ export function Spinner({ size = 'md', label, className }: SpinnerProps) {
       <span
         aria-hidden="true"
         className={cn(
-          'inline-block animate-spin rounded-full border-current border-t-transparent text-primary motion-reduce:animate-none',
-          SIZES[size],
+          'text-primary inline-block animate-spin rounded-full border-current border-t-transparent motion-reduce:animate-none',
+          SIZES[size]
         )}
       />
       <span className="sr-only">{label ?? t('loadingStatus')}</span>

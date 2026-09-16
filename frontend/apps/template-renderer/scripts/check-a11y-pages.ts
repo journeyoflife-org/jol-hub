@@ -77,7 +77,7 @@ async function main(): Promise<void> {
     const status = hasFailures(report) ? 'FAIL' : 'ok';
     console.log(
       `[${status}] ${report.target.padEnd(44)} axe:${report.axePasses} rules, ` +
-        `${report.violations.length} violation(s), ${report.warnings.length} warning(s)`,
+        `${report.violations.length} violation(s), ${report.warnings.length} warning(s)`
     );
   }
 
@@ -92,7 +92,9 @@ async function main(): Promise<void> {
   }
 
   const warnings = reports.reduce((sum, r) => sum + r.warnings.length, 0);
-  console.log(`0 violations across ${reports.length} critical page(s)${warnings ? ` (${warnings} warning(s) — review)` : ''}.`);
+  console.log(
+    `0 violations across ${reports.length} critical page(s)${warnings ? ` (${warnings} warning(s) — review)` : ''}.`
+  );
 }
 
 main().catch((error) => {

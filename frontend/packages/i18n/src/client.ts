@@ -29,10 +29,7 @@ export {
   type CookieConsentBannerProps,
 } from './components/cookie-consent-banner';
 
-export {
-  I18nProvider,
-  type I18nProviderProps,
-} from './components/i18n-provider';
+export { I18nProvider, type I18nProviderProps } from './components/i18n-provider';
 
 // Hooks (all require React context / browser APIs)
 export { useLocale } from './hooks/use-locale';

@@ -7,9 +7,9 @@ render this on noindex surfaces only (package 22 rule).
 
 ## Consuming pages (traceability)
 
-| Package | Page | Usage |
-|---|---|---|
-| 22 | Cemetery plot overview (noindex) | primary map surface |
+| Package | Page                             | Usage               |
+| ------- | -------------------------------- | ------------------- |
+| 22      | Cemetery plot overview (noindex) | primary map surface |
 
 Renderer module mapping: `cemetery-map` module (noindex route only).
 

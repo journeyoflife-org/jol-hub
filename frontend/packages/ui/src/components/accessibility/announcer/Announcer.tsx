@@ -40,7 +40,7 @@ export function AnnouncerProvider({ children }: AnnouncerProviderProps) {
 
   const api = useMemo(
     () => ({ announcePolite, announceAssertive }),
-    [announcePolite, announceAssertive],
+    [announcePolite, announceAssertive]
   );
 
   return (

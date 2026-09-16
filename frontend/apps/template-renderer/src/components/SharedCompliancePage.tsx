@@ -30,7 +30,7 @@ function formatKey(
   catalog: MessageCatalog,
   locale: SupportedLocale,
   key: string,
-  values: Record<string, string>,
+  values: Record<string, string>
 ): string {
   const pattern = translate(catalog, key);
   return String(new IntlMessageFormat(pattern, locale).format(values));
@@ -88,18 +88,18 @@ export function SharedCompliancePage({ route, fixture, locale }: SharedComplianc
   const { titleKey, paragraphs } = body[route];
 
   return (
-    <div className="max-w-3xl mx-auto space-y-6">
-      <h1 className="text-3xl font-heading font-bold text-primary">
+    <div className="mx-auto max-w-3xl space-y-6">
+      <h1 className="font-heading text-primary text-3xl font-bold">
         {translate(catalog, titleKey)}
       </h1>
       <Card>
-        <CardContent className="p-6 space-y-4">
+        <CardContent className="space-y-4 p-6">
           {paragraphs.map((paragraph, index) => (
-            <p key={index} className="text-gray-700 leading-relaxed">
+            <p key={index} className="leading-relaxed text-gray-700">
               {paragraph}
             </p>
           ))}
-          {address && <p className="text-sm text-gray-500 pt-2 border-t">{address}</p>}
+          {address && <p className="border-t pt-2 text-sm text-gray-500">{address}</p>}
         </CardContent>
       </Card>
     </div>

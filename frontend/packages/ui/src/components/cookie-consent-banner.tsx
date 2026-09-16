@@ -73,12 +73,14 @@ export function CookieConsentBanner({
 }: CookieConsentBannerProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [showSettings, setShowSettings] = useState(showDetails);
-  const [preferences, setPreferences] = useState<Omit<ConsentPreferences, 'timestamp' | 'version'>>({
-    necessary: true,
-    analytics: false,
-    marketing: false,
-    functional: false,
-  });
+  const [preferences, setPreferences] = useState<Omit<ConsentPreferences, 'timestamp' | 'version'>>(
+    {
+      necessary: true,
+      analytics: false,
+      marketing: false,
+      functional: false,
+    }
+  );
 
   const texts = CONSENT_TEXTS[language] ?? CONSENT_TEXTS.en ?? FALLBACK_CONSENT_TEXTS;
 
@@ -129,7 +131,7 @@ export function CookieConsentBanner({
   }, [preferences, consentVersion, onConsentChange, storageKey]);
 
   const toggleCategory = useCallback((category: Exclude<keyof typeof preferences, 'necessary'>) => {
-    setPreferences(prev => ({
+    setPreferences((prev) => ({
       ...prev,
       [category]: !prev[category],
     }));
@@ -140,7 +142,7 @@ export function CookieConsentBanner({
   return (
     <div
       className={cn(
-        'fixed left-0 right-0 z-50 bg-white shadow-lg border-t border-gray-200 dark:bg-gray-900 dark:border-gray-700',
+        'fixed left-0 right-0 z-50 border-t border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-900',
         position === 'bottom' ? 'bottom-0' : 'top-0',
         className
       )}
@@ -148,19 +150,28 @@ export function CookieConsentBanner({
       aria-labelledby="cookie-consent-title"
       aria-describedby="cookie-consent-description"
     >
-      <div className="max-w-7xl mx-auto p-4 sm:p-6">
+      <div className="mx-auto max-w-7xl p-4 sm:p-6">
         <div className="flex flex-col gap-4">
           {/* Header */}
           <div>
-            <h2 id="cookie-consent-title" className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h2
+              id="cookie-consent-title"
+              className="text-lg font-semibold text-gray-900 dark:text-white"
+            >
               {texts.title}
             </h2>
-            <p id="cookie-consent-description" className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+            <p
+              id="cookie-consent-description"
+              className="mt-1 text-sm text-gray-600 dark:text-gray-300"
+            >
               {texts.description}
               {privacyPolicyUrl && (
                 <>
                   {' '}
-                  <a href={privacyPolicyUrl} className="underline hover:text-gray-900 dark:hover:text-white">
+                  <a
+                    href={privacyPolicyUrl}
+                    className="underline hover:text-gray-900 dark:hover:text-white"
+                  >
                     {language === 'lt' ? 'Privatumo politika' : 'Privacy Policy'}
                   </a>
                 </>
@@ -171,24 +182,32 @@ export function CookieConsentBanner({
           {/* Settings Panel */}
           {showSettings && (
             <div className="grid gap-3 sm:grid-cols-2">
-              {(Object.keys(texts.categories) as ConsentCategory[]).map(category => (
+              {(Object.keys(texts.categories) as ConsentCategory[]).map((category) => (
                 <div
                   key={category}
                   className={cn(
-                    'flex items-start gap-3 p-3 rounded-lg',
-                    category === 'necessary' ? 'bg-gray-50 dark:bg-gray-800' : 'bg-gray-100 dark:bg-gray-800'
+                    'flex items-start gap-3 rounded-lg p-3',
+                    category === 'necessary'
+                      ? 'bg-gray-50 dark:bg-gray-800'
+                      : 'bg-gray-100 dark:bg-gray-800'
                   )}
                 >
                   <input
                     type="checkbox"
                     id={`cookie-${category}`}
                     checked={preferences[category]}
-                    onChange={() => category !== 'necessary' && toggleCategory(category as 'analytics' | 'marketing' | 'functional')}
+                    onChange={() =>
+                      category !== 'necessary' &&
+                      toggleCategory(category as 'analytics' | 'marketing' | 'functional')
+                    }
                     disabled={category === 'necessary'}
-                    className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                    className="text-primary focus:ring-primary mt-1 h-4 w-4 rounded border-gray-300"
                   />
                   <div className="flex-1">
-                    <label htmlFor={`cookie-${category}`} className="font-medium text-gray-900 dark:text-white">
+                    <label
+                      htmlFor={`cookie-${category}`}
+                      className="font-medium text-gray-900 dark:text-white"
+                    >
                       {texts.categories[category].name}
                     </label>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
@@ -223,4 +242,3 @@ export function CookieConsentBanner({
     </div>
   );
 }
-

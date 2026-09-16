@@ -21,22 +21,28 @@ import { AreaChartComponent } from '@/components/charts';
 import { CHART_COLORS } from '@/components/charts';
 
 export default function DashboardPage() {
-  const { data: stats, isLoading: statsLoading, error: statsError, refetch: refetchStats } = useDashboardStats();
+  const {
+    data: stats,
+    isLoading: statsLoading,
+    error: statsError,
+    refetch: refetchStats,
+  } = useDashboardStats();
   const { data: activity, isLoading: activityLoading } = useRecentActivity(5);
   const { data: overview } = useAnalyticsOverview('7d');
 
   // Transform data for mini chart
-  const growthChartData = overview?.parishes?.map((item, index) => ({
-    date: new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-    parishes: item.count,
-    users: overview.users?.[index]?.count ?? 0,
-  })) ?? [];
+  const growthChartData =
+    overview?.parishes?.map((item, index) => ({
+      date: new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+      parishes: item.count,
+      users: overview.users?.[index]?.count ?? 0,
+    })) ?? [];
 
   if (statsLoading) {
     return (
-      <div className="p-6 flex items-center justify-center min-h-[400px]">
+      <div className="flex min-h-[400px] items-center justify-center p-6">
         <div className="flex flex-col items-center gap-4">
-          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          <Loader2 className="text-primary h-8 w-8 animate-spin" />
           <p className="text-muted-foreground">Loading dashboard data...</p>
         </div>
       </div>
@@ -56,7 +62,7 @@ export default function DashboardPage() {
               </p>
             </div>
             <Button variant="outline" onClick={() => refetchStats()}>
-              <RefreshCw className="h-4 w-4 mr-2" />
+              <RefreshCw className="mr-2 h-4 w-4" />
               Retry
             </Button>
           </CardContent>
@@ -66,21 +72,19 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="space-y-6 p-6">
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">Dashboard</h1>
-          <p className="text-muted-foreground">
-            Overview of JOL-HUB platform activity
-          </p>
+          <p className="text-muted-foreground">Overview of JOL-HUB platform activity</p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm" onClick={() => refetchStats()}>
-            <RefreshCw className="h-4 w-4 mr-2" />
+            <RefreshCw className="mr-2 h-4 w-4" />
             Refresh
           </Button>
-          <span className="text-sm text-muted-foreground">
+          <span className="text-muted-foreground text-sm">
             Last updated: {new Date().toLocaleTimeString()}
           </span>
         </div>
@@ -91,15 +95,19 @@ export default function DashboardPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Parishes</CardTitle>
-            <Church className="h-4 w-4 text-muted-foreground" />
+            <Church className="text-muted-foreground h-4 w-4" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{formatNumber(stats?.totalParishes ?? 0)}</div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-muted-foreground text-xs">
               {formatNumber(stats?.activeParishes ?? 0)} active
             </p>
             <Progress
-              value={stats?.totalParishes ? ((stats?.activeParishes ?? 0) / stats.totalParishes) * 100 : 0}
+              value={
+                stats?.totalParishes
+                  ? ((stats?.activeParishes ?? 0) / stats.totalParishes) * 100
+                  : 0
+              }
               className="mt-2 h-1"
             />
           </CardContent>
@@ -108,11 +116,11 @@ export default function DashboardPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Users</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
+            <Users className="text-muted-foreground h-4 w-4" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{formatNumber(stats?.totalUsers ?? 0)}</div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-muted-foreground text-xs">
               {formatNumber(stats?.activeUsers ?? 0)} active this month
             </p>
             <Progress
@@ -125,13 +133,13 @@ export default function DashboardPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Monthly Donations</CardTitle>
-            <CreditCard className="h-4 w-4 text-muted-foreground" />
+            <CreditCard className="text-muted-foreground h-4 w-4" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{formatCurrency(stats?.monthlyDonations ?? 0)}</div>
-            <p className="text-xs text-green-600 flex items-center gap-1">
-              <TrendingUp className="h-3 w-3" />
-              +{(stats?.donationGrowth ?? 0).toFixed(1)}% from last month
+            <p className="flex items-center gap-1 text-xs text-green-600">
+              <TrendingUp className="h-3 w-3" />+{(stats?.donationGrowth ?? 0).toFixed(1)}% from
+              last month
             </p>
           </CardContent>
         </Card>
@@ -139,13 +147,11 @@ export default function DashboardPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Countries</CardTitle>
-            <Globe className="h-4 w-4 text-muted-foreground" />
+            <Globe className="text-muted-foreground h-4 w-4" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats?.countries ?? 27}</div>
-            <p className="text-xs text-muted-foreground">
-              EU member states covered
-            </p>
+            <p className="text-muted-foreground text-xs">EU member states covered</p>
             <Progress value={100} className="mt-2 h-1" />
           </CardContent>
         </Card>
@@ -164,7 +170,10 @@ export default function DashboardPage() {
                 Review and approve new parish registrations
               </p>
             </div>
-            <a href="/dashboard/entities?status=pending" className="text-sm font-medium text-yellow-700 hover:underline">
+            <a
+              href="/dashboard/entities?status=pending"
+              className="text-sm font-medium text-yellow-700 hover:underline"
+            >
               View all →
             </a>
           </CardContent>
@@ -182,22 +191,28 @@ export default function DashboardPage() {
           <CardContent>
             {activityLoading ? (
               <div className="flex items-center justify-center py-8">
-                <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+                <Loader2 className="text-muted-foreground h-6 w-6 animate-spin" />
               </div>
             ) : activity && activity.length > 0 ? (
               <div className="space-y-4">
                 {activity.map((item) => (
                   <div key={item.id} className="flex items-start gap-3">
-                    <div className={`mt-0.5 h-2 w-2 rounded-full ${
-                      item.type === 'parish_approved' ? 'bg-green-500' :
-                      item.type === 'parish_pending' ? 'bg-yellow-500' :
-                      item.type === 'donation' ? 'bg-blue-500' :
-                      item.type === 'security_alert' ? 'bg-red-500' :
-                      'bg-gray-500'
-                    }`} />
+                    <div
+                      className={`mt-0.5 h-2 w-2 rounded-full ${
+                        item.type === 'parish_approved'
+                          ? 'bg-green-500'
+                          : item.type === 'parish_pending'
+                            ? 'bg-yellow-500'
+                            : item.type === 'donation'
+                              ? 'bg-blue-500'
+                              : item.type === 'security_alert'
+                                ? 'bg-red-500'
+                                : 'bg-gray-500'
+                      }`}
+                    />
                     <div className="flex-1 space-y-1">
                       <p className="text-sm">{item.message}</p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-muted-foreground text-xs">
                         {new Date(item.timestamp).toLocaleString()}
                       </p>
                     </div>
@@ -205,9 +220,7 @@ export default function DashboardPage() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8 text-muted-foreground">
-                No recent activity
-              </div>
+              <div className="text-muted-foreground py-8 text-center">No recent activity</div>
             )}
           </CardContent>
         </Card>
@@ -232,7 +245,7 @@ export default function DashboardPage() {
                 formatter={(value) => formatNumber(value)}
               />
             ) : (
-              <div className="h-[200px] flex items-center justify-center text-muted-foreground">
+              <div className="text-muted-foreground flex h-[200px] items-center justify-center">
                 No data available
               </div>
             )}
@@ -244,40 +257,40 @@ export default function DashboardPage() {
       <div className="grid gap-4 md:grid-cols-3">
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-sm font-medium">
               <CheckCircle className="h-4 w-4 text-green-500" />
               System Health
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-green-600">Operational</div>
-            <p className="text-xs text-muted-foreground">All systems running normally</p>
+            <p className="text-muted-foreground text-xs">All systems running normally</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-sm font-medium">
               <Clock className="h-4 w-4 text-blue-500" />
               Average Response Time
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats?.avgResponseTime ?? 0}ms</div>
-            <p className="text-xs text-muted-foreground">API latency (p95)</p>
+            <p className="text-muted-foreground text-xs">API latency (p95)</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-sm font-medium">
               <TrendingUp className="h-4 w-4 text-purple-500" />
               Monthly Growth
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">+8.3%</div>
-            <p className="text-xs text-muted-foreground">New parish registrations</p>
+            <p className="text-muted-foreground text-xs">New parish registrations</p>
           </CardContent>
         </Card>
       </div>

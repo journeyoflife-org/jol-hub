@@ -13,10 +13,11 @@ Provides permission classes for:
 import logging
 from typing import Optional
 
-from django.contrib.auth import get_user_model
-from django.core.exceptions import PermissionDenied
 from rest_framework import permissions
 from rest_framework.request import Request
+
+from django.contrib.auth import get_user_model
+from django.core.exceptions import PermissionDenied
 
 logger = logging.getLogger("jolhub.permissions")
 

@@ -24,7 +24,7 @@ export function CountryProvider({ children }: { children: ReactNode }) {
   const [countryCode, setCountryCode] = useState<string | null>(null);
 
   const currentCountry = countryCode
-    ? EU_COUNTRIES.find((c) => c.code === countryCode) ?? null
+    ? (EU_COUNTRIES.find((c) => c.code === countryCode) ?? null)
     : null;
 
   const setCountry = useCallback((code: string) => {
@@ -40,11 +40,7 @@ export function CountryProvider({ children }: { children: ReactNode }) {
     country: currentCountry,
   };
 
-  return (
-    <CountryContext.Provider value={value}>
-      {children}
-    </CountryContext.Provider>
-  );
+  return <CountryContext.Provider value={value}>{children}</CountryContext.Provider>;
 }
 
 export function useCountry(): CountryContextType {

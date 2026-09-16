@@ -15,7 +15,9 @@ export const DEFAULT_STORAGE_KEY = 'jol-cookie-consent';
 /**
  * Get stored consent preferences
  */
-export function getStoredConsent(storageKey: string = DEFAULT_STORAGE_KEY): ConsentPreferences | null {
+export function getStoredConsent(
+  storageKey: string = DEFAULT_STORAGE_KEY
+): ConsentPreferences | null {
   if (typeof window === 'undefined') return null;
 
   try {
@@ -32,7 +34,10 @@ export function getStoredConsent(storageKey: string = DEFAULT_STORAGE_KEY): Cons
 /**
  * Store consent preferences
  */
-export function storeConsent(preferences: ConsentPreferences, storageKey: string = DEFAULT_STORAGE_KEY): void {
+export function storeConsent(
+  preferences: ConsentPreferences,
+  storageKey: string = DEFAULT_STORAGE_KEY
+): void {
   if (typeof window === 'undefined') return;
   localStorage.setItem(storageKey, JSON.stringify(preferences));
 }
@@ -40,7 +45,10 @@ export function storeConsent(preferences: ConsentPreferences, storageKey: string
 /**
  * Check if consent is valid (not expired, correct version)
  */
-export function isConsentValid(preferences: ConsentPreferences | null, currentVersion: string = DEFAULT_CONSENT_VERSION): boolean {
+export function isConsentValid(
+  preferences: ConsentPreferences | null,
+  currentVersion: string = DEFAULT_CONSENT_VERSION
+): boolean {
   if (!preferences) return false;
   if (preferences.version !== currentVersion) return false;
 

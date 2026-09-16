@@ -31,7 +31,13 @@ export function ProductCard({
 
   return (
     <Card tenant={tenant} className={cn('flex h-full flex-col', className)}>
-      {image && <img src={image} alt={imageAlt ?? ''} className="aspect-video w-full rounded-t-lg object-cover" />}
+      {image && (
+        <img
+          src={image}
+          alt={imageAlt ?? ''}
+          className="aspect-video w-full rounded-t-lg object-cover"
+        />
+      )}
       <CardHeader>
         <div className="flex items-start justify-between gap-2">
           <CardTitle>{title}</CardTitle>

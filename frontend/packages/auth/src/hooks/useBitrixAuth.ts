@@ -88,22 +88,22 @@ export interface LogoutOptions {
 
 /**
  * React hook for managing Bitrix24 authentication state.
- * 
+ *
  * This hook provides a clean interface for:
  * - Checking authentication status
  * - Initiating login/logout flows
  * - Checking user permissions and parish access
  * - Refreshing session data
- * 
+ *
  * @example
  * ```tsx
  * function MyComponent() {
  *   const { isAuthenticated, user, login, logout, hasParishAccess } = useBitrixAuth();
- *   
+ *
  *   if (!isAuthenticated) {
  *     return <button onClick={() => login()}>Login with Bitrix24</button>;
  *   }
- *   
+ *
  *   return (
  *     <div>
  *       <p>Welcome, {user?.name} ({user?.role})</p>
@@ -126,15 +126,17 @@ export function useBitrixAuth(): BitrixAuthState {
 
     return {
       id: (session.user as any).id?.toString() ?? '',
-      bitrixId: (session.user as unknown as Record<string, unknown>).bitrixId as string ?? '',
+      bitrixId: ((session.user as unknown as Record<string, unknown>).bitrixId as string) ?? '',
       email: session.user.email ?? '',
       name: session.user.name ?? '',
       image: session.user.image ?? undefined,
       role: ((session.user as unknown as Record<string, unknown>).role as JolHubUserRole) ?? 'user',
       workPosition: (session.user as unknown as Record<string, unknown>).workPosition as string,
-      bitrixDomain: (session.user as unknown as Record<string, unknown>).bitrixDomain as string ?? '',
+      bitrixDomain:
+        ((session.user as unknown as Record<string, unknown>).bitrixDomain as string) ?? '',
       parishIds: ((session.user as unknown as Record<string, unknown>).parishIds as string[]) ?? [],
-      primaryParishId: (session.user as unknown as Record<string, unknown>).primaryParishId as string,
+      primaryParishId: (session.user as unknown as Record<string, unknown>)
+        .primaryParishId as string,
       accessToken: (session as unknown as Record<string, unknown>).accessToken as string,
       expiresAt: (session as unknown as Record<string, unknown>).expiresAt as number,
     };
@@ -150,16 +152,16 @@ export function useBitrixAuth(): BitrixAuthState {
   // Login function
   const login = useCallback(async (options?: LoginOptions) => {
     setError(null);
-    
+
     try {
       // Store PKCE verifier if needed
       const verifier = sessionStorage.getItem('pkce_verifier');
-      
+
       await signIn('bitrix24', {
         callbackUrl: options?.callbackUrl ?? '/',
         redirect: true,
       });
-      
+
       // Clear PKCE verifier after use
       if (verifier) {
         sessionStorage.removeItem('pkce_verifier');
@@ -174,7 +176,7 @@ export function useBitrixAuth(): BitrixAuthState {
   // Logout function
   const logout = useCallback(async (options?: LogoutOptions) => {
     setError(null);
-    
+
     try {
       await signOut({
         callbackUrl: options?.callbackUrl ?? '/',
@@ -190,7 +192,7 @@ export function useBitrixAuth(): BitrixAuthState {
   // Refresh session function
   const refreshSession = useCallback(async () => {
     setError(null);
-    
+
     try {
       await update();
     } catch (err) {
@@ -206,12 +208,12 @@ export function useBitrixAuth(): BitrixAuthState {
       if (!user) {
         return false;
       }
-      
+
       // Admin has access to all parishes
       if (user.role === 'admin') {
         return true;
       }
-      
+
       // Check if user's parish IDs include the requested parish
       return user.parishIds.includes(parishId);
     },
@@ -224,7 +226,7 @@ export function useBitrixAuth(): BitrixAuthState {
       if (!user) {
         return false;
       }
-      
+
       return user.role === role;
     },
     [user]
@@ -236,7 +238,7 @@ export function useBitrixAuth(): BitrixAuthState {
       if (!user) {
         return false;
       }
-      
+
       return roles.includes(user.role);
     },
     [user]
@@ -279,7 +281,7 @@ export function useParishContext(): {
     }
 
     const hostname = window.location.hostname;
-    
+
     // Extract subdomain
     const parts = hostname.split('.');
     if (parts.length > 2) {
@@ -291,7 +293,7 @@ export function useParishContext(): {
         setParishId(extracted);
       }
     }
-    
+
     setIsLoading(false);
   }, []);
 

@@ -1,14 +1,14 @@
 /**
  * Root Layout — minimal shell
- * 
+ *
  * This is the outermost <html> wrapper. It does NOT contain:
  * - LanguageSwitcher (added per-locale in [locale]/layout.tsx)
  * - CookieConsentBanner (added per-locale in [locale]/layout.tsx)
  * - I18nProvider (added per-locale in [locale]/layout.tsx)
- * 
+ *
  * The middleware redirects / → /lt/ (301), so most traffic goes directly
  * through [locale]/layout.tsx where full i18n is active.
- * 
+ *
  * The root / page.tsx acts as a fallback redirect for any missed cases.
  */
 
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
   // hreflang for lt, ru, en — helps crawlers find localised versions
   alternates: {
     languages: {
-      'lt': '/lt',
-      'ru': '/ru',
-      'en': '/en',
+      lt: '/lt',
+      ru: '/ru',
+      en: '/en',
       'x-default': '/lt',
     },
   },
@@ -67,11 +67,11 @@ export default function RootLayout({
       dir="ltr"
       className={`${inter.variable} ${merriweather.variable}`}
     >
-      <body className="min-h-screen bg-background font-sans antialiased flex flex-col">
+      <body className="bg-background flex min-h-screen flex-col font-sans antialiased">
         {/* Skip-to-content link for screen readers */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md"
+          className="focus:bg-primary focus:text-primary-foreground sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:px-4 focus:py-2"
         >
           Skip to content
         </a>

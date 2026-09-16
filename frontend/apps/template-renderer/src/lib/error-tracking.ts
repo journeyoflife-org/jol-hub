@@ -51,7 +51,8 @@ export function addBreadcrumb(type: BreadcrumbType, message: string): void {
 export async function reportError(error: unknown, context: ErrorContext = {}): Promise<void> {
   try {
     const classified: ClassifiedError = classifyError(error, {
-      route: context.route ?? (typeof window !== 'undefined' ? window.location.pathname : undefined),
+      route:
+        context.route ?? (typeof window !== 'undefined' ? window.location.pathname : undefined),
       ...context,
     });
 
@@ -87,9 +88,12 @@ export function initErrorTracking(): void {
   });
 
   window.addEventListener('unhandledrejection', (event) => {
-    void reportError(event.reason instanceof Error ? event.reason : new Error(String(event.reason)), {
-      route: window.location.pathname,
-    });
+    void reportError(
+      event.reason instanceof Error ? event.reason : new Error(String(event.reason)),
+      {
+        route: window.location.pathname,
+      }
+    );
   });
 
   // Breadcrumbs — consent-gated behavioral trail.
@@ -103,7 +107,7 @@ export function initErrorTracking(): void {
         'unknown';
       addBreadcrumb('click', label);
     },
-    { passive: true },
+    { passive: true }
   );
 
   window.addEventListener('popstate', () => {

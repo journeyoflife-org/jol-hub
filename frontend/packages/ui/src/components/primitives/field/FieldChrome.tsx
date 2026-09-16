@@ -21,20 +21,27 @@ export function describedBy(id: string, hasHelper: boolean, hasError: boolean): 
   return ids.length > 0 ? ids.join(' ') : undefined;
 }
 
-export function FieldChrome({ id, label, helperText, error, required, children }: FieldChromeLayoutProps) {
+export function FieldChrome({
+  id,
+  label,
+  helperText,
+  error,
+  required,
+  children,
+}: FieldChromeLayoutProps) {
   return (
     <div className="flex w-full flex-col gap-1.5">
       <label htmlFor={id} className="text-sm font-medium text-neutral-900 dark:text-neutral-50">
         {label}
         {required && (
-          <span aria-hidden="true" className="ms-1 text-error-700 dark:text-error-400">
+          <span aria-hidden="true" className="text-error-700 dark:text-error-400 ms-1">
             *
           </span>
         )}
       </label>
       {children}
       {error && (
-        <p id={`${id}-error`} className="text-sm text-error-700 dark:text-error-400">
+        <p id={`${id}-error`} className="text-error-700 dark:text-error-400 text-sm">
           {error}
         </p>
       )}

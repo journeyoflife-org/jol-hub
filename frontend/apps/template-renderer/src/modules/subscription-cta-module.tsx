@@ -19,12 +19,12 @@ export default function SubscriptionCtaModule({ content, basePath }: ModuleProps
   const ctaHref = asString(content.ctaHref) ?? `${basePath}/contact`;
 
   return (
-    <section className="rounded-lg bg-primary px-6 py-10 text-center">
+    <section className="bg-primary rounded-lg px-6 py-10 text-center">
       <h2 className="font-heading text-2xl font-bold text-neutral-50">{heading}</h2>
       {description && <p className="mt-2 text-neutral-100">{description}</p>}
       <a
         href={ctaHref}
-        className="focus-ring mt-6 inline-flex items-center justify-center rounded-md bg-neutral-50 px-6 py-3 font-medium text-primary transition-colors hover:bg-neutral-100"
+        className="focus-ring text-primary mt-6 inline-flex items-center justify-center rounded-md bg-neutral-50 px-6 py-3 font-medium transition-colors hover:bg-neutral-100"
       >
         {ctaLabel}
       </a>

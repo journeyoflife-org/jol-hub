@@ -14,13 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { EU_COUNTRIES } from '@/lib/countries';
 import { ENTITY_TYPES } from '@/lib/entityTypes';
 import { Loader2 } from 'lucide-react';
@@ -62,12 +56,7 @@ interface EntityFormProps {
   isLoading?: boolean;
 }
 
-export function EntityForm({
-  entity,
-  onSubmit,
-  onCancel,
-  isLoading = false,
-}: EntityFormProps) {
+export function EntityForm({ entity, onSubmit, onCancel, isLoading = false }: EntityFormProps) {
   const {
     register,
     handleSubmit,
@@ -106,9 +95,7 @@ export function EntityForm({
       <Card>
         <CardHeader>
           <CardTitle>Basic Information</CardTitle>
-          <CardDescription>
-            Core entity details
-          </CardDescription>
+          <CardDescription>Core entity details</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           {/* Name */}
@@ -120,9 +107,7 @@ export function EntityForm({
               placeholder="St. Mary's Parish"
               className={errors.name ? 'border-red-500' : ''}
             />
-            {errors.name && (
-              <p className="text-sm text-red-500">{errors.name.message}</p>
-            )}
+            {errors.name && <p className="text-sm text-red-500">{errors.name.message}</p>}
           </div>
 
           {/* Category */}
@@ -145,10 +130,7 @@ export function EntityForm({
           {/* Type */}
           <div className="space-y-2">
             <Label htmlFor="type">Entity Type *</Label>
-            <Select
-              value={selectedType}
-              onValueChange={(v) => setValue('type', v)}
-            >
+            <Select value={selectedType} onValueChange={(v) => setValue('type', v)}>
               <SelectTrigger className={errors.type ? 'border-red-500' : ''}>
                 <SelectValue placeholder="Select entity type" />
               </SelectTrigger>
@@ -160,18 +142,13 @@ export function EntityForm({
                 ))}
               </SelectContent>
             </Select>
-            {errors.type && (
-              <p className="text-sm text-red-500">{errors.type.message}</p>
-            )}
+            {errors.type && <p className="text-sm text-red-500">{errors.type.message}</p>}
           </div>
 
           {/* Country - GDPR Article 44 */}
           <div className="space-y-2">
             <Label htmlFor="country">Country *</Label>
-            <Select
-              value={selectedCountry}
-              onValueChange={(v) => setValue('country', v)}
-            >
+            <Select value={selectedCountry} onValueChange={(v) => setValue('country', v)}>
               <SelectTrigger className={errors.country ? 'border-red-500' : ''}>
                 <SelectValue placeholder="Select country" />
               </SelectTrigger>
@@ -183,10 +160,8 @@ export function EntityForm({
                 ))}
               </SelectContent>
             </Select>
-            {errors.country && (
-              <p className="text-sm text-red-500">{errors.country.message}</p>
-            )}
-            <p className="text-xs text-muted-foreground">
+            {errors.country && <p className="text-sm text-red-500">{errors.country.message}</p>}
+            <p className="text-muted-foreground text-xs">
               GDPR Article 44: Data will be stored in this country's region
             </p>
           </div>
@@ -195,12 +170,8 @@ export function EntityForm({
           {selectedCategory === 'catholic' && (
             <div className="space-y-2">
               <Label htmlFor="diocese">Diocese</Label>
-              <Input
-                id="diocese"
-                {...register('diocese')}
-                placeholder="Archdiocese of Vilnius"
-              />
-              <p className="text-xs text-muted-foreground">
+              <Input id="diocese" {...register('diocese')} placeholder="Archdiocese of Vilnius" />
+              <p className="text-muted-foreground text-xs">
                 Canon Law CIC 1300-1307: Required for canonical approval
               </p>
             </div>
@@ -210,11 +181,7 @@ export function EntityForm({
           {selectedCategory === 'commercial' && (
             <div className="space-y-2">
               <Label htmlFor="vatNumber">VAT Number</Label>
-              <Input
-                id="vatNumber"
-                {...register('vatNumber')}
-                placeholder="LT123456789"
-              />
+              <Input id="vatNumber" {...register('vatNumber')} placeholder="LT123456789" />
             </div>
           )}
         </CardContent>
@@ -224,9 +191,7 @@ export function EntityForm({
       <Card>
         <CardHeader>
           <CardTitle>Contact Information</CardTitle>
-          <CardDescription>
-            How to reach this entity
-          </CardDescription>
+          <CardDescription>How to reach this entity</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2">
@@ -240,51 +205,33 @@ export function EntityForm({
                 placeholder="parish@example.com"
                 className={errors.email ? 'border-red-500' : ''}
               />
-              {errors.email && (
-                <p className="text-sm text-red-500">{errors.email.message}</p>
-              )}
+              {errors.email && <p className="text-sm text-red-500">{errors.email.message}</p>}
             </div>
 
             {/* Phone */}
             <div className="space-y-2">
               <Label htmlFor="phone">Phone</Label>
-              <Input
-                id="phone"
-                {...register('phone')}
-                placeholder="+370 123 45678"
-              />
+              <Input id="phone" {...register('phone')} placeholder="+370 123 45678" />
             </div>
           </div>
 
           {/* Address */}
           <div className="space-y-2">
             <Label htmlFor="address">Address</Label>
-            <Input
-              id="address"
-              {...register('address')}
-              placeholder="123 Church Street"
-            />
+            <Input id="address" {...register('address')} placeholder="123 Church Street" />
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
             {/* City */}
             <div className="space-y-2">
               <Label htmlFor="city">City</Label>
-              <Input
-                id="city"
-                {...register('city')}
-                placeholder="Vilnius"
-              />
+              <Input id="city" {...register('city')} placeholder="Vilnius" />
             </div>
 
             {/* Postal Code */}
             <div className="space-y-2">
               <Label htmlFor="postalCode">Postal Code</Label>
-              <Input
-                id="postalCode"
-                {...register('postalCode')}
-                placeholder="LT-00000"
-              />
+              <Input id="postalCode" {...register('postalCode')} placeholder="LT-00000" />
             </div>
           </div>
 
@@ -298,9 +245,7 @@ export function EntityForm({
               placeholder="https://parish.example.com"
               className={errors.website ? 'border-red-500' : ''}
             />
-            {errors.website && (
-              <p className="text-sm text-red-500">{errors.website.message}</p>
-            )}
+            {errors.website && <p className="text-sm text-red-500">{errors.website.message}</p>}
           </div>
         </CardContent>
       </Card>
@@ -309,9 +254,7 @@ export function EntityForm({
       <Card>
         <CardHeader>
           <CardTitle>Description</CardTitle>
-          <CardDescription>
-            Additional information about this entity
-          </CardDescription>
+          <CardDescription>Additional information about this entity</CardDescription>
         </CardHeader>
         <CardContent>
           <Textarea
@@ -330,11 +273,13 @@ export function EntityForm({
         <Button type="submit" disabled={isLoading || !isDirty}>
           {isLoading ? (
             <>
-              <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               Saving...
             </>
+          ) : entity ? (
+            'Update Entity'
           ) : (
-            entity ? 'Update Entity' : 'Create Entity'
+            'Create Entity'
           )}
         </Button>
       </div>

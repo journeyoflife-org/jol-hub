@@ -8,11 +8,7 @@
 
 import { useSession } from 'next-auth/react';
 import { useMemo, useCallback } from 'react';
-import type { 
-  FederationTier, 
-  BreadcrumbItem,
-  EntityType,
-} from '@/types';
+import type { FederationTier, BreadcrumbItem, EntityType } from '@/types';
 import type { Permission } from '@/types/hierarchy';
 import { hasPermission, getRoleTier } from '@/lib/auth';
 

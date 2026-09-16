@@ -53,11 +53,7 @@ async function fetchRoles(): Promise<Role[]> {
 }
 
 // Hook for fetching user list
-export function useUsers(params: {
-  search?: string;
-  country?: string;
-  role?: string;
-}) {
+export function useUsers(params: { search?: string; country?: string; role?: string }) {
   return useQuery({
     queryKey: ['users', params],
     queryFn: () => fetchUsers(params),

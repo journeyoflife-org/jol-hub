@@ -42,12 +42,13 @@ export function DonationWidget({
   const [customAmount, setCustomAmount] = useState('');
   const [recurring, setRecurring] = useState(false);
 
-  const amount =
-    selected === 'custom' ? Number(customAmount) || 0 : selected;
+  const amount = selected === 'custom' ? Number(customAmount) || 0 : selected;
 
   return (
-    <div className={cn('rounded-lg border border-neutral-200 p-6 dark:border-neutral-800', className)}>
-      <h2 className="mb-4 font-heading text-xl font-semibold text-neutral-900 dark:text-neutral-50">
+    <div
+      className={cn('rounded-lg border border-neutral-200 p-6 dark:border-neutral-800', className)}
+    >
+      <h2 className="font-heading mb-4 text-xl font-semibold text-neutral-900 dark:text-neutral-50">
         {title ?? tCommerce('donateCta')}
       </h2>
 
@@ -55,7 +56,11 @@ export function DonationWidget({
         <legend className="mb-2 text-sm font-medium text-neutral-700 dark:text-neutral-200">
           {tCommerce('amountLegend')}
         </legend>
-        <div className="flex flex-wrap gap-2" role="radiogroup" aria-label={tCommerce('amountLabel')}>
+        <div
+          className="flex flex-wrap gap-2"
+          role="radiogroup"
+          aria-label={tCommerce('amountLabel')}
+        >
           {presets.map((preset) => (
             <button
               key={preset}
@@ -64,10 +69,10 @@ export function DonationWidget({
               aria-checked={selected === preset}
               onClick={() => setSelected(preset)}
               className={cn(
-                'h-10 min-w-16 rounded-md border px-4 text-sm font-medium focus-ring transition-colors motion-reduce:transition-none',
+                'focus-ring h-10 min-w-16 rounded-md border px-4 text-sm font-medium transition-colors motion-reduce:transition-none',
                 selected === preset
                   ? cn('border-transparent text-neutral-50', accentBgClass(tenant))
-                  : 'border-neutral-300 text-neutral-900 hover:bg-neutral-100 dark:border-neutral-700 dark:text-neutral-50 dark:hover:bg-neutral-800',
+                  : 'border-neutral-300 text-neutral-900 hover:bg-neutral-100 dark:border-neutral-700 dark:text-neutral-50 dark:hover:bg-neutral-800'
               )}
             >
               {preset}
@@ -88,7 +93,7 @@ export function DonationWidget({
               setSelected('custom');
               setCustomAmount(event.target.value);
             }}
-            className="h-10 w-28 rounded-md border border-neutral-300 bg-neutral-50 px-3 text-sm focus-ring dark:border-neutral-700 dark:bg-neutral-900"
+            className="focus-ring h-10 w-28 rounded-md border border-neutral-300 bg-neutral-50 px-3 text-sm dark:border-neutral-700 dark:bg-neutral-900"
           />
         </label>
       </fieldset>
@@ -99,9 +104,12 @@ export function DonationWidget({
           type="checkbox"
           checked={recurring}
           onChange={(event) => setRecurring(event.target.checked)}
-          className="h-4 w-4 rounded border-neutral-300 text-primary focus-ring dark:border-neutral-700"
+          className="text-primary focus-ring h-4 w-4 rounded border-neutral-300 dark:border-neutral-700"
         />
-        <label htmlFor="donation-recurring" className="text-sm text-neutral-700 dark:text-neutral-200">
+        <label
+          htmlFor="donation-recurring"
+          className="text-sm text-neutral-700 dark:text-neutral-200"
+        >
           {tCommerce('monthly')}
         </label>
       </div>

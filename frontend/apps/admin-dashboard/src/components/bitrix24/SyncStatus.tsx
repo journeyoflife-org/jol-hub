@@ -31,7 +31,7 @@ export function SyncStatus({ entityId }: SyncStatusProps) {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+        <Loader2 className="text-muted-foreground h-6 w-6 animate-spin" />
       </div>
     );
   }
@@ -44,7 +44,7 @@ export function SyncStatus({ entityId }: SyncStatusProps) {
             <XCircle className="h-5 w-5" />
             <div>
               <p className="font-medium">Failed to load sync status</p>
-              <p className="text-sm text-muted-foreground">{error.message}</p>
+              <p className="text-muted-foreground text-sm">{error.message}</p>
             </div>
           </div>
         </CardContent>
@@ -69,11 +69,11 @@ export function SyncStatus({ entityId }: SyncStatusProps) {
             </div>
             <div className="flex items-center gap-2">
               <Button variant="outline" size="sm" onClick={() => refetch()}>
-                <RefreshCw className="h-4 w-4 mr-2" />
+                <RefreshCw className="mr-2 h-4 w-4" />
                 Refresh
               </Button>
               <Button size="sm" onClick={() => syncNow()} disabled={isOpen}>
-                <ArrowRightLeft className="h-4 w-4 mr-2" />
+                <ArrowRightLeft className="mr-2 h-4 w-4" />
                 Sync Now
               </Button>
             </div>
@@ -83,7 +83,7 @@ export function SyncStatus({ entityId }: SyncStatusProps) {
           <div className="flex items-center gap-4">
             <div
               className={cn(
-                'w-3 h-3 rounded-full',
+                'h-3 w-3 rounded-full',
                 isHealthy ? 'bg-green-500' : isOpen ? 'bg-red-500' : 'bg-yellow-500'
               )}
             />
@@ -91,7 +91,7 @@ export function SyncStatus({ entityId }: SyncStatusProps) {
               <p className="font-medium">
                 {isHealthy ? 'Connected' : isOpen ? 'Disconnected' : 'Reconnecting...'}
               </p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-muted-foreground text-sm">
                 {status?.lastSync
                   ? `Last sync: ${formatDistanceToNow(new Date(status.lastSync), { addSuffix: true })}`
                   : 'No sync recorded'}
@@ -118,10 +118,8 @@ export function SyncStatus({ entityId }: SyncStatusProps) {
             <CardTitle className="text-sm font-medium">Successful Syncs</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-green-600">
-              {status?.successCount ?? 0}
-            </div>
-            <p className="text-xs text-muted-foreground">Last 24 hours</p>
+            <div className="text-2xl font-bold text-green-600">{status?.successCount ?? 0}</div>
+            <p className="text-muted-foreground text-xs">Last 24 hours</p>
           </CardContent>
         </Card>
 
@@ -130,10 +128,8 @@ export function SyncStatus({ entityId }: SyncStatusProps) {
             <CardTitle className="text-sm font-medium">Failed Syncs</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-red-600">
-              {status?.failureCount ?? 0}
-            </div>
-            <p className="text-xs text-muted-foreground">Last 24 hours</p>
+            <div className="text-2xl font-bold text-red-600">{status?.failureCount ?? 0}</div>
+            <p className="text-muted-foreground text-xs">Last 24 hours</p>
           </CardContent>
         </Card>
 
@@ -142,10 +138,8 @@ export function SyncStatus({ entityId }: SyncStatusProps) {
             <CardTitle className="text-sm font-medium">Pending Items</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
-              {status?.pendingItems ?? 0}
-            </div>
-            <p className="text-xs text-muted-foreground">In sync queue</p>
+            <div className="text-2xl font-bold">{status?.pendingItems ?? 0}</div>
+            <p className="text-muted-foreground text-xs">In sync queue</p>
           </CardContent>
         </Card>
       </div>
@@ -161,7 +155,7 @@ export function SyncStatus({ entityId }: SyncStatusProps) {
         <CardContent>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-muted-foreground">Status</span>
+              <span className="text-muted-foreground text-sm">Status</span>
               <Badge
                 className={cn(
                   isHealthy && 'bg-green-100 text-green-800',
@@ -169,32 +163,34 @@ export function SyncStatus({ entityId }: SyncStatusProps) {
                   isHalfOpen && 'bg-yellow-100 text-yellow-800'
                 )}
               >
-                {isHealthy && <CheckCircle className="h-3 w-3 mr-1" />}
-                {isOpen && <XCircle className="h-3 w-3 mr-1" />}
-                {isHalfOpen && <AlertTriangle className="h-3 w-3 mr-1" />}
+                {isHealthy && <CheckCircle className="mr-1 h-3 w-3" />}
+                {isOpen && <XCircle className="mr-1 h-3 w-3" />}
+                {isHalfOpen && <AlertTriangle className="mr-1 h-3 w-3" />}
                 {circuitBreakerState?.status?.toUpperCase() ?? 'UNKNOWN'}
               </Badge>
             </div>
 
             {circuitBreakerState?.failureCount !== undefined && (
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">Failure Count</span>
+                <span className="text-muted-foreground text-sm">Failure Count</span>
                 <span className="font-medium">{circuitBreakerState.failureCount}</span>
               </div>
             )}
 
             {circuitBreakerState?.lastFailure && (
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">Last Failure</span>
+                <span className="text-muted-foreground text-sm">Last Failure</span>
                 <span className="text-sm">
-                  {formatDistanceToNow(new Date(circuitBreakerState.lastFailure), { addSuffix: true })}
+                  {formatDistanceToNow(new Date(circuitBreakerState.lastFailure), {
+                    addSuffix: true,
+                  })}
                 </span>
               </div>
             )}
 
             {isOpen && circuitBreakerState?.resetTimeout && (
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">Retry In</span>
+                <span className="text-muted-foreground text-sm">Retry In</span>
                 <span className="font-medium">
                   {Math.round(circuitBreakerState.resetTimeout / 1000)}s
                 </span>
@@ -208,9 +204,7 @@ export function SyncStatus({ entityId }: SyncStatusProps) {
       <Card>
         <CardHeader>
           <CardTitle className="text-lg">Recent Activity</CardTitle>
-          <CardDescription>
-            Latest synchronization events
-          </CardDescription>
+          <CardDescription>Latest synchronization events</CardDescription>
         </CardHeader>
         <CardContent>
           {status?.recentActivity && status.recentActivity.length > 0 ? (
@@ -225,7 +219,7 @@ export function SyncStatus({ entityId }: SyncStatusProps) {
                   />
                   <div className="flex-1">
                     <p className="text-sm">{activity.message}</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-muted-foreground text-xs">
                       {formatDistanceToNow(new Date(activity.timestamp), { addSuffix: true })}
                     </p>
                   </div>
@@ -233,9 +227,7 @@ export function SyncStatus({ entityId }: SyncStatusProps) {
               ))}
             </div>
           ) : (
-            <p className="text-center py-4 text-muted-foreground">
-              No recent sync activity
-            </p>
+            <p className="text-muted-foreground py-4 text-center">No recent sync activity</p>
           )}
         </CardContent>
       </Card>

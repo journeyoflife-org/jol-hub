@@ -10,7 +10,12 @@
  * images are decorative (`alt=""`) unless alt text is supplied.
  */
 import { cn } from '../../../lib/utils';
-import { accentTextClass, isMemorialVertical, isSacredVertical, type TenantTheme } from '../../../lib/tenant-theme';
+import {
+  accentTextClass,
+  isMemorialVertical,
+  isSacredVertical,
+  type TenantTheme,
+} from '../../../lib/tenant-theme';
 import type { HeroCta, HeroProps, HeroVariant } from './Hero.types';
 
 const OVERLAYS: Record<number, string> = {
@@ -43,7 +48,7 @@ function ctaClass(cta: HeroCta, resolved: HeroVariant): string {
     base,
     resolved === 'funeral'
       ? 'bg-stone-700 text-neutral-50 hover:bg-stone-800'
-      : 'bg-primary text-neutral-50 hover:bg-primary-700',
+      : 'bg-primary text-neutral-50 hover:bg-primary-700'
   );
 }
 
@@ -65,7 +70,7 @@ export function Hero({
       className={cn(
         'relative isolate overflow-hidden',
         resolved === 'funeral' ? 'bg-stone-100 dark:bg-stone-950' : 'bg-primary-900',
-        className,
+        className
       )}
     >
       {background?.kind === 'image' && (
@@ -79,7 +84,10 @@ export function Hero({
         />
       )}
       {background?.kind === 'image' && (
-        <div aria-hidden="true" className={cn('absolute inset-0 -z-10', OVERLAYS[overlayOpacity])} />
+        <div
+          aria-hidden="true"
+          className={cn('absolute inset-0 -z-10', OVERLAYS[overlayOpacity])}
+        />
       )}
       {background?.kind === 'color' && background.className && (
         <div aria-hidden="true" className={cn('absolute inset-0 -z-10', background.className)} />
@@ -88,7 +96,7 @@ export function Hero({
       <div
         className={cn(
           'container mx-auto flex flex-col gap-4 px-4 py-16 md:py-24',
-          align === 'center' ? 'items-center text-center' : 'items-start text-start',
+          align === 'center' ? 'items-center text-center' : 'items-start text-start'
         )}
       >
         <h1
@@ -98,19 +106,19 @@ export function Hero({
               ? 'text-neutral-50'
               : resolved === 'funeral'
                 ? 'text-stone-900 dark:text-stone-100'
-                : 'text-neutral-50',
+                : 'text-neutral-50'
           )}
         >
           {title}
         </h1>
         {resolved === 'church' && (
-          <div aria-hidden="true" className={cn('h-1 w-24 rounded-full bg-liturgical-gold')} />
+          <div aria-hidden="true" className={cn('bg-liturgical-gold h-1 w-24 rounded-full')} />
         )}
         {subtitle && (
           <p
             className={cn(
               'max-w-2xl text-lg',
-              background?.kind ? 'text-neutral-100' : 'text-neutral-600 dark:text-neutral-300',
+              background?.kind ? 'text-neutral-100' : 'text-neutral-600 dark:text-neutral-300'
             )}
           >
             {subtitle}
@@ -120,7 +128,9 @@ export function Hero({
           <div className="mt-2 flex flex-wrap justify-center gap-3">
             {ctaButtons.map((cta) => (
               <a key={cta.href} href={cta.href} className={ctaClass(cta, resolved)}>
-                <span className={cta.emphasis === 'secondary' ? accentTextClass(tenant) : undefined}>
+                <span
+                  className={cta.emphasis === 'secondary' ? accentTextClass(tenant) : undefined}
+                >
                   {cta.label}
                 </span>
               </a>

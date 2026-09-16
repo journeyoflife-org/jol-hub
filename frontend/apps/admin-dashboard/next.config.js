@@ -1,8 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ['@journeyoflife-org/ui', '@journeyoflife-org/auth', '@journeyoflife-org/i18n'],
-  
+  transpilePackages: [
+    '@journeyoflife-org/ui',
+    '@journeyoflife-org/auth',
+    '@journeyoflife-org/i18n',
+  ],
+
   images: {
     domains: [
       'localhost',
@@ -12,32 +16,33 @@ const nextConfig = {
       'lh3.googleusercontent.com',
     ],
   },
-  
+
   env: {
     // API Configuration
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1',
-    
+
     // Application Settings
     NEXT_PUBLIC_APP_NAME: process.env.NEXT_PUBLIC_APP_NAME || 'JOL-HUB Admin',
     NEXT_PUBLIC_APP_VERSION: process.env.NEXT_PUBLIC_APP_VERSION || '1.0.0',
-    
+
     // Feature Flags
     NEXT_PUBLIC_ENABLE_ANALYTICS: process.env.NEXT_PUBLIC_ENABLE_ANALYTICS || 'false',
     NEXT_PUBLIC_ENABLE_DEBUG_MODE: process.env.NEXT_PUBLIC_ENABLE_DEBUG_MODE || 'true',
     NEXT_PUBLIC_ENABLE_MOCK_DATA: process.env.NEXT_PUBLIC_ENABLE_MOCK_DATA || 'true',
-    
+
     // Authentication
     NEXT_PUBLIC_JWT_ACCESS_TOKEN_EXPIRY: process.env.NEXT_PUBLIC_JWT_ACCESS_TOKEN_EXPIRY || '15',
     NEXT_PUBLIC_JWT_REFRESH_TOKEN_EXPIRY: process.env.NEXT_PUBLIC_JWT_REFRESH_TOKEN_EXPIRY || '7',
-    
+
     // i18n
     NEXT_PUBLIC_DEFAULT_LOCALE: process.env.NEXT_PUBLIC_DEFAULT_LOCALE || 'en',
-    NEXT_PUBLIC_SUPPORTED_LOCALES: process.env.NEXT_PUBLIC_SUPPORTED_LOCALES || 'en,lt,de,fr,pl,it,es',
-    
+    NEXT_PUBLIC_SUPPORTED_LOCALES:
+      process.env.NEXT_PUBLIC_SUPPORTED_LOCALES || 'en,lt,de,fr,pl,it,es',
+
     // Logging
     NEXT_PUBLIC_LOG_LEVEL: process.env.NEXT_PUBLIC_LOG_LEVEL || 'debug',
   },
-  
+
   async redirects() {
     return [
       {
@@ -47,7 +52,7 @@ const nextConfig = {
       },
     ];
   },
-  
+
   async headers() {
     return [
       {
@@ -73,7 +78,7 @@ const nextConfig = {
       },
     ];
   },
-  
+
   // Webpack configuration for handling ESM modules
   webpack: (config, { isServer }) => {
     // Handle node modules that use Node.js APIs

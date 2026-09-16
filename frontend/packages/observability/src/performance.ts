@@ -50,7 +50,9 @@ export function computeNavigationPhases(t: {
   const clamp = (value: number) => Math.max(0, Math.round(value));
   return {
     dnsMs: clamp(t.domainLookupEnd - t.domainLookupStart),
-    tcpMs: clamp(t.connectEnd - Math.max(t.connectStart, t.secureConnectionStart || t.connectStart)),
+    tcpMs: clamp(
+      t.connectEnd - Math.max(t.connectStart, t.secureConnectionStart || t.connectStart)
+    ),
     sslMs: clamp(t.secureConnectionStart > 0 ? t.connectEnd - t.secureConnectionStart : 0),
     ttfbMs: clamp(t.responseStart - t.requestStart),
     downloadMs: clamp(t.responseEnd - t.responseStart),
@@ -63,8 +65,13 @@ export function computeNavigationPhases(t: {
  * (batching rule: small, batched, consent-gated on the client).
  */
 export function slowestResources(
-  entries: Array<{ name: string; initiatorType?: string; duration?: number; transferSize?: number }>,
-  limit = 5,
+  entries: Array<{
+    name: string;
+    initiatorType?: string;
+    duration?: number;
+    transferSize?: number;
+  }>,
+  limit = 5
 ): ResourceSummary[] {
   return entries
     .filter((entry) => (entry.duration ?? 0) > 0)

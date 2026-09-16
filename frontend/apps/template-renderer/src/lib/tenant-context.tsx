@@ -11,13 +11,7 @@
  */
 'use client';
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-} from 'react';
+import { createContext, useContext, useEffect, useMemo, useRef } from 'react';
 import type { PublicTenant, Vertical } from '@journeyoflife-org/tenant-resolver';
 
 interface TenantContextValue {
@@ -50,7 +44,7 @@ export function TenantProvider({ tenant, children }: TenantProviderProps) {
       tenant,
       hasFeature: (feature: string) => tenant.features.includes(feature),
     }),
-    [tenant],
+    [tenant]
   );
 
   return <TenantContext.Provider value={value}>{children}</TenantContext.Provider>;

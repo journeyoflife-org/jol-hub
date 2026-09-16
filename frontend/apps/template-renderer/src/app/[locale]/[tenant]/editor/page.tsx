@@ -50,7 +50,9 @@ export default async function EditorPage({
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-12">
-      <h1 className="mb-2 font-heading text-2xl font-bold">{translate(messages, 'auth.editorTitle')}</h1>
+      <h1 className="font-heading mb-2 text-2xl font-bold">
+        {translate(messages, 'auth.editorTitle')}
+      </h1>
       <p className="mb-6 text-sm text-neutral-500 dark:text-neutral-400">
         {translate(messages, 'auth.editorModerationNote')}
       </p>
@@ -68,7 +70,7 @@ export default async function EditorPage({
             basePath={basePath}
           />
           <section aria-labelledby="media-uploader-heading">
-            <h2 id="media-uploader-heading" className="mb-3 font-heading text-xl font-semibold">
+            <h2 id="media-uploader-heading" className="font-heading mb-3 text-xl font-semibold">
               {translate(messages, 'editor.mediaSectionTitle')}
             </h2>
             <MediaUploader tenantSlug={tenant.slug} editorConfigured={isEditorConfigured()} />

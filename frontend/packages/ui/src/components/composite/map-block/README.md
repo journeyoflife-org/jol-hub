@@ -8,12 +8,12 @@ entity landings. The consent-gated interactive variant (external tiles) is
 
 ## Consuming pages (traceability)
 
-| Package | Page | Usage |
-|---|---|---|
-| 03 | Basilica landing | `map` module (lightweight location map) |
-| 04 | Cathedral landing | same composition |
-| 07 | Parish church landing | same composition |
-| 12 | Cemetery services | location map (CemeteryMapCanvas remains the large interactive plan, separate backlog) |
+| Package | Page                  | Usage                                                                                 |
+| ------- | --------------------- | ------------------------------------------------------------------------------------- |
+| 03      | Basilica landing      | `map` module (lightweight location map)                                               |
+| 04      | Cathedral landing     | same composition                                                                      |
+| 07      | Parish church landing | same composition                                                                      |
+| 12      | Cemetery services     | location map (CemeteryMapCanvas remains the large interactive plan, separate backlog) |
 
 Renderer module mapping: `map` module, `static` variant (default).
 

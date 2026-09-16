@@ -48,9 +48,7 @@ describe('health endpoint', () => {
 
   it('health.should.return 503 when the critical backend is down', async () => {
     server.use(
-      http.get(`${MOCK_BACKEND_URL}/api/health`, () =>
-        new HttpResponse(null, { status: 500 }),
-      ),
+      http.get(`${MOCK_BACKEND_URL}/api/health`, () => new HttpResponse(null, { status: 500 }))
     );
     vi.stubEnv('BACKEND_API_URL', MOCK_BACKEND_URL);
     vi.resetModules();
@@ -64,9 +62,7 @@ describe('health endpoint', () => {
   });
 
   it('health.should.pass when the backend probe succeeds', async () => {
-    server.use(
-      http.get(`${MOCK_BACKEND_URL}/api/health`, () => HttpResponse.json({ ok: true })),
-    );
+    server.use(http.get(`${MOCK_BACKEND_URL}/api/health`, () => HttpResponse.json({ ok: true })));
     vi.stubEnv('BACKEND_API_URL', MOCK_BACKEND_URL);
     vi.resetModules();
     const { GET } = await import('@/app/api/health/route');
@@ -104,7 +100,7 @@ describe('telemetry errors ingress', () => {
     vi.resetModules();
     const { POST } = await import('@/app/api/telemetry/errors/route');
     const response = await POST(
-      jsonReq('POST', '/api/telemetry/errors', { ...VALID_REPORT, category: 'exotic' }),
+      jsonReq('POST', '/api/telemetry/errors', { ...VALID_REPORT, category: 'exotic' })
     );
     expect(response.status).toBe(400);
   });
@@ -113,7 +109,7 @@ describe('telemetry errors ingress', () => {
     vi.resetModules();
     const { POST } = await import('@/app/api/telemetry/errors/route');
     const response = await POST(
-      jsonReq('POST', '/api/telemetry/errors', { ...VALID_REPORT, stack: 'x'.repeat(5000) }),
+      jsonReq('POST', '/api/telemetry/errors', { ...VALID_REPORT, stack: 'x'.repeat(5000) })
     );
     expect(response.status).toBe(400);
   });
@@ -126,7 +122,7 @@ describe('telemetry errors ingress', () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: '{broken',
-      }),
+      })
     );
     expect(response.status).toBe(400);
   });
@@ -137,7 +133,7 @@ describe('telemetry errors ingress', () => {
       http.post(`${MOCK_BACKEND_URL}/api/v1/telemetry/errors`, async ({ request }) => {
         received = await request.json();
         return new HttpResponse(null, { status: 204 });
-      }),
+      })
     );
     vi.stubEnv('BACKEND_API_URL', MOCK_BACKEND_URL);
     vi.resetModules();
@@ -147,7 +143,7 @@ describe('telemetry errors ingress', () => {
         ...VALID_REPORT,
         // PII smuggled in the message must be defused before forwarding.
         message: 'failed for user@example.lt on +370 600 12345',
-      }),
+      })
     );
     expect(response.status).toBe(204);
     const body = received as { message: string };

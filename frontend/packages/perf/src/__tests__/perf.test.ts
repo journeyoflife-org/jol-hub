@@ -62,11 +62,14 @@ test('rejects malformed budgets loudly', () => {
       parseLighthouseBudgets([
         { path: '/*', resourceSizes: [{ resourceType: 'scripts', budget: 1 }] },
       ]),
-    /resourceType/,
+    /resourceType/
   );
   assert.throws(
-    () => parseLighthouseBudgets([{ path: '/*', resourceSizes: [{ resourceType: 'script', budget: -5 }] }]),
-    /budget/,
+    () =>
+      parseLighthouseBudgets([
+        { path: '/*', resourceSizes: [{ resourceType: 'script', budget: -5 }] },
+      ]),
+    /budget/
   );
 });
 
@@ -98,7 +101,7 @@ test('computeRouteFootprints sums gzipped assets per route, dedupes, skips non-u
     },
   };
   const footprints = computeRouteFootprints(manifest, (rel) =>
-    assets[rel] ? Buffer.from(assets[rel]) : null,
+    assets[rel] ? Buffer.from(assets[rel]) : null
   );
   assert.equal(footprints.length, 1);
   const home = footprints[0];
@@ -107,9 +110,8 @@ test('computeRouteFootprints sums gzipped assets per route, dedupes, skips non-u
   assert.ok(home.jsGzipBytes > 0);
   assert.ok(home.cssGzipBytes > 0);
   // Dedupe: a.js counted once (measure both and compare).
-  const aOnly = computeRouteFootprints(
-    { pages: { '/x': ['static/chunks/a.js'] } },
-    (rel) => (assets[rel] ? Buffer.from(assets[rel]) : null),
+  const aOnly = computeRouteFootprints({ pages: { '/x': ['static/chunks/a.js'] } }, (rel) =>
+    assets[rel] ? Buffer.from(assets[rel]) : null
   )[0];
   assert.ok(home.jsGzipBytes > (aOnly?.jsGzipBytes ?? 0)); // a + b > a
 });

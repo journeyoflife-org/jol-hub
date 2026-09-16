@@ -93,27 +93,32 @@ export const MOCK_MEDIA_LIBRARY = [
  */
 export const backendHandlers = [
   http.get(`${MOCK_BACKEND_URL}/api/v1/editor/pages/:pageId/draft`, () =>
-    HttpResponse.json(MOCK_DRAFT),
+    HttpResponse.json(MOCK_DRAFT)
   ),
   http.post(`${MOCK_BACKEND_URL}/api/v1/editor/pages/:pageId/draft`, () =>
-    HttpResponse.json(MOCK_DRAFT, { status: 201 }),
+    HttpResponse.json(MOCK_DRAFT, { status: 201 })
   ),
   http.post(`${MOCK_BACKEND_URL}/api/v1/editor/pages/:pageId/publish`, () =>
-    HttpResponse.json({ itemId: 'mod-1' }, { status: 202 }),
+    HttpResponse.json({ itemId: 'mod-1' }, { status: 202 })
   ),
   http.get(`${MOCK_BACKEND_URL}/api/v1/editor/moderation-queue`, () =>
-    HttpResponse.json(MOCK_MODERATION_QUEUE),
+    HttpResponse.json(MOCK_MODERATION_QUEUE)
   ),
-  http.post(`${MOCK_BACKEND_URL}/api/v1/editor/moderation/:itemId/:action`, () =>
-    new HttpResponse(null, { status: 204 }),
+  http.post(
+    `${MOCK_BACKEND_URL}/api/v1/editor/moderation/:itemId/:action`,
+    () => new HttpResponse(null, { status: 204 })
   ),
   http.get(`${MOCK_BACKEND_URL}/api/v1/editor/media/library`, () =>
-    HttpResponse.json(MOCK_MEDIA_LIBRARY),
+    HttpResponse.json(MOCK_MEDIA_LIBRARY)
   ),
   http.post(`${MOCK_BACKEND_URL}/api/v1/editor/media/upload`, () =>
-    HttpResponse.json({ ...MOCK_MEDIA_LIBRARY[0], id: 'media-new', state: 'quarantined' }, { status: 202 }),
+    HttpResponse.json(
+      { ...MOCK_MEDIA_LIBRARY[0], id: 'media-new', state: 'quarantined' },
+      { status: 202 }
+    )
   ),
-  http.post(`${MOCK_BACKEND_URL}/api/v1/perf/web-vitals`, () =>
-    new HttpResponse(null, { status: 204 }),
+  http.post(
+    `${MOCK_BACKEND_URL}/api/v1/perf/web-vitals`,
+    () => new HttpResponse(null, { status: 204 })
   ),
 ];

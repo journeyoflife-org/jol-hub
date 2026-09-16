@@ -79,7 +79,7 @@ export function parseLighthouseBudgets(raw: unknown): LighthouseBudget[] {
 /** Extract one resource budget (KiB) from a parsed budget set. */
 export function resourceBudgetKiB(
   budgets: LighthouseBudget[],
-  resourceType: BudgetResourceType,
+  resourceType: BudgetResourceType
 ): number | undefined {
   for (const budget of budgets) {
     const entry = budget.resourceSizes.find((size) => size.resourceType === resourceType);
@@ -91,7 +91,7 @@ export function resourceBudgetKiB(
 /** Extract one timing budget from a parsed budget set. */
 export function timingBudget(
   budgets: LighthouseBudget[],
-  metric: BudgetTimingMetric,
+  metric: BudgetTimingMetric
 ): number | undefined {
   for (const budget of budgets) {
     const entry = budget.timings?.find((timing) => timing.metric === metric);

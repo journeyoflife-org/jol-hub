@@ -7,10 +7,10 @@ renderer via the SEO builder — this component is presentation-only.
 
 ## Consuming pages (traceability)
 
-| Package | Page | Usage |
-|---|---|---|
-| 24 | Courses/education page | primary list module |
-| 07 | Parish church landing | optional faith-formation block (same component) |
+| Package | Page                   | Usage                                           |
+| ------- | ---------------------- | ----------------------------------------------- |
+| 24      | Courses/education page | primary list module                             |
+| 07      | Parish church landing  | optional faith-formation block (same component) |
 
 Renderer module mapping: `course-list`.
 

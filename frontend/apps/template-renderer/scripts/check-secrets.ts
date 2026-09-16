@@ -23,14 +23,29 @@ const SCAN_EXTENSIONS = new Set(['.js', '.mjs', '.json', '.html', '.css', '.map'
 const MAX_FILE_BYTES = 4 * 1024 * 1024;
 
 const SECRET_KEY_PATTERN = /SECRET|TOKEN|PASSWORD|PRIVATE|CREDENTIAL|API_KEY/i;
-const PLACEHOLDER_VALUES = new Set(['', 'changeme', 'change-me', 'placeholder', 'example', 'x', 'test']);
+const PLACEHOLDER_VALUES = new Set([
+  '',
+  'changeme',
+  'change-me',
+  'placeholder',
+  'example',
+  'x',
+  'test',
+]);
 
 const GENERIC_PATTERNS: Array<{ name: string; regex: RegExp }> = [
   { name: 'AWS access key', regex: /AKIA[0-9A-Z]{16}/ },
   // Requires real base64 key material after the header — jose/next-auth
   // bundles carry the bare header string as a format-detection constant.
-  { name: 'PEM private key', regex: /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----[A-Za-z0-9+/=\s]{60,}/ },
-  { name: 'secret assignment', regex: /(?:NEXTAUTH_SECRET|JOL_AUTH_CLIENT_SECRET|OIDC_CLIENT_SECRET|BITRIX_WEBHOOK_URL)\s*[:=]\s*["'][A-Za-z0-9+/_-]{16,}["']/ },
+  {
+    name: 'PEM private key',
+    regex: /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----[A-Za-z0-9+/=\s]{60,}/,
+  },
+  {
+    name: 'secret assignment',
+    regex:
+      /(?:NEXTAUTH_SECRET|JOL_AUTH_CLIENT_SECRET|OIDC_CLIENT_SECRET|BITRIX_WEBHOOK_URL)\s*[:=]\s*["'][A-Za-z0-9+/_-]{16,}["']/,
+  },
 ];
 
 interface Finding {
@@ -108,7 +123,9 @@ async function main(): Promise<void> {
     process.exit(1);
   }
 
-  console.log(`✓ no secrets in build output (${scanned} files scanned, ${envSecrets.length} env secrets checked)`);
+  console.log(
+    `✓ no secrets in build output (${scanned} files scanned, ${envSecrets.length} env secrets checked)`
+  );
 }
 
 void main();

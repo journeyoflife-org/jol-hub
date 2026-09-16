@@ -34,7 +34,7 @@ export function readPage(params: SearchParams | undefined, key = 'page'): number
 export function collectionHref(
   basePath: string,
   route: string,
-  params: Record<string, string | number | undefined>,
+  params: Record<string, string | number | undefined>
 ): string {
   const search = new URLSearchParams();
   for (const [key, value] of Object.entries(params)) {
@@ -64,6 +64,6 @@ export function weekdayLabels(locale: SupportedLocale): string[] {
 export function monthLabel(locale: SupportedLocale, year: number, month: number): string {
   const tag = LOCALE_HREFLANG[locale];
   return new Intl.DateTimeFormat(tag, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(
-    new Date(Date.UTC(year, month, 1)),
+    new Date(Date.UTC(year, month, 1))
   );
 }

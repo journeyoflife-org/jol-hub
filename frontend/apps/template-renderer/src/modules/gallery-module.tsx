@@ -32,7 +32,10 @@ export default function GalleryModule({ content }: ModuleProps) {
     // CLS + a11y contract: src, alt, width, height are ALL required.
     .filter(
       (image) =>
-        asString(image.src) && asString(image.alt) && asNumber(image.width) && asNumber(image.height),
+        asString(image.src) &&
+        asString(image.alt) &&
+        asNumber(image.width) &&
+        asNumber(image.height)
     )
     .map((image) => ({
       src: asString(image.src) as string,

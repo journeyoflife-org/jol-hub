@@ -18,7 +18,7 @@ export interface BaseEntity {
   countryCode: string;
 }
 
-export type EntityStatus = 
+export type EntityStatus =
   | 'draft'
   | 'pending_approval'
   | 'approved'
@@ -159,7 +159,7 @@ export interface AdminUser {
   avatar?: string;
 }
 
-export type AdminRole = 
+export type AdminRole =
   | 'super_admin'
   | 'country_admin'
   | 'diocese_admin'

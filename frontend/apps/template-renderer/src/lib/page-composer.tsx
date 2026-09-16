@@ -42,7 +42,7 @@ async function renderModule(
   module: Module,
   tenant: Tenant,
   locale: SupportedLocale,
-  basePath: string,
+  basePath: string
 ): Promise<ReactElement | null> {
   const Component = getModuleComponent(module.type);
   if (!Component) return null;
@@ -70,11 +70,11 @@ async function renderModule(
 export async function PageComposer({ config, tenant, locale, basePath }: PageComposerProps) {
   // Visible + entitled modules, in JOL-controlled order.
   const active = config.modules.filter(
-    (module) => module.visible !== false && isModuleEntitled(module.type, tenant.features),
+    (module) => module.visible !== false && isModuleEntitled(module.type, tenant.features)
   );
 
   const rendered = await Promise.all(
-    active.map((module) => renderModule(module, tenant, locale, basePath)),
+    active.map((module) => renderModule(module, tenant, locale, basePath))
   );
   const blocks = rendered.filter((block): block is ReactElement => block !== null);
 

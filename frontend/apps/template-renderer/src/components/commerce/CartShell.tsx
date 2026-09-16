@@ -54,7 +54,9 @@ export function CartShell({ locale = 'lt', termsUrl = '#', refundUrl = '#' }: Ca
         </div>
 
         {isEmpty ? (
-          <p className="p-6 text-center text-sm text-neutral-500 dark:text-neutral-400">{t('cartEmpty')}</p>
+          <p className="p-6 text-center text-sm text-neutral-500 dark:text-neutral-400">
+            {t('cartEmpty')}
+          </p>
         ) : (
           <>
             <ul className="flex-1 divide-y divide-neutral-200 overflow-y-auto p-4 dark:divide-neutral-800">
@@ -67,7 +69,9 @@ export function CartShell({ locale = 'lt', termsUrl = '#', refundUrl = '#' }: Ca
                         {item.name}
                       </p>
                       {item.variant ? (
-                        <p className="text-xs text-neutral-500 dark:text-neutral-400">{item.variant}</p>
+                        <p className="text-xs text-neutral-500 dark:text-neutral-400">
+                          {item.variant}
+                        </p>
                       ) : null}
                       <p className="text-sm text-neutral-600 dark:text-neutral-300">
                         {formatEur(item.unitPrice, locale)}
@@ -126,7 +130,9 @@ export function CartShell({ locale = 'lt', termsUrl = '#', refundUrl = '#' }: Ca
               </Button>
 
               {!checkoutReady ? (
-                <p className="mt-2 text-xs text-neutral-500 dark:text-neutral-400">{t('paymentsPending')}</p>
+                <p className="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
+                  {t('paymentsPending')}
+                </p>
               ) : null}
 
               <p className="mt-3 text-center text-xs text-neutral-500 dark:text-neutral-400">

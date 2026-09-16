@@ -141,9 +141,14 @@ describe('INV-3: Payment boundary CLOSED', () => {
         const fullPath = join(dir, entry.name);
         const relPath = join(relBase, entry.name);
         // Skip node_modules, dist, .next, test files
-        if (relPath.includes('node_modules') || relPath.includes('dist') ||
-            relPath.includes('.next') || relPath.includes('.test.') ||
-            relPath.includes('.spec.')) continue;
+        if (
+          relPath.includes('node_modules') ||
+          relPath.includes('dist') ||
+          relPath.includes('.next') ||
+          relPath.includes('.test.') ||
+          relPath.includes('.spec.')
+        )
+          continue;
         try {
           const content = readFileSync(fullPath, 'utf-8');
           for (const pattern of FORBIDDEN_PATTERNS) {
@@ -165,9 +170,14 @@ describe('INV-3: Payment boundary CLOSED', () => {
 
   it('no PSP packages in any package.json dependencies', () => {
     const FORBIDDEN_DEPS = [
-      'stripe', '@stripe/stripe-js', '@stripe/react-stripe-js',
-      '@paypal/react-paypal-js', '@paypal/sdk-client',
-      '@adyen/adyen-web', 'square', '@square/web-sdk',
+      'stripe',
+      '@stripe/stripe-js',
+      '@stripe/react-stripe-js',
+      '@paypal/react-paypal-js',
+      '@paypal/sdk-client',
+      '@adyen/adyen-web',
+      'square',
+      '@square/web-sdk',
     ];
 
     const violations: string[] = [];
@@ -192,10 +202,7 @@ describe('INV-3: Payment boundary CLOSED', () => {
 
     // Check all packages
     for (const pkg of EXPECTED_PACKAGES) {
-      checkPkgJson(
-        join(PACKAGES_DIR, pkg, 'package.json'),
-        `packages/${pkg}/package.json`,
-      );
+      checkPkgJson(join(PACKAGES_DIR, pkg, 'package.json'), `packages/${pkg}/package.json`);
     }
 
     expect(violations).toEqual([]);
@@ -228,8 +235,12 @@ describe('INV-5: Theme vertical (no denomination literals)', () => {
         if (!entry.isFile()) continue;
         if (!/\.(ts|tsx)$/.test(entry.name)) continue;
         // Skip test files and fixture files
-        if (entry.name.includes('.test.') || entry.name.includes('.spec.') ||
-            entry.name.includes('fixture')) continue;
+        if (
+          entry.name.includes('.test.') ||
+          entry.name.includes('.spec.') ||
+          entry.name.includes('fixture')
+        )
+          continue;
         const fullPath = join(dir, entry.name);
         const relPath = join(relBase, entry.name);
         try {
@@ -271,7 +282,10 @@ describe('INV-7: Uniform stack', () => {
     // React is declared in individual packages, not the root workspace
     const uiPkg = join(PACKAGES_DIR, 'ui', 'package.json');
     const manifest = JSON.parse(readFileSync(uiPkg, 'utf-8'));
-    const reactDep = manifest.dependencies?.react || manifest.devDependencies?.react || manifest.peerDependencies?.react;
+    const reactDep =
+      manifest.dependencies?.react ||
+      manifest.devDependencies?.react ||
+      manifest.peerDependencies?.react;
     expect(reactDep).toMatch(/\^?18\./);
   });
 });
@@ -289,8 +303,16 @@ describe('INV-9: GDPR Art. 9 (ROPA records)', () => {
 
   it('each vertical has a ROPA subdirectory', () => {
     const expectedVerticals = [
-      'basilica', 'cathedral', 'diocese', 'deanery', 'church',
-      'funeral', 'cemetery-cleaning', 'protestant', 'orthodox', 'other-church',
+      'basilica',
+      'cathedral',
+      'diocese',
+      'deanery',
+      'church',
+      'funeral',
+      'cemetery-cleaning',
+      'protestant',
+      'orthodox',
+      'other-church',
     ];
 
     const missing: string[] = [];
@@ -380,7 +402,11 @@ describe('INV-11: Reversibility (package resolution)', () => {
       };
 
       for (const [dep, version] of Object.entries(allDeps)) {
-        if (dep.startsWith('@journeyoflife-org/') && typeof version === 'string' && !version.startsWith('workspace:')) {
+        if (
+          dep.startsWith('@journeyoflife-org/') &&
+          typeof version === 'string' &&
+          !version.startsWith('workspace:')
+        ) {
           violations.push(`${pkg}: ${dep}@${version} should use workspace: protocol`);
         }
       }

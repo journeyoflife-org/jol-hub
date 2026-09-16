@@ -32,23 +32,25 @@ export function FlowerOrderForm({ obituaries }: FlowerOrderFormProps) {
 
   if (submitted) {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-        <Flower className="h-12 w-12 mx-auto mb-4 text-green-600" />
-        <p className="text-green-800 font-medium">Thank you for your order!</p>
-        <p className="text-green-700 text-sm mt-2">You will receive a confirmation email shortly.</p>
+      <div className="rounded-lg border border-green-200 bg-green-50 p-6 text-center">
+        <Flower className="mx-auto mb-4 h-12 w-12 text-green-600" />
+        <p className="font-medium text-green-800">Thank you for your order!</p>
+        <p className="mt-2 text-sm text-green-700">
+          You will receive a confirmation email shortly.
+        </p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 bg-white rounded-lg p-6 border">
+    <form onSubmit={handleSubmit} className="space-y-4 rounded-lg border bg-white p-6">
       <div>
         <Label htmlFor="obituary">For Whom</Label>
         <select
           id="obituary"
           value={selectedObituary}
           onChange={(e) => setSelectedObituary(e.target.value)}
-          className="w-full mt-1 p-2 border rounded-md"
+          className="mt-1 w-full rounded-md border p-2"
           required
         >
           <option value="">-- Select --</option>
@@ -65,7 +67,7 @@ export function FlowerOrderForm({ obituaries }: FlowerOrderFormProps) {
           id="package"
           value={selectedPackage}
           onChange={(e) => setSelectedPackage(e.target.value)}
-          className="w-full mt-1 p-2 border rounded-md"
+          className="mt-1 w-full rounded-md border p-2"
           required
         >
           <option value="">-- Select --</option>
@@ -102,11 +104,13 @@ export function FlowerOrderForm({ obituaries }: FlowerOrderFormProps) {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           rows={2}
-          className="w-full mt-1 p-2 border rounded-md"
+          className="mt-1 w-full rounded-md border p-2"
           placeholder="With deepest sympathy..."
         />
       </div>
-      <Button type="submit" className="w-full">Order Flowers</Button>
+      <Button type="submit" className="w-full">
+        Order Flowers
+      </Button>
     </form>
   );
 }

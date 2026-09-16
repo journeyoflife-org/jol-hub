@@ -66,15 +66,25 @@ export function mapTenantVertical(vertical?: string): VerticalOverride | undefin
 }
 
 /** Recursive merge — `source` leaves win; nested objects merge deeply. */
-export function deepMerge<T extends Record<string, unknown>>(target: T, source: Record<string, unknown>): T {
+export function deepMerge<T extends Record<string, unknown>>(
+  target: T,
+  source: Record<string, unknown>
+): T {
   const result: Record<string, unknown> = { ...target };
   for (const [key, value] of Object.entries(source)) {
     const existing = result[key];
     if (
-      value && typeof value === 'object' && !Array.isArray(value) &&
-      existing && typeof existing === 'object' && !Array.isArray(existing)
+      value &&
+      typeof value === 'object' &&
+      !Array.isArray(value) &&
+      existing &&
+      typeof existing === 'object' &&
+      !Array.isArray(existing)
     ) {
-      result[key] = deepMerge(existing as Record<string, unknown>, value as Record<string, unknown>);
+      result[key] = deepMerge(
+        existing as Record<string, unknown>,
+        value as Record<string, unknown>
+      );
     } else {
       result[key] = value;
     }
@@ -96,7 +106,10 @@ export interface GetMessagesOptions {
  * Vertical-only merges are cached; tenant overrides are merged fresh
  * (unbounded key-space).
  */
-export function getMessages(locale: SupportedLocale, options: GetMessagesOptions = {}): MessageCatalog {
+export function getMessages(
+  locale: SupportedLocale,
+  options: GetMessagesOptions = {}
+): MessageCatalog {
   const vertical = mapTenantVertical(options.vertical);
 
   if (!options.tenantOverrides) {
@@ -140,11 +153,10 @@ export function translateWithValues(
   catalog: MessageCatalog,
   locale: SupportedLocale,
   key: string,
-  values: TranslationValues,
+  values: TranslationValues
 ): string {
   const [namespace, ...rest] = key.split('.');
-  const pattern =
-    namespace && rest.length > 0 ? catalog[namespace]?.[rest.join('.')] : undefined;
+  const pattern = namespace && rest.length > 0 ? catalog[namespace]?.[rest.join('.')] : undefined;
   if (pattern === undefined) return key;
   if (!pattern.includes('{')) return pattern;
   const formatter = new IntlMessageFormat(pattern, locale);

@@ -15,15 +15,7 @@ import { AreaChartComponent, BarChartComponent, PieChartComponent } from '@/comp
 import { CHART_COLORS } from '@/components/charts';
 import { useAnalyticsOverview, useEntityAnalytics, useDonationAnalytics } from '@/lib/hooks';
 import { formatNumber, formatCurrency } from '@/lib/utils';
-import {
-  Users,
-  Church,
-  CreditCard,
-  Globe,
-  Calendar,
-  Download,
-  RefreshCw,
-} from 'lucide-react';
+import { Users, Church, CreditCard, Globe, Calendar, Download, RefreshCw } from 'lucide-react';
 import { EU_COUNTRIES } from '@/lib/countries';
 
 // =============================================================================
@@ -35,7 +27,7 @@ import { EU_COUNTRIES } from '@/lib/countries';
 export default function AnalyticsPage() {
   const [timeRange, setTimeRange] = useState<'7d' | '30d' | '90d' | '1y'>('30d');
   const [selectedCountry, setSelectedCountry] = useState<string>('');
-  
+
   const { data: overview, refetch } = useAnalyticsOverview(timeRange);
   const { data: entities } = useEntityAnalytics(timeRange, selectedCountry);
   const { data: donations } = useDonationAnalytics(timeRange, selectedCountry);
@@ -46,33 +38,37 @@ export default function AnalyticsPage() {
   const totalDonations = overview?.donations?.reduce((sum, d) => sum + d.amount, 0) ?? 0;
 
   // Transform data for charts
-  const growthChartData = overview?.parishes?.map((item, index) => ({
-    date: new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-    parishes: item.count,
-    users: overview.users?.[index]?.count ?? 0,
-    donations: overview.donations?.[index]?.amount ?? 0,
-  })) ?? [];
+  const growthChartData =
+    overview?.parishes?.map((item, index) => ({
+      date: new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+      parishes: item.count,
+      users: overview.users?.[index]?.count ?? 0,
+      donations: overview.donations?.[index]?.amount ?? 0,
+    })) ?? [];
 
-  const entityDistributionData = entities?.byType?.map((item, index) => ({
-    name: item.type,
-    value: item.count,
-    color: CHART_COLORS.colors[index % CHART_COLORS.colors.length],
-  })) ?? [];
+  const entityDistributionData =
+    entities?.byType?.map((item, index) => ({
+      name: item.type,
+      value: item.count,
+      color: CHART_COLORS.colors[index % CHART_COLORS.colors.length],
+    })) ?? [];
 
-  const countryData = entities?.byCountry?.map((item) => ({
-    country: item.country,
-    parishes: item.parishCount,
-    users: item.userCount,
-  })) ?? [];
+  const countryData =
+    entities?.byCountry?.map((item) => ({
+      country: item.country,
+      parishes: item.parishCount,
+      users: item.userCount,
+    })) ?? [];
 
-  const donationByCountryData = donations?.byCountry?.map((item) => ({
-    country: item.country,
-    amount: item.totalAmount,
-    transactions: item.transactionCount,
-  })) ?? [];
+  const donationByCountryData =
+    donations?.byCountry?.map((item) => ({
+      country: item.country,
+      amount: item.totalAmount,
+      transactions: item.transactionCount,
+    })) ?? [];
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="space-y-6 p-6">
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -83,11 +79,11 @@ export default function AnalyticsPage() {
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" onClick={() => refetch()}>
-            <RefreshCw className="h-4 w-4 mr-2" />
+            <RefreshCw className="mr-2 h-4 w-4" />
             Refresh
           </Button>
           <Button variant="outline">
-            <Download className="h-4 w-4 mr-2" />
+            <Download className="mr-2 h-4 w-4" />
             Export Report
           </Button>
         </div>
@@ -98,8 +94,11 @@ export default function AnalyticsPage() {
         <CardContent className="py-4">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <Calendar className="h-4 w-4 text-muted-foreground" />
-              <Select value={timeRange} onValueChange={(v: string) => setTimeRange(v as typeof timeRange)}>
+              <Calendar className="text-muted-foreground h-4 w-4" />
+              <Select
+                value={timeRange}
+                onValueChange={(v: string) => setTimeRange(v as typeof timeRange)}
+              >
                 <SelectTrigger className="w-[120px]">
                   <SelectValue />
                 </SelectTrigger>
@@ -113,7 +112,7 @@ export default function AnalyticsPage() {
             </div>
 
             <div className="flex items-center gap-2">
-              <Globe className="h-4 w-4 text-muted-foreground" />
+              <Globe className="text-muted-foreground h-4 w-4" />
               <Select value={selectedCountry} onValueChange={setSelectedCountry}>
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="All Countries" />
@@ -137,58 +136,44 @@ export default function AnalyticsPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Entities</CardTitle>
-            <Church className="h-4 w-4 text-muted-foreground" />
+            <Church className="text-muted-foreground h-4 w-4" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
-              {formatNumber(totalParishes)}
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Parishes registered
-            </p>
+            <div className="text-2xl font-bold">{formatNumber(totalParishes)}</div>
+            <p className="text-muted-foreground text-xs">Parishes registered</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active Users</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
+            <Users className="text-muted-foreground h-4 w-4" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
-              {formatNumber(totalUsers)}
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Registered users
-            </p>
+            <div className="text-2xl font-bold">{formatNumber(totalUsers)}</div>
+            <p className="text-muted-foreground text-xs">Registered users</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Donations</CardTitle>
-            <CreditCard className="h-4 w-4 text-muted-foreground" />
+            <CreditCard className="text-muted-foreground h-4 w-4" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
-              {formatCurrency(totalDonations)}
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Total processed
-            </p>
+            <div className="text-2xl font-bold">{formatCurrency(totalDonations)}</div>
+            <p className="text-muted-foreground text-xs">Total processed</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Countries</CardTitle>
-            <Globe className="h-4 w-4 text-muted-foreground" />
+            <Globe className="text-muted-foreground h-4 w-4" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{EU_COUNTRIES.length}</div>
-            <p className="text-xs text-muted-foreground">
-              EU member states
-            </p>
+            <p className="text-muted-foreground text-xs">EU member states</p>
           </CardContent>
         </Card>
       </div>
@@ -222,7 +207,7 @@ export default function AnalyticsPage() {
                     showLegend={true}
                   />
                 ) : (
-                  <div className="h-[300px] flex items-center justify-center text-muted-foreground">
+                  <div className="text-muted-foreground flex h-[300px] items-center justify-center">
                     No data available
                   </div>
                 )}
@@ -236,13 +221,9 @@ export default function AnalyticsPage() {
               </CardHeader>
               <CardContent>
                 {entityDistributionData.length > 0 ? (
-                  <PieChartComponent
-                    data={entityDistributionData}
-                    height={300}
-                    showLegend={true}
-                  />
+                  <PieChartComponent data={entityDistributionData} height={300} showLegend={true} />
                 ) : (
-                  <div className="h-[300px] flex items-center justify-center text-muted-foreground">
+                  <div className="text-muted-foreground flex h-[300px] items-center justify-center">
                     No data available
                   </div>
                 )}
@@ -274,14 +255,12 @@ export default function AnalyticsPage() {
                 <BarChartComponent
                   data={donationByCountryData}
                   xKey="country"
-                  bars={[
-                    { key: 'amount', name: 'Amount (€)', color: CHART_COLORS.colors[0] },
-                  ]}
+                  bars={[{ key: 'amount', name: 'Amount (€)', color: CHART_COLORS.colors[0] }]}
                   height={300}
                   showLegend={true}
                 />
               ) : (
-                <div className="h-[300px] flex items-center justify-center text-muted-foreground">
+                <div className="text-muted-foreground flex h-[300px] items-center justify-center">
                   No data available
                 </div>
               )}
@@ -308,7 +287,7 @@ export default function AnalyticsPage() {
                   showLegend={true}
                 />
               ) : (
-                <div className="h-[300px] flex items-center justify-center text-muted-foreground">
+                <div className="text-muted-foreground flex h-[300px] items-center justify-center">
                   No data available
                 </div>
               )}
@@ -321,8 +300,8 @@ export default function AnalyticsPage() {
       <Card className="border-blue-500/50 bg-blue-50 dark:bg-blue-950/20">
         <CardContent className="py-4">
           <p className="text-sm text-blue-800 dark:text-blue-200">
-            <strong>GDPR Article 44 Compliance:</strong> All analytics data shown on this page is 
-            aggregated and anonymized. No personally identifiable information (PII) is displayed. 
+            <strong>GDPR Article 44 Compliance:</strong> All analytics data shown on this page is
+            aggregated and anonymized. No personally identifiable information (PII) is displayed.
             Data is scoped by country to ensure data residency compliance.
           </p>
         </CardContent>

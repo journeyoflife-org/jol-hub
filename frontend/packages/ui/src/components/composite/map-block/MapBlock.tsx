@@ -33,7 +33,12 @@ export function MapBlock({
   const t = useTranslations('collections');
 
   return (
-    <figure className={cn('overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800', className)}>
+    <figure
+      className={cn(
+        'overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800',
+        className
+      )}
+    >
       <div className={cn('relative w-full bg-neutral-100 dark:bg-neutral-900', ASPECTS[aspect])}>
         <svg
           role="img"
@@ -42,7 +47,12 @@ export function MapBlock({
           className="absolute inset-0 h-full w-full"
         >
           {/* Static street-grid suggestion — decorative, generated locally. */}
-          <g aria-hidden="true" stroke="currentColor" strokeWidth="1" className="text-neutral-300 dark:text-neutral-700">
+          <g
+            aria-hidden="true"
+            stroke="currentColor"
+            strokeWidth="1"
+            className="text-neutral-300 dark:text-neutral-700"
+          >
             {[50, 100, 150, 200, 250, 300, 350].map((x) => (
               <line key={`v${x}`} x1={x} y1="0" x2={x} y2="300" />
             ))}
@@ -73,7 +83,7 @@ export function MapBlock({
             rel="noopener noreferrer"
             className={cn(
               'focus-ring inline-flex min-h-[24px] items-center gap-1 self-start rounded-sm underline-offset-2 hover:underline',
-              accentTextClass(tenant),
+              accentTextClass(tenant)
             )}
           >
             <ExternalLink aria-hidden="true" className="h-4 w-4 shrink-0" />

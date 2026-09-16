@@ -14,7 +14,11 @@
 'use client';
 
 import { useEffect } from 'react';
-import { computeNavigationPhases, createMetricBatcher, slowestResources } from '@journeyoflife-org/observability';
+import {
+  computeNavigationPhases,
+  createMetricBatcher,
+  slowestResources,
+} from '@journeyoflife-org/observability';
 import { initErrorTracking } from '@/lib/error-tracking';
 
 const CONSENT_STORAGE_KEY = 'jol-cookie-consent';

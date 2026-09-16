@@ -50,9 +50,12 @@ export const authOptions: NextAuthOptions = {
         }
 
         // Development mock authentication (when backend is unavailable)
-        if (process.env.NODE_ENV === 'development' || process.env.NEXT_PUBLIC_MOCK_AUTH === 'true') {
+        if (
+          process.env.NODE_ENV === 'development' ||
+          process.env.NEXT_PUBLIC_MOCK_AUTH === 'true'
+        ) {
           console.log('[AUTH] Using mock authentication for development');
-          
+
           // Mock users for development
           const mockUsers: Record<string, AdminUser> = {
             'admin@jol-hub.eu': {
@@ -79,7 +82,7 @@ export const authOptions: NextAuthOptions = {
           if (mockUser && credentials.password === 'admin123') {
             return mockUser;
           }
-          
+
           // If mock fails, try real backend
           console.log('[AUTH] Mock auth failed, trying backend...');
         }

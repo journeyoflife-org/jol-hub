@@ -1,10 +1,10 @@
 /**
  * Dynamic parish layout for multi-tenant JOL-HUB.
- * 
+ *
  * This layout is used for all parish subdomain routes.
  * It fetches parish configuration, applies themes, and provides
  * the ParishProvider context.
- * 
+ *
  * PERFORMANCE:
  * - Static generation with ISR (1 hour revalidation)
  * - 5-minute cache for parish config
@@ -41,13 +41,11 @@ interface ParishLayoutProps {
 
 /**
  * Generates metadata for the parish page.
- * 
+ *
  * @param props - Layout props with params
  * @returns Metadata object
  */
-export async function generateMetadata(
-  props: ParishLayoutProps
-): Promise<Metadata> {
+export async function generateMetadata(props: ParishLayoutProps): Promise<Metadata> {
   const { params } = props;
   const parish = await resolveParish(params.parish);
 
@@ -66,7 +64,9 @@ export async function generateMetadata(
       default: `${parish.name} ${seasonEmoji} | JOL-HUB`,
       template: `%s | ${parish.name} | JOL-HUB`,
     },
-    description: parish.description ?? `Welcome to ${parish.name}. Find mass schedules, announcements, and parish information.`,
+    description:
+      parish.description ??
+      `Welcome to ${parish.name}. Find mass schedules, announcements, and parish information.`,
     keywords: [
       parish.name,
       'Catholic',
@@ -106,9 +106,7 @@ export async function generateMetadata(
 /**
  * Generates viewport configuration.
  */
-export async function generateViewport(
-  props: ParishLayoutProps
-): Promise<Viewport> {
+export async function generateViewport(props: ParishLayoutProps): Promise<Viewport> {
   const { params } = props;
   const parish = await resolveParish(params.parish);
 
@@ -126,18 +124,16 @@ export async function generateViewport(
 
 /**
  * Parish layout component.
- * 
+ *
  * Fetches parish configuration and wraps children with:
  * - Theme CSS variables
  * - ParishProvider context
  * - Error handling (404 if parish not found)
- * 
+ *
  * @param props - Layout props
  * @returns JSX element
  */
-export default async function ParishLayout(
-  props: ParishLayoutProps
-): Promise<JSX.Element> {
+export default async function ParishLayout(props: ParishLayoutProps): Promise<JSX.Element> {
   const { children, params } = props;
 
   // Fetch parish configuration
@@ -159,9 +155,7 @@ export default async function ParishLayout(
       data-parish-subdomain={parish.subdomain}
       data-diocese-id={parish.dioceseId}
     >
-      <ParishProvider parish={parish}>
-        {children}
-      </ParishProvider>
+      <ParishProvider parish={parish}>{children}</ParishProvider>
     </div>
   );
 }
@@ -172,7 +166,7 @@ export default async function ParishLayout(
 
 /**
  * Static params for all mock parishes.
- * 
+ *
  * In production, this should fetch from API/Redis.
  */
 export async function generateStaticParams(): Promise<Array<{ parish: string }>> {
