@@ -1,0 +1,206 @@
+/**
+ * JOL Design System — global base styles.
+ *
+ * Consumed by apps via `import '@jol-hub/ui/styles/globals.css'` together
+ * with the generated `@jol-hub/ui/styles/tokens.css`.
+ *
+ * Principles:
+ * - Specific, accessible reset (no blanket `* { margin: 0 }`).
+ * - CSS logical properties for RTL readiness (27-locale roadmap).
+ * - Consistent, always-visible `:focus-visible` indicators (WCAG 2.2 AA).
+ * - No `!important`, ever.
+ */
+
+/* ------------------------------------------------------------------ */
+/* Modern reset (targeted, not blanket)                                */
+/* ------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  tab-size: 4;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--jol-surface);
+  color: var(--jol-text);
+  font-family: var(--jol-font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-block: 0;
+  font-family: var(--jol-font-serif);
+  overflow-wrap: break-word;
+}
+
+p,
+blockquote,
+figure {
+  margin-block: 0;
+  overflow-wrap: break-word;
+}
+
+ul,
+ol,
+menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  margin: 0;
+}
+
+button,
+[role='button'] {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+a {
+  color: var(--jol-link);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+table {
+  border-collapse: collapse;
+  inline-size: 100%;
+}
+
+/* ------------------------------------------------------------------ */
+/* Focus visibility (WCAG 2.2 AA — never remove without replacement)   */
+/* ------------------------------------------------------------------ */
+
+:focus-visible {
+  outline: 2px solid var(--jol-focus);
+  outline-offset: 2px;
+  border-radius: var(--jol-radius-sm);
+}
+
+.dark :focus-visible {
+  outline-color: var(--jol-focus);
+}
+
+/**
+ * `.focus-ring` — consistent focus indicator for custom controls that
+ * suppress the default outline (they MUST apply this class instead).
+ */
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: var(--jol-shadow-focus-light);
+}
+
+.dark .focus-ring:focus-visible {
+  box-shadow: var(--jol-shadow-focus-dark);
+}
+
+/* ------------------------------------------------------------------ */
+/* Selection                                                           */
+/* ------------------------------------------------------------------ */
+
+::selection {
+  background-color: var(--jol-color-primary-200);
+  color: var(--jol-color-primary-900);
+}
+
+.dark ::selection {
+  background-color: var(--jol-color-primary-700);
+  color: var(--jol-color-primary-50);
+}
+
+/* ------------------------------------------------------------------ */
+/* Accessibility utilities                                             */
+/* ------------------------------------------------------------------ */
+
+.sr-only {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.not-sr-only {
+  position: static;
+  inline-size: auto;
+  block-size: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip-path: none;
+  white-space: normal;
+}
+
+/* ------------------------------------------------------------------ */
+/* Liturgical typography roles                                         */
+/* ------------------------------------------------------------------ */
+
+.text-verse {
+  font-family: var(--jol-font-serif);
+  font-style: italic;
+  line-height: 2;
+}
+
+.text-prayer {
+  font-family: var(--jol-font-serif);
+  line-height: 2;
+  letter-spacing: 0.025em;
+}

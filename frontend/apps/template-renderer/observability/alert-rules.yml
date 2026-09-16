@@ -1,0 +1,143 @@
+# =============================================================================
+# JOL-HUB frontend alerting rules — STEP 16 (TASK 6).
+# =============================================================================
+# Prometheus rule file for the Grafana stack on Proxmox (jol-infrastructure
+# deploys it to prometheus: /etc/prometheus/rules/jol-frontend.yml).
+#
+# Severity ladder:
+#   P0 (page)     — immediate on-call; incident channel + runbook link
+#   P1 (business) — business-hours response
+#   P2 (perf)     — planned optimization
+#   P3 (warning)  — hygiene backlog
+#
+# Metric sources: Loki log-derived rates (frontend JSON-lines logs shipped
+# by Promtail) + /api/health probes + RUM (web vitals forwarded by the
+# backend analytics plane).
+# =============================================================================
+
+groups:
+  - name: jol-frontend-p0
+    rules:
+      - alert: FrontendErrorRateHigh
+        expr: |
+          sum(rate({service="template-renderer", level="error"}[5m]))
+            /
+          sum(rate({service="template-renderer"}[5m])) > 0.01
+        for: 5m
+        labels:
+          severity: P0
+          team: frontend
+        annotations:
+          summary: "Frontend error rate > 1% for 5 minutes"
+          runbook: "https://github.com/journeyoflife-org/jol-infrastructure/blob/main/runbooks/frontend-error-spike.md"
+          incident_channel: "#jol-incidents"
+
+      - alert: FrontendHttp500Spike
+        expr: |
+          sum(rate({service="template-renderer-edge"} |= "status\":5" [1m])) > 10
+        for: 2m
+        labels:
+          severity: P0
+          team: frontend
+        annotations:
+          summary: "More than 10 HTTP 5xx per minute"
+          runbook: "https://github.com/journeyoflife-org/jol-infrastructure/blob/main/runbooks/frontend-5xx.md"
+          incident_channel: "#jol-incidents"
+
+      - alert: AuthServiceDown
+        expr: probe_success{job="jol-auth-health"} == 0
+        for: 3m
+        labels:
+          severity: P0
+          team: platform
+        annotations:
+          summary: "jol-auth health probe failing (login unavailable)"
+          runbook: "https://github.com/journeyoflife-org/jol-infrastructure/blob/main/runbooks/jol-auth-down.md"
+
+      - alert: HealthEndpointDown
+        expr: probe_success{job="frontend-health"} == 0
+        for: 2m
+        labels:
+          severity: P0
+          team: frontend
+        annotations:
+          summary: "/api/health returning 503 (critical dependency down)"
+          runbook: "https://github.com/journeyoflife-org/jol-infrastructure/blob/main/runbooks/frontend-health-down.md"
+
+  - name: jol-frontend-p1
+    rules:
+      - alert: CommerceConversionDrop
+        expr: |
+          (
+            sum(rate(commerce_conversions_total[1h] offset 1d))
+            - sum(rate(commerce_conversions_total[1h]))
+          )
+            / sum(rate(commerce_conversions_total[1h] offset 1d)) > 0.20
+        for: 1h
+        labels:
+          severity: P1
+          team: commerce
+        annotations:
+          summary: "Commerce conversion dropped > 20% vs yesterday"
+          runbook: "https://github.com/journeyoflife-org/jol-infrastructure/blob/main/runbooks/commerce-funnel.md"
+
+      - alert: BookingFailureRateHigh
+        expr: |
+          sum(rate({service="template-renderer"} |= "booking" |~ "error|failed" [15m]))
+            /
+          sum(rate({service="template-renderer"} |= "booking" [15m])) > 0.05
+        for: 15m
+        labels:
+          severity: P1
+          team: commerce
+        annotations:
+          summary: "Booking failure rate > 5%"
+          runbook: "https://github.com/journeyoflife-org/jol-infrastructure/blob/main/runbooks/booking-failures.md"
+
+  - name: jol-frontend-p2
+    rules:
+      - alert: LcpP75AboveBudget
+        # RUM: > 20% of users above the 4s STEP-13 threshold.
+        expr: |
+          sum(rate(web_vitals{name="LCP", rating="poor"}[1h]))
+            / sum(rate(web_vitals{name="LCP"}[1h])) > 0.20
+        for: 1h
+        labels:
+          severity: P2
+          team: frontend
+        annotations:
+          summary: "LCP > 4s for > 20% of users (budget regression)"
+          runbook: "https://github.com/journeyoflife-org/jol-hub/blob/main/frontend/apps/template-renderer/PERFORMANCE.md"
+
+      - alert: BundleSizeOverBudget
+        # CI gate metric exported by the budget job.
+        expr: frontend_bundle_worst_route_kib > 200
+        for: 10m
+        labels:
+          severity: P2
+          team: frontend
+        annotations:
+          summary: "Worst-route first-load JS exceeds the 200 KiB budget"
+          runbook: "https://github.com/journeyoflife-org/jol-hub/blob/main/frontend/apps/template-renderer/PERFORMANCE.md"
+
+  - name: jol-frontend-p3
+    rules:
+      - alert: SecurityAdvisoryOpen
+        expr: dependency_audit_findings{level="high"} > 0
+        for: 24h
+        labels:
+          severity: P3
+          team: security
+        annotations:
+          summary: "High-severity dependency advisory open > 24h"
+          runbook: "https://github.com/journeyoflife-org/jol-infrastructure/blob/main/runbooks/dependency-advisories.md"
+
+      - alert: DeprecationWarningsRising
+        expr: |
+          sum(rate({service="template-renderer"} |= "deprecated" [1h])) > 0.5
+        for: 6h
+        labels:
+          severity: P3
+          team: frontend
+        annotations:
+          summary: "Sustained deprecation warnings in frontend logs"

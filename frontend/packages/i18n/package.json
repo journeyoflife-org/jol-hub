@@ -1,48 +1,100 @@
 {
   "name": "@jol-hub/i18n",
   "version": "1.0.0",
-  "private": true,
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "description": "Internationalization for JOL: i18next integration, translation providers, locale resolution, DeepL translation memory, and liturgical calendar translations.",
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     },
     "./client": {
-      "types": "./src/client.ts",
-      "default": "./src/client.ts"
+      "types": "./dist/client.d.ts",
+      "import": "./dist/client.mjs",
+      "require": "./dist/client.js"
     },
     "./server": {
-      "types": "./src/server.ts",
-      "default": "./src/server.ts"
+      "types": "./dist/server.d.ts",
+      "import": "./dist/server.mjs",
+      "require": "./dist/server.js"
     },
     "./middleware": {
-      "types": "./src/middleware.ts",
-      "default": "./src/middleware.ts"
+      "types": "./dist/middleware.d.ts",
+      "import": "./dist/middleware.mjs",
+      "require": "./dist/middleware.js"
     },
     "./middleware/language": {
-      "types": "./src/middleware/language.ts",
-      "default": "./src/middleware/language.ts"
+      "types": "./dist/middleware/language.d.ts",
+      "import": "./dist/middleware/language.mjs",
+      "require": "./dist/middleware/language.js"
     },
-    "./locales/*": "./src/locales/*"
+    "./config": {
+      "types": "./dist/config.d.ts",
+      "import": "./dist/config.mjs",
+      "require": "./dist/config.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.mjs",
+      "require": "./dist/types.js"
+    },
+    "./messages": {
+      "types": "./dist/messages/index.d.ts",
+      "import": "./dist/messages/index.mjs",
+      "require": "./dist/messages/index.js"
+    },
+    "./provider": {
+      "types": "./dist/components/translation-provider.d.ts",
+      "import": "./dist/components/translation-provider.mjs",
+      "require": "./dist/components/translation-provider.js"
+    },
+    "./use-translations": {
+      "types": "./dist/hooks/use-translations.d.ts",
+      "import": "./dist/hooks/use-translations.mjs",
+      "require": "./dist/hooks/use-translations.js"
+    },
+    "./use-locale": {
+      "types": "./dist/hooks/use-locale-context.d.ts",
+      "import": "./dist/hooks/use-locale-context.mjs",
+      "require": "./dist/hooks/use-locale-context.js"
+    },
+    "./utils": {
+      "types": "./dist/utils.d.ts",
+      "import": "./dist/utils.mjs",
+      "require": "./dist/utils.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
   },
   "scripts": {
+    "build": "tsup",
     "lint": "eslint src/",
     "type-check": "tsc --noEmit",
+    "i18n:check": "tsx scripts/check-parity.ts",
+    "i18n:find-hardcoded": "tsx scripts/find-hardcoded.ts",
+    "verify": "tsc --noEmit && tsx scripts/check-parity.ts && tsx scripts/find-hardcoded.ts",
     "clean": "rm -rf .turbo node_modules"
   },
   "dependencies": {
     "deepl-node": "^1.24.0",
     "i18next": "^23.10.0",
     "i18next-browser-languagedetector": "^7.2.0",
+    "intl-messageformat": "^11.2.14",
     "react-i18next": "^14.1.0"
   },
   "devDependencies": {
     "@types/next": "^9.0.0",
     "@types/node": "^20.11.0",
     "@types/react": "^18.2.0",
-    "react": "^18.2.0",
+    "next": "^14.2.20",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.1",
+    "tsx": "^4.23.12",
     "typescript": "^5.4.0"
   },
   "peerDependencies": {

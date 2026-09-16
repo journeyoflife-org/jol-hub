@@ -1,0 +1,450 @@
+{
+  "slug": "parish-st-john-vilnius",
+  "vertical": "parish",
+  "locale": "lt",
+  "name": {
+    "lt": "Vilniaus Šv. Jonų bažnyčia",
+    "en": "St. Johns Church Vilnius",
+    "ru": "St. Johns Church Vilnius [TODO: verify with parish/diocese — do not publish unverified]"
+  },
+  "tagline": {
+    "lt": "Parapija Vilniaus senamiesčio širdyje nuo 1387 m.",
+    "en": "A parish in the heart of Vilnius Old Town since 1387",
+    "ru": "A parish in the heart of Vilnius Old Town since 1387 [TODO: verify with parish/diocese — do not publish unverified]"
+  },
+  "identity": {
+    "entityId": "lt-parish-st-john-vilnius-001",
+    "jurisdiction": "Vilnius Archdiocese",
+    "established": "1387",
+    "address": "Šv. Jono g. 12, 01141 Vilnius, Lithuania",
+    "email": "jonai@vilnius.lt",
+    "phone": "+370 5 261 5454",
+    "domain": "svjonai.lt",
+    "theme": "parish-traditional"
+  },
+  "pages": [
+    {
+      "route": "/",
+      "title": {
+        "lt": "Pradžia",
+        "en": "Home",
+        "ru": "Home [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Vilniaus Šv. Jonų bažnyčia",
+            "en": "St. Johns Church Vilnius",
+            "ru": "St. Johns Church Vilnius [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "subheading": {
+            "lt": "Šv. Jono Krikštytojo ir Šv. Jono Evangelisto globa",
+            "en": "Under the patronage of St. John the Baptist and St. John the Evangelist",
+            "ru": "Under the patronage of St. John the Baptist and St. John the Evangelist [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Vilniaus arkivyskupija · Vilniaus miesto dekanatas · Įkurta 1387 m.",
+            "en": "Vilnius Archdiocese · Vilnius City Deanery · Established 1387",
+            "ru": "Vilnius Archdiocese · Vilnius City Deanery · Established 1387 [TODO: verify with parish/diocese — do not publish unverified]"
+          }
+        },
+        {
+          "type": "schedule",
+          "heading": {
+            "lt": "Šv. Mišių tvarkaraštis",
+            "en": "Mass Schedule",
+            "ru": "Mass Schedule [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "entries": [
+            {
+              "day": "Pirmadienis - Penktadienis",
+              "dayEn": "Monday - Friday",
+              "times": [
+                "07:30",
+                "18:30"
+              ]
+            },
+            {
+              "day": "Šeštadienis",
+              "dayEn": "Saturday",
+              "times": [
+                "09:00",
+                "18:00"
+              ]
+            },
+            {
+              "day": "Sekmadienis",
+              "dayEn": "Sunday",
+              "times": [
+                "09:00",
+                "11:00",
+                "18:00"
+              ],
+              "notes": "11:00 - pagrindinės Šv. Mišios"
+            },
+            {
+              "day": "Šventinės dienos",
+              "dayEn": "Holy Days",
+              "times": [
+                "07:30",
+                "09:00",
+                "11:00",
+                "18:00"
+              ],
+              "notes": "Patikslinkite tvarkaraštį šventėms"
+            }
+          ]
+        },
+        {
+          "type": "keyValue",
+          "heading": {
+            "lt": "Kontaktai ir tarnystės",
+            "en": "Contact & Ministries",
+            "ru": "Contact & Ministries [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "label": {
+                "lt": "Adresas",
+                "ru": "Adresas [TODO: verify — do not publish unverified]"
+              },
+              "value": "Šv. Jono g. 12, 01141 Vilnius"
+            },
+            {
+              "label": {
+                "lt": "Telefonas",
+                "ru": "Telefonas [TODO: verify — do not publish unverified]"
+              },
+              "value": "+370 5 261 5454"
+            },
+            {
+              "label": {
+                "lt": "El. paštas",
+                "ru": "El. paštas [TODO: verify — do not publish unverified]"
+              },
+              "value": "jonai@vilnius.lt"
+            },
+            {
+              "label": {
+                "lt": "Klebonas",
+                "ru": "Klebonas [TODO: verify — do not publish unverified]"
+              },
+              "value": "Kun. Dr. Jonas Ivanauskas (klebonas@svjonai.lt)"
+            },
+            {
+              "label": {
+                "lt": "Biuro laikas",
+                "ru": "Biuro laikas [TODO: verify — do not publish unverified]"
+              },
+              "value": "I-V 09:00-17:00, VI-VII 10:00-12:00"
+            },
+            {
+              "label": {
+                "lt": "Išpažintis",
+                "ru": "Išpažintis [TODO: verify — do not publish unverified]"
+              },
+              "value": "Savaitgaliais 08:00-08:45, 17:00-17:45 arba susitarus"
+            }
+          ]
+        },
+        {
+          "type": "stats",
+          "heading": {
+            "lt": "Parapijos statistika",
+            "en": "Parish Statistics",
+            "ru": "Parish Statistics [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "label": {
+                "lt": "Registruotų parapijiečių",
+                "ru": "Registruotų parapijiečių [TODO: verify — do not publish unverified]"
+              },
+              "value": 4200
+            },
+            {
+              "label": {
+                "lt": "Sekmadienio dalyvių (vid.)",
+                "ru": "Sekmadienio dalyvių (vid.) [TODO: verify — do not publish unverified]"
+              },
+              "value": 850
+            },
+            {
+              "label": {
+                "lt": "Krikštai per metus",
+                "ru": "Krikštai per metus [TODO: verify — do not publish unverified]"
+              },
+              "value": 65
+            },
+            {
+              "label": {
+                "lt": "Santuokos per metus",
+                "ru": "Santuokos per metus [TODO: verify — do not publish unverified]"
+              },
+              "value": 32
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "links": [
+            {
+              "label": {
+                "lt": "Užsakyti Mišių intenciją",
+                "ru": "Užsakyti Mišių intenciją [TODO: verify — do not publish unverified]"
+              },
+              "href": "/shop"
+            },
+            {
+              "label": {
+                "lt": "Sakramentai",
+                "ru": "Sakramentai [TODO: verify — do not publish unverified]"
+              },
+              "href": "/sacraments"
+            },
+            {
+              "label": {
+                "lt": "Naujienos",
+                "ru": "Naujienos [TODO: verify — do not publish unverified]"
+              },
+              "href": "/news"
+            }
+          ]
+        }
+      ],
+      "meta": {
+        "description": "Vilniaus Šv. Jonų bažnyčios parapija"
+      }
+    },
+    {
+      "route": "/sacraments",
+      "title": {
+        "lt": "Sakramentai",
+        "en": "Sacraments",
+        "ru": "Sacraments [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": {
+            "lt": "Sakramentai",
+            "en": "Sacraments",
+            "ru": "Sacraments [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "title": {
+                "lt": "Krikštas",
+                "en": "Baptism",
+                "ru": "Baptism [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Krikšto sakramentas - įėjimas į Bažnyčią",
+                "en": "Sacrament of Baptism - entry into the Church",
+                "ru": "Sacrament of Baptism - entry into the Church [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "Pasiruošimas: 2-3 savaitės",
+                "Tėvų ir krikštatėvių katechezė"
+              ]
+            },
+            {
+              "title": {
+                "lt": "Pirmoji Komunija",
+                "en": "First Communion",
+                "ru": "First Communion [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Eucharistijos sakramentas pirmą kartą",
+                "en": "First reception of the Eucharist",
+                "ru": "First reception of the Eucharist [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "Pasiruošimas: 2 metai",
+                "Katechezės kursas"
+              ]
+            },
+            {
+              "title": {
+                "lt": "Sutvirtinimas",
+                "en": "Confirmation",
+                "ru": "Confirmation [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Sutvirtinimo sakramentas",
+                "en": "Sacrament of Confirmation",
+                "ru": "Sacrament of Confirmation [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "Pasiruošimas: 1-2 metai"
+              ]
+            },
+            {
+              "title": {
+                "lt": "Santuoka",
+                "en": "Marriage",
+                "ru": "Marriage [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Santuokos sakramentas",
+                "en": "Sacrament of Holy Matrimony",
+                "ru": "Sacrament of Holy Matrimony [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "Pasiruošimas: 6 mėnesiai",
+                "Susitikimas su kunigu prieš 6 mėn."
+              ]
+            },
+            {
+              "title": {
+                "lt": "Išpažintis",
+                "en": "Confession",
+                "ru": "Confession [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Atgailos sakramentas",
+                "en": "Sacrament of Reconciliation",
+                "ru": "Sacrament of Reconciliation [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "Be išankstinio pasiruošimo"
+              ]
+            },
+            {
+              "title": {
+                "lt": "Ligonių patepimas",
+                "en": "Anointing of the Sick",
+                "ru": "Anointing of the Sick [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Ligonių patepimo sakramentas",
+                "en": "Sacrament of the Anointing of the Sick",
+                "ru": "Sacrament of the Anointing of the Sick [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "Kreiptis į parapijos biurą"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/news",
+      "title": {
+        "lt": "Naujienos",
+        "en": "News",
+        "ru": "News [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": {
+            "lt": "Parapijos naujienos",
+            "en": "Parish News",
+            "ru": "Parish News [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Naujausios parapijos naujienos, skelbimai ir renginių apžvalgos. Prenumeruokite savaitinį laišką parapijos biure.",
+            "en": "Latest parish news, announcements and event highlights. Subscribe to the weekly letter at the parish office.",
+            "ru": "Latest parish news, announcements and event highlights. Subscribe to the weekly letter at the parish office. [TODO: verify with parish/diocese — do not publish unverified]"
+          }
+        }
+      ]
+    },
+    {
+      "route": "/shop",
+      "title": {
+        "lt": "Krautuvėlė",
+        "en": "Shop",
+        "ru": "Shop [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": {
+            "lt": "Paslaugos ir prekės",
+            "en": "Services & Products",
+            "ru": "Services & Products [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "title": {
+                "lt": "Šv. Mišių intencijos",
+                "en": "Mass Intentions",
+                "ru": "Mass Intentions [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "title": {
+                "lt": "Religiniai daiktai",
+                "en": "Religious Items",
+                "ru": "Religious Items [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "title": {
+                "lt": "Salės nuoma",
+                "en": "Hall Rental",
+                "ru": "Hall Rental [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "heading": {
+            "lt": "Salės nuoma",
+            "en": "Hall Rental",
+            "ru": "Hall Rental [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "title": {
+                "lt": "Šv. Jono salė",
+                "en": "St. John Hall",
+                "ru": "St. John Hall [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "subtitle": {
+                "lt": "Iki 150 svečių",
+                "en": "Up to 150 guests",
+                "ru": "Up to 150 guests [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Virtuvė, stalai ir kėdės, garso sistema, projektorius, įėjimas neįgaliesiems",
+                "en": "Kitchen, tables & chairs, sound system, projector, wheelchair access",
+                "ru": "Kitchen, tables & chairs, sound system, projector, wheelchair access [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 25,
+              "tags": [
+                "EUR/val."
+              ]
+            },
+            {
+              "title": {
+                "lt": "Mažoji salė",
+                "en": "Small Hall",
+                "ru": "Small Hall [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "subtitle": {
+                "lt": "Iki 40 svečių",
+                "en": "Up to 40 guests",
+                "ru": "Up to 40 guests [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Virtuvė, stalai ir kėdės",
+                "en": "Kitchen, tables & chairs",
+                "ru": "Kitchen, tables & chairs [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 15,
+              "tags": [
+                "EUR/val."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

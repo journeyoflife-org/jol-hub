@@ -1,0 +1,469 @@
+{
+  "slug": "funeral-vilnius",
+  "vertical": "funeral-home",
+  "locale": "lt",
+  "name": {
+    "lt": "Vilniaus Laidojimo Namai",
+    "en": "Vilnius Funeral Home",
+    "ru": "Vilnius Funeral Home [TODO: verify with parish/diocese — do not publish unverified]"
+  },
+  "tagline": {
+    "lt": "Orus atsisveikinimas ir pagalba šeimai nuo 1995 m.",
+    "en": "Dignified farewell and family support since 1995",
+    "ru": "Dignified farewell and family support since 1995 [TODO: verify with parish/diocese — do not publish unverified]"
+  },
+  "identity": {
+    "entityId": "lt-funeral-vilnius-001",
+    "established": "1995",
+    "address": "Laidojimo g. 15, Vilnius, Lithuania",
+    "email": "info@vilniusfuneral.lt",
+    "phone": "+370 5 210 5555",
+    "domain": "vilniusfuneral.lt",
+    "theme": "memorial-dignified"
+  },
+  "pages": [
+    {
+      "route": "/",
+      "title": {
+        "lt": "Pradžia",
+        "en": "Home",
+        "ru": "Home [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Vilniaus Laidojimo Namai",
+            "en": "Vilnius Funeral Home",
+            "ru": "Vilnius Funeral Home [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "subheading": {
+            "lt": "Tarnaujame Vilniaus šeimoms nuo 1995 m.",
+            "en": "Serving Vilnius families since 1995",
+            "ru": "Serving Vilnius families since 1995 [TODO: verify with parish/diocese — do not publish unverified]"
+          }
+        },
+        {
+          "type": "keyValue",
+          "heading": {
+            "lt": "Kontaktai",
+            "en": "Contact",
+            "ru": "Contact [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "label": {
+                "lt": "Adresas",
+                "ru": "Adresas [TODO: verify — do not publish unverified]"
+              },
+              "value": "Laidojimo g. 15, Vilnius"
+            },
+            {
+              "label": {
+                "lt": "Visą parą",
+                "ru": "Visą parą [TODO: verify — do not publish unverified]"
+              },
+              "value": "+370 5 210 5555"
+            },
+            {
+              "label": {
+                "lt": "El. paštas",
+                "ru": "El. paštas [TODO: verify — do not publish unverified]"
+              },
+              "value": "info@vilniusfuneral.lt"
+            }
+          ]
+        },
+        {
+          "type": "stats",
+          "heading": {
+            "lt": "Patirtis",
+            "en": "Experience",
+            "ru": "Experience [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "label": {
+                "lt": "Tarnystės metų",
+                "ru": "Tarnystės metų [TODO: verify — do not publish unverified]"
+              },
+              "value": 29
+            },
+            {
+              "label": {
+                "lt": "Aptarnautų šeimų",
+                "ru": "Aptarnautų šeimų [TODO: verify — do not publish unverified]"
+              },
+              "value": 8500
+            },
+            {
+              "label": {
+                "lt": "Įvertinimas",
+                "ru": "Įvertinimas [TODO: verify — do not publish unverified]"
+              },
+              "value": 4.8
+            },
+            {
+              "label": {
+                "lt": "Išankstinių sutarčių",
+                "ru": "Išankstinių sutarčių [TODO: verify — do not publish unverified]"
+              },
+              "value": 450
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "links": [
+            {
+              "label": {
+                "lt": "Nekrologai",
+                "ru": "Nekrologai [TODO: verify — do not publish unverified]"
+              },
+              "href": "/obituaries"
+            },
+            {
+              "label": {
+                "lt": "Išankstinis planavimas",
+                "ru": "Išankstinis planavimas [TODO: verify — do not publish unverified]"
+              },
+              "href": "/pre-need"
+            },
+            {
+              "label": {
+                "lt": "Paslaugos ir prekės",
+                "ru": "Paslaugos ir prekės [TODO: verify — do not publish unverified]"
+              },
+              "href": "/shop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/obituaries",
+      "title": {
+        "lt": "Nekrologai",
+        "en": "Obituaries",
+        "ru": "Obituaries [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": {
+            "lt": "Nekrologų portalas",
+            "en": "Obituary Portal",
+            "ru": "Obituary Portal [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Atsisveikinimo pranešimai su šeimos sutikimu. Duomenys apie mirusiuosius tvarkomi pagal GDPR Art. 9 - skelbiami tik gavus artimųjų rašytinį sutikimą.",
+            "en": "Farewell notices published with family consent. Deceased data is processed under GDPR Art. 9 - published only with written next-of-kin consent.",
+            "ru": "Farewell notices published with family consent. Deceased data is processed under GDPR Art. 9 - published only with written next-of-kin consent. [TODO: verify with parish/diocese — do not publish unverified]"
+          }
+        },
+        {
+          "type": "list",
+          "heading": {
+            "lt": "Gedėjimo pagalba",
+            "en": "Grief Resources",
+            "ru": "Grief Resources [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "title": {
+                "lt": "Kaip kalbėti su vaikais apie mirtį",
+                "en": "How to talk to children about death",
+                "ru": "How to talk to children about death [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "šeima"
+              ]
+            },
+            {
+              "title": {
+                "lt": "Gedėjimo stadijos",
+                "en": "Stages of Grief",
+                "ru": "Stages of Grief [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "psichologinė pagalba"
+              ]
+            },
+            {
+              "title": {
+                "lt": "Juridiniai klausimai po mirties",
+                "en": "Legal matters after death",
+                "ru": "Legal matters after death [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "teisinė pagalba"
+              ]
+            },
+            {
+              "title": {
+                "lt": "Palaikymo grupių sąrašas",
+                "en": "Support groups list",
+                "ru": "Support groups list [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "bendruomenė"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/pre-need",
+      "title": {
+        "lt": "Išankstinis planavimas",
+        "en": "Pre-Need Planning",
+        "ru": "Pre-Need Planning [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": {
+            "lt": "Išankstinio planavimo programos",
+            "en": "Pre-Need Plans",
+            "ru": "Pre-Need Plans [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "title": {
+                "lt": "Pagrindinė programa",
+                "en": "Basic Plan",
+                "ru": "Basic Plan [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Pagrindinis laidotuvių paketas, paprastas karstas, transportas",
+                "en": "Basic funeral package, simple casket, transport",
+                "ru": "Basic funeral package, simple casket, transport [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 25,
+              "tags": [
+                "EUR/mėn.",
+                "vertė 2000 EUR",
+                "96 mėn."
+              ]
+            },
+            {
+              "title": {
+                "lt": "Tradicinė programa",
+                "en": "Traditional Plan",
+                "ru": "Traditional Plan [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Tradicinis laidotuvių paketas, kokybiškas karstas, gėlės, muzika",
+                "en": "Traditional funeral package, quality casket, flowers, music",
+                "ru": "Traditional funeral package, quality casket, flowers, music [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 50,
+              "tags": [
+                "EUR/mėn.",
+                "vertė 4500 EUR",
+                "96 mėn."
+              ]
+            },
+            {
+              "title": {
+                "lt": "Premium programa",
+                "en": "Premium Plan",
+                "ru": "Premium Plan [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Premium laidotuvių paketas, rankų darbo karstas, visos paslaugos, transliacija",
+                "en": "Premium funeral package, handcrafted casket, full services, streaming",
+                "ru": "Premium funeral package, handcrafted casket, full services, streaming [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 100,
+              "tags": [
+                "EUR/mėn.",
+                "vertė 9000 EUR",
+                "96 mėn."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/shop",
+      "title": {
+        "lt": "Paslaugos ir prekės",
+        "en": "Services & Products",
+        "ru": "Services & Products [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": {
+            "lt": "Laidotuvių paketai",
+            "en": "Service Packages",
+            "ru": "Service Packages [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "title": {
+                "lt": "Pagrindinis paketas",
+                "en": "Basic Package",
+                "ru": "Basic Package [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Paprastas, orus atsisveikinimas",
+                "en": "A simple, dignified farewell",
+                "ru": "A simple, dignified farewell [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 1500
+            },
+            {
+              "title": {
+                "lt": "Tradicinis paketas",
+                "en": "Traditional Package",
+                "ru": "Traditional Package [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Pilnas tradicinis atsisveikinimas",
+                "en": "Full traditional farewell",
+                "ru": "Full traditional farewell [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 3500
+            },
+            {
+              "title": {
+                "lt": "Premium paketas",
+                "en": "Premium Package",
+                "ru": "Premium Package [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Išskirtinė atsisveikinimo ceremonija",
+                "en": "An exceptional farewell ceremony",
+                "ru": "An exceptional farewell ceremony [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 6500
+            },
+            {
+              "title": {
+                "lt": "Kremavimo paketas",
+                "en": "Cremation Package",
+                "ru": "Cremation Package [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Orus kremavimo paslaugų paketas",
+                "en": "A dignified cremation service package",
+                "ru": "A dignified cremation service package [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "price": 1200
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "heading": {
+            "lt": "Karstai",
+            "en": "Caskets",
+            "ru": "Caskets [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "title": {
+                "lt": "Klasikinis ąžuolinis karstas",
+                "ru": "Klasikinis ąžuolinis karstas [TODO: verify — do not publish unverified]"
+              },
+              "subtitle": {
+                "lt": "Ąžuolas · Natūralus · Baltas atlasas",
+                "ru": "Ąžuolas · Natūralus · Baltas atlasas [TODO: verify — do not publish unverified]"
+              },
+              "price": 1200
+            },
+            {
+              "title": {
+                "lt": "Pušinis karstas",
+                "ru": "Pušinis karstas [TODO: verify — do not publish unverified]"
+              },
+              "subtitle": {
+                "lt": "Pušis · Lakuotas · Kreminis atlasas",
+                "ru": "Pušis · Lakuotas · Kreminis atlasas [TODO: verify — do not publish unverified]"
+              },
+              "price": 600
+            },
+            {
+              "title": {
+                "lt": "Premium riešutmedžio karstas",
+                "ru": "Premium riešutmedžio karstas [TODO: verify — do not publish unverified]"
+              },
+              "subtitle": {
+                "lt": "Riešutmedis · Rankinis poliravimas · Šilkinis atlasas",
+                "ru": "Riešutmedis · Rankinis poliravimas · Šilkinis atlasas [TODO: verify — do not publish unverified]"
+              },
+              "price": 2500
+            },
+            {
+              "title": {
+                "lt": "Metalinis karstas",
+                "ru": "Metalinis karstas [TODO: verify — do not publish unverified]"
+              },
+              "subtitle": {
+                "lt": "Plienas · Bronzos spalva · Aksomas",
+                "ru": "Plienas · Bronzos spalva · Aksomas [TODO: verify — do not publish unverified]"
+              },
+              "price": 1800
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "heading": {
+            "lt": "Atminimo prekės",
+            "en": "Memorial Products",
+            "ru": "Memorial Products [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "title": {
+                "lt": "Atminimo kortelės (50 vnt.)",
+                "ru": "Atminimo kortelės (50 vnt.) [TODO: verify — do not publish unverified]"
+              },
+              "price": 50
+            },
+            {
+              "title": {
+                "lt": "Kondolencijų knyga",
+                "ru": "Kondolencijų knyga [TODO: verify — do not publish unverified]"
+              },
+              "price": 35
+            },
+            {
+              "title": {
+                "lt": "Gėlių vainikas",
+                "ru": "Gėlių vainikas [TODO: verify — do not publish unverified]"
+              },
+              "price": 150
+            },
+            {
+              "title": {
+                "lt": "Atminimo žvakidė",
+                "ru": "Atminimo žvakidė [TODO: verify — do not publish unverified]"
+              },
+              "price": 45
+            },
+            {
+              "title": {
+                "lt": "Antkapio plokštė",
+                "ru": "Antkapio plokštė [TODO: verify — do not publish unverified]"
+              },
+              "price": 800
+            },
+            {
+              "title": {
+                "lt": "Urna dekoratyvinė",
+                "ru": "Urna dekoratyvinė [TODO: verify — do not publish unverified]"
+              },
+              "price": 300
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
