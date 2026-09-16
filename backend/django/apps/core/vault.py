@@ -31,8 +31,8 @@ import json
 import logging
 import os
 import time
-from typing import Any, Dict, Optional
 from datetime import datetime, timedelta
+from typing import Any, Dict, Optional
 
 logger = logging.getLogger("jolhub.vault")
 
@@ -187,8 +187,9 @@ class VaultClient:
     def _get_iam_auth_request(self) -> Optional[Dict[str, str]]:
         """Get IAM authentication request headers."""
         try:
-            import boto3
             import base64
+
+            import boto3
 
             sts = boto3.client("sts", region_name="eu-west-1")
 

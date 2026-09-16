@@ -13,57 +13,56 @@ import csv
 import io
 import logging
 from datetime import datetime, timedelta
-from typing import Optional, Dict, Any
+from typing import Any, Dict, Optional
 
+from apps.core.permissions import IsOrganizationMember
 from django.core.exceptions import PermissionDenied, ValidationError
 from django.db import transaction
-from django.db.models import Q, Count, Sum
+from django.db.models import Count, Q, Sum
 from django.http import HttpResponse
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_headers
-
-from rest_framework import viewsets, status, mixins
+from django_filters.rest_framework import DjangoFilterBackend
+from drf_spectacular.utils import OpenApiParameter, OpenApiResponse, extend_schema
+from rest_framework import mixins, status, viewsets
 from rest_framework.decorators import (
     action,
     api_view,
     permission_classes,
     throttle_classes,
 )
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.filters import OrderingFilter, SearchFilter
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
-from rest_framework.filters import SearchFilter, OrderingFilter
-from django_filters.rest_framework import DjangoFilterBackend
-from drf_spectacular.utils import extend_schema, OpenApiParameter, OpenApiResponse
+from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 
-from apps.core.permissions import IsOrganizationMember
-from ..models import (
-    Contact,
-    Deal,
-    AuditEntry,
-    DataSubjectRequest,
-    DataClassification,
-    ConsentStatus,
-)
 from ..middleware import (
-    get_current_tenant_id,
-    get_current_tenant_context,
     TenantDataAccessValidator,
+    get_current_tenant_context,
+    get_current_tenant_id,
     log_tenant_access,
 )
+from ..models import (
+    AuditEntry,
+    ConsentStatus,
+    Contact,
+    DataClassification,
+    DataSubjectRequest,
+    Deal,
+)
 from .serializers import (
-    ContactSerializer,
+    AuditEntrySerializer,
+    Bitrix24SyncSerializer,
+    ConsentSerializer,
     ContactMinimalSerializer,
-    DealSerializer,
+    ContactSerializer,
+    DataExportSerializer,
+    DataSubjectRequestSerializer,
     DealMinimalSerializer,
     DealPaymentSerializer,
-    AuditEntrySerializer,
-    DataSubjectRequestSerializer,
-    DataExportSerializer,
-    ConsentSerializer,
-    Bitrix24SyncSerializer,
+    DealSerializer,
 )
 
 logger = logging.getLogger("jolhub.crm.views")

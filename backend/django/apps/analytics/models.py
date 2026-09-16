@@ -2,11 +2,10 @@
 Analytics models — page-view events and daily aggregated statistics.
 """
 
+from apps.core.models import TimeStampedModel, UUIDModel
+from apps.organizations.models import Organization
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
-from apps.core.models import UUIDModel, TimeStampedModel
-from apps.organizations.models import Organization
 
 
 class PageView(UUIDModel, TimeStampedModel):

@@ -3,18 +3,18 @@ CRM Observability Package
 """
 
 from .metrics import (
-    initialize_metrics,
-    CRM_REQUEST_COUNT,
-    CRM_REQUEST_LATENCY,
-    CRM_DATA_ACCESS,
-    GDPR_REQUEST_COUNT,
-    SECURITY_EVENTS,
     AUDIT_ENTRIES,
     BITRIX24_SYNC_OPERATIONS,
+    CRM_DATA_ACCESS,
+    CRM_REQUEST_COUNT,
+    CRM_REQUEST_LATENCY,
+    GDPR_REQUEST_COUNT,
+    SECURITY_EVENTS,
     ComplianceMonitor,
     ComplianceReport,
-    PerformanceMonitor,
     HealthChecker,
+    PerformanceMonitor,
+    initialize_metrics,
 )
 
 __all__ = [

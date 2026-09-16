@@ -3,10 +3,9 @@ Country configuration models — per-country platform settings,
 legal requirements, and supported payment methods.
 """
 
+from apps.core.models import BaseModel
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
-from apps.core.models import BaseModel
 
 
 class Country(BaseModel):

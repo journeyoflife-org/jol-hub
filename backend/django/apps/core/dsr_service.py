@@ -7,13 +7,13 @@ Compliance: GDPR, SOC2, ISO 27001
 
 import json
 from datetime import datetime, timedelta
-from typing import Optional, Dict, Any, List
-from django.db import transaction
-from django.contrib.auth import get_user_model
-from django.core.exceptions import ValidationError
+from typing import Any, Dict, List, Optional
 
 from apps.core.models import AuditLog
 from apps.organizations.models import Organization
+from django.contrib.auth import get_user_model
+from django.core.exceptions import ValidationError
+from django.db import transaction
 
 User = get_user_model()
 

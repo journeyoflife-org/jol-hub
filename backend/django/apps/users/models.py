@@ -6,11 +6,12 @@ while keeping full compatibility with the auth system.
 """
 
 import uuid
+
+from apps.core.models import TimeStampedModel, UUIDModel
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from apps.core.models import UUIDModel, TimeStampedModel
 from .managers import UserManager
 
 

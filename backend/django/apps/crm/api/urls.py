@@ -4,15 +4,15 @@ CRM API URL Configuration
 GDPR Article 9 Hardened CRM Endpoints
 """
 
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 from .views import (
-    ContactViewSet,
-    DealViewSet,
-    DataSubjectRequestViewSet,
     AuditEntryViewSet,
     Bitrix24SyncViewSet,
+    ContactViewSet,
+    DataSubjectRequestViewSet,
+    DealViewSet,
 )
 
 router = DefaultRouter()

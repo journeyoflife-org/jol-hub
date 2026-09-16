@@ -26,12 +26,12 @@ through the marketplace payment boundary. get_stripe_keys() was purged
 the payment-boundary CI guard enforce this.
 """
 
+import functools
 import json
 import logging
 import os
-import functools
-from typing import Any, Dict, Optional
 from datetime import datetime, timedelta
+from typing import Any, Dict, Optional
 
 logger = logging.getLogger("jolhub.secrets")
 

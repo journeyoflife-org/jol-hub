@@ -131,10 +131,10 @@ def process_bitrix24_webhook(
         mongo_doc_id: MongoDB ``_id`` (string) of the raw payload.
         country: Country code for GDPR Article 44 routing.
     """
+    from apps.core.mongodb import WebhookPayloadCollection
     from bson import ObjectId
 
     from .models import WebhookEvent
-    from apps.core.mongodb import WebhookPayloadCollection
 
     # -- Initialise variables used in the except block --
     idempotency_key: str = ""
@@ -329,15 +329,15 @@ def _execute_business_logic(
         ValidationError: Unknown fields, missing tenant, or invalid data.
         KeyError: Required fields missing from payload.
     """
-    from .models import WebhookEvent
     from .bitrix24_mappings import (
-        EVENT_ENTITY_MAP,
-        EVENT_OPERATION_MAP,
-        validate_fields,
         ALLOWED_CONTACT_FIELDS,
         ALLOWED_LEAD_FIELDS,
+        EVENT_ENTITY_MAP,
+        EVENT_OPERATION_MAP,
         mask_pii,
+        validate_fields,
     )
+    from .models import WebhookEvent
 
     # =================================================================
     # Extract auth and fields
@@ -488,15 +488,16 @@ def _sync_contact(
     Raises:
         KeyError: If ``ID`` field is missing.
     """
-    from apps.crm.models import Contact, ConsentStatus
+    from apps.crm.models import ConsentStatus, Contact
     from django.utils import timezone as django_tz
+
     from .bitrix24_mappings import (
-        CONTACT_FIELD_MAP,
         CONTACT_CUSTOM_FIELD_MAP,
+        CONTACT_FIELD_MAP,
+        detect_consent_from_fields,
         extract_email,
         extract_phone,
         parse_bitrix24_date,
-        detect_consent_from_fields,
     )
 
     bitrix24_id = str(fields.get("ID", ""))
@@ -580,13 +581,10 @@ def _sync_lead(
     Raises:
         KeyError: If ``ID`` field is missing.
     """
-    from apps.crm.models import Lead, ConsentStatus
+    from apps.crm.models import ConsentStatus, Lead
     from django.utils import timezone as django_tz
-    from .bitrix24_mappings import (
-        LEAD_FIELD_MAP,
-        parse_decimal,
-        map_source_id,
-    )
+
+    from .bitrix24_mappings import LEAD_FIELD_MAP, map_source_id, parse_decimal
 
     bitrix24_id = str(fields.get("ID", ""))
     if not bitrix24_id:
@@ -655,8 +653,9 @@ def process_bitrix24_retry_queue():
     Process failed Bitrix24 webhooks that are pending retry.
     Called periodically by Celery beat.
     """
-    from .models import WebhookEvent
     from datetime import timedelta
+
+    from .models import WebhookEvent
 
     retry_cutoff = timezone.now() - timedelta(hours=24)
     failed_events = WebhookEvent.objects.filter(

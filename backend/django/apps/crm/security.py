@@ -14,7 +14,7 @@ import logging
 import re
 import secrets
 import string
-from base64 import b64encode, b64decode
+from base64 import b64decode, b64encode
 from dataclasses import dataclass
 from datetime import timedelta
 from typing import Any, Dict, List, Optional, Set
@@ -22,7 +22,6 @@ from typing import Any, Dict, List, Optional, Set
 from cryptography.fernet import Fernet, InvalidToken
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
-
 from django.conf import settings
 from django.core.cache import cache
 from django.utils import timezone
@@ -440,11 +439,11 @@ def audit_operation(operation: str, entity_type: str):
 
     def decorator(func):
         def wrapper(*args, **kwargs):
-            from apps.crm.models import AuditEntry
             from apps.crm.middleware import (
-                get_current_tenant_id,
                 get_current_tenant_context,
+                get_current_tenant_id,
             )
+            from apps.crm.models import AuditEntry
 
             result = func(*args, **kwargs)
 
@@ -479,8 +478,8 @@ def require_consent(entity_type: str):
 
     def decorator(func):
         def wrapper(*args, **kwargs):
-            from django.core.exceptions import PermissionDenied
             from apps.crm.models import ConsentStatus
+            from django.core.exceptions import PermissionDenied
 
             # Get the instance (assuming first arg after self is request or instance)
             instance = None
@@ -511,8 +510,8 @@ def prevent_cross_tenant_access(func):
     """
 
     def wrapper(self, request, *args, **kwargs):
-        from django.core.exceptions import PermissionDenied
         from apps.crm.middleware import get_current_tenant_id
+        from django.core.exceptions import PermissionDenied
 
         tenant_id = get_current_tenant_id()
         if not tenant_id:

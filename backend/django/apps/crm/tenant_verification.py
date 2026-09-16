@@ -32,14 +32,14 @@ import uuid
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
-from typing import Any, Dict, List, Optional, Set, Type
 from functools import wraps
+from typing import Any, Dict, List, Optional, Set, Type
 
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.cache import cache
 from django.core.exceptions import PermissionDenied, ValidationError
-from django.db import models, transaction, connection
+from django.db import connection, models, transaction
 from django.db.models import Q, QuerySet
 from django.test import RequestFactory
 from django.utils import timezone
@@ -409,8 +409,8 @@ class TenantIsolationVerifier:
         check_id = "TENANT-MODEL-001"
 
         try:
-            from django.apps import apps
             from apps.crm.middleware import get_current_tenant_id
+            from django.apps import apps
 
             models_with_validation = []
             models_without_validation = []
@@ -491,8 +491,9 @@ class TenantIsolationVerifier:
         check_id = "TENANT-QS-001"
 
         try:
-            from django.apps import apps
             import inspect
+
+            from django.apps import apps
 
             viewsets_with_filtering = []
             viewsets_without_filtering = []
@@ -582,10 +583,10 @@ class TenantIsolationVerifier:
 
         try:
             from apps.crm.middleware import (
-                set_tenant_context,
-                get_current_tenant_id,
-                clear_tenant_context,
                 TenantContext,
+                clear_tenant_context,
+                get_current_tenant_id,
+                set_tenant_context,
             )
 
             # Test setting and getting context
@@ -642,10 +643,10 @@ class TenantIsolationVerifier:
         check_id = "TENANT-CTX-002"
 
         try:
-            from apps.crm.middleware import TenantContextMiddleware
-
             # Verify middleware has cleanup in finally block
             import inspect
+
+            from apps.crm.middleware import TenantContextMiddleware
 
             source = inspect.getsource(TenantContextMiddleware.__call__)
 
@@ -692,9 +693,9 @@ class TenantIsolationVerifier:
 
         try:
             # Check if middleware uses tenant-prefixed cache keys
-            from apps.crm.middleware import TenantContextMiddleware
-
             import inspect
+
+            from apps.crm.middleware import TenantContextMiddleware
 
             source = inspect.getsource(TenantContextMiddleware)
 
@@ -739,10 +740,10 @@ class TenantIsolationVerifier:
         check_id = "TENANT-API-001"
 
         try:
-            from apps.crm.security import prevent_cross_tenant_access
-
             # Verify decorator exists
             import inspect
+
+            from apps.crm.security import prevent_cross_tenant_access
 
             source = inspect.getsource(prevent_cross_tenant_access)
 
@@ -781,9 +782,9 @@ class TenantIsolationVerifier:
 
         try:
             # Check TenantIsolatedViewSetMixin
-            from apps.crm.api.views import TenantIsolatedViewSetMixin
-
             import inspect
+
+            from apps.crm.api.views import TenantIsolatedViewSetMixin
 
             source = inspect.getsource(TenantIsolatedViewSetMixin)
 

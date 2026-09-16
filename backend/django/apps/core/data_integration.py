@@ -95,7 +95,7 @@ class DataModuleIntegration:
             KAnonymizer instance or None if unavailable
         """
         try:
-            from gdpr import KAnonymizer, AnonymizationConfig
+            from gdpr import AnonymizationConfig, KAnonymizer
 
             config = AnonymizationConfig(k=k, country_code=country_code)
             return KAnonymizer(config=config)
@@ -144,8 +144,8 @@ class DataModuleIntegration:
         """
         if self._retention_manager is None:
             try:
-                from gdpr import RetentionManager
                 from audit import AuditLogger
+                from gdpr import RetentionManager
 
                 audit_logger = self.get_audit_logger()
                 self._retention_manager = RetentionManager(audit_logger=audit_logger)
