@@ -1,0 +1,87 @@
+# =============================================================================
+# Reusable Workflow: Payment Boundary Guard (INV-3)
+# =============================================================================
+# Called by spoke repos via workflow_call. Ensures zero PSP SDK imports
+# per ADR-009 Model A. This is the layer-4 gate.
+#
+# Usage in spoke .github/workflows/ci.yml:
+#   jobs:
+#     payment-boundary:
+#       uses: journeyoflife-org/.github/.github/workflows/payment-boundary-guard.yml@main
+# =============================================================================
+
+name: Payment Boundary Guard
+
+on:
+  workflow_call:
+
+jobs:
+  payment-boundary:
+    name: Payment Boundary (INV-3, ADR-009)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run payment boundary guard
+        run: |
+          if [ -f scripts/check-payment-boundary.sh ]; then
+            bash scripts/check-payment-boundary.sh
+          else
+            echo "::error::Payment boundary guard not found at scripts/check-payment-boundary.sh"
+            echo "This gate is MANDATORY (INV-3, ADR-009 Model A)."
+            exit 1
+          fi
+
+  dependency-guard:
+    name: Dependency Guard (INV-3 package-level)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: '10.30.3'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check for PSP packages in dependency tree
+        run: |
+          # Fail if any known PSP SDK package is in the dependency tree
+          FORBIDDEN=(
+            "@stripe/stripe-js"
+            "stripe"
+            "@paypal/react-paypal-js"
+            "@paypal/sdk-client"
+            "@adyen/adyen-web"
+            "square"
+            "@square/web-sdk"
+          )
+
+          FOUND=0
+          for pkg in "${FORBIDDEN[@]}"; do
+            if pnpm list --recursive --depth 100 2>/dev/null | grep -q "$pkg"; then
+              echo "::error::Forbidden PSP package found in dependency tree: $pkg"
+              FOUND=1
+            fi
+          done
+
+          if [ "$FOUND" -eq 1 ]; then
+            echo ""
+            echo "PSP SDK packages are prohibited (INV-3, ADR-009 Model A)."
+            echo "Payment is handled by the hub backend only."
+            exit 1
+          fi
+
+          echo "PASS: no PSP packages in dependency tree."

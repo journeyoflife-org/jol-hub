@@ -1,0 +1,64 @@
+# =============================================================================
+# Spoke CI Pipeline — calls org reusable workflows (INV-6)
+# =============================================================================
+# This file is ~15 lines of actual logic — the gate logic lives in
+# reusable workflows at journeyoflife-org/.github. A spoke CANNOT
+# silently skip a gate (INV-6).
+#
+# Required workflows (meta-check verifies these are present):
+#   1. frontend-build     — build + type-check + lint
+#   2. frontend-test      — unit + a11y + security
+#   3. security-scan      — secrets + SCA + drift
+#   4. payment-boundary   — INV-3 PSP boundary (ADR-009 Model A)
+#   5. compliance-check   — INV-7 theme literals + perf budgets
+# =============================================================================
+
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  # --- Call org reusable workflows ---
+  build:
+    name: Build
+    uses: journeyoflife-org/.github/.github/workflows/frontend-build.yml@main
+    secrets: inherit
+
+  test:
+    name: Test
+    uses: journeyoflife-org/.github/.github/workflows/frontend-test.yml@main
+    secrets: inherit
+
+  security:
+    name: Security
+    uses: journeyoflife-org/.github/.github/workflows/security-scan.yml@main
+    secrets: inherit
+
+  payment-boundary:
+    name: Payment Boundary (INV-3)
+    uses: journeyoflife-org/.github/.github/workflows/payment-boundary-guard.yml@main
+    secrets: inherit
+
+  compliance:
+    name: Compliance
+    uses: journeyoflife-org/.github/.github/workflows/compliance-check.yml@main
+    secrets: inherit
+
+  # --- Satellite kit drift check (local, not reusable) ---
+  drift-check:
+    name: Satellite Kit Drift
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run satellite kit drift checker
+        run: python3 scripts/sops-validate.py

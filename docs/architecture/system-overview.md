@@ -1,5 +1,28 @@
 # System Architecture Overview
 
+> **⚠ SUPERSESSION NOTICE (2026-09-11):** This document was last updated
+> in March 2026 and has **drifted significantly from verified reality**.
+> The authoritative architecture decision is now **ADR-011** (hub-and-spoke
+> topology for ten vertical front-ends). The technical companion is
+> [`frontend-topology-10-verticals.md`](./frontend-topology-10-verticals.md).
+>
+> **Known inaccuracies in this document** (non-exhaustive):
+> - `frontend/react` SPAs → actually `frontend/apps/template-renderer` (Next.js 14 App Router)
+> - Vite, Redux/Zustand → not used; Tailwind + design tokens
+> - Kubernetes → 100% on-prem Proxmox VE 9.2
+> - CDN/Edge, S3 → self-hosted/EU caching only; no AWS/GCP
+> - GitLab CI → GitHub Actions only
+> - OAuth 2.0 → OAuth 2.1
+> - Python 3.11+ → Python 3.12+
+> - Django 4.x → Django 6.x
+> - PostgreSQL 15+ → PostgreSQL 16
+> - RPO < 15 min → RPO 24h / RTO 4h (PBS 4.2)
+> - `entities/`, `ops/`, `tests/` root dirs → do not exist
+> - "Microservices migration path" → superseded by ADR-011 hub-and-spoke
+>
+> **Do not rely on this document for implementation decisions.** Use ADR-011
+> and the topology doc instead.
+
 ## Introduction
 
 This document provides a comprehensive overview of the JOL-HUB (Journey Of Life) enterprise monorepo architecture. The system is designed to support 400,000 websites for religious institutions across 27 EU countries.
