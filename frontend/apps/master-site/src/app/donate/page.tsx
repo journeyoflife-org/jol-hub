@@ -1,4 +1,8 @@
-import { DonationWidget } from '@/components/donation';
+// Model-A-compliant donation shell (O-021 STAGED-REMOVAL): the legacy
+// PSP-integrated widget was removed; the composite widget reports the
+// configured selection only — the charge path is the marketplace checkout
+// handoff (donation-flow-spec §1), never PSP-in-hub.
+import { DonationWidget } from '@jol-hub/ui/components/composite';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -14,10 +18,9 @@ export default function DonatePage() {
           Paramos forma
         </h1>
         <DonationWidget
-          parishId="test-parish-vilnius"
-          parishName="Šv. apaštalų Petro ir Povilo parapija"
-          defaultAmounts={[10, 20, 50, 100, 200]}
-          language="lt"
+          title="Šv. apaštalų Petro ir Povilo parapija"
+          presets={[10, 20, 50, 100, 200]}
+          onConfigure={() => undefined}
         />
       </div>
     </main>

@@ -1,0 +1,283 @@
+{
+  "slug": "diocese-vilnius",
+  "vertical": "diocese",
+  "locale": "lt",
+  "name": {
+    "lt": "Vilniaus arkivyskupija",
+    "en": "Vilnius Archdiocese",
+    "ru": "Vilnius Archdiocese [TODO: verify with parish/diocese — do not publish unverified]"
+  },
+  "tagline": {
+    "lt": "Metropolijos centras, įkurtas 1387 m., Šv. Kazimiero globoje",
+    "en": "Metropolitan see founded in 1387, under the patronage of St. Casimir",
+    "ru": "Metropolitan see founded in 1387, under the patronage of St. Casimir [TODO: verify with parish/diocese — do not publish unverified]"
+  },
+  "identity": {
+    "entityId": "lt-diocese-vilnius-001",
+    "jurisdiction": "Vilnius Archdiocese",
+    "established": "1387",
+    "address": "Šv. Jono g. 3, 01141 Vilnius, Lithuania",
+    "email": "info@vilniusarkivyskupija.lt",
+    "phone": "+370 5 261 0744",
+    "domain": "vilniusarkivyskupija.lt",
+    "theme": "diocese-classic"
+  },
+  "pages": [
+    {
+      "route": "/",
+      "title": {
+        "lt": "Pradžia",
+        "en": "Home",
+        "ru": "Home [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Vilniaus arkivyskupija",
+            "en": "Vilnius Archdiocese",
+            "ru": "Vilnius Archdiocese [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "subheading": {
+            "lt": "Metropolijos centras · Šv. Kazimiero globa",
+            "en": "Metropolitan see · Patron: St. Casimir",
+            "ru": "Metropolitan see · Patron: St. Casimir [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Įkurta 1387 m. Katedra - Vilniaus arkikatedra bazilika.",
+            "en": "Erected in 1387. Cathedral: Vilnius Cathedral Basilica.",
+            "ru": "Erected in 1387. Cathedral: Vilnius Cathedral Basilica. [TODO: verify with parish/diocese — do not publish unverified]"
+          }
+        },
+        {
+          "type": "stats",
+          "heading": {
+            "lt": "Arkivyskupija skaičiais",
+            "en": "The Archdiocese in Numbers",
+            "ru": "The Archdiocese in Numbers [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "label": {
+                "lt": "Parapijų",
+                "ru": "Parapijų [TODO: verify — do not publish unverified]"
+              },
+              "value": 54
+            },
+            {
+              "label": {
+                "lt": "Kunigų",
+                "ru": "Kunigų [TODO: verify — do not publish unverified]"
+              },
+              "value": 78
+            },
+            {
+              "label": {
+                "lt": "Diakonų",
+                "ru": "Diakonų [TODO: verify — do not publish unverified]"
+              },
+              "value": 5
+            },
+            {
+              "label": {
+                "lt": "Parapijiečių",
+                "ru": "Parapijiečių [TODO: verify — do not publish unverified]"
+              },
+              "value": 320000
+            },
+            {
+              "label": {
+                "lt": "Katalikų",
+                "ru": "Katalikų [TODO: verify — do not publish unverified]"
+              },
+              "value": 580000
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "links": [
+            {
+              "label": {
+                "lt": "Dekanatų katalogas",
+                "ru": "Dekanatų katalogas [TODO: verify — do not publish unverified]"
+              },
+              "href": "/directory"
+            },
+            {
+              "label": {
+                "lt": "Naujienos",
+                "ru": "Naujienos [TODO: verify — do not publish unverified]"
+              },
+              "href": "/news"
+            },
+            {
+              "label": {
+                "lt": "Pašaukimai",
+                "ru": "Pašaukimai [TODO: verify — do not publish unverified]"
+              },
+              "href": "/vocations"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/directory",
+      "title": {
+        "lt": "Dekanatai",
+        "en": "Deaneries",
+        "ru": "Deaneries [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": {
+            "lt": "Arkivyskupijos dekanatai",
+            "en": "Archdiocesan Deaneries",
+            "ru": "Archdiocesan Deaneries [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "title": {
+                "lt": "Vilniaus I dekanatas",
+                "en": "Vilnius I Deanery",
+                "ru": "Vilnius I Deanery [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "12 parapijų"
+              ]
+            },
+            {
+              "title": {
+                "lt": "Vilniaus II dekanatas",
+                "en": "Vilnius II Deanery",
+                "ru": "Vilnius II Deanery [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "15 parapijų"
+              ]
+            },
+            {
+              "title": {
+                "lt": "Trakų dekanatas",
+                "en": "Trakai Deanery",
+                "ru": "Trakai Deanery [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "10 parapijų"
+              ]
+            },
+            {
+              "title": {
+                "lt": "Šalčininkų dekanatas",
+                "en": "Šalčininkai Deanery",
+                "ru": "Šalčininkai Deanery [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "8 parapijos"
+              ]
+            },
+            {
+              "title": {
+                "lt": "Švenčionių dekanatas",
+                "en": "Švenčionys Deanery",
+                "ru": "Švenčionys Deanery [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "tags": [
+                "9 parapijos"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/news",
+      "title": {
+        "lt": "Naujienos",
+        "en": "News",
+        "ru": "News [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": {
+            "lt": "Arkivyskupijos naujienų portalas",
+            "en": "Archdiocesan News Portal",
+            "ru": "Archdiocesan News Portal [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Oficialūs pranešimai, ganytojiniai laiškai, liturginis kalendorius ir parapijų naujienos.",
+            "en": "Official announcements, pastoral letters, liturgical calendar and parish news.",
+            "ru": "Official announcements, pastoral letters, liturgical calendar and parish news. [TODO: verify with parish/diocese — do not publish unverified]"
+          }
+        }
+      ]
+    },
+    {
+      "route": "/vocations",
+      "title": {
+        "lt": "Pašaukimai",
+        "en": "Vocations",
+        "ru": "Vocations [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": {
+            "lt": "Pašaukimų tarnyba",
+            "en": "Vocations Office",
+            "ru": "Vocations Office [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Informacija apie kunigystės ir pašvęstojo gyvenimo pašaukimą, seminarija, palydėjimas ir kontaktai.",
+            "en": "Information about priestly and consecrated-life vocations, the seminary, accompaniment and contacts.",
+            "ru": "Information about priestly and consecrated-life vocations, the seminary, accompaniment and contacts. [TODO: verify with parish/diocese — do not publish unverified]"
+          }
+        }
+      ]
+    },
+    {
+      "route": "/shop",
+      "title": {
+        "lt": "Krautuvėlė",
+        "en": "Shop",
+        "ru": "Shop [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "list",
+          "heading": {
+            "lt": "Arkivyskupijos krautuvėlė",
+            "en": "Archdiocesan Shop",
+            "ru": "Archdiocesan Shop [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "title": {
+                "lt": "Vyskupijos leidiniai",
+                "en": "Diocesan Publications",
+                "ru": "Diocesan Publications [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "title": {
+                "lt": "Renginių bilietai",
+                "en": "Event Tickets",
+                "ru": "Event Tickets [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "title": {
+                "lt": "Rekolekcijos",
+                "en": "Retreat Bookings",
+                "ru": "Retreat Bookings [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

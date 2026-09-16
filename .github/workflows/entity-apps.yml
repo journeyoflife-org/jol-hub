@@ -1,7 +1,7 @@
 # =============================================================================
 # JOL-HUB Entity Apps Build Pipeline
 # =============================================================================
-# Builds all 12 entity apps with matrix strategy for parallel execution
+# Builds entity apps (template-renderer multi-tenant app) with matrix strategy for parallel execution
 # GDPR Article 30 / SOC2 Type II compliant CI/CD
 # =============================================================================
 
@@ -29,7 +29,7 @@ on:
   workflow_dispatch:
     inputs:
       apps:
-        description: 'Apps to build (comma-separated, e.g., lt-basilica-vilnius-cathedral,lt-cathedral-kaunas)'
+        description: 'Apps to build (comma-separated, e.g., template-renderer,admin-dashboard)'
         required: false
         default: ''
 
@@ -37,7 +37,7 @@ env:
   NODE_VERSION: '20'
   PNPM_VERSION: '10.30.3'
 
-# All 12 entity apps + infrastructure apps
+# Multi-tenant renderer + infrastructure apps
 # Entity Apps (10): basilica, cathedral, church, diocese, deanery, protestant, orthodox, greek_catholic, funeral, cemetery
 # Infrastructure Apps (3): admin-dashboard, master-site, parish-template
 # Countries: LT (Lithuania) - Phase 1; LV (Latvia), EE (Estonia) - Phase 2
@@ -67,7 +67,7 @@ jobs:
           # Phase 1: LT (Lithuania) - 10 entities
           # Phase 2: LV (Latvia) - 4 entities
           # Phase 3: EE (Estonia) - 4 entities
-          ALL_APPS='["admin-dashboard","master-site","parish-template","lt-basilica-vilnius-cathedral","lt-cathedral-kaunas","lt-cemetery-vilnius","lt-deanery-vilnius-city","lt-diocese-vilnius","lt-funeral-vilnius","lt-greek-catholic-vilnius","lt-lutheran-kaunas","lt-orthodox-vilnius-cathedral","lt-parish-st-john-vilnius","lv-diocese-riga","lv-cathedral-riga-st-james","lv-orthodox-riga-cathedral","lv-lutheran-riga-cathedral","ee-estonia-apostolic","ee-cathedral-tallinn-st-peter-paul","ee-orthodox-tallinn-alexander-nevsky","ee-lutheran-tallinn-cathedral"]'
+          ALL_APPS='["admin-dashboard","master-site","parish-template","template-renderer","lv-diocese-riga","lv-cathedral-riga-st-james","lv-orthodox-riga-cathedral","lv-lutheran-riga-cathedral","ee-estonia-apostolic","ee-cathedral-tallinn-st-peter-paul","ee-orthodox-tallinn-alexander-nevsky","ee-lutheran-tallinn-cathedral"]'
           
           # Check if manual input provided
           if [ -n "${{ github.event.inputs.apps }}" ]; then
@@ -82,7 +82,7 @@ jobs:
           # On main/develop branch, build all apps
           if [ "${{ github.ref }}" == "refs/heads/main" ] || [ "${{ github.ref }}" == "refs/heads/develop" ]; then
             echo "apps=$ALL_APPS" >> $GITHUB_OUTPUT
-            echo "count=21" >> $GITHUB_OUTPUT
+            echo "count=12" >> $GITHUB_OUTPUT
             exit 0
           fi
           
@@ -92,7 +92,7 @@ jobs:
           if [ -z "$CHANGED_FILES" ]; then
             # Fallback to all apps if we can't detect changes
             echo "apps=$ALL_APPS" >> $GITHUB_OUTPUT
-            echo "count=21" >> $GITHUB_OUTPUT
+            echo "count=12" >> $GITHUB_OUTPUT
             exit 0
           fi
           
@@ -100,7 +100,7 @@ jobs:
           CHANGED_APPS="[]"
           
           # Check each app directory
-          for APP in admin-dashboard master-site parish-template lt-basilica-vilnius-cathedral lt-cathedral-kaunas lt-cemetery-vilnius lt-deanery-vilnius-city lt-diocese-vilnius lt-funeral-vilnius lt-greek-catholic-vilnius lt-lutheran-kaunas lt-orthodox-vilnius-cathedral lt-parish-st-john-vilnius lv-diocese-riga lv-cathedral-riga-st-james lv-orthodox-riga-cathedral lv-lutheran-riga-cathedral ee-estonia-apostolic ee-cathedral-tallinn-st-peter-paul ee-orthodox-tallinn-alexander-nevsky ee-lutheran-tallinn-cathedral; do
+          for APP in admin-dashboard master-site parish-template template-renderer lv-diocese-riga lv-cathedral-riga-st-james lv-orthodox-riga-cathedral lv-lutheran-riga-cathedral ee-estonia-apostolic ee-cathedral-tallinn-st-peter-paul ee-orthodox-tallinn-alexander-nevsky ee-lutheran-tallinn-cathedral; do
             if echo "$CHANGED_FILES" | grep -q "frontend/apps/${APP}/"; then
               CHANGED_APPS=$(echo "$CHANGED_APPS" | jq -c ". + [\"$APP\"]")
             fi
@@ -110,7 +110,7 @@ jobs:
           if echo "$CHANGED_FILES" | grep -qE "(frontend/packages/|frontend/package.json|frontend/pnpm-lock.yaml|frontend/turbo.json)"; then
             echo "Shared packages changed - building all apps"
             echo "apps=$ALL_APPS" >> $GITHUB_OUTPUT
-            echo "count=21" >> $GITHUB_OUTPUT
+            echo "count=12" >> $GITHUB_OUTPUT
             exit 0
           fi
           
@@ -118,11 +118,48 @@ jobs:
           if [ "$(echo "$CHANGED_APPS" | jq 'length')" -eq 0 ]; then
             echo "No app changes detected - building all apps for safety"
             echo "apps=$ALL_APPS" >> $GITHUB_OUTPUT
-            echo "count=21" >> $GITHUB_OUTPUT
+            echo "count=12" >> $GITHUB_OUTPUT
           else
             echo "apps=$CHANGED_APPS" >> $GITHUB_OUTPUT
             echo "count=$(echo $CHANGED_APPS | jq 'length')" >> $GITHUB_OUTPUT
           fi
+
+  # ===========================================================================
+  # I18N VALIDATION (STEP 4) — hard gate before any app build
+  # ===========================================================================
+
+  i18n-validation:
+    name: i18n Key Parity + Hardcoded String Scan
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'frontend/pnpm-lock.yaml'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Message key parity (all locales + verticals)
+        run: pnpm --filter @jol-hub/i18n i18n:check
+
+      - name: Hardcoded string scan (shared UI + template-renderer)
+        run: pnpm --filter @jol-hub/i18n i18n:find-hardcoded
 
   # ===========================================================================
   # BUILD APPS (MATRIX)
@@ -131,7 +168,7 @@ jobs:
   build-apps:
     name: Build ${{ matrix.app }}
     runs-on: ubuntu-latest
-    needs: detect-apps
+    needs: [detect-apps, i18n-validation]
     if: needs.detect-apps.outputs.apps-count > 0
     
     strategy:
@@ -309,17 +346,8 @@ jobs:
           echo "- master-site" >> $GITHUB_STEP_SUMMARY
           echo "- parish-template" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Lithuania (LT):**" >> $GITHUB_STEP_SUMMARY
-          echo "- lt-basilica-vilnius-cathedral" >> $GITHUB_STEP_SUMMARY
-          echo "- lt-cathedral-kaunas" >> $GITHUB_STEP_SUMMARY
-          echo "- lt-cemetery-vilnius" >> $GITHUB_STEP_SUMMARY
-          echo "- lt-deanery-vilnius-city" >> $GITHUB_STEP_SUMMARY
-          echo "- lt-diocese-vilnius" >> $GITHUB_STEP_SUMMARY
-          echo "- lt-funeral-vilnius" >> $GITHUB_STEP_SUMMARY
-          echo "- lt-greek-catholic-vilnius" >> $GITHUB_STEP_SUMMARY
-          echo "- lt-lutheran-kaunas" >> $GITHUB_STEP_SUMMARY
-          echo "- lt-orthodox-vilnius-cathedral" >> $GITHUB_STEP_SUMMARY
-          echo "- lt-parish-st-john-vilnius" >> $GITHUB_STEP_SUMMARY
+          echo "**Multi-tenant renderer (all entity tenants):**" >> $GITHUB_STEP_SUMMARY
+          echo "- template-renderer" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Latvia (LV):**" >> $GITHUB_STEP_SUMMARY
           echo "- lv-diocese-riga" >> $GITHUB_STEP_SUMMARY

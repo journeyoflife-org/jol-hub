@@ -1,0 +1,225 @@
+# -----------------------------------------------------------------------------
+# JOL Vertical Router — 10-Spoke Ingress Configuration
+# -----------------------------------------------------------------------------
+# Maps: Host → tenant → vertical → spoke
+# Cache key: (tenant, locale, template)
+# TLS 1.3 only; self-hosted or EU-jurisdiction caching only
+#
+# Domain topology (D-006/D-051):
+#   LT: {tenant-slug}.gyvenimo-kelias.lt
+#   LV: {tenant-slug}.dzives-cels.lv
+#   EE: {tenant-slug}.elu-tee.ee
+#   Hub: jol-hub.com (brand/marketplace only, never tenant content)
+#
+# Vertical mapping:
+#   basilica    → jol-site-basilica
+#   cathedral   → jol-site-cathedral
+#   diocese     → jol-site-diocese
+#   deanery     → jol-site-deanery
+#   parish      → jol-site-parish
+#   funeral     → jol-site-funeral
+#   cemetery    → jol-site-cemetery-care
+#   protestant  → jol-site-protestant
+#   orthodox    → jol-site-orthodox
+#   other       → jol-site-other-church
+# -----------------------------------------------------------------------------
+
+# --- LT wildcard ingress (gyvenimo-kelias.lt) ---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jol-lt-wildcard-ingress
+  namespace: jol-spokes
+  labels:
+    app.kubernetes.io/name: jol-vertical-router
+    app.kubernetes.io/component: ingress
+    jol.country: lt
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-protocols: "TLSv1.3"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    # Cache key: (tenant via host, locale via path prefix, template via vertical header)
+    nginx.ingress.kubernetes.io/proxy-cache-key: "$host$request_uri$http_x_vertical"
+    nginx.ingress.kubernetes.io/proxy-cache-duration: "10m"
+    nginx.ingress.kubernetes.io/proxy-cache-valid: "200=10m 404=1m"
+    # Security headers
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header X-Frame-Options "DENY" always;
+      add_header X-Content-Type-Options "nosniff" always;
+      add_header X-Robots-Tag "noindex" always;  # REMOVE after Vilnius mandate resolved
+      add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+spec:
+  tls:
+    - hosts:
+        - "*.gyvenimo-kelias.lt"
+      secretName: lt-wildcard-tls
+  rules:
+    - host: "*.gyvenimo-kelias.lt"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vertical-router-service
+                port:
+                  number: 3000
+---
+# --- LV wildcard ingress (dzives-cels.lv) ---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jol-lv-wildcard-ingress
+  namespace: jol-spokes
+  labels:
+    app.kubernetes.io/name: jol-vertical-router
+    app.kubernetes.io/component: ingress
+    jol.country: lv
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-protocols: "TLSv1.3"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    nginx.ingress.kubernetes.io/proxy-cache-key: "$host$request_uri$http_x_vertical"
+    nginx.ingress.kubernetes.io/proxy-cache-duration: "10m"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header X-Frame-Options "DENY" always;
+      add_header X-Content-Type-Options "nosniff" always;
+      add_header X-Robots-Tag "noindex" always;
+      add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+spec:
+  tls:
+    - hosts:
+        - "*.dzives-cels.lv"
+      secretName: lv-wildcard-tls
+  rules:
+    - host: "*.dzives-cels.lv"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vertical-router-service
+                port:
+                  number: 3000
+---
+# --- EE wildcard ingress (elu-tee.ee) ---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jol-ee-wildcard-ingress
+  namespace: jol-spokes
+  labels:
+    app.kubernetes.io/name: jol-vertical-router
+    app.kubernetes.io/component: ingress
+    jol.country: ee
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-protocols: "TLSv1.3"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    nginx.ingress.kubernetes.io/proxy-cache-key: "$host$request_uri$http_x_vertical"
+    nginx.ingress.kubernetes.io/proxy-cache-duration: "10m"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header X-Frame-Options "DENY" always;
+      add_header X-Content-Type-Options "nosniff" always;
+      add_header X-Robots-Tag "noindex" always;
+      add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+spec:
+  tls:
+    - hosts:
+        - "*.elu-tee.ee"
+      secretName: ee-wildcard-tls
+  rules:
+    - host: "*.elu-tee.ee"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vertical-router-service
+                port:
+                  number: 3000
+---
+# --- Vertical Router Service ---
+# Resolves: Host header → tenant slug → vertical → spoke deployment
+# The router reads X-Forwarded-Host (or Host) to resolve tenant,
+# then routes to the correct spoke deployment by vertical label.
+apiVersion: v1
+kind: Service
+metadata:
+  name: vertical-router-service
+  namespace: jol-spokes
+  labels:
+    app.kubernetes.io/name: jol-vertical-router
+    app.kubernetes.io/component: router
+spec:
+  selector:
+    app.kubernetes.io/name: jol-vertical-router
+    app.kubernetes.io/component: router
+  ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+---
+# --- Spoke Deployments (one per vertical) ---
+# Each spoke deployment is labeled with jol.vertical for router targeting.
+# Template shown for basilica; replicate for remaining 9 verticals.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jol-site-basilica
+  namespace: jol-spokes
+  labels:
+    app.kubernetes.io/name: jol-site-basilica
+    app.kubernetes.io/component: spoke
+    jol.vertical: basilica
+    jol.country: lt
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: jol-site-basilica
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: jol-site-basilica
+        jol.vertical: basilica
+    spec:
+      containers:
+        - name: next
+          image: ghcr.io/journeyoflife-org/jol-site-basilica:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: NEXT_PUBLIC_TENANT_SLUG
+              value: "basilica-vilnius-cathedral"
+            - name: NEXT_PUBLIC_VERTICAL
+              value: "basilica"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 20

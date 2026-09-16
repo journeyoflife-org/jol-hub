@@ -93,21 +93,9 @@ export type { PhotoGalleryProps, Photo } from './components/photo-gallery';
 export { ServiceSchedule } from './components/service-schedule';
 export type { ServiceScheduleProps, ScheduleItem } from './components/service-schedule';
 
-// Donation Widget (GDPR-compliant)
-export {
-  DonationWidget,
-  StripePaymentForm,
-  DonationSuccess,
-  DonationError,
-  useDonation,
-  createPaymentIntent,
-  confirmDonation,
-  getTaxReceipt,
-  downloadTaxReceipt,
-  createCrmDonationContact,
-  createCrmDonationDeal,
-  syncDonationToCrm,
-} from './components/donation';
+// Donation surface: the legacy PSP-integrated flat widget was REMOVED (O-021
+// STAGED-REMOVAL, ADR-009 Model A). The SAQ-A-eligible shell lives in the
+// composite barrel only: '@jol-hub/ui/components/composite'.
 
 // GDPR Cookie Consent
 export {
@@ -158,5 +146,92 @@ export type {
   EntityCRMOperations,
   UseEntityCRMReturn,
 } from './hooks/useEntityCRM';
+
+// ==========================================================================
+// STEP 3/4 shared component library (tenant-aware, i18n-driven)
+// Primitive names above stay LEGACY (existing apps depend on them); the
+// new surfaces use distinct names or dedicated subpath barrels:
+//   '@jol-hub/ui/components/primitives' | '/composite' | '/layout' | '/accessibility'
+// ==========================================================================
+
+// Layout chrome
+export { Header } from './components/layout/header';
+export type { HeaderProps } from './components/layout/header';
+export { Footer } from './components/layout/footer';
+export type { FooterProps, FooterLink, SocialLink } from './components/layout/footer';
+export { MainNav } from './components/layout/main-nav';
+export type { MainNavProps, NavItem } from './components/layout/main-nav';
+export { MobileNav } from './components/layout/mobile-nav';
+export type { MobileNavProps } from './components/layout/mobile-nav';
+export { Breadcrumbs } from './components/layout/breadcrumbs';
+export type { BreadcrumbsProps, BreadcrumbItem } from './components/layout/breadcrumbs';
+export { Sidebar } from './components/layout/sidebar';
+export type { SidebarProps, SidebarSection } from './components/layout/sidebar';
+export { PageContainer } from './components/layout/page-container';
+export type { PageContainerProps } from './components/layout/page-container';
+
+// Accessibility primitives
+export { SkipLink } from './components/accessibility/skip-link';
+export type { SkipLinkProps } from './components/accessibility/skip-link';
+export { AnnouncerProvider, useAnnounce } from './components/accessibility/announcer';
+export type { AnnouncerProviderProps, AnnounceApi } from './components/accessibility/announcer';
+export { LiveRegion } from './components/accessibility/live-region';
+export type { LiveRegionProps } from './components/accessibility/live-region';
+export { FocusTrap } from './components/accessibility/focus-trap';
+export type { FocusTrapProps } from './components/accessibility/focus-trap';
+
+// Composites
+export { Hero } from './components/composite/hero';
+export type { HeroProps, HeroCta, HeroVariant } from './components/composite/hero';
+export { SectionHeader } from './components/composite/section-header';
+export type { SectionHeaderProps, SectionHeaderFullProps } from './components/composite/section-header';
+export { ContentBlock } from './components/composite/content-block';
+export type { ContentBlockProps, ContentNode } from './components/composite/content-block';
+export { FeatureGrid } from './components/composite/feature-grid';
+export type { FeatureGridProps, FeatureItem } from './components/composite/feature-grid';
+export { EventCard } from './components/composite/event-card';
+export type { EventCardProps } from './components/composite/event-card';
+export { NewsCard } from './components/composite/news-card';
+export type { NewsCardProps } from './components/composite/news-card';
+export { ServiceCard } from './components/composite/service-card';
+export type { ServiceCardProps } from './components/composite/service-card';
+export { TestimonialCard } from './components/composite/testimonial-card';
+export type { TestimonialCardProps } from './components/composite/testimonial-card';
+export { Gallery } from './components/composite/gallery';
+export type { GalleryProps, GalleryImage } from './components/composite/gallery';
+export { MapEmbed } from './components/composite/map-embed';
+export type { MapEmbedProps } from './components/composite/map-embed';
+export { MapBlock } from './components/composite/map-block';
+export type { MapBlockProps } from './components/composite/map-block';
+export { EntityFactCard } from './components/composite/entity-fact-card';
+export type { EntityFactCardProps, EntityFact } from './components/composite/entity-fact-card';
+export { EventList } from './components/composite/event-list';
+export type { EventListProps } from './components/composite/event-list';
+export { ServiceList } from './components/composite/service-list';
+export type { ServiceListProps } from './components/composite/service-list';
+export { CourseList } from './components/composite/course-list';
+export type { CourseListProps, CourseItem } from './components/composite/course-list';
+export { ProductCard } from './components/composite/product-card';
+export type { ProductCardProps } from './components/composite/product-card';
+export { StorefrontGrid } from './components/composite/storefront-grid';
+export type { StorefrontGridProps } from './components/composite/storefront-grid';
+export { VendorDashboardShell } from './components/composite/vendor-dashboard-shell';
+export type { VendorDashboardShellProps, VendorStat } from './components/composite/vendor-dashboard-shell';
+export { ChatbotEntry } from './components/composite/chatbot-entry';
+export type { ChatbotEntryProps } from './components/composite/chatbot-entry';
+export { CemeteryMapCanvas } from './components/composite/cemetery-map-canvas';
+export type { CemeteryMapCanvasProps, PlotCell } from './components/composite/cemetery-map-canvas';
+export { OnboardingSteps } from './components/composite/onboarding-steps';
+export type { OnboardingStepsProps, OnboardingStep } from './components/composite/onboarding-steps';
+// NOTE: legacy flat `ContactForm` above keeps its root-barrel name for
+// back-compat; the STEP 3 versions are exposed via the composite barrel:
+// '@jol-hub/ui/components/composite' (incl. the Model-A-compliant
+// DonationWidget shell, O-021).
+export { contactFormSchema } from './components/composite/contact-form';
+export type { ContactFormValues } from './components/composite/contact-form';
+
+// i18n (STEP 4)
+export { LocaleSwitcher } from './components/locale-switcher';
+export type { LocaleSwitcherProps } from './components/locale-switcher';
 
 // Types

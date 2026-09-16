@@ -12,7 +12,7 @@
  */
 
 // i18next initialization (requires react-i18next — client only)
-export { i18n, initI18n, getCurrentLocale, setLocale } from './config';
+export { i18n, initI18n, getCurrentLocale, setLocale } from './i18next';
 
 // React-i18next (client-only)
 export { useTranslation, Trans, withTranslation } from 'react-i18next';
