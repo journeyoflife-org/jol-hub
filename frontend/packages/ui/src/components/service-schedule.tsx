@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * ServiceSchedule Component
  * Displays Mass times, confession, and office hours

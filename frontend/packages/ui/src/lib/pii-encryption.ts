@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * Client-side PII Encryption Utilities
  * AES-256-GCM encryption for sensitive form data

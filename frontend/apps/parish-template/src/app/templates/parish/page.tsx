@@ -35,7 +35,6 @@ import {
 // Model-A-compliant donation shell (O-021 STAGED-REMOVAL): the composite
 // widget reports the configured selection only; the charge path is the
 // marketplace checkout handoff (donation-flow-spec §1), never PSP-in-hub.
-import { DonationWidget } from '@journeyoflife-org/ui/components/composite';
 import { MapPin, Phone, Mail, ChevronRight, Church, Calendar, Users, Heart } from 'lucide-react';
 
 // =============================================================================
@@ -404,7 +403,18 @@ export default async function ParishTemplatePage(): Promise<JSX.Element> {
                 <CardDescription>Your generosity helps us continue our mission</CardDescription>
               </CardHeader>
               <CardContent>
-                <DonationWidget title={parish.name} onConfigure={() => undefined} />
+                {/* DonationWidget deferred — requires I18nProvider from [locale]/ layout */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>
+                      <Heart className="mr-2 h-5 w-5" />
+                      Support {parish.name}
+                    </CardTitle>
+                    <CardDescription>
+                      Donation widget requires locale context. Use the localised route.
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
               </CardContent>
             </Card>
 

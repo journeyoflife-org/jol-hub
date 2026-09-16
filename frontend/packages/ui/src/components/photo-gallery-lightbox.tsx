@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * PhotoGallery lightbox — keyboard-navigable image dialog. Extracted from
  * photo-gallery.tsx (STEP 3 250-line rule).

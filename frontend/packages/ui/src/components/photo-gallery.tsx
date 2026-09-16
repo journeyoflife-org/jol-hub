@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * PhotoGallery Component
  * Next.js Image optimization with lightbox modal

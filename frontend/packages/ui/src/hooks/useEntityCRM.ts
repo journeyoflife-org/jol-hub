@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * Entity CRM Integration Hook
  * Shared hook for Bitrix24 CRM operations across all entity types

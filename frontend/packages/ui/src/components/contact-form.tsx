@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * ContactForm Component
  * Validates phone/email and sends to Bitrix24 CRM
