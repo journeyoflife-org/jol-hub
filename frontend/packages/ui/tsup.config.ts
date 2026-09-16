@@ -61,8 +61,10 @@ export default defineConfig({
         }
       }
     }
-    console.log('[use-client] Banner injected into', files.filter(
-      f => f.endsWith('.js') || f.endsWith('.mjs') || f.endsWith('.cjs')
-    ).length, 'files');
+    console.log(
+      '[use-client] Banner injected into',
+      files.filter((f) => f.endsWith('.js') || f.endsWith('.mjs') || f.endsWith('.cjs')).length,
+      'files'
+    );
   },
 });
