@@ -78,22 +78,23 @@ def _audit_log(
 # ---------------------------------------------------------------------------
 
 
-@shared_task(name='apps.integrations.tasks.process_paypal_webhook')
+@shared_task(name="apps.integrations.tasks.process_paypal_webhook")
 def process_paypal_webhook(event_id: str):
     from .models import WebhookEvent
+
     try:
         event = WebhookEvent.objects.get(id=event_id)
         event.status = WebhookEvent.STATUS_PROCESSED
         event.processed_at = timezone.now()
-        event.save(update_fields=['status', 'processed_at', 'updated_at'])
+        event.save(update_fields=["status", "processed_at", "updated_at"])
     except WebhookEvent.DoesNotExist:
         pass
 
 
 @shared_task(
-    name='apps.integrations.tasks.process_bitrix24_webhook',
+    name="apps.integrations.tasks.process_bitrix24_webhook",
     autoretry_for=_TRANSIENT_ERRORS,
-    retry_kwargs={'max_retries': 3, 'countdown': 5},
+    retry_kwargs={"max_retries": 3, "countdown": 5},
     retry_backoff=True,
     retry_backoff_max=60,
     retry_jitter=True,
@@ -152,7 +153,8 @@ def process_bitrix24_webhook(
             level=logging.WARNING,
         )
         logger.warning(
-            "MongoDB document not found: %s", mongo_doc_id,
+            "MongoDB document not found: %s",
+            mongo_doc_id,
         )
         return
 
@@ -196,7 +198,8 @@ def process_bitrix24_webhook(
         )
         logger.info(
             "Webhook already %s (key=%s) — skipping.",
-            pg_event.status, idempotency_key,
+            pg_event.status,
+            idempotency_key,
         )
         return
 
@@ -234,7 +237,8 @@ def process_bitrix24_webhook(
         )
         logger.info(
             "Bitrix24 webhook processed: %s → %s",
-            event_type, pg_event.status,
+            event_type,
+            pg_event.status,
         )
 
     except _PERMANENT_ERRORS as exc:
@@ -260,7 +264,9 @@ def process_bitrix24_webhook(
         )
         logger.error(
             "Permanent error processing webhook %s: %s: %s",
-            mongo_doc_id, type(exc).__name__, exc,
+            mongo_doc_id,
+            type(exc).__name__,
+            exc,
         )
         # Do NOT re-raise — Celery sees a clean return → no retry.
         return
@@ -289,7 +295,8 @@ def process_bitrix24_webhook(
         )
         logger.error(
             "Transient error processing webhook %s: %s",
-            mongo_doc_id, exc,
+            mongo_doc_id,
+            exc,
         )
         raise  # Re-raise → autoretry_for triggers retry.
 
@@ -617,6 +624,7 @@ def _sync_lead(
 
     # Extract multi-value fields (EMAIL, PHONE)
     from .bitrix24_mappings import extract_email, extract_phone
+
     email = extract_email(fields)
     phone = extract_phone(fields)
     if email:
@@ -641,7 +649,7 @@ def _sync_lead(
     return lead
 
 
-@shared_task(name='apps.integrations.tasks.process_bitrix24_retry_queue')
+@shared_task(name="apps.integrations.tasks.process_bitrix24_retry_queue")
 def process_bitrix24_retry_queue():
     """
     Process failed Bitrix24 webhooks that are pending retry.
@@ -652,7 +660,7 @@ def process_bitrix24_retry_queue():
 
     retry_cutoff = timezone.now() - timedelta(hours=24)
     failed_events = WebhookEvent.objects.filter(
-        source='bitrix24',
+        source="bitrix24",
         status=WebhookEvent.STATUS_FAILED,
         created_at__gte=retry_cutoff,
     )[:100]
@@ -660,7 +668,7 @@ def process_bitrix24_retry_queue():
     for event in failed_events:
         process_bitrix24_webhook.delay(
             str(event.id),
-            country=event.payload.get('country'),
+            country=event.payload.get("country"),
         )
 
     logger.info(f"Queued {len(failed_events)} Bitrix24 webhooks for retry")

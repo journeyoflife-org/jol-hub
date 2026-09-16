@@ -30,7 +30,6 @@ from apps.integrations.tasks import (
 )
 from apps.organizations.models import Organization
 
-
 # ---------------------------------------------------------------------------
 # Fixtures
 # ---------------------------------------------------------------------------
@@ -187,9 +186,12 @@ class TestLeadUpdate:
             )
 
         # -- PostgreSQL assertions --
-        assert Lead.objects.filter(
-            organization=test_organization, bitrix24_id="200"
-        ).count() == 1  # No duplicate created
+        assert (
+            Lead.objects.filter(
+                organization=test_organization, bitrix24_id="200"
+            ).count()
+            == 1
+        )  # No duplicate created
 
         lead = Lead.objects.get(bitrix24_id="200", organization=test_organization)
         assert lead.title == "Updated Title - Qualified"
@@ -319,7 +321,9 @@ class TestPIIMasking:
                     "ID": "600",
                     "NAME": "Sensitive",
                     "LAST_NAME": "Data",
-                    "EMAIL": [{"VALUE": "sensitive.person@example.com", "TYPE": "WORK"}],
+                    "EMAIL": [
+                        {"VALUE": "sensitive.person@example.com", "TYPE": "WORK"}
+                    ],
                     "PHONE": [{"VALUE": "+37069876543", "TYPE": "MOBILE"}],
                 },
             },

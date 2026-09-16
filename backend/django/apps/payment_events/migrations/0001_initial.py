@@ -7,23 +7,46 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='PaymentEvent',
+            name="PaymentEvent",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('event_id', models.CharField(db_index=True, max_length=64, unique=True)),
-                ('type', models.CharField(choices=[('payment_intent.succeeded', 'payment_intent.succeeded'), ('payment_intent.payment_failed', 'payment_intent.payment_failed'), ('charge.refunded', 'charge.refunded')], max_length=64)),
-                ('product', models.CharField(max_length=32)),
-                ('payment_intent_id', models.CharField(db_index=True, max_length=64)),
-                ('status', models.CharField(max_length=32)),
-                ('amount_cents', models.BigIntegerField()),
-                ('currency', models.CharField(max_length=3)),
-                ('occurred_at', models.DateTimeField()),
-                ('received_at', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "event_id",
+                    models.CharField(db_index=True, max_length=64, unique=True),
+                ),
+                (
+                    "type",
+                    models.CharField(
+                        choices=[
+                            ("payment_intent.succeeded", "payment_intent.succeeded"),
+                            (
+                                "payment_intent.payment_failed",
+                                "payment_intent.payment_failed",
+                            ),
+                            ("charge.refunded", "charge.refunded"),
+                        ],
+                        max_length=64,
+                    ),
+                ),
+                ("product", models.CharField(max_length=32)),
+                ("payment_intent_id", models.CharField(db_index=True, max_length=64)),
+                ("status", models.CharField(max_length=32)),
+                ("amount_cents", models.BigIntegerField()),
+                ("currency", models.CharField(max_length=3)),
+                ("occurred_at", models.DateTimeField()),
+                ("received_at", models.DateTimeField(auto_now_add=True)),
             ],
         ),
     ]

@@ -342,15 +342,16 @@ export function createParishGuardMiddleware(
     if (!accessResult.allowed) {
       // Redirect based on reason
       switch (accessResult.reason) {
-        case 'NOT_AUTHENTICATED':
+        case 'NOT_AUTHENTICATED': {
           const loginUrl = new URL(finalConfig.loginPath, request.url);
           loginUrl.searchParams.set('callbackUrl', request.url);
           if (parishId) {
             loginUrl.searchParams.set('parish', parishId);
           }
           return NextResponse.redirect(loginUrl);
+        }
         
-        case 'PARISH_MISMATCH':
+        case 'PARISH_MISMATCH': {
           // Redirect to access denied or user's primary parish
           if (session?.primaryParishId && finalConfig.mainSiteDomain) {
             const redirectUrl = new URL(request.url);
@@ -358,6 +359,7 @@ export function createParishGuardMiddleware(
             return NextResponse.redirect(redirectUrl);
           }
           return NextResponse.redirect(new URL(finalConfig.accessDeniedPath, request.url));
+        }
         
         default:
           return NextResponse.redirect(new URL(finalConfig.loginPath, request.url));

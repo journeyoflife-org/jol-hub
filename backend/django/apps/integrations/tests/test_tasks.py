@@ -27,7 +27,6 @@ from apps.integrations.models import WebhookEvent
 from apps.integrations.tasks import process_bitrix24_webhook
 from apps.organizations.models import Organization
 
-
 # ---------------------------------------------------------------------------
 # Fixtures
 # ---------------------------------------------------------------------------
@@ -50,6 +49,7 @@ def test_organization(db) -> Organization:
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
 
 def _insert_mongo_doc(
     *,
@@ -109,7 +109,9 @@ class TestProcessBitrix24WebhookSuccess:
     """Valid payload → MongoDB fetch → business logic → PROCESSED + audit."""
 
     def test_success_transitions_to_processed(
-        self, caplog, test_organization,
+        self,
+        caplog,
+        test_organization,
     ):
         """Full success: PG event reaches PROCESSED, audit log emitted."""
         mongo_doc_id = _insert_mongo_doc()
@@ -126,10 +128,7 @@ class TestProcessBitrix24WebhookSuccess:
         assert pg_event.error == ""
 
         # -- Audit log assertions --
-        audit_messages = [
-            r.message for r in caplog.records
-            if "AUDIT" in r.message
-        ]
+        audit_messages = [r.message for r in caplog.records if "AUDIT" in r.message]
         assert any(
             "webhook_processing_started" in m for m in audit_messages
         ), "Missing 'webhook_processing_started' audit entry."
@@ -139,8 +138,7 @@ class TestProcessBitrix24WebhookSuccess:
 
         # Verify audit contains required fields.
         started_log = next(
-            r for r in caplog.records
-            if "webhook_processing_started" in r.message
+            r for r in caplog.records if "webhook_processing_started" in r.message
         )
         assert "system:celery:process_bitrix24_webhook" in started_log.message
         assert "webhook_event" in started_log.message
@@ -157,7 +155,8 @@ class TestProcessBitrix24WebhookEarlyExit:
     """Already-processed event → task returns early without re-processing."""
 
     def test_already_processed_returns_early(
-        self, caplog,
+        self,
+        caplog,
     ):
         """If WebhookEvent is already PROCESSED, task exits immediately."""
         idempotency_key = "bitrix24:test.test:ONCRMDEALUPDATE:99:1700000099"
@@ -185,10 +184,7 @@ class TestProcessBitrix24WebhookEarlyExit:
         assert pg_event.status == WebhookEvent.STATUS_PROCESSED
 
         # Audit log must contain the early-exit marker.
-        audit_messages = [
-            r.message for r in caplog.records
-            if "AUDIT" in r.message
-        ]
+        audit_messages = [r.message for r in caplog.records if "AUDIT" in r.message]
         assert any(
             "webhook_skipped_already_processed" in m for m in audit_messages
         ), "Missing 'webhook_skipped_already_processed' audit entry."
@@ -233,7 +229,10 @@ class TestProcessBitrix24WebhookTransientError:
         side_effect=Retry("retrying", Exception()),
     )
     def test_operational_error_triggers_retry(
-        self, mock_retry, mock_biz_logic, caplog,
+        self,
+        mock_retry,
+        mock_biz_logic,
+        caplog,
     ):
         """OperationalError during business logic → retry is called."""
         mongo_doc_id = _insert_mongo_doc()
@@ -252,13 +251,9 @@ class TestProcessBitrix24WebhookTransientError:
         assert pg_event.status == WebhookEvent.STATUS_FAILED
 
         # -- Audit log must capture the transient failure --
-        audit_messages = [
-            r.message for r in caplog.records
-            if "AUDIT" in r.message
-        ]
+        audit_messages = [r.message for r in caplog.records if "AUDIT" in r.message]
         assert any(
-            "webhook_processing_failed_transient" in m
-            for m in audit_messages
+            "webhook_processing_failed_transient" in m for m in audit_messages
         ), "Missing 'webhook_processing_failed_transient' audit entry."
 
 
@@ -279,7 +274,10 @@ class TestProcessBitrix24WebhookPermanentError:
         "apps.integrations.tasks.process_bitrix24_webhook.retry",
     )
     def test_key_error_marks_failed_no_retry(
-        self, mock_retry, mock_biz_logic, caplog,
+        self,
+        mock_retry,
+        mock_biz_logic,
+        caplog,
     ):
         """KeyError during business logic → FAILED, retry NOT called."""
         mongo_doc_id = _insert_mongo_doc()
@@ -299,13 +297,9 @@ class TestProcessBitrix24WebhookPermanentError:
         assert pg_event.processed_at is not None
 
         # -- Audit log must capture the permanent failure --
-        audit_messages = [
-            r.message for r in caplog.records
-            if "AUDIT" in r.message
-        ]
+        audit_messages = [r.message for r in caplog.records if "AUDIT" in r.message]
         assert any(
-            "webhook_processing_failed_permanent" in m
-            for m in audit_messages
+            "webhook_processing_failed_permanent" in m for m in audit_messages
         ), "Missing 'webhook_processing_failed_permanent' audit entry."
 
     @patch(
@@ -316,7 +310,9 @@ class TestProcessBitrix24WebhookPermanentError:
         "apps.integrations.tasks.process_bitrix24_webhook.retry",
     )
     def test_value_error_marks_failed_no_retry(
-        self, mock_retry, mock_biz_logic,
+        self,
+        mock_retry,
+        mock_biz_logic,
     ):
         """ValueError during business logic → FAILED, retry NOT called."""
         mongo_doc_id = _insert_mongo_doc()

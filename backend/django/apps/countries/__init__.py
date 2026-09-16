@@ -1,1 +1,1 @@
-default_app_config = 'apps.countries.apps.CountriesConfig'
+default_app_config = "apps.countries.apps.CountriesConfig"

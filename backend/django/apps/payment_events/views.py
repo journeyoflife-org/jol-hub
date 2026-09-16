@@ -67,7 +67,9 @@ def _valid_envelope(data: dict) -> str | None:
     for field in ("event_id", "product", "payment_intent_id", "status", "currency"):
         if not isinstance(data[field], str) or not data[field]:
             return f"invalid_field:{field}"
-    if not isinstance(data["amount_cents"], int) or isinstance(data["amount_cents"], bool):
+    if not isinstance(data["amount_cents"], int) or isinstance(
+        data["amount_cents"], bool
+    ):
         return "invalid_field:amount_cents"
     try:
         datetime.fromisoformat(data["occurred_at"])
@@ -88,7 +90,11 @@ def receive_payment_event(request: HttpRequest) -> HttpResponse:
     ts_raw = request.headers.get("X-JOL-Timestamp")
     signature = request.headers.get("X-JOL-Signature")
     if product is None or ts_raw is None or signature is None:
-        return _error(400, "missing_headers", "X-Product, X-JOL-Timestamp and X-JOL-Signature are required.")
+        return _error(
+            400,
+            "missing_headers",
+            "X-Product, X-JOL-Timestamp and X-JOL-Signature are required.",
+        )
 
     try:
         ts = int(ts_raw)
@@ -97,7 +103,9 @@ def receive_payment_event(request: HttpRequest) -> HttpResponse:
 
     window = getattr(settings, "PAYMENT_EVENTS_REPLAY_WINDOW_SECONDS", 300)
     if abs(int(time.time()) - ts) > window:
-        return _error(401, "timestamp_out_of_window", "Timestamp outside the replay window.")
+        return _error(
+            401, "timestamp_out_of_window", "Timestamp outside the replay window."
+        )
 
     delivery_key = getattr(settings, "HUB_PAYMENT_DELIVERY_KEY", "")
     if not delivery_key:
@@ -107,10 +115,14 @@ def receive_payment_event(request: HttpRequest) -> HttpResponse:
     body = request.body
     expected = _expected_signature(body, delivery_key, ts)
     if not hmac.compare_digest(expected, signature):
-        return _error(401, "signature_mismatch", "Envelope signature verification failed.")
+        return _error(
+            401, "signature_mismatch", "Envelope signature verification failed."
+        )
 
     if product != "hub":
-        return _error(400, "misrouted_product", "This receiver accepts product 'hub' only.")
+        return _error(
+            400, "misrouted_product", "This receiver accepts product 'hub' only."
+        )
 
     try:
         data = json.loads(body)
@@ -126,7 +138,9 @@ def receive_payment_event(request: HttpRequest) -> HttpResponse:
     # Dedupe before side effects (at-least-once delivery; duplicates are
     # expected). Known event_id → idempotent 200 no-op.
     if PaymentEvent.objects.filter(event_id=data["event_id"]).exists():
-        return JsonResponse({"status": "duplicate", "event_id": data["event_id"]}, status=200)
+        return JsonResponse(
+            {"status": "duplicate", "event_id": data["event_id"]}, status=200
+        )
 
     # Persist-before-process: durable acceptance first; downstream
     # fulfillment hooks are later gated work (none exist in this scope).
@@ -140,4 +154,6 @@ def receive_payment_event(request: HttpRequest) -> HttpResponse:
         currency=data["currency"],
         occurred_at=datetime.fromisoformat(data["occurred_at"]),
     )
-    return JsonResponse({"status": "accepted", "event_id": data["event_id"]}, status=201)
+    return JsonResponse(
+        {"status": "accepted", "event_id": data["event_id"]}, status=201
+    )

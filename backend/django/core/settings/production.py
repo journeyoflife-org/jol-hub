@@ -35,25 +35,25 @@ SECURE_HSTS_PRELOAD = True
 # Content Security Policy headers
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
-X_FRAME_OPTIONS = 'DENY'
+X_FRAME_OPTIONS = "DENY"
 
 # Session security
 SESSION_COOKIE_HTTPONLY = True
-SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SAMESITE = "Lax"
 CSRF_COOKIE_HTTPONLY = True
-CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_SAMESITE = "Lax"
 
 # =============================================================================
 # ALLOWED HOSTS
 # =============================================================================
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['.journeyoflife.org'])
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[".journeyoflife.org"])
 
 # =============================================================================
 # CORS SETTINGS
 # =============================================================================
 
-CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=[])
+CORS_ALLOWED_ORIGINS = env.list("CORS_ALLOWED_ORIGINS", default=[])
 CORS_ALLOW_ALL_ORIGINS = False
 
 # =============================================================================
@@ -61,14 +61,14 @@ CORS_ALLOW_ALL_ORIGINS = False
 # =============================================================================
 
 # Use connection pooling for production
-DATABASES['default']['CONN_MAX_AGE'] = 600
-DATABASES['default']['OPTIONS']['sslmode'] = 'require'
+DATABASES["default"]["CONN_MAX_AGE"] = 600
+DATABASES["default"]["OPTIONS"]["sslmode"] = "require"
 
 # =============================================================================
 # CACHE SETTINGS
 # =============================================================================
 
-CACHES['default']['TIMEOUT'] = 300  # 5 minutes
+CACHES["default"]["TIMEOUT"] = 300  # 5 minutes
 
 # =============================================================================
 # CELERY SETTINGS
@@ -82,14 +82,14 @@ CELERY_WORKER_CONCURRENCY = 4
 # =============================================================================
 
 # Production-optimized renderers (no browsable API)
-REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
-    'rest_framework.renderers.JSONRenderer',
+REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
+    "rest_framework.renderers.JSONRenderer",
 ]
 
 # Stricter throttling
-REST_FRAMEWORK['DEFAULT_THROTTLE_RATES'] = {
-    'anon': '100/hour',
-    'user': '1000/hour',
+REST_FRAMEWORK["DEFAULT_THROTTLE_RATES"] = {
+    "anon": "100/hour",
+    "user": "1000/hour",
 }
 
 # =============================================================================
@@ -97,25 +97,25 @@ REST_FRAMEWORK['DEFAULT_THROTTLE_RATES'] = {
 # =============================================================================
 
 # Use WhiteNoise for static file serving
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # =============================================================================
 # LOGGING
 # =============================================================================
 
 # Production logging - errors only to file, info to console
-LOGGING['root']['level'] = 'WARNING'
-LOGGING['loggers']['jolhub']['level'] = 'INFO'
+LOGGING["root"]["level"] = "WARNING"
+LOGGING["loggers"]["jolhub"]["level"] = "INFO"
 
 # =============================================================================
 # EMAIL SETTINGS
 # =============================================================================
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_USE_TLS = True
 
 # =============================================================================
 # ENVIRONMENT IDENTIFICATION
 # =============================================================================
 
-ENVIRONMENT = 'production'
+ENVIRONMENT = "production"

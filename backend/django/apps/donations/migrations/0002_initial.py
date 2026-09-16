@@ -10,28 +10,44 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('donations', '0001_initial'),
-        ('organizations', '0001_initial'),
+        ("donations", "0001_initial"),
+        ("organizations", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='donation',
-            name='donor',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='donations', to=settings.AUTH_USER_MODEL, verbose_name='donor'),
+            model_name="donation",
+            name="donor",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="donations",
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="donor",
+            ),
         ),
         migrations.AddField(
-            model_name='donation',
-            name='organization',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='donations', to='organizations.organization', verbose_name='organization'),
+            model_name="donation",
+            name="organization",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="donations",
+                to="organizations.organization",
+                verbose_name="organization",
+            ),
         ),
         migrations.AddIndex(
-            model_name='donation',
-            index=models.Index(fields=['organization', 'status'], name='donations_d_organiz_efd7ac_idx'),
+            model_name="donation",
+            index=models.Index(
+                fields=["organization", "status"], name="donations_d_organiz_efd7ac_idx"
+            ),
         ),
         migrations.AddIndex(
-            model_name='donation',
-            index=models.Index(fields=['donor', 'status'], name='donations_d_donor_i_d5122b_idx'),
+            model_name="donation",
+            index=models.Index(
+                fields=["donor", "status"], name="donations_d_donor_i_d5122b_idx"
+            ),
         ),
     ]

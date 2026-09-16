@@ -9,27 +9,40 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('analytics', '0001_initial'),
-        ('organizations', '0001_initial'),
+        ("analytics", "0001_initial"),
+        ("organizations", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='dailystats',
-            name='organization',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='daily_stats', to='organizations.organization', verbose_name='organization'),
+            model_name="dailystats",
+            name="organization",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="daily_stats",
+                to="organizations.organization",
+                verbose_name="organization",
+            ),
         ),
         migrations.AddField(
-            model_name='pageview',
-            name='organization',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='page_views', to='organizations.organization', verbose_name='organization'),
+            model_name="pageview",
+            name="organization",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="page_views",
+                to="organizations.organization",
+                verbose_name="organization",
+            ),
         ),
         migrations.AlterUniqueTogether(
-            name='dailystats',
-            unique_together={('organization', 'date')},
+            name="dailystats",
+            unique_together={("organization", "date")},
         ),
         migrations.AddIndex(
-            model_name='pageview',
-            index=models.Index(fields=['organization', 'created_at'], name='analytics_p_organiz_1271e2_idx'),
+            model_name="pageview",
+            index=models.Index(
+                fields=["organization", "created_at"],
+                name="analytics_p_organiz_1271e2_idx",
+            ),
         ),
     ]

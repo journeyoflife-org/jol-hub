@@ -9,19 +9,29 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('financial', '0001_initial'),
-        ('organizations', '0001_initial'),
+        ("financial", "0001_initial"),
+        ("organizations", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='invoice',
-            name='organization',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='invoices', to='organizations.organization', verbose_name='organization'),
+            model_name="invoice",
+            name="organization",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="invoices",
+                to="organizations.organization",
+                verbose_name="organization",
+            ),
         ),
         migrations.AddField(
-            model_name='payout',
-            name='organization',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='payouts', to='organizations.organization', verbose_name='organization'),
+            model_name="payout",
+            name="organization",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="payouts",
+                to="organizations.organization",
+                verbose_name="organization",
+            ),
         ),
     ]

@@ -10,6 +10,7 @@ import type {
   JolHubUserRole,
 } from '../types/bitrix';
 import { mapBitrixRole, DEFAULT_BITRIX_SCOPES } from '../types/bitrix';
+import * as nodeCrypto from 'crypto';
 
 // =============================================================================
 // PKCE UTILITIES
@@ -29,10 +30,9 @@ function generateRandomString(length: number): string {
     crypto.getRandomValues(values);
   } else {
     // Fallback for non-browser environments (Node.js)
-    const nodeCrypto = require('crypto');
-    const randomBytes = nodeCrypto.randomBytes(length);
+    const randomBytes: Uint8Array = new Uint8Array(nodeCrypto.randomBytes(length));
     for (let i = 0; i < length; i++) {
-      values[i] = randomBytes[i];
+      values[i] = randomBytes[i]!;
     }
   }
   
@@ -56,8 +56,7 @@ async function sha256Base64Url(plain: string): Promise<string> {
     hashBuffer = await crypto.subtle.digest('SHA-256', data);
   } else {
     // Fallback for Node.js environment
-    const nodeCrypto = require('crypto');
-    hashBuffer = nodeCrypto.createHash('sha256').update(plain).digest();
+    hashBuffer = nodeCrypto.createHash('sha256').update(plain).digest() as unknown as ArrayBuffer;
   }
   
   // Convert to base64url (RFC 7636 Appendix A)

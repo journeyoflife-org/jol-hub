@@ -1,1 +1,1 @@
-default_app_config = 'apps.integrations.apps.IntegrationsConfig'
+default_app_config = "apps.integrations.apps.IntegrationsConfig"

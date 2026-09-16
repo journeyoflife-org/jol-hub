@@ -44,7 +44,9 @@ def make_envelope(**overrides) -> dict:
     return envelope
 
 
-def signed_post(client: Client, envelope: dict, *, key: str = TEST_KEY, ts: int | None = None):
+def signed_post(
+    client: Client, envelope: dict, *, key: str = TEST_KEY, ts: int | None = None
+):
     body = json.dumps(envelope).encode()
     ts = int(time.time()) if ts is None else ts
     payload = f"{ts}.{hashlib.sha256(body).hexdigest()}".encode()

@@ -85,7 +85,9 @@ class TestBitrix24WebhookSuccess:
 
     @patch("apps.integrations.tasks.process_bitrix24_webhook")
     def test_returns_202_and_stores_in_mongodb(
-        self, mock_task, api_client,
+        self,
+        mock_task,
+        api_client,
     ):
         """A valid webhook returns 202, stores in MongoDB, and queues a task."""
         payload = build_bitrix24_payload(
@@ -108,7 +110,9 @@ class TestBitrix24WebhookSuccess:
         from apps.core.mongodb import WebhookPayloadCollection
 
         stored = WebhookPayloadCollection.find_one(
-            {"idempotency_key": "bitrix24:success-portal.bitrix24.com:ONCRMLEADADD:100:1700000001"},
+            {
+                "idempotency_key": "bitrix24:success-portal.bitrix24.com:ONCRMLEADADD:100:1700000001"
+            },
         )
         assert stored is not None
         assert stored["source"] == "bitrix24"

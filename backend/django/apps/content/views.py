@@ -17,13 +17,15 @@ class PageListCreateView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_serializer_class(self):
-        return PageCreateSerializer if self.request.method == 'POST' else PageSerializer
+        return PageCreateSerializer if self.request.method == "POST" else PageSerializer
 
     def get_queryset(self):
-        qs = Page.objects.filter(is_deleted=False).select_related('author', 'featured_image')
-        org_id = self.request.query_params.get('organization_id')
-        lang = self.request.query_params.get('language')
-        page_status = self.request.query_params.get('status')
+        qs = Page.objects.filter(is_deleted=False).select_related(
+            "author", "featured_image"
+        )
+        org_id = self.request.query_params.get("organization_id")
+        lang = self.request.query_params.get("language")
+        page_status = self.request.query_params.get("status")
         if org_id:
             qs = qs.filter(organization_id=org_id)
         if lang:
@@ -63,7 +65,7 @@ class MediaFileListCreateView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         qs = MediaFile.objects.filter(is_deleted=False)
-        org_id = self.request.query_params.get('organization_id')
+        org_id = self.request.query_params.get("organization_id")
         if org_id:
             qs = qs.filter(organization_id=org_id)
         return qs

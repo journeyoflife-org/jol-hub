@@ -11,7 +11,7 @@ class InvoiceListView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        org_id = self.request.query_params.get('organization_id')
+        org_id = self.request.query_params.get("organization_id")
         qs = Invoice.objects.filter(is_deleted=False)
         if org_id:
             qs = qs.filter(organization_id=org_id)
@@ -31,7 +31,7 @@ class PayoutListView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        org_id = self.request.query_params.get('organization_id')
+        org_id = self.request.query_params.get("organization_id")
         qs = Payout.objects.filter(is_deleted=False)
         if org_id:
             qs = qs.filter(organization_id=org_id)

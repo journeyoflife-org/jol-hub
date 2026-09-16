@@ -22,28 +22,28 @@ def custom_exception_handler(exc, context):
     if response is None:
         return None
 
-    error_code = 'error'
-    message = 'An error occurred.'
+    error_code = "error"
+    message = "An error occurred."
     details = None
 
     if isinstance(response.data, dict):
         # DRF ValidationError with field errors
-        if 'detail' in response.data:
-            message = str(response.data['detail'])
-            error_code = getattr(response.data['detail'], 'code', 'error')
+        if "detail" in response.data:
+            message = str(response.data["detail"])
+            error_code = getattr(response.data["detail"], "code", "error")
         else:
             # Field-level validation errors
-            error_code = 'validation_error'
-            message = 'Invalid input.'
+            error_code = "validation_error"
+            message = "Invalid input."
             details = response.data
     elif isinstance(response.data, list):
-        error_code = 'validation_error'
-        message = 'Invalid input.'
+        error_code = "validation_error"
+        message = "Invalid input."
         details = response.data
 
-    payload = {'error': error_code, 'message': message}
+    payload = {"error": error_code, "message": message}
     if details:
-        payload['details'] = details
+        payload["details"] = details
 
     response.data = payload
     return response
