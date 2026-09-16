@@ -25,7 +25,7 @@ function itemKey(productId: string, variant?: string): string {
  */
 export function addItem(
   cart: Cart,
-  item: Omit<CartItem, 'quantity'> & { quantity?: number },
+  item: Omit<CartItem, 'quantity'> & { quantity?: number }
 ): Cart {
   const add = Math.max(1, item.quantity ?? 1);
   const key = itemKey(item.productId, item.variant);
@@ -34,9 +34,7 @@ export function addItem(
   if (existing) {
     return {
       items: cart.items.map((it) =>
-        itemKey(it.productId, it.variant) === key
-          ? { ...it, quantity: it.quantity + add }
-          : it,
+        itemKey(it.productId, it.variant) === key ? { ...it, quantity: it.quantity + add } : it
       ),
     };
   }
@@ -52,12 +50,17 @@ export function removeItem(cart: Cart, productId: string, variant?: string): Car
 /**
  * Set a line's quantity. Quantities < 1 remove the line. Returns a NEW cart.
  */
-export function setQuantity(cart: Cart, productId: string, quantity: number, variant?: string): Cart {
+export function setQuantity(
+  cart: Cart,
+  productId: string,
+  quantity: number,
+  variant?: string
+): Cart {
   const key = itemKey(productId, variant);
   if (quantity < 1) return removeItem(cart, productId, variant);
   return {
     items: cart.items.map((it) =>
-      itemKey(it.productId, it.variant) === key ? { ...it, quantity } : it,
+      itemKey(it.productId, it.variant) === key ? { ...it, quantity } : it
     ),
   };
 }

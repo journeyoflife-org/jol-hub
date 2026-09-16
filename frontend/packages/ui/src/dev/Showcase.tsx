@@ -128,8 +128,17 @@ export function Showcase() {
           <FeatureGrid
             tenant={TENANT}
             features={[
-              { icon: Church, title: 'Sakramentai', description: 'Krikštas, santuoka ir kiti sakramentai.', href: '/sacraments' },
-              { icon: Users, title: 'Bendruomenė', description: 'Grupės, savanorystė ir jaunimo veiklos.' },
+              {
+                icon: Church,
+                title: 'Sakramentai',
+                description: 'Krikštas, santuoka ir kiti sakramentai.',
+                href: '/sacraments',
+              },
+              {
+                icon: Users,
+                title: 'Bendruomenė',
+                description: 'Grupės, savanorystė ir jaunimo veiklos.',
+              },
               { icon: Heart, title: 'Labdara', description: 'Caritas tarnystė ir parama šeimoms.' },
             ]}
           />
@@ -166,7 +175,12 @@ export function Showcase() {
             />
           </div>
 
-          <SectionHeader title="Faktų kortelė ir žemėlapis" headingLevel={2} className="mt-12" tenant={TENANT} />
+          <SectionHeader
+            title="Faktų kortelė ir žemėlapis"
+            headingLevel={2}
+            className="mt-12"
+            tenant={TENANT}
+          />
           <div className="mt-4 grid gap-6 lg:grid-cols-2">
             <EntityFactCard
               tenant={TENANT}
@@ -175,7 +189,11 @@ export function Showcase() {
                 { label: 'Titulas', value: 'Šv. apaštalų Petro ir Povilo' },
                 { label: 'Stilius', value: 'Barokas' },
                 { label: 'Įsteigta', value: '1668 m.' },
-                { label: 'Vyskupija', value: 'Vilniaus arkivyskupija', href: '/lt/vilniaus-arkivyskupija' },
+                {
+                  label: 'Vyskupija',
+                  value: 'Vilniaus arkivyskupija',
+                  href: '/lt/vilniaus-arkivyskupija',
+                },
               ]}
             />
             <MapBlock
@@ -188,7 +206,12 @@ export function Showcase() {
             />
           </div>
 
-          <SectionHeader title="Renginių sąrašas" headingLevel={2} className="mt-12" tenant={TENANT} />
+          <SectionHeader
+            title="Renginių sąrašas"
+            headingLevel={2}
+            className="mt-12"
+            tenant={TENANT}
+          />
           <div className="mt-4">
             <EventList
               tenant={TENANT}
@@ -206,13 +229,23 @@ export function Showcase() {
             />
           </div>
 
-          <SectionHeader title="Paslaugų sąrašas" headingLevel={2} className="mt-12" tenant={TENANT} />
+          <SectionHeader
+            title="Paslaugų sąrašas"
+            headingLevel={2}
+            className="mt-12"
+            tenant={TENANT}
+          />
           <div className="mt-4">
             <ServiceList
               tenant={TENANT}
               viewAllHref="/services"
               items={[
-                { title: 'Salės nuoma', description: 'Šv. Jono salė iki 150 svečių.', price: 25, duration: '1 val.' },
+                {
+                  title: 'Salės nuoma',
+                  description: 'Šv. Jono salė iki 150 svečių.',
+                  price: 25,
+                  duration: '1 val.',
+                },
                 { title: 'Gidų paslauga', description: 'Pažintinis turas po bažnyčią.' },
               ]}
             />
@@ -234,18 +267,39 @@ export function Showcase() {
             />
           </div>
 
-          <SectionHeader title="Parduotuvės tinklelis (rodoma, be atsiskaitymo)" headingLevel={2} className="mt-12" tenant={TENANT} />
+          <SectionHeader
+            title="Parduotuvės tinklelis (rodoma, be atsiskaitymo)"
+            headingLevel={2}
+            className="mt-12"
+            tenant={TENANT}
+          />
           <div className="mt-4">
             <StorefrontGrid
               tenant={TENANT}
               items={[
-                { title: 'Žvakė', description: 'Rankų darbo vaško žvakė.', price: '4.50', currency: 'EUR' },
-                { title: 'Maldaknygė', description: 'Tradicinė maldaknygė.', price: '12.00', currency: 'EUR', availability: 'PreOrder' },
+                {
+                  title: 'Žvakė',
+                  description: 'Rankų darbo vaško žvakė.',
+                  price: '4.50',
+                  currency: 'EUR',
+                },
+                {
+                  title: 'Maldaknygė',
+                  description: 'Tradicinė maldaknygė.',
+                  price: '12.00',
+                  currency: 'EUR',
+                  availability: 'PreOrder',
+                },
               ]}
             />
           </div>
 
-          <SectionHeader title="Tiekėjo skydelis ir pagalbos įėjimas" headingLevel={2} className="mt-12" tenant={TENANT} />
+          <SectionHeader
+            title="Tiekėjo skydelis ir pagalbos įėjimas"
+            headingLevel={2}
+            className="mt-12"
+            tenant={TENANT}
+          />
           <div className="mt-4 flex flex-col gap-6">
             <VendorDashboardShell
               tenant={TENANT}
@@ -262,7 +316,12 @@ export function Showcase() {
             </div>
           </div>
 
-          <SectionHeader title="Kapinių žemėlapis ir eigos žingsniai" headingLevel={2} className="mt-12" tenant={TENANT} />
+          <SectionHeader
+            title="Kapinių žemėlapis ir eigos žingsniai"
+            headingLevel={2}
+            className="mt-12"
+            tenant={TENANT}
+          />
           <div className="mt-4 grid gap-6 lg:grid-cols-2">
             <CemeteryMapCanvas
               title="Antakalnio kapinių sklypų apžvalga"
@@ -288,19 +347,42 @@ export function Showcase() {
               <SectionHeader title="Galerija" headingLevel={2} tenant={TENANT} />
               <Gallery
                 images={[
-                  { src: '/images/church-1.jpg', alt: 'Bažnyčios fasadas iš varpinės pusės', width: 1200, height: 675, caption: 'Fasadas' },
-                  { src: '/images/church-2.jpg', alt: 'Pagrindinis altorius su Šv. Jonų skulptūromis', width: 1200, height: 675 },
+                  {
+                    src: '/images/church-1.jpg',
+                    alt: 'Bažnyčios fasadas iš varpinės pusės',
+                    width: 1200,
+                    height: 675,
+                    caption: 'Fasadas',
+                  },
+                  {
+                    src: '/images/church-2.jpg',
+                    alt: 'Pagrindinis altorius su Šv. Jonų skulptūromis',
+                    width: 1200,
+                    height: 675,
+                  },
                 ]}
               />
 
-              <SectionHeader title="Apie parapiją" headingLevel={2} className="mt-10" tenant={TENANT} />
+              <SectionHeader
+                title="Apie parapiją"
+                headingLevel={2}
+                className="mt-10"
+                tenant={TENANT}
+              />
               <ContentBlock
                 contentId="about-parish"
                 nodes={[
-                  { type: 'paragraph', text: 'Parapija veikia nuo 1387 metų ir yra viena seniausių Vilniuje.' },
+                  {
+                    type: 'paragraph',
+                    text: 'Parapija veikia nuo 1387 metų ir yra viena seniausių Vilniuje.',
+                  },
                   { type: 'heading', level: 3, text: 'Vertybės' },
                   { type: 'list', items: ['Bendruomeniškumas', 'Atvirumas', 'Tarnystė'] },
-                  { type: 'blockquote', text: 'Kur du ar trys susirinkę mano vardu…', citation: 'Mt 18, 20' },
+                  {
+                    type: 'blockquote',
+                    text: 'Kur du ar trys susirinkę mano vardu…',
+                    citation: 'Mt 18, 20',
+                  },
                 ]}
               />
             </div>
@@ -327,7 +409,12 @@ export function Showcase() {
             </div>
           </div>
 
-          <SectionHeader title="Kontaktų forma" headingLevel={2} className="mt-12" tenant={TENANT} />
+          <SectionHeader
+            title="Kontaktų forma"
+            headingLevel={2}
+            className="mt-12"
+            tenant={TENANT}
+          />
           <div className="grid gap-8 lg:grid-cols-2">
             <ContactForm
               tenant={TENANT}
@@ -339,18 +426,28 @@ export function Showcase() {
               <h3 className="font-heading text-xl font-semibold">Primityvų vitrina / Primitives</h3>
               <div className="flex flex-wrap items-center gap-2">
                 <Button tenant={TENANT}>Pagrindinis</Button>
-                <Button variant="secondary" tenant={TENANT}>Antrinis</Button>
-                <Button variant="ghost" tenant={TENANT}>Šešėlinis</Button>
+                <Button variant="secondary" tenant={TENANT}>
+                  Antrinis
+                </Button>
+                <Button variant="ghost" tenant={TENANT}>
+                  Šešėlinis
+                </Button>
                 <Button variant="danger">Pavojingas</Button>
-                <Button variant="link" tenant={TENANT}>Nuoroda</Button>
-                <Button loading tenant={TENANT}>Kraunasi</Button>
+                <Button variant="link" tenant={TENANT}>
+                  Nuoroda
+                </Button>
+                <Button loading tenant={TENANT}>
+                  Kraunasi
+                </Button>
               </div>
               <div className="flex flex-wrap items-center gap-2">
                 <Badge>Numatytasis</Badge>
                 <Badge variant="secondary">Antrinis</Badge>
                 <Badge variant="outline">Kontūras</Badge>
                 <Badge variant="destructive">Klaida</Badge>
-                <Badge variant="vertical" tenant={TENANT}>Parapija</Badge>
+                <Badge variant="vertical" tenant={TENANT}>
+                  Parapija
+                </Badge>
                 <Badge variant="liturgical-season">Velykos</Badge>
               </div>
               <AvatarGroup
@@ -365,7 +462,12 @@ export function Showcase() {
               />
               <Avatar name="Jonas Ivanauskas" size="lg" />
               <Input id="demo-input" label="Vardas" helperText="Pagalbinis tekstas" />
-              <Input id="demo-input-error" label="El. paštas" error="Neteisingas formatas" defaultValue="blogas" />
+              <Input
+                id="demo-input-error"
+                label="El. paštas"
+                error="Neteisingas formatas"
+                defaultValue="blogas"
+              />
               <Textarea id="demo-textarea" label="Žinutė" required />
               <Select
                 id="demo-select"
@@ -417,4 +519,3 @@ export function Showcase() {
     </TranslationProvider>
   );
 }
-

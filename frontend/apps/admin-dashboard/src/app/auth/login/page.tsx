@@ -72,11 +72,7 @@ export default function LoginPage() {
       });
 
       if (result?.error) {
-        setError(
-          result.error === 'CredentialsSignin'
-            ? 'Invalid email or password'
-            : result.error
-        );
+        setError(result.error === 'CredentialsSignin' ? 'Invalid email or password' : result.error);
         return;
       }
 
@@ -94,28 +90,24 @@ export default function LoginPage() {
     <div className="w-full max-w-md space-y-8">
       {/* Logo and Title */}
       <div className="text-center">
-        <div className="mx-auto h-16 w-16 bg-primary rounded-xl flex items-center justify-center mb-4">
-          <span className="text-3xl font-bold text-primary-foreground">J</span>
+        <div className="bg-primary mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl">
+          <span className="text-primary-foreground text-3xl font-bold">J</span>
         </div>
         <h1 className="text-2xl font-bold">JOL-HUB Admin</h1>
-        <p className="text-muted-foreground mt-2">
-          Sign in to access the admin dashboard
-        </p>
+        <p className="text-muted-foreground mt-2">Sign in to access the admin dashboard</p>
       </div>
 
       {/* Login Card */}
       <Card>
         <CardHeader>
           <CardTitle>Sign In</CardTitle>
-          <CardDescription>
-            Enter your credentials to access the dashboard
-          </CardDescription>
+          <CardDescription>Enter your credentials to access the dashboard</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {/* Error Message */}
             {error && (
-              <div className="p-3 text-sm text-red-500 bg-red-50 dark:bg-red-950/50 rounded-md border border-red-200 dark:border-red-900">
+              <div className="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-500 dark:border-red-900 dark:bg-red-950/50">
                 {error}
               </div>
             )}
@@ -131,9 +123,7 @@ export default function LoginPage() {
                 disabled={isLoading}
                 className={errors.email ? 'border-red-500' : ''}
               />
-              {errors.email && (
-                <p className="text-sm text-red-500">{errors.email.message}</p>
-              )}
+              {errors.email && <p className="text-sm text-red-500">{errors.email.message}</p>}
             </div>
 
             {/* Password Field */}
@@ -151,18 +141,12 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  className="text-muted-foreground hover:text-foreground absolute right-3 top-1/2 -translate-y-1/2"
                 >
-                  {showPassword ? (
-                    <EyeOff className="h-4 w-4" />
-                  ) : (
-                    <Eye className="h-4 w-4" />
-                  )}
+                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                 </button>
               </div>
-              {errors.password && (
-                <p className="text-sm text-red-500">{errors.password.message}</p>
-              )}
+              {errors.password && <p className="text-sm text-red-500">{errors.password.message}</p>}
             </div>
 
             {/* Country Selector - GDPR Article 44 */}
@@ -183,7 +167,7 @@ export default function LoginPage() {
                   ))}
                 </SelectContent>
               </Select>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-muted-foreground text-xs">
                 Selecting a country ensures GDPR Article 44 data residency compliance
               </p>
             </div>
@@ -207,12 +191,9 @@ export default function LoginPage() {
       </Card>
 
       {/* Footer */}
-      <p className="text-center text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-center text-sm">
         Need help? Contact{' '}
-        <a
-          href="mailto:support@jol-hub.eu"
-          className="text-primary hover:underline"
-        >
+        <a href="mailto:support@jol-hub.eu" className="text-primary hover:underline">
           support@jol-hub.eu
         </a>
       </p>

@@ -78,7 +78,7 @@ const KeyValueBlockSchema = z.object({
       z.object({
         label: LocalizedTextSchema,
         value: z.string(),
-      }),
+      })
     )
     .min(1),
 });
@@ -93,7 +93,7 @@ const ScheduleBlockSchema = z.object({
         dayEn: z.string().optional(),
         times: z.array(z.string()).min(1),
         notes: z.string().optional(),
-      }),
+      })
     )
     .min(1),
 });
@@ -109,7 +109,7 @@ const ListBlockSchema = z.object({
         description: LocalizedTextSchema.optional(),
         price: z.number().nonnegative().optional(),
         tags: z.array(z.string()).optional(),
-      }),
+      })
     )
     .min(1),
 });
@@ -122,7 +122,7 @@ const StatsBlockSchema = z.object({
       z.object({
         label: LocalizedTextSchema,
         value: z.union([z.string(), z.number()]),
-      }),
+      })
     )
     .min(1),
 });
@@ -135,7 +135,7 @@ const CtaBlockSchema = z.object({
       z.object({
         label: LocalizedTextSchema,
         href: z.string().min(1),
-      }),
+      })
     )
     .min(1),
 });
@@ -157,7 +157,7 @@ const MassScheduleBlockSchema = z.object({
         startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/),
         language: z.string().optional(),
         notes: LocalizedTextSchema.optional(),
-      }),
+      })
     )
     .min(1),
 });
@@ -174,7 +174,7 @@ const GalleryBlockSchema = z.object({
         width: z.number().int().positive(),
         height: z.number().int().positive(),
         caption: LocalizedTextSchema.optional(),
-      }),
+      })
     )
     .min(1),
 });
@@ -188,7 +188,7 @@ const FaqBlockSchema = z.object({
       z.object({
         question: LocalizedTextSchema,
         answer: LocalizedTextSchema,
-      }),
+      })
     )
     .min(1),
 });
@@ -208,7 +208,7 @@ const SacramentListBlockSchema = z.object({
         /** ISO 8601 duration or schedule description. */
         schedule: LocalizedTextSchema.optional(),
         requirements: LocalizedTextSchema.optional(),
-      }),
+      })
     )
     .min(1),
 });
@@ -227,7 +227,7 @@ const ClergyRoleListBlockSchema = z.object({
         role: LocalizedTextSchema,
         description: LocalizedTextSchema.optional(),
         contact: z.string().email().optional(),
-      }),
+      })
     )
     .min(1),
 });
@@ -244,7 +244,7 @@ const VisitingInfoBlockSchema = z.object({
         open: z.string().min(1),
         close: z.string().min(1),
         notes: LocalizedTextSchema.optional(),
-      }),
+      })
     )
     .min(1),
   admission: LocalizedTextSchema.optional(),

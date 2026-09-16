@@ -51,12 +51,9 @@ export function getAccessToken(): string | null {
 /**
  * Generic fetch wrapper with error handling and auth
  */
-async function fetchApi<T>(
-  endpoint: string,
-  options: RequestInit = {}
-): Promise<ApiResponse<T>> {
+async function fetchApi<T>(endpoint: string, options: RequestInit = {}): Promise<ApiResponse<T>> {
   const url = `${API_BASE_URL}${endpoint}`;
-  
+
   const defaultHeaders: HeadersInit = {
     'Content-Type': 'application/json',
   };
@@ -132,15 +129,16 @@ async function fetchApi<T>(
 // =============================================================================
 
 export const dashboardApi = {
-  getStats: () => 
-    fetchApi<DashboardStats>('/admin/dashboard/stats'),
-  
-  getRecentActivity: (limit: number = 10) => 
+  getStats: () => fetchApi<DashboardStats>('/admin/dashboard/stats'),
+
+  getRecentActivity: (limit: number = 10) =>
     fetchApi<Activity[]>(`/admin/dashboard/activity?limit=${limit}`),
-  
-  getCountryStats: () => 
-    fetchApi<{ code: string; name: string; parishes: number; users: number; growth: number }[]>('/admin/dashboard/countries'),
-  
+
+  getCountryStats: () =>
+    fetchApi<{ code: string; name: string; parishes: number; users: number; growth: number }[]>(
+      '/admin/dashboard/countries'
+    ),
+
   getSystemHealth: () =>
     fetchApi<{
       status: 'operational' | 'degraded' | 'down';
@@ -157,44 +155,43 @@ export const parishesApi = {
     const params = new URLSearchParams();
     params.append('page', page.toString());
     params.append('page_size', pageSize.toString());
-    
+
     Object.entries(filters).forEach(([key, value]) => {
       if (value !== undefined && value !== null && value !== '') {
         params.append(key, String(value));
       }
     });
-    
+
     return fetchApi<EntityListResponse<Parish>>(`/admin/parishes?${params}`);
   },
-  
-  get: (id: string) => 
-    fetchApi<Parish>(`/admin/parishes/${id}`),
-  
-  approve: (id: string, notes?: string) => 
+
+  get: (id: string) => fetchApi<Parish>(`/admin/parishes/${id}`),
+
+  approve: (id: string, notes?: string) =>
     fetchApi<Parish>(`/admin/parishes/${id}/approve/`, {
       method: 'POST',
       body: JSON.stringify({ notes }),
     }),
-  
-  reject: (id: string, reason: string) => 
+
+  reject: (id: string, reason: string) =>
     fetchApi<Parish>(`/admin/parishes/${id}/reject/`, {
       method: 'POST',
       body: JSON.stringify({ reason }),
     }),
-  
-  suspend: (id: string, reason: string) => 
+
+  suspend: (id: string, reason: string) =>
     fetchApi<Parish>(`/admin/parishes/${id}/suspend/`, {
       method: 'POST',
       body: JSON.stringify({ reason }),
     }),
-  
-  update: (id: string, data: Partial<Parish>) => 
+
+  update: (id: string, data: Partial<Parish>) =>
     fetchApi<Parish>(`/admin/parishes/${id}/`, {
       method: 'PATCH',
       body: JSON.stringify(data),
     }),
-  
-  delete: (id: string) => 
+
+  delete: (id: string) =>
     fetchApi<void>(`/admin/parishes/${id}/`, {
       method: 'DELETE',
     }),
@@ -218,48 +215,47 @@ export const usersApi = {
     const params = new URLSearchParams();
     params.append('page', page.toString());
     params.append('page_size', pageSize.toString());
-    
+
     Object.entries(filters).forEach(([key, value]) => {
       if (value !== undefined && value !== null && value !== '') {
         params.append(key, String(value));
       }
     });
-    
+
     return fetchApi<EntityListResponse<User>>(`/admin/users?${params}`);
   },
-  
-  get: (id: string) => 
-    fetchApi<User>(`/admin/users/${id}/`),
-  
+
+  get: (id: string) => fetchApi<User>(`/admin/users/${id}/`),
+
   create: (data: {
     name: string;
     email: string;
     role: string;
     country: string;
     sendInvite?: boolean;
-  }) => 
+  }) =>
     fetchApi<User>('/admin/users/', {
       method: 'POST',
       body: JSON.stringify(data),
     }),
-  
-  update: (id: string, data: Partial<User>) => 
+
+  update: (id: string, data: Partial<User>) =>
     fetchApi<User>(`/admin/users/${id}/`, {
       method: 'PATCH',
       body: JSON.stringify(data),
     }),
-  
-  delete: (id: string) => 
+
+  delete: (id: string) =>
     fetchApi<void>(`/admin/users/${id}/`, {
       method: 'DELETE',
     }),
-  
-  resetPassword: (id: string) => 
+
+  resetPassword: (id: string) =>
     fetchApi<void>(`/admin/users/${id}/reset-password/`, {
       method: 'POST',
     }),
-  
-  toggleMfa: (id: string, enabled: boolean) => 
+
+  toggleMfa: (id: string, enabled: boolean) =>
     fetchApi<User>(`/admin/users/${id}/mfa/`, {
       method: 'POST',
       body: JSON.stringify({ enabled }),
@@ -280,24 +276,27 @@ export const usersApi = {
 // =============================================================================
 
 export const donationsApi = {
-  getStats: () => 
-    fetchApi<DonationStats>('/admin/donations/stats/'),
-  
-  list: (filters: {
-    parishId?: string;
-    country?: string;
-    status?: string;
-    startDate?: string;
-    endDate?: string;
-  } = {}, page: number = 1, pageSize: number = 20) => {
+  getStats: () => fetchApi<DonationStats>('/admin/donations/stats/'),
+
+  list: (
+    filters: {
+      parishId?: string;
+      country?: string;
+      status?: string;
+      startDate?: string;
+      endDate?: string;
+    } = {},
+    page: number = 1,
+    pageSize: number = 20
+  ) => {
     const params = new URLSearchParams();
     params.append('page', page.toString());
     params.append('page_size', pageSize.toString());
-    
+
     Object.entries(filters).forEach(([key, value]) => {
       if (value) params.append(key, value);
     });
-    
+
     return fetchApi<{ data: unknown[]; total: number }>(`/admin/donations?${params}`);
   },
 };
@@ -314,21 +313,23 @@ export const analyticsApi = {
       donations: { date: string; amount: number }[];
       pageViews: { date: string; count: number }[];
     }>(`/admin/analytics/overview/?period=${period}`),
-  
+
   /**
    * Get top parishes with k-anonymity protection.
    * GDPR Art. 5(1)(f) - Small parishes (< k=5) are anonymized.
-   * 
+   *
    * @param metric - Sort metric: 'visitors' | 'donations' | 'engagement'
    * @param limit - Maximum results (default: 10)
    * @returns Array of parish data with is_anonymized flag
    */
   getTopParishes: (metric: 'visitors' | 'donations' | 'engagement', limit: number = 10) =>
     fetchApi<TopParishResult[]>(`/admin/analytics/top-parishes/?metric=${metric}&limit=${limit}`),
-  
+
   getCountryBreakdown: () =>
-    fetchApi<{ country: string; parishes: number; users: number; donations: number }[]>('/admin/analytics/countries/'),
-  
+    fetchApi<{ country: string; parishes: number; users: number; donations: number }[]>(
+      '/admin/analytics/countries/'
+    ),
+
   exportReport: (type: 'pdf' | 'csv' | 'excel', filters: Record<string, unknown>) =>
     fetchApi<{ downloadUrl: string }>('/admin/analytics/export/', {
       method: 'POST',
@@ -360,8 +361,7 @@ interface TopParishResult {
 
 export const aiApi = {
   // Content Generation
-  getTemplates: () =>
-    fetchApi<ContentTemplate[]>('/ai/content/templates/'),
+  getTemplates: () => fetchApi<ContentTemplate[]>('/ai/content/templates/'),
 
   generateContent: (data: GenerateContentRequest) =>
     fetchApi<GeneratedContent>('/ai/content/generate/', {
@@ -496,12 +496,12 @@ export const authApi = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
     });
-    
+
     if (!response.ok) {
       const error = await response.json().catch(() => ({}));
       throw new Error(error.message || error.detail || 'Login failed');
     }
-    
+
     return response.json();
   },
 
@@ -511,22 +511,22 @@ export const authApi = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ refresh: refreshToken }),
     });
-    
+
     if (!response.ok) {
       throw new Error('Token refresh failed');
     }
-    
+
     return response.json();
   },
 
   logout: async () => {
     if (!accessToken) return;
-    
+
     await fetch(`${API_BASE_URL}/auth/logout/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     });
   },

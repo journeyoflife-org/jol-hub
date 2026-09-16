@@ -23,7 +23,11 @@ export function StorefrontGrid({ items, columns = 3, tenant, className }: Storef
   const t = useTranslations('commerce');
 
   if (items.length === 0) {
-    return <p className={cn('text-sm text-neutral-600 dark:text-neutral-300', className)}>{t('emptyProducts')}</p>;
+    return (
+      <p className={cn('text-sm text-neutral-600 dark:text-neutral-300', className)}>
+        {t('emptyProducts')}
+      </p>
+    );
   }
 
   return (

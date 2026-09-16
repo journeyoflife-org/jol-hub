@@ -7,11 +7,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import {
-  isLoginRateLimited,
-  isRateLimited,
-  resetRateLimiter,
-} from '../lib/rate-limit';
+import { isLoginRateLimited, isRateLimited, resetRateLimiter } from '../lib/rate-limit';
 
 const NOW = 1_000_000_000_000;
 

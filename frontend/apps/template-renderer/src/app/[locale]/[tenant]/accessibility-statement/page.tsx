@@ -10,7 +10,12 @@
  * registry/fixture identity.
  */
 import type { Metadata } from 'next';
-import { getMessages, translate, translateWithValues, isSupportedLocale } from '@journeyoflife-org/i18n';
+import {
+  getMessages,
+  translate,
+  translateWithValues,
+  isSupportedLocale,
+} from '@journeyoflife-org/i18n';
 import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
 import { buildTenantMetadata, tenantDisplayName } from '@/lib/page-seo';
 import { resolveTenantRoute } from '@/lib/route-dispatch';
@@ -55,10 +60,10 @@ export default async function TenantAccessibilityStatementPage({
 
   const section = (titleKey: string, textKey: string, values?: Record<string, string>) => (
     <section className="mt-8">
-      <h2 className="text-xl font-heading font-bold text-primary">
+      <h2 className="font-heading text-primary text-xl font-bold">
         {translate(messages, titleKey)}
       </h2>
-      <p className="mt-3 text-gray-700 leading-relaxed">
+      <p className="mt-3 leading-relaxed text-gray-700">
         {values
           ? translateWithValues(messages, effectiveLocale, textKey, values)
           : translate(messages, textKey)}
@@ -67,46 +72,38 @@ export default async function TenantAccessibilityStatementPage({
   );
 
   return (
-    <article className="container mx-auto px-4 max-w-3xl py-12">
+    <article className="container mx-auto max-w-3xl px-4 py-12">
       <header>
-        <h1 className="text-3xl md:text-4xl font-heading font-bold text-primary">
+        <h1 className="font-heading text-primary text-3xl font-bold md:text-4xl">
           {translate(messages, 'accessibilityStatement.pageTitle')}
         </h1>
-        <p className="mt-4 text-lg text-gray-700 leading-relaxed">
+        <p className="mt-4 text-lg leading-relaxed text-gray-700">
           {translate(messages, 'accessibilityStatement.intro')} <strong>{name}</strong>.
         </p>
       </header>
 
-      {section(
-        'accessibilityStatement.conformanceTitle',
-        'accessibilityStatement.conformanceText',
-      )}
+      {section('accessibilityStatement.conformanceTitle', 'accessibilityStatement.conformanceText')}
       {section('accessibilityStatement.measuresTitle', 'accessibilityStatement.measuresText')}
-      {section(
-        'accessibilityStatement.limitationsTitle',
-        'accessibilityStatement.limitationsText',
-      )}
+      {section('accessibilityStatement.limitationsTitle', 'accessibilityStatement.limitationsText')}
 
       <section className="mt-8">
-        <h2 className="text-xl font-heading font-bold text-primary">
+        <h2 className="font-heading text-primary text-xl font-bold">
           {translate(messages, 'accessibilityStatement.feedbackTitle')}
         </h2>
-        <p className="mt-3 text-gray-700 leading-relaxed">
+        <p className="mt-3 leading-relaxed text-gray-700">
           {translate(messages, 'accessibilityStatement.feedbackText')}
         </p>
         <a
           href={`${basePath}/contact`}
-          className="inline-block mt-4 rounded-md bg-primary px-6 py-3 font-medium text-white focus-ring"
+          className="bg-primary focus-ring mt-4 inline-block rounded-md px-6 py-3 font-medium text-white"
         >
           {translate(messages, 'accessibilityStatement.feedbackCta')}
         </a>
       </section>
 
-      {section(
-        'accessibilityStatement.assessmentTitle',
-        'accessibilityStatement.assessmentText',
-        { date: ASSESSMENT_DATE },
-      )}
+      {section('accessibilityStatement.assessmentTitle', 'accessibilityStatement.assessmentText', {
+        date: ASSESSMENT_DATE,
+      })}
     </article>
   );
 }

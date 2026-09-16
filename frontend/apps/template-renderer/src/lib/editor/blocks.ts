@@ -98,7 +98,12 @@ export const EDITOR_LIMITS = {
 } as const;
 
 /** Allowed upload MIME types (jpg, png, webp, svg — spec). */
-export const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml'] as const;
+export const ALLOWED_IMAGE_TYPES = [
+  'image/jpeg',
+  'image/png',
+  'image/webp',
+  'image/svg+xml',
+] as const;
 
 export type ConstraintFinding = {
   code:
@@ -129,7 +134,10 @@ export function imageCount(blocks: readonly EditorBlock[]): number {
  * findings (the UI lists them; the server refuses to persist when any
  * exist). Pure — also used by the API proxy as defense in depth.
  */
-export function validateDraft(blocks: readonly EditorBlock[], imageSizeBytes?: Record<string, number>): ConstraintFinding[] {
+export function validateDraft(
+  blocks: readonly EditorBlock[],
+  imageSizeBytes?: Record<string, number>
+): ConstraintFinding[] {
   const findings: ConstraintFinding[] = [];
 
   if (blocks.length > EDITOR_LIMITS.maxBlocks) {
@@ -172,7 +180,10 @@ export function validateDraft(blocks: readonly EditorBlock[], imageSizeBytes?: R
       }
     }
 
-    if (block.type === 'button' && (block.label ?? '').length > EDITOR_LIMITS.maxTextLength.button) {
+    if (
+      block.type === 'button' &&
+      (block.label ?? '').length > EDITOR_LIMITS.maxTextLength.button
+    ) {
       findings.push({
         code: 'text-too-long',
         severity: 'fail',

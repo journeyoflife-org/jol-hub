@@ -3,18 +3,18 @@
 /**
  * Language Middleware for Next.js
  * Edge Runtime compatible
- * 
+ *
  * Detection Priority:
  * 1. URL path (/lt/, /ru/, /en/)
  * 2. Cookie (i18next-language)
  * 3. Browser Accept-Language header
  * 4. Default: Lithuanian (lt)
- * 
+ *
  * Behavior:
  * - / → 301 redirect to /lt/ (default locale)
  * - /ru → 301 redirect to /ru/
  * - /unknown → stays, i18n detected from cookie/browser
- * 
+ *
  * RTL Support: Ready for future Arabic expansion
  */
 
@@ -133,8 +133,8 @@ export function detectLocale(request: NextRequest): SupportedLocale {
  * Check if a path should be excluded from i18n routing
  */
 function isExcludedPath(pathname: string): boolean {
-  return EXCLUDED_PATHS.some((excluded) => 
-    pathname.startsWith(excluded) || pathname === excluded.replace(/\/$/, '')
+  return EXCLUDED_PATHS.some(
+    (excluded) => pathname.startsWith(excluded) || pathname === excluded.replace(/\/$/, '')
   );
 }
 
@@ -171,15 +171,15 @@ export function getLocaleDirection(locale: SupportedLocale): 'ltr' | 'rtl' {
 
 /**
  * Language middleware: handles locale detection and routing
- * 
+ *
  * Usage in your Next.js middleware.ts:
  * ```ts
  * import { languageMiddleware } from '@journeyoflife-org/i18n/middleware/language';
- * 
+ *
  * export function middleware(request: NextRequest) {
  *   return languageMiddleware(request);
  * }
- * 
+ *
  * export const config = {
  *   matcher: languageMiddlewareMatcher,
  * };
@@ -198,11 +198,11 @@ export function languageMiddleware(request: NextRequest): NextResponse {
   // Path already has a valid locale prefix — pass through with cookie sync
   if (pathLocale) {
     const response = NextResponse.next();
-    
+
     // Set locale headers for downstream use
     response.headers.set('x-locale', pathLocale);
     response.headers.set('x-locale-direction', getLocaleDirection(pathLocale));
-    
+
     // Refresh cookie with detected locale if not already set
     const existingCookie = getLocaleFromCookie(request);
     if (!existingCookie || existingCookie !== pathLocale) {
@@ -216,15 +216,13 @@ export function languageMiddleware(request: NextRequest): NextResponse {
         }),
       });
     }
-    
+
     return response;
   }
 
   // Path has no locale — detect and redirect
   const detectedLocale =
-    getLocaleFromCookie(request) ||
-    getLocaleFromBrowser(request) ||
-    DEFAULT_LOCALE;
+    getLocaleFromCookie(request) || getLocaleFromBrowser(request) || DEFAULT_LOCALE;
 
   // Build redirect URL
   const redirectUrl = request.nextUrl.clone();
@@ -267,12 +265,12 @@ export const languageMiddlewareMatcher = [
 export function localizePath(path: string, locale: SupportedLocale): string {
   // Remove existing locale prefix if present
   const cleanPath = path.replace(/^\/(lt|ru|en)\//, '/');
-  
+
   // Don't add locale for default if it's the root
   if (locale === DEFAULT_LOCALE && cleanPath === '/') {
     return cleanPath;
   }
-  
+
   return `/${locale}${cleanPath}`;
 }
 

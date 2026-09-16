@@ -27,7 +27,7 @@ describe('Button', () => {
     renderWithProviders(
       <Button disabled onClick={onClick}>
         Blocked
-      </Button>,
+      </Button>
     );
     const button = screen.getByRole('button', { name: 'Blocked' });
     fireEvent.click(button);

@@ -42,7 +42,7 @@ test('EntityFactCard renders dl semantics with linked values', () => {
         { label: 'Titulas', value: 'Šv. Petro' },
         { label: 'Vyskupija', value: 'Vilniaus arkivyskupija', href: 'https://x.lt/lt/vyskupija' },
       ],
-    }),
+    })
   );
   assert.match(markup, /<dl/);
   assert.match(markup, /<dt[^>]*>Titulas<\/dt>/);
@@ -62,7 +62,7 @@ test('MapBlock makes zero network requests (no iframe, no external assets)', () 
       longitude: 25.3021,
       addressLabel: 'Gatvė 1, Vilnius',
       externalHref: 'https://example.com/maps',
-    }),
+    })
   );
   assert.doesNotMatch(markup, /<iframe/i);
   assert.doesNotMatch(markup, /<img/i);
@@ -82,7 +82,7 @@ test('MapBlock externalizes its UI strings (LT catalog resolves)', () => {
       longitude: 25.3021,
       addressLabel: 'Gatvė 1, Vilnius',
       externalHref: 'https://example.com/maps',
-    }),
+    })
   );
   assert.match(markup, /Statinis žemėlapis/);
   assert.match(markup, /Atidaryti išoriniame žemėlapyje/);
@@ -104,7 +104,7 @@ test('EventList renders ul/li + resolved view-all link', () => {
           dateLabel: '2026-08-30',
         },
       ],
-    }),
+    })
   );
   assert.match(markup, /<ul[^>]*>/);
   assert.match(markup, /<li[^>]*>/);
@@ -121,7 +121,7 @@ test('ServiceList renders one li per service + resolved view-all', () => {
     createElement(ServiceList, {
       viewAllHref: '/services',
       items: [{ title: 'A' }, { title: 'B' }],
-    }),
+    })
   );
   assert.equal((markup.match(/<li/g) ?? []).length, 2);
   assert.match(markup, /Peržiūrėti visas paslaugas/);
@@ -131,7 +131,7 @@ test('CourseList attaches sr-only schedule/level labels from the catalog', () =>
   const markup = render(
     createElement(CourseList, {
       items: [{ title: 'Kursas', schedule: 'Antradieniais', level: 'Pradedantiesiems' }],
-    }),
+    })
   );
   assert.match(markup, /class="sr-only">Tvarkaraštis/);
   assert.match(markup, /class="sr-only">Lygis/);
@@ -158,7 +158,7 @@ test('sprint-1 keys exist in all three locale catalogs', () => {
   ];
   for (const locale of ['lt', 'en', 'ru']) {
     const catalog = JSON.parse(
-      readFileSync(join(__dirname, '../../../i18n/src/messages', `${locale}.json`), 'utf-8'),
+      readFileSync(join(__dirname, '../../../i18n/src/messages', `${locale}.json`), 'utf-8')
     ) as { collections: Record<string, string> };
     for (const key of keys) {
       assert.ok(catalog.collections[key], `${locale}: missing collections.${key}`);

@@ -80,7 +80,8 @@ function fakeFetch(sequence: FakeResponse[]) {
       ok: response.ok,
       status: response.status,
       json: async () => response.body,
-      text: async () => (typeof response.body === 'string' ? response.body : JSON.stringify(response.body)),
+      text: async () =>
+        typeof response.body === 'string' ? response.body : JSON.stringify(response.body),
     } as Response;
   }) as typeof fetch;
   return { impl, calls };

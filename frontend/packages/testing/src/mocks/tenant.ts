@@ -41,8 +41,14 @@ export function mockFuneralTenant(overrides: Partial<Tenant> = {}): Tenant {
     vertical: 'funeral',
     packageTier: 'vip',
     features: [
-      'contact-form', 'donations', 'events', 'news', 'booking',
-      'content-editing', 'shop', 'subscriptions',
+      'contact-form',
+      'donations',
+      'events',
+      'news',
+      'booking',
+      'content-editing',
+      'shop',
+      'subscriptions',
     ],
     ...overrides,
   });

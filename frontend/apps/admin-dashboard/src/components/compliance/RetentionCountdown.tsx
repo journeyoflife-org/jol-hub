@@ -5,14 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import {
-  Clock,
-  AlertTriangle,
-  Trash2,
-  Archive,
-  Calendar,
-  Loader2,
-} from 'lucide-react';
+import { Clock, AlertTriangle, Trash2, Archive, Calendar, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 // =============================================================================
@@ -98,44 +91,33 @@ export function RetentionCountdown({
   return (
     <Card className={cn('border-2', config.borderColor)}>
       <CardContent className="py-4">
-        <div className="flex items-start justify-between mb-3">
+        <div className="mb-3 flex items-start justify-between">
           <div className="flex items-center gap-2">
             <Icon className={cn('h-5 w-5', config.color)} />
             <span className="font-medium">{title}</span>
           </div>
-          <Badge className={config.badge}>
-            {countdown} days
-          </Badge>
+          <Badge className={config.badge}>{countdown} days</Badge>
         </div>
 
         <div className="space-y-2">
           {/* Progress Bar */}
-          <Progress
-            value={progressValue}
-            className={cn('h-2', config.progressColor)}
-          />
+          <Progress value={progressValue} className={cn('h-2', config.progressColor)} />
 
           {/* Stats */}
           <div className="flex items-center justify-between text-sm">
-            <span className="text-muted-foreground">
-              {recordCount.toLocaleString()} records
-            </span>
+            <span className="text-muted-foreground">{recordCount.toLocaleString()} records</span>
             <span className={config.color}>
-              {countdown <= 0
-                ? 'Scheduled for deletion'
-                : `${countdown} days remaining`}
+              {countdown <= 0 ? 'Scheduled for deletion' : `${countdown} days remaining`}
             </span>
           </div>
         </div>
 
         {/* Details & Actions */}
         {showDetails && (
-          <div className="mt-4 pt-4 border-t space-y-3">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="mt-4 space-y-3 border-t pt-4">
+            <div className="text-muted-foreground flex items-center gap-2 text-sm">
               <Calendar className="h-4 w-4" />
-              <span>
-                Retention policy: 365 days from last activity
-              </span>
+              <span>Retention policy: 365 days from last activity</span>
             </div>
 
             <div className="flex items-center gap-2">
@@ -147,9 +129,9 @@ export function RetentionCountdown({
                   disabled={isDeleting}
                 >
                   {isDeleting ? (
-                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   ) : (
-                    <Trash2 className="h-4 w-4 mr-2" />
+                    <Trash2 className="mr-2 h-4 w-4" />
                   )}
                   Delete Now
                 </Button>
@@ -166,5 +148,3 @@ export function RetentionCountdown({
     </Card>
   );
 }
-
-

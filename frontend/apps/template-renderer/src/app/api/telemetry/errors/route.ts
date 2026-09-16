@@ -21,7 +21,14 @@ import { clientIp, isRateLimited } from '@/lib/rate-limit';
 
 export const dynamic = 'force-dynamic';
 
-const ERROR_CATEGORIES = ['network', 'auth', 'commerce', 'rendering', 'security', 'unknown'] as const;
+const ERROR_CATEGORIES = [
+  'network',
+  'auth',
+  'commerce',
+  'rendering',
+  'security',
+  'unknown',
+] as const;
 const SEVERITIES = ['critical', 'error', 'warning'] as const;
 
 const breadcrumbSchema = z.object({

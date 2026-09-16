@@ -113,7 +113,7 @@ export const useNotificationsStore = create<NotificationsState>((set) => ({
     set((state) => ({
       notifications: [...state.notifications, { ...notification, id }],
     }));
-    
+
     // Auto-remove after duration
     const duration = notification.duration || 5000;
     setTimeout(() => {
@@ -122,8 +122,9 @@ export const useNotificationsStore = create<NotificationsState>((set) => ({
       }));
     }, duration);
   },
-  removeNotification: (id) => set((state) => ({
-    notifications: state.notifications.filter((n) => n.id !== id),
-  })),
+  removeNotification: (id) =>
+    set((state) => ({
+      notifications: state.notifications.filter((n) => n.id !== id),
+    })),
   clearAll: () => set({ notifications: [] }),
 }));

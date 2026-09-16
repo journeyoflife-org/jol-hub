@@ -24,12 +24,12 @@ Every component in this library ships accessible by default and is gated by
 
 ## Provided accessibility primitives (`components/accessibility/`)
 
-| Component | Purpose | Usage rule |
-| --- | --- | --- |
-| `SkipLink` | Bypass repeated blocks (WCAG 2.4.1) | MUST be the first focusable element of the app shell |
-| `FocusTrap` | Confine focus in dialogs/drawers (2.1.2, 2.4.3) | Always pair with Escape-to-close + focus restoration |
-| `AnnouncerProvider` / `useAnnounce` | Polite/assertive screen-reader announcements (4.1.3) | Status updates: polite; errors: assertive |
-| `LiveRegion` | Declarative `aria-live` container (4.1.3) | Set `aria-atomic`/`aria-relevant` per update shape |
+| Component                           | Purpose                                              | Usage rule                                           |
+| ----------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `SkipLink`                          | Bypass repeated blocks (WCAG 2.4.1)                  | MUST be the first focusable element of the app shell |
+| `FocusTrap`                         | Confine focus in dialogs/drawers (2.1.2, 2.4.3)      | Always pair with Escape-to-close + focus restoration |
+| `AnnouncerProvider` / `useAnnounce` | Polite/assertive screen-reader announcements (4.1.3) | Status updates: polite; errors: assertive            |
+| `LiveRegion`                        | Declarative `aria-live` container (4.1.3)            | Set `aria-atomic`/`aria-relevant` per update shape   |
 
 ## Dialogs, drawers & modals
 

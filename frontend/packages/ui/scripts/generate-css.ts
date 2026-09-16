@@ -63,9 +63,7 @@ lines.push('');
 /* .dark — explicit dark mode ----------------------------------------- */
 const darkVars = (): void => {
   for (const [role, value] of Object.entries(themeRoles.dark)) {
-    lines.push(
-      `  --jol-${role.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`)}: ${value};`,
-    );
+    lines.push(`  --jol-${role.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`)}: ${value};`);
   }
 };
 

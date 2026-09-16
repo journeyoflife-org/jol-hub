@@ -28,12 +28,12 @@ export interface FederationContext {
 }
 
 // EEA Regions for GDPR Article 44 data residency
-export type EEARegion = 
-  | 'EU_NORDIC'    // DK, SE, FI
-  | 'EU_BALTIC'    // LT, LV, EE
-  | 'EU_WESTERN'   // DE, FR, NL, BE, AT, IE, LU
-  | 'EU_SOUTHERN'  // IT, ES, PT, GR, CY, MT
-  | 'EU_EASTERN';  // PL, CZ, SK, HU, RO, BG, SI, HR
+export type EEARegion =
+  | 'EU_NORDIC' // DK, SE, FI
+  | 'EU_BALTIC' // LT, LV, EE
+  | 'EU_WESTERN' // DE, FR, NL, BE, AT, IE, LU
+  | 'EU_SOUTHERN' // IT, ES, PT, GR, CY, MT
+  | 'EU_EASTERN'; // PL, CZ, SK, HU, RO, BG, SI, HR
 
 export interface HierarchyScope {
   tier: FederationTier;
@@ -46,7 +46,7 @@ export interface Permission {
   constraints?: Record<string, unknown>;
 }
 
-export type EntityType = 
+export type EntityType =
   | 'parish'
   | 'diocese'
   | 'country'

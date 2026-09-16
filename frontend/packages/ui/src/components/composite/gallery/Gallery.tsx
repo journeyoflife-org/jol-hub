@@ -37,7 +37,7 @@ export function Gallery({ images, label, columns = 3, className }: GalleryProps)
         return (current + delta + images.length) % images.length;
       });
     },
-    [images.length],
+    [images.length]
   );
 
   const open = openIndex !== null ? images[openIndex] : null;
@@ -53,7 +53,7 @@ export function Gallery({ images, label, columns = 3, className }: GalleryProps)
                 event.preventDefault();
                 setOpenIndex(index);
               }}
-              className="block overflow-hidden rounded-lg bg-neutral-200 focus-ring dark:bg-neutral-800"
+              className="focus-ring block overflow-hidden rounded-lg bg-neutral-200 dark:bg-neutral-800"
             >
               <img
                 src={image.src}
@@ -84,13 +84,15 @@ export function Gallery({ images, label, columns = 3, className }: GalleryProps)
                 height={open.height}
                 className="max-h-[75vh] w-auto rounded-lg object-contain"
               />
-              {open.caption && <figcaption className="text-sm text-neutral-200">{open.caption}</figcaption>}
+              {open.caption && (
+                <figcaption className="text-sm text-neutral-200">{open.caption}</figcaption>
+              )}
               <div className="flex items-center gap-3">
                 <button
                   type="button"
                   onClick={() => step(-1)}
                   aria-label={tA11y('previousImage')}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 text-neutral-50 hover:bg-neutral-700 focus-ring"
+                  className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 text-neutral-50 hover:bg-neutral-700"
                 >
                   <ChevronLeft aria-hidden="true" className="h-5 w-5" />
                 </button>
@@ -101,7 +103,7 @@ export function Gallery({ images, label, columns = 3, className }: GalleryProps)
                   type="button"
                   onClick={() => step(1)}
                   aria-label={tA11y('nextImage')}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 text-neutral-50 hover:bg-neutral-700 focus-ring"
+                  className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 text-neutral-50 hover:bg-neutral-700"
                 >
                   <ChevronRight aria-hidden="true" className="h-5 w-5" />
                 </button>
@@ -109,7 +111,7 @@ export function Gallery({ images, label, columns = 3, className }: GalleryProps)
                   type="button"
                   onClick={close}
                   aria-label={tCommon('close')}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 text-neutral-50 hover:bg-neutral-700 focus-ring"
+                  className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 text-neutral-50 hover:bg-neutral-700"
                 >
                   <X aria-hidden="true" className="h-5 w-5" />
                 </button>

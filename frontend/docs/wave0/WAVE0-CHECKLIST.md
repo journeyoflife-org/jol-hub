@@ -60,17 +60,17 @@ initial + date in the change log (SOC 2 CC8.1 / ISO 27001 A.8.32).
 
 ## Go-live procedure (TASK 10)
 
-| # | Step | Owner |
-| --- | --- | --- |
-| 1 | Confirm low-traffic window (early morning) with the Diocese | JOL ops |
-| 2 | Team check: JOL dev, JOL ops, Diocese contact on the bridge | JOL ops |
-| 3 | VM snapshot (`vzdump`) — recorded in change log | JOL ops |
-| 4 | `scripts/deploy.sh --env production --confirm-snapshot` | JOL dev |
-| 5 | Verify health + smoke (script does this; confirm on dashboards) | JOL dev |
-| 6 | Walk all 5 sites on mobile + desktop | Diocese contact |
-| 7 | **Monitor 2 hours** — error rate, health, CWV dashboards | JOL ops |
-| 8 | Announce to stakeholders; open feedback channel | JOL dev |
-| 9 | File GitHub issues for anything observed (label `wave0`) | JOL dev |
+| #   | Step                                                            | Owner           |
+| --- | --------------------------------------------------------------- | --------------- |
+| 1   | Confirm low-traffic window (early morning) with the Diocese     | JOL ops         |
+| 2   | Team check: JOL dev, JOL ops, Diocese contact on the bridge     | JOL ops         |
+| 3   | VM snapshot (`vzdump`) — recorded in change log                 | JOL ops         |
+| 4   | `scripts/deploy.sh --env production --confirm-snapshot`         | JOL dev         |
+| 5   | Verify health + smoke (script does this; confirm on dashboards) | JOL dev         |
+| 6   | Walk all 5 sites on mobile + desktop                            | Diocese contact |
+| 7   | **Monitor 2 hours** — error rate, health, CWV dashboards        | JOL ops         |
+| 8   | Announce to stakeholders; open feedback channel                 | JOL dev         |
+| 9   | File GitHub issues for anything observed (label `wave0`)        | JOL dev         |
 
 **Abort rule:** any P0 alert or failed smoke test → `scripts/rollback.sh`
 immediately, then restore snapshot if rollback health check fails. No

@@ -53,7 +53,7 @@ export function tenantRoleFor(session: AuthSession | null, tenantSlug: string): 
 export function hasRole(
   session: AuthSession | null,
   tenantSlug: string,
-  minimumRole: TenantRoleName,
+  minimumRole: TenantRoleName
 ): boolean {
   if (!session) return false;
   if (isSuperAdmin(session)) return true;
@@ -74,7 +74,7 @@ export function isAdmin(session: AuthSession | null, tenantSlug: string): boolea
 export function hasPermission(
   session: AuthSession | null,
   tenantSlug: string,
-  permission: Permission,
+  permission: Permission
 ): boolean {
   if (!session) return false;
   if (isSuperAdmin(session)) return true;

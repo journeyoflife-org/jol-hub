@@ -83,7 +83,7 @@ pilot locales are all LTR.
   not invent keys.
 - `pnpm i18n:find-hardcoded` — scans the shared library
   (`packages/ui/src/components/{primitives,composite,layout,accessibility,
-  locale-switcher}`, `src/lib`) and `apps/template-renderer/src` for
+locale-switcher}`, `src/lib`) and `apps/template-renderer/src` for
   user-visible string literals; fails on any finding.
   - Excluded by design: `dev/` surfaces (sample tenant content),
     `*.types.ts`, and LEGACY flat components in

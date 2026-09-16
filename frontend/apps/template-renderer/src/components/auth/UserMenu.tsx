@@ -63,7 +63,10 @@ export function UserMenu({ basePath, tenantSlug }: UserMenuProps) {
         onClick={() => setOpen((value) => !value)}
         className="focus-ring inline-flex h-9 items-center gap-2 rounded-md border border-neutral-300 px-3 text-sm font-medium text-neutral-800 hover:bg-neutral-100 dark:border-neutral-700 dark:text-neutral-100 dark:hover:bg-neutral-800"
       >
-        <span aria-hidden="true" className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-neutral-50">
+        <span
+          aria-hidden="true"
+          className="bg-primary flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold text-neutral-50"
+        >
           {(user.name ?? user.email).charAt(0).toUpperCase()}
         </span>
         <span className="max-w-28 truncate">{user.name ?? user.email}</span>

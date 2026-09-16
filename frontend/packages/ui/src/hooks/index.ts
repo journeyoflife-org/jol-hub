@@ -1,8 +1,5 @@
 // Entity CRM Integration Hooks
-export { 
-  useEntityCRM,
-  default as useEntityCRMDefault,
-} from './useEntityCRM';
+export { useEntityCRM, default as useEntityCRMDefault } from './useEntityCRM';
 
 export type {
   EntityType,

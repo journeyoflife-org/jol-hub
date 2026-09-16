@@ -54,7 +54,7 @@ export function DonationForm({ locale = 'lt', title }: DonationFormProps) {
       aria-label={title ?? t('donateTitle')}
       className="rounded-lg border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
     >
-      <h2 className="mb-4 font-heading text-xl font-semibold text-neutral-900 dark:text-neutral-50">
+      <h2 className="font-heading mb-4 text-xl font-semibold text-neutral-900 dark:text-neutral-50">
         {title ?? t('donateTitle')}
       </h2>
 
@@ -99,7 +99,9 @@ export function DonationForm({ locale = 'lt', title }: DonationFormProps) {
           />
         </label>
         {!meetsMinimum ? (
-          <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400">{t('minDonationNote')}</p>
+          <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+            {t('minDonationNote')}
+          </p>
         ) : null}
       </fieldset>
 
@@ -138,7 +140,9 @@ export function DonationForm({ locale = 'lt', title }: DonationFormProps) {
         />
         <span>
           {t('anonymousLabel')}
-          <span className="block text-xs text-neutral-500 dark:text-neutral-400">{t('anonymousDescription')}</span>
+          <span className="block text-xs text-neutral-500 dark:text-neutral-400">
+            {t('anonymousDescription')}
+          </span>
         </span>
       </label>
 
@@ -166,7 +170,9 @@ export function DonationForm({ locale = 'lt', title }: DonationFormProps) {
           // Stripe-hosted Elements. No card data reaches this codebase.
         }}
       >
-        {meetsMinimum ? t('donateAmountCta', { amount: formatEur(amountCents, locale) }) : t('donateCta')}
+        {meetsMinimum
+          ? t('donateAmountCta', { amount: formatEur(amountCents, locale) })
+          : t('donateCta')}
       </Button>
 
       <p className="mt-2 text-xs text-neutral-500 dark:text-neutral-400">{t('paymentsPending')}</p>

@@ -54,12 +54,18 @@ export function ObituaryList({ obituaries }: ObituaryListProps): JSX.Element {
 
   const MONTHS = [
     { value: 'all', label: 'All months' },
-    { value: '0', label: 'January' }, { value: '1', label: 'February' },
-    { value: '2', label: 'March' }, { value: '3', label: 'April' },
-    { value: '4', label: 'May' }, { value: '5', label: 'June' },
-    { value: '6', label: 'July' }, { value: '7', label: 'August' },
-    { value: '8', label: 'September' }, { value: '9', label: 'October' },
-    { value: '10', label: 'November' }, { value: '11', label: 'December' },
+    { value: '0', label: 'January' },
+    { value: '1', label: 'February' },
+    { value: '2', label: 'March' },
+    { value: '3', label: 'April' },
+    { value: '4', label: 'May' },
+    { value: '5', label: 'June' },
+    { value: '6', label: 'July' },
+    { value: '7', label: 'August' },
+    { value: '8', label: 'September' },
+    { value: '9', label: 'October' },
+    { value: '10', label: 'November' },
+    { value: '11', label: 'December' },
   ];
 
   const filtered = useMemo(() => {
@@ -70,8 +76,7 @@ export function ObituaryList({ obituaries }: ObituaryListProps): JSX.Element {
         o.firstName.toLowerCase().includes(searchTerm.toLowerCase());
 
       const matchesMonth =
-        filterMonth === 'all' ||
-        new Date(o.dateOfDeath).getMonth() === parseInt(filterMonth);
+        filterMonth === 'all' || new Date(o.dateOfDeath).getMonth() === parseInt(filterMonth);
 
       return matchesSearch && matchesMonth && o.isPublic;
     });
@@ -80,9 +85,9 @@ export function ObituaryList({ obituaries }: ObituaryListProps): JSX.Element {
   return (
     <div className="space-y-4">
       {/* Filters */}
-      <div className="flex flex-col sm:flex-row gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Search className="text-muted-foreground absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" />
           <Input
             placeholder="Search by surname..."
             value={searchTerm}
@@ -93,7 +98,7 @@ export function ObituaryList({ obituaries }: ObituaryListProps): JSX.Element {
         </div>
         <Select value={filterMonth} onValueChange={setFilterMonth}>
           <SelectTrigger className="w-full sm:w-48" aria-label="Filter by month">
-            <Calendar className="h-4 w-4 mr-2" />
+            <Calendar className="mr-2 h-4 w-4" />
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -107,23 +112,21 @@ export function ObituaryList({ obituaries }: ObituaryListProps): JSX.Element {
       </div>
 
       {/* Results count */}
-      <p className="text-sm text-muted-foreground">
-        Showing {filtered.length} obituaries
-      </p>
+      <p className="text-muted-foreground text-sm">Showing {filtered.length} obituaries</p>
 
       {/* Obituary Cards */}
       {filtered.length === 0 ? (
-        <div className="text-center py-12 text-muted-foreground">
+        <div className="text-muted-foreground py-12 text-center">
           No obituaries found matching your search
         </div>
       ) : (
         <div className="space-y-4">
           {filtered.map((obituary) => (
-            <Card key={obituary.id} className="hover:shadow-md transition-shadow">
+            <Card key={obituary.id} className="transition-shadow hover:shadow-md">
               <CardContent className="pt-6">
                 <div className="flex gap-4">
                   {/* Photo */}
-                  <div className="relative w-20 h-20 rounded-lg overflow-hidden bg-muted flex-shrink-0">
+                  <div className="bg-muted relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg">
                     {obituary.photo ? (
                       <Image
                         src={obituary.photo}
@@ -133,34 +136,36 @@ export function ObituaryList({ obituaries }: ObituaryListProps): JSX.Element {
                         sizes="80px"
                       />
                     ) : (
-                      <div className="flex items-center justify-center h-full text-muted-foreground text-2xl font-light">
-                        {obituary.firstName[0]}{obituary.lastName[0]}
+                      <div className="text-muted-foreground flex h-full items-center justify-center text-2xl font-light">
+                        {obituary.firstName[0]}
+                        {obituary.lastName[0]}
                       </div>
                     )}
                   </div>
 
                   {/* Details */}
-                  <div className="flex-1 min-w-0">
+                  <div className="min-w-0 flex-1">
                     <h3 className="text-lg font-semibold">
                       {obituary.firstName} {obituary.lastName}
                     </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {new Date(obituary.dateOfBirth).getFullYear()} — {new Date(obituary.dateOfDeath).getFullYear()}
+                    <p className="text-muted-foreground text-sm">
+                      {new Date(obituary.dateOfBirth).getFullYear()} —{' '}
+                      {new Date(obituary.dateOfDeath).getFullYear()}
                     </p>
                     {obituary.biography && (
-                      <p className="text-sm mt-2 line-clamp-2">{obituary.biography}</p>
+                      <p className="mt-2 line-clamp-2 text-sm">{obituary.biography}</p>
                     )}
-                    <div className="flex flex-wrap gap-2 mt-3">
+                    <div className="mt-3 flex flex-wrap gap-2">
                       {obituary.funeralDate && (
                         <Badge variant="outline" className="text-xs">
-                          <Calendar className="h-3 w-3 mr-1" />
+                          <Calendar className="mr-1 h-3 w-3" />
                           {new Date(obituary.funeralDate).toLocaleDateString('lt-LT')}
                           {obituary.funeralTime && ` at ${obituary.funeralTime}`}
                         </Badge>
                       )}
                       {obituary.hasStream && (
                         <Badge variant="secondary" className="text-xs">
-                          <Video className="h-3 w-3 mr-1" />
+                          <Video className="mr-1 h-3 w-3" />
                           Live stream available
                         </Badge>
                       )}
@@ -209,28 +214,31 @@ export function LivestreamEmbed({ obituaries }: LivestreamEmbedProps): JSX.Eleme
     return streamUrl;
   };
 
-  const handlePasswordSubmit = useCallback(async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!selected) return;
+  const handlePasswordSubmit = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!selected) return;
 
-    setIsLoading(true);
-    setAuthError(null);
+      setIsLoading(true);
+      setAuthError(null);
 
-    // Simulate password verification
-    await new Promise((resolve) => setTimeout(resolve, 500));
+      // Simulate password verification
+      await new Promise((resolve) => setTimeout(resolve, 500));
 
-    if (password === selected.streamPassword) {
-      setIsAuthenticated(true);
-    } else {
-      setAuthError('Incorrect password. Please check your invitation.');
-    }
-    setIsLoading(false);
-  }, [selected, password]);
+      if (password === selected.streamPassword) {
+        setIsAuthenticated(true);
+      } else {
+        setAuthError('Incorrect password. Please check your invitation.');
+      }
+      setIsLoading(false);
+    },
+    [selected, password]
+  );
 
   if (streamObituaries.length === 0) {
     return (
       <Card>
-        <CardContent className="py-8 text-center text-muted-foreground">
+        <CardContent className="text-muted-foreground py-8 text-center">
           No live streams are currently scheduled
         </CardContent>
       </Card>
@@ -257,7 +265,8 @@ export function LivestreamEmbed({ obituaries }: LivestreamEmbedProps): JSX.Eleme
           <SelectContent>
             {streamObituaries.map((o) => (
               <SelectItem key={o.id} value={o.id}>
-                {o.firstName} {o.lastName} — {o.funeralDate && new Date(o.funeralDate).toLocaleDateString('lt-LT')}
+                {o.firstName} {o.lastName} —{' '}
+                {o.funeralDate && new Date(o.funeralDate).toLocaleDateString('lt-LT')}
               </SelectItem>
             ))}
           </SelectContent>
@@ -274,7 +283,7 @@ export function LivestreamEmbed({ obituaries }: LivestreamEmbedProps): JSX.Eleme
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground mb-4">
+            <p className="text-muted-foreground mb-4 text-sm">
               This live stream is protected. Please enter the password provided in your invitation.
             </p>
             <form onSubmit={handlePasswordSubmit} className="space-y-3">
@@ -297,9 +306,9 @@ export function LivestreamEmbed({ obituaries }: LivestreamEmbedProps): JSX.Eleme
               )}
               <Button type="submit" disabled={!password || isLoading} className="w-full">
                 {isLoading ? (
-                  <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 ) : (
-                  <Video className="h-4 w-4 mr-2" />
+                  <Video className="mr-2 h-4 w-4" />
                 )}
                 Access Stream
               </Button>
@@ -310,25 +319,25 @@ export function LivestreamEmbed({ obituaries }: LivestreamEmbedProps): JSX.Eleme
 
       {/* Video Embed */}
       {selected && isAuthenticated && selected.streamUrl && (
-        <div className="rounded-lg overflow-hidden border">
+        <div className="overflow-hidden rounded-lg border">
           <div className="relative aspect-video bg-black">
             <iframe
               src={getEmbedUrl(selected.streamUrl)}
               title={`Live stream: ${selected.firstName} ${selected.lastName} memorial`}
-              className="absolute inset-0 w-full h-full"
+              className="absolute inset-0 h-full w-full"
               allowFullScreen
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             />
           </div>
-          <div className="p-3 bg-muted flex items-center justify-between">
-            <span className="text-sm text-muted-foreground">
+          <div className="bg-muted flex items-center justify-between p-3">
+            <span className="text-muted-foreground text-sm">
               {selected.firstName} {selected.lastName} — Memorial Service
             </span>
             <a
               href={selected.streamUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-primary hover:underline flex items-center gap-1"
+              className="text-primary flex items-center gap-1 text-sm hover:underline"
             >
               Open in new tab
               <ExternalLink className="h-3 w-3" />
@@ -363,59 +372,77 @@ export function CondolenceBook({ obituaries }: CondolenceBookProps): JSX.Element
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [condolences, setCondolences] = useState<CondolenceEntry[]>([
-    { id: '1', name: 'Anna Kavaliauskienė', message: 'Nuoširdi užuojauta šeimai. Amžina atmintis.', createdAt: '2024-03-02T10:30:00Z' },
-    { id: '2', name: 'Petras Žukauskas', message: 'Tegul ilsisi ramybėje. Ji buvo labai gerbiama bendruomenėje.', createdAt: '2024-03-02T11:15:00Z' },
-    { id: '3', name: 'Rūta Mikalajūnaitė', message: 'With deepest condolences to the family. She will be dearly missed.', createdAt: '2024-03-02T14:00:00Z' },
+    {
+      id: '1',
+      name: 'Anna Kavaliauskienė',
+      message: 'Nuoširdi užuojauta šeimai. Amžina atmintis.',
+      createdAt: '2024-03-02T10:30:00Z',
+    },
+    {
+      id: '2',
+      name: 'Petras Žukauskas',
+      message: 'Tegul ilsisi ramybėje. Ji buvo labai gerbiama bendruomenėje.',
+      createdAt: '2024-03-02T11:15:00Z',
+    },
+    {
+      id: '3',
+      name: 'Rūta Mikalajūnaitė',
+      message: 'With deepest condolences to the family. She will be dearly missed.',
+      createdAt: '2024-03-02T14:00:00Z',
+    },
   ]);
 
-  const handleSubmit = useCallback(async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!name.trim() || !message.trim()) {
-      setError('Please enter your name and message');
-      return;
-    }
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
 
-    if (message.length > 500) {
-      setError('Message must be under 500 characters');
-      return;
-    }
-
-    setIsSubmitting(true);
-    setError(null);
-
-    try {
-      const apiUrl = process.env.NEXT_PUBLIC_DJANGO_API_URL;
-      if (apiUrl) {
-        await fetch(`${apiUrl}/api/condolences/`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            obituary_id: selectedObituary,
-            name: name.trim(),
-            message: message.trim(),
-          }),
-        });
+      if (!name.trim() || !message.trim()) {
+        setError('Please enter your name and message');
+        return;
       }
-      
-      // Optimistic UI update
-      const newEntry: CondolenceEntry = {
-        id: Date.now().toString(),
-        name: name.trim(),
-        message: message.trim(),
-        createdAt: new Date().toISOString(),
-      };
-      setCondolences((prev) => [newEntry, ...prev]);
-      setIsSuccess(true);
-      setName('');
-      setMessage('');
-      setTimeout(() => setIsSuccess(false), 5000);
-    } catch {
-      setError('Failed to submit condolence. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  }, [name, message, selectedObituary]);
+
+      if (message.length > 500) {
+        setError('Message must be under 500 characters');
+        return;
+      }
+
+      setIsSubmitting(true);
+      setError(null);
+
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_DJANGO_API_URL;
+        if (apiUrl) {
+          await fetch(`${apiUrl}/api/condolences/`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              obituary_id: selectedObituary,
+              name: name.trim(),
+              message: message.trim(),
+            }),
+          });
+        }
+
+        // Optimistic UI update
+        const newEntry: CondolenceEntry = {
+          id: Date.now().toString(),
+          name: name.trim(),
+          message: message.trim(),
+          createdAt: new Date().toISOString(),
+        };
+        setCondolences((prev) => [newEntry, ...prev]);
+        setIsSuccess(true);
+        setName('');
+        setMessage('');
+        setTimeout(() => setIsSuccess(false), 5000);
+      } catch {
+        setError('Failed to submit condolence. Please try again.');
+      } finally {
+        setIsSubmitting(false);
+      }
+    },
+    [name, message, selectedObituary]
+  );
 
   const charCount = message.length;
   const maxChars = 500;
@@ -452,7 +479,7 @@ export function CondolenceBook({ obituaries }: CondolenceBookProps): JSX.Element
               <CheckCircle className="h-5 w-5" />
               <div>
                 <p className="font-medium">Thank you for your kind words</p>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   Your message will appear after moderation.
                 </p>
               </div>
@@ -473,7 +500,7 @@ export function CondolenceBook({ obituaries }: CondolenceBookProps): JSX.Element
               <div className="space-y-2">
                 <Label htmlFor="condolence-message">
                   Message
-                  <span className="text-muted-foreground text-xs ml-2">
+                  <span className="text-muted-foreground ml-2 text-xs">
                     ({charCount}/{maxChars})
                   </span>
                 </Label>
@@ -496,13 +523,13 @@ export function CondolenceBook({ obituaries }: CondolenceBookProps): JSX.Element
               )}
               <Button type="submit" disabled={isSubmitting} className="w-full">
                 {isSubmitting ? (
-                  <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 ) : (
-                  <SendHorizonal className="h-4 w-4 mr-2" />
+                  <SendHorizonal className="mr-2 h-4 w-4" />
                 )}
                 Submit Condolence
               </Button>
-              <p className="text-xs text-muted-foreground text-center">
+              <p className="text-muted-foreground text-center text-xs">
                 All messages are reviewed before publishing
               </p>
             </form>
@@ -513,16 +540,16 @@ export function CondolenceBook({ obituaries }: CondolenceBookProps): JSX.Element
       {/* Existing Condolences */}
       <div className="space-y-3">
         {condolences.map((entry) => (
-          <div key={entry.id} className="flex gap-3 p-4 bg-white rounded-lg border">
-            <Heart className="h-5 w-5 text-rose-400 flex-shrink-0 mt-0.5" />
+          <div key={entry.id} className="flex gap-3 rounded-lg border bg-white p-4">
+            <Heart className="mt-0.5 h-5 w-5 flex-shrink-0 text-rose-400" />
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-medium text-sm">{entry.name}</span>
-                <span className="text-xs text-muted-foreground">
+                <span className="text-sm font-medium">{entry.name}</span>
+                <span className="text-muted-foreground text-xs">
                   {new Date(entry.createdAt).toLocaleDateString('lt-LT')}
                 </span>
               </div>
-              <p className="text-sm mt-1 text-muted-foreground">{entry.message}</p>
+              <p className="text-muted-foreground mt-1 text-sm">{entry.message}</p>
             </div>
           </div>
         ))}
@@ -548,11 +575,36 @@ interface FlowerArrangement {
 }
 
 const FLOWER_ARRANGEMENTS: FlowerArrangement[] = [
-  { id: 'small-bouquet', name: 'Small Bouquet', price: 25, description: 'Seasonal flowers, 12 stems' },
-  { id: 'large-bouquet', name: 'Large Bouquet', price: 45, description: 'Premium seasonal flowers, 20+ stems' },
-  { id: 'wreath', name: 'Memorial Wreath', price: 75, description: 'Traditional circular wreath with ribbon' },
-  { id: 'casket-spray', name: 'Casket Spray', price: 120, description: 'Full casket spray, premium flowers' },
-  { id: 'basket', name: 'Flower Basket', price: 55, description: 'Lush arrangement in keepsake basket' },
+  {
+    id: 'small-bouquet',
+    name: 'Small Bouquet',
+    price: 25,
+    description: 'Seasonal flowers, 12 stems',
+  },
+  {
+    id: 'large-bouquet',
+    name: 'Large Bouquet',
+    price: 45,
+    description: 'Premium seasonal flowers, 20+ stems',
+  },
+  {
+    id: 'wreath',
+    name: 'Memorial Wreath',
+    price: 75,
+    description: 'Traditional circular wreath with ribbon',
+  },
+  {
+    id: 'casket-spray',
+    name: 'Casket Spray',
+    price: 120,
+    description: 'Full casket spray, premium flowers',
+  },
+  {
+    id: 'basket',
+    name: 'Flower Basket',
+    price: 55,
+    description: 'Lush arrangement in keepsake basket',
+  },
 ];
 
 export function FlowerOrderForm({ obituaries }: FlowerOrderFormProps): JSX.Element {
@@ -565,48 +617,52 @@ export function FlowerOrderForm({ obituaries }: FlowerOrderFormProps): JSX.Eleme
 
   const selected = FLOWER_ARRANGEMENTS.find((a) => a.id === selectedArrangement);
 
-  const handleSubmit = useCallback(async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
 
-    if (!selectedArrangement) {
-      setError('Please select a flower arrangement');
-      return;
-    }
-
-    setIsSubmitting(true);
-    setError(null);
-
-    try {
-      // TODO: Integrate with local florist API
-      const floristApiUrl = process.env.NEXT_PUBLIC_FLORIST_API_URL;
-      if (floristApiUrl) {
-        await fetch(`${floristApiUrl}/orders`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            obituary_id: selectedObituary,
-            arrangement_id: selectedArrangement,
-            dedication: dedicationCard,
-          }),
-        });
+      if (!selectedArrangement) {
+        setError('Please select a flower arrangement');
+        return;
       }
 
-      setIsSuccess(true);
-    } catch {
-      setError('Failed to submit order. Please call us directly.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  }, [selectedObituary, selectedArrangement, dedicationCard]);
+      setIsSubmitting(true);
+      setError(null);
+
+      try {
+        // TODO: Integrate with local florist API
+        const floristApiUrl = process.env.NEXT_PUBLIC_FLORIST_API_URL;
+        if (floristApiUrl) {
+          await fetch(`${floristApiUrl}/orders`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              obituary_id: selectedObituary,
+              arrangement_id: selectedArrangement,
+              dedication: dedicationCard,
+            }),
+          });
+        }
+
+        setIsSuccess(true);
+      } catch {
+        setError('Failed to submit order. Please call us directly.');
+      } finally {
+        setIsSubmitting(false);
+      }
+    },
+    [selectedObituary, selectedArrangement, dedicationCard]
+  );
 
   if (isSuccess) {
     return (
       <Card>
-        <CardContent className="py-8 text-center space-y-3">
-          <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+        <CardContent className="space-y-3 py-8 text-center">
+          <CheckCircle className="mx-auto h-12 w-12 text-green-500" />
           <h3 className="text-lg font-semibold">Order Placed Successfully</h3>
-          <p className="text-sm text-muted-foreground">
-            Your flowers will be delivered to the funeral. You will receive a confirmation email shortly.
+          <p className="text-muted-foreground text-sm">
+            Your flowers will be delivered to the funeral. You will receive a confirmation email
+            shortly.
           </p>
         </CardContent>
       </Card>
@@ -637,23 +693,23 @@ export function FlowerOrderForm({ obituaries }: FlowerOrderFormProps): JSX.Eleme
       {/* Arrangement Selection */}
       <div className="space-y-3">
         <Label>Select Arrangement</Label>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           {FLOWER_ARRANGEMENTS.map((arrangement) => (
             <button
               key={arrangement.id}
               type="button"
               onClick={() => setSelectedArrangement(arrangement.id)}
-              className={`text-left p-4 rounded-lg border-2 transition-colors ${
+              className={`rounded-lg border-2 p-4 text-left transition-colors ${
                 selectedArrangement === arrangement.id
                   ? 'border-primary bg-primary/5'
                   : 'border-border hover:border-primary/50'
               }`}
             >
-              <div className="flex items-center justify-between mb-1">
+              <div className="mb-1 flex items-center justify-between">
                 <span className="font-medium">{arrangement.name}</span>
-                <span className="font-semibold text-primary">€{arrangement.price}</span>
+                <span className="text-primary font-semibold">€{arrangement.price}</span>
               </div>
-              <p className="text-sm text-muted-foreground">{arrangement.description}</p>
+              <p className="text-muted-foreground text-sm">{arrangement.description}</p>
             </button>
           ))}
         </div>
@@ -675,13 +731,13 @@ export function FlowerOrderForm({ obituaries }: FlowerOrderFormProps): JSX.Eleme
 
       {/* Order Summary */}
       {selected && (
-        <div className="p-4 bg-muted rounded-lg">
-          <h4 className="font-medium mb-2">Order Summary</h4>
+        <div className="bg-muted rounded-lg p-4">
+          <h4 className="mb-2 font-medium">Order Summary</h4>
           <div className="flex justify-between text-sm">
             <span>{selected.name}</span>
             <span className="font-semibold">€{selected.price}</span>
           </div>
-          <p className="text-xs text-muted-foreground mt-1">
+          <p className="text-muted-foreground mt-1 text-xs">
             Includes delivery to funeral location
           </p>
         </div>
@@ -696,9 +752,9 @@ export function FlowerOrderForm({ obituaries }: FlowerOrderFormProps): JSX.Eleme
 
       <Button type="submit" disabled={isSubmitting || !selectedArrangement} className="w-full">
         {isSubmitting ? (
-          <Loader2 className="h-4 w-4 animate-spin mr-2" />
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
         ) : (
-          <Flower className="h-4 w-4 mr-2" />
+          <Flower className="mr-2 h-4 w-4" />
         )}
         {selected ? `Order Flowers — €${selected.price}` : 'Order Flowers'}
       </Button>

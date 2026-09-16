@@ -6,7 +6,7 @@
  * Automated compliance checks before deployment
  * Acts like a "spell checker" for compliance - catches mistakes before
  * they become GDPR fines.
- * 
+ *
  * Usage: pnpm compliance:check
  * =============================================================================
  */
@@ -41,23 +41,23 @@ const COLORS = {
  */
 function getAllFiles(dir, extensions = ['.ts', '.tsx']) {
   const files = [];
-  
+
   if (!fs.existsSync(dir)) {
     return files;
   }
-  
+
   const items = fs.readdirSync(dir, { withFileTypes: true });
-  
+
   for (const item of items) {
     const fullPath = path.join(dir, item.name);
-    
+
     if (item.isDirectory()) {
       files.push(...getAllFiles(fullPath, extensions));
-    } else if (extensions.some(ext => item.name.endsWith(ext))) {
+    } else if (extensions.some((ext) => item.name.endsWith(ext))) {
       files.push(fullPath);
     }
   }
-  
+
   return files;
 }
 
@@ -92,11 +92,8 @@ const checks = [
     name: 'GDPR CountryGuard Present in Dashboard Layout',
     category: 'GDPR',
     test: () => {
-      const layoutPaths = [
-        'app/(dashboard)/layout.tsx',
-        'app/(dashboard)/layout.ts',
-      ];
-      
+      const layoutPaths = ['app/(dashboard)/layout.tsx', 'app/(dashboard)/layout.ts'];
+
       for (const layoutPath of layoutPaths) {
         if (fileExists(layoutPath)) {
           const content = readFile(path.join(SRC_DIR, layoutPath));
@@ -108,7 +105,8 @@ const checks = [
       return false;
     },
     severity: 'CRITICAL',
-    description: 'Dashboard layout must include CountryGuard for GDPR Article 44 data residency enforcement',
+    description:
+      'Dashboard layout must include CountryGuard for GDPR Article 44 data residency enforcement',
   },
 
   {
@@ -117,7 +115,7 @@ const checks = [
     test: () => {
       const webhookPath = path.join(SRC_DIR, 'app/api/bitrix24/webhook/route.ts');
       if (!fs.existsSync(webhookPath)) return false;
-      
+
       const content = readFile(webhookPath);
       return content && content.includes('verifyBitrixSignature');
     },
@@ -131,12 +129,13 @@ const checks = [
     test: () => {
       const webhookPath = path.join(SRC_DIR, 'app/api/bitrix24/webhook/route.ts');
       if (!fs.existsSync(webhookPath)) return false;
-      
+
       const content = readFile(webhookPath);
-      return content && (
-        content.includes('getCountryForEntity') ||
-        content.includes('residency') ||
-        content.includes('GDPR')
+      return (
+        content &&
+        (content.includes('getCountryForEntity') ||
+          content.includes('residency') ||
+          content.includes('GDPR'))
       );
     },
     severity: 'CRITICAL',
@@ -149,12 +148,13 @@ const checks = [
     test: () => {
       const webhookPath = path.join(SRC_DIR, 'app/api/bitrix24/webhook/route.ts');
       if (!fs.existsSync(webhookPath)) return false;
-      
+
       const content = readFile(webhookPath);
-      return content && (
-        content.includes('isSyncPaused') ||
-        content.includes('circuitBreaker') ||
-        content.includes('CIRCUIT_BREAKER')
+      return (
+        content &&
+        (content.includes('isSyncPaused') ||
+          content.includes('circuitBreaker') ||
+          content.includes('CIRCUIT_BREAKER'))
       );
     },
     severity: 'HIGH',
@@ -176,14 +176,14 @@ const checks = [
         /apikey\s*[:=]\s*['"][^'"]+['"]/i,
         /token\s*[:=]\s*['"][^'"]+['"]/i,
       ];
-      
+
       for (const file of files) {
         const content = readFile(file);
         if (!content) continue;
-        
+
         // Skip if it's using environment variables
         if (content.includes('process.env')) continue;
-        
+
         for (const pattern of sensitivePatterns) {
           if (pattern.test(content)) {
             return false;
@@ -202,7 +202,7 @@ const checks = [
     test: () => {
       const webhookPath = path.join(SRC_DIR, 'app/api/bitrix24/webhook/route.ts');
       if (!fs.existsSync(webhookPath)) return false;
-      
+
       const content = readFile(webhookPath);
       return content && content.includes('createAuditLog');
     },
@@ -221,7 +221,7 @@ const checks = [
         'components/entities/CanonicalApproval.tsx',
         'components/CanonicalApproval.tsx',
       ];
-      
+
       for (const compPath of componentPaths) {
         if (fileExists(compPath)) {
           const content = readFile(path.join(SRC_DIR, compPath));
@@ -242,12 +242,13 @@ const checks = [
     test: () => {
       const approvalPath = path.join(SRC_DIR, 'components/entities/CanonicalApproval.tsx');
       if (!fs.existsSync(approvalPath)) return true; // Skip if component doesn't exist
-      
+
       const content = readFile(approvalPath);
-      return content && (
-        content.includes('encryptFile') ||
-        content.includes('encrypt') ||
-        content.includes('GDPR Article 32')
+      return (
+        content &&
+        (content.includes('encryptFile') ||
+          content.includes('encrypt') ||
+          content.includes('GDPR Article 32'))
       );
     },
     severity: 'MEDIUM',
@@ -274,7 +275,7 @@ const checks = [
     test: () => {
       const gitignorePath = path.join(ROOT_DIR, '.gitignore');
       if (!fs.existsSync(gitignorePath)) return false;
-      
+
       const content = readFile(gitignorePath);
       return content && content.includes('.env.local');
     },
@@ -288,7 +289,7 @@ const checks = [
     test: () => {
       const tsconfigPath = path.join(ROOT_DIR, 'tsconfig.json');
       if (!fs.existsSync(tsconfigPath)) return false;
-      
+
       const content = readFile(tsconfigPath);
       try {
         const config = JSON.parse(content);
@@ -307,14 +308,18 @@ const checks = [
 // =============================================================================
 
 function runAudit() {
-  console.log(`\n${COLORS.BOLD}${COLORS.BLUE}═══════════════════════════════════════════════════════════════${COLORS.RESET}`);
+  console.log(
+    `\n${COLORS.BOLD}${COLORS.BLUE}═══════════════════════════════════════════════════════════════${COLORS.RESET}`
+  );
   console.log(`${COLORS.BOLD}JOL-HUB Compliance Audit${COLORS.RESET}`);
-  console.log(`${COLORS.BOLD}${COLORS.BLUE}═══════════════════════════════════════════════════════════════${COLORS.RESET}\n`);
+  console.log(
+    `${COLORS.BOLD}${COLORS.BLUE}═══════════════════════════════════════════════════════════════${COLORS.RESET}\n`
+  );
 
   let passed = 0;
   let failed = 0;
   let warnings = 0;
-  
+
   const results = {
     passed: [],
     failed: [],
@@ -323,7 +328,7 @@ function runAudit() {
 
   // Group checks by category
   const categories = {};
-  checks.forEach(check => {
+  checks.forEach((check) => {
     const cat = check.category || 'GENERAL';
     if (!categories[cat]) categories[cat] = [];
     categories[cat].push(check);
@@ -332,24 +337,34 @@ function runAudit() {
   // Run checks by category
   for (const [category, categoryChecks] of Object.entries(categories)) {
     console.log(`\n${COLORS.BOLD}[${category}]${COLORS.RESET}`);
-    
+
     for (const check of categoryChecks) {
       const result = check.test();
-      const severityColor = check.severity === 'CRITICAL' ? COLORS.RED :
-                           check.severity === 'HIGH' ? COLORS.AMBER :
-                           check.severity === 'MEDIUM' ? COLORS.YELLOW :
-                           COLORS.BLUE;
-      
+      const severityColor =
+        check.severity === 'CRITICAL'
+          ? COLORS.RED
+          : check.severity === 'HIGH'
+            ? COLORS.AMBER
+            : check.severity === 'MEDIUM'
+              ? COLORS.YELLOW
+              : COLORS.BLUE;
+
       if (result) {
-        console.log(`  ${COLORS.GREEN}✓${COLORS.RESET} ${check.name} ${COLORS.YELLOW}[${check.severity}]${COLORS.RESET}`);
+        console.log(
+          `  ${COLORS.GREEN}✓${COLORS.RESET} ${check.name} ${COLORS.YELLOW}[${check.severity}]${COLORS.RESET}`
+        );
         passed++;
         results.passed.push(check);
       } else if (check.severity === 'LOW') {
-        console.log(`  ${COLORS.YELLOW}⚠${COLORS.RESET} ${check.name} ${severityColor}[${check.severity}]${COLORS.RESET}`);
+        console.log(
+          `  ${COLORS.YELLOW}⚠${COLORS.RESET} ${check.name} ${severityColor}[${check.severity}]${COLORS.RESET}`
+        );
         warnings++;
         results.warnings.push(check);
       } else {
-        console.log(`  ${COLORS.RED}✗${COLORS.RESET} ${check.name} ${severityColor}[${check.severity}]${COLORS.RESET}`);
+        console.log(
+          `  ${COLORS.RED}✗${COLORS.RESET} ${check.name} ${severityColor}[${check.severity}]${COLORS.RESET}`
+        );
         console.log(`    ${COLORS.RED}→ ${check.description}${COLORS.RESET}`);
         failed++;
         results.failed.push(check);
@@ -358,17 +373,23 @@ function runAudit() {
   }
 
   // Print summary
-  console.log(`\n${COLORS.BOLD}${COLORS.BLUE}═══════════════════════════════════════════════════════════════${COLORS.RESET}`);
+  console.log(
+    `\n${COLORS.BOLD}${COLORS.BLUE}═══════════════════════════════════════════════════════════════${COLORS.RESET}`
+  );
   console.log(`${COLORS.BOLD}Summary${COLORS.RESET}`);
-  console.log(`${COLORS.BOLD}${COLORS.BLUE}═══════════════════════════════════════════════════════════════${COLORS.RESET}`);
+  console.log(
+    `${COLORS.BOLD}${COLORS.BLUE}═══════════════════════════════════════════════════════════════${COLORS.RESET}`
+  );
   console.log(`  ${COLORS.GREEN}Passed: ${passed}${COLORS.RESET}`);
   console.log(`  ${COLORS.YELLOW}Warnings: ${warnings}${COLORS.RESET}`);
   console.log(`  ${COLORS.RED}Failed: ${failed}${COLORS.RESET}`);
   console.log();
 
   if (failed > 0) {
-    console.log(`${COLORS.RED}${COLORS.BOLD}✗ ${failed} compliance check(s) FAILED. Fix before deployment.${COLORS.RESET}\n`);
-    
+    console.log(
+      `${COLORS.RED}${COLORS.BOLD}✗ ${failed} compliance check(s) FAILED. Fix before deployment.${COLORS.RESET}\n`
+    );
+
     // Print failed checks details
     console.log(`${COLORS.BOLD}Failed Checks:${COLORS.RESET}`);
     results.failed.forEach((check, i) => {
@@ -377,10 +398,12 @@ function runAudit() {
       console.log(`     Severity: ${check.severity}`);
       console.log(`     Fix: ${check.description}`);
     });
-    
+
     process.exit(1);
   } else {
-    console.log(`${COLORS.GREEN}${COLORS.BOLD}✓ All critical compliance checks passed!${COLORS.RESET}\n`);
+    console.log(
+      `${COLORS.GREEN}${COLORS.BOLD}✓ All critical compliance checks passed!${COLORS.RESET}\n`
+    );
     process.exit(0);
   }
 }

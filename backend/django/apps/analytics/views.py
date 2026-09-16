@@ -9,15 +9,16 @@ import re
 import uuid
 from datetime import date, datetime, timedelta
 
+from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from apps.core.models import AuditLog
 from apps.organizations.models import ConsentSettings, Organization
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db.models import Avg, Count, Sum
-from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
-from rest_framework.views import APIView
 
 from .models import DailyStats, PageView
 from .serializers import (

@@ -14,7 +14,7 @@ const defaultCountry: Country = {
   name: 'Lithuania',
   flag: '🇱🇹',
   currency: 'EUR',
-  languages: ['lt', 'en']
+  languages: ['lt', 'en'],
 };
 
 export const CountryContext = createContext<CountryContextType | null>(null);

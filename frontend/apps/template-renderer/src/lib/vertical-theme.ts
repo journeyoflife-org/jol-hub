@@ -26,19 +26,55 @@ export interface VerticalTheme {
 const VERTICAL_THEMES: Record<Vertical, VerticalTheme> = {
   // Sacred family — warm gold/amber, welcoming & reverent.
   church: { accentVar: 'var(--jol-color-accent)', heroVariant: 'church', schemaType: 'Church' },
-  basilica: { accentVar: 'var(--jol-color-accent)', heroVariant: 'church', schemaType: 'CatholicChurch' },
-  cathedral: { accentVar: 'var(--jol-color-primary-700)', heroVariant: 'church', schemaType: 'CatholicChurch' },
-  orthodox: { accentVar: 'var(--jol-color-secondary-800)', heroVariant: 'church', schemaType: 'Church' },
-  protestant: { accentVar: 'var(--jol-color-success-700)', heroVariant: 'church', schemaType: 'Church' },
-  'other-church': { accentVar: 'var(--jol-color-primary)', heroVariant: 'church', schemaType: 'Church' },
-  diaconate: { accentVar: 'var(--jol-color-primary-600)', heroVariant: 'church', schemaType: 'Church' },
+  basilica: {
+    accentVar: 'var(--jol-color-accent)',
+    heroVariant: 'church',
+    schemaType: 'CatholicChurch',
+  },
+  cathedral: {
+    accentVar: 'var(--jol-color-primary-700)',
+    heroVariant: 'church',
+    schemaType: 'CatholicChurch',
+  },
+  orthodox: {
+    accentVar: 'var(--jol-color-secondary-800)',
+    heroVariant: 'church',
+    schemaType: 'Church',
+  },
+  protestant: {
+    accentVar: 'var(--jol-color-success-700)',
+    heroVariant: 'church',
+    schemaType: 'Church',
+  },
+  'other-church': {
+    accentVar: 'var(--jol-color-primary)',
+    heroVariant: 'church',
+    schemaType: 'Church',
+  },
+  diaconate: {
+    accentVar: 'var(--jol-color-primary-600)',
+    heroVariant: 'church',
+    schemaType: 'Church',
+  },
 
   // Administrative family — deep purple/gold, formal & authoritative.
-  diocese: { accentVar: 'var(--jol-color-secondary-800)', heroVariant: 'default', schemaType: 'CatholicChurch' },
-  deanery: { accentVar: 'var(--jol-color-primary-600)', heroVariant: 'default', schemaType: 'Church' },
+  diocese: {
+    accentVar: 'var(--jol-color-secondary-800)',
+    heroVariant: 'default',
+    schemaType: 'CatholicChurch',
+  },
+  deanery: {
+    accentVar: 'var(--jol-color-primary-600)',
+    heroVariant: 'default',
+    schemaType: 'Church',
+  },
 
   // Memorial — subdued slate, dignified & compassionate.
-  funeral: { accentVar: 'var(--jol-color-stone-700)', heroVariant: 'funeral', schemaType: 'FuneralHome' },
+  funeral: {
+    accentVar: 'var(--jol-color-stone-700)',
+    heroVariant: 'funeral',
+    schemaType: 'FuneralHome',
+  },
 
   // Service — fresh green, trustworthy & respectful.
   'cemetery-cleaning': {

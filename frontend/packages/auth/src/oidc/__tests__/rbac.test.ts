@@ -19,7 +19,10 @@ import {
 } from '../rbac';
 import type { AuthSession } from '../types';
 
-function session(roles: AuthSession['user']['roles'], extra?: Partial<AuthSession['user']>): AuthSession {
+function session(
+  roles: AuthSession['user']['roles'],
+  extra?: Partial<AuthSession['user']>
+): AuthSession {
   return {
     user: { sub: 'u1', email: 'u@example.com', roles, mfaEnrolled: false, ...extra },
     expiresAt: Date.now() + 60_000,
@@ -111,8 +114,11 @@ test('matrix is monotonic up the hierarchy', () => {
 test('admin without MFA is flagged; enrolled admin is not', () => {
   assert.equal(mfaRequiredButMissing(session([{ tenantSlug: 't', role: 'admin' }]), 't'), true);
   assert.equal(
-    mfaRequiredButMissing(session([{ tenantSlug: 't', role: 'admin' }], { mfaEnrolled: true }), 't'),
-    false,
+    mfaRequiredButMissing(
+      session([{ tenantSlug: 't', role: 'admin' }], { mfaEnrolled: true }),
+      't'
+    ),
+    false
   );
 });
 

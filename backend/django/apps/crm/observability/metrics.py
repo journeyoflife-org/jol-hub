@@ -15,12 +15,13 @@ from datetime import datetime, timedelta
 from functools import wraps
 from typing import Any, Callable, Dict, List, Optional
 
+from prometheus_client import Counter, Gauge, Histogram, Info
+
 from apps.crm.middleware import get_current_tenant_context, get_current_tenant_id
 from django.conf import settings
 from django.core.cache import cache
 from django.db.models import Avg, Count, Q, Sum
 from django.utils import timezone
-from prometheus_client import Counter, Gauge, Histogram, Info
 
 logger = logging.getLogger("jolhub.crm.observability")
 

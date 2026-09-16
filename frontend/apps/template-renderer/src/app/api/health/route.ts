@@ -13,7 +13,12 @@
  * details are public-safe strings only.
  */
 import { NextResponse } from 'next/server';
-import { aggregateHealth, timed, withTimeout, type DependencyCheck } from '@journeyoflife-org/observability';
+import {
+  aggregateHealth,
+  timed,
+  withTimeout,
+  type DependencyCheck,
+} from '@journeyoflife-org/observability';
 import { isAuthConfigured } from '@/lib/auth';
 import { isCrmConfigured } from '@/lib/bitrix-client';
 import { isEditorConfigured } from '@/lib/editor-client';
@@ -39,8 +44,8 @@ async function probeBackend(): Promise<DependencyCheck> {
         return response.ok ? 'ok' : 'down';
       },
       PROBE_TIMEOUT_MS,
-      'timeout' as const,
-    ),
+      'timeout' as const
+    )
   );
   return {
     name: 'backend',
@@ -66,8 +71,20 @@ export async function GET(): Promise<NextResponse> {
     // Payments remain closed (ADR-007) — reported, never probed.
     ...(isEditorConfigured()
       ? [{ name: 'editor', status: 'ok' as const, critical: false }]
-      : [{ name: 'editor', status: 'unconfigured' as const, critical: false, detail: 'content plane pending' }]),
-    { name: 'payments', status: 'unconfigured', critical: false, detail: 'ADR-007 boundary closed' },
+      : [
+          {
+            name: 'editor',
+            status: 'unconfigured' as const,
+            critical: false,
+            detail: 'content plane pending',
+          },
+        ]),
+    {
+      name: 'payments',
+      status: 'unconfigured',
+      critical: false,
+      detail: 'ADR-007 boundary closed',
+    },
   ];
 
   const report = aggregateHealth(checks, APP_VERSION);

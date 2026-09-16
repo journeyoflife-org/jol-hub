@@ -73,10 +73,7 @@ function applySecurityHeaders<T extends NextResponse>(response: T): T {
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
   if (IS_PRODUCTION) {
-    response.headers.set(
-      'Strict-Transport-Security',
-      'max-age=31536000; includeSubDomains',
-    );
+    response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
   }
   return response;
 }
@@ -88,8 +85,7 @@ function applySecurityHeaders<T extends NextResponse>(response: T): T {
  * redirects (would leak the internal origin / drop the tenant domain).
  */
 function publicHost(request: NextRequest): string {
-  const raw =
-    request.headers.get('x-forwarded-host') ?? request.headers.get('host') ?? '';
+  const raw = request.headers.get('x-forwarded-host') ?? request.headers.get('host') ?? '';
   return raw.split(',')[0]?.split(':')[0]?.trim().toLowerCase() ?? '';
 }
 
@@ -98,11 +94,7 @@ function publicHost(request: NextRequest): string {
  * from an explicit override (HTTPS enforcement) or the proxy's
  * x-forwarded-proto; falls back to the connection protocol.
  */
-function publicRedirectUrl(
-  request: NextRequest,
-  host: string,
-  protocol?: 'http:' | 'https:',
-): URL {
+function publicRedirectUrl(request: NextRequest, host: string, protocol?: 'http:' | 'https:'): URL {
   const url = request.nextUrl.clone();
   if (protocol) {
     url.protocol = protocol;
@@ -193,9 +185,7 @@ async function handleRequest(request: NextRequest): Promise<NextResponse> {
       path: pathname,
       tenant: rateLimitTenant?.tenantId ?? '-',
     });
-    return applySecurityHeaders(
-      new NextResponse('Too Many Requests', { status: 429 }),
-    );
+    return applySecurityHeaders(new NextResponse('Too Many Requests', { status: 429 }));
   }
 
   // 2. www. prefix normalization (308 — permanent, method-preserving).
@@ -203,14 +193,14 @@ async function handleRequest(request: NextRequest): Promise<NextResponse> {
   const host = publicHost(request);
   if (host.startsWith('www.')) {
     return applySecurityHeaders(
-      NextResponse.redirect(publicRedirectUrl(request, host.slice(4)), 308),
+      NextResponse.redirect(publicRedirectUrl(request, host.slice(4)), 308)
     );
   }
 
   // 3. HTTPS enforcement (production only; proxies set x-forwarded-proto).
   if (IS_PRODUCTION && request.headers.get('x-forwarded-proto') === 'http') {
     return applySecurityHeaders(
-      NextResponse.redirect(publicRedirectUrl(request, host, 'https:'), 308),
+      NextResponse.redirect(publicRedirectUrl(request, host, 'https:'), 308)
     );
   }
 
@@ -223,9 +213,7 @@ async function handleRequest(request: NextRequest): Promise<NextResponse> {
       pathname.startsWith('/api/auth/callback') &&
       isLoginRateLimited(`login|${clientIp(request)}`)
     ) {
-      return applySecurityHeaders(
-        new NextResponse('Too Many Requests', { status: 429 }),
-      );
+      return applySecurityHeaders(new NextResponse('Too Many Requests', { status: 429 }));
     }
     // STEP 11: SEO surfaces are exempt from tenant ROUTING but need tenant
     // identity — resolve and inject `x-resolved-tenant` so sitemap.xml can
@@ -235,9 +223,7 @@ async function handleRequest(request: NextRequest): Promise<NextResponse> {
       const seoTenant = resolveTenantRequest(request); // LRU-cached
       if (seoTenant) {
         request.headers.set('x-resolved-tenant', seoTenant.tenantId);
-        return applySecurityHeaders(
-          NextResponse.next({ request: { headers: request.headers } }),
-        );
+        return applySecurityHeaders(NextResponse.next({ request: { headers: request.headers } }));
       }
     }
     return applySecurityHeaders(NextResponse.next());
@@ -296,18 +282,13 @@ async function handleRequest(request: NextRequest): Promise<NextResponse> {
   //    replacing it with next() would serve the pre-rewrite URL and drop
   //    the tenant addressing.
   const tenantResponse = tenantMiddleware(request);
-  if (
-    tenantResponse.status >= 300 ||
-    tenantResponse.headers.has('x-middleware-rewrite')
-  ) {
+  if (tenantResponse.status >= 300 || tenantResponse.headers.has('x-middleware-rewrite')) {
     return applySecurityHeaders(tenantResponse);
   }
 
   // Explicit next({ request }) guarantees the mutated headers (x-locale,
   // x-tenant-id/schema/vertical/locale) reach downstream headers().
-  return applySecurityHeaders(
-    NextResponse.next({ request: { headers: request.headers } }),
-  );
+  return applySecurityHeaders(NextResponse.next({ request: { headers: request.headers } }));
 }
 
 export const config = {

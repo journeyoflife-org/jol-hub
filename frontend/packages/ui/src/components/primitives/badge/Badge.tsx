@@ -33,14 +33,20 @@ function variantClass(variant: BadgeVariant, tenant?: TenantTheme): string {
   }
 }
 
-export function Badge({ variant = 'default', size = 'md', tenant, className, ...props }: BadgeProps) {
+export function Badge({
+  variant = 'default',
+  size = 'md',
+  tenant,
+  className,
+  ...props
+}: BadgeProps) {
   return (
     <span
       className={cn(
         'inline-flex items-center rounded-full font-medium leading-none',
         SIZES[size],
         variantClass(variant, tenant),
-        className,
+        className
       )}
       {...props}
     />

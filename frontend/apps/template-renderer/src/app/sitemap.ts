@@ -91,10 +91,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const unique = Array.from(new Set(routes));
   const fallbackLastmod = new Date();
 
-  const toEntry = (
-    route: string,
-    lastModified: Date | string,
-  ): MetadataRoute.Sitemap[number] => {
+  const toEntry = (route: string, lastModified: Date | string): MetadataRoute.Sitemap[number] => {
     const kind = kindFor(route);
     const path = route === '/' ? '' : route;
     const set = buildHreflangSet(origin, tenantSlug, route, 'lt');

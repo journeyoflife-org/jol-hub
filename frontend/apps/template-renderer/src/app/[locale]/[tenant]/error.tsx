@@ -40,9 +40,9 @@ export default function TenantErrorBoundary({ error, reset }: TenantErrorProps) 
   }, [error, errorId, pathname]);
 
   return (
-    <main role="alert" className="flex-1 flex items-center justify-center px-4 py-24">
-      <div className="max-w-md text-center space-y-4">
-        <h1 className="text-2xl font-heading font-bold">{t('errorTitle')}</h1>
+    <main role="alert" className="flex flex-1 items-center justify-center px-4 py-24">
+      <div className="max-w-md space-y-4 text-center">
+        <h1 className="font-heading text-2xl font-bold">{t('errorTitle')}</h1>
         <p className="text-gray-600">{t('generic')}</p>
         <p className="text-xs text-gray-400">
           {t('errorId')}: <code className="select-all">{errorId}</code>
@@ -51,11 +51,11 @@ export default function TenantErrorBoundary({ error, reset }: TenantErrorProps) 
           <button
             type="button"
             onClick={() => reset()}
-            className="rounded-md bg-primary px-4 py-2 font-medium text-white focus-ring"
+            className="bg-primary focus-ring rounded-md px-4 py-2 font-medium text-white"
           >
             {t('retry')}
           </button>
-          <a href={`${basePath}/contact`} className="text-primary underline focus-ring rounded">
+          <a href={`${basePath}/contact`} className="text-primary focus-ring rounded underline">
             {t('contactSupport')}
           </a>
         </div>

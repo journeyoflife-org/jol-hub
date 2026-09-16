@@ -39,17 +39,28 @@ export const blockSchema = z
   })
   // Per-type refinements (type-specific length limits + safe button hrefs).
   .superRefine((block, ctx) => {
-    if (block.type === 'heading' && (block.text ?? '').length > EDITOR_LIMITS.maxTextLength.heading) {
+    if (
+      block.type === 'heading' &&
+      (block.text ?? '').length > EDITOR_LIMITS.maxTextLength.heading
+    ) {
       ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['text'], message: 'Heading too long.' });
     }
     if (block.type === 'quote' && (block.text ?? '').length > EDITOR_LIMITS.maxTextLength.quote) {
       ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['text'], message: 'Quote too long.' });
     }
     if (block.type === 'image' && !(block.altText ?? '').trim()) {
-      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['altText'], message: 'Alt text is required.' });
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['altText'],
+        message: 'Alt text is required.',
+      });
     }
     if (block.type === 'button' && block.href && !isSafeUrl(block.href)) {
-      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['href'], message: 'Button target is not allowed.' });
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['href'],
+        message: 'Button target is not allowed.',
+      });
     }
   });
 
@@ -64,18 +75,28 @@ export const draftBodySchema = z.object({
 });
 
 /** Moderation decision body (POST /moderation/[itemId]). */
-export const decisionBodySchema = z.object({
-  tenantSlug: z.string().regex(/^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$/).max(64),
-  action: z.enum(['approve', 'reject', 'request-changes', 'escalate']),
-  reason: z.string().max(1000).optional(),
-}).refine(
-  (body) => !(body.action === 'reject' || body.action === 'request-changes') || (body.reason ?? '').trim().length > 0,
-  { message: 'A reason is required for reject / request-changes.' },
-);
+export const decisionBodySchema = z
+  .object({
+    tenantSlug: z
+      .string()
+      .regex(/^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$/)
+      .max(64),
+    action: z.enum(['approve', 'reject', 'request-changes', 'escalate']),
+    reason: z.string().max(1000).optional(),
+  })
+  .refine(
+    (body) =>
+      !(body.action === 'reject' || body.action === 'request-changes') ||
+      (body.reason ?? '').trim().length > 0,
+    { message: 'A reason is required for reject / request-changes.' }
+  );
 
 /** Media upload registration body (POST /media). */
 export const uploadBodySchema = z.object({
-  tenantSlug: z.string().regex(/^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$/).max(64),
+  tenantSlug: z
+    .string()
+    .regex(/^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$/)
+    .max(64),
   fileName: z.string().min(1).max(255),
   mimeType: z.enum(['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml']),
   sizeBytes: z.number().int().min(1).max(EDITOR_LIMITS.maxImageBytes),

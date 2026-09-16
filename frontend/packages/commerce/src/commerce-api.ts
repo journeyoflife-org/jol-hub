@@ -41,9 +41,7 @@ export interface CommerceApiError {
   retryable: boolean;
 }
 
-export type CommerceResult<T> =
-  | { ok: true; data: T }
-  | { ok: false; error: CommerceApiError };
+export type CommerceResult<T> = { ok: true; data: T } | { ok: false; error: CommerceApiError };
 
 /** Max automatic retries for idempotent GET requests. */
 const MAX_GET_RETRIES = 2;
@@ -75,12 +73,20 @@ function unconfiguredResult<T>(): CommerceResult<T> {
 
 function errorFromStatus(status: number, body: string): CommerceApiError {
   if (status === 402 || status === 403) {
-    return { kind: 'payment', message: body || 'Payment was declined or is not authorised.', retryable: false };
+    return {
+      kind: 'payment',
+      message: body || 'Payment was declined or is not authorised.',
+      retryable: false,
+    };
   }
   if (status >= 400 && status < 500) {
     return { kind: 'validation', message: body || 'The request was rejected.', retryable: false };
   }
-  return { kind: 'server', message: body || 'The commerce service is temporarily unavailable.', retryable: true };
+  return {
+    kind: 'server',
+    message: body || 'The commerce service is temporarily unavailable.',
+    retryable: true,
+  };
 }
 
 function sleep(ms: number): Promise<void> {
@@ -95,7 +101,7 @@ async function request<T>(
   method: 'GET' | 'POST',
   path: string,
   tenantSlug: string | undefined,
-  body?: unknown,
+  body?: unknown
 ): Promise<CommerceResult<T>> {
   const base = commerceBaseUrl();
   if (!base) return unconfiguredResult<T>();
@@ -124,7 +130,11 @@ async function request<T>(
       if (attempt >= retries) {
         return {
           ok: false,
-          error: { kind: 'network', message: 'Could not reach the commerce service.', retryable: method === 'GET' },
+          error: {
+            kind: 'network',
+            message: 'Could not reach the commerce service.',
+            retryable: method === 'GET',
+          },
         };
       }
       attempt += 1;
@@ -140,18 +150,25 @@ async function request<T>(
 /** List a tenant's products (optionally filtered by category). */
 export function getProducts(
   tenantSlug: string,
-  category?: string,
+  category?: string
 ): Promise<CommerceResult<Product[]>> {
   const query = category ? `&category=${encodeURIComponent(category)}` : '';
-  return request<Product[]>('GET', `/products?tenant=${encodeURIComponent(tenantSlug)}${query}`, tenantSlug);
+  return request<Product[]>(
+    'GET',
+    `/products?tenant=${encodeURIComponent(tenantSlug)}${query}`,
+    tenantSlug
+  );
 }
 
 /** Fetch order history for a customer. */
-export function getOrders(tenantSlug: string, customerId: string): Promise<CommerceResult<Order[]>> {
+export function getOrders(
+  tenantSlug: string,
+  customerId: string
+): Promise<CommerceResult<Order[]>> {
   return request<Order[]>(
     'GET',
     `/orders?tenant=${encodeURIComponent(tenantSlug)}&customer=${encodeURIComponent(customerId)}`,
-    tenantSlug,
+    tenantSlug
   );
 }
 
@@ -160,7 +177,10 @@ export function getOrders(tenantSlug: string, customerId: string): Promise<Comme
 // =============================================================================
 
 /** Create a booking. NOT retried automatically (avoid duplicate bookings). */
-export function createBooking(tenantSlug: string, booking: BookingRequest): Promise<CommerceResult<BookingConfirmation>> {
+export function createBooking(
+  tenantSlug: string,
+  booking: BookingRequest
+): Promise<CommerceResult<BookingConfirmation>> {
   return request<BookingConfirmation>('POST', '/bookings', tenantSlug, booking);
 }
 
@@ -172,7 +192,10 @@ export function createBooking(tenantSlug: string, booking: BookingRequest): Prom
  * Create a donation payment intent. Returns an opaque client secret to confirm
  * against Stripe-hosted Elements in the browser. NEVER carries card data.
  */
-export function createDonationIntent(tenantSlug: string, donation: DonationRequest): Promise<CommerceResult<{ clientSecret: string }>> {
+export function createDonationIntent(
+  tenantSlug: string,
+  donation: DonationRequest
+): Promise<CommerceResult<{ clientSecret: string }>> {
   return request<{ clientSecret: string }>('POST', '/donations', tenantSlug, donation);
 }
 
@@ -181,8 +204,14 @@ export function createDonationIntent(tenantSlug: string, donation: DonationReque
 // =============================================================================
 
 /** List subscription plans available to a tenant (tier/vertical-filtered). */
-export function getSubscriptionPlans(tenantSlug: string): Promise<CommerceResult<SubscriptionPlan[]>> {
-  return request<SubscriptionPlan[]>('GET', `/subscriptions/plans?tenant=${encodeURIComponent(tenantSlug)}`, tenantSlug);
+export function getSubscriptionPlans(
+  tenantSlug: string
+): Promise<CommerceResult<SubscriptionPlan[]>> {
+  return request<SubscriptionPlan[]>(
+    'GET',
+    `/subscriptions/plans?tenant=${encodeURIComponent(tenantSlug)}`,
+    tenantSlug
+  );
 }
 
 /**
@@ -191,12 +220,16 @@ export function getSubscriptionPlans(tenantSlug: string): Promise<CommerceResult
  */
 export function createSubscription(
   tenantSlug: string,
-  planId: string,
+  planId: string
 ): Promise<CommerceResult<{ checkoutUrl: string }>> {
   return request<{ checkoutUrl: string }>('POST', '/subscriptions', tenantSlug, { planId });
 }
 
 /** Fetch the tenant's active subscription (for the manager UI). */
 export function getSubscription(tenantSlug: string): Promise<CommerceResult<Subscription | null>> {
-  return request<Subscription | null>('GET', `/subscriptions?tenant=${encodeURIComponent(tenantSlug)}`, tenantSlug);
+  return request<Subscription | null>(
+    'GET',
+    `/subscriptions?tenant=${encodeURIComponent(tenantSlug)}`,
+    tenantSlug
+  );
 }

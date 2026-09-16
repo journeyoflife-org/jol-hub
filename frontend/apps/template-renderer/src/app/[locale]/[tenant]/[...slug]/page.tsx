@@ -57,8 +57,8 @@ function ContentErrorNotice({
 }) {
   const messages = getMessages(locale);
   return (
-    <section data-content-error={kind} className="max-w-md mx-auto text-center space-y-4 py-16">
-      <h1 className="text-2xl font-heading font-bold">
+    <section data-content-error={kind} className="mx-auto max-w-md space-y-4 py-16 text-center">
+      <h1 className="font-heading text-2xl font-bold">
         {translate(messages, 'errors.notFoundTitle')}
       </h1>
       <p className="text-gray-600">{translate(messages, 'errors.generic')}</p>
@@ -75,10 +75,7 @@ export async function generateMetadata({
   const route = routeFromParams(params.slug);
   const page = fixture && !isSharedRoute(route) ? findTenantPage(fixture, route) : undefined;
 
-  const tenantName = pickLocalized(
-    fixture ? fixture.name : tenant.name,
-    locale,
-  );
+  const tenantName = pickLocalized(fixture ? fixture.name : tenant.name, locale);
   // SHORT title — the tenant layout template appends " | {tenant name}".
   // No fixture page → omit so the layout default (tenant name) applies.
   const title = page ? pickLocalized(page.title, locale) : undefined;

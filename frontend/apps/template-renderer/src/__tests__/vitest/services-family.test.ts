@@ -29,7 +29,7 @@ const HUB_ROOT = join(__dirname, '../../../../../../');
 function loadFixture(slug: string): TenantFixture {
   const raw = readFileSync(
     join(__dirname, '../../../../../packages/seed-data/src/fixtures/tenants', `${slug}.json`),
-    'utf-8',
+    'utf-8'
   );
   return TenantFixtureSchema.parse(JSON.parse(raw));
 }
@@ -51,7 +51,7 @@ describe('package 11: funeral landing', () => {
         vertical: 'funeral',
         locale: 'lt',
         homeUrl: `${ORIGIN}/lt/funeral-vilnius`,
-      }),
+      })
     );
     expect(entity['@type']).toBe('FuneralHome');
     expect(entity.telephone).toBe(fixture.identity?.phone); // DATA, not literal
@@ -75,7 +75,7 @@ describe('package 12: cemetery landing', () => {
         vertical: 'cemetery-cleaning',
         locale: 'lt',
         homeUrl: `${ORIGIN}/lt/cemetery-vilnius`,
-      }),
+      })
     );
     expect(entity['@type']).toBe('LocalBusiness');
     expect(entity.telephone).toBe(fixture.identity?.phone);
@@ -96,7 +96,7 @@ describe('package 10: other churches landing', () => {
         vertical: 'greek-catholic',
         locale: 'lt',
         homeUrl: `${ORIGIN}/lt/greek-catholic-vilnius`,
-      }),
+      })
     );
     expect(entity['@type']).toBe('PlaceOfWorship');
     expect(entity.additionalProperty).toBeUndefined();
@@ -132,7 +132,9 @@ describe('DS-UX-11: crisis entries hidden while safety.yml is absent', () => {
       const configDir = join(countriesDir, cc, 'config');
       if (!existsSync(configDir)) continue;
       for (const file of readdirSync(configDir)) {
-        expect(file, `unexpected safety config: countries/${cc}/config/${file}`).not.toBe('safety.yml');
+        expect(file, `unexpected safety config: countries/${cc}/config/${file}`).not.toBe(
+          'safety.yml'
+        );
       }
     }
   });
@@ -158,7 +160,9 @@ describe('no retargeting hooks', () => {
     const scan = collectSources(RENDERER_SRC);
     const offenders = scan.filter((file) => {
       const content = readFileSync(file, 'utf-8');
-      return /(gtag\(|googletagmanager|fbq\(|facebook.*pixel|dataLayer\s*=|hotjar|criteo|adroll)/i.test(content);
+      return /(gtag\(|googletagmanager|fbq\(|facebook.*pixel|dataLayer\s*=|hotjar|criteo|adroll)/i.test(
+        content
+      );
     });
     expect(offenders).toEqual([]);
   });
@@ -174,7 +178,9 @@ describe('crisis keywords served pastorally, never commercially', () => {
     const scan = collectSources(modulesDir).concat(collectSources(join(RENDERER_SRC, 'lib')));
     const offenders = scan.filter((file) => {
       const content = readFileSync(file, 'utf-8');
-      return /(limited\s+time|act\s+now|don'?t\s+miss|discount|upsell|special\s+offer)/i.test(content);
+      return /(limited\s+time|act\s+now|don'?t\s+miss|discount|upsell|special\s+offer)/i.test(
+        content
+      );
     });
     expect(offenders).toEqual([]);
   });
@@ -198,7 +204,12 @@ describe('crisis keywords served pastorally, never commercially', () => {
 
 describe('hreflang reciprocity (services family)', () => {
   it('services-family landings are reciprocal across pilot locales', () => {
-    const slugs = ['deanery-vilnius-city', 'greek-catholic-vilnius', 'funeral-vilnius', 'cemetery-vilnius'];
+    const slugs = [
+      'deanery-vilnius-city',
+      'greek-catholic-vilnius',
+      'funeral-vilnius',
+      'cemetery-vilnius',
+    ];
     for (const slug of slugs) {
       const pages = ['lt', 'en', 'ru'].map((locale) => buildHreflangSet(ORIGIN, slug, '/', locale));
       expect(verifyHreflangReciprocity(pages)).toEqual([]);
@@ -213,7 +224,8 @@ describe('hreflang reciprocity (services family)', () => {
 function collectSources(dir: string): string[] {
   const out: string[] = [];
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
-    if (entry.name === 'node_modules' || entry.name === '.next' || entry.name === '__tests__') continue;
+    if (entry.name === 'node_modules' || entry.name === '.next' || entry.name === '__tests__')
+      continue;
     const full = join(dir, entry.name);
     if (entry.isDirectory()) {
       out.push(...collectSources(full));

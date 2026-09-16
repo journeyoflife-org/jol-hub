@@ -27,19 +27,13 @@ export interface JsonLdProps {
 
 /** Serialize without dropping meaningful fields; escape for inline safety. */
 function serialize(data: JsonValue | JsonValue[]): string {
-  return JSON.stringify(Array.isArray(data) ? { '@graph': data } : data).replace(
-    /</g,
-    '\\u003c',
-  );
+  return JSON.stringify(Array.isArray(data) ? { '@graph': data } : data).replace(/</g, '\\u003c');
 }
 
 /** Render a JSON-LD block. Server-safe (no client JS). */
 export function JsonLd({ data }: JsonLdProps): ReactElement {
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: serialize(data) }}
-    />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serialize(data) }} />
   );
 }
 

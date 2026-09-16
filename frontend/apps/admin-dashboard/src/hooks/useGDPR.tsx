@@ -36,11 +36,7 @@ export function GDPRProvider({ children }: { children: ReactNode }) {
     setAllowedCountries,
   };
 
-  return (
-    <GDPRContext.Provider value={value}>
-      {children}
-    </GDPRContext.Provider>
-  );
+  return <GDPRContext.Provider value={value}>{children}</GDPRContext.Provider>;
 }
 
 export function useGDPR(): GDPRContextType {

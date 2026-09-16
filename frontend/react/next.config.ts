@@ -1,4 +1,4 @@
-import type { NextConfig } from 'next'
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   // The Django API origin — overridden per environment via NEXT_PUBLIC_API_URL
@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
         source: '/api/proxy/:path*',
         destination: `${process.env.NEXT_PUBLIC_API_URL}/api/:path*`,
       },
-    ]
+    ];
   },
 
   images: {
@@ -29,6 +29,6 @@ const nextConfig: NextConfig = {
 
   // Output standalone bundle for Docker deployments
   output: process.env.NEXT_OUTPUT === 'standalone' ? 'standalone' : undefined,
-}
+};
 
-export default nextConfig
+export default nextConfig;

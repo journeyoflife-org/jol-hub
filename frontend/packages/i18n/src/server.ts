@@ -1,12 +1,12 @@
 /**
  * Server-only exports for @journeyoflife-org/i18n
- * 
+ *
  * These exports use the deepl-node SDK which requires Node.js built-in modules.
  * They can ONLY be used in:
  * - Server Actions
  * - Route Handlers (API routes)
  * - Server Components (async functions)
- * 
+ *
  * DO NOT import these in client components or regular hooks.
  * Use '@journeyoflife-org/i18n' for client-safe imports.
  */

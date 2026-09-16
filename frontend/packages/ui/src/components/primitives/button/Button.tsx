@@ -26,19 +26,19 @@ const VARIANTS: Record<ButtonVariant, (tenant?: TenantTheme) => string> = {
   secondary: (tenant) =>
     cn(
       'border border-neutral-300 bg-neutral-50 text-neutral-900 hover:bg-neutral-100 active:bg-neutral-200 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-50 dark:hover:bg-neutral-800',
-      tenant?.vertical ? accentTextClass(tenant) : '',
+      tenant?.vertical ? accentTextClass(tenant) : ''
     ),
   ghost: (tenant) =>
     cn(
       'bg-transparent text-neutral-900 hover:bg-neutral-100 active:bg-neutral-200 dark:text-neutral-50 dark:hover:bg-neutral-800',
-      tenant?.vertical ? accentTextClass(tenant) : '',
+      tenant?.vertical ? accentTextClass(tenant) : ''
     ),
   danger: () =>
     'bg-error-700 text-neutral-50 hover:bg-error-800 active:bg-error-900 dark:bg-error-600 dark:hover:bg-error-700',
   link: (tenant) =>
     cn(
       'h-auto p-0 underline-offset-4 hover:underline',
-      tenant?.vertical ? accentTextClass(tenant) : 'text-primary dark:text-info-300',
+      tenant?.vertical ? accentTextClass(tenant) : 'text-primary dark:text-info-300'
     ),
 };
 

@@ -20,7 +20,7 @@ export default function ContentModule({ content, locale }: ModuleProps) {
       <div
         data-jol-content="config-error"
         role="note"
-        className="rounded-lg border border-warning bg-warning/10 p-6 text-sm"
+        className="border-warning bg-warning/10 rounded-lg border p-6 text-sm"
       >
         {translate(messages, 'errors.generic')}
       </div>

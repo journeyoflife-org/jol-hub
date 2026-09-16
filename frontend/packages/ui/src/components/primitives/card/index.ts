@@ -7,4 +7,10 @@ export {
   CardFooter,
   CardMedia,
 } from './Card';
-export type { CardProps, CardVariant, CardMediaProps, CardMediaAspect, CardSlotProps } from './Card.types';
+export type {
+  CardProps,
+  CardVariant,
+  CardMediaProps,
+  CardMediaAspect,
+  CardSlotProps,
+} from './Card.types';

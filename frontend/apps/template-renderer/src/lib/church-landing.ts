@@ -29,7 +29,7 @@ import { pickLocalized } from './i18n-helpers';
  * — the same dual handling template-registry.ts performs.
  */
 export function churchKindForVertical(
-  vertical: ResolverVertical | FixtureVertical,
+  vertical: ResolverVertical | FixtureVertical
 ): ChurchKind | undefined {
   switch (vertical) {
     case 'basilica':
@@ -65,7 +65,9 @@ export interface ChurchLandingInput {
  * the vertical has no church-landing shape. Every field is mapped from the
  * fixture — nothing is fabricated; absent data is simply not emitted.
  */
-export function buildChurchLandingEntity(input: ChurchLandingInput): ReturnType<typeof churchEntity> | undefined {
+export function buildChurchLandingEntity(
+  input: ChurchLandingInput
+): ReturnType<typeof churchEntity> | undefined {
   const kind = churchKindForVertical(input.vertical);
   if (!kind) return undefined;
 

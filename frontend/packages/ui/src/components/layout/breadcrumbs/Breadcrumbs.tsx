@@ -29,10 +29,7 @@ export function Breadcrumbs({ items, label, className }: BreadcrumbsProps) {
 
   return (
     <nav aria-label={label ?? t('breadcrumbLabel')} className={className}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: jsonLd(items) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(items) }} />
       <ol className="flex flex-wrap items-center gap-1 text-sm text-neutral-600 dark:text-neutral-300">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
@@ -44,11 +41,17 @@ export function Breadcrumbs({ items, label, className }: BreadcrumbsProps) {
                 </span>
               )}
               {isLast || !item.href ? (
-                <span aria-current={isLast ? 'page' : undefined} className={cn(isLast && 'font-medium text-neutral-900 dark:text-neutral-50')}>
+                <span
+                  aria-current={isLast ? 'page' : undefined}
+                  className={cn(isLast && 'font-medium text-neutral-900 dark:text-neutral-50')}
+                >
                   {item.label}
                 </span>
               ) : (
-                <a href={item.href} className="underline-offset-4 hover:underline focus-ring rounded-sm">
+                <a
+                  href={item.href}
+                  className="focus-ring rounded-sm underline-offset-4 hover:underline"
+                >
                   {item.label}
                 </a>
               )}

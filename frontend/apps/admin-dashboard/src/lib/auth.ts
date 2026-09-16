@@ -21,10 +21,10 @@ import type { AdminRole, FederationTier, Permission, EntityType } from '@/types'
  * - facility: Tier 4 (Single parish/funeral home)
  */
 export type AdminTier =
-  | 'super'      // Tier 1: JOL-HUB internal, global view only
-  | 'country'    // Tier 2: Country admin (e.g., all LT entities)
-  | 'diocese'    // Tier 3: Diocese/Group admin (subset of country)
-  | 'facility';  // Tier 4: Single parish/funeral home
+  | 'super' // Tier 1: JOL-HUB internal, global view only
+  | 'country' // Tier 2: Country admin (e.g., all LT entities)
+  | 'diocese' // Tier 3: Diocese/Group admin (subset of country)
+  | 'facility'; // Tier 4: Single parish/funeral home
 
 /**
  * HierarchyContext - User context with tier and scope information
@@ -32,9 +32,9 @@ export type AdminTier =
  */
 export interface HierarchyContext {
   tier: AdminTier;
-  country: EUCountryCode | null;  // null for super admin
-  scopeId: string | null;          // Diocese ID for Tier 3, Parish ID for Tier 4
-  dataResidency: EUCountryCode;   // STRICT ENFORCEMENT - data cannot leave this country
+  country: EUCountryCode | null; // null for super admin
+  scopeId: string | null; // Diocese ID for Tier 3, Parish ID for Tier 4
+  dataResidency: EUCountryCode; // STRICT ENFORCEMENT - data cannot leave this country
   role: AdminRole;
   userId: string;
 }
@@ -43,9 +43,33 @@ export interface HierarchyContext {
  * EU Country Codes for 27 member states
  */
 export type EUCountryCode =
-  | 'at' | 'be' | 'bg' | 'cy' | 'cz' | 'de' | 'dk' | 'ee' | 'es' | 'fi'
-  | 'fr' | 'gr' | 'hr' | 'hu' | 'ie' | 'it' | 'lt' | 'lu' | 'lv' | 'mt'
-  | 'nl' | 'pl' | 'pt' | 'ro' | 'se' | 'si' | 'sk';
+  | 'at'
+  | 'be'
+  | 'bg'
+  | 'cy'
+  | 'cz'
+  | 'de'
+  | 'dk'
+  | 'ee'
+  | 'es'
+  | 'fi'
+  | 'fr'
+  | 'gr'
+  | 'hr'
+  | 'hu'
+  | 'ie'
+  | 'it'
+  | 'lt'
+  | 'lu'
+  | 'lv'
+  | 'mt'
+  | 'nl'
+  | 'pl'
+  | 'pt'
+  | 'ro'
+  | 'se'
+  | 'si'
+  | 'sk';
 
 /**
  * Entity with hierarchy information for access checks
@@ -68,10 +92,7 @@ export interface HierarchicalEntity {
  * Security principle: If a hacker steals a Tier 3 password,
  * they can only see 1 diocese, not the whole country.
  */
-export function canAccessEntity(
-  user: HierarchyContext,
-  entity: HierarchicalEntity
-): boolean {
+export function canAccessEntity(user: HierarchyContext, entity: HierarchicalEntity): boolean {
   // GDPR Article 44: Data cannot cross borders
   // Lithuanian admin cannot see Latvian data
   if (user.country && user.country !== entity.country) {
@@ -93,8 +114,7 @@ export function canAccessEntity(
 
     case 'diocese':
       // Tier 3: Can only access entities in their assigned diocese
-      return user.country === entity.country &&
-             user.scopeId === entity.dioceseId;
+      return user.country === entity.country && user.scopeId === entity.dioceseId;
 
     case 'facility':
       // Tier 4: Can only access their own facility
@@ -116,10 +136,7 @@ export function canViewAggregatedData(user: HierarchyContext): boolean {
 /**
  * canManageUsers - Check if user can manage other users
  */
-export function canManageUsers(
-  user: HierarchyContext,
-  targetUserTier: AdminTier
-): boolean {
+export function canManageUsers(user: HierarchyContext, targetUserTier: AdminTier): boolean {
   // Cannot manage users at same or higher tier
   const tierLevels: Record<AdminTier, number> = {
     super: 1,
@@ -203,7 +220,7 @@ export function createHierarchyContext(params: {
   scopeId?: string;
 }): HierarchyContext {
   const tier = roleToTier(params.role);
-  
+
   return {
     tier,
     country: tier === 'super' ? null : (params.country ?? null),
@@ -309,9 +326,7 @@ export function hasPermission(
   resource: EntityType
 ): boolean {
   const permissions = ROLE_PERMISSIONS[role] || [];
-  return permissions.some(
-    (p) => p.action === action && p.resource === resource
-  );
+  return permissions.some((p) => p.action === action && p.resource === resource);
 }
 
 // Get the federation tier for a role

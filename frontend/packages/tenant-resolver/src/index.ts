@@ -178,7 +178,7 @@ function toResolved(tenant: Tenant): ResolvedTenant {
  * components (`next/headers`) where no `NextRequest` instance exists.
  */
 export function resolveTenantFromHeaders(
-  getHeader: (name: string) => string | null,
+  getHeader: (name: string) => string | null
 ): ResolvedTenant | null {
   const tenant = resolveTenantCore({
     host: getHeader('host'),

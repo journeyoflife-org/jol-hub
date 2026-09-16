@@ -54,7 +54,7 @@ export function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
   const { currentCountry, setCountry, allCountries } = useCountry();
   const { tier, entityName, isGlobalAdmin } = useHierarchy();
-  
+
   // Get the country code from currentCountry
   const countryCode = currentCountry?.code ?? '';
 
@@ -62,29 +62,30 @@ export function Sidebar() {
   const userRole = (user as any)?.role || 'user';
   const TierIcon = TIER_ICONS[tier];
 
-  const initials = user?.name
-    ?.split(' ')
-    .map((n) => n[0])
-    .join('')
-    .toUpperCase() || 'U';
+  const initials =
+    user?.name
+      ?.split(' ')
+      .map((n) => n[0])
+      .join('')
+      .toUpperCase() || 'U';
 
   return (
     <aside
       className={cn(
-        'flex flex-col h-screen bg-sidebar border-r border-sidebar-border transition-all duration-300',
+        'bg-sidebar border-sidebar-border flex h-screen flex-col border-r transition-all duration-300',
         collapsed ? 'w-16' : 'w-64'
       )}
     >
       {/* Logo & Tier Indicator */}
-      <div className="flex items-center justify-between h-16 px-4 border-b border-sidebar-border">
+      <div className="border-sidebar-border flex h-16 items-center justify-between border-b px-4">
         {!collapsed && (
           <Link href="/dashboard" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">J</span>
+            <div className="bg-primary flex h-8 w-8 items-center justify-center rounded-lg">
+              <span className="text-primary-foreground text-sm font-bold">J</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-semibold text-sidebar-foreground text-sm">JOL-HUB</span>
-              <span className="text-xs text-muted-foreground">Admin</span>
+              <span className="text-sidebar-foreground text-sm font-semibold">JOL-HUB</span>
+              <span className="text-muted-foreground text-xs">Admin</span>
             </div>
           </Link>
         )}
@@ -100,12 +101,12 @@ export function Sidebar() {
 
       {/* Tier & Country Context - GDPR Article 44 */}
       {!collapsed && (
-        <div className="px-3 py-2 border-b border-sidebar-border">
-          <div className="flex items-center gap-2 px-2 py-1.5 rounded-lg bg-sidebar-accent/50">
-            <TierIcon className="h-4 w-4 text-primary" />
-            <div className="flex-1 min-w-0">
-              <p className="text-xs text-muted-foreground capitalize">{tier} Level</p>
-              <p className="text-sm font-medium truncate">{entityName}</p>
+        <div className="border-sidebar-border border-b px-3 py-2">
+          <div className="bg-sidebar-accent/50 flex items-center gap-2 rounded-lg px-2 py-1.5">
+            <TierIcon className="text-primary h-4 w-4" />
+            <div className="min-w-0 flex-1">
+              <p className="text-muted-foreground text-xs capitalize">{tier} Level</p>
+              <p className="truncate text-sm font-medium">{entityName}</p>
             </div>
           </div>
         </div>
@@ -121,7 +122,7 @@ export function Sidebar() {
                 <Link
                   href={item.href}
                   className={cn(
-                    'flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+                    'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                     isActive
                       ? 'bg-sidebar-accent text-sidebar-accent-foreground'
                       : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
@@ -139,14 +140,14 @@ export function Sidebar() {
 
       {/* Country Selector - Global Admins Only */}
       {!collapsed && isGlobalAdmin && (
-        <div className="px-3 py-2 border-t border-sidebar-border">
-          <label className="text-xs font-medium text-muted-foreground px-2 mb-1 block">
+        <div className="border-sidebar-border border-t px-3 py-2">
+          <label className="text-muted-foreground mb-1 block px-2 text-xs font-medium">
             Country Context
           </label>
           <select
             value={countryCode}
             onChange={(e) => setCountry(e.target.value)}
-            className="w-full px-2 py-1.5 text-sm rounded-md border border-input bg-background"
+            className="border-input bg-background w-full rounded-md border px-2 py-1.5 text-sm"
           >
             <option value="">All Countries</option>
             {allCountries.map((country) => (
@@ -160,24 +161,24 @@ export function Sidebar() {
 
       {/* Emergency Stop - SOC2 CC6.1 */}
       {!collapsed && (
-        <div className="px-3 py-2 border-t border-sidebar-border">
+        <div className="border-sidebar-border border-t px-3 py-2">
           <Button
             variant="outline"
             size="sm"
-            className="w-full text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950"
+            className="w-full text-red-600 hover:bg-red-50 hover:text-red-700 dark:hover:bg-red-950"
           >
-            <AlertTriangle className="h-4 w-4 mr-2" />
+            <AlertTriangle className="mr-2 h-4 w-4" />
             Emergency Stop
           </Button>
         </div>
       )}
 
       {/* User Profile */}
-      <div className="border-t border-sidebar-border p-4">
+      <div className="border-sidebar-border border-t p-4">
         <Link
           href="/dashboard/profile"
           className={cn(
-            'flex items-center gap-3 rounded-lg p-2 hover:bg-sidebar-accent transition-colors',
+            'hover:bg-sidebar-accent flex items-center gap-3 rounded-lg p-2 transition-colors',
             collapsed && 'justify-center'
           )}
         >
@@ -186,11 +187,9 @@ export function Sidebar() {
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
           {!collapsed && (
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-sidebar-foreground truncate">
-                {user?.name}
-              </p>
-              <p className="text-xs text-muted-foreground truncate">
+            <div className="min-w-0 flex-1">
+              <p className="text-sidebar-foreground truncate text-sm font-medium">{user?.name}</p>
+              <p className="text-muted-foreground truncate text-xs">
                 {ROLE_LABELS[userRole as keyof typeof ROLE_LABELS] ?? userRole}
               </p>
             </div>

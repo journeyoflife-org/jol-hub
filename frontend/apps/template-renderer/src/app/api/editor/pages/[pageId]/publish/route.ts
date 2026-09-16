@@ -36,7 +36,8 @@ export async function POST(request: NextRequest, { params }: { params: { pageId:
 
   const result = await client.publish(tenantSlug, params.pageId);
   if (!result.ok) {
-    const status = result.error.kind === 'auth' ? 403 : result.error.kind === 'validation' ? 400 : 502;
+    const status =
+      result.error.kind === 'auth' ? 403 : result.error.kind === 'validation' ? 400 : 502;
     return NextResponse.json({ error: result.error.kind }, { status });
   }
   return NextResponse.json(result.data, { status: 202 });

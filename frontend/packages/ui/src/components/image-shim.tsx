@@ -16,7 +16,17 @@ interface ImageProps {
   sizes?: string;
 }
 
-export const Image = ({ src, alt, width, height, className, priority, fill, loading, sizes }: ImageProps) => (
+export const Image = ({
+  src,
+  alt,
+  width,
+  height,
+  className,
+  priority,
+  fill,
+  loading,
+  sizes,
+}: ImageProps) => (
   // eslint-disable-next-line @next/next/no-img-element
   <img
     src={src}

@@ -1,6 +1,6 @@
 /**
  * Bitrix24 TypeScript Interfaces for Self-Hosted Integration
- * 
+ *
  * These types cover the core Bitrix24 REST API entities used in JOL-HUB
  * for ecclesiastical platform authentication and parish management.
  */
@@ -80,28 +80,28 @@ export type JolHubUserRole = 'admin' | 'parish_admin' | 'priest' | 'sexton' | 'u
  */
 export const BITRIX_ROLE_MAPPING: Record<string, JolHubUserRole> = {
   // Lithuanian positions
-  'Kunigas': 'priest',
-  'Vikaras': 'priest',
-  'Klebonas': 'parish_admin',
+  Kunigas: 'priest',
+  Vikaras: 'priest',
+  Klebonas: 'parish_admin',
   'Parapijos administratorius': 'parish_admin',
-  'Sakristijonas': 'sexton',
-  'Vargonininkas': 'user',
-  
+  Sakristijonas: 'sexton',
+  Vargonininkas: 'user',
+
   // English positions
-  'Priest': 'priest',
-  'Vicar': 'priest',
+  Priest: 'priest',
+  Vicar: 'priest',
   'Parish Administrator': 'parish_admin',
   'Parish Admin': 'parish_admin',
-  'Pastor': 'priest',
-  'Sexton': 'sexton',
-  'Organist': 'user',
-  
+  Pastor: 'priest',
+  Sexton: 'sexton',
+  Organist: 'user',
+
   // Russian positions
-  'Священник': 'priest',
-  'Настоятель': 'parish_admin',
-  'Викарий': 'priest',
+  Священник: 'priest',
+  Настоятель: 'parish_admin',
+  Викарий: 'priest',
   'Администратор прихода': 'parish_admin',
-  'Пономарь': 'sexton',
+  Пономарь: 'sexton',
 };
 
 /**
@@ -111,12 +111,12 @@ export function mapBitrixRole(workPosition: string | undefined): JolHubUserRole 
   if (!workPosition) {
     return 'user';
   }
-  
+
   // Check exact match first
   if (BITRIX_ROLE_MAPPING[workPosition]) {
     return BITRIX_ROLE_MAPPING[workPosition];
   }
-  
+
   // Check case-insensitive partial match
   const normalizedPosition = workPosition.toLowerCase();
   for (const [position, role] of Object.entries(BITRIX_ROLE_MAPPING)) {
@@ -124,7 +124,7 @@ export function mapBitrixRole(workPosition: string | undefined): JolHubUserRole 
       return role;
     }
   }
-  
+
   return 'user';
 }
 
@@ -162,9 +162,16 @@ export interface Bitrix24TokenResponse {
  */
 export interface Bitrix24OAuthError {
   /** Error code */
-  error: 'invalid_request' | 'unauthorized_client' | 'access_denied' | 
-         'unsupported_response_type' | 'invalid_scope' | 'server_error' | 
-         'temporarily_unavailable' | 'invalid_grant' | 'expired_token';
+  error:
+    | 'invalid_request'
+    | 'unauthorized_client'
+    | 'access_denied'
+    | 'unsupported_response_type'
+    | 'invalid_scope'
+    | 'server_error'
+    | 'temporarily_unavailable'
+    | 'invalid_grant'
+    | 'expired_token';
   /** Human-readable error description */
   error_description: string;
 }
@@ -367,9 +374,14 @@ export interface AuthAuditLog {
   /** Timestamp of the event */
   timestamp: Date;
   /** Event type */
-  event: 'login_start' | 'login_success' | 'login_failure' | 
-         'logout' | 'token_refresh' | 'token_expired' | 
-         'parish_access_denied';
+  event:
+    | 'login_start'
+    | 'login_success'
+    | 'login_failure'
+    | 'logout'
+    | 'token_refresh'
+    | 'token_expired'
+    | 'parish_access_denied';
   /** User ID if authenticated */
   userId?: string;
   /** User email */

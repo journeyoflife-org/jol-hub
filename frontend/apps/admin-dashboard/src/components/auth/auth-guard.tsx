@@ -16,11 +16,7 @@ interface AuthGuardProps {
  * Redirects to login if not authenticated.
  * Shows loading state while checking authentication.
  */
-export function AuthGuard({
-  children,
-  requiredRoles,
-  requiredPermissions,
-}: AuthGuardProps) {
+export function AuthGuard({ children, requiredRoles, requiredPermissions }: AuthGuardProps) {
   const { data: session, status } = useSession();
   const router = useRouter();
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -65,8 +61,8 @@ export function AuthGuard({
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <Loader2 className="h-8 w-8 animate-spin text-primary" />
-          <p className="text-sm text-muted-foreground">Authenticating...</p>
+          <Loader2 className="text-primary h-8 w-8 animate-spin" />
+          <p className="text-muted-foreground text-sm">Authenticating...</p>
         </div>
       </div>
     );

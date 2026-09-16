@@ -208,7 +208,7 @@ export function ConsentPage({
 }: ConsentPageProps) {
   const t = translations[language] ?? translations.en;
   const options = consentOptions[language] ?? consentOptions.en ?? [];
-  
+
   const [email, setEmail] = useState('');
   const [isIdentified, setIsIdentified] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -222,15 +222,15 @@ export function ConsentPage({
   const handleIdentify = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     // In production, fetch consents from API
     // For now, simulate with currentConsents
     setTimeout(() => {
       const initialConsents: ConsentPreferences = {
-        newsletter: currentConsents.find(c => c.type === 'newsletter')?.granted ?? false,
-        marketing: currentConsents.find(c => c.type === 'marketing')?.granted ?? false,
-        analytics: currentConsents.find(c => c.type === 'analytics')?.granted ?? false,
-        thirdParty: currentConsents.find(c => c.type === 'third_party')?.granted ?? false,
+        newsletter: currentConsents.find((c) => c.type === 'newsletter')?.granted ?? false,
+        marketing: currentConsents.find((c) => c.type === 'marketing')?.granted ?? false,
+        analytics: currentConsents.find((c) => c.type === 'analytics')?.granted ?? false,
+        thirdParty: currentConsents.find((c) => c.type === 'third_party')?.granted ?? false,
       };
       setConsents(initialConsents);
       setIsIdentified(true);
@@ -239,7 +239,7 @@ export function ConsentPage({
   };
 
   const handleToggle = (id: keyof ConsentPreferences) => {
-    setConsents(prev => ({
+    setConsents((prev) => ({
       ...prev,
       [id]: !prev[id],
     }));
@@ -269,9 +269,9 @@ export function ConsentPage({
   };
 
   return (
-    <div className={cn('max-w-3xl mx-auto space-y-8 py-8', className)}>
+    <div className={cn('mx-auto max-w-3xl space-y-8 py-8', className)}>
       {/* Header */}
-      <div className="text-center space-y-2">
+      <div className="space-y-2 text-center">
         <h1 className="text-3xl font-bold">{t.title}</h1>
         <p className="text-gray-600">{t.subtitle}</p>
         <p className="text-sm text-gray-500">{entityName}</p>
@@ -318,7 +318,7 @@ export function ConsentPage({
             </CardHeader>
             <CardContent className="space-y-6">
               {options.map((option) => (
-                <div key={option.id} className="flex items-start gap-4 p-4 rounded-lg border">
+                <div key={option.id} className="flex items-start gap-4 rounded-lg border p-4">
                   <Checkbox
                     id={option.id}
                     checked={consents[option.id]}
@@ -326,15 +326,17 @@ export function ConsentPage({
                   />
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <label htmlFor={option.id} className="font-medium cursor-pointer">
+                      <label htmlFor={option.id} className="cursor-pointer font-medium">
                         {option.title}
                       </label>
                       <Badge variant={consents[option.id] ? 'default' : 'outline'}>
                         {consents[option.id] ? t.granted : t.withdrawn}
                       </Badge>
                     </div>
-                    <p className="text-sm text-gray-600 mt-1">{option.description}</p>
-                    <p className="text-xs text-gray-500 mt-2">{t.legalBasis}: {option.legalBasis}</p>
+                    <p className="mt-1 text-sm text-gray-600">{option.description}</p>
+                    <p className="mt-2 text-xs text-gray-500">
+                      {t.legalBasis}: {option.legalBasis}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -345,11 +347,11 @@ export function ConsentPage({
                 <Button onClick={handleSave} disabled={isLoading} className="flex-1">
                   {isLoading ? '...' : t.saveChanges}
                 </Button>
-                <Button 
-                  onClick={handleWithdrawAll} 
-                  disabled={isLoading} 
+                <Button
+                  onClick={handleWithdrawAll}
+                  disabled={isLoading}
                   variant="outline"
-                  className="text-red-600 border-red-600 hover:bg-red-50"
+                  className="border-red-600 text-red-600 hover:bg-red-50"
                 >
                   {t.withdrawAll}
                 </Button>

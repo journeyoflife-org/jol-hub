@@ -3,13 +3,13 @@
 /**
  * i18n Middleware for Next.js
  * Edge Runtime compatible
- * 
+ *
  * Detection order:
  * 1. URL path prefix (/lt/, /ru/, /en/)
  * 2. Cookie (jol-hub-locale, 1 year)
  * 3. Accept-Language browser header
  * 4. Default: Lithuanian (lt)
- * 
+ *
  * Behavior:
  * - / → redirect to /lt/ (default locale)
  * - /ru → redirect to /ru/
@@ -136,7 +136,7 @@ function isExcludedPath(pathname: string): boolean {
 /**
  * i18n middleware: handles locale detection and routing
  * Call this from your Next.js middleware.ts
- * 
+ *
  * Usage:
  * ```ts
  * import { i18nMiddleware } from '@journeyoflife-org/i18n/middleware';
@@ -176,9 +176,7 @@ export function i18nMiddleware(request: NextRequest): NextResponse {
 
   // Path has no locale — detect and redirect
   const detectedLocale =
-    getLocaleFromCookie(request) ||
-    getLocaleFromBrowser(request) ||
-    DEFAULT_LOCALE;
+    getLocaleFromCookie(request) || getLocaleFromBrowser(request) || DEFAULT_LOCALE;
 
   // Build redirect URL
   const redirectUrl = request.nextUrl.clone();
@@ -242,7 +240,8 @@ export interface LocaleResolutionOptions {
   isKnownTenantSegment?: (segment: string) => boolean;
 }
 
-const LOCALE_EXCLUDED = /^\/(_next\/|favicon\.ico$|robots\.txt$|sitemap\.xml$|api\/|dev\/|images\/|fonts\/)/;
+const LOCALE_EXCLUDED =
+  /^\/(_next\/|favicon\.ico$|robots\.txt$|sitemap\.xml$|api\/|dev\/|images\/|fonts\/)/;
 
 /** Option A — locale as the left-most subdomain label (en.tenant.domain). */
 function getLocaleFromSubdomain(request: NextRequest): SupportedLocale | null {
@@ -262,7 +261,8 @@ function getLocaleFromSubdomain(request: NextRequest): SupportedLocale | null {
  *   5. DEFAULT_LOCALE (lt)
  */
 export function withLocaleResolution(options: LocaleResolutionOptions = {}) {
-  const isExcludedPath = options.isExcludedPath ?? ((pathname: string) => LOCALE_EXCLUDED.test(pathname));
+  const isExcludedPath =
+    options.isExcludedPath ?? ((pathname: string) => LOCALE_EXCLUDED.test(pathname));
 
   return function localeResolutionMiddleware(request: NextRequest): NextResponse {
     const { pathname } = request.nextUrl;
@@ -285,9 +285,13 @@ export function withLocaleResolution(options: LocaleResolutionOptions = {}) {
     const firstSegment = pathname.split('/')[1] ?? '';
     const looksLikeLocale = /^[a-z]{2,3}$/.test(firstSegment);
     const knownTenant = options.isKnownTenantSegment?.(firstSegment) ?? false;
-    if (looksLikeLocale && !SUPPORTED_LOCALES.includes(firstSegment as SupportedLocale) && !knownTenant) {
+    if (
+      looksLikeLocale &&
+      !SUPPORTED_LOCALES.includes(firstSegment as SupportedLocale) &&
+      !knownTenant
+    ) {
       console.warn(
-        `[i18n] Unknown locale '${firstSegment}' in path — falling back to '${DEFAULT_LOCALE}'.`,
+        `[i18n] Unknown locale '${firstSegment}' in path — falling back to '${DEFAULT_LOCALE}'.`
       );
       const fallbackUrl = request.nextUrl.clone();
       fallbackUrl.pathname = `/${DEFAULT_LOCALE}${pathname}`;
@@ -307,7 +311,7 @@ export function withLocaleResolution(options: LocaleResolutionOptions = {}) {
           locale = paramValue as SupportedLocale;
         } else {
           console.warn(
-            `[i18n] Unknown locale '${paramValue}' via ?${LOCALE_PARAM}= — falling back to '${DEFAULT_LOCALE}'.`,
+            `[i18n] Unknown locale '${paramValue}' via ?${LOCALE_PARAM}= — falling back to '${DEFAULT_LOCALE}'.`
           );
           locale = DEFAULT_LOCALE;
         }

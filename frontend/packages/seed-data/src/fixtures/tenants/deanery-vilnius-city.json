@@ -133,11 +133,7 @@
                 "en": "Antakalnio g. 27, Vilnius · Masses: Mon-Fri 07:00, 18:00; weekends 08:00, 10:00, 12:00, 18:00",
                 "ru": "Antakalnio g. 27, Vilnius · Masses: Mon-Fri 07:00, 18:00; weekends 08:00, 10:00, 12:00, 18:00 [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": [
-                "parapija",
-                "petropaulas@vilnius.lt",
-                "+370 5 234 0111"
-              ]
+              "tags": ["parapija", "petropaulas@vilnius.lt", "+370 5 234 0111"]
             },
             {
               "title": {
@@ -154,11 +150,7 @@
                 "en": "Šv. Jono g. 12, Vilnius · Masses: Mon-Fri 07:30, 18:30; weekends 09:00, 11:00, 18:00",
                 "ru": "Šv. Jono g. 12, Vilnius · Masses: Mon-Fri 07:30, 18:30; weekends 09:00, 11:00, 18:00 [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": [
-                "parapija",
-                "jonai@vilnius.lt",
-                "+370 5 261 5454"
-              ]
+              "tags": ["parapija", "jonai@vilnius.lt", "+370 5 261 5454"]
             },
             {
               "title": {
@@ -175,11 +167,7 @@
                 "en": "Didžioji g. 34, Vilnius · Masses: Mon-Fri 07:00, 18:00; weekends 08:30, 10:30, 12:00, 18:00",
                 "ru": "Didžioji g. 34, Vilnius · Masses: Mon-Fri 07:00, 18:00; weekends 08:30, 10:30, 12:00, 18:00 [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": [
-                "parapija",
-                "kazimieras@vilnius.lt",
-                "+370 5 262 3456"
-              ]
+              "tags": ["parapija", "kazimieras@vilnius.lt", "+370 5 262 3456"]
             },
             {
               "title": {
@@ -196,11 +184,7 @@
                 "en": "Aušros Vartų g. 12, Vilnius · Masses: Mon-Fri 07:00, 17:30; weekends 07:00, 08:30, 10:00, 11:30, 17:30",
                 "ru": "Aušros Vartų g. 12, Vilnius · Masses: Mon-Fri 07:00, 17:30; weekends 07:00, 08:30, 10:00, 11:30, 17:30 [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": [
-                "šventovė",
-                "ausros@vilnius.lt",
-                "+370 5 261 1234"
-              ]
+              "tags": ["šventovė", "ausros@vilnius.lt", "+370 5 261 1234"]
             },
             {
               "title": {
@@ -217,11 +201,7 @@
                 "en": "M. Daukšos g. 1, Vilnius · Masses: Mon-Fri 18:00; weekends 09:00, 11:00, 18:00",
                 "ru": "M. Daukšos g. 1, Vilnius · Masses: Mon-Fri 18:00; weekends 09:00, 11:00, 18:00 [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": [
-                "parapija",
-                "onuliukas@vilnius.lt",
-                "+370 5 262 1234"
-              ]
+              "tags": ["parapija", "onuliukas@vilnius.lt", "+370 5 262 1234"]
             }
           ]
         }

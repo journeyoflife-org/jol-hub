@@ -85,7 +85,7 @@ export function LeadTracker({
       </div>
 
       {error ? (
-        <p className="rounded-md bg-warning-50 p-3 text-sm text-warning-800 dark:bg-warning-900 dark:text-warning-100">
+        <p className="bg-warning-50 text-warning-800 dark:bg-warning-900 dark:text-warning-100 rounded-md p-3 text-sm">
           {t('crmUnavailable')}
         </p>
       ) : loading && !data ? (
@@ -107,12 +107,16 @@ export function LeadTracker({
               <tr key={lead.id} className="border-b border-neutral-100 dark:border-neutral-900">
                 <td className="py-2 pr-3 text-neutral-900 dark:text-neutral-50">{lead.name}</td>
                 <td className="py-2 pr-3">
-                  <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${STATUS_BADGE[lead.status]}`}>
+                  <span
+                    className={`rounded-full px-2 py-0.5 text-xs font-medium ${STATUS_BADGE[lead.status]}`}
+                  >
                     {t(`status_${lead.status}`)}
                   </span>
                 </td>
                 <td className="py-2 pr-3 text-neutral-600 dark:text-neutral-300">
-                  {new Intl.DateTimeFormat(locale, { dateStyle: 'medium' }).format(new Date(lead.createdAt))}
+                  {new Intl.DateTimeFormat(locale, { dateStyle: 'medium' }).format(
+                    new Date(lead.createdAt)
+                  )}
                 </td>
                 <td className="py-2">
                   {lead.bitrixUrl ? (

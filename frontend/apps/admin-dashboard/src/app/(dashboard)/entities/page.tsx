@@ -27,15 +27,9 @@ import { ENTITY_TYPES } from '@/lib/entityTypes';
 
 export default function EntitiesPage() {
   const searchParams = useSearchParams();
-  const [selectedCountry, setSelectedCountry] = useState<string>(
-    searchParams.get('country') || ''
-  );
-  const [selectedType, setSelectedType] = useState<string>(
-    searchParams.get('type') || ''
-  );
-  const [selectedStatus, setSelectedStatus] = useState<string>(
-    searchParams.get('status') || ''
-  );
+  const [selectedCountry, setSelectedCountry] = useState<string>(searchParams.get('country') || '');
+  const [selectedType, setSelectedType] = useState<string>(searchParams.get('type') || '');
+  const [selectedStatus, setSelectedStatus] = useState<string>(searchParams.get('status') || '');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [showApprovalDialog, setShowApprovalDialog] = useState(false);
   const [selectedEntityId, setSelectedEntityId] = useState<string | null>(null);
@@ -46,7 +40,7 @@ export default function EntitiesPage() {
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="space-y-6 p-6">
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -57,15 +51,15 @@ export default function EntitiesPage() {
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline">
-            <Download className="h-4 w-4 mr-2" />
+            <Download className="mr-2 h-4 w-4" />
             Export
           </Button>
           <Button variant="outline">
-            <Upload className="h-4 w-4 mr-2" />
+            <Upload className="mr-2 h-4 w-4" />
             Import
           </Button>
           <Button>
-            <Plus className="h-4 w-4 mr-2" />
+            <Plus className="mr-2 h-4 w-4" />
             Add Entity
           </Button>
         </div>
@@ -76,7 +70,7 @@ export default function EntitiesPage() {
         <CardContent className="py-4">
           <div className="flex flex-wrap items-center gap-4">
             {/* Search */}
-            <div className="flex-1 min-w-[200px]">
+            <div className="min-w-[200px] flex-1">
               <Input
                 placeholder="Search entities..."
                 value={searchQuery}

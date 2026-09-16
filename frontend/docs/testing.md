@@ -18,10 +18,10 @@ the world and runs faster than the one above it.
 
 ## Two runners, by design
 
-| Runner | Tier | Where | Why |
-| --- | --- | --- | --- |
-| `node:test` (`tsx --test`) | pure logic | `src/__tests__/*.test.ts` in each package | zero-config, fast, no DOM needed — established STEPS 6–14 |
-| vitest 4 | DOM tiers | `apps/template-renderer/src/__tests__/vitest/**` | jsdom + RTL + MSW + v8 coverage |
+| Runner                     | Tier       | Where                                            | Why                                                       |
+| -------------------------- | ---------- | ------------------------------------------------ | --------------------------------------------------------- |
+| `node:test` (`tsx --test`) | pure logic | `src/__tests__/*.test.ts` in each package        | zero-config, fast, no DOM needed — established STEPS 6–14 |
+| vitest 4                   | DOM tiers  | `apps/template-renderer/src/__tests__/vitest/**` | jsdom + RTL + MSW + v8 coverage                           |
 
 Vitest cannot execute `node:test` registrations and the logic suites
 predate it; both stay green in CI. New DOM-dependent tests go to vitest;
@@ -48,16 +48,16 @@ pnpm --filter template-renderer check-secrets    # secret leakage scan
 
 ## Suites at a glance
 
-| Suite | File(s) | Covers |
-| --- | --- | --- |
-| Components | `vitest/components.test.tsx` | Button, Badge, ContactForm (GDPR consent gate) |
-| Hooks | `vitest/hooks.test.tsx` | useTranslations, tenant feature gates, cart isolation |
-| Editor core | `vitest/editor-lib.test.ts` | constraints, diff, moderation helpers, prohibited patterns |
-| Editor components | `vitest/editor-components.test.tsx` | BlockEditor/MediaUploader/ModerationQueue gates + flows |
-| Integration | `vitest/api-integration.test.ts` | `/api/editor/*`, `/api/perf` via real handlers + MSW |
-| Security | `vitest/security.test.tsx` | XSS battery, URL policy, RBAC matrix, slug injection |
-| Logic | `__tests__/*.test.ts` per package | resolver, LRU, seo, a11y, commerce, crm, rbac, perf |
-| E2E | `apps/template-renderer/e2e/*.spec.ts` | 10 critical flows (see `e2e/README.md`) |
+| Suite             | File(s)                                | Covers                                                     |
+| ----------------- | -------------------------------------- | ---------------------------------------------------------- |
+| Components        | `vitest/components.test.tsx`           | Button, Badge, ContactForm (GDPR consent gate)             |
+| Hooks             | `vitest/hooks.test.tsx`                | useTranslations, tenant feature gates, cart isolation      |
+| Editor core       | `vitest/editor-lib.test.ts`            | constraints, diff, moderation helpers, prohibited patterns |
+| Editor components | `vitest/editor-components.test.tsx`    | BlockEditor/MediaUploader/ModerationQueue gates + flows    |
+| Integration       | `vitest/api-integration.test.ts`       | `/api/editor/*`, `/api/perf` via real handlers + MSW       |
+| Security          | `vitest/security.test.tsx`             | XSS battery, URL policy, RBAC matrix, slug injection       |
+| Logic             | `__tests__/*.test.ts` per package      | resolver, LRU, seo, a11y, commerce, crm, rbac, perf        |
+| E2E               | `apps/template-renderer/e2e/*.spec.ts` | 10 critical flows (see `e2e/README.md`)                    |
 
 ## MSW — how API mocking works
 
@@ -75,7 +75,7 @@ Bitrix24.
   (`src/lib/editor/**`, `src/components/editor/**`).
 - Thresholds are a RATCHET (see `vitest.config.ts`): raise, never lower.
 - `lib/editor` — the constrained-editor security core — sits at ~85%+;
-  the editor *components* are partially covered through their gates and
+  the editor _components_ are partially covered through their gates and
   primary flows.
 - Pure-logic packages are covered by their own node:test suites (not v8).
 - "Coverage is a guide, not a goal" — 100% coverage ≠ 0 bugs; the XSS
@@ -118,13 +118,13 @@ each spec to the condition that activates its full version.
 
 ## Mock data & fixtures
 
-| Source | Purpose | Update when… |
-| --- | --- | --- |
-| `packages/testing/src/mocks/tenant.ts` | tenant records (tiers) | tier/feature matrix changes |
-| `packages/testing/src/mocks/auth.ts` | session/RBAC fixtures | role taxonomy changes |
-| `packages/testing/src/mocks/api.ts` | MSW handlers + canned JSON | backend contract changes |
-| `packages/testing/src/fixtures/blocks.ts` | block drafts + XSS battery | new block type or payload class |
-| `packages/seed-data/src/fixtures/tenants/*.json` | rendered content | E2E flows need real content |
+| Source                                           | Purpose                    | Update when…                    |
+| ------------------------------------------------ | -------------------------- | ------------------------------- |
+| `packages/testing/src/mocks/tenant.ts`           | tenant records (tiers)     | tier/feature matrix changes     |
+| `packages/testing/src/mocks/auth.ts`             | session/RBAC fixtures      | role taxonomy changes           |
+| `packages/testing/src/mocks/api.ts`              | MSW handlers + canned JSON | backend contract changes        |
+| `packages/testing/src/fixtures/blocks.ts`        | block drafts + XSS battery | new block type or payload class |
+| `packages/seed-data/src/fixtures/tenants/*.json` | rendered content           | E2E flows need real content     |
 
 Keep fixtures deterministic; prefer overriding a field over copying a
 whole fixture.

@@ -69,7 +69,7 @@ export async function auditHtml(html: string, options: AuditOptions = {}): Promi
 
   const axeOptions = buildAxeOptions();
   const axeResults = (await dom.window.eval(
-    `window.axe.run(document, ${JSON.stringify(axeOptions)})`,
+    `window.axe.run(document, ${JSON.stringify(axeOptions)})`
   )) as AxeResults;
 
   const violations: A11yFinding[] = [];
@@ -129,7 +129,7 @@ export function formatReport(report: A11yReport): string {
 export function assertCleanAudit(report: A11yReport): void {
   if (hasFailures(report)) {
     throw new Error(
-      `WCAG 2.2 AA audit failed for ${report.target} — ${report.violations.length} violation(s):\n${formatReport(report)}`,
+      `WCAG 2.2 AA audit failed for ${report.target} — ${report.violations.length} violation(s):\n${formatReport(report)}`
     );
   }
 }

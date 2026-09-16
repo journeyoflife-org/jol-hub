@@ -9,7 +9,12 @@
  * states — nothing is fabricated. Tenant admins missing MFA see the SOC 2
  * CC6.2 enrollment prompt.
  */
-import { getMessages, translate, translateWithValues, isSupportedLocale } from '@journeyoflife-org/i18n';
+import {
+  getMessages,
+  translate,
+  translateWithValues,
+  isSupportedLocale,
+} from '@journeyoflife-org/i18n';
 import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
 import {
   hasPermission,
@@ -35,7 +40,9 @@ export default async function AdminDashboardPage({
   if (!isAuthConfigured()) {
     return (
       <main className="mx-auto max-w-4xl px-4 py-12">
-        <h1 className="mb-4 font-heading text-2xl font-bold">{translate(messages, 'auth.adminTitle')}</h1>
+        <h1 className="font-heading mb-4 text-2xl font-bold">
+          {translate(messages, 'auth.adminTitle')}
+        </h1>
         <p className="rounded-lg border border-dashed border-neutral-300 p-6 text-sm text-neutral-500 dark:border-neutral-700">
           {translate(messages, 'auth.authNotConfigured')}
         </p>
@@ -54,12 +61,16 @@ export default async function AdminDashboardPage({
     { key: 'sectionSettings', permission: 'settings.view', anchor: 'settings' },
     { key: 'sectionUsers', permission: 'users.manage' },
   ];
-  const visible = sections.filter((section) => hasPermission(session, tenant.slug, section.permission));
+  const visible = sections.filter((section) =>
+    hasPermission(session, tenant.slug, section.permission)
+  );
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-12">
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="font-heading text-2xl font-bold">{translate(messages, 'auth.adminTitle')}</h1>
+        <h1 className="font-heading text-2xl font-bold">
+          {translate(messages, 'auth.adminTitle')}
+        </h1>
         {grant ? (
           <span className="rounded-full bg-neutral-200 px-3 py-1 text-sm font-medium text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300">
             {translate(messages, `auth.role_${grant.role}`)}
@@ -69,7 +80,7 @@ export default async function AdminDashboardPage({
 
       {/* SOC 2 CC6.2: privileged access requires MFA enrollment. */}
       {mfaRequiredButMissing(session, tenant.slug) ? (
-        <p className="mb-6 rounded-md border border-warning-300 bg-warning-50 p-4 text-sm text-warning-800 dark:border-warning-700 dark:bg-warning-900 dark:text-warning-100">
+        <p className="border-warning-300 bg-warning-50 text-warning-800 dark:border-warning-700 dark:bg-warning-900 dark:text-warning-100 mb-6 rounded-md border p-4 text-sm">
           {translate(messages, 'auth.mfaRequiredNotice')}
         </p>
       ) : null}
@@ -82,7 +93,7 @@ export default async function AdminDashboardPage({
             aria-label={translate(messages, `auth.${section.key}`)}
             className="rounded-lg border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
           >
-            <h2 className="mb-2 font-heading text-lg font-semibold">
+            <h2 className="font-heading mb-2 text-lg font-semibold">
               {translate(messages, `auth.${section.key}`)}
             </h2>
             <p className="text-sm text-neutral-500 dark:text-neutral-400">

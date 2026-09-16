@@ -50,7 +50,11 @@ export async function generateMetadata({
   });
 }
 
-export default async function TenantServiceDetailPage({ params }: { params: TenantServiceDetailParams }) {
+export default async function TenantServiceDetailPage({
+  params,
+}: {
+  params: TenantServiceDetailParams;
+}) {
   const { tenant, fixture, locale, basePath } = resolveTenantRoute(params);
   const slug = normalizeSlugParam(params.slug);
   if (!slug) notFound();
@@ -88,22 +92,24 @@ export default async function TenantServiceDetailPage({ params }: { params: Tena
         ]}
       />
 
-      <article className="container mx-auto px-4 max-w-3xl py-12">
+      <article className="container mx-auto max-w-3xl px-4 py-12">
         <a
           href={`${basePath}/services`}
-          className="text-sm text-primary underline focus-ring rounded"
+          className="text-primary focus-ring rounded text-sm underline"
         >
           {translate(messages, 'collections.backToList')}
         </a>
 
-        <header className="mt-4 mb-6">
-          <h1 className="text-3xl md:text-4xl font-heading font-bold text-primary">{item.title}</h1>
+        <header className="mb-6 mt-4">
+          <h1 className="font-heading text-primary text-3xl font-bold md:text-4xl">{item.title}</h1>
         </header>
 
         <dl className="mb-8 grid gap-x-8 gap-y-3 sm:grid-cols-2">
           {typeof item.price === 'number' && (
             <div>
-              <dt className="text-sm text-gray-500">{translate(messages, 'commerce.priceLabel')}</dt>
+              <dt className="text-sm text-gray-500">
+                {translate(messages, 'commerce.priceLabel')}
+              </dt>
               <dd className="font-medium">{item.price.toFixed(2)} EUR</dd>
             </div>
           )}
@@ -118,14 +124,14 @@ export default async function TenantServiceDetailPage({ params }: { params: Tena
         </dl>
 
         {item.description && (
-          <p className="text-gray-800 leading-relaxed whitespace-pre-line">{item.description}</p>
+          <p className="whitespace-pre-line leading-relaxed text-gray-800">{item.description}</p>
         )}
 
         {bookingAllowed && (
           <div className="mt-8">
             <a
               href={`${basePath}/services/${item.slug}`}
-              className="inline-block rounded-md bg-primary px-6 py-3 font-medium text-white focus-ring"
+              className="bg-primary focus-ring inline-block rounded-md px-6 py-3 font-medium text-white"
             >
               {translate(messages, 'commerce.bookingCta')}
             </a>

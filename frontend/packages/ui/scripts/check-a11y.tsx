@@ -86,7 +86,9 @@ run
     console.log('JOL UI Showcase — axe-core accessibility audit');
     console.log('='.repeat(78));
     console.log(`Rules passed:     ${results.passes.length}`);
-    console.log(`Needs review:     ${results.incomplete.length} (jsdom limitations; reviewed manually)`);
+    console.log(
+      `Needs review:     ${results.incomplete.length} (jsdom limitations; reviewed manually)`
+    );
     for (const item of results.incomplete) {
       console.log(`  - ${item.id}: ${item.description}`);
       for (const node of item.nodes.slice(0, 3)) {

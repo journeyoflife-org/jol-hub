@@ -50,7 +50,7 @@ export function Header({
           'z-40 w-full transition-colors motion-reduce:transition-none',
           sticky && 'sticky top-0',
           solid ? 'bg-primary text-neutral-50 shadow-md' : 'bg-transparent text-neutral-50',
-          className,
+          className
         )}
       >
         <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-3">
@@ -66,7 +66,7 @@ export function Header({
               aria-expanded={mobileOpen}
               aria-controls="mobile-nav-drawer"
               aria-label={tNav('openMenu')}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-md hover:bg-primary-700 focus-ring md:hidden"
+              className="hover:bg-primary-700 focus-ring inline-flex h-10 w-10 items-center justify-center rounded-md md:hidden"
             >
               <Menu aria-hidden="true" className="h-5 w-5" />
             </button>

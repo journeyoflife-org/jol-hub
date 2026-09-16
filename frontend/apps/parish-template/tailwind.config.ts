@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 import { themeColorExtension } from '@journeyoflife-org/ui/tokens';
 import type { ThemeRef } from '@journeyoflife-org/ui/tokens';
+import tailwindcssAnimate from 'tailwindcss-animate';
 
 /**
  * Theme selection (ADR-001 chain → theme_ref, design-system-spec §1.3):
@@ -13,10 +14,7 @@ const THEME_REF: ThemeRef = 'catholic';
 
 const config: Config = {
   darkMode: ['class'],
-  content: [
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
-    '../../packages/ui/src/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}', '../../packages/ui/src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -54,7 +52,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [tailwindcssAnimate],
 };
 
 export default config;

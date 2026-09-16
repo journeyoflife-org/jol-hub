@@ -6,7 +6,16 @@ import { cn } from '../../../lib/utils';
 import { describedBy, FieldChrome, fieldBorderClass, fieldControlClass } from '../field';
 import type { TextareaProps } from './Textarea.types';
 
-export function Textarea({ id, label, helperText, error, required, className, rows = 4, ...props }: TextareaProps) {
+export function Textarea({
+  id,
+  label,
+  helperText,
+  error,
+  required,
+  className,
+  rows = 4,
+  ...props
+}: TextareaProps) {
   return (
     <FieldChrome id={id} label={label} helperText={helperText} error={error} required={required}>
       <textarea

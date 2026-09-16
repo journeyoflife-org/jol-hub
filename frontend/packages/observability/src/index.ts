@@ -10,12 +10,7 @@
  * Bindings live in template-renderer (`src/lib/logger.ts`,
  * `src/lib/error-tracking.ts`, `/api/health`, `/api/telemetry/errors`).
  */
-export {
-  REDACTED,
-  isSensitiveKey,
-  redactText,
-  redactValue,
-} from './redact';
+export { REDACTED, isSensitiveKey, redactText, redactValue } from './redact';
 export {
   createLogger,
   createBatchingSink,

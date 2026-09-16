@@ -65,8 +65,8 @@ function Dropdown({ item }: { item: NavItem }) {
           if (!containerRef.current?.contains(event.relatedTarget as Node)) setOpen(false);
         }}
         className={cn(
-          'inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium focus-ring transition-colors motion-reduce:transition-none',
-          'text-neutral-100 hover:bg-primary-700',
+          'focus-ring inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors motion-reduce:transition-none',
+          'hover:bg-primary-700 text-neutral-100'
         )}
       >
         {item.label}
@@ -78,7 +78,7 @@ function Dropdown({ item }: { item: NavItem }) {
             <li key={child.href}>
               <a
                 href={child.href}
-                className="block px-4 py-2 text-sm text-neutral-900 hover:bg-neutral-100 focus-ring dark:text-neutral-50 dark:hover:bg-neutral-800"
+                className="focus-ring block px-4 py-2 text-sm text-neutral-900 hover:bg-neutral-100 dark:text-neutral-50 dark:hover:bg-neutral-800"
               >
                 {child.label}
               </a>
@@ -105,16 +105,16 @@ export function MainNav({ items, label, className }: MainNavProps) {
                 href={item.href ?? '#'}
                 aria-current={item.active ? 'page' : undefined}
                 className={cn(
-                  'inline-flex items-center rounded-md px-3 py-2 text-sm font-medium focus-ring transition-colors motion-reduce:transition-none',
+                  'focus-ring inline-flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors motion-reduce:transition-none',
                   item.active
                     ? 'bg-primary-700 text-neutral-50'
-                    : 'text-neutral-100 hover:bg-primary-700',
+                    : 'hover:bg-primary-700 text-neutral-100'
                 )}
               >
                 {item.label}
               </a>
             </li>
-          ),
+          )
         )}
       </ul>
     </nav>

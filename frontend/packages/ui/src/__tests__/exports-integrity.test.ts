@@ -35,6 +35,6 @@ test('package.json exports: every ./src/ target must exist on disk', () => {
     dangling,
     [],
     `Dangling exports found (target files do not exist): ${dangling.join(', ')}. ` +
-    'Remove the export entry or restore the file.'
+      'Remove the export entry or restore the file.'
   );
 });

@@ -50,7 +50,7 @@ describe('editor draft API', () => {
     const { GET } = await importRoute('@/app/api/editor/pages/[pageId]/draft/route');
     const response = await GET(
       req('GET', '/api/editor/pages/tenant-editable/draft?tenant=test-church'),
-      { params: { pageId: 'tenant-editable' } } as unknown as RouteContext,
+      { params: { pageId: 'tenant-editable' } } as unknown as RouteContext
     );
     expect(response.status).toBe(200);
     const data = await response.json();
@@ -66,7 +66,7 @@ describe('editor draft API', () => {
         seenTenant = request.headers.get('X-Tenant');
         seenAuth = request.headers.get('authorization');
         return HttpResponse.json(MOCK_DRAFT);
-      }),
+      })
     );
     const { GET } = await importRoute('@/app/api/editor/pages/[pageId]/draft/route');
     await GET(req('GET', '/api/editor/pages/tenant-editable/draft?tenant=test-church'), {
@@ -83,7 +83,7 @@ describe('editor draft API', () => {
       http.get(`${MOCK_BACKEND_URL}/api/v1/editor/pages/:pageId/draft`, () => {
         backendHit = true;
         return HttpResponse.json(MOCK_DRAFT);
-      }),
+      })
     );
     const { GET } = await importRoute('@/app/api/editor/pages/[pageId]/draft/route');
     const response = await GET(req('GET', '/api/editor/pages/x/draft?tenant=BAD_SLUG'), {
@@ -101,7 +101,7 @@ describe('editor draft API', () => {
         revision: 0,
         blocks: [{ id: 'b1', type: 'iframe', text: '<script>alert(1)</script>' }],
       }),
-      { params: { pageId: 'tenant-editable' } } as unknown as RouteContext,
+      { params: { pageId: 'tenant-editable' } } as unknown as RouteContext
     );
     expect(response.status).toBe(400);
   });
@@ -113,10 +113,15 @@ describe('editor draft API', () => {
         tenantSlug: 'test-church',
         revision: 0,
         blocks: [
-          { id: 'b1', type: 'paragraph', text: 'x', links: [{ start: 0, end: 1, href: 'javascript:alert(1)' }] },
+          {
+            id: 'b1',
+            type: 'paragraph',
+            text: 'x',
+            links: [{ start: 0, end: 1, href: 'javascript:alert(1)' }],
+          },
         ],
       }),
-      { params: { pageId: 'tenant-editable' } } as unknown as RouteContext,
+      { params: { pageId: 'tenant-editable' } } as unknown as RouteContext
     );
     expect(response.status).toBe(400);
   });
@@ -129,16 +134,17 @@ describe('editor draft API', () => {
         revision: 3,
         blocks: [{ id: 'b1', type: 'paragraph', text: 'Naujas tekstas' }],
       }),
-      { params: { pageId: 'tenant-editable' } } as unknown as RouteContext,
+      { params: { pageId: 'tenant-editable' } } as unknown as RouteContext
     );
     expect(response.status).toBe(201);
   });
 
   it('draft.should.map backend 500 to 502 (bad gateway, retryable signal)', async () => {
     server.use(
-      http.get(`${MOCK_BACKEND_URL}/api/v1/editor/pages/:pageId/draft`, () =>
-        new HttpResponse(null, { status: 500 }),
-      ),
+      http.get(
+        `${MOCK_BACKEND_URL}/api/v1/editor/pages/:pageId/draft`,
+        () => new HttpResponse(null, { status: 500 })
+      )
     );
     const { GET } = await importRoute('@/app/api/editor/pages/[pageId]/draft/route');
     const response = await GET(req('GET', '/api/editor/pages/x/draft?tenant=test-church'), {
@@ -155,7 +161,7 @@ describe('editor draft API', () => {
         headers: { 'Content-Type': 'application/json' },
         body: '{not json',
       }),
-      { params: { pageId: 'tenant-editable' } } as unknown as RouteContext,
+      { params: { pageId: 'tenant-editable' } } as unknown as RouteContext
     );
     expect(response.status).toBe(400);
   });
@@ -179,7 +185,7 @@ describe('moderation API', () => {
     const { POST } = await importRoute('@/app/api/editor/moderation/[itemId]/route');
     const response = await POST(
       req('POST', '/api/editor/moderation/mod-1', { tenantSlug: 'test-church', action: 'reject' }),
-      { params: { itemId: 'mod-1' } } as unknown as RouteContext,
+      { params: { itemId: 'mod-1' } } as unknown as RouteContext
     );
     expect(response.status).toBe(400);
   });
@@ -190,12 +196,12 @@ describe('moderation API', () => {
       http.post(`${MOCK_BACKEND_URL}/api/v1/editor/moderation/:itemId/:action`, ({ params }) => {
         decided = `${params.itemId}:${params.action}`;
         return new HttpResponse(null, { status: 204 });
-      }),
+      })
     );
     const { POST } = await importRoute('@/app/api/editor/moderation/[itemId]/route');
     const response = await POST(
       req('POST', '/api/editor/moderation/mod-1', { tenantSlug: 'test-church', action: 'approve' }),
-      { params: { itemId: 'mod-1' } } as unknown as RouteContext,
+      { params: { itemId: 'mod-1' } } as unknown as RouteContext
     );
     expect(response.status).toBe(204);
     expect(decided).toBe('mod-1:approve');
@@ -224,7 +230,7 @@ describe('media API', () => {
         mimeType: 'image/webp',
         sizeBytes: 1024,
         altText: 'Aprašymas',
-      }),
+      })
     );
     expect(response.status).toBe(202);
     const data = await response.json();
@@ -240,7 +246,7 @@ describe('media API', () => {
         mimeType: 'image/webp',
         sizeBytes: 1024,
         altText: '',
-      }),
+      })
     );
     expect(response.status).toBe(400);
   });
@@ -257,11 +263,17 @@ describe('perf RUM API', () => {
       http.post(`${MOCK_BACKEND_URL}/api/v1/perf/web-vitals`, () => {
         forwarded = true;
         return new HttpResponse(null, { status: 204 });
-      }),
+      })
     );
     const { POST } = await importRoute('@/app/api/perf/route');
     const response = await POST(
-      req('POST', '/api/perf', { id: 'm1', name: 'LCP', value: 1200, rating: 'good', route: '/lt/x' }),
+      req('POST', '/api/perf', {
+        id: 'm1',
+        name: 'LCP',
+        value: 1200,
+        rating: 'good',
+        route: '/lt/x',
+      })
     );
     expect(response.status).toBe(204);
     expect(forwarded).toBe(true);
@@ -270,7 +282,7 @@ describe('perf RUM API', () => {
   it('perf.should.reject malformed metric names (injection guard)', async () => {
     const { POST } = await importRoute('@/app/api/perf/route');
     const response = await POST(
-      req('POST', '/api/perf', { id: 'm1', name: 'EVIL', value: -5, route: '/x' }),
+      req('POST', '/api/perf', { id: 'm1', name: 'EVIL', value: -5, route: '/x' })
     );
     expect(response.status).toBe(400);
   });

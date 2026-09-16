@@ -53,7 +53,7 @@ export function LocaleSwitcher({ className }: LocaleSwitcherProps) {
         value={locale}
         onChange={handleChange}
         aria-label={tNav('languageLabel')}
-        className="h-9 cursor-pointer appearance-none rounded-md border border-neutral-300 bg-neutral-50 pe-8 ps-3 text-sm font-medium text-neutral-900 focus-ring dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-50"
+        className="focus-ring h-9 cursor-pointer appearance-none rounded-md border border-neutral-300 bg-neutral-50 pe-8 ps-3 text-sm font-medium text-neutral-900 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-50"
       >
         {SUPPORTED_LOCALES.map((code) => (
           <option key={code} value={code}>

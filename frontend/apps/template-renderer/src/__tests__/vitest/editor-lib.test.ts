@@ -21,7 +21,7 @@ import { scanProhibitedPatterns, draftTextOf, renderBlockHtml } from '@/lib/edit
 describe('block constraints', () => {
   it('blocks.should.allow exactly the seven constrained types', () => {
     expect([...ALLOWED_BLOCK_TYPES].sort()).toEqual(
-      ['button', 'divider', 'heading', 'image', 'paragraph', 'quote', 'spacer'].sort(),
+      ['button', 'divider', 'heading', 'image', 'paragraph', 'quote', 'spacer'].sort()
     );
     for (const type of ALLOWED_BLOCK_TYPES) expect(isAllowedBlockType(type)).toBe(true);
     for (const type of ['script', 'iframe', 'html', 'table', 'embed']) {
@@ -49,7 +49,7 @@ describe('block constraints', () => {
 
     const tooManyImages: EditorBlock[] = Array.from(
       { length: EDITOR_LIMITS.maxImages + 1 },
-      (_, i) => ({ id: `i${i}`, type: 'image', mediaId: `m${i}`, altText: 'x' }),
+      (_, i) => ({ id: `i${i}`, type: 'image', mediaId: `m${i}`, altText: 'x' })
     );
     expect(validateDraft(tooManyImages).some((f) => f.code === 'too-many-images')).toBe(true);
   });
@@ -124,8 +124,8 @@ describe('moderation helpers', () => {
             approved: false,
             flags: [{ category: 'art9-sensitive-content', severity: 'high', reasoning: 'r' }],
           },
-        }),
-      ),
+        })
+      )
     ).toBe(true);
     expect(isArt9Item(item())).toBe(false);
   });

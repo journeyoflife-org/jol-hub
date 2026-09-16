@@ -8,12 +8,12 @@
 Automated gates (these run in CI; the manual checklist below complements
 them — automation catches ~40% of real-world a11y issues):
 
-| Gate | Command | Coverage |
-| --- | --- | --- |
-| Component showcase axe audit | `pnpm --filter @journeyoflife-org/ui check-a11y` | every ui component, all variants |
-| Token contrast pairs | `pnpm --filter @journeyoflife-org/ui check-contrast` | 26 documented fg/bg pairs, AA ratios |
-| Critical page axe audit | `pnpm --filter template-renderer check-a11y` | home, about, contact, news, events, services, accessibility-statement |
-| Structural checkers | inside the page gate (`@journeyoflife-org/a11y`) | headings, alt text, focus order, form labels, ARIA, banned link text |
+| Gate                         | Command                                              | Coverage                                                              |
+| ---------------------------- | ---------------------------------------------------- | --------------------------------------------------------------------- |
+| Component showcase axe audit | `pnpm --filter @journeyoflife-org/ui check-a11y`     | every ui component, all variants                                      |
+| Token contrast pairs         | `pnpm --filter @journeyoflife-org/ui check-contrast` | 26 documented fg/bg pairs, AA ratios                                  |
+| Critical page axe audit      | `pnpm --filter template-renderer check-a11y`         | home, about, contact, news, events, services, accessibility-statement |
+| Structural checkers          | inside the page gate (`@journeyoflife-org/a11y`)     | headings, alt text, focus order, form labels, ARIA, banned link text  |
 
 Result on 2026-08-25: **0 axe violations on all 7 critical pages; 0 on the
 component showcase; 26/26 contrast pairs pass.**
@@ -22,23 +22,23 @@ component showcase; 26/26 contrast pairs pass.**
 
 ## 1. Keyboard navigation (WCAG 2.1.1, 2.4.3, 2.4.7)
 
-| Check | Result 2026-08-25 |
-| --- | --- |
-| All interactive elements reachable via Tab | PASS — native `<a>/<button>/<input>` throughout; no div-buttons in shipped paths |
-| Tab order matches visual order | PASS — no positive tabindex (automated `focus-order` checker enforces) |
+| Check                                      | Result 2026-08-25                                                                         |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| All interactive elements reachable via Tab | PASS — native `<a>/<button>/<input>` throughout; no div-buttons in shipped paths          |
+| Tab order matches visual order             | PASS — no positive tabindex (automated `focus-order` checker enforces)                    |
 | Visible focus indicator on every focusable | PASS — global `:focus-visible` outline (2px, offset 2); `.focus-ring` for custom controls |
-| No keyboard traps | PASS — mobile nav dialog + FocusTrap always close on Escape; focus returns to trigger |
-| Skip link is the FIRST focusable element | PASS — `SkipLink` rendered before `Header` in the tenant layout |
+| No keyboard traps                          | PASS — mobile nav dialog + FocusTrap always close on Escape; focus returns to trigger     |
+| Skip link is the FIRST focusable element   | PASS — `SkipLink` rendered before `Header` in the tenant layout                           |
 
 ## 2. Screen reader (NVDA / VoiceOver)
 
-| Page | NVDA (Chromium) | VoiceOver (Safari) | Notes |
-| --- | --- | --- | --- |
-| Home | PASS | PASS | landmarks: banner/nav/main/contentinfo; one h1 |
-| About / Contact | PASS | PASS | form labels announced; required fields indicated |
-| News list/detail | PASS | PASS | article semantics + dates |
-| Locale switch | PASS | PASS | change announced via live region (`localeChanged`) |
-| Form errors | PASS | PASS | messages linked via `aria-describedby`, announced assertively |
+| Page             | NVDA (Chromium) | VoiceOver (Safari) | Notes                                                         |
+| ---------------- | --------------- | ------------------ | ------------------------------------------------------------- |
+| Home             | PASS            | PASS               | landmarks: banner/nav/main/contentinfo; one h1                |
+| About / Contact  | PASS            | PASS               | form labels announced; required fields indicated              |
+| News list/detail | PASS            | PASS               | article semantics + dates                                     |
+| Locale switch    | PASS            | PASS               | change announced via live region (`localeChanged`)            |
+| Form errors      | PASS            | PASS               | messages linked via `aria-describedby`, announced assertively |
 
 Method: NVDA 2025.x + Chromium; VoiceOver + Safari 18. Structural
 prerequisites (landmarks, labels, live regions) are automated; the table
@@ -46,11 +46,11 @@ records the assisted-technology passes required by the audit discipline.
 
 ## 3. Zoom & reflow (WCAG 1.4.4, 1.4.10)
 
-| Check | Result |
-| --- | --- |
-| 200% page zoom — no horizontal scroll, all content visible | PASS |
-| Text-only zoom 400% — content reflows in one column | PASS (fluid containers, no fixed widths on content) |
-| 320px CSS-width reflow | PASS |
+| Check                                                      | Result                                              |
+| ---------------------------------------------------------- | --------------------------------------------------- |
+| 200% page zoom — no horizontal scroll, all content visible | PASS                                                |
+| Text-only zoom 400% — content reflows in one column        | PASS (fluid containers, no fixed widths on content) |
+| 320px CSS-width reflow                                     | PASS                                                |
 
 ## 4. Color (WCAG 1.4.1, 1.4.3, 1.4.11)
 
@@ -69,12 +69,12 @@ records the assisted-technology passes required by the audit discipline.
 
 ## 6. Touch targets (WCAG 2.5.8 — AA minimum 24×24px; we aim for 44×44)
 
-| Control | Size | Result |
-| --- | --- | --- |
-| Buttons (default `md`) | 40px height | PASS (≥24, near 44 target) |
-| Icon buttons (menu, close) | 40×40px | PASS |
-| Nav links | ≥40px hit area with padding | PASS |
-| Form inputs | 40px height | PASS |
+| Control                    | Size                        | Result                     |
+| -------------------------- | --------------------------- | -------------------------- |
+| Buttons (default `md`)     | 40px height                 | PASS (≥24, near 44 target) |
+| Icon buttons (menu, close) | 40×40px                     | PASS                       |
+| Nav links                  | ≥40px hit area with padding | PASS                       |
+| Form inputs                | 40px height                 | PASS                       |
 
 ## 7. Forms (WCAG 3.3.1–3.3.4, 3.3.7)
 
@@ -89,12 +89,12 @@ No time limits, no `meta refresh`, no auto-advancing content. PASS
 
 ## 9. Findings & remediation log
 
-| Date | Finding | Severity | Remediation |
-| --- | --- | --- | --- |
-| 2026-08-25 | Skip link existed in the ui library but was never rendered in the tenant shell | Critical | `SkipLink` added as first focusable element (tenant layout) |
-| 2026-08-25 | Fixture pages without a hero block rendered no `<h1>` (e.g. fixture `/news`) | Critical | `TemplateRenderer` renders the localized page title as h1 when no hero block exists |
-| 2026-08-25 | Dynamic-update announcements had no app-wide live region host | Moderate | `AnnouncerProvider` wired into the tenant layout |
-| 2026-08-25 | Accessibility statement missing | Moderate | Per-tenant statement page published in LT/EN/RU + footer link + sitemap |
+| Date       | Finding                                                                        | Severity | Remediation                                                                         |
+| ---------- | ------------------------------------------------------------------------------ | -------- | ----------------------------------------------------------------------------------- |
+| 2026-08-25 | Skip link existed in the ui library but was never rendered in the tenant shell | Critical | `SkipLink` added as first focusable element (tenant layout)                         |
+| 2026-08-25 | Fixture pages without a hero block rendered no `<h1>` (e.g. fixture `/news`)   | Critical | `TemplateRenderer` renders the localized page title as h1 when no hero block exists |
+| 2026-08-25 | Dynamic-update announcements had no app-wide live region host                  | Moderate | `AnnouncerProvider` wired into the tenant layout                                    |
+| 2026-08-25 | Accessibility statement missing                                                | Moderate | Per-tenant statement page published in LT/EN/RU + footer link + sitemap             |
 
 **Open critical findings: 0.**
 

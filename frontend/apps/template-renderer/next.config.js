@@ -42,7 +42,11 @@ let nextConfig = {
     // drags the Stripe browser SDK and `import { Card } from '@journeyoflife-org/ui'`
     // drags the ENTIRE ui surface (compliance pages, donation widgets, zod)
     // into every route's first-load JS (verified via `pnpm analyze`).
-    optimizePackageImports: ['lucide-react', '@journeyoflife-org/ui', '@journeyoflife-org/commerce'],
+    optimizePackageImports: [
+      'lucide-react',
+      '@journeyoflife-org/ui',
+      '@journeyoflife-org/commerce',
+    ],
   },
 
   async headers() {
@@ -51,20 +55,22 @@ let nextConfig = {
         // Hashed static assets are immutable — safe to cache aggressively
         // at browser AND nginx/proxy layers (no CDN in the pilot).
         source: '/_next/static/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
       {
         // Optimized images: long cache, revalidate weekly at the proxy.
         source: '/_next/image/:path*',
-        headers: [{ key: 'Cache-Control', value: 'public, max-age=604800, stale-while-revalidate=86400' }],
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=604800, stale-while-revalidate=86400' },
+        ],
       },
       {
         // SEO surfaces: short cache with SWR so crawlers see freshness
         // without hammering the R640.
         source: '/sitemap.xml',
-        headers: [{ key: 'Cache-Control', value: 'public, max-age=600, stale-while-revalidate=3600' }],
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=600, stale-while-revalidate=3600' },
+        ],
       },
       {
         source: '/robots.txt',

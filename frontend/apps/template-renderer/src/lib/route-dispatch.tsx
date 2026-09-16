@@ -53,9 +53,7 @@ export function resolveTenantRoute(params: TenantRouteParams): TenantRouteContex
     notFound();
   }
   const fixture = loadTenantFixture(params.tenant);
-  const locale: SupportedLocale = isSupportedLocale(params.locale)
-    ? params.locale
-    : DEFAULT_LOCALE;
+  const locale: SupportedLocale = isSupportedLocale(params.locale) ? params.locale : DEFAULT_LOCALE;
   const basePath = `/${locale}/${params.tenant}`;
   return { tenant, fixture, locale, basePath };
 }
@@ -69,7 +67,7 @@ export function resolveTenantRoute(params: TenantRouteParams): TenantRouteContex
 export function renderFixtureRoute(
   fixture: TenantFixture | null,
   route: string,
-  basePath: string,
+  basePath: string
 ): ReactElement | null {
   if (!fixture) return null;
   const page = findTenantPage(fixture, route);

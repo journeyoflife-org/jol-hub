@@ -29,7 +29,7 @@ export function EntityFactCard({ heading, items, tenant, className }: EntityFact
                     href={fact.href}
                     className={cn(
                       'focus-ring inline-flex min-h-[24px] items-center rounded-sm underline-offset-2 hover:underline',
-                      accentTextClass(tenant),
+                      accentTextClass(tenant)
                     )}
                   >
                     {fact.value}

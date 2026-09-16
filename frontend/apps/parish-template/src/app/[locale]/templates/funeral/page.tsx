@@ -1,7 +1,7 @@
 /**
  * Locale-aware Funeral Services Template Route
  * URL: /[locale]/templates/funeral
- * 
+ *
  * ISR: 1h inherited from the template; robots nofollow for obituary privacy.
  */
 
@@ -42,12 +42,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
     // Obituary pages: don't follow links to protect family privacy
     robots: { index: true, follow: false },
     openGraph: {
-      locale:
-        resolvedLocale === 'lt'
-          ? 'lt_LT'
-          : resolvedLocale === 'ru'
-            ? 'ru_RU'
-            : 'en_US',
+      locale: resolvedLocale === 'lt' ? 'lt_LT' : resolvedLocale === 'ru' ? 'ru_RU' : 'en_US',
     },
   };
 }

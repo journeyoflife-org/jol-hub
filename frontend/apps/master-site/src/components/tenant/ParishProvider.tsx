@@ -1,9 +1,9 @@
 /**
  * React Context for parish data in multi-tenant JOL-HUB.
- * 
+ *
  * Provides parish configuration throughout the component tree
  * for [parish] dynamic routes.
- * 
+ *
  * DATA ISOLATION: Each parish context is isolated to prevent
  * cross-parish data leakage.
  */
@@ -44,7 +44,7 @@ type ParishContextType = ParishContextValue | NullParishContextValue;
 
 /**
  * React Context for parish data.
- * 
+ *
  * Default value is null context (for non-parish routes).
  */
 const ParishContext = createContext<ParishContextType>({
@@ -68,10 +68,10 @@ interface ParishProviderProps {
 
 /**
  * Parish Provider Component.
- * 
+ *
  * Wraps children with parish context, making parish data
  * available throughout the component tree.
- * 
+ *
  * @example
  * ```tsx
  * // In [parish]/layout.tsx
@@ -90,11 +90,7 @@ export function ParishProvider({ parish, children }: ParishProviderProps) {
     [parish]
   );
 
-  return (
-    <ParishContext.Provider value={value}>
-      {children}
-    </ParishContext.Provider>
-  );
+  return <ParishContext.Provider value={value}>{children}</ParishContext.Provider>;
 }
 
 // =============================================================================
@@ -103,10 +99,10 @@ export function ParishProvider({ parish, children }: ParishProviderProps) {
 
 /**
  * Hook to access parish context.
- * 
+ *
  * Must be used within a ParishProvider. Throws error if used
  * outside of parish context.
- * 
+ *
  * @example
  * ```tsx
  * function ParishHeader() {
@@ -114,7 +110,7 @@ export function ParishProvider({ parish, children }: ParishProviderProps) {
  *   return <h1>{parish.name}</h1>;
  * }
  * ```
- * 
+ *
  * @returns Parish context value
  * @throws Error if used outside ParishProvider
  */
@@ -123,8 +119,7 @@ export function useParish(): ParishConfig {
 
   if (!context.isValid || !context.parish) {
     throw new Error(
-      'useParish must be used within a ParishProvider. ' +
-      'Make sure you are in a [parish] route.'
+      'useParish must be used within a ParishProvider. ' + 'Make sure you are in a [parish] route.'
     );
   }
 
@@ -133,10 +128,10 @@ export function useParish(): ParishConfig {
 
 /**
  * Hook to safely access parish context (returns null if not in parish).
- * 
+ *
  * Use this when a component might be used both inside and outside
  * parish routes.
- * 
+ *
  * @example
  * ```tsx
  * function MaybeParishComponent() {
@@ -147,7 +142,7 @@ export function useParish(): ParishConfig {
  *   return <div>Welcome to JOL-HUB</div>;
  * }
  * ```
- * 
+ *
  * @returns Parish config or null
  */
 export function useParishSafe(): ParishConfig | null {
@@ -157,7 +152,7 @@ export function useParishSafe(): ParishConfig | null {
 
 /**
  * Hook to check if currently in a parish context.
- * 
+ *
  * @example
  * ```tsx
  * function ConditionalComponent() {
@@ -165,7 +160,7 @@ export function useParishSafe(): ParishConfig | null {
  *   return isInParish ? <ParishNav /> : <MasterNav />;
  * }
  * ```
- * 
+ *
  * @returns True if in parish context
  */
 export function useIsInParish(): boolean {
@@ -179,23 +174,23 @@ export function useIsInParish(): boolean {
 
 /**
  * Hook to get parish-specific localStorage key.
- * 
+ *
  * Ensures data isolation between parishes by prefixing keys
  * with parish ID.
- * 
+ *
  * @example
  * ```tsx
  * function UserPreferences() {
  *   const getKey = useParishStorageKey();
  *   const key = getKey('user-preferences');
  *   // key = "parish:stmarys:user-preferences"
- *   
+ *
  *   useEffect(() => {
  *     localStorage.setItem(key, JSON.stringify(prefs));
  *   }, [key, prefs]);
  * }
  * ```
- * 
+ *
  * @returns Function to generate parish-prefixed storage keys
  */
 export function useParishStorageKey(): (key: string) => string {
@@ -212,15 +207,15 @@ export function useParishStorageKey(): (key: string) => string {
 
 /**
  * Hook to get parish-specific API headers.
- * 
+ *
  * Automatically includes x-parish-subdomain header for
  * Django backend data isolation.
- * 
+ *
  * @example
  * ```tsx
  * function ParishData() {
  *   const headers = useParishApiHeaders();
- *   
+ *
  *   useEffect(() => {
  *     fetch('/api/announcements', { headers })
  *       .then(res => res.json())
@@ -228,7 +223,7 @@ export function useParishStorageKey(): (key: string) => string {
  *   }, [headers]);
  * }
  * ```
- * 
+ *
  * @returns Headers object with parish context
  */
 export function useParishApiHeaders(): Record<string, string> {

@@ -9,8 +9,7 @@ export interface SelectOption {
 
 /** Props for {@link Select}. */
 export interface SelectProps
-  extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'id' | 'required'>,
-    FieldChromeProps {
+  extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'id' | 'required'>, FieldChromeProps {
   /** Options rendered inside the native `<select>`. */
   options: SelectOption[];
   /** Placeholder option shown when nothing is selected. */

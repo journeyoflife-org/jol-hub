@@ -24,7 +24,12 @@ describe('BlockEditor', () => {
 
   it('BlockEditor.should.show the pilot notice when unconfigured', () => {
     renderWithProviders(
-      <BlockEditor tenantSlug="test-church" pageId="tenant-editable" editorConfigured={false} basePath="/lt/test-church" />,
+      <BlockEditor
+        tenantSlug="test-church"
+        pageId="tenant-editable"
+        editorConfigured={false}
+        basePath="/lt/test-church"
+      />
     );
     // saveUnconfigured copy — local draft only in the pilot.
     expect(document.body.textContent).toContain('juodraštis');
@@ -39,7 +44,12 @@ describe('BlockEditor', () => {
     vi.stubGlobal('fetch', fetchMock);
 
     renderWithProviders(
-      <BlockEditor tenantSlug="test-church" pageId="tenant-editable" editorConfigured basePath="/lt/test-church" />,
+      <BlockEditor
+        tenantSlug="test-church"
+        pageId="tenant-editable"
+        editorConfigured
+        basePath="/lt/test-church"
+      />
     );
     await waitFor(() => {
       // Paragraph text renders as content; the revision badge proves the
@@ -56,10 +66,15 @@ describe('BlockEditor', () => {
   it('BlockEditor.should.survive a failed draft fetch without crashing', async () => {
     vi.stubGlobal(
       'fetch',
-      vi.fn(async () => jsonResponse({ error: 'backend' }, 502)),
+      vi.fn(async () => jsonResponse({ error: 'backend' }, 502))
     );
     renderWithProviders(
-      <BlockEditor tenantSlug="test-church" pageId="tenant-editable" editorConfigured basePath="/lt/test-church" />,
+      <BlockEditor
+        tenantSlug="test-church"
+        pageId="tenant-editable"
+        editorConfigured
+        basePath="/lt/test-church"
+      />
     );
     await waitFor(() => {
       expect(document.body.textContent).toContain('Pridėti bloką');
@@ -69,7 +84,10 @@ describe('BlockEditor', () => {
 
 describe('MediaUploader', () => {
   beforeEach(() => {
-    vi.stubGlobal('fetch', vi.fn(async () => jsonResponse([])));
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => jsonResponse([]))
+    );
   });
   afterEach(() => {
     vi.unstubAllGlobals();
@@ -103,7 +121,12 @@ describe('ModerationQueue', () => {
     const fetchMock = vi.fn();
     vi.stubGlobal('fetch', fetchMock);
     renderWithProviders(
-      <ModerationQueue tenantSlug="test-church" editorConfigured authorized={false} reviewer="a@b.c" />,
+      <ModerationQueue
+        tenantSlug="test-church"
+        editorConfigured
+        authorized={false}
+        reviewer="a@b.c"
+      />
     );
     expect(document.body.textContent).toContain('Neturite teisės');
     expect(fetchMock).not.toHaveBeenCalled(); // never fetches unauthenticated
@@ -111,7 +134,12 @@ describe('ModerationQueue', () => {
 
   it('ModerationQueue.should.show the pilot notice when unconfigured', () => {
     renderWithProviders(
-      <ModerationQueue tenantSlug="test-church" editorConfigured={false} authorized reviewer="a@b.c" />,
+      <ModerationQueue
+        tenantSlug="test-church"
+        editorConfigured={false}
+        authorized
+        reviewer="a@b.c"
+      />
     );
     expect(document.body.textContent).toContain('neaktyvuota');
   });
@@ -127,7 +155,12 @@ describe('ModerationQueue', () => {
     vi.stubGlobal('fetch', fetchMock);
 
     renderWithProviders(
-      <ModerationQueue tenantSlug="test-church" editorConfigured authorized reviewer="admin@example.com" />,
+      <ModerationQueue
+        tenantSlug="test-church"
+        editorConfigured
+        authorized
+        reviewer="admin@example.com"
+      />
     );
 
     // Queue items arrive (pending page-edit + Art. 9 media item).
@@ -143,7 +176,9 @@ describe('ModerationQueue', () => {
     fireEvent.click(approveButton);
 
     await waitFor(() => {
-      expect(calls.some((c) => c.startsWith('POST') && c.includes('/api/editor/moderation/mod-1'))).toBe(true);
+      expect(
+        calls.some((c) => c.startsWith('POST') && c.includes('/api/editor/moderation/mod-1'))
+      ).toBe(true);
     });
   });
 });

@@ -34,7 +34,8 @@ export async function GET(request: NextRequest, { params }: { params: { pageId: 
 
   const result = await client.getDraft(tenantSlug, params.pageId);
   if (!result.ok) {
-    const status = result.error.kind === 'auth' ? 403 : result.error.kind === 'validation' ? 400 : 502;
+    const status =
+      result.error.kind === 'auth' ? 403 : result.error.kind === 'validation' ? 400 : 502;
     return NextResponse.json({ error: result.error.kind }, { status });
   }
   return NextResponse.json(result.data);
@@ -66,10 +67,11 @@ export async function POST(request: NextRequest, { params }: { params: { pageId:
     parsed.data.tenantSlug,
     params.pageId,
     parsed.data.blocks,
-    parsed.data.revision,
+    parsed.data.revision
   );
   if (!result.ok) {
-    const status = result.error.kind === 'auth' ? 403 : result.error.kind === 'validation' ? 400 : 502;
+    const status =
+      result.error.kind === 'auth' ? 403 : result.error.kind === 'validation' ? 400 : 502;
     return NextResponse.json({ error: result.error.kind }, { status });
   }
   return NextResponse.json(result.data, { status: 201 });

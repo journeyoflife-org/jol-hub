@@ -8,7 +8,7 @@ import { cn } from '../lib/utils';
 /**
  * GDPR Article 13-14 Privacy Notice Page Template
  * Reusable across all JOL-HUB entity websites
- * 
+ *
  * Customizable for:
  * - Entity name, address, contact details
  * - Data Controller information
@@ -188,20 +188,23 @@ export function PrivacyPage({
   lastUpdated,
 }: PrivacyPageProps) {
   const t = translations[language as keyof typeof translations] ?? translations.en;
-  
-  const allProcessingActivities = [...defaultProcessingActivities, ...additionalProcessingActivities];
-  
+
+  const allProcessingActivities = [
+    ...defaultProcessingActivities,
+    ...additionalProcessingActivities,
+  ];
+
   const displayDate = lastUpdated || new Date().toISOString().split('T')[0];
 
   return (
-    <div className={cn('max-w-4xl mx-auto space-y-8 py-8', className)}>
+    <div className={cn('mx-auto max-w-4xl space-y-8 py-8', className)}>
       {/* Header */}
-      <div className="text-center space-y-2">
+      <div className="space-y-2 text-center">
         <h1 className="text-3xl font-bold">{t.title}</h1>
-        {entityNameLocal && (
-          <p className="text-lg text-gray-600">{entityNameLocal}</p>
-        )}
-        <p className="text-sm text-gray-500">{t.lastUpdated}: {displayDate}</p>
+        {entityNameLocal && <p className="text-lg text-gray-600">{entityNameLocal}</p>}
+        <p className="text-sm text-gray-500">
+          {t.lastUpdated}: {displayDate}
+        </p>
       </div>
 
       {/* Data Controller */}
@@ -214,11 +217,12 @@ export function PrivacyPage({
           <div>
             <p className="font-medium">{entityName}</p>
             <p className="text-sm text-gray-600">
-              {address.street}<br />
+              {address.street}
+              <br />
               {address.postalCode} {address.city}, {address.country}
             </p>
           </div>
-          
+
           <div className="space-y-1 text-sm">
             <p>📧 {contactEmail}</p>
             {contactPhone && <p>📞 {contactPhone}</p>}
@@ -226,11 +230,9 @@ export function PrivacyPage({
           </div>
 
           {bitrix24Domain && (
-            <div className="pt-4 border-t">
-              <p className="text-sm text-gray-600">
-                CRM System: {bitrix24Domain} (Bitrix24 EU)
-              </p>
-              <p className="text-xs text-gray-500 mt-1">
+            <div className="border-t pt-4">
+              <p className="text-sm text-gray-600">CRM System: {bitrix24Domain} (Bitrix24 EU)</p>
+              <p className="mt-1 text-xs text-gray-500">
                 All data stored in EU data centers for GDPR compliance
               </p>
             </div>
@@ -246,37 +248,42 @@ export function PrivacyPage({
         </CardHeader>
         <CardContent className="space-y-6">
           {allProcessingActivities.map((activity, index) => (
-            <div key={index} className="space-y-3 pb-6 border-b last:border-0 last:pb-0">
-              <h3 className="font-semibold text-lg">{activity.name}</h3>
-              
+            <div key={index} className="space-y-3 border-b pb-6 last:border-0 last:pb-0">
+              <h3 className="text-lg font-semibold">{activity.name}</h3>
+
               <div className="grid gap-3 text-sm">
                 <div>
                   <span className="font-medium">Purpose:</span> {activity.purpose}
                 </div>
-                
+
                 <div>
                   <span className="font-medium">{t.legalBasis}:</span>
-                  <p className="text-gray-600 mt-1">{activity.legalBasis}</p>
+                  <p className="mt-1 text-gray-600">{activity.legalBasis}</p>
                 </div>
-                
+
                 <div>
                   <span className="font-medium">{t.dataCategories}:</span>
-                  <div className="flex flex-wrap gap-1 mt-1">
+                  <div className="mt-1 flex flex-wrap gap-1">
                     {activity.dataCategories.map((cat, i) => (
-                      <Badge key={i} variant="secondary">{cat}</Badge>
+                      <Badge key={i} variant="secondary">
+                        {cat}
+                      </Badge>
                     ))}
                   </div>
                 </div>
-                
+
                 <div>
-                  <span className="font-medium">{t.retentionPeriod}:</span> {activity.retentionPeriod}
+                  <span className="font-medium">{t.retentionPeriod}:</span>{' '}
+                  {activity.retentionPeriod}
                 </div>
-                
+
                 <div>
                   <span className="font-medium">{t.recipients}:</span>
-                  <div className="flex flex-wrap gap-1 mt-1">
+                  <div className="mt-1 flex flex-wrap gap-1">
                     {activity.recipients.map((rec, i) => (
-                      <Badge key={i} variant="outline">{rec}</Badge>
+                      <Badge key={i} variant="outline">
+                        {rec}
+                      </Badge>
                     ))}
                   </div>
                 </div>
@@ -303,40 +310,30 @@ export function PrivacyPage({
               </div>
               <div>
                 <h4 className="font-medium">{t.rightToRectification}</h4>
-                <p className="text-sm text-gray-600">
-                  Correct inaccurate personal data (Art. 16)
-                </p>
+                <p className="text-sm text-gray-600">Correct inaccurate personal data (Art. 16)</p>
               </div>
               <div>
                 <h4 className="font-medium">{t.rightToErasure}</h4>
-                <p className="text-sm text-gray-600">
-                  Request deletion of your data (Art. 17)
-                </p>
+                <p className="text-sm text-gray-600">Request deletion of your data (Art. 17)</p>
               </div>
             </div>
             <div className="space-y-3">
               <div>
                 <h4 className="font-medium">{t.rightToPortability}</h4>
-                <p className="text-sm text-gray-600">
-                  Receive data in portable format (Art. 20)
-                </p>
+                <p className="text-sm text-gray-600">Receive data in portable format (Art. 20)</p>
               </div>
               <div>
                 <h4 className="font-medium">{t.rightToObject}</h4>
-                <p className="text-sm text-gray-600">
-                  Object to processing (Art. 21)
-                </p>
+                <p className="text-sm text-gray-600">Object to processing (Art. 21)</p>
               </div>
               <div>
                 <h4 className="font-medium">{t.rightToRestrict}</h4>
-                <p className="text-sm text-gray-600">
-                  Request processing limitation (Art. 18)
-                </p>
+                <p className="text-sm text-gray-600">Request processing limitation (Art. 18)</p>
               </div>
             </div>
           </div>
-          
-          <div className="mt-6 pt-4 border-t">
+
+          <div className="mt-6 border-t pt-4">
             <p className="text-sm">
               To exercise your rights, contact us at{' '}
               <a href={`mailto:${contactEmail}`} className="text-blue-600 hover:underline">
@@ -353,20 +350,23 @@ export function PrivacyPage({
           <CardTitle>{t.cookies}</CardTitle>
           <CardDescription>{t.cookiePolicy}</CardDescription>
         </CardHeader>
-        <CardContent className="text-sm space-y-3">
+        <CardContent className="space-y-3 text-sm">
           <p>
-            We use cookies to ensure the proper functioning of our website, analyze traffic, 
-            and provide personalized content. You can manage your cookie preferences through 
-            our cookie consent banner.
+            We use cookies to ensure the proper functioning of our website, analyze traffic, and
+            provide personalized content. You can manage your cookie preferences through our cookie
+            consent banner.
           </p>
-          <div className="flex gap-4 flex-wrap">
+          <div className="flex flex-wrap gap-4">
             <Badge variant="secondary">Necessary</Badge>
             <Badge variant="outline">Analytics</Badge>
             <Badge variant="outline">Marketing</Badge>
           </div>
           <p className="text-xs text-gray-500">
             For more information, see our full{' '}
-            <a href="/cookies" className="text-blue-600 hover:underline">Cookie Policy</a>.
+            <a href="/cookies" className="text-blue-600 hover:underline">
+              Cookie Policy
+            </a>
+            .
           </p>
         </CardContent>
       </Card>
@@ -374,7 +374,8 @@ export function PrivacyPage({
       {/* Footer */}
       <div className="text-center text-sm text-gray-500">
         <p>
-          {t.changes}: We may update this policy periodically. Check this page for the latest version.
+          {t.changes}: We may update this policy periodically. Check this page for the latest
+          version.
         </p>
         <p className="mt-2">
           {t.contactUs}:{' '}

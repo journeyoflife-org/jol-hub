@@ -15,7 +15,10 @@ const HEADING_RE = /<h([1-6])(\s[^>]*)?>([\s\S]*?)<\/h\1>/gi;
 
 /** Strip nested tags and collapse whitespace for readable messages. */
 function textOf(inner: string): string {
-  return inner.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+  return inner
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 export function checkHeadingHierarchy(html: string): A11yFinding[] {

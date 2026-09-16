@@ -9,9 +9,9 @@ conversation surface, no data collection.
 
 ## Consuming pages (traceability)
 
-| Package | Page | Usage |
-|---|---|---|
-| 21 | AI assistant entry page | gated entry point (hidden until O-010 + AI gate) |
+| Package | Page                    | Usage                                            |
+| ------- | ----------------------- | ------------------------------------------------ |
+| 21      | AI assistant entry page | gated entry point (hidden until O-010 + AI gate) |
 
 ## Accessibility
 

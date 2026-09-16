@@ -44,12 +44,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
           ? ['уход за могилами', 'уборка', 'кладбище', 'обслуживание', 'подписка']
           : ['cemetery cleaning', 'grave maintenance', 'memorial care', 'subscription'],
     openGraph: {
-      locale:
-        resolvedLocale === 'lt'
-          ? 'lt_LT'
-          : resolvedLocale === 'ru'
-            ? 'ru_RU'
-            : 'en_US',
+      locale: resolvedLocale === 'lt' ? 'lt_LT' : resolvedLocale === 'ru' ? 'ru_RU' : 'en_US',
     },
   };
 }
@@ -58,7 +53,9 @@ export function generateStaticParams() {
   return SUPPORTED_LOCALES.map((locale) => ({ locale }));
 }
 
-export default async function LocaleCemeteryPage({ params }: LocalePageProps): Promise<JSX.Element> {
+export default async function LocaleCemeteryPage({
+  params,
+}: LocalePageProps): Promise<JSX.Element> {
   const { locale } = params;
 
   if (!isSupportedLocale(locale)) {

@@ -2,12 +2,13 @@
 User serializers — registration, profile read/write, and JWT token pair.
 """
 
-from apps.core.serializers import BaseModelSerializer
-from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import (
     TokenObtainPairSerializer as BaseTokenPairSerializer,
 )
+
+from apps.core.serializers import BaseModelSerializer
+from django.contrib.auth.password_validation import validate_password
 
 from .models import User, UserProfile
 

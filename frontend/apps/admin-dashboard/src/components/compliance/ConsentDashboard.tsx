@@ -13,15 +13,7 @@ import {
   TableBody,
   TableCell,
 } from '@/components/ui/table';
-import {
-  Search,
-  CheckCircle,
-  XCircle,
-  Clock,
-  Download,
-  Eye,
-  Loader2,
-} from 'lucide-react';
+import { Search, CheckCircle, XCircle, Clock, Download, Eye, Loader2 } from 'lucide-react';
 import { format } from 'date-fns';
 
 // =============================================================================
@@ -128,7 +120,7 @@ export function ConsentDashboard({ onExport }: ConsentDashboardProps) {
     const Icon = variant.icon;
     return (
       <Badge className={variant.className}>
-        <Icon className="h-3 w-3 mr-1" />
+        <Icon className="mr-1 h-3 w-3" />
         {status.charAt(0).toUpperCase() + status.slice(1)}
       </Badge>
     );
@@ -141,11 +133,7 @@ export function ConsentDashboard({ onExport }: ConsentDashboardProps) {
       third_party: 'Third Party',
       cookies: 'Cookies',
     };
-    return (
-      <Badge variant="outline">
-        {labels[type] || type}
-      </Badge>
-    );
+    return <Badge variant="outline">{labels[type] || type}</Badge>;
   };
 
   return (
@@ -155,25 +143,25 @@ export function ConsentDashboard({ onExport }: ConsentDashboardProps) {
         <Card>
           <CardContent className="pt-6">
             <div className="text-2xl font-bold">{stats.total}</div>
-            <p className="text-sm text-muted-foreground">Total Consents</p>
+            <p className="text-muted-foreground text-sm">Total Consents</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="pt-6">
             <div className="text-2xl font-bold text-green-600">{stats.granted}</div>
-            <p className="text-sm text-muted-foreground">Granted</p>
+            <p className="text-muted-foreground text-sm">Granted</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="pt-6">
             <div className="text-2xl font-bold text-red-600">{stats.withdrawn}</div>
-            <p className="text-sm text-muted-foreground">Withdrawn</p>
+            <p className="text-muted-foreground text-sm">Withdrawn</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="pt-6">
             <div className="text-2xl font-bold text-yellow-600">{stats.pending}</div>
-            <p className="text-sm text-muted-foreground">Pending</p>
+            <p className="text-muted-foreground text-sm">Pending</p>
           </CardContent>
         </Card>
       </div>
@@ -184,21 +172,19 @@ export function ConsentDashboard({ onExport }: ConsentDashboardProps) {
           <div className="flex items-center justify-between">
             <div>
               <CardTitle>Consent Records</CardTitle>
-              <CardDescription>
-                GDPR Article 7: Manage user consent records
-              </CardDescription>
+              <CardDescription>GDPR Article 7: Manage user consent records</CardDescription>
             </div>
             <Button variant="outline" onClick={onExport}>
-              <Download className="h-4 w-4 mr-2" />
+              <Download className="mr-2 h-4 w-4" />
               Export
             </Button>
           </div>
         </CardHeader>
         <CardContent>
           {/* Filters */}
-          <div className="flex items-center gap-4 mb-4">
+          <div className="mb-4 flex items-center gap-4">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="text-muted-foreground absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" />
               <Input
                 placeholder="Search by name or email..."
                 value={searchQuery}
@@ -209,7 +195,7 @@ export function ConsentDashboard({ onExport }: ConsentDashboardProps) {
             <select
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value)}
-              className="px-3 py-2 border rounded-md text-sm"
+              className="rounded-md border px-3 py-2 text-sm"
             >
               <option value="">All Types</option>
               <option value="marketing">Marketing</option>
@@ -220,7 +206,7 @@ export function ConsentDashboard({ onExport }: ConsentDashboardProps) {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="px-3 py-2 border rounded-md text-sm"
+              className="rounded-md border px-3 py-2 text-sm"
             >
               <option value="">All Status</option>
               <option value="granted">Granted</option>
@@ -246,13 +232,13 @@ export function ConsentDashboard({ onExport }: ConsentDashboardProps) {
             <TableBody>
               {isLoading ? (
                 <TableRow>
-                  <TableCell colSpan={8} className="text-center py-8">
-                    <Loader2 className="h-6 w-6 animate-spin mx-auto" />
+                  <TableCell colSpan={8} className="py-8 text-center">
+                    <Loader2 className="mx-auto h-6 w-6 animate-spin" />
                   </TableCell>
                 </TableRow>
               ) : filteredConsents.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={8} className="text-center py-8 text-muted-foreground">
+                  <TableCell colSpan={8} className="text-muted-foreground py-8 text-center">
                     No consent records found
                   </TableCell>
                 </TableRow>
@@ -262,18 +248,14 @@ export function ConsentDashboard({ onExport }: ConsentDashboardProps) {
                     <TableCell>
                       <div>
                         <p className="font-medium">{consent.userName}</p>
-                        <p className="text-sm text-muted-foreground">{consent.userEmail}</p>
+                        <p className="text-muted-foreground text-sm">{consent.userEmail}</p>
                       </div>
                     </TableCell>
                     <TableCell>{getTypeBadge(consent.consentType)}</TableCell>
                     <TableCell>{getStatusBadge(consent.status)}</TableCell>
+                    <TableCell>{format(new Date(consent.grantedAt), 'PPp')}</TableCell>
                     <TableCell>
-                      {format(new Date(consent.grantedAt), 'PPp')}
-                    </TableCell>
-                    <TableCell>
-                      {consent.withdrawnAt
-                        ? format(new Date(consent.withdrawnAt), 'PPp')
-                        : '-'}
+                      {consent.withdrawnAt ? format(new Date(consent.withdrawnAt), 'PPp') : '-'}
                     </TableCell>
                     <TableCell>
                       <Badge variant="outline">{consent.country}</Badge>
@@ -296,9 +278,9 @@ export function ConsentDashboard({ onExport }: ConsentDashboardProps) {
       <Card className="border-blue-500/50 bg-blue-50 dark:bg-blue-950/20">
         <CardContent className="py-4">
           <p className="text-sm text-blue-800 dark:text-blue-200">
-            <strong>GDPR Article 7:</strong> Consent must be freely given, specific, informed,
-            and unambiguous. Users have the right to withdraw consent at any time, and the
-            process for withdrawal must be as easy as giving consent.
+            <strong>GDPR Article 7:</strong> Consent must be freely given, specific, informed, and
+            unambiguous. Users have the right to withdraw consent at any time, and the process for
+            withdrawal must be as easy as giving consent.
           </p>
         </CardContent>
       </Card>

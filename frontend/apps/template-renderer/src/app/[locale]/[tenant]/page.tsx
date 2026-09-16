@@ -18,11 +18,7 @@
  * vertical-aware JSON-LD (BaseTemplate).
  */
 import type { Metadata } from 'next';
-import {
-  JsonLd,
-  organizationEntity,
-  websiteEntity,
-} from '@/lib/json-ld';
+import { JsonLd, organizationEntity, websiteEntity } from '@/lib/json-ld';
 import { buildChurchLandingEntity } from '@/lib/church-landing';
 import { buildServicesLandingEntity } from '@/lib/services-landing';
 import { buildTenantMetadata, tenantDisplayName, tenantTagline } from '@/lib/page-seo';

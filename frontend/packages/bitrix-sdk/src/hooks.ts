@@ -62,7 +62,7 @@ export interface CrmQueryOptions {
 function useCrmQuery<T>(
   fetcher: (client: CrmBackendClient) => Promise<CrmResult<T>>,
   options: CrmQueryOptions,
-  deps: readonly unknown[],
+  deps: readonly unknown[]
 ): CrmQueryState<T> {
   const client = resolveClient(options.client);
   const [data, setData] = useState<T | null>(null);
@@ -121,7 +121,11 @@ export function useCrmLead(id: string | undefined, options: CrmQueryOptions): Cr
   const cacheKey = id ? `${options.tenantSlug}::${id}` : undefined;
   return useCrmQuery<Lead>(
     async (client) => {
-      if (!id) return { ok: false, error: { kind: 'validation', message: 'No lead id.', retryable: false } };
+      if (!id)
+        return {
+          ok: false,
+          error: { kind: 'validation', message: 'No lead id.', retryable: false },
+        };
       const cached = leadCache.get(`${options.tenantSlug}::${id}`);
       if (cached) return { ok: true, data: cached };
       const result = await client.getLead(options.tenantSlug, id);
@@ -129,33 +133,35 @@ export function useCrmLead(id: string | undefined, options: CrmQueryOptions): Cr
       return result;
     },
     options,
-    [id, options.tenantSlug],
+    [id, options.tenantSlug]
   );
 }
 
 /** Fetch a tenant's deals (dashboard / pipeline). Supports polling. */
-export function useCrmDeals(tenantSlug: string, options?: Omit<CrmQueryOptions, 'tenantSlug'>): CrmQueryState<Deal[]> {
-  return useCrmQuery<Deal[]>(
-    (client) => client.getDeals(tenantSlug),
-    { tenantSlug, ...options },
-    [tenantSlug],
-  );
+export function useCrmDeals(
+  tenantSlug: string,
+  options?: Omit<CrmQueryOptions, 'tenantSlug'>
+): CrmQueryState<Deal[]> {
+  return useCrmQuery<Deal[]>((client) => client.getDeals(tenantSlug), { tenantSlug, ...options }, [
+    tenantSlug,
+  ]);
 }
 
 /** Fetch recent leads for a tenant (LeadTracker). Supports polling. */
-export function useCrmLeads(tenantSlug: string, options?: Omit<CrmQueryOptions, 'tenantSlug'>): CrmQueryState<Lead[]> {
-  return useCrmQuery<Lead[]>(
-    (client) => client.getLeads(tenantSlug),
-    { tenantSlug, ...options },
-    [tenantSlug],
-  );
+export function useCrmLeads(
+  tenantSlug: string,
+  options?: Omit<CrmQueryOptions, 'tenantSlug'>
+): CrmQueryState<Lead[]> {
+  return useCrmQuery<Lead[]>((client) => client.getLeads(tenantSlug), { tenantSlug, ...options }, [
+    tenantSlug,
+  ]);
 }
 
 /** Fetch tasks attached to an entity. */
 export function useCrmTasks(
   entityType: CrmEntityType,
   entityId: string | undefined,
-  options: CrmQueryOptions,
+  options: CrmQueryOptions
 ): CrmQueryState<Task[]> {
   return useCrmQuery<Task[]>(
     (client) =>
@@ -166,7 +172,7 @@ export function useCrmTasks(
             error: { kind: 'validation' as const, message: 'No entity id.', retryable: false },
           }),
     options,
-    [entityType, entityId, options.tenantSlug],
+    [entityType, entityId, options.tenantSlug]
   );
 }
 
@@ -198,7 +204,7 @@ export function useCreateLead(options?: { client?: CrmBackendClient }): UseCreat
       if (!result.ok) setError(result.error);
       return result;
     },
-    [client],
+    [client]
   );
 
   const reset = useCallback(() => setError(null), []);

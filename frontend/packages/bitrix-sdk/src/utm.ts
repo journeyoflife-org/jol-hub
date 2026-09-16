@@ -33,8 +33,12 @@ const UTM_FIELDS = [
 /** Sanitize a single raw UTM value. Returns undefined when nothing remains. */
 export function sanitizeUtmValue(raw: string | null | undefined): string | undefined {
   if (raw == null) return undefined;
-  // eslint-disable-next-line no-control-regex
-  const cleaned = raw.replace(/[\u0000-\u001f\u007f]/g, '').replace(/[<>]/g, '').trim();
+  /* eslint-disable no-control-regex */
+  const cleaned = raw
+    .replace(/[\u0000-\u001f\u007f]/g, '')
+    /* eslint-enable no-control-regex */
+    .replace(/[<>]/g, '')
+    .trim();
   if (cleaned.length === 0) return undefined;
   return cleaned.slice(0, UTM_MAX_LENGTH);
 }

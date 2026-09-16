@@ -23,7 +23,7 @@ export default function AuthErrorPage() {
     <div className="w-full max-w-md">
       <Card>
         <CardHeader className="text-center">
-          <div className="mx-auto mb-4 h-16 w-16 bg-red-100 rounded-full flex items-center justify-center">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-100">
             <AlertCircle className="h-8 w-8 text-red-600" />
           </div>
           <CardTitle>Authentication Error</CardTitle>

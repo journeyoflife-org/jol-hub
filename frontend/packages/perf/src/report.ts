@@ -20,7 +20,7 @@ export function evaluateFootprints(
   footprints: RouteFootprint[],
   jsBudgetKiB: number,
   cssBudgetKiB: number,
-  polyfillGzipBytes = 0,
+  polyfillGzipBytes = 0
 ): BudgetGateResult {
   const failures: string[] = [];
   let worst: RouteFootprint | null = null;
@@ -36,12 +36,12 @@ export function evaluateFootprints(
     const cssKiB = bytesToKiB(adjusted.cssGzipBytes);
     if (jsKiB > jsBudgetKiB) {
       failures.push(
-        `${footprint.route}: initial JS ${jsKiB.toFixed(1)} KiB exceeds budget ${jsBudgetKiB} KiB`,
+        `${footprint.route}: initial JS ${jsKiB.toFixed(1)} KiB exceeds budget ${jsBudgetKiB} KiB`
       );
     }
     if (cssKiB > cssBudgetKiB) {
       failures.push(
-        `${footprint.route}: initial CSS ${cssKiB.toFixed(1)} KiB exceeds budget ${cssBudgetKiB} KiB`,
+        `${footprint.route}: initial CSS ${cssKiB.toFixed(1)} KiB exceeds budget ${cssBudgetKiB} KiB`
       );
     }
   }
@@ -53,7 +53,7 @@ export function evaluateFootprints(
 export function formatGateReport(
   result: BudgetGateResult,
   footprints: RouteFootprint[],
-  polyfillGzipBytes = 0,
+  polyfillGzipBytes = 0
 ): string {
   const lines: string[] = [];
   lines.push('performance budget gate (gzipped first-load transfer sizes)');
@@ -68,7 +68,7 @@ export function formatGateReport(
   for (const footprint of top) {
     const js = footprint.jsGzipBytes - polyfillGzipBytes;
     lines.push(
-      `${footprint.route.padEnd(44)} JS ${formatKiB(Math.max(0, js)).padStart(10)}   CSS ${formatKiB(footprint.cssGzipBytes).padStart(9)}`,
+      `${footprint.route.padEnd(44)} JS ${formatKiB(Math.max(0, js)).padStart(10)}   CSS ${formatKiB(footprint.cssGzipBytes).padStart(9)}`
     );
   }
   if (footprints.length > top.length) {
@@ -79,7 +79,7 @@ export function formatGateReport(
   if (result.passed) {
     const worst = result.worst;
     lines.push(
-      `PASS — worst route ${worst ? worst.route : '-'} at ${worst ? formatKiB(worst.jsGzipBytes) : '-' } JS / ${worst ? formatKiB(worst.cssGzipBytes) : '-'} CSS`,
+      `PASS — worst route ${worst ? worst.route : '-'} at ${worst ? formatKiB(worst.jsGzipBytes) : '-'} JS / ${worst ? formatKiB(worst.cssGzipBytes) : '-'} CSS`
     );
   } else {
     for (const failure of result.failures) lines.push(`[FAIL] ${failure}`);

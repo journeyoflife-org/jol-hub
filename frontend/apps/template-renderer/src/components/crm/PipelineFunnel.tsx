@@ -51,7 +51,11 @@ export interface PipelineFunnelProps {
   pollIntervalMs?: number;
 }
 
-export function PipelineFunnel({ tenantSlug, locale = 'lt', pollIntervalMs = DEFAULT_POLL_MS }: PipelineFunnelProps) {
+export function PipelineFunnel({
+  tenantSlug,
+  locale = 'lt',
+  pollIntervalMs = DEFAULT_POLL_MS,
+}: PipelineFunnelProps) {
   const t = useTranslations('crm');
   const client = useMemo(() => new CrmBackendClient({ baseUrl: '/api' }), []);
   const { available, data, loading, error } = useCrmDeals(tenantSlug, { client, pollIntervalMs });
@@ -69,12 +73,12 @@ export function PipelineFunnel({ tenantSlug, locale = 'lt', pollIntervalMs = DEF
 
   return (
     <section aria-label={t('pipelineTitle')}>
-      <h2 className="mb-3 font-heading text-lg font-semibold text-neutral-900 dark:text-neutral-50">
+      <h2 className="font-heading mb-3 text-lg font-semibold text-neutral-900 dark:text-neutral-50">
         {t('pipelineTitle')}
       </h2>
 
       {error ? (
-        <p className="rounded-md bg-warning-50 p-3 text-sm text-warning-800 dark:bg-warning-900 dark:text-warning-100">
+        <p className="bg-warning-50 text-warning-800 dark:bg-warning-900 dark:text-warning-100 rounded-md p-3 text-sm">
           {t('crmUnavailable')}
         </p>
       ) : loading && !data ? (
@@ -90,7 +94,7 @@ export function PipelineFunnel({ tenantSlug, locale = 'lt', pollIntervalMs = DEF
               </span>
               <div className="h-6 flex-1 rounded bg-neutral-100 dark:bg-neutral-800">
                 <div
-                  className="flex h-6 items-center rounded bg-primary px-2 text-xs font-medium text-neutral-50"
+                  className="bg-primary flex h-6 items-center rounded px-2 text-xs font-medium text-neutral-50"
                   style={{ width: `${Math.max(8, (stage.count / maxCount) * 100)}%` }}
                 >
                   {stage.count}

@@ -62,7 +62,7 @@ export function sitemapEntry(
   url: string,
   kind: SeoPageKind,
   lastModified?: Date | string,
-  alternates?: Record<string, string>,
+  alternates?: Record<string, string>
 ): SitemapEntryInput {
   return {
     url,

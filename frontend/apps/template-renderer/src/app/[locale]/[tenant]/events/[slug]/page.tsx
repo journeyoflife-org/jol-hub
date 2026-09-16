@@ -52,7 +52,11 @@ export async function generateMetadata({
   });
 }
 
-export default async function TenantEventDetailPage({ params }: { params: TenantEventDetailParams }) {
+export default async function TenantEventDetailPage({
+  params,
+}: {
+  params: TenantEventDetailParams;
+}) {
   const { tenant, fixture, locale, basePath } = resolveTenantRoute(params);
   const slug = normalizeSlugParam(params.slug);
   if (!slug) notFound();
@@ -74,7 +78,10 @@ export default async function TenantEventDetailPage({ params }: { params: Tenant
         data={[
           breadcrumbEntity([
             { name: translate(messages, 'navigation.home'), url: absoluteUrl(basePath) },
-            { name: translate(messages, 'navigation.events'), url: absoluteUrl(`${basePath}/events`) },
+            {
+              name: translate(messages, 'navigation.events'),
+              url: absoluteUrl(`${basePath}/events`),
+            },
             { name: item.title, url: eventUrl },
           ]),
           eventEntity({
@@ -89,14 +96,17 @@ export default async function TenantEventDetailPage({ params }: { params: Tenant
         ]}
       />
 
-      <article className="container mx-auto px-4 max-w-3xl py-12">
-        <a href={`${basePath}/events`} className="text-sm text-primary underline focus-ring rounded">
+      <article className="container mx-auto max-w-3xl px-4 py-12">
+        <a
+          href={`${basePath}/events`}
+          className="text-primary focus-ring rounded text-sm underline"
+        >
           {translate(messages, 'collections.backToList')}
         </a>
 
-        <header className="mt-4 mb-6">
+        <header className="mb-6 mt-4">
           <div className="flex flex-wrap items-center gap-2">
-            <h1 className="text-3xl md:text-4xl font-heading font-bold text-primary">
+            <h1 className="font-heading text-primary text-3xl font-bold md:text-4xl">
               {item.title}
             </h1>
             {item.recurring && (
@@ -118,21 +128,23 @@ export default async function TenantEventDetailPage({ params }: { params: Tenant
           </div>
           {item.location && (
             <div>
-              <dt className="text-sm text-gray-500">{translate(messages, 'events.locationLabel')}</dt>
+              <dt className="text-sm text-gray-500">
+                {translate(messages, 'events.locationLabel')}
+              </dt>
               <dd className="font-medium">{item.location}</dd>
             </div>
           )}
         </dl>
 
         {item.description && (
-          <p className="text-gray-800 leading-relaxed whitespace-pre-line">{item.description}</p>
+          <p className="whitespace-pre-line leading-relaxed text-gray-800">{item.description}</p>
         )}
 
         {registrationAllowed && (
           <div className="mt-8">
             <a
               href={item.registrationUrl}
-              className="inline-block rounded-md bg-primary px-6 py-3 font-medium text-white focus-ring"
+              className="bg-primary focus-ring inline-block rounded-md px-6 py-3 font-medium text-white"
             >
               {translate(messages, 'collections.register')}
             </a>

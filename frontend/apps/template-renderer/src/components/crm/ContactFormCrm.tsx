@@ -124,7 +124,7 @@ export function ContactFormCrm({
         return { ok: false, message: tCrm('errorGeneric') };
       }
     },
-    [crmConfigured, tenantSlug, tForms, tCrm],
+    [crmConfigured, tenantSlug, tForms, tCrm]
   );
 
   return (

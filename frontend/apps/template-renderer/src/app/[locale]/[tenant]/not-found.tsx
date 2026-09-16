@@ -22,9 +22,7 @@ import { pickLocalized } from '@/lib/i18n-helpers';
 
 export default function TenantNotFound() {
   const headerLocale = headers().get(LOCALE_HEADER);
-  const locale: SupportedLocale = isSupportedLocale(headerLocale)
-    ? headerLocale
-    : DEFAULT_LOCALE;
+  const locale: SupportedLocale = isSupportedLocale(headerLocale) ? headerLocale : DEFAULT_LOCALE;
   const messages = getMessages(locale);
 
   const resolved = resolveCurrentTenant();
@@ -32,15 +30,17 @@ export default function TenantNotFound() {
   const homeHref = resolved ? `/${locale}/${resolved.tenantId}` : '/';
 
   return (
-    <main className="flex-1 flex items-center justify-center px-4 py-24">
-      <div className="max-w-md text-center space-y-4">
-        <p className="text-6xl font-heading font-bold text-primary">404</p>
-        {tenantName && <p className="text-sm uppercase tracking-wide text-gray-500">{tenantName}</p>}
-        <h1 className="text-2xl font-heading font-bold">
+    <main className="flex flex-1 items-center justify-center px-4 py-24">
+      <div className="max-w-md space-y-4 text-center">
+        <p className="font-heading text-primary text-6xl font-bold">404</p>
+        {tenantName && (
+          <p className="text-sm uppercase tracking-wide text-gray-500">{tenantName}</p>
+        )}
+        <h1 className="font-heading text-2xl font-bold">
           {translate(messages, 'errors.notFoundTitle')}
         </h1>
         <p className="text-gray-600">{translate(messages, 'errors.notFoundBody')}</p>
-        <a href={homeHref} className="inline-block text-primary underline focus-ring rounded">
+        <a href={homeHref} className="text-primary focus-ring inline-block rounded underline">
           {translate(messages, 'navigation.home')}
         </a>
       </div>

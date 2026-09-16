@@ -184,8 +184,14 @@ describe('slug extraction helpers', () => {
   it('slugFromHeader reads and validates the X-Tenant header', () => {
     const get = (name: string) => (name === TENANT_HEADER ? 'joniskis-church' : null);
     assert.equal(slugFromHeader(get), 'joniskis-church');
-    assert.equal(slugFromHeader(() => 'NOT VALID!'), null);
-    assert.equal(slugFromHeader(() => null), null);
+    assert.equal(
+      slugFromHeader(() => 'NOT VALID!'),
+      null
+    );
+    assert.equal(
+      slugFromHeader(() => null),
+      null
+    );
   });
 });
 
@@ -217,7 +223,7 @@ describe('registry integrity (Wave-1 pilot)', () => {
       for (const feature of FEATURES_BY_TIER[tenant.packageTier]) {
         assert.ok(
           tenant.features.includes(feature),
-          `${tenant.slug} (${tenant.packageTier}) missing baseline feature ${feature}`,
+          `${tenant.slug} (${tenant.packageTier}) missing baseline feature ${feature}`
         );
       }
     }

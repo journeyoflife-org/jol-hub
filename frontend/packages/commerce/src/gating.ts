@@ -29,7 +29,7 @@ export const COMMERCE_FEATURES: Record<CommerceCapability, string> = {
  */
 export function hasCommerceCapability(
   features: readonly string[],
-  capability: CommerceCapability,
+  capability: CommerceCapability
 ): boolean {
   return features.includes(COMMERCE_FEATURES[capability]);
 }
@@ -40,6 +40,6 @@ export function hasCommerceCapability(
  */
 export function entitledCapabilities(features: readonly string[]): CommerceCapability[] {
   return (Object.keys(COMMERCE_FEATURES) as CommerceCapability[]).filter((capability) =>
-    hasCommerceCapability(features, capability),
+    hasCommerceCapability(features, capability)
   );
 }

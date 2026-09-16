@@ -81,11 +81,11 @@ describe('splitEventsByTime', () => {
     const { upcoming, past } = splitEventsByTime(events, now);
     assert.deepEqual(
       upcoming.map((e) => e.slug),
-      ['future-near', 'future-far'], // ascending
+      ['future-near', 'future-far'] // ascending
     );
     assert.deepEqual(
       past.map((e) => e.slug),
-      ['past-late', 'past-early'], // descending (most recent first)
+      ['past-late', 'past-early'] // descending (most recent first)
     );
   });
 

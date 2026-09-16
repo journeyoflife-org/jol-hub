@@ -67,32 +67,30 @@ function MonthCalendar({
 
   return (
     <div className="container mx-auto px-4">
-      <p className="text-lg font-heading font-semibold text-primary mb-3">
+      <p className="font-heading text-primary mb-3 text-lg font-semibold">
         {monthLabel(locale, year, month)}
       </p>
-      <div className="grid grid-cols-7 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden">
+      <div className="grid grid-cols-7 gap-px overflow-hidden rounded-lg border border-gray-200 bg-gray-200">
         {weekdays.map((day) => (
           <div key={day} className="bg-gray-50 p-2 text-center text-xs font-medium text-gray-600">
             {day}
           </div>
         ))}
         {cells.map((cell, index) => {
-          const dayEvents = cell.date ? byDate.get(cell.date) ?? [] : [];
+          const dayEvents = cell.date ? (byDate.get(cell.date) ?? []) : [];
           return (
             <div
               key={cell.date ?? `blank-${index}`}
-              className={`bg-white min-h-[4.5rem] p-1.5 ${cell.inMonth ? '' : 'bg-gray-50'}`}
+              className={`min-h-[4.5rem] bg-white p-1.5 ${cell.inMonth ? '' : 'bg-gray-50'}`}
             >
-              {cell.dayOfMonth && (
-                <span className="text-xs text-gray-500">{cell.dayOfMonth}</span>
-              )}
+              {cell.dayOfMonth && <span className="text-xs text-gray-500">{cell.dayOfMonth}</span>}
               {dayEvents.length > 0 && (
                 <ul className="mt-1 space-y-0.5">
                   {dayEvents.map((event) => (
                     <li key={event.slug}>
                       <a
                         href={collectionHref(basePath, `/events/${event.slug}`, {})}
-                        className="block truncate rounded bg-primary/10 px-1 text-[11px] text-primary hover:bg-primary/20 focus-ring"
+                        className="bg-primary/10 text-primary hover:bg-primary/20 focus-ring block truncate rounded px-1 text-[11px]"
                         title={event.title}
                       >
                         {event.title}
@@ -153,7 +151,9 @@ export default async function TenantEventsListPage({
   }
 
   const all = await getEvents(tenant);
-  const categories = Array.from(new Set(all.map((item) => item.category).filter(Boolean))) as string[];
+  const categories = Array.from(
+    new Set(all.map((item) => item.category).filter(Boolean))
+  ) as string[];
 
   const view = readString(searchParams, 'view') === 'calendar' ? 'calendar' : 'list';
   const when = readString(searchParams, 'when') === 'past' ? 'past' : 'upcoming';
@@ -177,7 +177,7 @@ export default async function TenantEventsListPage({
             listed.map((item) => ({
               name: item.title,
               url: absoluteUrl(`${basePath}/events/${item.slug}`),
-            })),
+            }))
           ),
         ]}
       />
@@ -185,17 +185,25 @@ export default async function TenantEventsListPage({
       <CollectionPageHeader title={eventsLabel(locale)} />
 
       {/* View toggle: calendar vs list. */}
-      <div className="container mx-auto px-4 pb-4 flex flex-wrap items-center gap-4">
+      <div className="container mx-auto flex flex-wrap items-center gap-4 px-4 pb-4">
         <div className="inline-flex rounded-lg border border-gray-300 p-0.5" role="group">
           <a
-            href={collectionHref(basePath, '/events', { view: undefined, when, category: activeCategory })}
+            href={collectionHref(basePath, '/events', {
+              view: undefined,
+              when,
+              category: activeCategory,
+            })}
             className={toggleLink(view === 'list')}
             aria-current={view === 'list' ? 'true' : undefined}
           >
             {translate(messages, 'collections.listView')}
           </a>
           <a
-            href={collectionHref(basePath, '/events', { view: 'calendar', when, category: activeCategory })}
+            href={collectionHref(basePath, '/events', {
+              view: 'calendar',
+              when,
+              category: activeCategory,
+            })}
             className={toggleLink(view === 'calendar')}
             aria-current={view === 'calendar' ? 'true' : undefined}
           >
@@ -206,14 +214,22 @@ export default async function TenantEventsListPage({
         {view === 'list' && (
           <div className="inline-flex rounded-lg border border-gray-300 p-0.5" role="group">
             <a
-              href={collectionHref(basePath, '/events', { view, when: undefined, category: activeCategory })}
+              href={collectionHref(basePath, '/events', {
+                view,
+                when: undefined,
+                category: activeCategory,
+              })}
               className={toggleLink(when === 'upcoming')}
               aria-current={when === 'upcoming' ? 'true' : undefined}
             >
               {translate(messages, 'collections.upcoming')}
             </a>
             <a
-              href={collectionHref(basePath, '/events', { view, when: 'past', category: activeCategory })}
+              href={collectionHref(basePath, '/events', {
+                view,
+                when: 'past',
+                category: activeCategory,
+              })}
               className={toggleLink(when === 'past')}
               aria-current={when === 'past' ? 'true' : undefined}
             >
@@ -229,7 +245,10 @@ export default async function TenantEventsListPage({
         categories={categories}
         active={activeCategory}
         locale={locale}
-        preserve={{ view: view === 'calendar' ? 'calendar' : undefined, when: when === 'past' ? 'past' : undefined }}
+        preserve={{
+          view: view === 'calendar' ? 'calendar' : undefined,
+          when: when === 'past' ? 'past' : undefined,
+        }}
       />
 
       {view === 'calendar' ? (
@@ -237,7 +256,7 @@ export default async function TenantEventsListPage({
       ) : listed.length === 0 ? (
         <CollectionEmptyState messageKey="collections.emptyEvents" locale={locale} />
       ) : (
-        <div className="container mx-auto px-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="container mx-auto grid gap-6 px-4 md:grid-cols-2 lg:grid-cols-3">
           {listed.map((item) => (
             <EventCard
               key={item.slug}

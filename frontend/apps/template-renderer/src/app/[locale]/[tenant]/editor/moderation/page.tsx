@@ -37,7 +37,9 @@ export default async function EditorModerationPage({
   if (isAuthConfigured()) {
     const session = await getAuthSession();
     if (!session) {
-      redirect(`/api/auth/signin?callbackUrl=${encodeURIComponent(`${basePath}/editor/moderation`)}`);
+      redirect(
+        `/api/auth/signin?callbackUrl=${encodeURIComponent(`${basePath}/editor/moderation`)}`
+      );
     }
     // Tenant admin OR platform superadmin — editors submit, admins decide.
     authorized = isAdmin(session, tenant.slug) || isSuperAdmin(session);
@@ -49,7 +51,9 @@ export default async function EditorModerationPage({
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-12">
-      <h1 className="mb-2 font-heading text-2xl font-bold">{translate(messages, 'editor.moderationTitle')}</h1>
+      <h1 className="font-heading mb-2 text-2xl font-bold">
+        {translate(messages, 'editor.moderationTitle')}
+      </h1>
       <p className="mb-6 text-sm text-neutral-500 dark:text-neutral-400">
         {translate(messages, 'auth.editorModerationNote')}
       </p>

@@ -76,15 +76,24 @@
             "items": [
               {
                 "title": { "lt": "Šiaulių dekanatas", "en": "Šiauliai Deanery" },
-                "subtitle": { "lt": "Šiaulių miesto ir apylinkių parapijos", "en": "Parishes of Šiauliai city and surroundings" }
+                "subtitle": {
+                  "lt": "Šiaulių miesto ir apylinkių parapijos",
+                  "en": "Parishes of Šiauliai city and surroundings"
+                }
               },
               {
                 "title": { "lt": "Telšių dekanatas", "en": "Telšiai Deanery" },
-                "subtitle": { "lt": "Žemaitijos širdies parapijos", "en": "Parishes of the Samogitian heartland" }
+                "subtitle": {
+                  "lt": "Žemaitijos širdies parapijos",
+                  "en": "Parishes of the Samogitian heartland"
+                }
               },
               {
                 "title": { "lt": "Jonaičio dekanatas", "en": "Jonaitis Deanery" },
-                "subtitle": { "lt": "Rytų vyskupijos parapijos", "en": "Parishes of the eastern deanery" }
+                "subtitle": {
+                  "lt": "Rytų vyskupijos parapijos",
+                  "en": "Parishes of the eastern deanery"
+                }
               }
             ]
           },
@@ -116,9 +125,15 @@
             "type": "keyValue",
             "heading": { "lt": "Vyskupijos kurija", "en": "Diocesan curia" },
             "items": [
-              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Aušros al. 42, 76283 Šiauliai" },
+              {
+                "label": { "lt": "Adresas", "en": "Address" },
+                "value": "Aušros al. 42, 76283 Šiauliai"
+              },
               { "label": { "lt": "Raštinė", "en": "Chancery" }, "value": "+370 41 52 20 01" },
-              { "label": { "lt": "Priėmimo laikas", "en": "Office hours" }, "value": "I–V 9:00–16:00" }
+              {
+                "label": { "lt": "Priėmimo laikas", "en": "Office hours" },
+                "value": "I–V 9:00–16:00"
+              }
             ]
           }
         ],
@@ -134,10 +149,19 @@
             "type": "keyValue",
             "heading": { "lt": "Susisiekite su kurija", "en": "Contact the curia" },
             "items": [
-              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Aušros al. 42, 76283 Šiauliai, Lietuva" },
+              {
+                "label": { "lt": "Adresas", "en": "Address" },
+                "value": "Aušros al. 42, 76283 Šiauliai, Lietuva"
+              },
               { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 41 52 20 01" },
-              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "info@siauliuvyskupija-demo.lt" },
-              { "label": { "lt": "Darbo laikas", "en": "Office hours" }, "value": "Pirmadienis–penktadienis 9:00–16:00" }
+              {
+                "label": { "lt": "El. paštas", "en": "Email" },
+                "value": "info@siauliuvyskupija-demo.lt"
+              },
+              {
+                "label": { "lt": "Darbo laikas", "en": "Office hours" },
+                "value": "Pirmadienis–penktadienis 9:00–16:00"
+              }
             ]
           }
         ]
@@ -207,7 +231,10 @@
           },
           {
             "type": "cta",
-            "heading": { "lt": "Dalyvaukite katedros gyvenime", "en": "Take part in cathedral life" },
+            "heading": {
+              "lt": "Dalyvaukite katedros gyvenime",
+              "en": "Take part in cathedral life"
+            },
             "links": [
               { "label": { "lt": "Renginiai", "en": "Events" }, "href": "/renginiai" },
               { "label": { "lt": "Paaukoti", "en": "Donate" }, "href": "/aukos" },
@@ -229,7 +256,10 @@
             "items": [
               {
                 "title": { "lt": "Vargonų muzikos vakaras", "en": "Organ music evening" },
-                "subtitle": { "lt": "Penktadienis, 19:00 — įėjimas laisvas", "en": "Friday, 19:00 — free entry" },
+                "subtitle": {
+                  "lt": "Penktadienis, 19:00 — įėjimas laisvas",
+                  "en": "Friday, 19:00 — free entry"
+                },
                 "description": {
                   "lt": "J. S. Bacho ir lietuvių kompozitorių kūriniai katedros vargonais.",
                   "en": "Works by J. S. Bach and Lithuanian composers on the cathedral organ."
@@ -260,7 +290,10 @@
         "contentBlocks": [
           {
             "type": "text",
-            "heading": { "lt": "Jūsų auka palaiko katedros tarnystę", "en": "Your gift sustains the cathedral's ministry" },
+            "heading": {
+              "lt": "Jūsų auka palaiko katedros tarnystę",
+              "en": "Your gift sustains the cathedral's ministry"
+            },
             "body": {
               "lt": "Aukos skirtos katedros išlaikymui, paveldo restauravimui ir karitatyvinei veiklai. Galite paaukoti sekmadienio Mišių metu, raštinėje arba elektroniniu būdu — dėkojame už kiekvieną paramą.",
               "en": "Donations support the upkeep of the cathedral, heritage restoration and charitable work. You can give during Sunday Mass, at the chancery or electronically — thank you for every gift."
@@ -270,9 +303,18 @@
             "type": "keyValue",
             "heading": { "lt": "Paramos būdai", "en": "Ways to give" },
             "items": [
-              { "label": { "lt": "Elektroninė auka", "en": "Online giving" }, "value": "Aktyvuojama su mokėjimų posisteme (ADR-007)" },
-              { "label": { "lt": "Raštinėje", "en": "At the chancery" }, "value": "I–V 9:00–16:00" },
-              { "label": { "lt": "Pavedimu", "en": "Bank transfer" }, "value": "Rekvizitai — raštinėje" }
+              {
+                "label": { "lt": "Elektroninė auka", "en": "Online giving" },
+                "value": "Aktyvuojama su mokėjimų posisteme (ADR-007)"
+              },
+              {
+                "label": { "lt": "Raštinėje", "en": "At the chancery" },
+                "value": "I–V 9:00–16:00"
+              },
+              {
+                "label": { "lt": "Pavedimu", "en": "Bank transfer" },
+                "value": "Rekvizitai — raštinėje"
+              }
             ]
           }
         ],
@@ -327,7 +369,10 @@
         "contentBlocks": [
           {
             "type": "hero",
-            "heading": { "lt": "Esame šalia, kai labiausiai reikia", "en": "We are with you when you need us most" },
+            "heading": {
+              "lt": "Esame šalia, kai labiausiai reikia",
+              "en": "We are with you when you need us most"
+            },
             "subheading": {
               "lt": "Visos laidojimo paslaugos vienoje vietoje — skubus iškvietimas 24/7",
               "en": "All funeral services in one place — urgent call-out 24/7"
@@ -342,10 +387,19 @@
           },
           {
             "type": "cta",
-            "heading": { "lt": "Skubus iškvietimas visą parą", "en": "Urgent call-out around the clock" },
+            "heading": {
+              "lt": "Skubus iškvietimas visą parą",
+              "en": "Urgent call-out around the clock"
+            },
             "links": [
-              { "label": { "lt": "Skambinti: +370 41 52 30 03", "en": "Call: +370 41 52 30 03" }, "href": "/kontaktai" },
-              { "label": { "lt": "Rezervuoti konsultaciją", "en": "Book a consultation" }, "href": "/paslaugos" }
+              {
+                "label": { "lt": "Skambinti: +370 41 52 30 03", "en": "Call: +370 41 52 30 03" },
+                "href": "/kontaktai"
+              },
+              {
+                "label": { "lt": "Rezervuoti konsultaciją", "en": "Book a consultation" },
+                "href": "/paslaugos"
+              }
             ]
           }
         ],
@@ -362,7 +416,10 @@
             "heading": { "lt": "Paslaugos", "en": "Services" },
             "items": [
               {
-                "title": { "lt": "Pilnas laidojimo organizavimas", "en": "Full funeral arrangement" },
+                "title": {
+                  "lt": "Pilnas laidojimo organizavimas",
+                  "en": "Full funeral arrangement"
+                },
                 "description": {
                   "lt": "Dokumentai, karstas, transportas, salė, ceremonija — viskas vienoje sutartyje.",
                   "en": "Paperwork, casket, transport, hall and ceremony — one contract."
@@ -418,10 +475,19 @@
             "type": "keyValue",
             "heading": { "lt": "Visą parą", "en": "Around the clock" },
             "items": [
-              { "label": { "lt": "Skubus telefonas", "en": "Urgent phone" }, "value": "+370 41 52 30 03" },
-              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Pramonės g. 15, 76103 Šiauliai" },
+              {
+                "label": { "lt": "Skubus telefonas", "en": "Urgent phone" },
+                "value": "+370 41 52 30 03"
+              },
+              {
+                "label": { "lt": "Adresas", "en": "Address" },
+                "value": "Pramonės g. 15, 76103 Šiauliai"
+              },
               { "label": { "lt": "El. paštas", "en": "Email" }, "value": "info@rimtis-demo.lt" },
-              { "label": { "lt": "Darbo laikas", "en": "Office hours" }, "value": "I–VI 8:00–20:00, skubus iškvietimas — 24/7" }
+              {
+                "label": { "lt": "Darbo laikas", "en": "Office hours" },
+                "value": "I–VI 8:00–20:00, skubus iškvietimas — 24/7"
+              }
             ]
           }
         ]
@@ -456,7 +522,10 @@
         "contentBlocks": [
           {
             "type": "hero",
-            "heading": { "lt": "Kapavietės priežiūra be rūpesčių", "en": "Grave care without worry" },
+            "heading": {
+              "lt": "Kapavietės priežiūra be rūpesčių",
+              "en": "Grave care without worry"
+            },
             "subheading": {
               "lt": "Tvarkome, prižiūrime ir puošiame — reguliariai arba prieš šventes",
               "en": "We tidy, maintain and decorate — regularly or before feast days"
@@ -475,7 +544,10 @@
             "type": "stats",
             "heading": { "lt": "Mūsų darbas", "en": "Our work" },
             "items": [
-              { "label": { "lt": "Prižiūrimų kapaviečių", "en": "Graves maintained" }, "value": 640 },
+              {
+                "label": { "lt": "Prižiūrimų kapaviečių", "en": "Graves maintained" },
+                "value": 640
+              },
               { "label": { "lt": "Metų patirtis", "en": "Years of experience" }, "value": 10 },
               { "label": { "lt": "Aptarnaujamos kapinės", "en": "Cemeteries served" }, "value": 4 }
             ]
@@ -525,7 +597,10 @@
             "type": "cta",
             "heading": { "lt": "Užsakykite priežiūrą internetu", "en": "Book care online" },
             "links": [
-              { "label": { "lt": "Paslaugos ir kainos", "en": "Services and prices" }, "href": "/paslaugos" },
+              {
+                "label": { "lt": "Paslaugos ir kainos", "en": "Services and prices" },
+                "href": "/paslaugos"
+              },
               { "label": { "lt": "Rezervuoti vizitą", "en": "Book a visit" }, "href": "/kontaktai" }
             ]
           }
@@ -568,7 +643,10 @@
               },
               {
                 "title": { "lt": "Paminklo plovimas", "en": "Monument washing" },
-                "subtitle": { "lt": "Švelnios, akmeniui saugios priemonės", "en": "Gentle, stone-safe products" },
+                "subtitle": {
+                  "lt": "Švelnios, akmeniui saugios priemonės",
+                  "en": "Gentle, stone-safe products"
+                },
                 "price": 45
               }
             ]
@@ -587,8 +665,14 @@
             "heading": { "lt": "Susisiekite", "en": "Get in touch" },
             "items": [
               { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 41 52 40 04" },
-              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "info@kapiniuprieziura-demo.lt" },
-              { "label": { "lt": "Darbo laikas", "en": "Working hours" }, "value": "I–V 8:00–17:00, šeštadieniais — pagal susitarimą" }
+              {
+                "label": { "lt": "El. paštas", "en": "Email" },
+                "value": "info@kapiniuprieziura-demo.lt"
+              },
+              {
+                "label": { "lt": "Darbo laikas", "en": "Working hours" },
+                "value": "I–V 8:00–17:00, šeštadieniais — pagal susitarimą"
+              }
             ]
           },
           {
@@ -631,7 +715,10 @@
         "contentBlocks": [
           {
             "type": "hero",
-            "heading": { "lt": "Sveiki atvykę į Kražių parapiją", "en": "Welcome to Kražiai parish" },
+            "heading": {
+              "lt": "Sveiki atvykę į Kražių parapiją",
+              "en": "Welcome to Kražiai parish"
+            },
             "subheading": {
               "lt": "Kviečiame į bendrą maldą, atlaidus ir bendruomenės šventes",
               "en": "Join us for common prayer, patronal feasts and community gatherings"
@@ -674,10 +761,19 @@
             "type": "keyValue",
             "heading": { "lt": "Parapijos raštinė", "en": "Parish office" },
             "items": [
-              { "label": { "lt": "Adresas", "en": "Address" }, "value": "Bažnyčios g. 3, 86142 Kražiai" },
+              {
+                "label": { "lt": "Adresas", "en": "Address" },
+                "value": "Bažnyčios g. 3, 86142 Kražiai"
+              },
               { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 26 10 05" },
-              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "parapija@kraziai-demo.lt" },
-              { "label": { "lt": "Raštinės laikas", "en": "Office hours" }, "value": "Po sekmadienio Mišių ir trečiadieniais 16:00–18:00" }
+              {
+                "label": { "lt": "El. paštas", "en": "Email" },
+                "value": "parapija@kraziai-demo.lt"
+              },
+              {
+                "label": { "lt": "Raštinės laikas", "en": "Office hours" },
+                "value": "Po sekmadienio Mišių ir trečiadieniais 16:00–18:00"
+              }
             ]
           }
         ]

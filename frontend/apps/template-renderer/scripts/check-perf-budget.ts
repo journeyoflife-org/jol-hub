@@ -87,6 +87,8 @@ const polyfillBytes = polyfillBytesFrom(polyfillSizes);
 
 const result = evaluateFootprints(footprints, jsBudgetKiB, cssBudgetKiB, polyfillBytes);
 console.log(formatGateReport(result, footprints, polyfillBytes));
-console.log(`routes measured: ${footprints.length}   polyfill exclusion: ${formatKiB(polyfillBytes)}`);
+console.log(
+  `routes measured: ${footprints.length}   polyfill exclusion: ${formatKiB(polyfillBytes)}`
+);
 
 process.exit(result.passed ? 0 : 1);

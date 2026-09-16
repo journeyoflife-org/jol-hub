@@ -66,14 +66,11 @@ export function ChartTooltip({ active, payload, label, formatter }: CustomToolti
   }
 
   return (
-    <div className="rounded-lg border bg-background px-3 py-2 shadow-md">
-      <p className="text-sm font-medium mb-1">{label}</p>
+    <div className="bg-background rounded-lg border px-3 py-2 shadow-md">
+      <p className="mb-1 text-sm font-medium">{label}</p>
       {payload.map((entry, index) => (
         <div key={index} className="flex items-center gap-2 text-sm">
-          <span
-            className="w-2 h-2 rounded-full"
-            style={{ backgroundColor: entry.color }}
-          />
+          <span className="h-2 w-2 rounded-full" style={{ backgroundColor: entry.color }} />
           <span className="text-muted-foreground">{entry.name}:</span>
           <span className="font-medium">
             {formatter ? formatter(entry.value, entry.name) : entry.value.toLocaleString()}

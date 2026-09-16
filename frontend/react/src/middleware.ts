@@ -14,42 +14,37 @@
  *       signal; AuthContext performs the real refresh + /me call.
  */
 
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
-import { REFRESH_TOKEN_COOKIE } from '@/lib/tokenStore'
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { REFRESH_TOKEN_COOKIE } from '@/lib/tokenStore';
 
 // Routes that do not require authentication
-const PUBLIC_PATHS = new Set([
-  '/login',
-  '/register',
-  '/forgot-password',
-  '/reset-password',
-])
+const PUBLIC_PATHS = new Set(['/login', '/register', '/forgot-password', '/reset-password']);
 
-const PUBLIC_PREFIX = ['/api/', '/_next/', '/favicon', '/public/']
+const PUBLIC_PREFIX = ['/api/', '/_next/', '/favicon', '/public/'];
 
 function isPublic(pathname: string): boolean {
-  if (PUBLIC_PATHS.has(pathname)) return true
-  return PUBLIC_PREFIX.some((prefix) => pathname.startsWith(prefix))
+  if (PUBLIC_PATHS.has(pathname)) return true;
+  return PUBLIC_PREFIX.some((prefix) => pathname.startsWith(prefix));
 }
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
+  const { pathname } = request.nextUrl;
 
-  if (isPublic(pathname)) return NextResponse.next()
+  if (isPublic(pathname)) return NextResponse.next();
 
-  const hasSession = Boolean(request.cookies.get(REFRESH_TOKEN_COOKIE)?.value)
+  const hasSession = Boolean(request.cookies.get(REFRESH_TOKEN_COOKIE)?.value);
 
   if (!hasSession) {
-    const loginUrl = new URL('/login', request.url)
-    loginUrl.searchParams.set('next', pathname)
-    return NextResponse.redirect(loginUrl)
+    const loginUrl = new URL('/login', request.url);
+    loginUrl.searchParams.set('next', pathname);
+    return NextResponse.redirect(loginUrl);
   }
 
-  return NextResponse.next()
+  return NextResponse.next();
 }
 
 export const config = {
   // Run on all routes except static files
   matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
-}
+};

@@ -45,12 +45,12 @@ leak into SEO URLs. Same discipline as the middleware's `publicHost`.
 
 ## Metadata
 
-| Layer | Source | Content |
-| --- | --- | --- |
-| Root layout | `app/layout.tsx` | White-label pass-through template `%s` (hub brand never wraps tenant titles); default `JOL-HUB` for title-less surfaces; no tenant hints |
-| Tenant layout | `generateMetadata` + `buildTenantBaseMetadata` | Title template `%s \| {tenant.name}`, description from tagline (clamped 150–160), absolute home canonical + hreflang |
-| Pages | `buildTenantMetadata` / per-page `generateMetadata` | SHORT page title (layout template appends the tenant suffix), auto/clamped description, per-route canonical/hreflang, OG/Twitter titles fully composed |
-| News detail | `generateMetadata` | `og:type=article`, `publishedTime`/`modifiedTime`, headline as title |
+| Layer         | Source                                              | Content                                                                                                                                                |
+| ------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Root layout   | `app/layout.tsx`                                    | White-label pass-through template `%s` (hub brand never wraps tenant titles); default `JOL-HUB` for title-less surfaces; no tenant hints               |
+| Tenant layout | `generateMetadata` + `buildTenantBaseMetadata`      | Title template `%s \| {tenant.name}`, description from tagline (clamped 150–160), absolute home canonical + hreflang                                   |
+| Pages         | `buildTenantMetadata` / per-page `generateMetadata` | SHORT page title (layout template appends the tenant suffix), auto/clamped description, per-route canonical/hreflang, OG/Twitter titles fully composed |
+| News detail   | `generateMetadata`                                  | `og:type=article`, `publishedTime`/`modifiedTime`, headline as title                                                                                   |
 
 - Descriptions target 150–160 chars (`clampDescription`, word-boundary cut).
   Missing descriptions fall back to tenant tagline; never fabricated.
@@ -65,15 +65,15 @@ type="application/ld+json">`; pure builders in `packages/seo/src/
 structured-data.ts` cover the remaining schema types. All entity URLs are
 absolute.
 
-| Page | Entities |
-| --- | --- |
-| Home (fixture) | Organization (ReligiousOrganization / FuneralHome / LocalBusiness by vertical) + WebSite |
-| Home (composed) | Vertical Organization subtype + WebSite (`base-template.tsx`) |
-| About / Contact | AboutPage / ContactPage + Organization |
-| News list | BreadcrumbList + ItemList |
-| News detail | NewsArticle + BreadcrumbList |
-| Events list/detail | Event (startDate/endDate/location/organizer) + BreadcrumbList + ItemList |
-| Services list/detail | Service (provider/offers) + BreadcrumbList + ItemList |
+| Page                 | Entities                                                                                 |
+| -------------------- | ---------------------------------------------------------------------------------------- |
+| Home (fixture)       | Organization (ReligiousOrganization / FuneralHome / LocalBusiness by vertical) + WebSite |
+| Home (composed)      | Vertical Organization subtype + WebSite (`base-template.tsx`)                            |
+| About / Contact      | AboutPage / ContactPage + Organization                                                   |
+| News list            | BreadcrumbList + ItemList                                                                |
+| News detail          | NewsArticle + BreadcrumbList                                                             |
+| Events list/detail   | Event (startDate/endDate/location/organizer) + BreadcrumbList + ItemList                 |
+| Services list/detail | Service (provider/offers) + BreadcrumbList + ItemList                                    |
 
 Package builders available for the next surfaces: `localBusinessEntity`
 (geo/openingHours/telephone), `productEntity` (PriceSpecification,
@@ -134,12 +134,12 @@ it. Twitter cards stay `summary` until images exist.
 
 Targets: LCP < 2.5s, INP < 200ms, CLS < 0.1, TTFB < 600ms.
 
-| Metric | Current posture | Notes / follow-ups |
-| --- | --- | --- |
-| TTFB | Tenant pages are RSC with ISR (`revalidate=300`) or cached fetches; events/services intentionally `no-store` | Add edge caching/CDN when domains land; backend queries are RLS-scoped single-schema lookups |
-| LCP | System-first font stacks (zero webfont requests), no hero raster images in the pilot, no render-blocking third-party CSS/JS | When hero images land: `next/image` + `priority` and `<link rel="preload" as="image">` |
-| INP | Client JS limited to interactive modules (auth/commerce/CRM/locale switcher); collection pages, articles and templates are pure server components | Debounce search input when VIP site search ships |
-| CLS | `THEME_INIT_SCRIPT` inlined before first paint (no theme-change shift); fonts are system stacks (no FOUT/swap shift); no ads/dynamic slots | Keep explicit dimensions on any future media |
+| Metric | Current posture                                                                                                                                   | Notes / follow-ups                                                                           |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| TTFB   | Tenant pages are RSC with ISR (`revalidate=300`) or cached fetches; events/services intentionally `no-store`                                      | Add edge caching/CDN when domains land; backend queries are RLS-scoped single-schema lookups |
+| LCP    | System-first font stacks (zero webfont requests), no hero raster images in the pilot, no render-blocking third-party CSS/JS                       | When hero images land: `next/image` + `priority` and `<link rel="preload" as="image">`       |
+| INP    | Client JS limited to interactive modules (auth/commerce/CRM/locale switcher); collection pages, articles and templates are pure server components | Debounce search input when VIP site search ships                                             |
+| CLS    | `THEME_INIT_SCRIPT` inlined before first paint (no theme-change shift); fonts are system stacks (no FOUT/swap shift); no ads/dynamic slots        | Keep explicit dimensions on any future media                                                 |
 
 Field measurement (CrUX/Lighthouse CI) joins the SOC 2 CC7.2 quality gate
 once public domains exist; the offline pilot build cannot produce field
@@ -165,16 +165,16 @@ data.
 
 ## Acceptance verification
 
-| Criterion | Status |
-| --- | --- |
+| Criterion                                                         | Status                                                                                                                                                                     |
+| ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Rich Results: Organization/LocalBusiness/Event/Article field sets | Builders emit required fields (name/url/address; name+startDate+location; headline+author+dates); validated by package tests — full Rich Results run requires a public URL |
-| Sitemap valid + complete | Per-tenant, absolute URLs, policy-compliant; detail URLs gated on content plane |
-| robots blocks admin, allows public | Verified by runtime curl |
-| hreflang present + reciprocal | Reciprocity unit-tested (`verifyHreflangReciprocity`); runtime curl shows lt/en/ru + x-default |
-| OG images 1200×630 | Contract fixed; rasterizer pending (fallback chain active) |
-| Canonicals correct | Absolute, query-free, trailing-slash normalized — unit-tested |
-| Descriptions unique, 150–160 | `clampDescription` unit-tested |
-| BreadcrumbList on nested pages | All collection + detail pages |
+| Sitemap valid + complete                                          | Per-tenant, absolute URLs, policy-compliant; detail URLs gated on content plane                                                                                            |
+| robots blocks admin, allows public                                | Verified by runtime curl                                                                                                                                                   |
+| hreflang present + reciprocal                                     | Reciprocity unit-tested (`verifyHreflangReciprocity`); runtime curl shows lt/en/ru + x-default                                                                             |
+| OG images 1200×630                                                | Contract fixed; rasterizer pending (fallback chain active)                                                                                                                 |
+| Canonicals correct                                                | Absolute, query-free, trailing-slash normalized — unit-tested                                                                                                              |
+| Descriptions unique, 150–160                                      | `clampDescription` unit-tested                                                                                                                                             |
+| BreadcrumbList on nested pages                                    | All collection + detail pages                                                                                                                                              |
 
 Rollback: all STEP-11 changes are metadata-level; reverting the commit
 restores the STEP-6 relative alternates without functional impact.

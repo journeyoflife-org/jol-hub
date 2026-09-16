@@ -13,13 +13,13 @@
 
 /** Lifecycle of a moderation item. */
 export type ModerationStatus =
-  | 'pending'        // awaiting human decision (AI screening done or running)
-  | 'scanning'       // malware scan / AI moderation in progress
+  | 'pending' // awaiting human decision (AI screening done or running)
+  | 'scanning' // malware scan / AI moderation in progress
   | 'approved'
   | 'rejected'
   | 'changes-requested'
-  | 'escalated'      // sent to JOL platform admins
-  | 'art9-review';   // GDPR Art. 9 legal review queue
+  | 'escalated' // sent to JOL platform admins
+  | 'art9-review'; // GDPR Art. 9 legal review queue
 
 export type ModerationItemType = 'page-edit' | 'media-upload';
 
@@ -88,9 +88,9 @@ export interface ModerationDecision {
 /** Media upload pipeline state (MediaUploader surface). */
 export type MediaUploadState =
   | 'idle'
-  | 'validating'   // client-side type/size/dimensions/alt
-  | 'uploading'    // transfer in progress
-  | 'quarantined'  // stored, awaiting scan + moderation approval
+  | 'validating' // client-side type/size/dimensions/alt
+  | 'uploading' // transfer in progress
+  | 'quarantined' // stored, awaiting scan + moderation approval
   | 'approved'
   | 'rejected';
 

@@ -3,21 +3,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@journeyoflife-org/ui": [
-        "../../packages/ui/src"
-      ],
-      "@journeyoflife-org/i18n": [
-        "../../packages/i18n/src"
-      ],
-      "@journeyoflife-org/auth": [
-        "../../packages/auth/src"
-      ],
-      "@journeyoflife-org/bitrix-sdk": [
-        "../../packages/bitrix-sdk/src"
-      ]
+      "@/*": ["./src/*"],
+      "@journeyoflife-org/ui": ["../../packages/ui/src"],
+      "@journeyoflife-org/i18n": ["../../packages/i18n/src"],
+      "@journeyoflife-org/auth": ["../../packages/auth/src"],
+      "@journeyoflife-org/bitrix-sdk": ["../../packages/bitrix-sdk/src"]
     },
     "plugins": [
       {
@@ -28,13 +18,6 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

@@ -23,7 +23,14 @@ const STATUS_CLASS: Record<PlotCell['status'], string> = {
 const CELL = 24;
 const GAP = 4;
 
-export function CemeteryMapCanvas({ title, rows, cols, plots = [], tenant: _tenant, className }: CemeteryMapCanvasProps) {
+export function CemeteryMapCanvas({
+  title,
+  rows,
+  cols,
+  plots = [],
+  tenant: _tenant,
+  className,
+}: CemeteryMapCanvasProps) {
   const t = useTranslations('collections');
   const width = cols * (CELL + GAP) + GAP;
   const height = rows * (CELL + GAP) + GAP;
@@ -64,11 +71,14 @@ export function CemeteryMapCanvas({ title, rows, cols, plots = [], tenant: _tena
       <figcaption className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-neutral-600 dark:text-neutral-300">
         {legend.map((item) => (
           <span key={item.key} className="inline-flex items-center gap-1">
-            <span aria-hidden="true" className={cn('inline-block h-3 w-3 rounded-sm', {
-              'bg-emerald-300 dark:bg-emerald-700': item.key === 'available',
-              'bg-amber-300 dark:bg-amber-700': item.key === 'reserved',
-              'bg-neutral-400 dark:bg-neutral-600': item.key === 'occupied',
-            })} />
+            <span
+              aria-hidden="true"
+              className={cn('inline-block h-3 w-3 rounded-sm', {
+                'bg-emerald-300 dark:bg-emerald-700': item.key === 'available',
+                'bg-amber-300 dark:bg-amber-700': item.key === 'reserved',
+                'bg-neutral-400 dark:bg-neutral-600': item.key === 'occupied',
+              })}
+            />
             {item.label}
           </span>
         ))}

@@ -21,9 +21,7 @@ export const OG_IMAGE_MAX_BYTES = 1_000_000;
 /** Tenant-scoped OG image route path (renderer implements the rasterizer). */
 export function ogImagePath(tenantSlug: string, route: string): string {
   const cleanRoute = route === '/' ? '' : encodeURIComponent(route.replace(/^\//, ''));
-  return cleanRoute
-    ? `/${tenantSlug}/og.png?r=${cleanRoute}`
-    : `/${tenantSlug}/og.png`;
+  return cleanRoute ? `/${tenantSlug}/og.png?r=${cleanRoute}` : `/${tenantSlug}/og.png`;
 }
 
 /**

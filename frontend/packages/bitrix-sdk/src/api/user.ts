@@ -38,7 +38,9 @@ export class UserApi {
    */
   async search(
     query: string,
-    params?: Omit<PaginationParams, 'filter'> & { filter?: Record<string, string | number | boolean> }
+    params?: Omit<PaginationParams, 'filter'> & {
+      filter?: Record<string, string | number | boolean>;
+    }
   ): Promise<Bitrix24ListResponse<Bitrix24User>> {
     return this.client.get<Bitrix24ListResponse<Bitrix24User>>('user.search', {
       ...params,
@@ -64,9 +66,10 @@ export class UserApi {
    * Get user fields configuration.
    */
   async fields(): Promise<Record<string, { type: string; title: string }>> {
-    const response = await this.client.get<Bitrix24Response<Record<string, { type: string; title: string }>>>(
-      'user.fields'
-    );
+    const response =
+      await this.client.get<Bitrix24Response<Record<string, { type: string; title: string }>>>(
+        'user.fields'
+      );
     return response.result;
   }
 }

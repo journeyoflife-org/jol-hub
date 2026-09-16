@@ -1,6 +1,6 @@
 /**
  * Locale-aware Layout for parish-template
- * 
+ *
  * Sits at /app/[locale]/layout.tsx and wraps all locale-prefixed routes.
  * - Initialises i18next with the detected locale (Server Component)
  * - Sets <html lang> and dir attributes for RTL readiness
@@ -44,9 +44,9 @@ export async function generateMetadata({
   return {
     alternates: {
       languages: {
-        'lt': '/lt',
-        'ru': '/ru',
-        'en': '/en',
+        lt: '/lt',
+        ru: '/ru',
+        en: '/en',
         'x-default': '/lt',
       },
     },
@@ -93,13 +93,13 @@ export default async function LocaleLayout({
   return (
     <I18nProvider locale={locale}>
       {/* Site-wide Navigation Bar */}
-      <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-40 w-full border-b backdrop-blur">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           {/* Parish name / logo */}
           <div className="flex items-center gap-3">
             {/* Cross icon */}
             <svg
-              className="h-7 w-7 text-primary"
+              className="text-primary h-7 w-7"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -110,10 +110,8 @@ export default async function LocaleLayout({
               <line x1="12" y1="2" x2="12" y2="22" />
               <line x1="4" y1="9" x2="20" y2="9" />
             </svg>
-            <span className="text-lg font-semibold font-serif text-foreground">
-              {subdomain
-                ? subdomain.charAt(0).toUpperCase() + subdomain.slice(1)
-                : 'Parapija'}
+            <span className="text-foreground font-serif text-lg font-semibold">
+              {subdomain ? subdomain.charAt(0).toUpperCase() + subdomain.slice(1) : 'Parapija'}
             </span>
           </div>
 
@@ -128,8 +126,8 @@ export default async function LocaleLayout({
       </main>
 
       {/* Footer */}
-      <footer className="border-t bg-muted/40 py-8">
-        <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
+      <footer className="bg-muted/40 border-t py-8">
+        <div className="text-muted-foreground container mx-auto px-4 text-center text-sm">
           <p>
             {locale === 'lt' && '© JOL-HUB. Visos teisės saugomos.'}
             {locale === 'ru' && '© JOL-HUB. Все права защищены.'}

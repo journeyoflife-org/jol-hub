@@ -81,10 +81,22 @@
           "type": "keyValue",
           "heading": { "lt": "Kontaktai", "en": "Contact", "ru": "Контакты" },
           "items": [
-            { "label": { "lt": "Adresas", "en": "Address", "ru": "Адрес" }, "value": "Katedros a. 1, 01143 Vilnius" },
-            { "label": { "lt": "Telefonas", "en": "Phone", "ru": "Телефон" }, "value": "+370 5 261 0731" },
-            { "label": { "lt": "El. paštas", "en": "Email", "ru": "Эл. почта" }, "value": "info@katedra.lt" },
-            { "label": { "lt": "Svetainė", "en": "Website", "ru": "Сайт" }, "value": "https://katedra.lt" }
+            {
+              "label": { "lt": "Adresas", "en": "Address", "ru": "Адрес" },
+              "value": "Katedros a. 1, 01143 Vilnius"
+            },
+            {
+              "label": { "lt": "Telefonas", "en": "Phone", "ru": "Телефон" },
+              "value": "+370 5 261 0731"
+            },
+            {
+              "label": { "lt": "El. paštas", "en": "Email", "ru": "Эл. почта" },
+              "value": "info@katedra.lt"
+            },
+            {
+              "label": { "lt": "Svetainė", "en": "Website", "ru": "Сайт" },
+              "value": "https://katedra.lt"
+            }
           ]
         },
         {
@@ -96,7 +108,11 @@
           },
           "sacraments": [
             {
-              "name": { "lt": "Šv. Mišių intencija", "en": "Mass Intention", "ru": "Намерение Мессы" },
+              "name": {
+                "lt": "Šv. Mišių intencija",
+                "en": "Mass Intention",
+                "ru": "Намерение Мессы"
+              },
               "description": {
                 "lt": "Užsakymas Mišioms už gyvuosius ar mirusiuosius",
                 "en": "Booking Mass for the living or the deceased",
@@ -123,7 +139,11 @@
         },
         {
           "type": "list",
-          "heading": { "lt": "Katedros tarnystės", "en": "Cathedral Services", "ru": "Службы собора" },
+          "heading": {
+            "lt": "Katedros tarnystės",
+            "en": "Cathedral Services",
+            "ru": "Службы собора"
+          },
           "items": [
             {
               "title": { "lt": "Žvakės", "en": "Candles", "ru": "Свечи" }
@@ -219,7 +239,11 @@
               "dayEn": "Sunday",
               "open": "07:00",
               "close": "20:00",
-              "notes": { "lt": "Mišių metu lankytojai prašomi netrukdyti", "en": "Visitors asked not to disturb during Mass", "ru": "[TODO: verify with parish/diocese — do not publish unverified] Во время Мессы просим не беспокоить" }
+              "notes": {
+                "lt": "Mišių metu lankytojai prašomi netrukdyti",
+                "en": "Visitors asked not to disturb during Mass",
+                "ru": "[TODO: verify with parish/diocese — do not publish unverified] Во время Мессы просим не беспокоить"
+              }
             }
           ],
           "admission": {
@@ -242,8 +266,22 @@
         {
           "type": "cta",
           "links": [
-            { "label": { "lt": "Užsakyti Mišių intenciją", "en": "Book Mass Intention", "ru": "Заказать намерение Мессы" }, "href": "/#mass-intentions" },
-            { "label": { "lt": "Žvakių aukojimas", "en": "Offer Candles", "ru": "Пожертвовать свечи" }, "href": "/#candles" }
+            {
+              "label": {
+                "lt": "Užsakyti Mišių intenciją",
+                "en": "Book Mass Intention",
+                "ru": "Заказать намерение Мессы"
+              },
+              "href": "/#mass-intentions"
+            },
+            {
+              "label": {
+                "lt": "Žvakių aukojimas",
+                "en": "Offer Candles",
+                "ru": "Пожертвовать свечи"
+              },
+              "href": "/#candles"
+            }
           ]
         }
       ],

@@ -16,16 +16,18 @@ import DOMPurify from 'dompurify';
 import type { AuthSession } from '@journeyoflife-org/auth/oidc';
 import { hasRole, isAdmin, isSuperAdmin } from '@journeyoflife-org/auth/oidc';
 import { XSS_PAYLOADS } from '@journeyoflife-org/testing';
-import {
-  renderDraftHtml,
-  isSafeUrl,
-  SANITIZED_ALLOWED_TAGS,
-} from '@/lib/editor/sanitize';
+import { renderDraftHtml, isSafeUrl, SANITIZED_ALLOWED_TAGS } from '@/lib/editor/sanitize';
 import { draftBodySchema, decisionBodySchema, uploadBodySchema } from '@/lib/editor/validation';
 
 /** Attribute allowlist — mirrors BlockEditor's preview sanitize config. */
 const PURIFY_ALLOWED_ATTR = [
-  'href', 'rel', 'alt', 'type', 'data-media-id', 'data-spacer', 'data-block',
+  'href',
+  'rel',
+  'alt',
+  'type',
+  'data-media-id',
+  'data-spacer',
+  'data-block',
 ];
 
 // =============================================================================
@@ -115,7 +117,10 @@ describe('URL policy (isSafeUrl)', () => {
 
 type Role = 'admin' | 'editor' | 'clergy' | 'viewer';
 
-function session(role: Role | null, opts: { slug?: string; platform?: 'superadmin' } = {}): AuthSession {
+function session(
+  role: Role | null,
+  opts: { slug?: string; platform?: 'superadmin' } = {}
+): AuthSession {
   return {
     user: {
       sub: 'u1',

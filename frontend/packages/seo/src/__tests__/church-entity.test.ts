@@ -86,7 +86,7 @@ test('protestant: PlaceOfWorship + denomination property from DATA (row 8)', () 
       url: `${ORIGIN}/lt/t/vilniaus-evangeliku-liuteronu-baznycia`,
       address: VILNIUS_ADDRESS,
       denomination: 'Liuteronų', // controlled-vocabulary label, locale-resolved
-    }),
+    })
   );
   assert.equal(entity['@type'], 'PlaceOfWorship');
   const props = (entity.additionalProperty as Json[]).map(asRecord);
@@ -101,7 +101,7 @@ test('orthodox: Church-led + denomination property + native Cyrillic alternateNa
       name: 'Šv. Dvasios cerkvė',
       nativeName: 'Церковь Святого Духа',
       denomination: 'Stačiatikių',
-    }),
+    })
   );
   assert.deepEqual(entity['@type'], ['Church', 'PlaceOfWorship']);
   assert.equal(entity.alternateName, 'Церковь Святого Духа'); // Cyrillic untouched
@@ -117,7 +117,7 @@ test('other: denomination-agnostic PlaceOfWorship, no denomination property (row
       url: `${ORIGIN}/lt/t/community-chapel`,
       address: VILNIUS_ADDRESS,
       denomination: 'ignored-by-design',
-    }),
+    })
   );
   assert.equal(entity['@type'], 'PlaceOfWorship');
   assert.equal(entity.additionalProperty, undefined);
@@ -131,7 +131,7 @@ test('deanery: ReligiousOrganization at org level (rows 5/6)', () => {
       url: `${ORIGIN}/lt/t/vilniaus-i-dekanatas`,
       address: VILNIUS_ADDRESS,
       parent: DIOCESE,
-    }),
+    })
   );
   assert.equal(entity['@type'], 'ReligiousOrganization');
 });
@@ -144,8 +144,9 @@ test('throws on missing name/url/address', () => {
   assert.throws(() => churchEntity({ ...base('parish'), name: '' }), /name/);
   assert.throws(() => churchEntity({ ...base('parish'), url: '' }), /url/);
   assert.throws(
-    () => churchEntity({ kind: 'parish', name: 'x', url: `${ORIGIN}/x`, address: undefined as never }),
-    /address/,
+    () =>
+      churchEntity({ kind: 'parish', name: 'x', url: `${ORIGIN}/x`, address: undefined as never }),
+    /address/
   );
 });
 
@@ -158,9 +159,12 @@ test('denomination is REQUIRED for protestant and orthodox (rows 8/9)', () => {
         url: `${ORIGIN}/x`,
         address: VILNIUS_ADDRESS,
       }),
-    /denomination/,
+    /denomination/
   );
-  assert.throws(() => churchEntity({ ...base('orthodox'), denomination: undefined }), /denomination/);
+  assert.throws(
+    () => churchEntity({ ...base('orthodox'), denomination: undefined }),
+    /denomination/
+  );
 });
 
 test('geo + parent are EMITTED WHEN PRESENT for basilica/cathedral/parish (recommended props)', () => {
@@ -170,7 +174,9 @@ test('geo + parent are EMITTED WHEN PRESENT for basilica/cathedral/parish (recom
     assert.ok(withData.geo);
     assert.ok(withData.parentOrganization);
     // Absent → omitted gracefully (pilot data layer carries neither yet).
-    const withoutData = asRecord(churchEntity({ ...base(kind), geo: undefined, parent: undefined }));
+    const withoutData = asRecord(
+      churchEntity({ ...base(kind), geo: undefined, parent: undefined })
+    );
     assert.equal(withoutData.geo, undefined);
     assert.equal(withoutData.parentOrganization, undefined);
   }
@@ -193,7 +199,7 @@ test('Cyrillic segments pass through display strings untouched (ru pilot)', () =
       ...base('orthodox'),
       name: 'Церковь Святого Духа',
       denomination: 'Православная',
-    }),
+    })
   );
   assert.equal(entity.name, 'Церковь Святого Духа');
 });
@@ -203,7 +209,10 @@ test('churchSlug folds Cyrillic to ASCII (transliteration policy)', () => {
 });
 
 test('churchSlug folds LT/LV/EE diacritics and hyphenates', () => {
-  assert.equal(churchSlug('Šv. apaštalų Petro ir Povilo bažnyčia'), 'sv-apastalu-petro-ir-povilo-baznycia');
+  assert.equal(
+    churchSlug('Šv. apaštalų Petro ir Povilo bažnyčia'),
+    'sv-apastalu-petro-ir-povilo-baznycia'
+  );
   assert.equal(churchSlug('Rīgas Svētā Pētera baznīca'), 'rigas-sveta-petera-baznica');
   assert.equal(churchSlug('Niguliste kirik — ajalooline'), 'niguliste-kirik-ajalooline');
 });
@@ -217,7 +226,7 @@ test('churchSlug folds LT/LV/EE diacritics and hyphenates', () => {
 test('church-landing hreflang alternates are reciprocal across pilot locales', () => {
   const slug = churchSlug('Šv. apaštalų Petro ir Povilo bažnyčia');
   const pages = ['lt', 'en', 'ru'].map((locale) =>
-    buildHreflangSet(ORIGIN, 't', `/churches/${slug}`, locale),
+    buildHreflangSet(ORIGIN, 't', `/churches/${slug}`, locale)
   );
   assert.deepEqual(verifyHreflangReciprocity(pages), []);
 });

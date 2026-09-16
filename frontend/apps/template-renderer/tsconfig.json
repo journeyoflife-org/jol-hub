@@ -3,18 +3,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@journeyoflife-org/ui": [
-        "../../packages/ui/src"
-      ],
-      "@journeyoflife-org/seed-data": [
-        "../../packages/seed-data/src"
-      ],
-      "@journeyoflife-org/tenant-resolver": [
-        "../../packages/tenant-resolver/src"
-      ]
+      "@/*": ["./src/*"],
+      "@journeyoflife-org/ui": ["../../packages/ui/src"],
+      "@journeyoflife-org/seed-data": ["../../packages/seed-data/src"],
+      "@journeyoflife-org/tenant-resolver": ["../../packages/tenant-resolver/src"]
     },
     "plugins": [
       {
@@ -25,13 +17,6 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

@@ -10,10 +10,21 @@ import assert from 'node:assert/strict';
 
 import { absoluteCanonical, normalizeRoute, sameCanonical, sanitizeOrigin } from '../canonical';
 import { buildHreflangSet, PILOT_HREFLANG, verifyHreflangReciprocity } from '../hreflang';
-import { autoDescription, clampDescription, DESCRIPTION_MAX, robotsPolicyFor, tenantTitleTemplate } from '../metadata';
+import {
+  autoDescription,
+  clampDescription,
+  DESCRIPTION_MAX,
+  robotsPolicyFor,
+  tenantTitleTemplate,
+} from '../metadata';
 import { isSitemapKind, lastmodIso, shardUrls, SITEMAP_MAX_URLS, SITEMAP_POLICY } from '../sitemap';
 import { ROBOTS_DISALLOW, robotsDirectives } from '../robots';
-import { faqPageEntity, localBusinessEntity, productEntity, websiteWithSearchEntity } from '../structured-data';
+import {
+  faqPageEntity,
+  localBusinessEntity,
+  productEntity,
+  websiteWithSearchEntity,
+} from '../structured-data';
 import { ogImagePath, resolveOgImage, twitterCardFor } from '../open-graph';
 import { buildIndexNowPayload, INDEXNOW_MAX_URLS } from '../indexing';
 import type { Json } from '../types';
@@ -61,9 +72,7 @@ test('hreflang set is absolute, complete and has x-default → lt', () => {
 });
 
 test('hreflang is reciprocal by construction across locales', () => {
-  const pages = ['lt', 'en', 'ru'].map((locale) =>
-    buildHreflangSet(ORIGIN, 't', '/about', locale),
-  );
+  const pages = ['lt', 'en', 'ru'].map((locale) => buildHreflangSet(ORIGIN, 't', '/about', locale));
   assert.deepEqual(verifyHreflangReciprocity(pages), []);
 });
 
@@ -77,7 +86,7 @@ test('hreflang reciprocity audit detects one-way links', () => {
 test('pilot hreflang matrix is lt-LT/en-LT/ru-LT', () => {
   assert.deepEqual(
     PILOT_HREFLANG.map((entry) => entry.hreflang),
-    ['lt-LT', 'en-LT', 'ru-LT'],
+    ['lt-LT', 'en-LT', 'ru-LT']
   );
 });
 
@@ -181,7 +190,7 @@ test('localBusinessEntity carries name/url/address/geo/phone', () => {
       address: { addressLocality: 'Šiauliai', postalCode: '76100' },
       geo: { latitude: 55.93, longitude: 23.31 },
       telephone: '+370 600 00000',
-    }),
+    })
   );
   assert.equal(entity['@type'], 'FuneralHome');
   assert.equal(entity['@context'], 'https://schema.org');
@@ -196,7 +205,9 @@ test('localBusinessEntity carries name/url/address/geo/phone', () => {
 });
 
 test('productEntity includes offers with VAT-inclusive price', () => {
-  const entity = asRecord(productEntity({ name: 'Gėlės', url: 'https://x.lt/p/1', price: '12.10' }));
+  const entity = asRecord(
+    productEntity({ name: 'Gėlės', url: 'https://x.lt/p/1', price: '12.10' })
+  );
   assert.equal(entity['@type'], 'Product');
   const offers = asRecord(entity.offers as Json);
   assert.equal(offers.price, '12.10');
@@ -215,7 +226,9 @@ test('faqPageEntity builds Question/Answer pairs', () => {
 });
 
 test('websiteWithSearchEntity includes SearchAction', () => {
-  const entity = asRecord(websiteWithSearchEntity('X', 'https://x.lt', 'https://x.lt/search?q={search_term_string}'));
+  const entity = asRecord(
+    websiteWithSearchEntity('X', 'https://x.lt', 'https://x.lt/search?q={search_term_string}')
+  );
   assert.equal(entity['@type'], 'WebSite');
   const action = asRecord(entity.potentialAction as Json);
   assert.equal(action['@type'], 'SearchAction');
@@ -227,14 +240,22 @@ test('websiteWithSearchEntity includes SearchAction', () => {
 
 test('OG image fallback chain: tenant image > generated > omitted', () => {
   assert.equal(
-    resolveOgImage({ tenantImage: 'https://x.lt/logo.png', generationEnabled: true, tenantSlug: 't', route: '/' }),
-    'https://x.lt/logo.png',
+    resolveOgImage({
+      tenantImage: 'https://x.lt/logo.png',
+      generationEnabled: true,
+      tenantSlug: 't',
+      route: '/',
+    }),
+    'https://x.lt/logo.png'
   );
   assert.equal(
     resolveOgImage({ generationEnabled: true, tenantSlug: 't', route: '/news/a' }),
-    ogImagePath('t', '/news/a'),
+    ogImagePath('t', '/news/a')
   );
-  assert.equal(resolveOgImage({ generationEnabled: false, tenantSlug: 't', route: '/' }), undefined);
+  assert.equal(
+    resolveOgImage({ generationEnabled: false, tenantSlug: 't', route: '/' }),
+    undefined
+  );
 });
 
 test('twitter card follows image availability', () => {

@@ -6,7 +6,19 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { Button, Input, Label, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Alert, AlertDescription, Separator } from '@journeyoflife-org/ui';
+import {
+  Button,
+  Input,
+  Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Alert,
+  AlertDescription,
+  Separator,
+} from '@journeyoflife-org/ui';
 import { CreditCard, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 interface CemeteryService {
@@ -48,53 +60,60 @@ export function SubscriptionSignup({ services }: SubscriptionSignupProps): JSX.E
   const selectedSize = GRAVE_SIZES.find((s) => s.id === graveSize);
   const selectedFreq = FREQUENCIES.find((f) => f.id === frequency);
 
-  const monthlyPrice = selectedService && selectedSize && selectedFreq
-    ? Math.round(selectedService.pricePerVisit * selectedSize.multiplier * selectedFreq.visitsPerYear / 12)
-    : 0;
+  const monthlyPrice =
+    selectedService && selectedSize && selectedFreq
+      ? Math.round(
+          (selectedService.pricePerVisit * selectedSize.multiplier * selectedFreq.visitsPerYear) /
+            12
+        )
+      : 0;
 
-  const handleSubmit = useCallback(async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
 
-    if (!name.trim() || !email.trim() || !graveLocation.trim()) {
-      setError('Please fill in all required fields');
-      return;
-    }
+      if (!name.trim() || !email.trim() || !graveLocation.trim()) {
+        setError('Please fill in all required fields');
+        return;
+      }
 
-    setIsSubmitting(true);
-    setError(null);
+      setIsSubmitting(true);
+      setError(null);
 
-    try {
-      // Create Stripe Checkout Session
-      const response = await fetch('/api/stripe/create-subscription', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          serviceId,
-          graveSize,
-          frequency,
-          name,
-          email,
-          graveLocation,
-          monthlyPrice,
-        }),
-      });
+      try {
+        // Create Stripe Checkout Session
+        const response = await fetch('/api/stripe/create-subscription', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            serviceId,
+            graveSize,
+            frequency,
+            name,
+            email,
+            graveLocation,
+            monthlyPrice,
+          }),
+        });
 
-      if (!response.ok) throw new Error('Failed to create subscription');
+        if (!response.ok) throw new Error('Failed to create subscription');
 
-      const { url } = await response.json();
-      window.location.href = url;
-    } catch {
-      setError('Failed to start subscription. Please try again.');
-      setIsSubmitting(false);
-    }
-  }, [serviceId, graveSize, frequency, name, email, graveLocation, monthlyPrice]);
+        const { url } = await response.json();
+        window.location.href = url;
+      } catch {
+        setError('Failed to start subscription. Please try again.');
+        setIsSubmitting(false);
+      }
+    },
+    [serviceId, graveSize, frequency, name, email, graveLocation, monthlyPrice]
+  );
 
   if (isSuccess) {
     return (
-      <div className="text-center py-6 space-y-3">
-        <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+      <div className="space-y-3 py-6 text-center">
+        <CheckCircle className="mx-auto h-12 w-12 text-green-500" />
         <h3 className="font-semibold">Redirecting to payment...</h3>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Please complete your subscription in the secure checkout.
         </p>
       </div>
@@ -192,14 +211,12 @@ export function SubscriptionSignup({ services }: SubscriptionSignupProps): JSX.E
       </div>
 
       {/* Price Summary */}
-      <div className="bg-muted p-4 rounded-lg">
-        <div className="flex justify-between items-center">
-          <span className="text-sm text-muted-foreground">Monthly payment:</span>
-          <span className="text-2xl font-bold text-primary">€{monthlyPrice}</span>
+      <div className="bg-muted rounded-lg p-4">
+        <div className="flex items-center justify-between">
+          <span className="text-muted-foreground text-sm">Monthly payment:</span>
+          <span className="text-primary text-2xl font-bold">€{monthlyPrice}</span>
         </div>
-        <p className="text-xs text-muted-foreground mt-1">
-          Billed monthly. Cancel anytime.
-        </p>
+        <p className="text-muted-foreground mt-1 text-xs">Billed monthly. Cancel anytime.</p>
       </div>
 
       {error && (
@@ -211,9 +228,9 @@ export function SubscriptionSignup({ services }: SubscriptionSignupProps): JSX.E
 
       <Button type="submit" disabled={isSubmitting} className="w-full">
         {isSubmitting ? (
-          <Loader2 className="h-4 w-4 animate-spin mr-2" />
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
         ) : (
-          <CreditCard className="h-4 w-4 mr-2" />
+          <CreditCard className="mr-2 h-4 w-4" />
         )}
         Start Subscription
       </Button>

@@ -144,9 +144,7 @@
                 "en": "Vilnius I Deanery",
                 "ru": "Vilnius I Deanery [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": [
-                "12 parapijų"
-              ]
+              "tags": ["12 parapijų"]
             },
             {
               "title": {
@@ -154,9 +152,7 @@
                 "en": "Vilnius II Deanery",
                 "ru": "Vilnius II Deanery [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": [
-                "15 parapijų"
-              ]
+              "tags": ["15 parapijų"]
             },
             {
               "title": {
@@ -164,9 +160,7 @@
                 "en": "Trakai Deanery",
                 "ru": "Trakai Deanery [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": [
-                "10 parapijų"
-              ]
+              "tags": ["10 parapijų"]
             },
             {
               "title": {
@@ -174,9 +168,7 @@
                 "en": "Šalčininkai Deanery",
                 "ru": "Šalčininkai Deanery [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": [
-                "8 parapijos"
-              ]
+              "tags": ["8 parapijos"]
             },
             {
               "title": {
@@ -184,9 +176,7 @@
                 "en": "Švenčionys Deanery",
                 "ru": "Švenčionys Deanery [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": [
-                "9 parapijos"
-              ]
+              "tags": ["9 parapijos"]
             }
           ]
         }

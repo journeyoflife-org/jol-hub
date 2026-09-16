@@ -66,7 +66,14 @@ const approvalSchema = z.object({
 type ApprovalFormData = z.infer<typeof approvalSchema>;
 
 // Upload status type
-type UploadStatus = 'idle' | 'encrypting' | 'uploading' | 'verifying' | 'approved' | 'rejected' | 'error';
+type UploadStatus =
+  | 'idle'
+  | 'encrypting'
+  | 'uploading'
+  | 'verifying'
+  | 'approved'
+  | 'rejected'
+  | 'error';
 
 // Lithuanian dioceses (for the example - other countries have different lists)
 const DIOCESES_LT = [
@@ -96,12 +103,7 @@ interface CanonicalApprovalProps {
   onApproved: () => void;
 }
 
-export function CanonicalApproval({
-  entityId,
-  open,
-  onClose,
-  onApproved,
-}: CanonicalApprovalProps) {
+export function CanonicalApproval({ entityId, open, onClose, onApproved }: CanonicalApprovalProps) {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [step, setStep] = useState<'verify' | 'upload' | 'confirm'>('verify');
   const [uploadStatus, setUploadStatus] = useState<UploadStatus>('idle');
@@ -158,11 +160,11 @@ export function CanonicalApproval({
   const encryptFile = async (file: File): Promise<Blob> => {
     // Simulate encryption progress
     setUploadStatus('encrypting');
-    
+
     // In production: Use Web Crypto API for AES-256-GCM encryption
     // const key = await crypto.subtle.generateKey(...);
     // const encrypted = await crypto.subtle.encrypt({ name: 'AES-GCM' }, key, buffer);
-    
+
     // For demo, we just return the file (encryption happens server-side)
     return file;
   };
@@ -184,29 +186,29 @@ export function CanonicalApproval({
     }
   ): Promise<string> => {
     setUploadStatus('uploading');
-    
+
     const formData = new FormData();
     formData.append('file', encryptedFile, uploadedFile?.name || 'canonical_approval.pdf');
     formData.append('metadata', JSON.stringify(metadata));
-    
+
     // Simulate upload progress
     const progressInterval = setInterval(() => {
       setUploadProgress((prev) => Math.min(prev + 10, 90));
     }, 200);
-    
+
     try {
       const response = await fetch('/api/bitrix24/documents', {
         method: 'POST',
         body: formData,
       });
-      
+
       clearInterval(progressInterval);
       setUploadProgress(100);
-      
+
       if (!response.ok) {
         throw new Error('Upload failed');
       }
-      
+
       const data = await response.json();
       return data.documentId;
     } catch (error) {
@@ -222,17 +224,14 @@ export function CanonicalApproval({
   /**
    * Notify bishop (email) and diocese admin (Bitrix24 activity)
    */
-  const notifyCanonicalAuthorities = async (
-    diocese: string,
-    documentId: string
-  ): Promise<void> => {
+  const notifyCanonicalAuthorities = async (diocese: string, documentId: string): Promise<void> => {
     // In production, this would:
     // 1. Send email to bishop using transactional email service
     // 2. Create Bitrix24 activity for diocese admin
     // 3. Log notification for audit trail
-    
+
     console.log('[CANONICAL] Notifying authorities:', { diocese, documentId });
-    
+
     await fetch('/api/notifications/canonical', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -251,14 +250,14 @@ export function CanonicalApproval({
 
   const onSubmit = async (data: ApprovalFormData) => {
     setErrorMessage(null);
-    
+
     try {
       // Step 1: Encrypt file before upload (GDPR Article 32)
       let encryptedFile: Blob | undefined;
       if (uploadedFile) {
         encryptedFile = await encryptFile(uploadedFile);
       }
-      
+
       // Step 2: Upload to Bitrix24 (Document folder)
       let documentId: string | null = null;
       if (encryptedFile) {
@@ -275,10 +274,10 @@ export function CanonicalApproval({
         });
         setBitrixDocId(documentId);
       }
-      
+
       // Step 3: Update entity status
       setUploadStatus('verifying');
-      
+
       approveEntity(
         {
           entityId,
@@ -295,9 +294,9 @@ export function CanonicalApproval({
             if (data.diocese && documentId) {
               await notifyCanonicalAuthorities(data.diocese, documentId);
             }
-            
+
             setUploadStatus('approved');
-            
+
             // Reset and close after delay
             setTimeout(() => {
               reset();
@@ -409,30 +408,28 @@ export function CanonicalApproval({
 
         {entityLoading ? (
           <div className="flex items-center justify-center py-8">
-            <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+            <Loader2 className="text-muted-foreground h-6 w-6 animate-spin" />
           </div>
         ) : uploadStatus === 'approved' ? (
           // Success state
           <div className="py-8 text-center">
-            <div className="flex justify-center mb-4">
-              <div className="p-4 bg-green-100 rounded-full">
+            <div className="mb-4 flex justify-center">
+              <div className="rounded-full bg-green-100 p-4">
                 <CheckCircle className="h-12 w-12 text-green-600" />
               </div>
             </div>
-            <h3 className="text-lg font-semibold text-green-800 mb-2">
+            <h3 className="mb-2 text-lg font-semibold text-green-800">
               Canonical Approval Submitted
             </h3>
-            <p className="text-sm text-gray-600">
-              Document ID: {bitrixDocId}
-            </p>
-            <p className="text-xs text-gray-500 mt-2">
+            <p className="text-sm text-gray-600">Document ID: {bitrixDocId}</p>
+            <p className="mt-2 text-xs text-gray-500">
               Processing time: {VATICAN_PROCESSING_DAYS} days if Vatican recognitio is required
             </p>
           </div>
         ) : (
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {/* Entity Summary - Amber bordered card */}
-            <div className="p-4 rounded-lg border-2 border-amber-200 bg-amber-50/50">
+            <div className="rounded-lg border-2 border-amber-200 bg-amber-50/50 p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <Church className="h-8 w-8 text-amber-600" />
@@ -443,7 +440,7 @@ export function CanonicalApproval({
                     </p>
                   </div>
                 </div>
-                <Badge className="bg-amber-100 text-amber-800 border border-amber-300">
+                <Badge className="border border-amber-300 bg-amber-100 text-amber-800">
                   Pending Canonical Approval
                 </Badge>
               </div>
@@ -451,15 +448,13 @@ export function CanonicalApproval({
 
             {/* Upload Progress */}
             {statusConfig && (
-              <div className={cn('p-4 rounded-lg', statusConfig.bg)}>
+              <div className={cn('rounded-lg p-4', statusConfig.bg)}>
                 <div className="flex items-center gap-3">
                   <statusConfig.icon className={cn('h-5 w-5 animate-pulse', statusConfig.color)} />
                   <div className="flex-1">
-                    <p className={cn('font-medium', statusConfig.color)}>
-                      {statusConfig.message}
-                    </p>
+                    <p className={cn('font-medium', statusConfig.color)}>{statusConfig.message}</p>
                     {uploadProgress > 0 && uploadProgress < 100 && (
-                      <Progress value={uploadProgress} className="h-2 mt-2" />
+                      <Progress value={uploadProgress} className="mt-2 h-2" />
                     )}
                   </div>
                 </div>
@@ -469,14 +464,14 @@ export function CanonicalApproval({
             {/* Verification Step */}
             {step === 'verify' && (
               <div className="space-y-4">
-                <h4 className="font-medium flex items-center gap-2 text-amber-800">
+                <h4 className="flex items-center gap-2 font-medium text-amber-800">
                   <AlertTriangle className="h-4 w-4 text-amber-500" />
                   Pre-Approval Verification Checklist
                 </h4>
                 <p className="text-sm text-gray-600">
                   Before submitting, verify the following canonical requirements:
                 </p>
-                <div className="space-y-3 bg-gray-50 p-4 rounded-lg">
+                <div className="space-y-3 rounded-lg bg-gray-50 p-4">
                   {[
                     'Entity is a recognized Catholic organization within the diocese',
                     'Canonical territory (parish boundaries) is correctly identified',
@@ -488,7 +483,7 @@ export function CanonicalApproval({
                       <input
                         type="checkbox"
                         id={`check-${index}`}
-                        className="rounded mt-1 border-amber-300"
+                        className="mt-1 rounded border-amber-300"
                       />
                       <label htmlFor={`check-${index}`} className="text-sm text-gray-700">
                         {item}
@@ -551,7 +546,7 @@ export function CanonicalApproval({
                       id="diocese"
                       {...register('diocese')}
                       className={cn(
-                        'w-full border rounded p-2 border-amber-200',
+                        'w-full rounded border border-amber-200 p-2',
                         errors.diocese && 'border-red-500'
                       )}
                     >
@@ -616,7 +611,7 @@ export function CanonicalApproval({
                 {/* Document Upload - Amber dashed border */}
                 <div className="space-y-2">
                   <Label className="text-amber-800">Letter of Approval (PDF/JPEG) *</Label>
-                  <div className="border-2 border-dashed border-amber-300 rounded-lg p-6 text-center bg-amber-50/50 hover:bg-amber-50 transition-colors">
+                  <div className="rounded-lg border-2 border-dashed border-amber-300 bg-amber-50/50 p-6 text-center transition-colors hover:bg-amber-50">
                     <input
                       type="file"
                       id="canonical-doc"
@@ -625,19 +620,17 @@ export function CanonicalApproval({
                       className="hidden"
                     />
                     <label htmlFor="canonical-doc" className="cursor-pointer">
-                      <Upload className="w-8 h-8 text-amber-500 mx-auto mb-2" />
+                      <Upload className="mx-auto mb-2 h-8 w-8 text-amber-500" />
                       <span className="text-sm text-amber-700">
                         {uploadedFile ? uploadedFile.name : 'Click to upload or drag and drop'}
                       </span>
-                      <p className="text-xs text-gray-500 mt-1">Max 10MB, PDF or JPEG only</p>
+                      <p className="mt-1 text-xs text-gray-500">Max 10MB, PDF or JPEG only</p>
                     </label>
                   </div>
                   {errors.document && (
                     <p className="text-sm text-red-500">{errors.document.message}</p>
                   )}
-                  {errorMessage && (
-                    <p className="text-sm text-red-500">{errorMessage}</p>
-                  )}
+                  {errorMessage && <p className="text-sm text-red-500">{errorMessage}</p>}
                 </div>
 
                 {/* Approval Notes */}
@@ -655,16 +648,16 @@ export function CanonicalApproval({
                 </div>
 
                 {/* Canon Law Warning */}
-                <div className="bg-amber-50 p-4 rounded-lg flex gap-3 items-start border border-amber-200">
-                  <AlertCircle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                <div className="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4">
+                  <AlertCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" />
                   <div>
-                    <p className="text-sm text-amber-800 font-medium">
+                    <p className="text-sm font-medium text-amber-800">
                       Document Encryption & Storage
                     </p>
-                    <p className="text-sm text-amber-700 mt-1">
+                    <p className="mt-1 text-sm text-amber-700">
                       This document will be encrypted before upload (GDPR Article 32) and
-                      transmitted to the Vatican's Congregation for the Clergy if recognitio
-                      is pending. Processing time: {VATICAN_PROCESSING_DAYS} days.
+                      transmitted to the Vatican's Congregation for the Clergy if recognitio is
+                      pending. Processing time: {VATICAN_PROCESSING_DAYS} days.
                     </p>
                   </div>
                 </div>
@@ -693,13 +686,13 @@ export function CanonicalApproval({
             {/* Confirm Step */}
             {step === 'confirm' && (
               <div className="space-y-4">
-                <h4 className="font-medium flex items-center gap-2 text-amber-800">
+                <h4 className="flex items-center gap-2 font-medium text-amber-800">
                   <CheckCircle className="h-4 w-4 text-green-500" />
                   Confirm Canonical Approval
                 </h4>
 
                 {/* Summary of what will be submitted */}
-                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 space-y-3">
+                <div className="space-y-3 rounded-lg border border-amber-200 bg-amber-50 p-4">
                   <h5 className="font-medium text-amber-900">Submission Summary</h5>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
@@ -709,13 +702,14 @@ export function CanonicalApproval({
                     <div className="flex justify-between">
                       <span className="text-amber-700">Diocese:</span>
                       <span className="font-medium">
-                        {DIOCESES_LT.find((d) => d.value === watchedDiocese)?.label || watchedDiocese}
+                        {DIOCESES_LT.find((d) => d.value === watchedDiocese)?.label ||
+                          watchedDiocese}
                       </span>
                     </div>
                     {uploadedFile && (
                       <div className="flex justify-between">
                         <span className="text-amber-700">Document:</span>
-                        <span className="font-medium flex items-center gap-1">
+                        <span className="flex items-center gap-1 font-medium">
                           <FileText className="h-3 w-3" />
                           {uploadedFile.name}
                         </span>
@@ -725,17 +719,17 @@ export function CanonicalApproval({
                 </div>
 
                 {/* Warning about consequences */}
-                <div className="p-4 rounded-lg bg-green-50 border border-green-200">
+                <div className="rounded-lg border border-green-200 bg-green-50 p-4">
                   <p className="text-sm text-green-800">
-                    By confirming, you are granting canonical approval for this entity
-                    under <strong>Canon Law CIC 1300-1307</strong>. This authorizes the
-                    entity to accept donations and administer ecclesiastical goods.
-                    This action will be logged permanently and cannot be undone.
+                    By confirming, you are granting canonical approval for this entity under{' '}
+                    <strong>Canon Law CIC 1300-1307</strong>. This authorizes the entity to accept
+                    donations and administer ecclesiastical goods. This action will be logged
+                    permanently and cannot be undone.
                   </p>
                 </div>
 
                 {/* GDPR encryption notice */}
-                <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-50 border border-blue-200">
+                <div className="flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 p-3">
                   <Lock className="h-4 w-4 text-blue-600" />
                   <p className="text-xs text-blue-800">
                     Document will be encrypted (GDPR Article 32) before upload to Bitrix24
@@ -758,12 +752,12 @@ export function CanonicalApproval({
                   >
                     {isApproving ? (
                       <>
-                        <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                         Processing...
                       </>
                     ) : (
                       <>
-                        <Shield className="h-4 w-4 mr-2" />
+                        <Shield className="mr-2 h-4 w-4" />
                         Submit for Canonical Approval
                       </>
                     )}
@@ -775,13 +769,13 @@ export function CanonicalApproval({
             <Separator />
 
             {/* Canon Law Reference */}
-            <div className="text-xs text-amber-700 bg-amber-50 p-3 rounded border border-amber-200">
-              <p className="font-medium mb-1">Canon Law CIC 1300-1307 Reference:</p>
+            <div className="rounded border border-amber-200 bg-amber-50 p-3 text-xs text-amber-700">
+              <p className="mb-1 font-medium">Canon Law CIC 1300-1307 Reference:</p>
               <p>
-                These canons govern the administration of ecclesiastical goods. Without
-                proper Episcopal approval, a Catholic entity cannot legally accept
-                donations or manage church property. This workflow ensures compliance
-                with Catholic Church governance requirements.
+                These canons govern the administration of ecclesiastical goods. Without proper
+                Episcopal approval, a Catholic entity cannot legally accept donations or manage
+                church property. This workflow ensures compliance with Catholic Church governance
+                requirements.
               </p>
             </div>
           </form>

@@ -21,13 +21,7 @@ export {
 // Session Management
 // =============================================================================
 
-export {
-  getSession,
-  getCsrfToken,
-  signIn,
-  signOut,
-  useSession,
-} from './session';
+export { getSession, getCsrfToken, signIn, signOut, useSession } from './session';
 
 // =============================================================================
 // React Hooks
@@ -82,25 +76,25 @@ export {
   type ParishInfo,
   type Bitrix24Session,
   type AuthAuditLog,
-  
+
   // OAuth types
   type Bitrix24TokenResponse,
   type Bitrix24OAuthError,
   type PKCEPair,
   type OAuthState,
-  
+
   // Scope types
   type Bitrix24Scope,
   DEFAULT_BITRIX_SCOPES,
-  
+
   // Role mapping
   BITRIX_ROLE_MAPPING,
   mapBitrixRole,
-  
+
   // API types
   type Bitrix24ApiResponse,
   type Bitrix24ApiError,
-  
+
   // CRM types
   type BitrixCrmContact,
   type BitrixCrmContactAddParams,

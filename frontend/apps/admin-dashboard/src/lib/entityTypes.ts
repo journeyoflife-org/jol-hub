@@ -8,7 +8,14 @@ import { z } from 'zod';
 import type { EntityCategory, EntityStatus } from '@/types';
 
 // Define EntityType locally as string union for flexibility
-export type EntityType = 'parish' | 'diocese' | 'country' | 'user' | 'donation' | 'content' | 'analytics';
+export type EntityType =
+  | 'parish'
+  | 'diocese'
+  | 'country'
+  | 'user'
+  | 'donation'
+  | 'content'
+  | 'analytics';
 
 export interface EntityTypeConfig {
   id: string;

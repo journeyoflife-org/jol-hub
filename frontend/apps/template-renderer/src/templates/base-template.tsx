@@ -79,7 +79,13 @@ export function BaseTemplate({ tenant, locale, basePath, config, children }: Bas
  * vertical's default home composition renders. NOTE: deep backend pages will
  * swap the home composition for a fetched page config once that service ships.
  */
-export function VerticalHomeTemplate({ tenant, locale, basePath, content, pageData }: TemplateProps) {
+export function VerticalHomeTemplate({
+  tenant,
+  locale,
+  basePath,
+  content,
+  pageData,
+}: TemplateProps) {
   if (content && pageData) {
     return <TemplateRenderer fixture={content} page={pageData} basePath={basePath} />;
   }

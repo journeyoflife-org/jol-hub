@@ -4,8 +4,9 @@ CRM API URL Configuration
 GDPR Article 9 Hardened CRM Endpoints
 """
 
-from django.urls import include, path
 from rest_framework.routers import DefaultRouter
+
+from django.urls import include, path
 
 from .views import (
     AuditEntryViewSet,

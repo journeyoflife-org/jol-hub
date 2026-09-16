@@ -25,12 +25,7 @@ const FOCUSABLE_SELECTOR = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(',');
 
-export function FocusTrap({
-  children,
-  active = true,
-  onEscape,
-  restoreFocusTo,
-}: FocusTrapProps) {
+export function FocusTrap({ children, active = true, onEscape, restoreFocusTo }: FocusTrapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const previouslyFocused = useRef<HTMLElement | null>(null);
 
@@ -41,12 +36,11 @@ export function FocusTrap({
     const container = containerRef.current;
     if (!container) return undefined;
 
-    previouslyFocused.current =
-      restoreFocusTo ?? (document.activeElement as HTMLElement | null);
+    previouslyFocused.current = restoreFocusTo ?? (document.activeElement as HTMLElement | null);
 
     const focusables = (): HTMLElement[] =>
       Array.from(container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)).filter(
-        (element) => element.offsetParent !== null || element === document.activeElement,
+        (element) => element.offsetParent !== null || element === document.activeElement
       );
 
     const initial = focusables()[0] ?? container;

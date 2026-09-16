@@ -30,13 +30,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
-import {
-  Shield,
-  Plus,
-  Edit,
-  Trash2,
-  Search,
-} from 'lucide-react';
+import { Shield, Plus, Edit, Trash2, Search } from 'lucide-react';
 import { useUsers, useRoles } from '@/lib/hooks';
 import { EU_COUNTRIES } from '@/lib/countries';
 import { ROLE_LABELS, ROLE_BADGE_COLORS } from '@/lib/auth';
@@ -65,14 +59,12 @@ export default function SettingsPage() {
   const users = usersData?.users ?? [];
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="space-y-6 p-6">
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">Settings</h1>
-          <p className="text-muted-foreground">
-            Role management and system configuration
-          </p>
+          <p className="text-muted-foreground">Role management and system configuration</p>
         </div>
       </div>
 
@@ -84,22 +76,20 @@ export default function SettingsPage() {
             <div className="flex items-center justify-between">
               <div>
                 <CardTitle>Users & Roles</CardTitle>
-                <CardDescription>
-                  Manage user access and role assignments
-                </CardDescription>
+                <CardDescription>Manage user access and role assignments</CardDescription>
               </div>
               <Button onClick={() => setShowAddUserDialog(true)}>
-                <Plus className="h-4 w-4 mr-2" />
+                <Plus className="mr-2 h-4 w-4" />
                 Add User
               </Button>
             </div>
           </CardHeader>
           <CardContent>
             {/* Filters */}
-            <div className="flex items-center gap-4 mb-4">
+            <div className="mb-4 flex items-center gap-4">
               <div className="flex-1">
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Search className="text-muted-foreground absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" />
                   <Input
                     placeholder="Search users..."
                     value={searchQuery}
@@ -153,12 +143,12 @@ export default function SettingsPage() {
                   <TableRow key={user.id}>
                     <TableCell>
                       <div className="flex items-center gap-3">
-                        <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center">
+                        <div className="bg-muted flex h-8 w-8 items-center justify-center rounded-full">
                           {user.name?.charAt(0).toUpperCase() || 'U'}
                         </div>
                         <div>
                           <p className="font-medium">{user.name}</p>
-                          <p className="text-sm text-muted-foreground">{user.email}</p>
+                          <p className="text-muted-foreground text-sm">{user.email}</p>
                         </div>
                       </div>
                     </TableCell>
@@ -169,7 +159,7 @@ export default function SettingsPage() {
                     </TableCell>
                     <TableCell>
                       <div className="flex items-center gap-2">
-                        {EU_COUNTRIES.find(c => c.code === user.country)?.flag} 
+                        {EU_COUNTRIES.find((c) => c.code === user.country)?.flag}
                         {user.country || 'Global'}
                       </div>
                     </TableCell>
@@ -202,64 +192,65 @@ export default function SettingsPage() {
         <Card>
           <CardHeader>
             <CardTitle>Role Permissions</CardTitle>
-            <CardDescription>
-              4-tier federation hierarchy permissions
-            </CardDescription>
+            <CardDescription>4-tier federation hierarchy permissions</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               {/* Super Admin */}
-              <div className="p-4 rounded-lg border">
-                <div className="flex items-center justify-between mb-2">
+              <div className="rounded-lg border p-4">
+                <div className="mb-2 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Badge className="bg-red-100 text-red-800">Super Admin</Badge>
-                    <span className="text-sm text-muted-foreground">Tier: Global</span>
+                    <span className="text-muted-foreground text-sm">Tier: Global</span>
                   </div>
-                  <span className="text-xs text-muted-foreground">Full system access</span>
+                  <span className="text-muted-foreground text-xs">Full system access</span>
                 </div>
-                <p className="text-sm text-muted-foreground">
-                  Can manage all countries, dioceses, parishes, and users. Access to all analytics and compliance data.
+                <p className="text-muted-foreground text-sm">
+                  Can manage all countries, dioceses, parishes, and users. Access to all analytics
+                  and compliance data.
                 </p>
               </div>
 
               {/* Country Admin */}
-              <div className="p-4 rounded-lg border">
-                <div className="flex items-center justify-between mb-2">
+              <div className="rounded-lg border p-4">
+                <div className="mb-2 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Badge className="bg-purple-100 text-purple-800">Country Admin</Badge>
-                    <span className="text-sm text-muted-foreground">Tier: Country</span>
+                    <span className="text-muted-foreground text-sm">Tier: Country</span>
                   </div>
-                  <span className="text-xs text-muted-foreground">Country-scoped access</span>
+                  <span className="text-muted-foreground text-xs">Country-scoped access</span>
                 </div>
-                <p className="text-sm text-muted-foreground">
-                  Can manage dioceses and parishes within their assigned country. Country-scoped analytics access.
+                <p className="text-muted-foreground text-sm">
+                  Can manage dioceses and parishes within their assigned country. Country-scoped
+                  analytics access.
                 </p>
               </div>
 
               {/* Diocese Admin */}
-              <div className="p-4 rounded-lg border">
-                <div className="flex items-center justify-between mb-2">
+              <div className="rounded-lg border p-4">
+                <div className="mb-2 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Badge className="bg-blue-100 text-blue-800">Diocese Admin</Badge>
-                    <span className="text-sm text-muted-foreground">Tier: Diocese</span>
+                    <span className="text-muted-foreground text-sm">Tier: Diocese</span>
                   </div>
-                  <span className="text-xs text-muted-foreground">Diocese-scoped access</span>
+                  <span className="text-muted-foreground text-xs">Diocese-scoped access</span>
                 </div>
-                <p className="text-sm text-muted-foreground">
-                  Can manage parishes within their diocese. Diocese-scoped analytics and parish approval workflow.
+                <p className="text-muted-foreground text-sm">
+                  Can manage parishes within their diocese. Diocese-scoped analytics and parish
+                  approval workflow.
                 </p>
               </div>
 
               {/* Parish Admin */}
-              <div className="p-4 rounded-lg border">
-                <div className="flex items-center justify-between mb-2">
+              <div className="rounded-lg border p-4">
+                <div className="mb-2 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Badge className="bg-green-100 text-green-800">Parish Admin</Badge>
-                    <span className="text-sm text-muted-foreground">Tier: Parish</span>
+                    <span className="text-muted-foreground text-sm">Tier: Parish</span>
                   </div>
-                  <span className="text-xs text-muted-foreground">Single parish access</span>
+                  <span className="text-muted-foreground text-xs">Single parish access</span>
                 </div>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   Can manage their parish content and users. Parish-scoped analytics only.
                 </p>
               </div>
@@ -271,9 +262,7 @@ export default function SettingsPage() {
         <Card>
           <CardHeader>
             <CardTitle>System Settings</CardTitle>
-            <CardDescription>
-              Platform-wide configuration options
-            </CardDescription>
+            <CardDescription>Platform-wide configuration options</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-6">
@@ -281,7 +270,7 @@ export default function SettingsPage() {
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <Label className="text-base">Bitrix24 Sync</Label>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     Enable real-time CRM synchronization
                   </p>
                 </div>
@@ -292,7 +281,7 @@ export default function SettingsPage() {
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <Label className="text-base">GDPR Strict Mode</Label>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     Enforce Article 44 data residency at all levels
                   </p>
                 </div>
@@ -303,7 +292,7 @@ export default function SettingsPage() {
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <Label className="text-base">Canonical Approval Required</Label>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     Require bishop approval for Catholic entities
                   </p>
                 </div>
@@ -314,12 +303,12 @@ export default function SettingsPage() {
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <Label className="text-base">Emergency Stop</Label>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     SOC2 CC6.1 emergency shutdown capability
                   </p>
                 </div>
                 <Button variant="destructive" size="sm">
-                  <Shield className="h-4 w-4 mr-2" />
+                  <Shield className="mr-2 h-4 w-4" />
                   Activate
                 </Button>
               </div>
@@ -333,9 +322,7 @@ export default function SettingsPage() {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Add New User</DialogTitle>
-            <DialogDescription>
-              Create a new user account with role assignment
-            </DialogDescription>
+            <DialogDescription>Create a new user account with role assignment</DialogDescription>
           </DialogHeader>
           <div className="space-y-4 py-4">
             <div className="space-y-2">
@@ -381,9 +368,7 @@ export default function SettingsPage() {
             <Button variant="outline" onClick={() => setShowAddUserDialog(false)}>
               Cancel
             </Button>
-            <Button onClick={() => setShowAddUserDialog(false)}>
-              Create User
-            </Button>
+            <Button onClick={() => setShowAddUserDialog(false)}>Create User</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

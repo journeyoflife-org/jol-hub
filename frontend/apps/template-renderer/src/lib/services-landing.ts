@@ -59,7 +59,9 @@ export function buildServicesLandingEntity(input: ServicesLandingInput): JsonVal
         '@type': 'FuneralHome',
         name,
         url: homeUrl,
-        ...(identity?.address ? { address: { '@type': 'PostalAddress', streetAddress: identity.address } } : {}),
+        ...(identity?.address
+          ? { address: { '@type': 'PostalAddress', streetAddress: identity.address } }
+          : {}),
         ...(identity?.phone ? { telephone: identity.phone } : {}),
       };
 
@@ -70,7 +72,9 @@ export function buildServicesLandingEntity(input: ServicesLandingInput): JsonVal
         '@type': 'LocalBusiness',
         name,
         url: homeUrl,
-        ...(identity?.address ? { address: { '@type': 'PostalAddress', streetAddress: identity.address } } : {}),
+        ...(identity?.address
+          ? { address: { '@type': 'PostalAddress', streetAddress: identity.address } }
+          : {}),
         ...(identity?.phone ? { telephone: identity.phone } : {}),
       };
 

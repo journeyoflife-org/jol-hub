@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import {
-  listParishes,
-  searchParishes,
-} from '@/lib/tenant/resolver';
+import { listParishes, searchParishes } from '@/lib/tenant/resolver';
 import type { ParishConfig } from '@/lib/tenant/config';
 
 // ---------------------------------------------------------------------------
@@ -35,8 +32,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'JOL-HUB — Lietuvos Katalikų Bažnyčios platforma',
-    description:
-      'Raskite parapijas, pamaldų tvarkaraščius ir dvasines resursus.',
+    description: 'Raskite parapijas, pamaldų tvarkaraščius ir dvasines resursus.',
     url: 'https://jol-hub.eu',
     siteName: 'JOL-HUB',
     locale: 'lt_LT',
@@ -65,9 +61,9 @@ type LiturgicalSeason =
 
 interface SeasonInfo {
   name: string;
-  color: string;         // Tailwind bg class
-  textColor: string;     // Tailwind text class
-  borderColor: string;   // Tailwind border class
+  color: string; // Tailwind bg class
+  textColor: string; // Tailwind text class
+  borderColor: string; // Tailwind border class
   emoji: string;
   description: string;
 }
@@ -151,16 +147,16 @@ const DIOCESE_LABELS: Record<string, string> = {
 
 function NavBar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-primary-100 bg-white/95 backdrop-blur-sm">
+    <header className="border-primary-100 sticky top-0 z-50 border-b bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2 text-xl font-bold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          className="text-primary focus-visible:ring-primary flex items-center gap-2 text-xl font-bold focus-visible:outline-none focus-visible:ring-2"
           aria-label="JOL-HUB pagrindinis puslapis"
         >
           <span
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-black text-white"
+            className="bg-primary flex h-8 w-8 items-center justify-center rounded-full text-sm font-black text-white"
             aria-hidden="true"
           >
             J
@@ -174,7 +170,7 @@ function NavBar() {
             <li>
               <Link
                 href="#parishes"
-                className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-primary-50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                className="text-muted-foreground hover:bg-primary-50 hover:text-primary focus-visible:ring-primary rounded-md px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2"
               >
                 Parapijos
               </Link>
@@ -182,7 +178,7 @@ function NavBar() {
             <li>
               <Link
                 href="#donate"
-                className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-primary-50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                className="text-muted-foreground hover:bg-primary-50 hover:text-primary focus-visible:ring-primary rounded-md px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2"
               >
                 Aukoti
               </Link>
@@ -190,7 +186,7 @@ function NavBar() {
             <li>
               <Link
                 href="https://app.jol-hub.eu/login"
-                className="ml-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="bg-primary hover:bg-primary-600 focus-visible:ring-primary ml-2 rounded-md px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
               >
                 Prisijungti
               </Link>
@@ -205,16 +201,13 @@ function NavBar() {
 function HeroSection({ season }: { season: SeasonInfo }) {
   return (
     <section
-      className="relative overflow-hidden bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 py-20 sm:py-28"
+      className="from-primary-900 via-primary-800 to-primary-700 relative overflow-hidden bg-gradient-to-br py-20 sm:py-28"
       aria-labelledby="hero-heading"
     >
       {/* Background decoration */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-10"
-        aria-hidden="true"
-      >
-        <div className="absolute -left-20 -top-20 h-96 w-96 rounded-full bg-secondary" />
-        <div className="absolute -bottom-20 -right-20 h-96 w-96 rounded-full bg-secondary" />
+      <div className="pointer-events-none absolute inset-0 opacity-10" aria-hidden="true">
+        <div className="bg-secondary absolute -left-20 -top-20 h-96 w-96 rounded-full" />
+        <div className="bg-secondary absolute -bottom-20 -right-20 h-96 w-96 rounded-full" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -235,13 +228,12 @@ function HeroSection({ season }: { season: SeasonInfo }) {
           id="hero-heading"
           className="mb-6 text-center font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl"
         >
-          Lietuvos Katalikų{' '}
-          <span className="text-secondary">Bažnyčios</span> platforma
+          Lietuvos Katalikų <span className="text-secondary">Bažnyčios</span> platforma
         </h1>
 
-        <p className="mx-auto mb-10 max-w-2xl text-center text-lg text-primary-100 sm:text-xl">
-          Raskite savo parapiją, sužinokite pamaldų tvarkaraštį ir
-          prisijunkite prie katalikų bendruomenės visoje Lietuvoje.
+        <p className="text-primary-100 mx-auto mb-10 max-w-2xl text-center text-lg sm:text-xl">
+          Raskite savo parapiją, sužinokite pamaldų tvarkaraštį ir prisijunkite prie katalikų
+          bendruomenės visoje Lietuvoje.
         </p>
 
         {/* Parish search form */}
@@ -266,7 +258,7 @@ function HeroSection({ season }: { season: SeasonInfo }) {
             />
             <button
               type="submit"
-              className="flex items-center gap-2 bg-primary px-6 py-4 font-semibold text-white transition-colors hover:bg-primary-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset"
+              className="bg-primary hover:bg-primary-600 focus-visible:ring-primary flex items-center gap-2 px-6 py-4 font-semibold text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset"
             >
               <SearchIcon />
               <span className="hidden sm:inline">Ieškoti</span>
@@ -282,9 +274,7 @@ function HeroSection({ season }: { season: SeasonInfo }) {
             { value: '3', label: 'Kalbos' },
           ].map(({ value, label }) => (
             <div key={label}>
-              <dt className="order-2 mt-1 text-sm font-medium text-primary-200">
-                {label}
-              </dt>
+              <dt className="text-primary-200 order-2 mt-1 text-sm font-medium">{label}</dt>
               <dd className="order-1 font-serif text-3xl font-bold text-white sm:text-4xl">
                 {value}
               </dd>
@@ -298,17 +288,16 @@ function HeroSection({ season }: { season: SeasonInfo }) {
 
 function ParishCard({ parish }: { parish: ParishConfig }) {
   const city = parish.contact.address.city;
-  const dioceseLabel =
-    DIOCESE_LABELS[parish.dioceseId] ?? parish.dioceseId;
+  const dioceseLabel = DIOCESE_LABELS[parish.dioceseId] ?? parish.dioceseId;
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md focus-within:ring-2 focus-within:ring-primary">
+    <article className="border-border bg-card focus-within:ring-primary group flex flex-col overflow-hidden rounded-xl border shadow-sm transition-shadow focus-within:ring-2 hover:shadow-md">
       {/* Color accent bar */}
-      <div className="h-1.5 w-full bg-gradient-to-r from-primary via-primary-400 to-secondary" />
+      <div className="from-primary via-primary-400 to-secondary h-1.5 w-full bg-gradient-to-r" />
 
       <div className="flex flex-1 flex-col p-5">
         {/* Name */}
-        <h3 className="mb-1 font-serif text-lg font-bold text-foreground leading-snug">
+        <h3 className="text-foreground mb-1 font-serif text-lg font-bold leading-snug">
           <Link
             href={`https://${parish.subdomain}.jol-hub.eu`}
             className="after:absolute after:inset-0 focus-visible:outline-none"
@@ -320,24 +309,24 @@ function ParishCard({ parish }: { parish: ParishConfig }) {
         </h3>
 
         {/* Diocese + city */}
-        <p className="mb-3 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+        <p className="text-muted-foreground mb-3 text-xs font-medium uppercase tracking-wide">
           {city} · {dioceseLabel}
         </p>
 
         {/* Description */}
         {parish.description && (
-          <p className="mb-4 flex-1 text-sm text-muted-foreground line-clamp-2">
+          <p className="text-muted-foreground mb-4 line-clamp-2 flex-1 text-sm">
             {parish.description}
           </p>
         )}
 
         {/* Service times preview */}
         {parish.serviceTimes.length > 0 && (
-          <div className="mb-4 rounded-lg bg-primary-50 px-3 py-2">
-            <p className="text-xs font-semibold uppercase tracking-wide text-primary-700">
+          <div className="bg-primary-50 mb-4 rounded-lg px-3 py-2">
+            <p className="text-primary-700 text-xs font-semibold uppercase tracking-wide">
               Sekmadienio mišios
             </p>
-            <p className="mt-0.5 text-sm text-primary-900">
+            <p className="text-primary-900 mt-0.5 text-sm">
               {parish.serviceTimes
                 .filter((s) => s.dayOfWeek === 0 && s.type === 'mass')
                 .map((s) => s.time)
@@ -348,12 +337,8 @@ function ParishCard({ parish }: { parish: ParishConfig }) {
 
         {/* Features badges */}
         <div className="flex flex-wrap gap-1.5">
-          {parish.features.liveStream && (
-            <FeatureBadge icon="📺" label="Tiesioginė transliacija" />
-          )}
-          {parish.features.donations && (
-            <FeatureBadge icon="💚" label="Aukos" />
-          )}
+          {parish.features.liveStream && <FeatureBadge icon="📺" label="Tiesioginė transliacija" />}
+          {parish.features.donations && <FeatureBadge icon="💚" label="Aukos" />}
           {parish.features.onlineConfession && (
             <FeatureBadge icon="🙏" label="Internetinė išpažintis" />
           )}
@@ -361,8 +346,8 @@ function ParishCard({ parish }: { parish: ParishConfig }) {
       </div>
 
       {/* CTA footer */}
-      <div className="border-t border-border px-5 py-3">
-        <span className="text-sm font-medium text-primary transition-colors group-hover:text-primary-600 group-focus-within:text-primary-600">
+      <div className="border-border border-t px-5 py-3">
+        <span className="text-primary group-hover:text-primary-600 group-focus-within:text-primary-600 text-sm font-medium transition-colors">
           Atidaryti parapijos puslapį →
         </span>
       </div>
@@ -373,7 +358,7 @@ function ParishCard({ parish }: { parish: ParishConfig }) {
 function FeatureBadge({ icon, label }: { icon: string; label: string }) {
   return (
     <span
-      className="inline-flex items-center gap-1 rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground"
+      className="bg-muted text-muted-foreground inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs"
       title={label}
     >
       <span aria-hidden="true">{icon}</span>
@@ -387,7 +372,7 @@ function DonateSection() {
     <section
       id="donate"
       aria-labelledby="donate-heading"
-      className="bg-gradient-to-br from-secondary-50 to-amber-50 py-16 sm:py-20"
+      className="from-secondary-50 bg-gradient-to-br to-amber-50 py-16 sm:py-20"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
@@ -401,20 +386,20 @@ function DonateSection() {
             Paremkite savo parapiją
           </h2>
           <p className="mt-4 text-lg text-gray-600">
-            Jūsų auka padeda išlaikyti bažnyčią, finansuoti bendruomenės
-            programas ir saugoti mūsų kultūrinį paveldą.
+            Jūsų auka padeda išlaikyti bažnyčią, finansuoti bendruomenės programas ir saugoti mūsų
+            kultūrinį paveldą.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/donate"
-              className="inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-base font-semibold text-white shadow-md transition-all hover:bg-primary-600 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              className="bg-primary hover:bg-primary-600 focus-visible:ring-primary inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-semibold text-white shadow-md transition-all hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
             >
               <span aria-hidden="true">💳</span>
               Aukoti dabar
             </Link>
             <Link
               href="/donate#recurring"
-              className="inline-flex items-center gap-2 rounded-xl border border-primary px-8 py-4 text-base font-semibold text-primary transition-colors hover:bg-primary-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              className="border-primary text-primary hover:bg-primary-50 focus-visible:ring-primary inline-flex items-center gap-2 rounded-xl border px-8 py-4 text-base font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
             >
               <span aria-hidden="true">🔄</span>
               Reguliari auka
@@ -470,41 +455,31 @@ function FeatureHighlights() {
   ];
 
   return (
-    <section
-      aria-labelledby="features-heading"
-      className="bg-background py-16 sm:py-20"
-    >
+    <section aria-labelledby="features-heading" className="bg-background py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2
             id="features-heading"
-            className="font-serif text-3xl font-bold text-foreground sm:text-4xl"
+            className="text-foreground font-serif text-3xl font-bold sm:text-4xl"
           >
             Viskas vienoje vietoje
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="text-muted-foreground mt-4 text-lg">
             JOL-HUB — oficiali Lietuvos Katalikų Bažnyčios skaitmeninė platforma.
           </p>
         </div>
 
-        <ul
-          role="list"
-          className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-        >
+        <ul role="list" className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
             <li
               key={feature.title}
-              className="rounded-xl border border-border bg-card p-6 shadow-sm"
+              className="border-border bg-card rounded-xl border p-6 shadow-sm"
             >
               <div className="mb-3 text-3xl" aria-hidden="true">
                 {feature.icon}
               </div>
-              <h3 className="mb-2 font-semibold text-foreground">
-                {feature.title}
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                {feature.description}
-              </p>
+              <h3 className="text-foreground mb-2 font-semibold">{feature.title}</h3>
+              <p className="text-muted-foreground text-sm">{feature.description}</p>
             </li>
           ))}
         </ul>
@@ -515,36 +490,36 @@ function FeatureHighlights() {
 
 function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-card" role="contentinfo">
+    <footer className="border-border bg-card border-t" role="contentinfo">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link
               href="/"
-              className="text-lg font-bold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="text-primary focus-visible:ring-primary text-lg font-bold focus-visible:outline-none focus-visible:ring-2"
             >
               JOL-HUB
             </Link>
-            <p className="mt-2 max-w-xs text-sm text-muted-foreground">
-              Oficiali Lietuvos Katalikų Bažnyčios skaitmeninė platforma.
-              Jungiantys parapijas su tikinčiaisiais.
+            <p className="text-muted-foreground mt-2 max-w-xs text-sm">
+              Oficiali Lietuvos Katalikų Bažnyčios skaitmeninė platforma. Jungiantys parapijas su
+              tikinčiaisiais.
             </p>
-            <p className="mt-4 text-xs text-muted-foreground">
+            <p className="text-muted-foreground mt-4 text-xs">
               © {new Date().getFullYear()} JOL-HUB. Visos teisės saugomos.
             </p>
           </div>
 
           {/* Links */}
           <nav aria-label="Parapijoms">
-            <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-foreground">
+            <h4 className="text-foreground mb-3 text-sm font-semibold uppercase tracking-wide">
               Parapijoms
             </h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <ul className="text-muted-foreground space-y-2 text-sm">
               <li>
                 <Link
                   href="https://app.jol-hub.eu/register"
-                  className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+                  className="hover:text-primary focus-visible:ring-primary transition-colors focus-visible:outline-none focus-visible:ring-1"
                 >
                   Registruoti parapiją
                 </Link>
@@ -552,7 +527,7 @@ function SiteFooter() {
               <li>
                 <Link
                   href="https://app.jol-hub.eu/login"
-                  className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+                  className="hover:text-primary focus-visible:ring-primary transition-colors focus-visible:outline-none focus-visible:ring-1"
                 >
                   Prisijungti
                 </Link>
@@ -560,7 +535,7 @@ function SiteFooter() {
               <li>
                 <Link
                   href="/pricing"
-                  className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+                  className="hover:text-primary focus-visible:ring-primary transition-colors focus-visible:outline-none focus-visible:ring-1"
                 >
                   Kainodara
                 </Link>
@@ -569,14 +544,14 @@ function SiteFooter() {
           </nav>
 
           <nav aria-label="Teisinė informacija">
-            <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-foreground">
+            <h4 className="text-foreground mb-3 text-sm font-semibold uppercase tracking-wide">
               Teisinė
             </h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <ul className="text-muted-foreground space-y-2 text-sm">
               <li>
                 <Link
                   href="/privacy"
-                  className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+                  className="hover:text-primary focus-visible:ring-primary transition-colors focus-visible:outline-none focus-visible:ring-1"
                 >
                   Privatumo politika
                 </Link>
@@ -584,7 +559,7 @@ function SiteFooter() {
               <li>
                 <Link
                   href="/terms"
-                  className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+                  className="hover:text-primary focus-visible:ring-primary transition-colors focus-visible:outline-none focus-visible:ring-1"
                 >
                   Naudojimo sąlygos
                 </Link>
@@ -592,7 +567,7 @@ function SiteFooter() {
               <li>
                 <Link
                   href="/cookies"
-                  className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+                  className="hover:text-primary focus-visible:ring-primary transition-colors focus-visible:outline-none focus-visible:ring-1"
                 >
                   Slapukų politika
                 </Link>
@@ -638,7 +613,7 @@ export default async function HomePage() {
     <>
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+        className="focus:bg-primary sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
       >
         Pereiti prie pagrindinio turinio
       </a>
@@ -660,27 +635,24 @@ export default async function HomePage() {
               <div>
                 <h2
                   id="parishes-heading"
-                  className="font-serif text-3xl font-bold text-foreground sm:text-4xl"
+                  className="text-foreground font-serif text-3xl font-bold sm:text-4xl"
                 >
                   Parapijų katalogas
                 </h2>
-                <p className="mt-2 text-muted-foreground">
+                <p className="text-muted-foreground mt-2">
                   Atraskite katalikų bendruomenes visoje Lietuvoje
                 </p>
               </div>
               <Link
                 href="/parishes"
-                className="self-start whitespace-nowrap rounded-lg border border-primary px-5 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:self-auto"
+                className="border-primary text-primary hover:bg-primary-50 focus-visible:ring-primary self-start whitespace-nowrap rounded-lg border px-5 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 sm:self-auto"
               >
                 Visos parapijos →
               </Link>
             </div>
 
             {featuredParishes.length > 0 ? (
-              <ul
-                role="list"
-                className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
-              >
+              <ul role="list" className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {featuredParishes.map((parish) => (
                   <li key={parish.id} className="relative">
                     <ParishCard parish={parish} />
@@ -688,7 +660,7 @@ export default async function HomePage() {
                 ))}
               </ul>
             ) : (
-              <p className="mt-8 text-center text-muted-foreground">
+              <p className="text-muted-foreground mt-8 text-center">
                 Šiuo metu parapijų nėra. Bandykite vėliau.
               </p>
             )}
@@ -702,10 +674,7 @@ export default async function HomePage() {
         <DonateSection />
 
         {/* Admin CTA */}
-        <section
-          aria-labelledby="admin-cta-heading"
-          className="bg-primary-900 py-16 sm:py-20"
-        >
+        <section aria-labelledby="admin-cta-heading" className="bg-primary-900 py-16 sm:py-20">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
             <h2
               id="admin-cta-heading"
@@ -713,21 +682,21 @@ export default async function HomePage() {
             >
               Esate parapijos administratorius?
             </h2>
-            <p className="mt-4 text-lg text-primary-200">
-              Valdykite savo parapijos puslapį, skelbkite pamaldų tvarkaraštį
-              ir bendraukite su tikinčiaisiais per vieną platformą.
+            <p className="text-primary-200 mt-4 text-lg">
+              Valdykite savo parapijos puslapį, skelbkite pamaldų tvarkaraštį ir bendraukite su
+              tikinčiaisiais per vieną platformą.
             </p>
             <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link
                 href="https://app.jol-hub.eu/register"
-                className="inline-flex items-center gap-2 rounded-xl bg-secondary px-8 py-4 text-base font-bold text-gray-900 shadow-md transition-all hover:bg-secondary-400 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-primary-900"
+                className="bg-secondary hover:bg-secondary-400 focus-visible:ring-secondary focus-visible:ring-offset-primary-900 inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-gray-900 shadow-md transition-all hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
               >
                 <span aria-hidden="true">🚀</span>
                 Pradėti nemokamai
               </Link>
               <Link
                 href="https://app.jol-hub.eu/login"
-                className="inline-flex items-center gap-2 rounded-xl border border-white/30 px-8 py-4 text-base font-semibold text-white transition-colors hover:border-white/60 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary-900"
+                className="focus-visible:ring-offset-primary-900 inline-flex items-center gap-2 rounded-xl border border-white/30 px-8 py-4 text-base font-semibold text-white transition-colors hover:border-white/60 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
               >
                 Prisijungti
               </Link>

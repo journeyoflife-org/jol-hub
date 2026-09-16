@@ -55,7 +55,12 @@ export interface BookingWidgetProps {
 
 type Step = 'select' | 'details' | 'review' | 'done';
 
-export function BookingWidget({ locale = 'lt', services = [], slots = [], staff = [] }: BookingWidgetProps) {
+export function BookingWidget({
+  locale = 'lt',
+  services = [],
+  slots = [],
+  staff = [],
+}: BookingWidgetProps) {
   const t = useTranslations('commerce');
   const tenant = useTenant();
   const entitled = useTenantFeature('booking');
@@ -64,7 +69,13 @@ export function BookingWidget({ locale = 'lt', services = [], slots = [], staff 
   const [serviceId, setServiceId] = useState('');
   const [slotId, setSlotId] = useState('');
   const [staffId, setStaffId] = useState('');
-  const [draft, setDraft] = useState<CustomerDraft>({ name: '', email: '', phone: '', notes: '', consent: false });
+  const [draft, setDraft] = useState<CustomerDraft>({
+    name: '',
+    email: '',
+    phone: '',
+    notes: '',
+    consent: false,
+  });
   const [errors, setErrors] = useState<Partial<Record<keyof CustomerDraft, string>>>({});
   const [reference, setReference] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -82,7 +93,7 @@ export function BookingWidget({ locale = 'lt', services = [], slots = [], staff 
         aria-label={t('bookingTitle')}
         className="rounded-lg border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
       >
-        <h2 className="mb-2 font-heading text-xl font-semibold text-neutral-900 dark:text-neutral-50">
+        <h2 className="font-heading mb-2 text-xl font-semibold text-neutral-900 dark:text-neutral-50">
           {t('bookingTitle')}
         </h2>
         <p className="text-sm text-neutral-600 dark:text-neutral-300">{t('bookingUnavailable')}</p>
@@ -136,7 +147,7 @@ export function BookingWidget({ locale = 'lt', services = [], slots = [], staff 
       aria-label={t('bookingTitle')}
       className="rounded-lg border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
     >
-      <h2 className="mb-4 font-heading text-xl font-semibold text-neutral-900 dark:text-neutral-50">
+      <h2 className="font-heading mb-4 text-xl font-semibold text-neutral-900 dark:text-neutral-50">
         {t('bookingTitle')}
       </h2>
 
@@ -303,7 +314,9 @@ export function BookingWidget({ locale = 'lt', services = [], slots = [], staff 
             </div>
             <div className="flex justify-between">
               <dt className="text-neutral-500 dark:text-neutral-400">{t('selectSlot')}</dt>
-              <dd>{selectedSlot ? new Date(selectedSlot.startDateTime).toLocaleString(locale) : '—'}</dd>
+              <dd>
+                {selectedSlot ? new Date(selectedSlot.startDateTime).toLocaleString(locale) : '—'}
+              </dd>
             </div>
             <div className="flex justify-between">
               <dt className="text-neutral-500 dark:text-neutral-400">{t('nameLabel')}</dt>
@@ -330,7 +343,9 @@ export function BookingWidget({ locale = 'lt', services = [], slots = [], staff 
         <div className="space-y-3 text-center">
           <p className="text-sm text-neutral-700 dark:text-neutral-200">{t('bookingSuccess')}</p>
           {reference ? (
-            <p className="font-mono text-lg font-semibold text-neutral-900 dark:text-neutral-50">{reference}</p>
+            <p className="font-mono text-lg font-semibold text-neutral-900 dark:text-neutral-50">
+              {reference}
+            </p>
           ) : null}
           <p className="text-xs text-neutral-500 dark:text-neutral-400">{t('addToCalendar')}</p>
         </div>

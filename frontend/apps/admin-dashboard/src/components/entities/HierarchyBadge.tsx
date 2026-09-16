@@ -14,7 +14,10 @@ interface HierarchyBadgeProps {
   residency: string;
 }
 
-const TIER_CONFIG: Record<FederationTier, { label: string; icon: typeof Globe; className: string }> = {
+const TIER_CONFIG: Record<
+  FederationTier,
+  { label: string; icon: typeof Globe; className: string }
+> = {
   global: { label: 'Global', icon: Globe, className: 'bg-purple-100 text-purple-800' },
   country: { label: 'Country', icon: Globe, className: 'bg-blue-100 text-blue-800' },
   diocese: { label: 'Diocese', icon: Building2, className: 'bg-green-100 text-green-800' },
@@ -27,7 +30,7 @@ export function HierarchyBadge({ tier, residency }: HierarchyBadgeProps) {
 
   return (
     <Badge className={config.className} variant="outline">
-      <Icon className="h-3 w-3 mr-1" />
+      <Icon className="mr-1 h-3 w-3" />
       {config.label} • {residency.toUpperCase()}
     </Badge>
   );

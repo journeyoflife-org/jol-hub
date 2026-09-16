@@ -76,7 +76,7 @@ async function sendToBitrixCRM(
   recipientType: string
 ): Promise<{ success: boolean; error?: string }> {
   const webhookUrl = process.env.NEXT_PUBLIC_BITRIX_WEBHOOK_URL;
-  
+
   if (!webhookUrl) {
     console.error('[CONTACT FORM] Bitrix webhook URL not configured');
     return { success: false, error: 'CRM integration not configured' };
@@ -112,7 +112,7 @@ Recipient Type: ${recipientType}`,
     }
 
     const result = await response.json();
-    
+
     if (result.error) {
       throw new Error(result.error_description || result.error);
     }
@@ -120,9 +120,9 @@ Recipient Type: ${recipientType}`,
     return { success: true };
   } catch (error) {
     console.error('[CONTACT FORM] Bitrix CRM error:', error);
-    return { 
-      success: false, 
-      error: error instanceof Error ? error.message : 'Failed to send to CRM' 
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Failed to send to CRM',
     };
   }
 }
@@ -181,15 +181,14 @@ export function ContactForm({
   }, [formData]);
 
   const handleChange = useCallback(
-    (field: keyof ContactFormData) => (
-      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
-      setFormData((prev) => ({ ...prev, [field]: e.target.value }));
-      // Clear error when user starts typing
-      if (errors[field]) {
-        setErrors((prev) => ({ ...prev, [field]: undefined }));
-      }
-    },
+    (field: keyof ContactFormData) =>
+      (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+        // Clear error when user starts typing
+        if (errors[field]) {
+          setErrors((prev) => ({ ...prev, [field]: undefined }));
+        }
+      },
     [errors]
   );
 
@@ -215,7 +214,8 @@ export function ContactForm({
           onError?.(result.error || 'Failed to send message');
         }
       } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';
+        const errorMessage =
+          error instanceof Error ? error.message : 'An unexpected error occurred';
         setSubmitError(errorMessage);
         onError?.(errorMessage);
       } finally {
@@ -246,7 +246,7 @@ export function ContactForm({
             <CheckCircle className="h-12 w-12 text-green-500" aria-hidden="true" />
             <div>
               <h3 className="text-lg font-semibold">Message Sent Successfully</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-muted-foreground text-sm">
                 Thank you for contacting us. We will get back to you soon.
               </p>
             </div>
@@ -272,7 +272,10 @@ export function ContactForm({
           {/* Name Field */}
           <div className="space-y-2">
             <Label htmlFor="contact-name">
-              Full Name <span className="text-red-500" aria-label="required">*</span>
+              Full Name{' '}
+              <span className="text-red-500" aria-label="required">
+                *
+              </span>
             </Label>
             <Input
               id="contact-name"
@@ -287,7 +290,7 @@ export function ContactForm({
             />
             {errors.name && (
               <p id="name-error" className="text-sm text-red-500" role="alert">
-                <AlertCircle className="inline h-4 w-4 mr-1" />
+                <AlertCircle className="mr-1 inline h-4 w-4" />
                 {errors.name}
               </p>
             )}
@@ -296,7 +299,10 @@ export function ContactForm({
           {/* Email Field */}
           <div className="space-y-2">
             <Label htmlFor="contact-email">
-              Email Address <span className="text-red-500" aria-label="required">*</span>
+              Email Address{' '}
+              <span className="text-red-500" aria-label="required">
+                *
+              </span>
             </Label>
             <Input
               id="contact-email"
@@ -311,7 +317,7 @@ export function ContactForm({
             />
             {errors.email && (
               <p id="email-error" className="text-sm text-red-500" role="alert">
-                <AlertCircle className="inline h-4 w-4 mr-1" />
+                <AlertCircle className="mr-1 inline h-4 w-4" />
                 {errors.email}
               </p>
             )}
@@ -332,7 +338,7 @@ export function ContactForm({
             />
             {errors.phone && (
               <p id="phone-error" className="text-sm text-red-500" role="alert">
-                <AlertCircle className="inline h-4 w-4 mr-1" />
+                <AlertCircle className="mr-1 inline h-4 w-4" />
                 {errors.phone}
               </p>
             )}
@@ -341,7 +347,10 @@ export function ContactForm({
           {/* Subject Field */}
           <div className="space-y-2">
             <Label htmlFor="contact-subject">
-              Subject <span className="text-red-500" aria-label="required">*</span>
+              Subject{' '}
+              <span className="text-red-500" aria-label="required">
+                *
+              </span>
             </Label>
             <Input
               id="contact-subject"
@@ -356,7 +365,7 @@ export function ContactForm({
             />
             {errors.subject && (
               <p id="subject-error" className="text-sm text-red-500" role="alert">
-                <AlertCircle className="inline h-4 w-4 mr-1" />
+                <AlertCircle className="mr-1 inline h-4 w-4" />
                 {errors.subject}
               </p>
             )}
@@ -365,7 +374,10 @@ export function ContactForm({
           {/* Message Field */}
           <div className="space-y-2">
             <Label htmlFor="contact-message">
-              Message <span className="text-red-500" aria-label="required">*</span>
+              Message{' '}
+              <span className="text-red-500" aria-label="required">
+                *
+              </span>
             </Label>
             <Textarea
               id="contact-message"
@@ -380,7 +392,7 @@ export function ContactForm({
             />
             {errors.message && (
               <p id="message-error" className="text-sm text-red-500" role="alert">
-                <AlertCircle className="inline h-4 w-4 mr-1" />
+                <AlertCircle className="mr-1 inline h-4 w-4" />
                 {errors.message}
               </p>
             )}
@@ -395,12 +407,7 @@ export function ContactForm({
           )}
 
           {/* Submit Button */}
-          <Button
-            type="submit"
-            className="w-full"
-            disabled={isSubmitting}
-            aria-busy={isSubmitting}
-          >
+          <Button type="submit" className="w-full" disabled={isSubmitting} aria-busy={isSubmitting}>
             {isSubmitting ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />

@@ -18,10 +18,12 @@ export function LivestreamEmbed({ obituaries }: LivestreamEmbedProps) {
 
   if (streamsAvailable.length === 0) {
     return (
-      <div className="bg-gray-50 border rounded-lg p-8 text-center">
-        <Video className="h-12 w-12 mx-auto mb-4 text-gray-400" />
+      <div className="rounded-lg border bg-gray-50 p-8 text-center">
+        <Video className="mx-auto mb-4 h-12 w-12 text-gray-400" />
         <p className="text-gray-600">No live streams currently available.</p>
-        <p className="text-gray-500 text-sm mt-2">Check back later or contact us for more information.</p>
+        <p className="mt-2 text-sm text-gray-500">
+          Check back later or contact us for more information.
+        </p>
       </div>
     );
   }
@@ -40,16 +42,16 @@ export function LivestreamEmbed({ obituaries }: LivestreamEmbedProps) {
 
     return (
       <div className="space-y-4">
-        <div className="aspect-video bg-black rounded-lg overflow-hidden">
+        <div className="aspect-video overflow-hidden rounded-lg bg-black">
           {videoId ? (
             <iframe
               src={`https://www.youtube.com/embed/${videoId}`}
-              className="w-full h-full"
+              className="h-full w-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
           ) : (
-            <div className="flex items-center justify-center h-full text-white">
+            <div className="flex h-full items-center justify-center text-white">
               <p>Unable to load stream</p>
             </div>
           )}
@@ -63,7 +65,7 @@ export function LivestreamEmbed({ obituaries }: LivestreamEmbedProps) {
 
   if (selectedStream && !isUnlocked) {
     return (
-      <div className="bg-gray-50 border rounded-lg p-6 space-y-4">
+      <div className="space-y-4 rounded-lg border bg-gray-50 p-6">
         <div className="flex items-center gap-3 text-gray-700">
           <Lock className="h-5 w-5" />
           <p>Enter password to view stream</p>
@@ -89,16 +91,18 @@ export function LivestreamEmbed({ obituaries }: LivestreamEmbedProps) {
       {streamsAvailable.map((obit) => (
         <div
           key={obit.id}
-          className="bg-white border rounded-lg p-4 flex items-center justify-between"
+          className="flex items-center justify-between rounded-lg border bg-white p-4"
         >
           <div>
-            <p className="font-medium">{obit.firstName} {obit.lastName}</p>
+            <p className="font-medium">
+              {obit.firstName} {obit.lastName}
+            </p>
             <p className="text-sm text-gray-500">
               Funeral: {obit.funeralDate} at {obit.funeralTime}
             </p>
           </div>
           <Button onClick={() => setSelectedStream(obit)}>
-            <Play className="h-4 w-4 mr-2" />
+            <Play className="mr-2 h-4 w-4" />
             Watch
           </Button>
         </div>

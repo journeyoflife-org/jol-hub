@@ -18,10 +18,7 @@
 
 export { useTranslation } from 'react-i18next';
 
-export {
-  useTranslationWithDeepL,
-  translateUserContent,
-} from './use-translation-with-deepl';
+export { useTranslationWithDeepL, translateUserContent } from './use-translation-with-deepl';
 
 export type {
   UseTranslationWithDeepLReturn,

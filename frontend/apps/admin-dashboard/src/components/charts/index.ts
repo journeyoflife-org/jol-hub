@@ -8,12 +8,7 @@ export {
   CHART_COLORS,
 } from './charts';
 
-export type {
-  BarChartProps,
-  PieChartProps,
-  LineChartData,
-  PieChartData,
-} from './charts';
+export type { BarChartProps, PieChartProps, LineChartData, PieChartData } from './charts';
 
 // Re-export the interface types from charts.tsx
 export type { LineChartProps, AreaChartProps } from './charts';

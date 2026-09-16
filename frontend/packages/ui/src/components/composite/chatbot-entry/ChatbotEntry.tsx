@@ -29,7 +29,7 @@ export function ChatbotEntry({ enabled = false, faqHref, tenant, className }: Ch
       className={cn(
         'focus-ring inline-flex min-h-[24px] items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-sm shadow-sm hover:underline dark:border-neutral-800',
         accentTextClass(tenant),
-        className,
+        className
       )}
     >
       <MessageCircle aria-hidden="true" className="h-4 w-4 shrink-0" />

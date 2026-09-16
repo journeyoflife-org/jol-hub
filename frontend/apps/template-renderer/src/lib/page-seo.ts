@@ -65,7 +65,7 @@ export function buildTenantMetadata(input: TenantSeoInput): Metadata {
 export function tenantDisplayName(
   tenant: Tenant,
   fixture: TenantFixture | null,
-  locale: SupportedLocale,
+  locale: SupportedLocale
 ): string {
   return fixture ? pickLocalized(fixture.name, locale) : pickLocalized(tenant.name, locale);
 }
@@ -73,7 +73,7 @@ export function tenantDisplayName(
 /** Resolve the tagline/description source (fixture only; registry has none). */
 export function tenantTagline(
   fixture: TenantFixture | null,
-  locale: SupportedLocale,
+  locale: SupportedLocale
 ): string | undefined {
   return fixture ? pickLocalized(fixture.tagline, locale) : undefined;
 }

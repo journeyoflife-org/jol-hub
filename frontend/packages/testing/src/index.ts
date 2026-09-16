@@ -10,11 +10,7 @@
  * state), offline (no real network — MSW or injected fetch only).
  */
 export { renderWithProviders, type RenderWithProvidersOptions } from './render';
-export {
-  mockTenant,
-  mockCheapTenant,
-  mockFuneralTenant,
-} from './mocks/tenant';
+export { mockTenant, mockCheapTenant, mockFuneralTenant } from './mocks/tenant';
 export {
   mockSession,
   mockAdminSession,

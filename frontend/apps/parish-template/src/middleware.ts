@@ -1,12 +1,12 @@
 /**
  * Parish Template Middleware
  * Edge Runtime compatible
- * 
+ *
  * Handles:
  * 1. i18n language detection and routing (URL → cookie → browser → default lt)
  * 2. Multi-tenant subdomain extraction for parish isolation
  * 3. Security headers
- * 
+ *
  * Detection order for language:
  *   URL path (/lt/, /ru/, /en/) → cookie → Accept-Language → default (lt)
  */
@@ -64,7 +64,8 @@ function getLocaleFromBrowser(request: NextRequest): SupportedLocale | null {
   for (const { code } of languages) {
     if (SUPPORTED_LOCALES.includes(code as SupportedLocale)) return code as SupportedLocale;
     const prefix = code.split('-')[0];
-    if (prefix && SUPPORTED_LOCALES.includes(prefix as SupportedLocale)) return prefix as SupportedLocale;
+    if (prefix && SUPPORTED_LOCALES.includes(prefix as SupportedLocale))
+      return prefix as SupportedLocale;
   }
   return null;
 }
@@ -145,9 +146,7 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
 
   // --- No locale in path → detect and redirect ---
   const detectedLocale =
-    getLocaleFromCookie(request) ||
-    getLocaleFromBrowser(request) ||
-    DEFAULT_LOCALE;
+    getLocaleFromCookie(request) || getLocaleFromBrowser(request) || DEFAULT_LOCALE;
 
   const redirectUrl = request.nextUrl.clone();
   redirectUrl.pathname = `/${detectedLocale}${pathname === '/' ? '' : pathname}`;
@@ -170,7 +169,5 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
 }
 
 export const config = {
-  matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|api/).*)',
-  ],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|api/).*)'],
 };

@@ -14,9 +14,7 @@ import { resolveCurrentTenant } from '@/lib/tenant-resolver';
 export const dynamic = 'force-dynamic';
 
 export default function LocaleRootPage({ params }: { params: { locale: string } }) {
-  const locale: SupportedLocale = isSupportedLocale(params.locale)
-    ? params.locale
-    : DEFAULT_LOCALE;
+  const locale: SupportedLocale = isSupportedLocale(params.locale) ? params.locale : DEFAULT_LOCALE;
 
   const tenant = resolveCurrentTenant();
   if (tenant) {

@@ -59,12 +59,27 @@
           "heading": { "lt": "Vienuolių dienos tvarka", "en": "Monastic Daily Schedule" },
           "items": [
             { "title": { "lt": "Budynės (Vigils)" }, "subtitle": { "lt": "05:30 · Koplyčia" } },
-            { "title": { "lt": "Rytmetinė malda (Lauds)" }, "subtitle": { "lt": "06:30 · Koplyčia" } },
-            { "title": { "lt": "Trečia valanda (Terce)" }, "subtitle": { "lt": "09:00 · Koplyčia" } },
+            {
+              "title": { "lt": "Rytmetinė malda (Lauds)" },
+              "subtitle": { "lt": "06:30 · Koplyčia" }
+            },
+            {
+              "title": { "lt": "Trečia valanda (Terce)" },
+              "subtitle": { "lt": "09:00 · Koplyčia" }
+            },
             { "title": { "lt": "Šešta valanda (Sext)" }, "subtitle": { "lt": "12:00 · Koplyčia" } },
-            { "title": { "lt": "Devinta valanda (None)" }, "subtitle": { "lt": "14:30 · Koplyčia" } },
-            { "title": { "lt": "Vakarinė malda (Vespers)" }, "subtitle": { "lt": "17:30 · Koplyčia" } },
-            { "title": { "lt": "Naktinė malda (Compline)" }, "subtitle": { "lt": "19:30 · Koplyčia" } }
+            {
+              "title": { "lt": "Devinta valanda (None)" },
+              "subtitle": { "lt": "14:30 · Koplyčia" }
+            },
+            {
+              "title": { "lt": "Vakarinė malda (Vespers)" },
+              "subtitle": { "lt": "17:30 · Koplyčia" }
+            },
+            {
+              "title": { "lt": "Naktinė malda (Compline)" },
+              "subtitle": { "lt": "19:30 · Koplyčia" }
+            }
           ]
         },
         {

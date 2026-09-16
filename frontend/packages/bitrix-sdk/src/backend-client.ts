@@ -125,7 +125,11 @@ export class CrmBackendClient {
 
   /** Fetch recent leads for a tenant (admin dashboards). */
   getLeads(tenantSlug: string): Promise<CrmResult<Lead[]>> {
-    return this.request<Lead[]>('GET', `/crm/leads?tenant=${encodeURIComponent(tenantSlug)}`, tenantSlug);
+    return this.request<Lead[]>(
+      'GET',
+      `/crm/leads?tenant=${encodeURIComponent(tenantSlug)}`,
+      tenantSlug
+    );
   }
 
   /** Fetch a contact by id. */
@@ -135,7 +139,11 @@ export class CrmBackendClient {
 
   /** Fetch a tenant's deals (read-only sales pipeline data). */
   getDeals(tenantSlug: string): Promise<CrmResult<Deal[]>> {
-    return this.request<Deal[]>('GET', `/crm/deals?tenant=${encodeURIComponent(tenantSlug)}`, tenantSlug);
+    return this.request<Deal[]>(
+      'GET',
+      `/crm/deals?tenant=${encodeURIComponent(tenantSlug)}`,
+      tenantSlug
+    );
   }
 
   /** Create a task (e.g. follow-up on a lead). */
@@ -144,20 +152,28 @@ export class CrmBackendClient {
   }
 
   /** Fetch tasks attached to an entity. */
-  getTasks(tenantSlug: string, entityType: CrmEntityType, entityId: string): Promise<CrmResult<Task[]>> {
+  getTasks(
+    tenantSlug: string,
+    entityType: CrmEntityType,
+    entityId: string
+  ): Promise<CrmResult<Task[]>> {
     return this.request<Task[]>(
       'GET',
       `/crm/tasks?entity=${encodeURIComponent(entityType)}&id=${encodeURIComponent(entityId)}`,
-      tenantSlug,
+      tenantSlug
     );
   }
 
   /** Fetch activities attached to an entity. */
-  getActivities(tenantSlug: string, entityType: CrmEntityType, entityId: string): Promise<CrmResult<Activity[]>> {
+  getActivities(
+    tenantSlug: string,
+    entityType: CrmEntityType,
+    entityId: string
+  ): Promise<CrmResult<Activity[]>> {
     return this.request<Activity[]>(
       'GET',
       `/crm/activities?entity=${encodeURIComponent(entityType)}&id=${encodeURIComponent(entityId)}`,
-      tenantSlug,
+      tenantSlug
     );
   }
 
@@ -169,7 +185,7 @@ export class CrmBackendClient {
     method: 'GET' | 'POST',
     path: string,
     tenantSlug: string,
-    body?: unknown,
+    body?: unknown
   ): Promise<CrmResult<T>> {
     // GETs are idempotent → full retry budget. Mutations retry ONLY on 429
     // (the request was rejected before processing); any other failure may
@@ -195,13 +211,16 @@ export class CrmBackendClient {
     method: 'GET' | 'POST',
     path: string,
     tenantSlug: string,
-    body?: unknown,
+    body?: unknown
   ): Promise<CrmResult<T>> {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), this.timeoutMs);
 
     try {
-      const headers: Record<string, string> = { Accept: 'application/json', 'X-Tenant': tenantSlug };
+      const headers: Record<string, string> = {
+        Accept: 'application/json',
+        'X-Tenant': tenantSlug,
+      };
       if (body !== undefined) headers['Content-Type'] = 'application/json';
 
       const response = await this.fetchImpl(`${this.baseUrl}${path}`, {

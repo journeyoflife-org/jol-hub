@@ -5,14 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Textarea } from '@/components/ui/textarea';
-import {
-  AlertTriangle,
-  CheckCircle,
-  ArrowRight,
-  ArrowLeft,
-  Loader2,
-  GitMerge,
-} from 'lucide-react';
+import { AlertTriangle, CheckCircle, ArrowRight, ArrowLeft, Loader2, GitMerge } from 'lucide-react';
 import type { Bitrix24Conflict } from '@/types';
 
 // =============================================================================
@@ -23,7 +16,11 @@ import type { Bitrix24Conflict } from '@/types';
 
 interface ConflictResolverProps {
   conflicts: Bitrix24Conflict[];
-  onResolve: (conflictId: string, resolution: 'local' | 'remote' | 'merge', mergedData?: Record<string, unknown>) => void;
+  onResolve: (
+    conflictId: string,
+    resolution: 'local' | 'remote' | 'merge',
+    mergedData?: Record<string, unknown>
+  ) => void;
   isLoading?: boolean;
 }
 
@@ -38,16 +35,16 @@ export function ConflictResolver({
 
   const handleResolve = () => {
     if (!selectedConflict || !resolution) return;
-    
+
     const parsedMergedData = resolution === 'merge' ? JSON.parse(mergedData || '{}') : undefined;
     onResolve(selectedConflict, resolution, parsedMergedData);
-    
+
     setSelectedConflict(null);
     setResolution(null);
     setMergedData('');
   };
 
-  const currentConflict = conflicts.find(c => c.id === selectedConflict);
+  const currentConflict = conflicts.find((c) => c.id === selectedConflict);
 
   return (
     <Card>
@@ -64,17 +61,17 @@ export function ConflictResolver({
       </CardHeader>
       <CardContent>
         {conflicts.length === 0 ? (
-          <div className="text-center py-8">
-            <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-3" />
+          <div className="py-8 text-center">
+            <CheckCircle className="mx-auto mb-3 h-12 w-12 text-green-500" />
             <p className="text-lg font-medium">No Conflicts</p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               All data is synchronized without conflicts
             </p>
           </div>
         ) : selectedConflict && currentConflict ? (
           <div className="space-y-4">
             {/* Conflict Header */}
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="text-muted-foreground flex items-center gap-2 text-sm">
               <Button
                 variant="ghost"
                 size="sm"
@@ -83,7 +80,7 @@ export function ConflictResolver({
                   setResolution(null);
                 }}
               >
-                <ArrowLeft className="h-4 w-4 mr-1" />
+                <ArrowLeft className="mr-1 h-4 w-4" />
                 Back to list
               </Button>
             </div>
@@ -91,9 +88,9 @@ export function ConflictResolver({
             {/* Conflict Details */}
             <div className="grid gap-4 md:grid-cols-2">
               {/* Local Version */}
-              <div className="p-4 rounded-lg border-2 border-blue-500/50 bg-blue-50/50 dark:bg-blue-950/20">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-3 h-3 rounded-full bg-blue-500" />
+              <div className="rounded-lg border-2 border-blue-500/50 bg-blue-50/50 p-4 dark:bg-blue-950/20">
+                <div className="mb-3 flex items-center gap-2">
+                  <div className="h-3 w-3 rounded-full bg-blue-500" />
                   <span className="font-medium">Local Version</span>
                 </div>
                 <div className="space-y-2 text-sm">
@@ -107,18 +104,18 @@ export function ConflictResolver({
                 <Button
                   variant={resolution === 'local' ? 'default' : 'outline'}
                   size="sm"
-                  className="w-full mt-4"
+                  className="mt-4 w-full"
                   onClick={() => setResolution('local')}
                 >
-                  <CheckCircle className="h-4 w-4 mr-2" />
+                  <CheckCircle className="mr-2 h-4 w-4" />
                   Keep Local
                 </Button>
               </div>
 
               {/* Remote Version */}
-              <div className="p-4 rounded-lg border-2 border-purple-500/50 bg-purple-50/50 dark:bg-purple-950/20">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-3 h-3 rounded-full bg-purple-500" />
+              <div className="rounded-lg border-2 border-purple-500/50 bg-purple-50/50 p-4 dark:bg-purple-950/20">
+                <div className="mb-3 flex items-center gap-2">
+                  <div className="h-3 w-3 rounded-full bg-purple-500" />
                   <span className="font-medium">Bitrix24 Version</span>
                 </div>
                 <div className="space-y-2 text-sm">
@@ -132,18 +129,18 @@ export function ConflictResolver({
                 <Button
                   variant={resolution === 'remote' ? 'default' : 'outline'}
                   size="sm"
-                  className="w-full mt-4"
+                  className="mt-4 w-full"
                   onClick={() => setResolution('remote')}
                 >
-                  <ArrowRight className="h-4 w-4 mr-2" />
+                  <ArrowRight className="mr-2 h-4 w-4" />
                   Accept Remote
                 </Button>
               </div>
             </div>
 
             {/* Merge Option */}
-            <div className="p-4 rounded-lg border-2 border-green-500/50 bg-green-50/50 dark:bg-green-950/20">
-              <div className="flex items-center gap-2 mb-3">
+            <div className="rounded-lg border-2 border-green-500/50 bg-green-50/50 p-4 dark:bg-green-950/20">
+              <div className="mb-3 flex items-center gap-2">
                 <GitMerge className="h-4 w-4 text-green-500" />
                 <span className="font-medium">Manual Merge</span>
               </div>
@@ -160,10 +157,10 @@ export function ConflictResolver({
               <Button
                 variant={resolution === 'merge' ? 'default' : 'outline'}
                 size="sm"
-                className="w-full mt-3"
+                className="mt-3 w-full"
                 onClick={() => setResolution('merge')}
               >
-                <GitMerge className="h-4 w-4 mr-2" />
+                <GitMerge className="mr-2 h-4 w-4" />
                 Merge Manually
               </Button>
             </div>
@@ -179,14 +176,11 @@ export function ConflictResolver({
               >
                 Cancel
               </Button>
-              <Button
-                onClick={handleResolve}
-                disabled={!resolution || isLoading}
-              >
+              <Button onClick={handleResolve} disabled={!resolution || isLoading}>
                 {isLoading ? (
-                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 ) : (
-                  <CheckCircle className="h-4 w-4 mr-2" />
+                  <CheckCircle className="mr-2 h-4 w-4" />
                 )}
                 Resolve Conflict
               </Button>
@@ -197,16 +191,16 @@ export function ConflictResolver({
             {conflicts.map((conflict) => (
               <div
                 key={conflict.id}
-                className="flex items-center justify-between p-3 rounded-lg bg-muted/50 hover:bg-muted cursor-pointer"
+                className="bg-muted/50 hover:bg-muted flex cursor-pointer items-center justify-between rounded-lg p-3"
                 onClick={() => setSelectedConflict(conflict.id)}
               >
                 <div className="flex items-center gap-3">
                   <AlertTriangle className="h-5 w-5 text-yellow-500" />
                   <div>
-                    <p className="font-medium">{conflict.entityType}: {conflict.entityName}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {conflict.field} conflict
+                    <p className="font-medium">
+                      {conflict.entityType}: {conflict.entityName}
                     </p>
+                    <p className="text-muted-foreground text-sm">{conflict.field} conflict</p>
                   </div>
                 </div>
                 <Badge variant="outline">

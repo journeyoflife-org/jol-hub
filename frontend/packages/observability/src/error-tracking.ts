@@ -31,7 +31,8 @@ export interface ErrorContext {
   status?: number;
 }
 
-const NETWORK_MARKERS = /fetch|network|timeout|aborted|failed to fetch|load failed|econn|etimedout|dns/i;
+const NETWORK_MARKERS =
+  /fetch|network|timeout|aborted|failed to fetch|load failed|econn|etimedout|dns/i;
 const AUTH_MARKERS = /401|403|unauthorized|forbidden|session|signin|sign-in|csrf|token expired/i;
 const COMMERCE_MARKERS = /checkout|payment|donation|cart|order|stripe|booking|reservation/i;
 const SECURITY_MARKERS = /rate limit|xss|sanitiz|injection|permission denied|rbac/i;
@@ -148,15 +149,13 @@ function stackOf(error: unknown): string | undefined {
 
 /** Strip volatile fragments so equivalent errors share a fingerprint. */
 function normalizeMessage(message: string): string {
-  return (
-    message
-      .replace(/https?:\/\/[^\s)]+/g, '<url>')
-      .replace(/[0-9a-f]{8,}/gi, '<id>')
-      .replace(/\d+/g, '<n>')
-      .replace(/\s+/g, ' ')
-      .trim()
-      .slice(0, 160)
-  );
+  return message
+    .replace(/https?:\/\/[^\s)]+/g, '<url>')
+    .replace(/[0-9a-f]{8,}/gi, '<id>')
+    .replace(/\d+/g, '<n>')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 160);
 }
 
 /** Top N `at …` frames, stripped of columns and absolute hosts. */

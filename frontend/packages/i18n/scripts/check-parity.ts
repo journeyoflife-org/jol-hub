@@ -118,7 +118,9 @@ for (const file of verticalFiles) {
     }
   }
 
-  console.log(`vertical ${vertical}: ${locales.length} locales, ${perLocaleKeys[locales[0]]?.length ?? 0} override keys`);
+  console.log(
+    `vertical ${vertical}: ${locales.length} locales, ${perLocaleKeys[locales[0]]?.length ?? 0} override keys`
+  );
 }
 
 console.log('='.repeat(70));

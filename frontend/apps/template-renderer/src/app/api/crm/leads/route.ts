@@ -46,7 +46,10 @@ export async function GET(request: NextRequest) {
   if (result.ok) {
     return NextResponse.json(result.data);
   }
-  console.error('[crm/leads] lead list failed', { kind: result.error.kind, status: result.error.status });
+  console.error('[crm/leads] lead list failed', {
+    kind: result.error.kind,
+    status: result.error.status,
+  });
   if (result.error.kind === 'auth-rotation') {
     return NextResponse.json({ error: 'auth-rotation', retryable: true }, { status: 503 });
   }

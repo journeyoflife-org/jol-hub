@@ -137,8 +137,11 @@ export class EmailApi {
     if (params.templateType) fields.UF_TEMPLATE_TYPE = params.templateType;
     if (params.parishCode) fields.UF_PARISH_CODE = params.parishCode;
 
-    const response = await this.client.post<Bitrix24Response<{ ID: string }>>('sender.mail.send', fields);
-    
+    const response = await this.client.post<Bitrix24Response<{ ID: string }>>(
+      'sender.mail.send',
+      fields
+    );
+
     return {
       messageId: response.result?.ID || '',
       recipients: params.to.length,
@@ -218,10 +221,7 @@ God bless you.
 
     if (params.parishCode) fields.UF_PARISH_CODE = params.parishCode;
 
-    const response = await this.client.post<{ result: number }>(
-      'sender.campaign.add',
-      { fields }
-    );
+    const response = await this.client.post<{ result: number }>('sender.campaign.add', { fields });
 
     return { campaignId: String(response.result) };
   }
@@ -230,10 +230,9 @@ God bless you.
    * Send campaign
    */
   async sendCampaign(campaignId: string): Promise<boolean> {
-    const response = await this.client.post<{ result: boolean }>(
-      'sender.campaign.send',
-      { id: campaignId }
-    );
+    const response = await this.client.post<{ result: boolean }>('sender.campaign.send', {
+      id: campaignId,
+    });
     return response.result ?? false;
   }
 
@@ -279,9 +278,8 @@ God bless you.
       select: ['EMAIL'],
     });
 
-    const recipients = contacts.result
-      ?.flatMap((c) => c.EMAIL?.map((e) => e.VALUE) ?? [])
-      .filter(Boolean) ?? [];
+    const recipients =
+      contacts.result?.flatMap((c) => c.EMAIL?.map((e) => e.VALUE) ?? []).filter(Boolean) ?? [];
 
     if (recipients.length === 0) {
       return { messageId: '', recipients: 0 };

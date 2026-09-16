@@ -15,13 +15,7 @@
 export type LeadStatus = 'NEW' | 'IN_PROGRESS' | 'CONVERTED' | 'CLOSED';
 
 /** Lead origin (mirrors the backend `Lead.LeadSource` choices). */
-export type LeadSource =
-  | 'WEBSITE'
-  | 'PHONE'
-  | 'EMAIL'
-  | 'WALK_IN'
-  | 'REFERRAL'
-  | 'OTHER';
+export type LeadSource = 'WEBSITE' | 'PHONE' | 'EMAIL' | 'WALK_IN' | 'REFERRAL' | 'OTHER';
 
 /** Sanitized UTM attribution captured from the submitting page URL. */
 export interface UtmParams {

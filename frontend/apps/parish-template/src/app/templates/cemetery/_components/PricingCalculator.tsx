@@ -6,7 +6,19 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Card, CardContent, CardHeader, CardTitle, Label, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Separator } from '@journeyoflife-org/ui';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Separator,
+} from '@journeyoflife-org/ui';
 import { Calculator } from 'lucide-react';
 
 interface CemeteryService {
@@ -128,7 +140,7 @@ export function PricingCalculator({ services }: PricingCalculatorProps): JSX.Ele
 
         {/* Calculation Result */}
         {calculation && (
-          <div className="bg-muted p-4 rounded-lg space-y-2">
+          <div className="bg-muted space-y-2 rounded-lg p-4">
             <div className="flex justify-between text-sm">
               <span className="text-muted-foreground">Service:</span>
               <span>{calculation.serviceName}</span>
@@ -142,18 +154,18 @@ export function PricingCalculator({ services }: PricingCalculatorProps): JSX.Ele
               <span>{calculation.frequencyName}</span>
             </div>
             <Separator />
-            <div className="flex justify-between items-center">
+            <div className="flex items-center justify-between">
               <span className="text-muted-foreground">Per visit:</span>
               <span className="font-semibold">€{calculation.pricePerVisit}</span>
             </div>
-            <div className="flex justify-between items-center">
+            <div className="flex items-center justify-between">
               <span className="text-muted-foreground">Visits per year:</span>
               <span className="font-semibold">{calculation.visits}</span>
             </div>
             <Separator />
-            <div className="flex justify-between items-center pt-2">
+            <div className="flex items-center justify-between pt-2">
               <span className="font-semibold">Estimated yearly cost:</span>
-              <span className="text-2xl font-bold text-primary">€{calculation.yearlyTotal}</span>
+              <span className="text-primary text-2xl font-bold">€{calculation.yearlyTotal}</span>
             </div>
           </div>
         )}

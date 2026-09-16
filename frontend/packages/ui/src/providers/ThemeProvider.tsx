@@ -11,14 +11,7 @@
  */
 'use client';
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 export type ThemePreference = 'light' | 'dark' | 'system';
 export type ResolvedTheme = 'light' | 'dark';
@@ -93,8 +86,7 @@ export function ThemeProvider({
     return () => media.removeEventListener('change', onChange);
   }, []);
 
-  const resolvedTheme: ResolvedTheme =
-    theme === 'system' ? (systemDark ? 'dark' : 'light') : theme;
+  const resolvedTheme: ResolvedTheme = theme === 'system' ? (systemDark ? 'dark' : 'light') : theme;
 
   // Apply the class whenever the resolved mode changes.
   useEffect(() => {
@@ -116,7 +108,7 @@ export function ThemeProvider({
 
   const value = useMemo(
     () => ({ theme, resolvedTheme, setTheme, toggleTheme }),
-    [theme, resolvedTheme, setTheme, toggleTheme],
+    [theme, resolvedTheme, setTheme, toggleTheme]
   );
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;

@@ -25,7 +25,7 @@ export interface RenderWithProvidersOptions {
 
 export function renderWithProviders(
   ui: ReactElement,
-  options: RenderWithProvidersOptions = {},
+  options: RenderWithProvidersOptions = {}
 ): RenderResult {
   const locale = options.locale ?? 'lt';
   const messages = getMessages(locale, options.messagesOverrides ?? {});

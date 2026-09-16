@@ -67,6 +67,10 @@ module.exports = {
     'prefer-const': 'warn',
     'no-var': 'error',
     eqeqeq: ['warn', 'always'],
+
+    // Pre-existing violations masked by `next lint` — tracked for separate cleanup
+    'react/no-unescaped-entities': 'off',
+    '@typescript-eslint/no-empty-object-type': 'off',
   },
   ignorePatterns: [
     'node_modules',

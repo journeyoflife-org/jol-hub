@@ -21,23 +21,23 @@ types.ts                              src/components/WebVitals.tsx (RUM)
 
 Standard Lighthouse budget format; consumed by BOTH enforcement paths.
 
-| Resource | Budget (KiB, transfer) | Notes |
-| --- | --- | --- |
-| JavaScript (initial) | 200 | per-route first-load JS, gzipped |
-| CSS (initial) | 50 | per-route, gzipped |
-| Images | 500 / page | AVIF/WebP via `next/image` |
-| Fonts | 100 | system-first stacks → 0 in pilot |
-| Third-party scripts | 100 | Stripe is backend-hosted → ~0 in pilot |
-| Document (HTML) | 50 | RSC output |
-| Total | 1000 | whole page transfer |
+| Resource             | Budget (KiB, transfer) | Notes                                  |
+| -------------------- | ---------------------- | -------------------------------------- |
+| JavaScript (initial) | 200                    | per-route first-load JS, gzipped       |
+| CSS (initial)        | 50                     | per-route, gzipped                     |
+| Images               | 500 / page             | AVIF/WebP via `next/image`             |
+| Fonts                | 100                    | system-first stacks → 0 in pilot       |
+| Third-party scripts  | 100                    | Stripe is backend-hosted → ~0 in pilot |
+| Document (HTML)      | 50                     | RSC output                             |
+| Total                | 1000                   | whole page transfer                    |
 
 | Timing (emulated mobile, 4G) | Budget |
-| --- | --- |
-| Time to Interactive | 3500ms |
-| First Contentful Paint | 1800ms |
-| Largest Contentful Paint | 2500ms |
-| Cumulative Layout Shift | 0.1 |
-| Total Blocking Time | 200ms |
+| ---------------------------- | ------ |
+| Time to Interactive          | 3500ms |
+| First Contentful Paint       | 1800ms |
+| Largest Contentful Paint     | 2500ms |
+| Cumulative Layout Shift      | 0.1    |
+| Total Blocking Time          | 200ms  |
 
 ## Enforcement
 
@@ -63,14 +63,14 @@ Rule: **the build fails when a budget is exceeded.** Bisect with
 
 ## Bundle posture (code splitting)
 
-| Surface | Strategy |
-| --- | --- |
-| Templates | Dynamic `import()` per vertical family in `lib/template-registry.ts` — a funeral visitor never downloads the diocese template (server-side chunk split) |
-| Routes | App Router route-based splitting: per-route client JS only loads on that route (`app-build-manifest.json` is exactly what the gate measures) |
+| Surface           | Strategy                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Templates         | Dynamic `import()` per vertical family in `lib/template-registry.ts` — a funeral visitor never downloads the diocese template (server-side chunk split)                                                                                                                                                                                                                                                                                                                |
+| Routes            | App Router route-based splitting: per-route client JS only loads on that route (`app-build-manifest.json` is exactly what the gate measures)                                                                                                                                                                                                                                                                                                                           |
 | Workspace barrels | `experimental.optimizePackageImports` for `@journeyoflife-org/ui`, `@journeyoflife-org/commerce`, `lucide-react`. Found by the gate + `pnpm analyze`: a bare `import { formatEur } from '@journeyoflife-org/commerce'` dragged the Stripe browser SDK (44 KiB stat) and `import { Card } from '@journeyoflife-org/ui'` dragged the ENTIRE ui surface (compliance pages, donation widgets, zod forms) into every route. Fix cut the worst route 235 → 151.9 KiB gzipped |
-| Commerce (Stripe) | Backend-hosted Checkout + PaymentIntents — **no Stripe browser SDK in the client bundle** (payment-boundary guard enforces); commerce widgets are client islands on commerce routes only |
-| CRM (Bitrix24) | Zero Bitrix JS ships to the browser: CRM surfaces call same-origin `/api/crm/*` route handlers → server-only `CrmBackendClient` (`lib/bitrix-client.ts`) |
-| Polyfills | Legacy `noModule` polyfills excluded from the modern baseline (gate) |
+| Commerce (Stripe) | Backend-hosted Checkout + PaymentIntents — **no Stripe browser SDK in the client bundle** (payment-boundary guard enforces); commerce widgets are client islands on commerce routes only                                                                                                                                                                                                                                                                               |
+| CRM (Bitrix24)    | Zero Bitrix JS ships to the browser: CRM surfaces call same-origin `/api/crm/*` route handlers → server-only `CrmBackendClient` (`lib/bitrix-client.ts`)                                                                                                                                                                                                                                                                                                               |
+| Polyfills         | Legacy `noModule` polyfills excluded from the modern baseline (gate)                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 Hard rules (from the STEP-13 spec, enforced by review + gate):
 
@@ -119,12 +119,12 @@ FOUT/FOIT, zero CLS from font swap. When webfonts are vendored later
 
 **App layer (`next.config.js` headers):**
 
-| Path | Cache-Control |
-| --- | --- |
-| `/_next/static/*` | `public, max-age=31536000, immutable` (hashed) |
-| `/_next/image/*` | `public, max-age=604800, stale-while-revalidate=86400` |
-| `/sitemap.xml` | `public, max-age=600, stale-while-revalidate=3600` |
-| `/robots.txt` | `public, max-age=3600` |
+| Path              | Cache-Control                                          |
+| ----------------- | ------------------------------------------------------ |
+| `/_next/static/*` | `public, max-age=31536000, immutable` (hashed)         |
+| `/_next/image/*`  | `public, max-age=604800, stale-while-revalidate=86400` |
+| `/sitemap.xml`    | `public, max-age=600, stale-while-revalidate=3600`     |
+| `/robots.txt`     | `public, max-age=3600`                                 |
 
 **Rendering layer:** per-route ISR windows (see RENDERING.md) — home 300s,
 about/contact 3600s, news 60s; events/services intentionally `no-store`
@@ -173,28 +173,28 @@ speculatively (CSP + privacy).
 
 ## Compliance
 
-| Obligation | Posture |
-| --- | --- |
-| SOC 2 CC7.2 | Automated performance quality control: byte-budget gate in build, Lighthouse CI on PR, RUM ingress for field data |
-| GDPR Art. 32 | Availability as security: budgets sized for the R640, proxy caching, no third-party dependency for first paint |
-| GDPR Art. 6/7 | RUM strictly consent-gated; metric payload carries no personal data |
-| Core Web Vitals | Google ranking factor — budgets pinned to the green thresholds |
+| Obligation      | Posture                                                                                                           |
+| --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| SOC 2 CC7.2     | Automated performance quality control: byte-budget gate in build, Lighthouse CI on PR, RUM ingress for field data |
+| GDPR Art. 32    | Availability as security: budgets sized for the R640, proxy caching, no third-party dependency for first paint    |
+| GDPR Art. 6/7   | RUM strictly consent-gated; metric payload carries no personal data                                               |
+| Core Web Vitals | Google ranking factor — budgets pinned to the green thresholds                                                    |
 
 ## Acceptance verification
 
-| Criterion | Status |
-| --- | --- |
-| Initial JS < 200KB gzip / CSS < 50KB | **PASS** — gate measured 25 routes: worst 151.9 KiB (tenant layout), tenant pages 134.7 KiB, shell 87.6 KiB, CSS 0 KiB (tokens inlined via RSC) |
-| Lighthouse mobile ≥ 90 on all page types | `lighthouserc.js` ready; requires a Chrome-equipped environment (offline workspace has none) |
-| CWV green (LCP/INP/CLS) | Budget floors asserted in both gates; RUM collects field data post-consent |
-| Bundle analyzer: no unexpected heavy deps | No Stripe browser SDK, no chart/map libs in client bundle; lucide barrel tree-shaken |
-| Images WebP/AVIF + responsive srcset | `next/image` with AVIF/WebP formats configured |
-| Fonts swap, no FOUT/FOIT | System-first stacks → zero webfont requests in pilot |
-| Third-party scripts only on relevant pages | Stripe backend-hosted; Bitrix24 on-demand; analytics consent-gated |
-| Brotli active | nginx-layer (jol-infrastructure); app-level gzip fallback verified via `compress: true` |
-| Lighthouse CI passes | Config committed; runs where Chrome exists |
-| Web Vitals RUM logging | `/api/perf` ingress + consent-gated reporter wired in root layout; runtime-verified (valid POST → 204, malformed → 400) |
-| No functional regression from splitting | Renderer tests 21/21, a11y check 0 violations across 7 pages, HTML renders with gzip + immutable-cache headers |
+| Criterion                                  | Status                                                                                                                                          |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Initial JS < 200KB gzip / CSS < 50KB       | **PASS** — gate measured 25 routes: worst 151.9 KiB (tenant layout), tenant pages 134.7 KiB, shell 87.6 KiB, CSS 0 KiB (tokens inlined via RSC) |
+| Lighthouse mobile ≥ 90 on all page types   | `lighthouserc.js` ready; requires a Chrome-equipped environment (offline workspace has none)                                                    |
+| CWV green (LCP/INP/CLS)                    | Budget floors asserted in both gates; RUM collects field data post-consent                                                                      |
+| Bundle analyzer: no unexpected heavy deps  | No Stripe browser SDK, no chart/map libs in client bundle; lucide barrel tree-shaken                                                            |
+| Images WebP/AVIF + responsive srcset       | `next/image` with AVIF/WebP formats configured                                                                                                  |
+| Fonts swap, no FOUT/FOIT                   | System-first stacks → zero webfont requests in pilot                                                                                            |
+| Third-party scripts only on relevant pages | Stripe backend-hosted; Bitrix24 on-demand; analytics consent-gated                                                                              |
+| Brotli active                              | nginx-layer (jol-infrastructure); app-level gzip fallback verified via `compress: true`                                                         |
+| Lighthouse CI passes                       | Config committed; runs where Chrome exists                                                                                                      |
+| Web Vitals RUM logging                     | `/api/perf` ingress + consent-gated reporter wired in root layout; runtime-verified (valid POST → 204, malformed → 400)                         |
+| No functional regression from splitting    | Renderer tests 21/21, a11y check 0 violations across 7 pages, HTML renders with gzip + immutable-cache headers                                  |
 
 Rollback: every STEP-13 change is additive (config, gate script, reporter);
 reverting the commit restores the pre-STEP-13 build with no functional

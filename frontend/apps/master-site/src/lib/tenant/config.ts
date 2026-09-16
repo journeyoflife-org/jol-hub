@@ -1,6 +1,6 @@
 /**
  * Multi-tenant configuration types for JOL-HUB parish subdomains.
- * 
+ *
  * Supports 400,000+ parish subdomains with:
  * - Type-safe configuration objects
  * - Diocese hierarchy
@@ -118,7 +118,7 @@ export interface ParishContact {
 
 /**
  * Parish configuration for multi-tenant routing.
- * 
+ *
  * This is the core configuration object that defines a parish's
  * identity, appearance, and operational settings.
  */
@@ -134,7 +134,7 @@ export interface ParishConfig {
   aliases?: string[];
   /** Parish description */
   description?: string;
-  
+
   // Hierarchy
   /** Parent diocese ID */
   dioceseId: string;
@@ -142,7 +142,7 @@ export interface ParishConfig {
   diocese?: DioceseConfig;
   /** Deanery name */
   deanery?: string;
-  
+
   // Localization
   /** Primary language code (ISO 639-1) */
   language: string;
@@ -152,7 +152,7 @@ export interface ParishConfig {
   timezone: string;
   /** Currency for donations */
   currency: 'EUR' | 'USD' | 'GBP';
-  
+
   // Appearance
   /** Theme configuration */
   theme: ParishTheme;
@@ -160,7 +160,7 @@ export interface ParishConfig {
   logoUrl?: string;
   /** Cover photo URL */
   coverPhotoUrl?: string;
-  
+
   // Operations
   /** Contact information */
   contact: ParishContact;
@@ -171,7 +171,7 @@ export interface ParishConfig {
     days: string;
     hours: string;
   };
-  
+
   // Staff (from Bitrix24)
   /** Parish priest ID */
   priestId?: string;
@@ -181,7 +181,7 @@ export interface ParishConfig {
   priestPhoto?: string;
   /** Administrator ID */
   administratorId?: string;
-  
+
   // Features
   /** Enabled features */
   features: {
@@ -192,7 +192,7 @@ export interface ParishConfig {
     onlineConfession: boolean;
     prayerRequests: boolean;
   };
-  
+
   // Metadata
   /** When the parish was established */
   establishedYear?: number;
@@ -211,7 +211,7 @@ export interface ParishConfig {
 /**
  * Liturgical season types.
  */
-export type LiturgicalSeason = 
+export type LiturgicalSeason =
   | 'advent'
   | 'christmas'
   | 'ordinary_time'
@@ -228,33 +228,33 @@ export function getCurrentLiturgicalSeason(date: Date = new Date()): LiturgicalS
   const year = date.getFullYear();
   const month = date.getMonth() + 1; // 1-12
   const day = date.getDate();
-  
+
   // Calculate Easter date (approximate using Anonymous Gregorian algorithm)
   const easter = getEasterDate(year);
-  
+
   // Advent: Starts 4 Sundays before Christmas
   const adventStart = getAdventStart(year);
   const christmas = new Date(year, 11, 25); // Dec 25
-  
+
   // Christmas season: Dec 25 to Baptism of the Lord (Sunday after Jan 6)
   const baptismSunday = getBaptismOfLord(year);
-  
+
   // Lent: Ash Wednesday to Holy Saturday
   const ashWednesday = new Date(easter);
   ashWednesday.setDate(easter.getDate() - 46);
-  
+
   // Holy Week: Palm Sunday to Holy Saturday
   const palmSunday = new Date(easter);
   palmSunday.setDate(easter.getDate() - 7);
   const holySaturday = new Date(easter);
   holySaturday.setDate(easter.getDate() - 1);
-  
+
   // Easter season: Easter to Pentecost (50 days)
   const pentecost = new Date(easter);
   pentecost.setDate(easter.getDate() + 49);
-  
+
   const dateOnly = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-  
+
   // Check seasons in reverse chronological order
   if (dateOnly >= adventStart && dateOnly < christmas) {
     return 'advent';
@@ -274,7 +274,7 @@ export function getCurrentLiturgicalSeason(date: Date = new Date()): LiturgicalS
   if (dateOnly > pentecost && dateOnly < adventStart) {
     return 'ordinary_time';
   }
-  
+
   // Default to ordinary time
   return 'ordinary_time';
 }

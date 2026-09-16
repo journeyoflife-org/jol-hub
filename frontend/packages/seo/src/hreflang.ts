@@ -38,7 +38,7 @@ export function buildHreflangSet(
   route: string,
   currentLocale: string,
   locales: readonly HreflangLocale[] = PILOT_HREFLANG,
-  xDefaultLocale: string = X_DEFAULT_LOCALE,
+  xDefaultLocale: string = X_DEFAULT_LOCALE
 ): HreflangSet {
   const path = normalizeRoute(route);
   const tenantPath = (locale: string): string =>

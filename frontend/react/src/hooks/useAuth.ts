@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 /**
  * useAuth — primary auth hook.
@@ -10,5 +10,5 @@
  * const { user, login, logout, isLoading } = useAuth()
  */
 
-import { useAuthContext } from '@/context/AuthContext'
-export { useAuthContext as useAuth }
+import { useAuthContext } from '@/context/AuthContext';
+export { useAuthContext as useAuth };

@@ -37,7 +37,8 @@ export function TemplateRenderer({ fixture, page, basePath }: TemplateRendererPr
 
   // Tenant-relative links in fixtures (`/shop`, `/#candles`) are anchored
   // under the tenant prefix.
-  const href = (target: string): string => (target.startsWith('/') ? `${basePath}${target}` : target);
+  const href = (target: string): string =>
+    target.startsWith('/') ? `${basePath}${target}` : target;
 
   // STEP 12 (WCAG 2.4.6): every page needs exactly one h1. The hero block
   // renders its own; pages without a hero get the localized page title.
@@ -46,7 +47,9 @@ export function TemplateRenderer({ fixture, page, basePath }: TemplateRendererPr
   return (
     <article data-tenant={fixture.slug} data-vertical={fixture.vertical} className="space-y-10">
       {!hasHeroHeading && t(page.title) && (
-        <h1 className="text-3xl md:text-4xl font-heading font-bold text-primary">{t(page.title)}</h1>
+        <h1 className="font-heading text-primary text-3xl font-bold md:text-4xl">
+          {t(page.title)}
+        </h1>
       )}
       {page.contentBlocks.map((block, index) => (
         <BlockView key={`${block.type}-${index}`} block={block} accent={accent} href={href} />
@@ -65,13 +68,17 @@ function BlockView({ block, accent, href }: BlockViewProps) {
   switch (block.type) {
     case 'hero':
       return (
-        <section className={`py-8 border-b-2 ${accent}`}>
-          <div className={block.image ? 'grid md:grid-cols-2 gap-8 items-center' : 'text-center'}>
+        <section className={`border-b-2 py-8 ${accent}`}>
+          <div className={block.image ? 'grid items-center gap-8 md:grid-cols-2' : 'text-center'}>
             <div className={block.image ? 'text-center md:text-start' : ''}>
-              <h1 className="text-4xl font-heading font-bold text-primary mb-2">{t(block.heading)}</h1>
+              <h1 className="font-heading text-primary mb-2 text-4xl font-bold">
+                {t(block.heading)}
+              </h1>
               {block.heading.en && <p className="text-xl text-gray-600">{block.heading.en}</p>}
-              {block.subheading && <p className="text-lg text-gray-700 mt-3">{t(block.subheading)}</p>}
-              {block.body && <p className="text-gray-500 mt-2">{t(block.body)}</p>}
+              {block.subheading && (
+                <p className="mt-3 text-lg text-gray-700">{t(block.subheading)}</p>
+              )}
+              {block.body && <p className="mt-2 text-gray-500">{t(block.body)}</p>}
             </div>
             {block.image && (
               // Explicit width/height (CLS) + localized alt (WCAG 1.1.1).
@@ -81,7 +88,7 @@ function BlockView({ block, accent, href }: BlockViewProps) {
                 width={block.image.width}
                 height={block.image.height}
                 loading="eager"
-                className="w-full h-auto max-h-80 object-cover rounded-xl shadow-lg"
+                className="h-auto max-h-80 w-full rounded-xl object-cover shadow-lg"
               />
             )}
           </div>
@@ -92,9 +99,11 @@ function BlockView({ block, accent, href }: BlockViewProps) {
       return (
         <section>
           {block.heading && (
-            <h2 className="text-2xl font-heading font-bold text-primary mb-3">{t(block.heading)}</h2>
+            <h2 className="font-heading text-primary mb-3 text-2xl font-bold">
+              {t(block.heading)}
+            </h2>
           )}
-          <p className="text-gray-700 leading-relaxed">{t(block.body)}</p>
+          <p className="leading-relaxed text-gray-700">{t(block.body)}</p>
         </section>
       );
 
@@ -103,13 +112,15 @@ function BlockView({ block, accent, href }: BlockViewProps) {
         <Card>
           <CardContent className="p-6">
             {block.heading && (
-              <h2 className="text-xl font-heading font-bold text-primary mb-4">{t(block.heading)}</h2>
+              <h2 className="font-heading text-primary mb-4 text-xl font-bold">
+                {t(block.heading)}
+              </h2>
             )}
-            <dl className="grid md:grid-cols-2 gap-x-8 gap-y-2">
+            <dl className="grid gap-x-8 gap-y-2 md:grid-cols-2">
               {block.items.map((item) => (
                 <div key={t(item.label)} className="flex justify-between gap-4 text-sm">
                   <dt className="text-gray-500">{t(item.label)}</dt>
-                  <dd className="font-medium text-right">{item.value}</dd>
+                  <dd className="text-right font-medium">{item.value}</dd>
                 </div>
               ))}
             </dl>
@@ -121,13 +132,15 @@ function BlockView({ block, accent, href }: BlockViewProps) {
       return (
         <section>
           {block.heading && (
-            <h2 className="text-2xl font-heading font-bold text-primary mb-4">{t(block.heading)}</h2>
+            <h2 className="font-heading text-primary mb-4 text-2xl font-bold">
+              {t(block.heading)}
+            </h2>
           )}
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid gap-4 md:grid-cols-2">
             {block.entries.map((entry) => (
               <Card key={`${entry.day}-${entry.times.join('-')}`}>
                 <CardContent className="p-4">
-                  <h3 className="font-heading text-lg text-primary">{entry.day}</h3>
+                  <h3 className="font-heading text-primary text-lg">{entry.day}</h3>
                   {entry.dayEn && entry.dayEn !== entry.day && (
                     <p className="text-xs text-gray-500">{entry.dayEn}</p>
                   )}
@@ -138,7 +151,7 @@ function BlockView({ block, accent, href }: BlockViewProps) {
                       </Badge>
                     ))}
                   </div>
-                  {entry.notes && <p className="text-sm text-gray-500 mt-2">{entry.notes}</p>}
+                  {entry.notes && <p className="mt-2 text-sm text-gray-500">{entry.notes}</p>}
                 </CardContent>
               </Card>
             ))}
@@ -150,19 +163,23 @@ function BlockView({ block, accent, href }: BlockViewProps) {
       return (
         <section>
           {block.heading && (
-            <h2 className="text-2xl font-heading font-bold text-primary mb-4">{t(block.heading)}</h2>
+            <h2 className="font-heading text-primary mb-4 text-2xl font-bold">
+              {t(block.heading)}
+            </h2>
           )}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {block.items.map((item) => (
               <Card key={t(item.title)}>
                 <CardContent className="p-4">
-                  <h3 className="font-medium text-primary">{t(item.title)}</h3>
+                  <h3 className="text-primary font-medium">{t(item.title)}</h3>
                   {item.title.en && item.title.en !== item.title.lt && (
                     <p className="text-sm text-gray-500">{item.title.en}</p>
                   )}
-                  {item.subtitle && <p className="text-sm text-gray-600 mt-1">{t(item.subtitle)}</p>}
+                  {item.subtitle && (
+                    <p className="mt-1 text-sm text-gray-600">{t(item.subtitle)}</p>
+                  )}
                   {item.description && (
-                    <p className="text-sm text-gray-600 mt-1">{t(item.description)}</p>
+                    <p className="mt-1 text-sm text-gray-600">{t(item.description)}</p>
                   )}
                   <div className="mt-2 flex flex-wrap items-center gap-2">
                     {typeof item.price === 'number' && (
@@ -185,14 +202,16 @@ function BlockView({ block, accent, href }: BlockViewProps) {
 
     case 'stats':
       return (
-        <section className="text-center py-4">
+        <section className="py-4 text-center">
           {block.heading && (
-            <h2 className="text-2xl font-heading font-bold text-primary mb-6">{t(block.heading)}</h2>
+            <h2 className="font-heading text-primary mb-6 text-2xl font-bold">
+              {t(block.heading)}
+            </h2>
           )}
-          <div className="grid md:grid-cols-4 gap-4">
+          <div className="grid gap-4 md:grid-cols-4">
             {block.items.map((item) => (
-              <div key={t(item.label)} className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-                <p className="text-3xl font-bold text-primary">
+              <div key={t(item.label)} className="rounded-lg bg-white p-4 shadow dark:bg-gray-800">
+                <p className="text-primary text-3xl font-bold">
                   {typeof item.value === 'number' ? item.value.toLocaleString() : item.value}
                 </p>
                 <p className="text-sm text-gray-600">{t(item.label)}</p>
@@ -204,35 +223,34 @@ function BlockView({ block, accent, href }: BlockViewProps) {
 
     case 'cta':
       return (
-        <section className="py-8 px-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+        <section className="rounded-lg bg-gray-100 px-4 py-8 dark:bg-gray-800">
           {block.heading && (
-            <h2 className="text-2xl font-heading font-bold text-primary mb-5 text-center">
+            <h2 className="font-heading text-primary mb-5 text-center text-2xl font-bold">
               {t(block.heading)}
             </h2>
           )}
           <div className="flex flex-wrap justify-center gap-4">
-          {block.links.map((link, linkIndex) => (
-            <a
-              key={href(link.href)}
-              href={href(link.href)}
-              className={
-                linkIndex === 0
-                  ? 'inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-white font-medium hover:bg-primary-700 transition-colors'
-                  : 'inline-flex items-center justify-center rounded-md border border-primary px-6 py-3 text-primary font-medium hover:bg-gray-100 transition-colors'
-              }
-            >
-              {t(link.label)}
-            </a>
-          ))}
+            {block.links.map((link, linkIndex) => (
+              <a
+                key={href(link.href)}
+                href={href(link.href)}
+                className={
+                  linkIndex === 0
+                    ? 'bg-primary hover:bg-primary-700 inline-flex items-center justify-center rounded-md px-6 py-3 font-medium text-white transition-colors'
+                    : 'border-primary text-primary inline-flex items-center justify-center rounded-md border px-6 py-3 font-medium transition-colors hover:bg-gray-100'
+                }
+              >
+                {t(link.label)}
+              </a>
+            ))}
           </div>
         </section>
       );
 
-    default: {
-      // Exhaustiveness guard: unknown block types render nothing rather than
-      // leaking raw fixture payloads.
-      const _exhaustive: never = block;
+    default:
+      // Unhandled block types (massSchedule, gallery, faq, sacramentList,
+      // clergyRoleList, visitingInfo, mapLocation) render nothing until
+      // their renderers are implemented.
       return null;
-    }
   }
 }
