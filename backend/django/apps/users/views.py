@@ -11,25 +11,26 @@ GDPR Compliance:
 """
 
 import logging
-from rest_framework import generics, status
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from rest_framework_simplejwt.tokens import RefreshToken
 
 from apps.core.throttling import (
-    AuthRateThrottle,
     AuthAnonRateThrottle,
-    GDPRExportThrottle,
+    AuthRateThrottle,
     GDPRDeleteThrottle,
+    GDPRExportThrottle,
 )
+from rest_framework import generics, status
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
 from .models import User
 from .serializers import (
-    RegisterSerializer,
-    UserSerializer,
     ChangePasswordSerializer,
+    RegisterSerializer,
     TokenObtainPairSerializer,
+    UserSerializer,
 )
 
 logger = logging.getLogger(__name__)

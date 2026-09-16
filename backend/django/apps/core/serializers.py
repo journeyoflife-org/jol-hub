@@ -3,6 +3,7 @@ Core serializers — base classes and helpers shared by all apps.
 """
 
 from rest_framework import serializers
+
 from .models import AuditLog
 
 

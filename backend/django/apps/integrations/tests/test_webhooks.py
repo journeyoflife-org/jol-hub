@@ -20,7 +20,6 @@ from typing import Any
 from unittest.mock import patch
 
 import pytest
-
 from conftest import (
     BITRIX24_TEST_SECRET,
     build_bitrix24_payload,

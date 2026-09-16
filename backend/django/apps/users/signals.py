@@ -2,8 +2,8 @@
 User signals — auto-create profile, track login metadata.
 """
 
-from django.db.models.signals import post_save
 from django.contrib.auth.signals import user_logged_in
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from .models import User, UserProfile

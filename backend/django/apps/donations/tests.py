@@ -6,12 +6,13 @@ SOC2 CC7.2 - Tamper-evident audit logging
 PCI-DSS Requirement 10 - Track and monitor financial transactions
 """
 
-import pytest
-from decimal import Decimal
 from datetime import datetime
-from unittest.mock import Mock, patch, MagicMock
-from django.test import RequestFactory
+from decimal import Decimal
+from unittest.mock import MagicMock, Mock, patch
+
+import pytest
 from django.contrib.auth import get_user_model
+from django.test import RequestFactory
 
 # Note: These tests require Django to be configured
 # Run with: pytest backend/django/apps/donations/tests.py --ds=core.settings.development
@@ -75,8 +76,8 @@ class TestDonationRefundAuditLogging:
         Verify that processing a refund creates an AuditEntry record
         with all required compliance fields.
         """
-        from apps.donations.views import DonationRefundView
         from apps.crm.models import AuditEntry
+        from apps.donations.views import DonationRefundView
 
         # Create request
         request = factory.post(
@@ -114,8 +115,8 @@ class TestDonationRefundAuditLogging:
 
         Verify audit entry contains actor_user and actor_ip.
         """
-        from apps.donations.views import DonationRefundView
         from apps.crm.models import AuditEntry
+        from apps.donations.views import DonationRefundView
 
         request = factory.post(
             f"/api/v1/donations/{donation.id}/refund/", {"reason": "Customer request"}
@@ -146,8 +147,8 @@ class TestDonationRefundAuditLogging:
 
         Verify audit entry has created_at timestamp.
         """
-        from apps.donations.views import DonationRefundView
         from apps.crm.models import AuditEntry
+        from apps.donations.views import DonationRefundView
 
         request = factory.post(f"/api/v1/donations/{donation.id}/refund/")
         request.user = user
@@ -179,8 +180,8 @@ class TestDonationRefundAuditLogging:
 
         Verify audit entry contains before/after state.
         """
-        from apps.donations.views import DonationRefundView
         from apps.crm.models import AuditEntry
+        from apps.donations.views import DonationRefundView
 
         request = factory.post(
             f"/api/v1/donations/{donation.id}/refund/", {"reason": "Duplicate charge"}
@@ -226,8 +227,8 @@ class TestDonationRefundAuditLogging:
         - previous_hash (links to previous entry)
         - sequence_number (for gap detection)
         """
-        from apps.donations.views import DonationRefundView
         from apps.crm.models import AuditEntry
+        from apps.donations.views import DonationRefundView
 
         request = factory.post(f"/api/v1/donations/{donation.id}/refund/")
         request.user = user
@@ -262,8 +263,8 @@ class TestDonationRefundAuditLogging:
 
         Create multiple refund audit entries and verify chain integrity.
         """
-        from apps.donations.views import DonationRefundView
         from apps.crm.models import AuditEntry
+        from apps.donations.views import DonationRefundView
 
         # Create first audit entry (genesis for this org)
         first_entry = AuditEntry.objects.create(
@@ -295,9 +296,9 @@ class TestDonationRefundAuditLogging:
 
         If audit creation fails, refund should also fail.
         """
-        from apps.donations.views import DonationRefundView
-        from apps.donations.models import Donation
         from apps.crm.models import AuditEntry
+        from apps.donations.models import Donation
+        from apps.donations.views import DonationRefundView
 
         request = factory.post(f"/api/v1/donations/{donation.id}/refund/")
         request.user = user
@@ -328,8 +329,8 @@ class TestDonationRefundAuditLogging:
 
         Verify audit entry includes all required PCI-DSS fields.
         """
-        from apps.donations.views import DonationRefundView
         from apps.crm.models import AuditEntry
+        from apps.donations.views import DonationRefundView
 
         request = factory.post(f"/api/v1/donations/{donation.id}/refund/")
         request.user = user

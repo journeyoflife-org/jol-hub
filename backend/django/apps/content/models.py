@@ -2,12 +2,11 @@
 Content management models — Pages, Media, and navigation.
 """
 
-from django.db import models
-from django.conf import settings
-from django.utils.translation import gettext_lazy as _
-
 from apps.core.models import BaseModel
 from apps.organizations.models import Organization
+from django.conf import settings
+from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class Page(BaseModel):

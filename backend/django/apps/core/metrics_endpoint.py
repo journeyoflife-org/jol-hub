@@ -32,10 +32,10 @@ from typing import ClassVar
 from django.conf import settings
 from django.http import HttpRequest, HttpResponse
 from prometheus_client import (
+    CONTENT_TYPE_LATEST,
     CollectorRegistry,
     generate_latest,
     multiprocess,
-    CONTENT_TYPE_LATEST,
 )
 from rest_framework import status
 from rest_framework.permissions import AllowAny

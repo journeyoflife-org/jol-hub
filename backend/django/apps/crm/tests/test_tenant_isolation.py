@@ -5,25 +5,25 @@ SOC2 CC6.2 / GDPR Article 32 / ISO 27001 A.9.4
 Comprehensive tests for multi-tenant isolation verification.
 """
 
-import pytest
-import threading
-import uuid
-from unittest.mock import Mock, patch, MagicMock
-from datetime import datetime
-from pathlib import Path
-
 # Add project root to path
 import sys
+import threading
+import uuid
+from datetime import datetime
+from pathlib import Path
+from unittest.mock import MagicMock, Mock, patch
+
+import pytest
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
 
 from backend.django.apps.crm.tenant_verification import (
-    TenantIsolationVerifier,
-    VerificationStatus,
-    VerificationResult,
     IsolationAuditReport,
-    verify_tenant_isolation,
     TenantIsolationEnforcer,
+    TenantIsolationVerifier,
+    VerificationResult,
+    VerificationStatus,
+    verify_tenant_isolation,
 )
 
 # =============================================================================
@@ -99,10 +99,10 @@ class TestThreadLocalIsolation:
     def test_context_set_and_get(self):
         """Test setting and getting tenant context."""
         from backend.django.apps.crm.middleware import (
-            set_tenant_context,
-            get_current_tenant_id,
-            clear_tenant_context,
             TenantContext,
+            clear_tenant_context,
+            get_current_tenant_id,
+            set_tenant_context,
         )
 
         tenant_id = str(uuid.uuid4())
@@ -130,10 +130,10 @@ class TestThreadLocalIsolation:
     def test_context_thread_safety(self):
         """Test that context is isolated between threads."""
         from backend.django.apps.crm.middleware import (
-            set_tenant_context,
-            get_current_tenant_id,
-            clear_tenant_context,
             TenantContext,
+            clear_tenant_context,
+            get_current_tenant_id,
+            set_tenant_context,
         )
 
         results = {}
@@ -175,10 +175,10 @@ class TestThreadLocalIsolation:
     def test_context_clear_prevents_leakage(self):
         """Test that cleared context doesn't leak."""
         from backend.django.apps.crm.middleware import (
-            set_tenant_context,
-            get_current_tenant_id,
-            clear_tenant_context,
             TenantContext,
+            clear_tenant_context,
+            get_current_tenant_id,
+            set_tenant_context,
         )
 
         # Set context
@@ -437,9 +437,9 @@ class TestSecurityScenarios:
 
         # Set current tenant to victim
         from backend.django.apps.crm.middleware import (
-            set_tenant_context,
-            clear_tenant_context,
             TenantContext,
+            clear_tenant_context,
+            set_tenant_context,
         )
 
         context = TenantContext(
@@ -462,8 +462,8 @@ class TestSecurityScenarios:
     def test_missing_tenant_context_blocked(self):
         """Test that missing tenant context is blocked."""
         from backend.django.apps.crm.middleware import (
-            clear_tenant_context,
             TenantDataAccessValidator,
+            clear_tenant_context,
         )
 
         # Ensure no context

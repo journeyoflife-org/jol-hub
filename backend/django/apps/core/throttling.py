@@ -12,7 +12,7 @@ Rate limit strategy:
 - Donation refund: 10/hour (prevent financial abuse)
 """
 
-from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
+from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 
 
 class AuthRateThrottle(UserRateThrottle):

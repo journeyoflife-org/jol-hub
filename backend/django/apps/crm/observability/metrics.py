@@ -12,16 +12,15 @@ import logging
 import time
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
-from typing import Any, Dict, List, Optional, Callable
 from functools import wraps
+from typing import Any, Callable, Dict, List, Optional
 
+from apps.crm.middleware import get_current_tenant_context, get_current_tenant_id
 from django.conf import settings
 from django.core.cache import cache
-from django.db.models import Count, Sum, Avg, Q
+from django.db.models import Avg, Count, Q, Sum
 from django.utils import timezone
-from prometheus_client import Counter, Histogram, Gauge, Info
-
-from apps.crm.middleware import get_current_tenant_id, get_current_tenant_context
+from prometheus_client import Counter, Gauge, Histogram, Info
 
 logger = logging.getLogger("jolhub.crm.observability")
 
@@ -195,11 +194,11 @@ class ComplianceMonitor:
     def generate_report(cls, tenant_id: Optional[str] = None) -> ComplianceReport:
         """Generate compliance report for tenant."""
         from apps.crm.models import (
-            Contact,
-            Deal,
             AuditEntry,
-            DataSubjectRequest,
             ConsentStatus,
+            Contact,
+            DataSubjectRequest,
+            Deal,
         )
 
         tenant_id = tenant_id or get_current_tenant_id()
@@ -412,8 +411,8 @@ class HealthChecker:
     @staticmethod
     def check_database() -> Dict[str, Any]:
         """Check database connectivity."""
-        from django.db import connection
         from apps.crm.models import Contact
+        from django.db import connection
 
         try:
             # Simple query to test database

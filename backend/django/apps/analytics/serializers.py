@@ -2,8 +2,9 @@
 Analytics serializers.
 """
 
-from rest_framework import serializers
 from apps.core.serializers import BaseModelSerializer
+from rest_framework import serializers
+
 from .models import DailyStats, PageView
 
 

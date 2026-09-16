@@ -61,7 +61,7 @@ jobs:
         run: black --check --diff .
       
       - name: Run isort (import sorting)
-        run: isort --check-only --diff .
+        run: isort --profile black --check-only --diff .
       
       - name: Run Flake8 (style guide enforcement)
         run: flake8 . --max-line-length=100 --exclude=migrations,venv,__pycache__,node_modules
@@ -131,7 +131,7 @@ jobs:
       DATABASE_URL: postgres://test_user:test_password@localhost:5432/jolhub_test
       CELERY_BROKER_URL: redis://localhost:6379/0
       CELERY_RESULT_BACKEND: redis://localhost:6379/1
-      DJANGO_SETTINGS_MODULE: core.settings.development
+      DJANGO_SETTINGS_MODULE: core.settings.test
     
     steps:
       - name: Checkout repository
@@ -151,7 +151,7 @@ jobs:
           pip install -r requirements.txt
       
       - name: Run migrations
-        run: python manage.py migrate --settings=core.settings.development
+        run: python manage.py migrate --settings=core.settings.test
       
       - name: Run tests with coverage
         run: |

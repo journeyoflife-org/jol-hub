@@ -5,23 +5,24 @@ ISO 27001 A.18.1.4 - Data protection in analytics.
 """
 
 import logging
-import uuid
 import re
-from datetime import date, timedelta, datetime
-from django.db.models import Sum, Avg, Count
-from django.conf import settings
-from django.core.exceptions import ValidationError
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
-from rest_framework import status
+import uuid
+from datetime import date, datetime, timedelta
 
 from apps.core.models import AuditLog
 from apps.organizations.models import ConsentSettings, Organization
+from django.conf import settings
+from django.core.exceptions import ValidationError
+from django.db.models import Avg, Count, Sum
+from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from .models import DailyStats, PageView
 from .serializers import (
-    DailyStatsSerializer,
     AnalyticsOverviewSerializer,
+    DailyStatsSerializer,
     TopParishSerializer,
 )
 

@@ -18,9 +18,7 @@ import logging
 from typing import Any
 
 import pytest
-from django.core.exceptions import ValidationError
-
-from apps.crm.models import Contact, Lead, ConsentStatus
+from apps.crm.models import ConsentStatus, Contact, Lead
 from apps.integrations.models import WebhookEvent
 from apps.integrations.tasks import (
     _execute_business_logic,
@@ -29,6 +27,7 @@ from apps.integrations.tasks import (
     _sync_lead,
 )
 from apps.organizations.models import Organization
+from django.core.exceptions import ValidationError
 
 # ---------------------------------------------------------------------------
 # Fixtures

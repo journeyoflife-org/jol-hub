@@ -9,16 +9,16 @@ Django admin configuration for CRM models with:
 
 from django.contrib import admin, messages
 from django.db.models import Q
-from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
 from .models import (
-    Contact,
-    Deal,
     AuditEntry,
-    DataSubjectRequest,
-    DataClassification,
     ConsentStatus,
+    Contact,
+    DataClassification,
+    DataSubjectRequest,
+    Deal,
 )
 
 

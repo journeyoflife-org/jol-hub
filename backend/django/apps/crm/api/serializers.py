@@ -9,22 +9,22 @@ Security Features:
 """
 
 import re
-from typing import Optional, Dict, Any
 from decimal import Decimal
-
-from rest_framework import serializers
-from django.utils import timezone
+from typing import Any, Dict, Optional
 
 from apps.core.models import BaseModel
-from ..models import (
-    Contact,
-    Deal,
-    AuditEntry,
-    DataSubjectRequest,
-    DataClassification,
-    ConsentStatus,
-)
+from django.utils import timezone
+from rest_framework import serializers
+
 from ..middleware import get_current_tenant_id
+from ..models import (
+    AuditEntry,
+    ConsentStatus,
+    Contact,
+    DataClassification,
+    DataSubjectRequest,
+    Deal,
+)
 
 
 class GDPRSerializerMixin:

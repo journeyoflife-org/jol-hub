@@ -2,8 +2,9 @@
 Organization serializers.
 """
 
-from rest_framework import serializers
 from apps.core.serializers import BaseModelSerializer
+from rest_framework import serializers
+
 from .models import Organization, OrganizationMember, Website
 
 
@@ -71,8 +72,9 @@ class OrganizationCreateSerializer(BaseModelSerializer):
         ]
 
     def create(self, validated_data):
-        from django.utils.text import slugify
         import uuid
+
+        from django.utils.text import slugify
 
         validated_data["slug"] = (
             slugify(validated_data["name"]) + "-" + str(uuid.uuid4())[:8]

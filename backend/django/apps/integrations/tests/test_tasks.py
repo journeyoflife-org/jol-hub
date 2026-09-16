@@ -18,14 +18,13 @@ from typing import Any
 from unittest.mock import MagicMock, patch
 
 import pytest
-from bson import ObjectId
-from celery.exceptions import Retry
-from django.db import OperationalError
-
 from apps.core.mongodb import WebhookPayloadCollection
 from apps.integrations.models import WebhookEvent
 from apps.integrations.tasks import process_bitrix24_webhook
 from apps.organizations.models import Organization
+from bson import ObjectId
+from celery.exceptions import Retry
+from django.db import OperationalError
 
 # ---------------------------------------------------------------------------
 # Fixtures

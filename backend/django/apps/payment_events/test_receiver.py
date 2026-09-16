@@ -14,9 +14,8 @@ import json
 import time
 
 import pytest
-from django.test import Client
-
 from apps.payment_events.models import PaymentEvent
+from django.test import Client
 
 TEST_KEY = "test-delivery-key-not-a-secret"
 URL = "/internal/v1/payment-events"

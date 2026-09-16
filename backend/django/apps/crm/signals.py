@@ -15,22 +15,22 @@ Features:
 
 import logging
 from decimal import Decimal
-from typing import Dict, List, Optional, Set, Any
+from typing import Any, Dict, List, Optional, Set
 
-from django.db.models.signals import pre_save, post_save, post_delete, m2m_changed
+from django.core.exceptions import ObjectDoesNotExist
+from django.db.models.signals import m2m_changed, post_delete, post_save, pre_save
 from django.dispatch import receiver
 from django.utils import timezone
-from django.core.exceptions import ObjectDoesNotExist
 
-from .models import Contact, Deal, AuditEntry, DataSubjectRequest, ConsentStatus
 from .audit_logger import (
-    ComplianceAuditLogger,
     AuditContext,
-    FieldChange,
-    get_audit_logger,
     AuditEventType,
+    ComplianceAuditLogger,
+    FieldChange,
     GDPRLegalBasis,
+    get_audit_logger,
 )
+from .models import AuditEntry, ConsentStatus, Contact, DataSubjectRequest, Deal
 
 logger = logging.getLogger("jolhub.crm.signals")
 

@@ -2,9 +2,10 @@
 Content serializers.
 """
 
-from rest_framework import serializers
 from apps.core.serializers import BaseModelSerializer
-from .models import Page, MediaFile
+from rest_framework import serializers
+
+from .models import MediaFile, Page
 
 
 class MediaFileSerializer(BaseModelSerializer):

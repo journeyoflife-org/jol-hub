@@ -13,19 +13,18 @@ import hashlib
 import uuid
 from datetime import datetime, timezone
 from decimal import Decimal
-from typing import Optional, List, Dict, Any
+from typing import Any, Dict, List, Optional
 
+from apps.core.models import BaseModel
+from apps.organizations.models import Organization
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
 from django.core.exceptions import ValidationError
 from django.db import models, transaction
-from django.db.models import Q, F, Window, signals
+from django.db.models import F, Q, Window, signals
 from django.db.models.functions import RowNumber
 from django.utils import timezone as django_timezone
 from django.utils.translation import gettext_lazy as _
-
-from apps.core.models import BaseModel
-from apps.organizations.models import Organization
 
 
 class DataClassification(models.TextChoices):

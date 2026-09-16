@@ -10,11 +10,10 @@ Usage:
 import logging
 from typing import Optional
 
+from apps.crm.bitrix24_service import CRMBitrix24ServiceSync, SyncStatus
+from apps.crm.models import Contact, Deal
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
-
-from apps.crm.models import Contact, Deal
-from apps.crm.bitrix24_service import CRMBitrix24ServiceSync, SyncStatus
 
 logger = logging.getLogger("jolhub.crm.management")
 

@@ -10,12 +10,11 @@ Usage:
 import logging
 from typing import Optional
 
+from apps.crm.models import AuditEntry, ConsentStatus, Contact, DataSubjectRequest, Deal
+from apps.crm.observability import ComplianceMonitor, ComplianceReport
 from django.core.management.base import BaseCommand, CommandError
 from django.db.models import Q
 from django.utils import timezone
-
-from apps.crm.models import Contact, Deal, AuditEntry, DataSubjectRequest, ConsentStatus
-from apps.crm.observability import ComplianceMonitor, ComplianceReport
 
 logger = logging.getLogger("jolhub.crm.management")
 

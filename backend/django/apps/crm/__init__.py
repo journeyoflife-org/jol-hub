@@ -34,13 +34,13 @@ class CrmConfig(AppConfig):
 
 # Expose key components for easy import
 from .audit_logger import (
-    ComplianceAuditLogger,
     AuditContext,
-    FieldChange,
     AuditEventType,
+    ComplianceAuditLogger,
+    FieldChange,
     GDPRLegalBasis,
-    get_audit_logger,
     configure_audit_logger,
+    get_audit_logger,
 )
 
 __all__ = [

@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Page, MediaFile
+
+from .models import MediaFile, Page
 
 
 @admin.register(Page)

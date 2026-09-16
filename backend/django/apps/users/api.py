@@ -1,18 +1,14 @@
 # API exports for users app
+from .serializers import ChangePasswordSerializer, RegisterSerializer, UserSerializer
 from .views import (
-    UserViewSet,
-    RegisterView,
+    ChangePasswordView,
+    GDPRDeleteView,
+    GDPRExportView,
     LoginView,
     LogoutView,
     MeView,
-    ChangePasswordView,
-    GDPRExportView,
-    GDPRDeleteView,
-)
-from .serializers import (
-    UserSerializer,
-    RegisterSerializer,
-    ChangePasswordSerializer,
+    RegisterView,
+    UserViewSet,
 )
 
 __all__ = [

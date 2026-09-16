@@ -16,17 +16,16 @@ Security Architecture:
 import logging
 import threading
 from dataclasses import dataclass, field
-from typing import Optional, Callable, Any
 from functools import wraps
+from typing import Any, Callable, Optional
 
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.cache import cache
 from django.http import HttpRequest, HttpResponse
 from django.utils import timezone
-
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework_simplejwt.exceptions import InvalidToken, AuthenticationFailed
+from rest_framework_simplejwt.exceptions import AuthenticationFailed, InvalidToken
 
 logger = logging.getLogger("jolhub.crm.security")
 
