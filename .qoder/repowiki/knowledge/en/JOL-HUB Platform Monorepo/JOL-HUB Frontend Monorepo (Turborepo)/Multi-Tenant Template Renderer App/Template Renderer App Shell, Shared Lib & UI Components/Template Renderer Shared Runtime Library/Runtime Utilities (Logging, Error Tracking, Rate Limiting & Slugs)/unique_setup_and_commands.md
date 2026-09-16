@@ -1,0 +1,1 @@
+Error tracking requires calling `initErrorTracking()` once on the client after hydration; analytics-consented breadcrumbs are gated by reading `analytics` from `localStorage['jol-cookie-consent']`. The rate limiter exposes a `resetRateLimiter()` hook intended for test/ops use to clear both general and login windows.

@@ -1,0 +1,1 @@
+React components and pure primitives that let tenants edit a closed allowlist of page blocks, upload media into quarantine, and submit changes for human moderation with structural diffing and escape-first rendering.

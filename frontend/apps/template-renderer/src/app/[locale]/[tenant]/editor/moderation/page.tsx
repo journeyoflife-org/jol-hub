@@ -11,9 +11,9 @@
  * decision recorded here is final and audit-logged (SOC 2 CC7.2).
  */
 import { redirect } from 'next/navigation';
-import { getMessages, translate, isSupportedLocale } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
-import { isAdmin, isSuperAdmin } from '@jol-hub/auth/oidc';
+import { getMessages, translate, isSupportedLocale } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
+import { isAdmin, isSuperAdmin } from '@journeyoflife-org/auth/oidc';
 import { getAuthSession, isAuthConfigured } from '@/lib/auth';
 import { isEditorConfigured } from '@/lib/editor-client';
 import { resolveTenantRoute } from '@/lib/route-dispatch';

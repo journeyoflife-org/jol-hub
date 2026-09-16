@@ -8,13 +8,13 @@
 import { describe, expect, it, beforeEach } from 'vitest';
 import { act, renderHook } from '@testing-library/react';
 import type { ReactNode } from 'react';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
-import { renderWithProviders, mockTenant, mockCheapTenant } from '@jol-hub/testing';
-import { toPublicTenant } from '@jol-hub/tenant-resolver';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
+import { renderWithProviders, mockTenant, mockCheapTenant } from '@journeyoflife-org/testing';
+import { toPublicTenant } from '@journeyoflife-org/tenant-resolver';
 import { TenantProvider, useTenant, useTenantFeature } from '@/lib/tenant-context';
 import { CartProvider, useCart } from '@/components/commerce/cart-context';
-import { ThemeProvider, useTheme, THEME_STORAGE_KEY } from '@jol-hub/ui/providers';
-import type { ThemePreference } from '@jol-hub/ui/providers';
+import { ThemeProvider, useTheme, THEME_STORAGE_KEY } from '@journeyoflife-org/ui/providers';
+import type { ThemePreference } from '@journeyoflife-org/ui/providers';
 
 describe('useTranslations', () => {
   it('useTranslations.should.resolve namespaced keys', () => {

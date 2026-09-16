@@ -4,13 +4,13 @@
  * Lives in `lib/` (data/resolution layer), not `components/`: DS-THEME-01
  * forbids denomination literals in COMPONENT code (branching logic); the
  * exhaustive `Record<Vertical, …>` keys below are references to the
- * tenant-data controlled vocabulary (@jol-hub/seed-data `Vertical`), the same
+ * tenant-data controlled vocabulary (@journeyoflife-org/seed-data `Vertical`), the same
  * layer as template-registry.ts. Family names themselves must stay
  * STRUCTURAL — the eastern-liturgical family is named 'eastern' (covers the
  * orthodox-church + greek-catholic verticals), never after a denomination
  * (O-022 remediation).
  */
-import type { Vertical } from '@jol-hub/seed-data';
+import type { Vertical } from '@journeyoflife-org/seed-data';
 
 /** Layout families grouped by vertical — structural names only. */
 export type LayoutFamily = 'sacred' | 'eastern' | 'administrative' | 'memorial' | 'congregation';

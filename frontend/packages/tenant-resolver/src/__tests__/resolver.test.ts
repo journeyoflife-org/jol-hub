@@ -7,7 +7,7 @@
  * integrity (Wave-1 pilots), schema naming (ADR-001) and the client-safe
  * sanitizer.
  *
- * Run: pnpm --filter @jol-hub/tenant-resolver test
+ * Run: pnpm --filter @journeyoflife-org/tenant-resolver test
  */
 import { beforeEach, describe, it } from 'node:test';
 import assert from 'node:assert/strict';

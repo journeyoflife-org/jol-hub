@@ -1,0 +1,1 @@
+Django app modeling religious organizations, their hierarchical structure, member roles, website configuration, and GDPR/Canon Law consent settings behind a REST API.

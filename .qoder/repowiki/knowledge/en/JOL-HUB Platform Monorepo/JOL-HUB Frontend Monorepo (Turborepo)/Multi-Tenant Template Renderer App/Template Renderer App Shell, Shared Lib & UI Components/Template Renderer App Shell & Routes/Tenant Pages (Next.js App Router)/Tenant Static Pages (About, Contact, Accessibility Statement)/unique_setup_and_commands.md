@@ -1,0 +1,1 @@
+None beyond standard Next.js dev/build; each page opts into ISR via `export const revalidate = 3600`.

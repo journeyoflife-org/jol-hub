@@ -1,0 +1,1 @@
+Provides k-anonymity pseudonymization, retention/erasure management with legal holds, and entity-specific GDPR Article 30 Records of Processing Activities (ROPA) generation for JOL-HUB's religious entities in Lithuania.

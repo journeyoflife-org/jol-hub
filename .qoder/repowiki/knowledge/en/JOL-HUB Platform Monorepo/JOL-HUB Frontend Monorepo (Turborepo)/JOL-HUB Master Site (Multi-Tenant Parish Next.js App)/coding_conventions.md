@@ -1,0 +1,6 @@
+- Per-parish routes use the Next.js dynamic `[parish]` folder pattern, with `layout.tsx` resolving tenant config and wrapping children in `ParishProvider`, while `page.tsx` renders the page using server components and declares `revalidate = 3600` for ISR.
+- Tenant context is accessed exclusively through the `useParish` / `useParishSafe` hooks from `@/components/tenant/ParishProvider`, never by reading props directly, ensuring consistent parish scoping across the component tree.
+- Client-side data fetching uses the `useParishApiHeaders` hook to automatically attach `x-parish-subdomain`, `x-parish-id`, and `x-diocese-id` headers, keeping backend tenant routing decoupled from individual components.
+- Local storage keys are prefixed with `parish:<id>:` (or `master:` outside parish routes) via `useParishStorageKey` to prevent cross-parish state leakage.
+- Middleware centralizes all cross-cutting concerns — subdomain extraction/validation, reserved-hostname bypass, security headers, CORS, and caching — so route handlers stay free of tenant-routing logic.
+- Reusable UI is built as small single-purpose components under `src/components/*.tsx` that wrap Radix primitives with Tailwind classes and `class-variance-authority` variants, while shared layout/theme pieces live under `src/components/tenant/`.

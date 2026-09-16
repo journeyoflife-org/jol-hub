@@ -1,0 +1,1 @@
+Turborepo monorepo that builds multiple Next.js applications and shared npm packages for the JOL-HUB ecclesiastical platform, orchestrating admin, master site, parish templates, and a template renderer.

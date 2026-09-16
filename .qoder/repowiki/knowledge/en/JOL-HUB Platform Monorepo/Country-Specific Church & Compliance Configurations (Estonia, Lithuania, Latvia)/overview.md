@@ -1,0 +1,1 @@
+Per-country data packs defining liturgical calendars, GDPR/compliance rules, SEO settings, and canonical entity examples for the Baltic states' Catholic, Orthodox, and Lutheran jurisdictions.

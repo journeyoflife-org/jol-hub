@@ -11,7 +11,7 @@
  *
  * Invariants:
  *   INV-1  Single source of truth (no shared code in spokes)
- *   INV-2  Versioned packages (all 12 @jol-hub/* have semver + build)
+ *   INV-2  Versioned packages (all 12 @journeyoflife-org/* have semver + build)
  *   INV-3  Payment boundary CLOSED (no PSP SDK imports)
  *   INV-4  Schema-per-tenant (no tenant schema literals in spokes)
  *   INV-5  Theme vertical (no denomination literals in components)
@@ -20,7 +20,7 @@
  *   INV-8  Identical CI (all spokes use same reusable workflows)
  *   INV-9  GDPR Art. 9 (ROPA records exist)
  *   INV-10 Accessibility (WCAG 2.1 AA)
- *   INV-11 Reversibility (spokes can resolve all @jol-hub/* from hub)
+ *   INV-11 Reversibility (spokes can resolve all @journeyoflife-org/* from hub)
  */
 
 import { describe, it, expect } from 'vitest';
@@ -34,7 +34,7 @@ const HUB_ROOT = resolve(__dirname, '../../../../../');
 const PACKAGES_DIR = join(HUB_ROOT, 'frontend/packages');
 const FRONTEND_ROOT = join(HUB_ROOT, 'frontend');
 
-// All 12 expected @jol-hub/* packages
+// All 12 expected @journeyoflife-org/* packages
 const EXPECTED_PACKAGES = [
   'a11y',
   'auth',
@@ -51,7 +51,7 @@ const EXPECTED_PACKAGES = [
 ];
 
 // ============================================================================
-// INV-2: Versioned packages — all 12 @jol-hub/* have semver + CHANGELOG + build
+// INV-2: Versioned packages — all 12 @journeyoflife-org/* have semver + CHANGELOG + build
 // ============================================================================
 
 describe('INV-2: Versioned packages', () => {
@@ -380,7 +380,7 @@ describe('INV-11: Reversibility (package resolution)', () => {
       };
 
       for (const [dep, version] of Object.entries(allDeps)) {
-        if (dep.startsWith('@jol-hub/') && typeof version === 'string' && !version.startsWith('workspace:')) {
+        if (dep.startsWith('@journeyoflife-org/') && typeof version === 'string' && !version.startsWith('workspace:')) {
           violations.push(`${pkg}: ${dep}@${version} should use workspace: protocol`);
         }
       }

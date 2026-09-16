@@ -1,0 +1,1 @@
+Build with `npm run build` (tsup); type-check with `npm run type-check`; run OIDC unit tests with `npm test` which executes `tsx --test src/oidc/__tests__/*.test.ts`; publish target is GitHub Packages registry (`npm.pkg.github.com`) with restricted access.

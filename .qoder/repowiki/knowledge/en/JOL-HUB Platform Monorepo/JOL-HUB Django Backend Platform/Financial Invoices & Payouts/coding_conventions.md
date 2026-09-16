@@ -1,0 +1,5 @@
+- Monetary fields use `DecimalField(max_digits=12, decimal_places=2)` with explicit `verbose_name` labels wrapped in `_()` for i18n.
+- Enumerated statuses are declared as module-level string constants plus a `STATUS_CHOICES` list used by `CharField(choices=...)`.
+- Tenant isolation is enforced per-model by overriding `save()` to call a `_validate_tenant_context()` helper that lazily imports the CRM middleware and raises `ValidationError` on mismatch.
+- API serializers subclass `BaseModelSerializer` from `apps.core.serializers` and declare explicit `fields` plus `read_only_fields` lists rather than using `__all__`.
+- QuerySets are always filtered by `is_deleted=False` to implement soft-deleted record scoping across list/detail views.

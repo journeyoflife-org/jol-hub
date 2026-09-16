@@ -10,7 +10,7 @@ import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest
 import { setupServer } from 'msw/node';
 import { http, HttpResponse } from 'msw';
 import { NextRequest } from 'next/server';
-import { MOCK_BACKEND_URL } from '@jol-hub/testing';
+import { MOCK_BACKEND_URL } from '@journeyoflife-org/testing';
 
 const server = setupServer();
 beforeAll(() => server.listen({ onUnhandledRequest: 'warn' }));

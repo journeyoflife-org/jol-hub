@@ -6,7 +6,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { Card, CardContent, CardHeader, CardTitle, Button, Input, Label, Textarea, Alert, AlertDescription } from '@jol-hub/ui';
+import { Card, CardContent, CardHeader, CardTitle, Button, Input, Label, Textarea, Alert, AlertDescription } from '@journeyoflife-org/ui';
 import { Upload, Camera, X, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 

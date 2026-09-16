@@ -8,9 +8,9 @@
   "baseBranch": "feat/pages-step6",
   "updateInternalDependencies": "patch",
   "ignore": [
-    "@jol-hub/admin-dashboard",
-    "@jol-hub/master-site",
-    "@jol-hub/parish-template",
-    "@jol-hub/template-renderer"
+    "@journeyoflife-org/admin-dashboard",
+    "@journeyoflife-org/master-site",
+    "@journeyoflife-org/parish-template",
+    "@journeyoflife-org/template-renderer"
   ]
 }

@@ -1,0 +1,1 @@
+Django app that accepts, verifies, and durably stores signed payment-event envelopes from external payment providers via a contract-gated HTTP endpoint.

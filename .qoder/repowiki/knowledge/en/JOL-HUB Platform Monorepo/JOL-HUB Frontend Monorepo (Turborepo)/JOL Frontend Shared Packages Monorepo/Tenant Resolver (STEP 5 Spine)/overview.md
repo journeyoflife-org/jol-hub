@@ -1,0 +1,1 @@
+Resolves a tenant from hostname, subdomain, and X-Tenant header into a server-only Tenant record with an in-memory LRU cache for the JOL template renderer.

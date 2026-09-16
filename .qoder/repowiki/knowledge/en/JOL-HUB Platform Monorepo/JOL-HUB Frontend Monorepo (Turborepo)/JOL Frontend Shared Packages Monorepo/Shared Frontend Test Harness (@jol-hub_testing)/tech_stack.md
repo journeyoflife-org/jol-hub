@@ -1,0 +1,1 @@
+Vitest 4+ with jsdom, React Testing Library 16+, MSW 2 for network-layer interception, and tsup (with esbuild JSX automatic mode) producing ESM/CJS + d.ts bundles.

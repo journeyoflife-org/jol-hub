@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: backend/donations
+title: Donations & Payment Processing
+scope:
+    - backend/django/apps/donations/
+source_files: []
+depends_on: []
+related_to:
+    - path: backend/analytics
+    - path: backend/financial
+    - path: backend/payment_events

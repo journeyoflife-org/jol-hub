@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: frontend/template_renderer_app/templates
+title: Vertical Page Templates (Church, Diocese, Deanery, Cleaning, Funeral)
+scope:
+    - frontend/apps/template-renderer/src/templates/
+source_files: []
+depends_on: []
+related_to:
+    - path: frontend/template_renderer_app/page_modules

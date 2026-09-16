@@ -1,0 +1,1 @@
+Next.js App Router (dynamic `[locale]`/`[tenant]` segments, `generateMetadata`, `revalidate`), `@jol-hub/i18n` for translations, `@jol-hub/ui/components/primitives.Skeleton` for loading states, and `@/lib/json-ld` for schema.org markup.

@@ -12,7 +12,7 @@
 
 import { useCallback, useState } from 'react';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
 
 import { cn } from '../../../lib/utils';
 import { FocusTrap } from '../../accessibility/focus-trap';

@@ -30,7 +30,7 @@ import {
   polyfillBytesFrom,
   resourceBudgetKiB,
   type AppBuildManifest,
-} from '@jol-hub/perf';
+} from '@journeyoflife-org/perf';
 
 const APP_DIR = join(dirname(fileURLToPath(import.meta.url)), '..');
 const NEXT_DIR = join(APP_DIR, '.next');

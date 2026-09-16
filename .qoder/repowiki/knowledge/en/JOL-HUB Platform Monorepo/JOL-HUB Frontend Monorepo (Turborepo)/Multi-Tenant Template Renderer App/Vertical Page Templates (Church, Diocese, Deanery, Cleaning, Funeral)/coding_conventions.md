@@ -1,0 +1,4 @@
+- Each vertical template is a single-file default-exported function that delegates all rendering to `VerticalHomeTemplate` from `./base-template`, keeping per-vertical files to ~20 lines of pure composition.
+- Per-tenant visual and semantic differentiation (accent color, hero variant, schema.org type, SEO description) is expressed through comments and resolved at runtime from `tenant.vertical` rather than via props branching inside the template.
+- Cross-cutting concerns (JSON-LD, analytics placeholder, `data-vertical` theming, `PageComposer` rendering) are centralized in `BaseTemplate` so vertical files stay free of duplication.
+- Templates are typed against `TemplateProps` from `@/lib/template-registry` and accept `tenant`, `locale`, `basePath`, optional `content`/`pageData` for fixture/backend overrides.

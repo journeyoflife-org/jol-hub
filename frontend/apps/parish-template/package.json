@@ -1,5 +1,5 @@
 {
-  "name": "@jol-hub/parish-template",
+  "name": "@journeyoflife-org/parish-template",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -11,10 +11,10 @@
     "clean": "rm -rf .next .turbo node_modules"
   },
   "dependencies": {
-    "@jol-hub/auth": "workspace:*",
-    "@jol-hub/bitrix-sdk": "workspace:*",
-    "@jol-hub/i18n": "workspace:*",
-    "@jol-hub/ui": "workspace:*",
+    "@journeyoflife-org/auth": "workspace:*",
+    "@journeyoflife-org/bitrix-sdk": "workspace:*",
+    "@journeyoflife-org/i18n": "workspace:*",
+    "@journeyoflife-org/ui": "workspace:*",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-dropdown-menu": "^2.0.6",

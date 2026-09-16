@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: data_pipelines/airflow_dags
+title: Airflow DAGs for JOL-HUB ETL, GDPR & Reporting
+scope:
+    - data/airflow/
+source_files: []
+depends_on: []
+related_to:
+    - path: data_pipelines/dbt_models
+    - path: data_pipelines/python_pipelines
+    - path: infra

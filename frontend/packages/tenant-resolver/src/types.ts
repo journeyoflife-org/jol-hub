@@ -10,7 +10,7 @@
  *   be serialized into client payloads.
  * - `id` here is the public slug — database IDs are never used in URLs.
  */
-import type { LocalizedText } from '@jol-hub/seed-data';
+import type { LocalizedText } from '@journeyoflife-org/seed-data';
 
 /**
  * Canonical vertical taxonomy (STEP 5 contract).
@@ -86,7 +86,7 @@ export function schemaForTenant(slug: string): string {
  *   shop          — VIP commercial verticals.
  *   subscriptions — VIP (cemetery-care schedules).
  * `donations` is NORMAL/VIP (churches/dioceses). Vertical-appropriateness is
- * a composition concern — see `@jol-hub/commerce` gating.ts.
+ * a composition concern — see `@journeyoflife-org/commerce` gating.ts.
  */
 export const FEATURES_BY_TIER: Record<PackageTier, string[]> = {
   cheap: ['contact-form', 'service-schedule', 'basic-seo'],

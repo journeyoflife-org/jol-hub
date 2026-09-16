@@ -1,0 +1,1 @@
+The app's `AppsConfig.ready()` must import `apps.users.signals` so that `post_save` and `user_logged_in` receivers are registered; this is the only explicit bootstrap step required beyond adding the app to `INSTALLED_APPS`.

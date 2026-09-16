@@ -1,0 +1,16 @@
+schema_version: 1
+module_path: frontend/template_renderer_app/app_shell_and_lib
+title: Template Renderer App Shell, Shared Lib & UI Components
+scope:
+    - frontend/apps/template-renderer/src/app/
+    - frontend/apps/template-renderer/src/lib/
+    - frontend/apps/template-renderer/src/components/
+source_files: []
+depends_on: []
+related_to:
+    - path: frontend/shared_packages/commerce
+    - path: frontend/shared_packages/i18n
+    - path: frontend/shared_packages/observability
+    - path: frontend/shared_packages/seed_data
+    - path: frontend/shared_packages/seo
+    - path: frontend/shared_packages/tenant_resolver

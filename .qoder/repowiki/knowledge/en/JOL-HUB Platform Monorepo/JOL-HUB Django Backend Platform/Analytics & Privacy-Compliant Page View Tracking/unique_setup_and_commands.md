@@ -1,0 +1,1 @@
+Requires `apps.crm.middleware.get_current_tenant_id` to be available at runtime for tenant validation; if the import fails the check is silently skipped. A nightly job is expected to populate `DailyStats` from raw `PageView` rows, and `ConsentSettings` must exist per organization to enable analytics access.

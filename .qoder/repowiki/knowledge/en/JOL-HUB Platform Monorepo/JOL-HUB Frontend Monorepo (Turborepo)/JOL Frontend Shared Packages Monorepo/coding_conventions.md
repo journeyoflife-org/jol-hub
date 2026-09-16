@@ -1,0 +1,4 @@
+- Each package is a standalone npm module with its own `package.json`, `tsconfig`, and tsup build config, published under the `@jol-hub/*` scope.
+- Cross-package communication is strictly via typed public APIs (exports/types) rather than file imports, keeping packages framework-agnostic where possible.
+- All packages share the same lint/format/type-check scripts so they can be run uniformly through the root Turbo pipeline.
+- Tests are written with Vitest and live alongside source files, invoked via the per-package `test` script and aggregated by the root `test:unit` command.

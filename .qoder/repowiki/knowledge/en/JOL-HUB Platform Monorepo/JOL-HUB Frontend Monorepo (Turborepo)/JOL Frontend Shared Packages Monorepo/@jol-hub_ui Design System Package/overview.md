@@ -1,0 +1,1 @@
+Shared React design system providing Radix-based primitives, composite page components, layout chrome, accessibility utilities, and theme tokens consumed by JOL Next.js applications.

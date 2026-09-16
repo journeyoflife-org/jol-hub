@@ -1,7 +1,7 @@
 /**
  * Mock tenant data — STEP 15 (deterministic fixtures, never random).
  */
-import type { Tenant } from '@jol-hub/tenant-resolver';
+import type { Tenant } from '@journeyoflife-org/tenant-resolver';
 
 /** A NORMAL-tier church tenant with commerce + editing entitlements. */
 export function mockTenant(overrides: Partial<Tenant> = {}): Tenant {

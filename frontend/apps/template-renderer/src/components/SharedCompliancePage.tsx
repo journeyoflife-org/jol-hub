@@ -10,11 +10,11 @@
  * language). Interpolation uses ICU via intl-messageformat (server-safe).
  */
 import IntlMessageFormat from 'intl-messageformat';
-import { Card, CardContent } from '@jol-hub/ui';
-import { getMessages, translate } from '@jol-hub/i18n';
-import type { MessageCatalog } from '@jol-hub/i18n';
-import type { SupportedLocale } from '@jol-hub/i18n';
-import type { TenantFixture } from '@jol-hub/seed-data';
+import { Card, CardContent } from '@journeyoflife-org/ui';
+import { getMessages, translate } from '@journeyoflife-org/i18n';
+import type { MessageCatalog } from '@journeyoflife-org/i18n';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
+import type { TenantFixture } from '@journeyoflife-org/seed-data';
 import type { SharedRoute } from '@/lib/content-loader';
 import { pickLocalized } from '@/lib/i18n-helpers';
 

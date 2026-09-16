@@ -5,10 +5,10 @@
  * ContentBlock. A special `kind: 'config-error'` renders the translated
  * fallback notice used when a page config failed validation (no literals).
  */
-import { ContentBlock } from '@jol-hub/ui/components/composite';
-import type { ContentNode } from '@jol-hub/ui/components/composite';
-import { getMessages, translate, isSupportedLocale } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
+import { ContentBlock } from '@journeyoflife-org/ui/components/composite';
+import type { ContentNode } from '@journeyoflife-org/ui/components/composite';
+import { getMessages, translate, isSupportedLocale } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
 import type { ModuleProps } from './types';
 
 export default function ContentModule({ content, locale }: ModuleProps) {

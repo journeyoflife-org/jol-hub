@@ -1,5 +1,5 @@
 {
-  "name": "@jol-hub/seed-data",
+  "name": "@journeyoflife-org/seed-data",
   "version": "1.0.0",
   "description": "Tenant seed fixtures extracted from the legacy lt-* demo apps (STEP 1, ADR-002)",
   "exports": {

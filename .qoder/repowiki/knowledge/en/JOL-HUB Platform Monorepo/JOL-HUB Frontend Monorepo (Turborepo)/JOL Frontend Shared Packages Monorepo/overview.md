@@ -1,0 +1,1 @@
+Turborepo workspace of framework-agnostic shared npm packages that supply authentication, commerce, SEO, i18n, accessibility, observability, and UI primitives consumed by JOL Next.js applications.

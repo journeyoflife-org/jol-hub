@@ -12,7 +12,7 @@
  * server bundles. This file stays for back-compat of existing import paths.
  *
  * NOTE: DeepL translation functions (translateWithDeepL, translateBatchWithDeepL)
- * are server-side only. Import them from '@jol-hub/i18n/server' when needed
+ * are server-side only. Import them from '@journeyoflife-org/i18n/server' when needed
  * in Server Actions or API routes.
  */
 

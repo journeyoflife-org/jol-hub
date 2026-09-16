@@ -1,0 +1,5 @@
+- Each server-only integration exports a paired `isXxxConfigured()` boolean and `serverXxxClient()` factory that returns `null` when configuration is missing, forcing callers to gate usage behind the config check.
+- Pilot mode is implemented by reading `process.env.BACKEND_API_URL` at module scope and short-circuiting all server calls rather than throwing, so unconfigured deployments stay functional.
+- Structured-data builders accept a typed input object containing `fixture`, `vertical`, `locale`, and `homeUrl`, then emit only fields whose source data exists — absent data is omitted instead of fabricated.
+- Vertical/denomination mapping is centralized in a switch function (`churchKindForVertical`, `buildServicesLandingEntity`) that accepts both resolver and fixture vocabularies and normalizes them to canonical kinds.
+- All sensitive values (session tokens, service tokens, CRM credentials) are kept server-side; comments explicitly mark files as SERVER-ONLY and forbid importing from client components.

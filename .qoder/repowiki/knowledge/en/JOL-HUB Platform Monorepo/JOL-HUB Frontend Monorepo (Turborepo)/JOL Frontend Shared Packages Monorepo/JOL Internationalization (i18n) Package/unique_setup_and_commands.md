@@ -1,0 +1,1 @@
+`pnpm build` invokes tsup; `pnpm verify` runs type-check + `scripts/check-parity.ts` + `scripts/find-hardcoded.ts`; `pnpm i18n:check` validates translation file parity across locales; `pnpm i18n:find-hardcoded` scans source for untranslated strings. Production cookie settings are gated by `NODE_ENV === 'production'` (sets domain `.jol-hub.eu` and secure flag).

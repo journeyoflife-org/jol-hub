@@ -105,7 +105,7 @@ obituary names etc. are tenant content decisions, never derived here.
 
 ## robots.txt
 
-`app/robots.ts` renders the `@jol-hub/seo` policy:
+`app/robots.ts` renders the `@journeyoflife-org/seo` policy:
 
 - Allow: `/` (public tenant content — SEO is the mission).
 - Disallow: `/admin`, `/editor`, `/dashboard`, `/settings`, `/profile`,

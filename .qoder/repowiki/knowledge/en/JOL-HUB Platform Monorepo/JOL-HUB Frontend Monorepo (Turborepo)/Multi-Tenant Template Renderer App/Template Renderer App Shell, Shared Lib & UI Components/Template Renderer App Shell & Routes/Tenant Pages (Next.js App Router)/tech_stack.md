@@ -1,0 +1,1 @@
+Next.js App Router file-based routing with dynamic `[locale]` and `[tenant]` segments; fixture-first data layer shared across static and listing pages.

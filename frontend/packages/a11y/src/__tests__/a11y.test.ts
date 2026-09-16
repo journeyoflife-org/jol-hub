@@ -1,9 +1,9 @@
 /**
- * @jol-hub/a11y tests — STEP 12.
+ * @journeyoflife-org/a11y tests — STEP 12.
  *
  * Structural checkers (headings, alt, focus order, form labels, ARIA/link
  * text), WCAG contrast math and the criteria register. Run via
- * `pnpm --filter @jol-hub/a11y test` (tsx --test).
+ * `pnpm --filter @journeyoflife-org/a11y test` (tsx --test).
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';

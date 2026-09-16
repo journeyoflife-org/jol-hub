@@ -18,7 +18,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import { TranslationProvider, getMessages } from '@jol-hub/i18n';
+import { TranslationProvider, getMessages } from '@journeyoflife-org/i18n';
 
 import { ProductCard } from '../components/composite/product-card';
 import { StorefrontGrid } from '../components/composite/storefront-grid';

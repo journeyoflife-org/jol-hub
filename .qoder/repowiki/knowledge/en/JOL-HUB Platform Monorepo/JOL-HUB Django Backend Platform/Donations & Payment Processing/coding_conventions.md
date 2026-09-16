@@ -1,0 +1,6 @@
+- Financial endpoints enforce authentication via `permission_classes = [IsAuthenticated]` and apply stricter throttling through custom throttle classes from `apps.core.throttling`.
+- All financial mutations (e.g. refunds) are wrapped in `django.db.transaction.atomic()` blocks that atomically update the model and persist an `AuditEntry` so no state change can occur without an audit record.
+- Audit entries capture WHO (actor_user, actor_ip, actor_user_agent), WHEN (created_at), WHAT (field_changes with old/new values), and integrity metadata (entry_hash, previous_hash, sequence_number) for compliance tracking.
+- Models use string constant tuples for choices (e.g. `STATUS_*`, `METHOD_*`) paired with a `choices=` list of `(value, _('label'))` tuples for i18n.
+- User-facing text is wrapped in `gettext_lazy` (`_`) calls on verbose names, labels, and choice labels throughout models and admin.
+- Read/write exposure is separated into distinct serializers: a read-only `DonationSerializer` marking sensitive fields as `read_only_fields`, and a narrower `DonationCreateSerializer` used only for POST input.

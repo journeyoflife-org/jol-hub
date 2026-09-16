@@ -64,7 +64,7 @@ pnpm --filter template-renderer check-secrets    # secret leakage scan
 Integration tests import the REAL Next.js route handlers and call them
 with `NextRequest` objects. Outbound calls to the hub backend are
 intercepted by `setupServer(...backendHandlers)` from
-`@jol-hub/testing` — the reserved origin `http://backend.test` is stubbed
+`@journeyoflife-org/testing` — the reserved origin `http://backend.test` is stubbed
 into `BACKEND_API_URL` before each dynamic route import (routes capture
 the env at module load). Tests NEVER touch a real backend, Stripe or
 Bitrix24.
@@ -108,12 +108,12 @@ each spec to the condition that activates its full version.
 1. Pure logic → `__tests__/*.test.ts` next to the code (`node:test` or
    vitest), or under `vitest/` if it needs jsdom.
 2. Components → render through `renderWithProviders` from
-   `@jol-hub/testing` (real theme + i18n providers; pass a `wrapper` for
+   `@journeyoflife-org/testing` (real theme + i18n providers; pass a `wrapper` for
    tenant/auth contexts).
 3. API surface → add a case to `api-integration.test.ts`; add/override
    MSW handlers via `server.use(...)` — never stub handler code.
 4. Security surface → extend the payload batteries in
-   `@jol-hub/testing` (`XSS_PAYLOADS`, `CONTACT_XSS_PAYLOADS`) so every
+   `@journeyoflife-org/testing` (`XSS_PAYLOADS`, `CONTACT_XSS_PAYLOADS`) so every
    sanitization layer runs the same canonical list.
 
 ## Mock data & fixtures

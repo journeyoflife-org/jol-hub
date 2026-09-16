@@ -1,7 +1,7 @@
 /**
  * Tenant content loading.
  *
- * Fixtures live in `@jol-hub/seed-data` and are Zod-validated at module
+ * Fixtures live in `@journeyoflife-org/seed-data` and are Zod-validated at module
  * load. Loading here is a closed lookup: an unknown slug returns `null`
  * (route layer renders 404); the fallback variant is used only when a
  * *known* tenant's fixture must be rendered defensively.
@@ -12,7 +12,7 @@ import {
   DEFAULT_TENANT_SLUG,
   type TenantFixture,
   type TenantPage,
-} from '@jol-hub/seed-data';
+} from '@journeyoflife-org/seed-data';
 
 /** Load a tenant fixture by slug; `null` when the tenant is unknown. */
 export function loadTenantFixture(slug: string): TenantFixture | null {

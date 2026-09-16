@@ -1,0 +1,1 @@
+Django app modeling one-off and recurring donations to organizations, exposing REST endpoints for listing, creating, retrieving, and refunding donations with full audit trails.

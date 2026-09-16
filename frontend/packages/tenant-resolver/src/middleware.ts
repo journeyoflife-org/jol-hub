@@ -4,7 +4,7 @@
  * Usage in `apps/template-renderer/src/middleware.ts`:
  *
  * ```ts
- * import { withTenantResolution } from '@jol-hub/tenant-resolver/middleware';
+ * import { withTenantResolution } from '@journeyoflife-org/tenant-resolver/middleware';
  * export default withTenantResolution();
  * export const config = { matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'] };
  * ```

@@ -2,7 +2,7 @@
  * RBAC core tests — STEP 10.
  *
  * Covers the tenant-scoped role hierarchy, the permission matrix, MFA gating
- * and defensive IdP-claim parsing. Run via `pnpm --filter @jol-hub/auth test`.
+ * and defensive IdP-claim parsing. Run via `pnpm --filter @journeyoflife-org/auth test`.
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';

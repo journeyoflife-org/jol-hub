@@ -1,0 +1,5 @@
+- Vertical-specific behavior is driven by exhaustive `Record<Vertical, …>` mappings rather than runtime branching in components, so new verticals are added by extending data tables.
+- Accent colors are referenced exclusively through generated CSS custom property variables (e.g. `var(--jol-color-accent)`) instead of inline hex values, keeping WCAG verification at the token source.
+- Server-side tenant records are never passed to the client; only the stripped `PublicTenant` type flows across the boundary, enforced by separate return types in `tenant-resolver.ts` and `tenant-context.tsx`.
+- Per-vertical defaults compose the same set of shared STEP-6 modules (hero, news, events, services, gallery, map, contact) and differ only in selection, order, and props — no duplicated component trees.
+- Localization fallback is explicit: `pickLocalized` always returns a string, defaulting to Lithuanian when the requested locale is missing, ensuring content is never hidden.

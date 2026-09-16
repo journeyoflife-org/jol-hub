@@ -1,0 +1,1 @@
+Publishes a deterministic, isolated test harness for the JOL frontend providing vitest setup, provider-aware RTL rendering, and canned tenant/auth/API mocks plus canonical block fixtures.

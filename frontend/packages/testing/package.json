@@ -1,5 +1,5 @@
 {
-  "name": "@jol-hub/testing",
+  "name": "@journeyoflife-org/testing",
   "version": "1.0.0",
   "description": "Shared test harness for the JOL frontend (STEP 15): vitest setup, provider-aware RTL render, deterministic mocks (tenant/auth/API) and reusable fixtures. Deterministic + isolated by contract: no network, no real time, no shared state.",
   "exports": {
@@ -26,9 +26,9 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@jol-hub/i18n": "workspace:*",
-    "@jol-hub/tenant-resolver": "workspace:*",
-    "@jol-hub/ui": "workspace:*",
+    "@journeyoflife-org/i18n": "workspace:*",
+    "@journeyoflife-org/tenant-resolver": "workspace:*",
+    "@journeyoflife-org/ui": "workspace:*",
     "intl-messageformat": "^11.2.14",
     "react": "^18.3.0",
     "react-dom": "^18.3.0"

@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: backend/financial
+title: Financial Invoices & Payouts
+scope:
+    - backend/django/apps/financial/
+source_files: []
+depends_on: []
+related_to:
+    - path: backend/analytics
+    - path: backend/donations

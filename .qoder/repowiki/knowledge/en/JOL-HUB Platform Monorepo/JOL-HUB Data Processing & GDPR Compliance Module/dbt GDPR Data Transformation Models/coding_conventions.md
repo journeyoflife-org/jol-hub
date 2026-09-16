@@ -1,0 +1,6 @@
+- Each SQL model begins with a `{{ config(...) }}` block declaring its materialization type, target schema, and descriptive tags (e.g., `gdpr`, `users`, `financial`, `compliance`).
+- PII fields (email, IP addresses, payment references) are conditionally masked using a `case when '{{ var("include_pii", "false") }}' = 'true'` pattern so downstream consumers can opt into full visibility.
+- Retention expiry timestamps are computed by adding an interval derived from project variables (`user_data_retention_days`, `financial_retention_days`) to a base timestamp column, and every record carries a `data_classification` column set to `'confidential'`.
+- Staging models filter out soft-deleted rows via `where deleted_at is null` and expose only cleaned columns through a CTE named `source_data` followed by a final `select * from source_data`.
+- Marts reference upstream models exclusively through `{{ ref('stg_*') }}` rather than direct table names, and aggregate related records into `jsonb` arrays for data subject export payloads.
+- Source metadata and column-level tests (`unique`, `not_null`, `accepted_values`) are declared centrally in `schema.yml` under the `raw` source namespace instead of inline in SQL files.

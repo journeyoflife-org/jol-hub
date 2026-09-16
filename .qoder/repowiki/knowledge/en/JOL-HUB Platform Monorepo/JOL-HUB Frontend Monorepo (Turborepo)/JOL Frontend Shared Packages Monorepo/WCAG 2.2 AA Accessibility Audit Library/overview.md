@@ -1,0 +1,1 @@
+Shared npm package that runs axe-core against jsdom-rendered HTML and layers structural checkers (headings, alt text, focus order, form labels, ARIA, color contrast) to produce a unified WCAG 2.2 AA audit report.

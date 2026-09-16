@@ -14,8 +14,8 @@
  * SEO: AboutPage JSON-LD (about → Organization) + canonical/hreflang/OG.
  */
 import type { Metadata } from 'next';
-import { getMessages, translate } from '@jol-hub/i18n';
-import type { SupportedLocale } from '@jol-hub/i18n';
+import { getMessages, translate } from '@journeyoflife-org/i18n';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
 import { JsonLd, organizationEntity, webPageEntity } from '@/lib/json-ld';
 import { absoluteUrl } from '@/lib/seo';
 import { buildTenantMetadata, tenantDisplayName, tenantTagline } from '@/lib/page-seo';

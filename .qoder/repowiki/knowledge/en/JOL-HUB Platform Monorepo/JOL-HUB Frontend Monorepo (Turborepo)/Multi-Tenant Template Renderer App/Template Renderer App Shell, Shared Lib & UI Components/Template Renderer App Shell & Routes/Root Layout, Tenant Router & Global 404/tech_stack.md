@@ -1,0 +1,1 @@
+Next.js App Router with React Server Components; theme system via `@jol-hub/ui` `ThemeProvider` and an inlined init script to avoid FOUT; i18n via `@jol-hub/i18n` with locale validation against supported codes.

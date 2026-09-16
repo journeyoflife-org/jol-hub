@@ -1,0 +1,6 @@
+- Each webhook source gets its own `APIView` subclass with `authentication_classes = []` and `permission_classes = [AllowAny]`, keeping third-party endpoints unauthenticated while relying on signature/idempotency checks for security.
+- Incoming payloads are first persisted as raw JSON in MongoDB before any business processing, enabling replay and audit without re-parsing request streams.
+- Idempotency is enforced per-source: PayPal uses `HTTP_PAYPAL_TRANSMISSION_ID`, Bitrix24 derives a composite key from `auth.domain:event:data.FIELDS.ID:ts` with a SHA-256 body fallback.
+- Celery tasks classify exceptions into `_TRANSIENT_ERRORS` (database/network) and `_PERMANENT_ERRORS` (validation/data) to drive automatic retry versus immediate failure marking.
+- All significant state transitions are emitted through a structured `_audit_log` helper with actor, action, resource_type, event_type, entity_id, and tenant_id fields for SOC2/ISO auditability.
+- Bitrix24 field ingestion uses explicit allowlists (`ALLOWED_*_FIELDS`) validated by `validate_fields`; unknown fields raise `ValidationError` to prevent data leakage from undocumented API changes.

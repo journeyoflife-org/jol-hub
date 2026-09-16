@@ -1,5 +1,5 @@
 /**
- * @jol-hub/observability — STEP 16 core (pure logic, zero deps).
+ * @journeyoflife-org/observability — STEP 16 core (pure logic, zero deps).
  *
  *   redact          PII/secret redaction (GDPR Art. 5) — applied to EVERY log
  *   logger          structured JSON-lines logger + client batching sink

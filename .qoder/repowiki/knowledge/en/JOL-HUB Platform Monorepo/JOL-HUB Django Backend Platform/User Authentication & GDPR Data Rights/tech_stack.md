@@ -1,0 +1,1 @@
+Django + Django REST Framework with `rest_framework_simplejwt` for JWT token issuance/refresh/blacklist; custom `AbstractBaseUser` with email as username; JSONField for notification preferences and extra metadata; UUID primary keys via shared `UUIDModel`.

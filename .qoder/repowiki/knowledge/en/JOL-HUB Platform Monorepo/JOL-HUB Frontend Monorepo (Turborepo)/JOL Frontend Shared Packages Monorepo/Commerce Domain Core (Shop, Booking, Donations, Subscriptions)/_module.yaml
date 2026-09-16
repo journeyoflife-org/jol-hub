@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: frontend/shared_packages/commerce
+title: Commerce Domain Core (Shop, Booking, Donations, Subscriptions)
+scope:
+    - frontend/packages/commerce/
+source_files: []
+depends_on: []
+related_to:
+    - path: frontend/admin_dashboard_app
+    - path: frontend/template_renderer_app/app_shell_and_lib

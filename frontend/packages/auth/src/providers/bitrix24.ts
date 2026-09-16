@@ -196,7 +196,7 @@ export interface Bitrix24ProviderOptions extends OAuthUserConfig<Bitrix24User> {
  * @example
  * ```typescript
  * // In your NextAuth configuration
- * import { Bitrix24Provider } from '@jol-hub/auth';
+ * import { Bitrix24Provider } from '@journeyoflife-org/auth';
  * 
  * export const authOptions = {
  *   providers: [

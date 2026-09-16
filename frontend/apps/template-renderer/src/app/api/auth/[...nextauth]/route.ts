@@ -15,7 +15,7 @@
  */
 import NextAuth from 'next-auth';
 import { NextResponse, type NextRequest } from 'next/server';
-import { buildJolAuthOptions, isAuthConfigured } from '@jol-hub/auth/oidc';
+import { buildJolAuthOptions, isAuthConfigured } from '@journeyoflife-org/auth/oidc';
 
 type AuthContext = { params: { nextauth: string[] } };
 

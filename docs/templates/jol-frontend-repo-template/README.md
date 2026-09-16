@@ -1,10 +1,10 @@
 # JOL __VERTICAL_NAME__ Front-End
 
-> Vertical front-end for the Journey of Life platform, consuming `@jol-hub/*` shared packages.
+> Vertical front-end for the Journey of Life platform, consuming `@journeyoflife-org/*` shared packages.
 
 ## Overview
 
-This repository is one of ten vertical front-ends in the JOL hub-and-spoke topology (ADR-011). It consumes shared platform packages from `@jol-hub/*` and renders tenant-specific content via the `[...slug]` catch-all route.
+This repository is one of ten vertical front-ends in the JOL hub-and-spoke topology (ADR-011). It consumes shared platform packages from `@journeyoflife-org/*` and renders tenant-specific content via the `[...slug]` catch-all route.
 
 **Vertical:** `__VERTICAL__`
 **Layout family:** `__LAYOUT_FAMILY__`
@@ -36,11 +36,11 @@ This runs:
 
 - **Framework:** Next.js 14 App Router
 - **Language:** TypeScript strict
-- **Styling:** Tailwind CSS + design tokens from `@jol-hub/ui`
-- **i18n:** `@jol-hub/i18n` (lt, en, ru)
-- **Tenant resolution:** `@jol-hub/tenant-resolver` (X-Tenant header or subdomain)
-- **SEO:** `@jol-hub/seo` (JSON-LD, hreflang, sitemaps)
-- **A11y:** `@jol-hub/a11y` (WCAG 2.2 AA)
+- **Styling:** Tailwind CSS + design tokens from `@journeyoflife-org/ui`
+- **i18n:** `@journeyoflife-org/i18n` (lt, en, ru)
+- **Tenant resolution:** `@journeyoflife-org/tenant-resolver` (X-Tenant header or subdomain)
+- **SEO:** `@journeyoflife-org/seo` (JSON-LD, hreflang, sitemaps)
+- **A11y:** `@journeyoflife-org/a11y` (WCAG 2.2 AA)
 
 ## Satellite Kit
 

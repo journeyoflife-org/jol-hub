@@ -1,0 +1,4 @@
+- Read-only exposure: serializers declare all model fields in `read_only_fields = fields`, and views only implement list/retrieve operations with no write endpoints.
+- Active-records filtering: list and detail views restrict results via `queryset.filter(is_active=True)` rather than using a custom manager.
+- DRF generic view pattern: each endpoint is a class inheriting from `generics.ListAPIView` / `generics.RetrieveAPIView` with `serializer_class`, `permission_classes`, and `queryset` set as class attributes.
+- Localized field labels: all model CharField/IntegerField declarations wrap verbose names with `gettext_lazy` (`_`) for i18n support.

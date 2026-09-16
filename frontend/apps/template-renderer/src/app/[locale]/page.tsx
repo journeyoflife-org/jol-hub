@@ -6,9 +6,9 @@
  * tenant home under this locale. Without one → bare 404 (no enumeration).
  */
 import { notFound, redirect } from 'next/navigation';
-import { isSupportedLocale } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
-import type { SupportedLocale } from '@jol-hub/i18n';
+import { isSupportedLocale } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
 import { resolveCurrentTenant } from '@/lib/tenant-resolver';
 
 export const dynamic = 'force-dynamic';

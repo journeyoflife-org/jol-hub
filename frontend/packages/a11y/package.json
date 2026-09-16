@@ -1,5 +1,5 @@
 {
-  "name": "@jol-hub/a11y",
+  "name": "@journeyoflife-org/a11y",
   "version": "1.0.0",
   "description": "Accessibility (WCAG 2.2 AA) core for JOL: axe-core configuration, jsdom audit runner, structural checkers (headings, alt text, focus order, form labels, ARIA, contrast math) and the WCAG 2.2 AA criteria status register.",
   "exports": {

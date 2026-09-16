@@ -12,7 +12,7 @@
  *
  * Schema naming follows ADR-001: `t_<slug with _ separators>`.
  */
-import { tenantFixtures } from '@jol-hub/seed-data';
+import { tenantFixtures } from '@journeyoflife-org/seed-data';
 
 import type { PackageTier, Tenant, Vertical } from './types';
 import { FEATURES_BY_TIER, normalizeVertical, schemaForTenant } from './types';

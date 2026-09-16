@@ -1,0 +1,1 @@
+NextAuth v4 (`next-auth`) as the auth core, with a custom Bitrix24 OAuth2 provider implementing PKCE S256 per RFC 7636; built with tsup producing ESM + CJS outputs with source maps and `.d.ts`; tests run via `tsx --test`. Peer dependencies are Next 14 and React 18.

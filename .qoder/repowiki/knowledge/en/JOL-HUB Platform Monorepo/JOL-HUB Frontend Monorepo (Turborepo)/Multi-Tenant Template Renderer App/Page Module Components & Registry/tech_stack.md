@@ -1,0 +1,1 @@
+React Server Components on Next.js; shared UI via `@jol-hub/ui/components/composite`; i18n via `@jol-hub/i18n`; tenant resolution via `@jol-hub/tenant-resolver`.

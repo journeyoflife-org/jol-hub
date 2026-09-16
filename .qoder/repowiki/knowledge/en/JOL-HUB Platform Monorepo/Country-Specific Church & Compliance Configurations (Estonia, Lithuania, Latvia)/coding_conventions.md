@@ -1,0 +1,5 @@
+- Each country directory follows a fixed structure of `config/` (policy YAMLs) and `examples/` (canonical entity YAMLs) so consumers can resolve settings by country code alone.
+- Entity YAMLs under `examples/` consistently declare an `entity:` root with nested `canonical`, `contact`, `hierarchy`, `languages`, `domain`, `features`, `compliance`, and `integrations` sections.
+- Compliance and liturgical configs start with a `country_code` / `country_name` header and include bilingual labels (`name_lt` / `name_en` or `name` / `name_en`) for all localized strings.
+- GDPR and Canon Law references are embedded inline as comments next to relevant fields (e.g., `# GDPR Art. 9(2)(d)`, `# Canon 535 §1-5`) to tie configuration values to their legal basis.
+- Retention periods and lawful-basis flags are expressed as explicit YAML booleans and integer year/month values rather than free-text descriptions, enabling programmatic enforcement.

@@ -1,0 +1,5 @@
+- All data processing activities are declared as `DataProcessingActivity` entries in `src/config.py`'s `PROCESSING_ACTIVITIES` registry to satisfy GDPR Article 30 documentation requirements.
+- Retention periods are enforced via the shared `RetentionPolicy` enum rather than ad-hoc timedelta literals across pipelines, dbt models, and GDPR utilities.
+- PII handling goes through the centralized pseudonymizer in `src/gdpr/anonymizer.py` instead of inline hashing in individual pipelines.
+- Data quality assertions are expressed as Great Expectations expectation files under `src/quality/expectations/` and invoked via checkpoint-driven CLI commands.
+- Cross-layer configuration (database hosts, ports, Redis, encryption flags) is loaded from the singleton `config = DataModuleConfig()` in `src/config.py`.

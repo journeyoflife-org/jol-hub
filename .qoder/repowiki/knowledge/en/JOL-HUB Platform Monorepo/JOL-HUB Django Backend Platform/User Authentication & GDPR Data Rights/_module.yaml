@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: backend/users
+title: User Authentication & GDPR Data Rights
+scope:
+    - backend/django/apps/users/
+source_files: []
+depends_on: []
+related_to: []

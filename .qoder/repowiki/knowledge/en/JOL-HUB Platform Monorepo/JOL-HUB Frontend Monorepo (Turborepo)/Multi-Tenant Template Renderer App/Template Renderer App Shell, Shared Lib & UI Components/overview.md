@@ -1,0 +1,1 @@
+Next.js template-renderer app that combines the App Router shell, a shared runtime library for tenant/page composition, and feature-scoped React components to render multi-tenant pages.

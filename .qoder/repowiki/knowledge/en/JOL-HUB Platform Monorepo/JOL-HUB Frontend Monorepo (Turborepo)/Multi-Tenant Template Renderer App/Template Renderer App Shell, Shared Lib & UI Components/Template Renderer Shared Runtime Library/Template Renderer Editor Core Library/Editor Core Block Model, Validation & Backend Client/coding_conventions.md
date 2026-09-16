@@ -1,0 +1,5 @@
+- Domain invariants are expressed as `as const` arrays and literal-typed unions (e.g. `ALLOWED_BLOCK_TYPES`, `EDITOR_LIMITS`) so unknown values are rejected at compile time.
+- Validation and diff logic are implemented as pure functions that take readonly inputs and return result objects or arrays, making them fully unit-testable without side effects.
+- API surface returns a discriminated union `{ ok: true; data } | { ok: false; error }` with a typed `EditorApiError` union, so callers branch on `ok` rather than catching exceptions.
+- Mutating API calls (save draft, publish, decide, register upload) never auto-retry, while idempotent GETs retry once on transient failures to avoid duplicate moderation submissions.
+- Tenant isolation is propagated through every request via an `X-Tenant` header derived from the `tenantSlug` parameter passed to each client method.

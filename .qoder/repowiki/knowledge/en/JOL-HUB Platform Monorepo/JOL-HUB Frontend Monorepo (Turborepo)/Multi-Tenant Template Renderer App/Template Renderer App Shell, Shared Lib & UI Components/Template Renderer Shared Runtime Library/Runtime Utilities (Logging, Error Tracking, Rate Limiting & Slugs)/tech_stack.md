@@ -1,0 +1,1 @@
+Built on the shared `@jol-hub/observability` package for structured logging, error classification, redaction, and breadcrumb buffers; uses native `fetch` with `keepalive` for error ingestion and in-memory `Map` structures for rate-limit state.

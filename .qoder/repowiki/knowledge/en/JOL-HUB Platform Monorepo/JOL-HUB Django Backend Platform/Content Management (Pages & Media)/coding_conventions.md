@@ -1,0 +1,6 @@
+- Models extend `BaseModel` from `apps.core.models` to inherit shared audit fields and behavior.
+- Cross-tenant safety is enforced per-model by overriding `save()` to call a private `_validate_tenant_context()` method that compares `organization_id` against the current tenant context.
+- Soft deletion is used across resources: queries filter `is_deleted=False` and `perform_destroy` delegates to `instance.soft_delete()` rather than hard deletes.
+- DRF views subclass generic view classes and set `permission_classes = [IsAuthenticated]` uniformly on every endpoint.
+- Serializers subclass `BaseModelSerializer` and declare explicit `fields` and `read_only_fields` lists instead of using `__all__`.
+- User attribution is injected in serializer `create()` methods via `validated_data['author'] = self.context['request'].user` rather than in views.

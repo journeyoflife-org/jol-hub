@@ -13,9 +13,9 @@
  */
 import { describe, expect, it } from 'vitest';
 import DOMPurify from 'dompurify';
-import type { AuthSession } from '@jol-hub/auth/oidc';
-import { hasRole, isAdmin, isSuperAdmin } from '@jol-hub/auth/oidc';
-import { XSS_PAYLOADS } from '@jol-hub/testing';
+import type { AuthSession } from '@journeyoflife-org/auth/oidc';
+import { hasRole, isAdmin, isSuperAdmin } from '@journeyoflife-org/auth/oidc';
+import { XSS_PAYLOADS } from '@journeyoflife-org/testing';
 import {
   renderDraftHtml,
   isSafeUrl,

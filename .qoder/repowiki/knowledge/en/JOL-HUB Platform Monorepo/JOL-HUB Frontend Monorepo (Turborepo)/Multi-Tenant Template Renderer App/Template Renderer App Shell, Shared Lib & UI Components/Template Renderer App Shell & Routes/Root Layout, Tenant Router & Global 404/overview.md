@@ -1,0 +1,1 @@
+Next.js App Router root layer that provides the tenant-agnostic HTML shell, resolves the current tenant from request headers/subdomain and redirects to the tenant route, and renders a generic 404 page.

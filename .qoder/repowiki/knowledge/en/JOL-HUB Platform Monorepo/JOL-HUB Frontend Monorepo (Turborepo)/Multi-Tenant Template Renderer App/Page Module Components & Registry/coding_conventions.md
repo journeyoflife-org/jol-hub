@@ -1,0 +1,5 @@
+- Modules are implemented as default-exported server functions receiving a single `ModuleProps` object and returning either a React element or null.
+- Untrusted `content` fields are validated through local `asString` / `asNumber` / enum-narrowing helpers before being passed to UI components, never cast blindly.
+- The full `Tenant` object is never forwarded to client UI; instead `tenantThemeFor(tenant)` extracts only the `{ vertical }` theme subset for safe consumption.
+- Commercial modules declare a `requiredFeature` string in `registry.ts` while free modules use `null`, enabling entitlement checks via `isModuleEntitled`.
+- Modules return `null` when no valid data is available rather than rendering empty placeholders (e.g. gallery with zero images, content with no nodes).

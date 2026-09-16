@@ -5,9 +5,9 @@
  * content-api) and renders the latest N cards. In the pilot the collection
  * is empty → the module collapses (returns null) so composed pages stay clean.
  */
-import { NewsCard, SectionHeader } from '@jol-hub/ui/components/composite';
-import { getMessages, translate, isSupportedLocale, formatDate } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
+import { NewsCard, SectionHeader } from '@journeyoflife-org/ui/components/composite';
+import { getMessages, translate, isSupportedLocale, formatDate } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
 import { getNews } from '@/lib/collections';
 import { themeVerticalFor } from '@/lib/template-registry';
 import { tenantThemeFor, type ModuleProps } from './types';

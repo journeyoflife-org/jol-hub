@@ -11,7 +11,7 @@ import assert from 'node:assert/strict';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
-import { TranslationProvider, getMessages } from '@jol-hub/i18n';
+import { TranslationProvider, getMessages } from '@journeyoflife-org/i18n';
 
 import { EntityFactCard } from '../components/composite/entity-fact-card';
 import { MapBlock } from '../components/composite/map-block';

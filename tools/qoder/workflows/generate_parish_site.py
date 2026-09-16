@@ -258,7 +258,7 @@ import {{
   AvatarFallback,
   AvatarImage,
   Separator,
-}} from '@jol-hub/ui';
+}} from '@journeyoflife-org/ui';
 import {{
   MapPin,
   Phone,

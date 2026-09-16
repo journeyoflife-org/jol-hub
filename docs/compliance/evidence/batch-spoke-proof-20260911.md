@@ -78,7 +78,7 @@ Each spoke has 6 source files:
 | Branch protection | Requires GitHub repos |
 | Lighthouse ≥ 90 mobile | Requires Proxmox deployment |
 | Breakpoint check 360/768/1024/1440 | Requires running instance |
-| type-check, test:unit, test:e2e | @jol-hub/* packages not published |
+| type-check, test:unit, test:e2e | @journeyoflife-org/* packages not published |
 | Proxmox deployment with noindex | Requires infra setup |
 
 ## Spoke-to-Page-Spec Mapping

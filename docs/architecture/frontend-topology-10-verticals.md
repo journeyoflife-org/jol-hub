@@ -64,7 +64,7 @@ graph TB
 
 Each spoke contains **only** vertical composition code:
 - `next.config.js` with vertical-specific settings
-- Page routes consuming `@jol-hub/*` packages
+- Page routes consuming `@journeyoflife-org/*` packages
 - Vertical-specific theme tokens (accent colour, hero variant)
 - Vertical-specific Schema.org types
 - No shared logic, no duplicated packages
@@ -93,14 +93,14 @@ sequenceDiagram
     participant U as User
     participant I as Ingress (vertical router)
     participant S as Spoke (Next.js)
-    participant P as @jol-hub/* packages
+    participant P as @journeyoflife-org/* packages
     participant A as Hub API (Django)
     participant D as PostgreSQL (RLS)
 
     U->>I: GET /lt/vilnius-cathedral/mass-times
     I->>S: Route to jol-site-cathedral
-    S->>P: import { MassSchedule } from '@jol-hub/ui'
-    S->>P: import { resolveTenant } from '@jol-hub/tenant-resolver'
+    S->>P: import { MassSchedule } from '@journeyoflife-org/ui'
+    S->>P: import { resolveTenant } from '@journeyoflife-org/tenant-resolver'
     P->>A: GET /api/tenants/vilnius-cathedral/schedule
     A->>D: SET schema = 't_vilnius_cathedral'
     D-->>A: Rows (RLS-filtered)

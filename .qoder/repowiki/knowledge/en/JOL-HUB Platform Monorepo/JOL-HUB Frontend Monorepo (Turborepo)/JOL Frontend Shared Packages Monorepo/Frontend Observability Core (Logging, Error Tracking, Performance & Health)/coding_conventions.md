@@ -1,0 +1,6 @@
+- Each capability lives in its own file (`redact`, `logger`, `error-tracking`, `performance`, `health`) and re-exports only the public API surface from `src/index.ts`.
+- Public types are exported alongside functions (e.g. `LogLevel`, `LogRecord`, `ErrorCategory`, `NavigationPhaseTimings`, `DependencyCheck`) so consumers get full typing without importing internals.
+- Pluggable sinks/transport callbacks are passed via options objects (`LoggerOptions.sink`, `BatchedSinkOptions.transport`, `MetricBatcherOptions.transport`) rather than global singletons.
+- All user-supplied data is deep-redacted before serialization through `redactValue`/`redactText`, ensuring PII never reaches a log sink.
+- Timing-sensitive behavior is injected via `now?: () => Date` parameters or environment variables (`levelFromEnv`, `createBreadcrumbBuffer`) to keep tests deterministic.
+- Batchers use a consistent shape — internal buffer array, `start()`/`stop()` lifecycle, size-triggered flush, and a fire-and-forget transport call wrapped in try/catch so telemetry failures cannot crash the app.

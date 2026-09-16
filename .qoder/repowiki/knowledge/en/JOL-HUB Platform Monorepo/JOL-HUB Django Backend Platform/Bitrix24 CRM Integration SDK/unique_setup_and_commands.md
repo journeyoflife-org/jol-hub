@@ -1,0 +1,1 @@
+Configuration is loaded from Django settings keys `BITRIX24_DOMAIN`, `BITRIX24_ACCESS_TOKEN`, `BITRIX24_REFRESH_TOKEN`, `BITRIX24_CLIENT_ID`, `BITRIX24_CLIENT_SECRET`, and `BITRIX24_WEBHOOK_SECRET`; the webhook view must be mounted at a URL such as `webhooks/bitrix24/` and registered in `urls.py`.

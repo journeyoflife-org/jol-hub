@@ -1,0 +1,4 @@
+- Locale resolution follows a uniform pattern: read `headers().get(LOCALE_HEADER)`, validate with `isSupportedLocale`, and fall back to `DEFAULT_LOCALE`.
+- Security-sensitive surfaces (root redirect target, 404 page) deliberately omit any tenant identifiers or hints about valid slugs to prevent tenant enumeration.
+- User-facing strings are never hardcoded in these pages; they are loaded via `getMessages(locale)` and rendered through `translate(messages, <key>)` from the message catalog.
+- Global telemetry (Web Vitals RUM, error tracking) is mounted once in the root layout and gated behind user consent rather than being enabled per-route.

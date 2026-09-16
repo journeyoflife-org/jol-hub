@@ -1,0 +1,1 @@
+Next.js App Router entrypoint that renders the tenant-agnostic HTML shell, resolves the active tenant from request context, and dispatches to per-tenant pages or server-side API routes.

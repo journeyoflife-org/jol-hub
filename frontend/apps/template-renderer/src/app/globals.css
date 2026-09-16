@@ -4,7 +4,7 @@
 
 /*
  * App-level base styles. All color/spacing/type values come from the JOL
- * Design System tokens (`@jol-hub/ui/styles/tokens.css` + token-driven
+ * Design System tokens (`@journeyoflife-org/ui/styles/tokens.css` + token-driven
  * tailwind.config.ts) — no color literals may be added here.
  */
 

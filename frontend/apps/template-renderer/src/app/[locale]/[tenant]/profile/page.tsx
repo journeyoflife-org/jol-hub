@@ -9,9 +9,9 @@
  * SECURITY: only identity-level data is shown; tokens never reach this page.
  */
 import { redirect } from 'next/navigation';
-import { getMessages, translate, isSupportedLocale } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
-import { jolAuthEnv, tenantRoleFor } from '@jol-hub/auth/oidc';
+import { getMessages, translate, isSupportedLocale } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
+import { jolAuthEnv, tenantRoleFor } from '@journeyoflife-org/auth/oidc';
 import { getAuthSession, isAuthConfigured } from '@/lib/auth';
 import { resolveTenantRoute } from '@/lib/route-dispatch';
 

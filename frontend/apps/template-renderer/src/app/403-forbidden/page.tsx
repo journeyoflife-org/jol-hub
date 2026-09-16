@@ -7,8 +7,8 @@
  * The middleware-level role gate answers with a real HTTP 403 status; this
  * page is the layout-level fallback (defense in depth).
  */
-import { getMessages, translate } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
+import { getMessages, translate } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
 
 export const dynamic = 'force-dynamic';
 

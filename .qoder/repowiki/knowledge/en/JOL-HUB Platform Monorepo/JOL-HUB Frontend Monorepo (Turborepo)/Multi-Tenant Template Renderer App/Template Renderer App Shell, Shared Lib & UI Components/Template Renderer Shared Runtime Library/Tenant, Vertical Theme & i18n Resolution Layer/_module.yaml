@@ -1,0 +1,13 @@
+schema_version: 1
+module_path: frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/tenant_theme_i18n
+title: Tenant, Vertical Theme & i18n Resolution Layer
+scope:
+    - frontend/apps/template-renderer/src/lib/tenant-context.tsx
+    - frontend/apps/template-renderer/src/lib/tenant-resolver.ts
+    - frontend/apps/template-renderer/src/lib/layout-families.ts
+    - frontend/apps/template-renderer/src/lib/vertical-theme.ts
+    - frontend/apps/template-renderer/src/lib/vertical-defaults.ts
+    - frontend/apps/template-renderer/src/lib/i18n-helpers.ts
+source_files: []
+depends_on: []
+related_to: []

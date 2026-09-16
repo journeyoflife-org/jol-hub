@@ -1,0 +1,6 @@
+- Every view validates all incoming query parameters through dedicated helper functions (`validate_organization_id`, `validate_date_param`, `validate_date_range`, `validate_positive_int`) that raise `ValidationError` caught and returned as 400 JSON responses.
+- Each API endpoint checks organization analytics consent via `check_analytics_consent` or `get_organizations_with_consent` before querying data, returning a `CONSENT_REQUIRED` 403 payload when consent is missing.
+- Model `save()` methods override to invoke a private `_validate_tenant_context()` helper that lazily imports the CRM middleware and raises `ValidationError` on cross-tenant writes, with import errors logged and swallowed.
+- All user-facing strings and model field labels are wrapped with Django's `gettext_lazy _('...')` for internationalization.
+- Read-only serializers set `read_only_fields = fields` so models cannot be mutated through the API surface.
+- Sensitive request metadata (client IP, user agent) is truncated before storage (e.g., user agent sliced to 500 chars) and IP addresses are stored anonymized (last octet zeroed).

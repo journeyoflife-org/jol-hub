@@ -1,0 +1,1 @@
+Tenant isolation relies on `apps.crm.middleware.get_current_tenant_id()` being present at runtime; if the middleware is unavailable the save hooks silently skip validation via ImportError handling, so the CRM middleware must be installed for enforcement.

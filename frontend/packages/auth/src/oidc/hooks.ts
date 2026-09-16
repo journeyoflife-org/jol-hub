@@ -1,7 +1,7 @@
 /**
  * jol-auth client hooks — STEP 10 (CLIENT-ONLY subpath).
  *
- * Server code must import `@jol-hub/auth/oidc` (never this module). Wraps
+ * Server code must import `@journeyoflife-org/auth/oidc` (never this module). Wraps
  * next-auth's `useSession`; requires <SessionProvider> in the tree.
  *
  * RULES honored here:

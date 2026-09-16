@@ -1,0 +1,1 @@
+Activate the `/opt/jol/venvs/jol-data` virtual environment, then run `pytest tests/` for validation, `python -m src.cli compliance_report --days 30` for GDPR reports, `python -m src.cli run_checks --checkpoint entity_completeness` for quality checks, and `airflow dags trigger jol_daily_sync` to execute the scheduled ETL.

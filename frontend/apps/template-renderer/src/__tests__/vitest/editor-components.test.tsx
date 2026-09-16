@@ -7,7 +7,7 @@
  */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
-import { renderWithProviders, MOCK_DRAFT, MOCK_MODERATION_QUEUE } from '@jol-hub/testing';
+import { renderWithProviders, MOCK_DRAFT, MOCK_MODERATION_QUEUE } from '@journeyoflife-org/testing';
 import { BlockEditor, MediaUploader, ModerationQueue } from '@/components/editor';
 
 function jsonResponse(body: unknown, status = 200): Response {

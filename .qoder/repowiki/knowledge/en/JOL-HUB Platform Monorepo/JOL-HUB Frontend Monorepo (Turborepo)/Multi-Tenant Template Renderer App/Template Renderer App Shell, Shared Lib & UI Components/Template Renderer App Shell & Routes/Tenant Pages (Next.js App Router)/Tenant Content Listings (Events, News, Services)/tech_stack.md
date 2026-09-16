@@ -1,0 +1,1 @@
+Next.js App Router server components with `generateMetadata`, `next/navigation`'s `notFound`, and Next.js revalidation (`dynamic = 'force-dynamic'`, `revalidate = 60|300`).

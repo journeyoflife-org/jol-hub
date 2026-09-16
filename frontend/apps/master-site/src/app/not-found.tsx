@@ -23,7 +23,7 @@ import {
   CardTitle,
   Input,
   Separator,
-} from '@jol-hub/ui';
+} from '@journeyoflife-org/ui';
 import {
   Search,
   Church,

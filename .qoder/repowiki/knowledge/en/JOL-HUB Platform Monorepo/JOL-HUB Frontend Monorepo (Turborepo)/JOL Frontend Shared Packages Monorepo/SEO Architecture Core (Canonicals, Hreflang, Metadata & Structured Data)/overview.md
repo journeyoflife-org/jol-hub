@@ -1,0 +1,1 @@
+Pure, framework-agnostic SEO primitives for JOL tenants: canonical URL normalization, reciprocal hreflang sets, metadata/robots policy, JSON-LD generators, sitemap sharding, Open Graph contracts, and IndexNow payloads.

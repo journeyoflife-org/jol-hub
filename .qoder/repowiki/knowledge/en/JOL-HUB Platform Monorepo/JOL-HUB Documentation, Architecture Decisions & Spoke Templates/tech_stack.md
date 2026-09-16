@@ -1,0 +1,1 @@
+Next.js 14 App Router + React 18 + TypeScript + Tailwind CSS + Vitest + Playwright for the spoke template; GitHub Actions reusable workflows; SOPS + age for secret encryption; pnpm workspaces; OpenAPI spec for the payment API contract; Proxmox VE 9.2 deployment target (per system-overview).

@@ -1,0 +1,1 @@
+Build: `npm run build` (tsup) producing `dist/index.{mjs,js,d.ts}`; Type-check: `npm run type-check` (`tsc --noEmit`); Test: `npm run test` runs `tsx --test src/__tests__/*.test.ts` against the pure functions.

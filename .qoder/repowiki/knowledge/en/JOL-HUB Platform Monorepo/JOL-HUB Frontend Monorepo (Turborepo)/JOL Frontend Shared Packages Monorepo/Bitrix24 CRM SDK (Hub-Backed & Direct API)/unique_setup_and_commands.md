@@ -1,0 +1,1 @@
+Build via `npm run build` (tsup), type-check via `tsc --noEmit`, tests run with Node's native test runner through `tsx --test src/__tests__/*.test.ts`. The package publishes to GitHub Packages (`registry: https://npm.pkg.github.com`) as `@jol-hub/bitrix-sdk` and ships two importable entrypoints: `.` and `./hooks`.

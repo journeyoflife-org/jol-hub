@@ -174,7 +174,7 @@ export function getLocaleDirection(locale: SupportedLocale): 'ltr' | 'rtl' {
  * 
  * Usage in your Next.js middleware.ts:
  * ```ts
- * import { languageMiddleware } from '@jol-hub/i18n/middleware/language';
+ * import { languageMiddleware } from '@journeyoflife-org/i18n/middleware/language';
  * 
  * export function middleware(request: NextRequest) {
  *   return languageMiddleware(request);

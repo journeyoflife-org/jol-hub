@@ -20,9 +20,9 @@
 
 import { useMemo, useState } from 'react';
 import { z } from 'zod';
-import { createBooking, isCommerceConfigured, type BookingSlot } from '@jol-hub/commerce';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
-import { Button } from '@jol-hub/ui/components/primitives';
+import { createBooking, isCommerceConfigured, type BookingSlot } from '@journeyoflife-org/commerce';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
+import { Button } from '@journeyoflife-org/ui/components/primitives';
 import { useTenant, useTenantFeature } from '@/lib/tenant-context';
 
 const customerSchema = z.object({

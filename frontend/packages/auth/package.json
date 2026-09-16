@@ -1,5 +1,5 @@
 {
-  "name": "@jol-hub/auth",
+  "name": "@journeyoflife-org/auth",
   "version": "1.0.0",
   "description": "Authentication and authorization for JOL: NextAuth integration, Bitrix24 OAuth2, parish-level access guards, and OIDC hooks.",
   "exports": {

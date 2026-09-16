@@ -1,0 +1,1 @@
+Standalone scripts and CLI tools that enforce PCI/privacy boundaries, validate entity configurations, run compliance and tenant-isolation tests, scaffold JOL-HUB entities, and expose MCP servers for code review.

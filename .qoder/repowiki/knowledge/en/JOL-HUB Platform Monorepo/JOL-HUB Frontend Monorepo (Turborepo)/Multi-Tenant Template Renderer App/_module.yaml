@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: frontend/template_renderer_app
+title: Multi-Tenant Template Renderer App
+scope:
+    - frontend/apps/template-renderer/
+source_files: []
+depends_on: []
+related_to:
+    - path: docs
+    - path: frontend/master_site_app

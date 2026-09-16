@@ -2,11 +2,11 @@
  * i18n helpers for the template renderer (STEP 4).
  *
  * STEP 11: the relative `buildAlternates` lived here; it was replaced by the
- * ABSOLUTE canonical/hreflang builders in `lib/seo.tsx` (`@jol-hub/seo`)
+ * ABSOLUTE canonical/hreflang builders in `lib/seo.tsx` (`@journeyoflife-org/seo`)
  * and removed so relative alternates cannot regress back into metadata.
  */
-import type { LocalizedText } from '@jol-hub/seed-data';
-import type { SupportedLocale } from '@jol-hub/i18n';
+import type { LocalizedText } from '@journeyoflife-org/seed-data';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
 
 /**
  * Pick the best available fixture translation. Fixtures are LT-first

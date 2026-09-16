@@ -22,13 +22,13 @@ import {
   getMessages,
   translate,
   isSupportedLocale,
-} from '@jol-hub/i18n';
-import type { SupportedLocale } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
-import { Footer, Header, LocaleSwitcher, CookieConsentBanner } from '@jol-hub/ui';
-import { SkipLink, AnnouncerProvider } from '@jol-hub/ui';
-import type { NavItem } from '@jol-hub/ui';
-import { findTenantBySlug, toPublicTenant } from '@jol-hub/tenant-resolver';
+} from '@journeyoflife-org/i18n';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
+import { Footer, Header, LocaleSwitcher, CookieConsentBanner } from '@journeyoflife-org/ui';
+import { SkipLink, AnnouncerProvider } from '@journeyoflife-org/ui';
+import type { NavItem } from '@journeyoflife-org/ui';
+import { findTenantBySlug, toPublicTenant } from '@journeyoflife-org/tenant-resolver';
 import { loadTenantFixture } from '@/lib/content-loader';
 import { pickLocalized } from '@/lib/i18n-helpers';
 import { buildTenantBaseMetadata } from '@/lib/seo';

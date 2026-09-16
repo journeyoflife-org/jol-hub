@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: frontend/shared_packages/auth
+title: JOL Auth Package (NextAuth + Bitrix24 OAuth & Parish Guards)
+scope:
+    - frontend/packages/auth/
+source_files: []
+depends_on: []
+related_to:
+    - path: frontend/admin_dashboard_app
+    - path: frontend/react_demo_app

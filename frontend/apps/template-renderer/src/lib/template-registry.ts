@@ -12,9 +12,9 @@
  * diocese template.
  */
 import type { ComponentType } from 'react';
-import type { Tenant, Vertical } from '@jol-hub/tenant-resolver';
-import type { TenantFixture, TenantPage, Vertical as FixtureVertical } from '@jol-hub/seed-data';
-import type { SupportedLocale } from '@jol-hub/i18n';
+import type { Tenant, Vertical } from '@journeyoflife-org/tenant-resolver';
+import type { TenantFixture, TenantPage, Vertical as FixtureVertical } from '@journeyoflife-org/seed-data';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
 
 /** Props every vertical template receives (server-rendered). */
 export interface TemplateProps {

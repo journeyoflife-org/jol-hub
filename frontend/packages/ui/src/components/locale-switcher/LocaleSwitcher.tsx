@@ -13,10 +13,10 @@
 import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
-import { SUPPORTED_LOCALES, LOCALE_NAMES, LOCALE_COOKIE } from '@jol-hub/i18n/config';
-import type { SupportedLocale } from '@jol-hub/i18n/config';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
-import { useLocale } from '@jol-hub/i18n/use-locale';
+import { SUPPORTED_LOCALES, LOCALE_NAMES, LOCALE_COOKIE } from '@journeyoflife-org/i18n/config';
+import type { SupportedLocale } from '@journeyoflife-org/i18n/config';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
+import { useLocale } from '@journeyoflife-org/i18n/use-locale';
 
 import { cn } from '../../lib/utils';
 import { LiveRegion } from '../accessibility/live-region';

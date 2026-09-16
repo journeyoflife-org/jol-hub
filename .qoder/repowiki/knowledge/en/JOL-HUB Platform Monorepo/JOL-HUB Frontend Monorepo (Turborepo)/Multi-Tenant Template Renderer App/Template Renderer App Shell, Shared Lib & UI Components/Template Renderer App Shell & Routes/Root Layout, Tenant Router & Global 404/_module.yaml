@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes/app_root_and_errors
+title: Root Layout, Tenant Router & Global 404
+scope:
+    - frontend/apps/template-renderer/src/app/layout.tsx
+    - frontend/apps/template-renderer/src/app/page.tsx
+    - frontend/apps/template-renderer/src/app/not-found.tsx
+source_files: []
+depends_on: []
+related_to: []

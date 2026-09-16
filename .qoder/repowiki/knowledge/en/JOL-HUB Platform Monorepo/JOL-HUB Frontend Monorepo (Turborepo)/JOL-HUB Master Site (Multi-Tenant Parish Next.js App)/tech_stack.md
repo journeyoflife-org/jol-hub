@@ -1,0 +1,1 @@
+Next.js 14.2 App Router with Edge-compatible middleware; NextAuth v4 for auth; Radix UI primitives wrapped in local component shims; Tailwind CSS 3 with `tailwind-merge` and `tailwindcss-animate`; i18next/react-i18next for localization; Lucide icons; workspace packages `@jol-hub/ui`, `@jol-hub/auth`, `@jol-hub/i18n`, `@jol-hub/bitrix-sdk`.

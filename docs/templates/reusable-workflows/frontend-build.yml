@@ -31,7 +31,7 @@ on:
     secrets:
       NPM_TOKEN:
         required: false
-        description: 'GitHub Packages token for @jol-hub/* packages'
+        description: 'GitHub Packages token for @journeyoflife-org/* packages'
 
 env:
   NODE_VERSION: ${{ inputs.node-version }}

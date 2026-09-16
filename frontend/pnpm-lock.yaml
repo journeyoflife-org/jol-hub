@@ -62,13 +62,13 @@ importers:
       '@hookform/resolvers':
         specifier: ^3.3.4
         version: 3.10.0(react-hook-form@7.72.0(react@18.3.1))
-      '@jol-hub/auth':
+      '@journeyoflife-org/auth':
         specifier: workspace:*
         version: link:../../packages/auth
-      '@jol-hub/i18n':
+      '@journeyoflife-org/i18n':
         specifier: workspace:*
         version: link:../../packages/i18n
-      '@jol-hub/ui':
+      '@journeyoflife-org/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       '@radix-ui/react-accordion':
@@ -216,16 +216,16 @@ importers:
 
   apps/master-site:
     dependencies:
-      '@jol-hub/auth':
+      '@journeyoflife-org/auth':
         specifier: workspace:*
         version: link:../../packages/auth
-      '@jol-hub/bitrix-sdk':
+      '@journeyoflife-org/bitrix-sdk':
         specifier: workspace:*
         version: link:../../packages/bitrix-sdk
-      '@jol-hub/i18n':
+      '@journeyoflife-org/i18n':
         specifier: workspace:*
         version: link:../../packages/i18n
-      '@jol-hub/ui':
+      '@journeyoflife-org/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       '@radix-ui/react-accordion':
@@ -340,16 +340,16 @@ importers:
 
   apps/parish-template:
     dependencies:
-      '@jol-hub/auth':
+      '@journeyoflife-org/auth':
         specifier: workspace:*
         version: link:../../packages/auth
-      '@jol-hub/bitrix-sdk':
+      '@journeyoflife-org/bitrix-sdk':
         specifier: workspace:*
         version: link:../../packages/bitrix-sdk
-      '@jol-hub/i18n':
+      '@journeyoflife-org/i18n':
         specifier: workspace:*
         version: link:../../packages/i18n
-      '@jol-hub/ui':
+      '@journeyoflife-org/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       '@radix-ui/react-accordion':
@@ -434,37 +434,37 @@ importers:
 
   apps/template-renderer:
     dependencies:
-      '@jol-hub/a11y':
+      '@journeyoflife-org/a11y':
         specifier: workspace:*
         version: link:../../packages/a11y
-      '@jol-hub/auth':
+      '@journeyoflife-org/auth':
         specifier: workspace:*
         version: link:../../packages/auth
-      '@jol-hub/bitrix-sdk':
+      '@journeyoflife-org/bitrix-sdk':
         specifier: workspace:*
         version: link:../../packages/bitrix-sdk
-      '@jol-hub/commerce':
+      '@journeyoflife-org/commerce':
         specifier: workspace:*
         version: link:../../packages/commerce
-      '@jol-hub/i18n':
+      '@journeyoflife-org/i18n':
         specifier: workspace:*
         version: link:../../packages/i18n
-      '@jol-hub/observability':
+      '@journeyoflife-org/observability':
         specifier: workspace:*
         version: link:../../packages/observability
-      '@jol-hub/perf':
+      '@journeyoflife-org/perf':
         specifier: workspace:*
         version: link:../../packages/perf
-      '@jol-hub/seed-data':
+      '@journeyoflife-org/seed-data':
         specifier: workspace:*
         version: link:../../packages/seed-data
-      '@jol-hub/seo':
+      '@journeyoflife-org/seo':
         specifier: workspace:*
         version: link:../../packages/seo
-      '@jol-hub/tenant-resolver':
+      '@journeyoflife-org/tenant-resolver':
         specifier: workspace:*
         version: link:../../packages/tenant-resolver
-      '@jol-hub/ui':
+      '@journeyoflife-org/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       dompurify:
@@ -492,7 +492,7 @@ importers:
         specifier: ^3.23.8
         version: 3.25.76
     devDependencies:
-      '@jol-hub/testing':
+      '@journeyoflife-org/testing':
         specifier: workspace:*
         version: link:../../packages/testing
       '@next/bundle-analyzer':
@@ -716,7 +716,7 @@ importers:
 
   packages/tenant-resolver:
     dependencies:
-      '@jol-hub/seed-data':
+      '@journeyoflife-org/seed-data':
         specifier: workspace:*
         version: link:../seed-data
     devDependencies:
@@ -741,13 +741,13 @@ importers:
 
   packages/testing:
     dependencies:
-      '@jol-hub/i18n':
+      '@journeyoflife-org/i18n':
         specifier: workspace:*
         version: link:../i18n
-      '@jol-hub/tenant-resolver':
+      '@journeyoflife-org/tenant-resolver':
         specifier: workspace:*
         version: link:../tenant-resolver
-      '@jol-hub/ui':
+      '@journeyoflife-org/ui':
         specifier: workspace:*
         version: link:../ui
       intl-messageformat:
@@ -790,7 +790,7 @@ importers:
 
   packages/ui:
     dependencies:
-      '@jol-hub/i18n':
+      '@journeyoflife-org/i18n':
         specifier: workspace:*
         version: link:../i18n
       '@radix-ui/react-accordion':

@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: frontend/template_renderer_app/page_modules
+title: Page Module Components & Registry
+scope:
+    - frontend/apps/template-renderer/src/modules/
+source_files: []
+depends_on: []
+related_to:
+    - path: frontend/template_renderer_app/templates

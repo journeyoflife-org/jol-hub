@@ -1,0 +1,1 @@
+`npm run build` invokes tsup to emit `dist/index.{mjs,js}` plus `.d.ts`; `npm run type-check` runs `tsc --noEmit`; `npm run test` executes `tsx --test src/__tests__/*.test.ts` against the bundled-in jsdom environment.

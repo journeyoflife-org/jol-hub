@@ -1,0 +1,4 @@
+- Tenant context is passed down from server-side resolvers to a client `TenantProvider` using a stripped `PublicTenant` type — full `Tenant` schema never crosses into client bundles.
+- Route handlers delegate to `resolveTenantRoute` + `renderFixtureRoute` so unknown tenants always return a bare 404 via Next.js `notFound()` without enumeration.
+- Server-only integrations live as thin wrappers around external backends (Bitrix, editor, auth) and structured-data builders under this lib, keeping route files free of I/O.
+- Cross-cutting concerns (logging, error tracking, rate limiting, slug helpers) are implemented as pure modules imported directly rather than through an IoC container.

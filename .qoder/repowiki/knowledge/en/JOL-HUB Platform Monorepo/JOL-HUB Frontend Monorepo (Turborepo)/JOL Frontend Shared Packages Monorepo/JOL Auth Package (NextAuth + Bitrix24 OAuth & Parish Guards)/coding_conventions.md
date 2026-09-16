@@ -1,0 +1,6 @@
+- Each exported feature lives in its own file and is re-exported through a dedicated subpath in `package.json` exports, keeping the root barrel a thin facade.
+- Audit logging is centralized via small `log*Event` helper functions that stamp a timestamp and event name onto an object before writing to `console.log` or `console.error` based on severity.
+- Environment-driven configuration uses module-level defaults merged with caller-provided options (e.g., `DEFAULT_CONFIG` spread with overrides in parish guard, default scopes and role mapper in Bitrix24 provider).
+- Path matching in middleware uses a uniform `matchesPath(pathname, patterns[])` helper supporting exact matches and `*` suffix wildcards rather than ad-hoc string checks.
+- PKCE and OAuth state handling is implemented as pure utility functions (`generatePKCEPair`, `generateOAuthState`, `parseOAuthState`) that work across browser and Node environments by branching on `crypto` availability.
+- OIDC surface is deliberately split: server-safe types/config/RBAC live in `oidc/index.ts` while React hooks are exposed only through the separate `oidc/hooks` export to respect Next.js server/client boundaries.

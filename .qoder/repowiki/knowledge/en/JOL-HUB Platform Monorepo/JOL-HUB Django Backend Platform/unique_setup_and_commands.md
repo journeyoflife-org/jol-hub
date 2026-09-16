@@ -1,0 +1,1 @@
+`manage.py` at both `backend/` and `django/` entry points the same Django project; run migrations, server, and tests from either location, with settings selected via `DJANGO_SETTINGS_MODULE` pointing at `core.settings.{development|production|test}`.

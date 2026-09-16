@@ -1,0 +1,12 @@
+schema_version: 1
+module_path: data_pipelines/python_pipelines
+title: JOL-HUB ETL & Data Synchronization Pipelines
+scope:
+    - data/src/pipelines/
+    - data/src/__init__.py
+source_files: []
+depends_on: []
+related_to:
+    - path: data_pipelines/airflow_dags
+    - path: data_pipelines/gdpr_compliance
+    - path: data_pipelines/test_suites

@@ -1,0 +1,1 @@
+Next.js Route Handlers exposing the template-renderer's server-side API surface for authentication, CRM proxying, content editor workflows, and telemetry ingestion.

@@ -1,7 +1,7 @@
 /**
  * App-level tenant resolution for server components.
  *
- * `@jol-hub/tenant-resolver` owns the resolution rules (X-Tenant header,
+ * `@journeyoflife-org/tenant-resolver` owns the resolution rules (X-Tenant header,
  * subdomain of the tenant base domain); this module only adapts them to the
  * `next/headers` API available inside React Server Components.
  *
@@ -15,7 +15,7 @@ import {
   resolveTenantFromHeaders,
   type ResolvedTenant,
   type Tenant,
-} from '@jol-hub/tenant-resolver';
+} from '@journeyoflife-org/tenant-resolver';
 
 /** Resolve the tenant for the current request from request headers. */
 export function resolveCurrentTenant(): ResolvedTenant | null {

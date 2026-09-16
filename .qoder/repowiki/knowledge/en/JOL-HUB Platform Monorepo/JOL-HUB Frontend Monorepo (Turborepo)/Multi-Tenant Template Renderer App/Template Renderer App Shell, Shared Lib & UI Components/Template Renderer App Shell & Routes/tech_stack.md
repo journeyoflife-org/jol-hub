@@ -1,0 +1,1 @@
+Next.js App Router (server components, route handlers, dynamic/catch-all segments) with NextAuth for authentication and Bitrix24 as the external CRM backend.

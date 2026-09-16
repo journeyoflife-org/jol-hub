@@ -1,0 +1,1 @@
+Python async SDK built on `httpx.AsyncClient` for HTTP, `dataclasses` for typed request/response models, Django settings for configuration, and `asgiref.sync.sync_to_async` to bridge async webhook handlers into synchronous Django ORM calls.

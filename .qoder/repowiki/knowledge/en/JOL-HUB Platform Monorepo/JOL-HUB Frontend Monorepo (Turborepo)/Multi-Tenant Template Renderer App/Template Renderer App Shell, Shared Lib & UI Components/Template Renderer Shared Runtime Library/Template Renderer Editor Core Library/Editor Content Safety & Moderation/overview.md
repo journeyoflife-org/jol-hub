@@ -1,0 +1,1 @@
+Defines the editor's content safety pipeline: moderation domain types and queues, escape-first HTML rendering with URL allowlisting, and Zod-based server-side draft validation for user-generated blocks.

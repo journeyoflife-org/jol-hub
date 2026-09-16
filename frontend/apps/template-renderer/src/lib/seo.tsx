@@ -1,7 +1,7 @@
 /**
  * SEO composition layer — STEP 11.
  *
- * Bridges the pure `@jol-hub/seo` core to the request context: resolves the
+ * Bridges the pure `@journeyoflife-org/seo` core to the request context: resolves the
  * PUBLIC origin (proxy-safe, same discipline as the middleware's
  * `publicHost`) and builds ABSOLUTE canonical/hreflang/OG URLs for tenant
  * pages.
@@ -15,8 +15,8 @@
  */
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
-import type { SupportedLocale } from '@jol-hub/i18n';
-import { LOCALE_HREFLANG } from '@jol-hub/i18n';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
+import { LOCALE_HREFLANG } from '@journeyoflife-org/i18n';
 import {
   buildHreflangSet,
   clampDescription,
@@ -24,7 +24,7 @@ import {
   robotsPolicyFor,
   tenantTitleTemplate,
   type HreflangSet,
-} from '@jol-hub/seo';
+} from '@journeyoflife-org/seo';
 
 /**
  * The public origin as seen by the client: X-Forwarded-Host (first hop of

@@ -11,10 +11,10 @@
 'use client';
 
 import { useMemo } from 'react';
-import { CrmBackendClient, type Deal } from '@jol-hub/bitrix-sdk';
-import { useCrmDeals } from '@jol-hub/bitrix-sdk/hooks';
-import { formatEur } from '@jol-hub/commerce';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
+import { CrmBackendClient, type Deal } from '@journeyoflife-org/bitrix-sdk';
+import { useCrmDeals } from '@journeyoflife-org/bitrix-sdk/hooks';
+import { formatEur } from '@journeyoflife-org/commerce';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
 
 const DEFAULT_POLL_MS = 30_000;
 

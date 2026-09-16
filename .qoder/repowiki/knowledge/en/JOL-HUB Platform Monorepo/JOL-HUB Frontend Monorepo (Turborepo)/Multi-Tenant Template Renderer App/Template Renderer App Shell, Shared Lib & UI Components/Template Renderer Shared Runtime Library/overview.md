@@ -1,0 +1,1 @@
+Shared runtime library that wires tenant resolution, route dispatch, page composition, editor integration, SEO/JSON-LD, and cross-cutting utilities into the template-renderer app's server-client boundary.

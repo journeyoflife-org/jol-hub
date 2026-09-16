@@ -1,0 +1,1 @@
+Next.js App Router routes under [locale]/[tenant] that compose per-tenant layout, static pages, and content listings into a unified multi-tenant frontend.

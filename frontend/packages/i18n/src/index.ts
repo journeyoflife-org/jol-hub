@@ -6,7 +6,7 @@
 // -----------------------------------------------------------------------------
 // Core Configuration — server-safe functions only
 // initI18n, i18n, getCurrentLocale, setLocale are client-only
-// (they use react-i18next) → import from '@jol-hub/i18n/client'
+// (they use react-i18next) → import from '@journeyoflife-org/i18n/client'
 // -----------------------------------------------------------------------------
 export {
   getLocaleFromPath,
@@ -46,9 +46,9 @@ export {
 export { TranslationProvider, type TranslationProviderProps } from './components/translation-provider';
 
 // Client-only hooks live behind dedicated subpaths (keeps RSC bundles clean):
-//   useTranslations → '@jol-hub/i18n/use-translations'
-//   useLocale       → '@jol-hub/i18n/use-locale'
-// Locale-aware Intl formatters → '@jol-hub/i18n/utils'
+//   useTranslations → '@journeyoflife-org/i18n/use-translations'
+//   useLocale       → '@journeyoflife-org/i18n/use-locale'
+// Locale-aware Intl formatters → '@journeyoflife-org/i18n/utils'
 
 // -----------------------------------------------------------------------------
 // React i18next Re-exports
@@ -78,14 +78,14 @@ export {
 // -----------------------------------------------------------------------------
 // Components & Hooks
 // ALL components and hooks use React context / hooks and must run in a
-// Client Component. Import them from '@jol-hub/i18n/client' instead.
+// Client Component. Import them from '@journeyoflife-org/i18n/client' instead.
 // -----------------------------------------------------------------------------
-// export { LanguageSwitcher ... }   → use '@jol-hub/i18n/client'
-// export { CookieConsentBanner ... } → use '@jol-hub/i18n/client'
-// export { I18nProvider ... }        → use '@jol-hub/i18n/client'
-// export { useLocale ... }           → use '@jol-hub/i18n/client'
-// export { useCookieConsent ... }    → use '@jol-hub/i18n/client'
-// export { useTranslationWithDeepL } → use '@jol-hub/i18n/client'
+// export { LanguageSwitcher ... }   → use '@journeyoflife-org/i18n/client'
+// export { CookieConsentBanner ... } → use '@journeyoflife-org/i18n/client'
+// export { I18nProvider ... }        → use '@journeyoflife-org/i18n/client'
+// export { useLocale ... }           → use '@journeyoflife-org/i18n/client'
+// export { useCookieConsent ... }    → use '@journeyoflife-org/i18n/client'
+// export { useTranslationWithDeepL } → use '@journeyoflife-org/i18n/client'
 
 // Main useTranslation hook + client-safe utilities
 export {
@@ -101,7 +101,7 @@ export {
 } from './lib/liturgical';
 
 // NOTE: Server-only DeepL functions (translateWithDeepL, translateBatchWithDeepL, getDeepLTranslator)
-// are available via '@jol-hub/i18n/server' import path
+// are available via '@journeyoflife-org/i18n/server' import path
 
 // -----------------------------------------------------------------------------
 // Utils

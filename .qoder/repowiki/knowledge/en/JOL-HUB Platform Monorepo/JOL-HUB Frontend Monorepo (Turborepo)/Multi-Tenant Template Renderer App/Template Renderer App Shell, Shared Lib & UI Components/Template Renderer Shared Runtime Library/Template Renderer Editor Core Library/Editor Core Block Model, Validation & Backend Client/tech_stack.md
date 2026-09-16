@@ -1,0 +1,1 @@
+Plain TypeScript with `fetch`-based HTTP; uses `AbortController` for request timeouts and a discriminated union error type instead of exceptions.

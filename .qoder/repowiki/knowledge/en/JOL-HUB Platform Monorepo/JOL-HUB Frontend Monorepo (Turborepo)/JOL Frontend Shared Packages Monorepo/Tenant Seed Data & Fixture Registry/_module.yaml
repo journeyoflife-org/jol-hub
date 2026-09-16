@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: frontend/shared_packages/seed_data
+title: Tenant Seed Data & Fixture Registry
+scope:
+    - frontend/packages/seed-data/
+source_files: []
+depends_on: []
+related_to:
+    - path: frontend/template_renderer_app/app_shell_and_lib

@@ -1,0 +1,1 @@
+Next.js App Router pages for tenant-scoped static routes — about, contact, and accessibility-statement — rendered via fixture-first composition or the PageComposer with SEO and JSON-LD.

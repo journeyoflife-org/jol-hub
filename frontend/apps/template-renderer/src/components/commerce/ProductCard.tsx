@@ -16,9 +16,9 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { formatEur, type Product } from '@jol-hub/commerce';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
-import { Badge, Button } from '@jol-hub/ui/components/primitives';
+import { formatEur, type Product } from '@journeyoflife-org/commerce';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
+import { Badge, Button } from '@journeyoflife-org/ui/components/primitives';
 import { useCart } from './cart-context';
 
 const PAGE_SIZE = 8;

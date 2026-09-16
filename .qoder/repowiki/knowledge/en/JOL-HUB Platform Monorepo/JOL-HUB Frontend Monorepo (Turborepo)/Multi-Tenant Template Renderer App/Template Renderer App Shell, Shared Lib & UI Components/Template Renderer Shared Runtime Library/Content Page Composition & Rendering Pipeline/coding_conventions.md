@@ -1,0 +1,6 @@
+- All inbound data from the backend or fixtures is validated with Zod before use; invalid payloads are logged with sanitized messages and converted into safe defaults or errors rather than rendering raw data.
+- Backend calls go exclusively through `content-api.ts`, which attaches RLS-scoped headers (`x-tenant-schema`, `x-tenant-id`, optional Bearer token) and maps HTTP status codes to `ContentApiError` kinds consumed uniformly by callers.
+- Pilot-mode functions return `null` when `BACKEND_API_URL` is not configured, letting callers render graceful empty states instead of failing.
+- Module configuration is expressed as ordered arrays of `Module` objects where JOL controls type/layout/order and tenants only toggle the `visible` flag — never reorder or inject new module types at runtime.
+- Route handlers enforce closed tenant lookup by calling `notFound()` for unknown slugs, preventing tenant enumeration across all tenant-facing routes.
+- Pure server-side utilities (pagination, calendar grid, event splitting, URL building) are kept free of I/O and side effects so they remain deterministic and testable.

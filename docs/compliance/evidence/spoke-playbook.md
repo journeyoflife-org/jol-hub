@@ -9,7 +9,7 @@
 
 - `jol-frontend-repo-template` exists at `docs/templates/jol-frontend-repo-template/` in jol-hub
 - Reusable CI workflows published to `journeyoflife-org/.github`
-- 12 `@jol-hub/*` packages built and publishable
+- 12 `@journeyoflife-org/*` packages built and publishable
 - GitHub org `journeyoflife-org` with repo creation permissions
 - GPG signing configured
 - **Never** create repos in the `JourneyOfLife` personal account (Art. 9 data prohibition)
@@ -116,7 +116,7 @@ console.log(result.success ? 'VALID' : 'INVALID: ' + JSON.stringify(result.error
 
 ```bash
 cd /opt/jol/repos/jol-hub/frontend
-pnpm --filter @jol-hub/seed-data build
+pnpm --filter @journeyoflife-org/seed-data build
 ```
 
 ### B4. Create spoke page components

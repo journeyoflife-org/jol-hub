@@ -5,16 +5,16 @@ let nextConfig = {
   // the Proxmox fleet — .next/standalone ships with a minimal server.js.
   output: 'standalone',
   transpilePackages: [
-    '@jol-hub/ui',
-    '@jol-hub/i18n',
-    '@jol-hub/seed-data',
-    '@jol-hub/tenant-resolver',
-    '@jol-hub/commerce',
-    '@jol-hub/bitrix-sdk',
-    '@jol-hub/auth',
-    '@jol-hub/seo',
-    '@jol-hub/observability',
-    '@jol-hub/a11y',
+    '@journeyoflife-org/ui',
+    '@journeyoflife-org/i18n',
+    '@journeyoflife-org/seed-data',
+    '@journeyoflife-org/tenant-resolver',
+    '@journeyoflife-org/commerce',
+    '@journeyoflife-org/bitrix-sdk',
+    '@journeyoflife-org/auth',
+    '@journeyoflife-org/seo',
+    '@journeyoflife-org/observability',
+    '@journeyoflife-org/a11y',
   ],
   eslint: {
     ignoreDuringBuilds: true,
@@ -38,11 +38,11 @@ let nextConfig = {
 
   experimental: {
     // Tree-shake barrel imports — keeps the shared chunk lean on modest
-    // hardware. Without this, `import { formatEur } from '@jol-hub/commerce'`
-    // drags the Stripe browser SDK and `import { Card } from '@jol-hub/ui'`
+    // hardware. Without this, `import { formatEur } from '@journeyoflife-org/commerce'`
+    // drags the Stripe browser SDK and `import { Card } from '@journeyoflife-org/ui'`
     // drags the ENTIRE ui surface (compliance pages, donation widgets, zod)
     // into every route's first-load JS (verified via `pnpm analyze`).
-    optimizePackageImports: ['lucide-react', '@jol-hub/ui', '@jol-hub/commerce'],
+    optimizePackageImports: ['lucide-react', '@journeyoflife-org/ui', '@journeyoflife-org/commerce'],
   },
 
   async headers() {

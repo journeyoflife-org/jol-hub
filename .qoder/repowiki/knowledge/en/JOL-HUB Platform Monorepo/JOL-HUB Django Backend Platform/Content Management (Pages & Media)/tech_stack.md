@@ -1,0 +1,1 @@
+Django + Django REST Framework; uses JSONField for extra metadata, SlugField with db_index, FileField with date-based upload path, and UUID primary keys via BigAutoField default.

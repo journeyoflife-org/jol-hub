@@ -1,0 +1,1 @@
+Apache Airflow (DAGs, `PythonOperator`, `TaskGroup`, `PostgresOperator`, `AirflowPlugin`), PostgreSQL as the Airflow metadata store, and integration with Great Expectations checkpoints and dbt models invoked from within task callables.

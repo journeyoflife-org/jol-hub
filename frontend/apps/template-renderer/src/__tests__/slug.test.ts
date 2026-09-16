@@ -2,7 +2,7 @@
  * Slug utility unit tests (STEP 6 — URL-safe, kebab-case, Lithuanian
  * diacritics transliterated; malformed input rejected pre-lookup).
  *
- * Run: pnpm --filter @jol-hub/template-renderer test
+ * Run: pnpm --filter @journeyoflife-org/template-renderer test
  */
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';

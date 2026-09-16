@@ -6,8 +6,8 @@
  * derives the variant from the tenant vertical). Falls back to the tenant's
  * own name/tagline (real data — never fabricated).
  */
-import { Hero } from '@jol-hub/ui/components/composite';
-import type { HeroCta, HeroVariant } from '@jol-hub/ui/components/composite';
+import { Hero } from '@journeyoflife-org/ui/components/composite';
+import type { HeroCta, HeroVariant } from '@journeyoflife-org/ui/components/composite';
 import { pickLocalized } from '@/lib/i18n-helpers';
 import { tenantThemeFor, type ModuleProps } from './types';
 

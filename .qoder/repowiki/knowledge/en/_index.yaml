@@ -1,0 +1,794 @@
+# 知识卡导出索引文件
+schema_version: 1
+locale: en-US
+branch: fix/i18n-rsc-barrel
+nodes_managed: true
+exported_at: "2026-09-13T18:35:21Z"
+modules:
+    "":
+        dir_name: JOL-HUB Platform Monorepo
+        title: JOL-HUB Platform Monorepo
+        scope:
+            - README.md
+            - CONTRIBUTING.md
+            - .gitignore
+            - .github/
+            - docker-compose.yml
+            - main.py
+            - qodana.yaml
+            - .gitattributes
+            - LICENSE
+            - QODER.md
+        source_files: []
+        children:
+            - backend
+            - country_configs
+            - data_pipelines
+            - docs
+            - frontend
+            - infra
+            - scripts_and_tools
+        depends_on: []
+        related_to: []
+    backend:
+        dir_name: JOL-HUB Django Backend Platform
+        title: JOL-HUB Django Backend Platform
+        scope:
+            - backend/
+        source_files: []
+        children:
+            - backend/analytics
+            - backend/bitrix24_integration
+            - backend/content
+            - backend/countries
+            - backend/crm
+            - backend/django_core
+            - backend/donations
+            - backend/financial
+            - backend/integrations_app
+            - backend/organizations
+            - backend/payment_events
+            - backend/users
+        depends_on: []
+        related_to: []
+    backend/analytics:
+        dir_name: Analytics & Privacy-Compliant Page View Tracking
+        title: Analytics & Privacy-Compliant Page View Tracking
+        scope:
+            - backend/django/apps/analytics/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: backend/content
+            - path: backend/donations
+            - path: backend/financial
+    backend/bitrix24_integration:
+        dir_name: Bitrix24 CRM Integration SDK
+        title: Bitrix24 CRM Integration SDK
+        scope:
+            - backend/integrations/bitrix24/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: backend/crm
+            - path: backend/integrations_app
+    backend/content:
+        dir_name: Content Management (Pages & Media)
+        title: Content Management (Pages & Media)
+        scope:
+            - backend/django/apps/content/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: backend/analytics
+            - path: frontend/template_renderer_app/editor
+    backend/countries:
+        dir_name: Countries Configuration API
+        title: Countries Configuration API
+        scope:
+            - backend/django/apps/countries/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: country_configs
+    backend/crm:
+        dir_name: Multi-Tenant CRM with GDPR & Bitrix24 Integration
+        title: Multi-Tenant CRM with GDPR & Bitrix24 Integration
+        scope:
+            - backend/django/apps/crm/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: backend/bitrix24_integration
+            - path: frontend/admin_dashboard_app
+            - path: frontend/shared_packages/bitrix_sdk
+            - path: frontend/template_renderer_app/api_routes
+    backend/django_core:
+        dir_name: JOL-HUB Django Project Configuration
+        title: JOL-HUB Django Project Configuration
+        scope:
+            - backend/django/core/
+            - backend/django/__init__.py
+            - backend/manage.py
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: infra
+    backend/donations:
+        dir_name: Donations & Payment Processing
+        title: Donations & Payment Processing
+        scope:
+            - backend/django/apps/donations/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: backend/analytics
+            - path: backend/financial
+            - path: backend/payment_events
+    backend/financial:
+        dir_name: Financial Invoices & Payouts
+        title: Financial Invoices & Payouts
+        scope:
+            - backend/django/apps/financial/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: backend/analytics
+            - path: backend/donations
+    backend/integrations_app:
+        dir_name: Third-Party Integrations Webhook Ingestion
+        title: Third-Party Integrations Webhook Ingestion
+        scope:
+            - backend/django/apps/integrations/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: backend/bitrix24_integration
+    backend/organizations:
+        dir_name: Organizations & Multi-Tenant Membership
+        title: Organizations & Multi-Tenant Membership
+        scope:
+            - backend/django/apps/organizations/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    backend/payment_events:
+        dir_name: Payment Events Ingress Receiver
+        title: Payment Events Ingress Receiver
+        scope:
+            - backend/django/apps/payment_events/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: backend/donations
+    backend/users:
+        dir_name: User Authentication & GDPR Data Rights
+        title: User Authentication & GDPR Data Rights
+        scope:
+            - backend/django/apps/users/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    country_configs:
+        dir_name: Country-Specific Church & Compliance Configurations (Estonia, Lithuania, Latvia)
+        title: Country-Specific Church & Compliance Configurations (Estonia, Lithuania, Latvia)
+        scope:
+            - countries/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: backend/countries
+    data_pipelines:
+        dir_name: JOL-HUB Data Processing & GDPR Compliance Module
+        title: JOL-HUB Data Processing & GDPR Compliance Module
+        scope:
+            - data/
+        source_files: []
+        children:
+            - data_pipelines/airflow_dags
+            - data_pipelines/dbt_models
+            - data_pipelines/gdpr_compliance
+            - data_pipelines/python_pipelines
+            - data_pipelines/sql_and_transformations
+            - data_pipelines/test_suites
+        depends_on: []
+        related_to:
+            - path: scripts_and_tools
+    data_pipelines/airflow_dags:
+        dir_name: Airflow DAGs for JOL-HUB ETL, GDPR & Reporting
+        title: Airflow DAGs for JOL-HUB ETL, GDPR & Reporting
+        scope:
+            - data/airflow/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: data_pipelines/dbt_models
+            - path: data_pipelines/python_pipelines
+            - path: infra
+    data_pipelines/dbt_models:
+        dir_name: dbt GDPR Data Transformation Models
+        title: dbt GDPR Data Transformation Models
+        scope:
+            - data/dbt/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: data_pipelines/airflow_dags
+            - path: data_pipelines/sql_and_transformations
+    data_pipelines/gdpr_compliance:
+        dir_name: GDPR Compliance & Records of Processing Activities
+        title: GDPR Compliance & Records of Processing Activities
+        scope:
+            - data/src/gdpr/
+            - data/exports/ropa/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: data_pipelines/python_pipelines
+            - path: data_pipelines/test_suites
+    data_pipelines/python_pipelines:
+        dir_name: JOL-HUB ETL & Data Synchronization Pipelines
+        title: JOL-HUB ETL & Data Synchronization Pipelines
+        scope:
+            - data/src/pipelines/
+            - data/src/__init__.py
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: data_pipelines/airflow_dags
+            - path: data_pipelines/gdpr_compliance
+            - path: data_pipelines/test_suites
+    data_pipelines/sql_and_transformations:
+        dir_name: DBT Data Transformations & GDPR Schema
+        title: DBT Data Transformations & GDPR Schema
+        scope:
+            - data/sql/
+            - data/src/transformations/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: data_pipelines/dbt_models
+    data_pipelines/test_suites:
+        dir_name: Data Module Test Suites (GDPR, SOC2, PCI-DSS & Pipeline Validation)
+        title: Data Module Test Suites (GDPR, SOC2, PCI-DSS & Pipeline Validation)
+        scope:
+            - data/tests/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: data_pipelines/gdpr_compliance
+            - path: data_pipelines/python_pipelines
+    docs:
+        dir_name: JOL-HUB Documentation, Architecture Decisions & Spoke Templates
+        title: JOL-HUB Documentation, Architecture Decisions & Spoke Templates
+        scope:
+            - docs/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend/template_renderer_app
+    frontend:
+        dir_name: JOL-HUB Frontend Monorepo (Turborepo)
+        title: JOL-HUB Frontend Monorepo (Turborepo)
+        scope:
+            - frontend/
+        source_files: []
+        children:
+            - frontend/admin_dashboard_app
+            - frontend/master_site_app
+            - frontend/parish_template_app
+            - frontend/react_demo_app
+            - frontend/shared_packages
+            - frontend/template_renderer_app
+        depends_on: []
+        related_to: []
+    frontend/admin_dashboard_app:
+        dir_name: JOL-HUB Admin Dashboard (Next.js 14)
+        title: JOL-HUB Admin Dashboard (Next.js 14)
+        scope:
+            - frontend/apps/admin-dashboard/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: backend/crm
+            - path: frontend/shared_packages/auth
+            - path: frontend/shared_packages/bitrix_sdk
+            - path: frontend/shared_packages/commerce
+    frontend/master_site_app:
+        dir_name: JOL-HUB Master Site (Multi-Tenant Parish Next.js App)
+        title: JOL-HUB Master Site (Multi-Tenant Parish Next.js App)
+        scope:
+            - frontend/apps/master-site/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend/template_renderer_app
+    frontend/parish_template_app:
+        dir_name: Parish Template Next.js Application
+        title: Parish Template Next.js Application
+        scope:
+            - frontend/apps/parish-template/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend/shared_packages/i18n
+            - path: frontend/shared_packages/seo
+            - path: frontend/shared_packages/ui
+    frontend/react_demo_app:
+        dir_name: JOL-HUB Next.js Frontend (Auth & Dashboard)
+        title: JOL-HUB Next.js Frontend (Auth & Dashboard)
+        scope:
+            - frontend/react/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend/shared_packages/auth
+    frontend/shared_packages:
+        dir_name: JOL Frontend Shared Packages Monorepo
+        title: JOL Frontend Shared Packages Monorepo
+        scope:
+            - frontend/packages/
+        source_files: []
+        children:
+            - frontend/shared_packages/a11y
+            - frontend/shared_packages/auth
+            - frontend/shared_packages/bitrix_sdk
+            - frontend/shared_packages/commerce
+            - frontend/shared_packages/i18n
+            - frontend/shared_packages/observability
+            - frontend/shared_packages/perf
+            - frontend/shared_packages/seed_data
+            - frontend/shared_packages/seo
+            - frontend/shared_packages/tenant_resolver
+            - frontend/shared_packages/testing
+            - frontend/shared_packages/ui
+        depends_on: []
+        related_to: []
+    frontend/shared_packages/a11y:
+        dir_name: WCAG 2.2 AA Accessibility Audit Library
+        title: WCAG 2.2 AA Accessibility Audit Library
+        scope:
+            - frontend/packages/a11y/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend/shared_packages/auth:
+        dir_name: JOL Auth Package (NextAuth + Bitrix24 OAuth & Parish Guards)
+        title: JOL Auth Package (NextAuth + Bitrix24 OAuth & Parish Guards)
+        scope:
+            - frontend/packages/auth/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend/admin_dashboard_app
+            - path: frontend/react_demo_app
+    frontend/shared_packages/bitrix_sdk:
+        dir_name: Bitrix24 CRM SDK (Hub-Backed & Direct API)
+        title: Bitrix24 CRM SDK (Hub-Backed & Direct API)
+        scope:
+            - frontend/packages/bitrix-sdk/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: backend/crm
+            - path: frontend/admin_dashboard_app
+            - path: frontend/template_renderer_app/api_routes
+    frontend/shared_packages/commerce:
+        dir_name: Commerce Domain Core (Shop, Booking, Donations, Subscriptions)
+        title: Commerce Domain Core (Shop, Booking, Donations, Subscriptions)
+        scope:
+            - frontend/packages/commerce/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend/admin_dashboard_app
+            - path: frontend/template_renderer_app/app_shell_and_lib
+    frontend/shared_packages/i18n:
+        dir_name: JOL Internationalization (i18n) Package
+        title: JOL Internationalization (i18n) Package
+        scope:
+            - frontend/packages/i18n/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend/parish_template_app
+            - path: frontend/template_renderer_app/app_shell_and_lib
+    frontend/shared_packages/observability:
+        dir_name: Frontend Observability Core (Logging, Error Tracking, Performance & Health)
+        title: Frontend Observability Core (Logging, Error Tracking, Performance & Health)
+        scope:
+            - frontend/packages/observability/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend/template_renderer_app/app_shell_and_lib
+    frontend/shared_packages/perf:
+        dir_name: Performance Budget & First-Load Footprint Gate
+        title: Performance Budget & First-Load Footprint Gate
+        scope:
+            - frontend/packages/perf/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend/shared_packages/seed_data:
+        dir_name: Tenant Seed Data & Fixture Registry
+        title: Tenant Seed Data & Fixture Registry
+        scope:
+            - frontend/packages/seed-data/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend/template_renderer_app/app_shell_and_lib
+    frontend/shared_packages/seo:
+        dir_name: SEO Architecture Core (Canonicals, Hreflang, Metadata & Structured Data)
+        title: SEO Architecture Core (Canonicals, Hreflang, Metadata & Structured Data)
+        scope:
+            - frontend/packages/seo/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend/parish_template_app
+            - path: frontend/template_renderer_app/app_shell_and_lib
+    frontend/shared_packages/tenant_resolver:
+        dir_name: Tenant Resolver (STEP 5 Spine)
+        title: Tenant Resolver (STEP 5 Spine)
+        scope:
+            - frontend/packages/tenant-resolver/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend/template_renderer_app/app_shell_and_lib
+    frontend/shared_packages/testing:
+        dir_name: Shared Frontend Test Harness (@jol-hub_testing)
+        title: Shared Frontend Test Harness (@jol-hub/testing)
+        scope:
+            - frontend/packages/testing/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend/shared_packages/ui:
+        dir_name: '@jol-hub_ui Design System Package'
+        title: '@jol-hub/ui Design System Package'
+        scope:
+            - frontend/packages/ui/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend/parish_template_app
+    frontend/template_renderer_app:
+        dir_name: Multi-Tenant Template Renderer App
+        title: Multi-Tenant Template Renderer App
+        scope:
+            - frontend/apps/template-renderer/
+        source_files: []
+        children:
+            - frontend/template_renderer_app/api_routes
+            - frontend/template_renderer_app/app_shell_and_lib
+            - frontend/template_renderer_app/editor
+            - frontend/template_renderer_app/page_modules
+            - frontend/template_renderer_app/templates
+        depends_on: []
+        related_to:
+            - path: docs
+            - path: frontend/master_site_app
+    frontend/template_renderer_app/api_routes:
+        dir_name: Next.js App Router API Routes (Auth, CRM, Editor, Telemetry)
+        title: Next.js App Router API Routes (Auth, CRM, Editor, Telemetry)
+        scope:
+            - frontend/apps/template-renderer/src/app/api/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: backend/crm
+            - path: frontend/shared_packages/bitrix_sdk
+    frontend/template_renderer_app/app_shell_and_lib:
+        dir_name: Template Renderer App Shell, Shared Lib & UI Components
+        title: Template Renderer App Shell, Shared Lib & UI Components
+        scope:
+            - frontend/apps/template-renderer/src/app/
+            - frontend/apps/template-renderer/src/lib/
+            - frontend/apps/template-renderer/src/components/
+        source_files: []
+        children:
+            - frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes
+            - frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib
+            - frontend/template_renderer_app/app_shell_and_lib/ui_components
+        depends_on: []
+        related_to:
+            - path: frontend/shared_packages/commerce
+            - path: frontend/shared_packages/i18n
+            - path: frontend/shared_packages/observability
+            - path: frontend/shared_packages/seed_data
+            - path: frontend/shared_packages/seo
+            - path: frontend/shared_packages/tenant_resolver
+    frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes:
+        dir_name: Template Renderer App Shell & Routes
+        title: Template Renderer App Shell & Routes
+        scope:
+            - frontend/apps/template-renderer/src/app/
+        source_files: []
+        children:
+            - frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes/api_routes
+            - frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes/app_root_and_errors
+            - frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes/tenant_pages
+        depends_on: []
+        related_to: []
+    frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes/api_routes:
+        dir_name: Next.js App Router API Routes (Auth, CRM, Editor, Telemetry)
+        title: Next.js App Router API Routes (Auth, CRM, Editor, Telemetry)
+        scope:
+            - frontend/apps/template-renderer/src/app/api/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes/app_root_and_errors:
+        dir_name: Root Layout, Tenant Router & Global 404
+        title: Root Layout, Tenant Router & Global 404
+        scope:
+            - frontend/apps/template-renderer/src/app/layout.tsx
+            - frontend/apps/template-renderer/src/app/page.tsx
+            - frontend/apps/template-renderer/src/app/not-found.tsx
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes/tenant_pages:
+        dir_name: Tenant Pages (Next.js App Router)
+        title: Tenant Pages (Next.js App Router)
+        scope:
+            - frontend/apps/template-renderer/src/app/[locale]/
+        source_files: []
+        children:
+            - frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes/tenant_pages/tenant_content_listings
+            - frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes/tenant_pages/tenant_layout_and_root
+            - frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes/tenant_pages/tenant_static_pages
+        depends_on: []
+        related_to: []
+    frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes/tenant_pages/tenant_content_listings:
+        dir_name: Tenant Content Listings (Events, News, Services)
+        title: Tenant Content Listings (Events, News, Services)
+        scope:
+            - frontend/apps/template-renderer/src/app/[locale]/[tenant]/events/
+            - frontend/apps/template-renderer/src/app/[locale]/[tenant]/news/
+            - frontend/apps/template-renderer/src/app/[locale]/[tenant]/services/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes/tenant_pages/tenant_layout_and_root:
+        dir_name: Tenant Layout & Locale Root Shell
+        title: Tenant Layout & Locale Root Shell
+        scope:
+            - frontend/apps/template-renderer/src/app/[locale]/page.tsx
+            - frontend/apps/template-renderer/src/app/[locale]/[tenant]/layout.tsx
+            - frontend/apps/template-renderer/src/app/[locale]/[tenant]/error.tsx
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend/template_renderer_app/app_shell_and_lib/app_shell_and_routes/tenant_pages/tenant_static_pages:
+        dir_name: Tenant Static Pages (About, Contact, Accessibility Statement)
+        title: Tenant Static Pages (About, Contact, Accessibility Statement)
+        scope:
+            - frontend/apps/template-renderer/src/app/[locale]/[tenant]/about/
+            - frontend/apps/template-renderer/src/app/[locale]/[tenant]/contact/
+            - frontend/apps/template-renderer/src/app/[locale]/[tenant]/accessibility-statement/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib:
+        dir_name: Template Renderer Shared Runtime Library
+        title: Template Renderer Shared Runtime Library
+        scope:
+            - frontend/apps/template-renderer/src/lib/
+        source_files: []
+        children:
+            - frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/content_page_composition
+            - frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/editor_blocks
+            - frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/integrations
+            - frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/runtime_utilities
+            - frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/seo_jsonld
+            - frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/tenant_theme_i18n
+        depends_on: []
+        related_to: []
+    frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/content_page_composition:
+        dir_name: Content Page Composition & Rendering Pipeline
+        title: Content Page Composition & Rendering Pipeline
+        scope:
+            - frontend/apps/template-renderer/src/lib/content-api.ts
+            - frontend/apps/template-renderer/src/lib/content-loader.ts
+            - frontend/apps/template-renderer/src/lib/collection-view.ts
+            - frontend/apps/template-renderer/src/lib/collections.ts
+            - frontend/apps/template-renderer/src/lib/page-composer.tsx
+            - frontend/apps/template-renderer/src/lib/page-config.ts
+            - frontend/apps/template-renderer/src/lib/page-defaults.ts
+            - frontend/apps/template-renderer/src/lib/route-dispatch.tsx
+            - frontend/apps/template-renderer/src/lib/template-registry.ts
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/editor_blocks:
+        dir_name: Template Renderer Editor Core Library
+        title: Template Renderer Editor Core Library
+        scope:
+            - frontend/apps/template-renderer/src/lib/editor/
+        source_files: []
+        children:
+            - frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/editor_blocks/content_safety
+            - frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/editor_blocks/editor_core
+        depends_on: []
+        related_to: []
+    frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/editor_blocks/content_safety:
+        dir_name: Editor Content Safety & Moderation
+        title: Editor Content Safety & Moderation
+        scope:
+            - frontend/apps/template-renderer/src/lib/editor/moderation.ts
+            - frontend/apps/template-renderer/src/lib/editor/sanitize.ts
+            - frontend/apps/template-renderer/src/lib/editor/validation.ts
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/editor_blocks/editor_core:
+        dir_name: Editor Core Block Model, Validation & Backend Client
+        title: 'Editor Core: Block Model, Validation & Backend Client'
+        scope:
+            - frontend/apps/template-renderer/src/lib/editor/blocks.ts
+            - frontend/apps/template-renderer/src/lib/editor/diff.ts
+            - frontend/apps/template-renderer/src/lib/editor/editor-api.ts
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/integrations:
+        dir_name: Server-Side Integration Clients & Structured Data Builders
+        title: Server-Side Integration Clients & Structured Data Builders
+        scope:
+            - frontend/apps/template-renderer/src/lib/auth.ts
+            - frontend/apps/template-renderer/src/lib/bitrix-client.ts
+            - frontend/apps/template-renderer/src/lib/church-landing.ts
+            - frontend/apps/template-renderer/src/lib/services-landing.ts
+            - frontend/apps/template-renderer/src/lib/editor-client.ts
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/runtime_utilities:
+        dir_name: Runtime Utilities (Logging, Error Tracking, Rate Limiting & Slugs)
+        title: Runtime Utilities (Logging, Error Tracking, Rate Limiting & Slugs)
+        scope:
+            - frontend/apps/template-renderer/src/lib/logger.ts
+            - frontend/apps/template-renderer/src/lib/error-tracking.ts
+            - frontend/apps/template-renderer/src/lib/rate-limit.ts
+            - frontend/apps/template-renderer/src/lib/slug.ts
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/seo_jsonld:
+        dir_name: Tenant Page SEO & JSON-LD Structured Data
+        title: Tenant Page SEO & JSON-LD Structured Data
+        scope:
+            - frontend/apps/template-renderer/src/lib/page-seo.ts
+            - frontend/apps/template-renderer/src/lib/seo.tsx
+            - frontend/apps/template-renderer/src/lib/json-ld.tsx
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/tenant_theme_i18n:
+        dir_name: Tenant, Vertical Theme & i18n Resolution Layer
+        title: Tenant, Vertical Theme & i18n Resolution Layer
+        scope:
+            - frontend/apps/template-renderer/src/lib/tenant-context.tsx
+            - frontend/apps/template-renderer/src/lib/tenant-resolver.ts
+            - frontend/apps/template-renderer/src/lib/layout-families.ts
+            - frontend/apps/template-renderer/src/lib/vertical-theme.ts
+            - frontend/apps/template-renderer/src/lib/vertical-defaults.ts
+            - frontend/apps/template-renderer/src/lib/i18n-helpers.ts
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend/template_renderer_app/app_shell_and_lib/ui_components:
+        dir_name: Template Renderer & Tenant UI Components
+        title: Template Renderer & Tenant UI Components
+        scope:
+            - frontend/apps/template-renderer/src/components/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend/template_renderer_app/editor:
+        dir_name: Constrained Tenant Block Editor & Moderation UI
+        title: Constrained Tenant Block Editor & Moderation UI
+        scope:
+            - frontend/apps/template-renderer/src/components/editor/
+            - frontend/apps/template-renderer/src/lib/editor/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: backend/content
+    frontend/template_renderer_app/page_modules:
+        dir_name: Page Module Components & Registry
+        title: Page Module Components & Registry
+        scope:
+            - frontend/apps/template-renderer/src/modules/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend/template_renderer_app/templates
+    frontend/template_renderer_app/templates:
+        dir_name: Vertical Page Templates (Church, Diocese, Deanery, Cleaning, Funeral)
+        title: Vertical Page Templates (Church, Diocese, Deanery, Cleaning, Funeral)
+        scope:
+            - frontend/apps/template-renderer/src/templates/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend/template_renderer_app/page_modules
+    infra:
+        dir_name: Infrastructure & Platform Deployment (AWS, Kubernetes, Helm)
+        title: Infrastructure & Platform Deployment (AWS, Kubernetes, Helm)
+        scope:
+            - infra/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: backend/django_core
+            - path: data_pipelines/airflow_dags
+    scripts_and_tools:
+        dir_name: Dev Scripts & Tooling (Compliance, Scaffolding, MCP Servers)
+        title: Dev Scripts & Tooling (Compliance, Scaffolding, MCP Servers)
+        scope:
+            - scripts/
+            - tools/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: data_pipelines

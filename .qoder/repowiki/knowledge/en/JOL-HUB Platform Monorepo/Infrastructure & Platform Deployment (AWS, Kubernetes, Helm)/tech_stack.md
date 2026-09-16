@@ -1,0 +1,1 @@
+Terraform >=1.5 with AWS provider ~>5.0, random/tls providers; Kubernetes manifests consumed by both Kustomize (v1beta1 kustomization) and Helm v2 charts; AWS services include VPC, ECS/Fargate, ALB, RDS PostgreSQL, ElastiCache Redis, S3+CloudFront, Route53, Secrets Manager, and optional EKS/OpenSearch/Prometheus/Grafana.

@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/seo_jsonld
+title: Tenant Page SEO & JSON-LD Structured Data
+scope:
+    - frontend/apps/template-renderer/src/lib/page-seo.ts
+    - frontend/apps/template-renderer/src/lib/seo.tsx
+    - frontend/apps/template-renderer/src/lib/json-ld.tsx
+source_files: []
+depends_on: []
+related_to: []

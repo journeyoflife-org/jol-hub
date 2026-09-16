@@ -1,5 +1,5 @@
 {
-  "name": "@jol-hub/i18n",
+  "name": "@journeyoflife-org/i18n",
   "version": "1.0.0",
   "description": "Internationalization for JOL: i18next integration, translation providers, locale resolution, DeepL translation memory, and liturgical calendar translations.",
   "exports": {

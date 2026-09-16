@@ -24,7 +24,7 @@ import {
   SelectValue,
   Alert,
   AlertDescription,
-} from '@jol-hub/ui';
+} from '@journeyoflife-org/ui';
 import {
   Search,
   Calendar,

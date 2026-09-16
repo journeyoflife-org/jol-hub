@@ -8,8 +8,8 @@
  * component, never the schema (ADR-001).
  */
 import type { ReactElement } from 'react';
-import type { Tenant } from '@jol-hub/tenant-resolver';
-import type { SupportedLocale } from '@jol-hub/i18n';
+import type { Tenant } from '@journeyoflife-org/tenant-resolver';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
 import type { ModuleLayout } from '@/lib/page-config';
 import { themeVerticalFor } from '@/lib/template-registry';
 

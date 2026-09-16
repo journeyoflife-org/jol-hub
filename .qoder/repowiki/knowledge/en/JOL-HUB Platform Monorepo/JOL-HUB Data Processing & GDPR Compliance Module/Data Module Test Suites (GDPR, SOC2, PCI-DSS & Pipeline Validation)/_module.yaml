@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: data_pipelines/test_suites
+title: Data Module Test Suites (GDPR, SOC2, PCI-DSS & Pipeline Validation)
+scope:
+    - data/tests/
+source_files: []
+depends_on: []
+related_to:
+    - path: data_pipelines/gdpr_compliance
+    - path: data_pipelines/python_pipelines

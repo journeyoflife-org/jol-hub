@@ -3,7 +3,7 @@
  * time splitting). These back the acceptance criteria: "News list paginates
  * correctly (10 items/page)" and "Event calendar shows current month".
  *
- * Run: pnpm --filter @jol-hub/template-renderer test
+ * Run: pnpm --filter @journeyoflife-org/template-renderer test
  */
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';

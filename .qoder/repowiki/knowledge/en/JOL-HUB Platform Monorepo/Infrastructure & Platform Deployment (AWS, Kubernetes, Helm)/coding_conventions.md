@@ -1,0 +1,6 @@
+- Each Terraform capability is split into a self-contained subdirectory under `modules/` exposing exactly `main.tf`, `variables.tf`, and `outputs.tf` so the root module composes them uniformly.
+- Optional features are toggled with boolean variables and `count = var.enable_* ? 1 : 0` on the corresponding module block rather than separate environments.
+- All AWS resources receive tags via `merge(var.tags, { Name = "${var.project_name}-<resource>-${var.environment}" })`, centralizing naming and ownership metadata.
+- Kubernetes manifests use standardized `app.kubernetes.io/name` and `app.kubernetes.io/component` labels and group related objects (Deployment/Service/HPA/PDB) in a single file per component.
+- Pod specs consistently run as non-root user 1000 with `runAsNonRoot`, `readOnlyRootFilesystem`, and dropped ALL capabilities, applied both in Kustomize manifests and Helm `securityContext`.
+- Application configuration is injected via `envFrom` referencing a shared `configMapRef` and `secretRef` named `jol-hub-config` / `jol-hub-secrets`, keeping per-key env vars minimal and explicit.

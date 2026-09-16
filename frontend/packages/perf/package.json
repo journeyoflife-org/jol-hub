@@ -1,5 +1,5 @@
 {
-  "name": "@jol-hub/perf",
+  "name": "@journeyoflife-org/perf",
   "version": "1.0.0",
   "description": "Performance budget core for JOL: Lighthouse-format budget parsing, gzipped-size measurement, per-route first-load footprint analysis and CI gate reporting. Targets modest on-prem hardware (Dell R640) — no cloud CDN assumptions.",
   "exports": {

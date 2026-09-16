@@ -1,0 +1,1 @@
+Endpoint is disabled by default — must set `PAYMENT_EVENTS_ENABLED=True` and provision `HUB_PAYMENT_DELIVERY_KEY` in Django settings before it responds; tests override these via a `receiver_settings` autouse fixture and use a hard-coded test key `test-delivery-key-not-a-secret`.

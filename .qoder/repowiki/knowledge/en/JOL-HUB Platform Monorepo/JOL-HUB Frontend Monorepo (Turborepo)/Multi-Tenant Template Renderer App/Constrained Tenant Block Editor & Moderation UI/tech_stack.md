@@ -1,0 +1,1 @@
+React client components with Next.js App Router routes; DOMPurify for final XSS sanitization; Zod schemas for server-side draft/validation payload enforcement; i18n via `@jol-hub/i18n/use-translations`; Tailwind utility classes for styling.

@@ -1,5 +1,5 @@
 /**
- * @jol-hub/testing — shared test harness (STEP 15).
+ * @journeyoflife-org/testing — shared test harness (STEP 15).
  *
  *   setup       vitest setupFiles entry (cleanup, jsdom shims, determinism)
  *   render      renderWithProviders (theme + i18n + app wrapper)

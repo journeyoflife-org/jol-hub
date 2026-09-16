@@ -1,0 +1,1 @@
+Requires a running PostgreSQL instance and environment variables `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME` to be set before invoking dbt commands; the default `dev` profile connects to `localhost:5432` with user `jolhub` and database `jolhub` when env vars are absent.

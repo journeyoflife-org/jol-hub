@@ -1,0 +1,1 @@
+Zod v3 for schema validation at module load; tsup for dual ESM/CJS builds; TypeScript 5.4 for type generation; published to GitHub Packages.

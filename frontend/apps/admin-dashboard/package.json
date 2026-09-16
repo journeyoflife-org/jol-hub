@@ -1,5 +1,5 @@
 {
-  "name": "@jol-hub/admin-dashboard",
+  "name": "@journeyoflife-org/admin-dashboard",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -19,9 +19,9 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
-    "@jol-hub/auth": "workspace:*",
-    "@jol-hub/i18n": "workspace:*",
-    "@jol-hub/ui": "workspace:*",
+    "@journeyoflife-org/auth": "workspace:*",
+    "@journeyoflife-org/i18n": "workspace:*",
+    "@journeyoflife-org/ui": "workspace:*",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-avatar": "^1.0.4",

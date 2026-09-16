@@ -1,0 +1,1 @@
+Next.js 14.2 (App Router, Edge Runtime middleware, ISR), React 18, Tailwind CSS 3 with `tailwindcss-animate`, Radix UI primitives, i18next + react-i18next for localization, next-auth for authentication, lucide-react icons, and workspace packages `@jol-hub/ui`, `@jol-hub/i18n`, `@jol-hub/auth`, `@jol-hub/bitrix-sdk`.

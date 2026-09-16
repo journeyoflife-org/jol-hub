@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: backend/integrations_app
+title: Third-Party Integrations Webhook Ingestion
+scope:
+    - backend/django/apps/integrations/
+source_files: []
+depends_on: []
+related_to:
+    - path: backend/bitrix24_integration

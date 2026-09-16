@@ -1,0 +1,1 @@
+Django-based multi-tenant backend that wires together domain apps (users, organizations, CRM, donations, financial, analytics, content, countries) with third-party integrations via a shared project configuration and Celery task pipeline.

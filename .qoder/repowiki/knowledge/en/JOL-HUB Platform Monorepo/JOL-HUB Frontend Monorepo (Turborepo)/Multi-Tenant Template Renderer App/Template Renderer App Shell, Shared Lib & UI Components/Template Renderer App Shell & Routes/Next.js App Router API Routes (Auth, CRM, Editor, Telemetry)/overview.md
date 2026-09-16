@@ -1,0 +1,1 @@
+Next.js App Router server-side API routes that proxy browser requests to the backend content plane, Bitrix24 CRM, and telemetry services while enforcing validation, tenant isolation, rate limiting, and pilot-mode fallbacks.

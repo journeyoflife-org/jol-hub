@@ -1,0 +1,4 @@
+- Tenant context is propagated via a React context provider (`tenant-context.tsx`) consumed by both layout files and components rather than passed as props.
+- Route handlers under `app/api/` delegate to `lib/` modules instead of implementing business logic inline.
+- Feature-scoped components are grouped into `components/<feature>/` directories with an `index.ts` barrel re-exporting public exports.
+- Server-side data fetching is performed inside route handlers or server components and passed down as props to client components.

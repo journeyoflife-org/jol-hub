@@ -1,0 +1,6 @@
+- Each test class groups assertions by compliance domain (GDPR articles, SOC2 criteria, PCI-DSS requirements) and derives the project root through a `@pytest.fixture` returning `Path(__file__).parent.parent.parent`.
+- Compliance tests assert on source code by reading files from absolute paths under the repo root and checking for expected identifiers (e.g., `audit.py` must contain `legal_basis`, models must contain `previous_hash`), rather than importing runtime objects.
+- Filesystem-based checks use an existence guard pattern: `if path.exists(): content = path.read_text(); assert ...` so missing files do not crash unrelated tests.
+- Domain constants such as GDPR article numbers, SOC2 trust service criteria, and PCI-DSS requirement codes are declared as top-level dictionaries/enums in the test file to serve as a traceability matrix between tests and regulations.
+- Dependency-boundary enforcement tests scan both the active environment (`importlib.metadata.distributions`) and `backend/*requirements.txt` manifests to detect forbidden packages like `stripe`.
+- Each test file ends with `if __name__ == "__main__": pytest.main([__file__, "-v"])` to allow standalone execution.

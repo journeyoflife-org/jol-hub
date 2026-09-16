@@ -6,16 +6,16 @@
       "@/*": [
         "./src/*"
       ],
-      "@jol-hub/ui": [
+      "@journeyoflife-org/ui": [
         "../../packages/ui/src"
       ],
-      "@jol-hub/i18n": [
+      "@journeyoflife-org/i18n": [
         "../../packages/i18n/src"
       ],
-      "@jol-hub/auth": [
+      "@journeyoflife-org/auth": [
         "../../packages/auth/src"
       ],
-      "@jol-hub/bitrix-sdk": [
+      "@journeyoflife-org/bitrix-sdk": [
         "../../packages/bitrix-sdk/src"
       ]
     },

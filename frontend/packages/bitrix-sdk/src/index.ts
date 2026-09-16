@@ -17,7 +17,7 @@ export {
 } from './backend-client';
 export { captureUtm, sanitizeUtmValue, UTM_MAX_LENGTH } from './utm';
 // NOTE: the React hooks (useCrmLead/useCrmDeals/useCrmTasks/useCreateLead)
-// live behind the client-only subpath `@jol-hub/bitrix-sdk/hooks` so server
+// live behind the client-only subpath `@journeyoflife-org/bitrix-sdk/hooks` so server
 // modules (route handlers) can import this barrel without crossing the
 // React server/client boundary.
 export type {

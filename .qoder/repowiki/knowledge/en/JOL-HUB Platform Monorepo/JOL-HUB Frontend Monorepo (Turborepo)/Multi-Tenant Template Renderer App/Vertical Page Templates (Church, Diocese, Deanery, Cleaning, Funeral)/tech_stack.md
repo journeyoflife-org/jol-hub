@@ -1,0 +1,1 @@
+Next.js React Server Components with TypeScript; structured data via `@/lib/json-ld`; theme/accent resolution via `@/lib/vertical-theme`; page composition via `@/lib/page-composer` and `@/components/TemplateRenderer`.

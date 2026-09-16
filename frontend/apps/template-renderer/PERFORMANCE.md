@@ -45,7 +45,7 @@ Standard Lighthouse budget format; consumed by BOTH enforcement paths.
 The development workspace has no Chrome, so `scripts/check-perf-budget.ts`
 enforces the JS/CSS budgets WITHOUT a browser: it reads
 `.next/app-build-manifest.json`, measures the REAL gzipped (level 9)
-first-load payload of every user-facing route via `@jol-hub/perf`, excludes
+first-load payload of every user-facing route via `@journeyoflife-org/perf`, excludes
 legacy `noModule` polyfills (modern-browser baseline), and exits non-zero on
 any breach. Runs after `next build` (SOC 2 CC7.2 automated quality control).
 
@@ -67,7 +67,7 @@ Rule: **the build fails when a budget is exceeded.** Bisect with
 | --- | --- |
 | Templates | Dynamic `import()` per vertical family in `lib/template-registry.ts` — a funeral visitor never downloads the diocese template (server-side chunk split) |
 | Routes | App Router route-based splitting: per-route client JS only loads on that route (`app-build-manifest.json` is exactly what the gate measures) |
-| Workspace barrels | `experimental.optimizePackageImports` for `@jol-hub/ui`, `@jol-hub/commerce`, `lucide-react`. Found by the gate + `pnpm analyze`: a bare `import { formatEur } from '@jol-hub/commerce'` dragged the Stripe browser SDK (44 KiB stat) and `import { Card } from '@jol-hub/ui'` dragged the ENTIRE ui surface (compliance pages, donation widgets, zod forms) into every route. Fix cut the worst route 235 → 151.9 KiB gzipped |
+| Workspace barrels | `experimental.optimizePackageImports` for `@journeyoflife-org/ui`, `@journeyoflife-org/commerce`, `lucide-react`. Found by the gate + `pnpm analyze`: a bare `import { formatEur } from '@journeyoflife-org/commerce'` dragged the Stripe browser SDK (44 KiB stat) and `import { Card } from '@journeyoflife-org/ui'` dragged the ENTIRE ui surface (compliance pages, donation widgets, zod forms) into every route. Fix cut the worst route 235 → 151.9 KiB gzipped |
 | Commerce (Stripe) | Backend-hosted Checkout + PaymentIntents — **no Stripe browser SDK in the client bundle** (payment-boundary guard enforces); commerce widgets are client islands on commerce routes only |
 | CRM (Bitrix24) | Zero Bitrix JS ships to the browser: CRM surfaces call same-origin `/api/crm/*` route handlers → server-only `CrmBackendClient` (`lib/bitrix-client.ts`) |
 | Polyfills | Legacy `noModule` polyfills excluded from the modern baseline (gate) |
@@ -95,7 +95,7 @@ SVG: svgo at authoring time; icons ride the lucide/inline-SVG path.
 
 ## Fonts
 
-**System-first token stacks** (`@jol-hub/ui/styles/tokens.css`): Inter /
+**System-first token stacks** (`@journeyoflife-org/ui/styles/tokens.css`): Inter /
 Source Serif 4 preferred when present on the device, deterministic
 fallbacks otherwise. Zero webfont requests → zero font-bytes, zero
 FOUT/FOIT, zero CLS from font swap. When webfonts are vendored later
@@ -166,7 +166,7 @@ speculatively (CSP + privacy).
 
 - Viewport meta set by Next.js; touch targets ≥ 44px (WCAG 2.2 AA, STEP 12).
 - Correct input types (`tel`, `email`, `date`) across forms.
-- `prefers-reduced-motion` honored in `@jol-hub/ui` (spinner/skeleton,
+- `prefers-reduced-motion` honored in `@journeyoflife-org/ui` (spinner/skeleton,
   globals.css transitions).
 - No 300ms tap delay (modern viewport semantics).
 - Future: `navigator.connection`-aware image quality on slow links.

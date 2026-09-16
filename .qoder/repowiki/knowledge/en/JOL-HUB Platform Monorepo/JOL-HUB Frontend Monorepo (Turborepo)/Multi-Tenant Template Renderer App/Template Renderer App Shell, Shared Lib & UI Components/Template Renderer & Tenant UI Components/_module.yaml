@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: frontend/template_renderer_app/app_shell_and_lib/ui_components
+title: Template Renderer & Tenant UI Components
+scope:
+    - frontend/apps/template-renderer/src/components/
+source_files: []
+depends_on: []
+related_to: []

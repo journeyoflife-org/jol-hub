@@ -1,0 +1,1 @@
+TypeScript package built with tsup, targeting Next.js 14+ (peer dependency); uses `tsx --test` for tests; depends on `@jol-hub/seed-data` for fixture tenants; published to GitHub Packages under `@jol-hub/tenant-resolver`.

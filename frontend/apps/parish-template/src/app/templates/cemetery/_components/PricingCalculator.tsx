@@ -6,7 +6,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Card, CardContent, CardHeader, CardTitle, Label, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Separator } from '@jol-hub/ui';
+import { Card, CardContent, CardHeader, CardTitle, Label, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Separator } from '@journeyoflife-org/ui';
 import { Calculator } from 'lucide-react';
 
 interface CemeteryService {

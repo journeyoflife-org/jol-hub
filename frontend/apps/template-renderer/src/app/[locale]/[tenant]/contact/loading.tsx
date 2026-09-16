@@ -5,7 +5,7 @@
  * calls `notFound()` for a known tenant, so a loading boundary here is safe.
  * See `about/loading.tsx` for why the tenant-level loading.tsx is omitted.
  */
-import { Skeleton } from '@jol-hub/ui/components/primitives';
+import { Skeleton } from '@journeyoflife-org/ui/components/primitives';
 
 export default function ContactLoading() {
   return (

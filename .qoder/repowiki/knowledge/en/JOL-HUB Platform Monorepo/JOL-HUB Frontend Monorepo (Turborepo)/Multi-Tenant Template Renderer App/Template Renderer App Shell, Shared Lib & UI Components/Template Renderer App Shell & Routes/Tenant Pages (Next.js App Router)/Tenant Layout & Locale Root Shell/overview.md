@@ -1,0 +1,1 @@
+Next.js App Router shell that resolves tenants, builds per-tenant i18n catalogs and chrome (Header/Footer/LocaleSwitcher), and provides a locale root redirect plus a tenant-scoped error boundary.

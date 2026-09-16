@@ -1,0 +1,5 @@
+- Environment-specific settings are implemented by importing all of `base.py` and overriding only the keys that differ per environment, rather than duplicating full setting blocks.
+- All external secrets and runtime values are read through `environ.Env(...)` with explicit type casts and defaults instead of raw `os.environ` access.
+- Third-party and local apps are grouped into `DJANGO_APPS`, `THIRD_PARTY_APPS`, and `LOCAL_APPS` lists that are concatenated into `INSTALLED_APPS`.
+- URL routing centralizes `include()` calls per domain app under a consistent `/api/v1/<feature>/` prefix, keeping each feature's routes isolated in its own `urls.py`.
+- Security-sensitive flags (HTTPS redirect, secure cookies, HSTS, CORS allow-all) are toggled per-environment file, with production explicitly enforcing strict defaults.

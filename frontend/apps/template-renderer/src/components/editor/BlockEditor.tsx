@@ -24,7 +24,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import DOMPurify from 'dompurify';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
 import {
   ALLOWED_BLOCK_TYPES,
   EDITOR_LIMITS,

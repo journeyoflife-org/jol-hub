@@ -10,8 +10,8 @@
  */
 import { notFound, redirect } from 'next/navigation';
 import { headers } from 'next/headers';
-import { isSupportedLocale } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE, LOCALE_HEADER } from '@jol-hub/i18n/config';
+import { isSupportedLocale } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE, LOCALE_HEADER } from '@journeyoflife-org/i18n/config';
 import { resolveCurrentTenant } from '@/lib/tenant-resolver';
 
 export const dynamic = 'force-dynamic';

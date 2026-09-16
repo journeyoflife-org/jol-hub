@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ['@jol-hub/ui'],
+  transpilePackages: ['@journeyoflife-org/ui'],
 };
 
 module.exports = nextConfig;

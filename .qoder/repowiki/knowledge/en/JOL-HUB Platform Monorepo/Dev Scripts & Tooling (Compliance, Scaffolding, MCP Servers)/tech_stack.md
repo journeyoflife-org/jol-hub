@@ -1,0 +1,1 @@
+Python 3 with `argparse`, `yaml`, `pytest` (programmatic invocation), `django` (optional setup via `DJANGO_SETTINGS_MODULE`); Bash with `grep -rIn` for static scans; Node.js script `hpanel-dns.js`; MCP protocol (jsonrpc 2.0) over stdio for `tools/mcp-*.py`.

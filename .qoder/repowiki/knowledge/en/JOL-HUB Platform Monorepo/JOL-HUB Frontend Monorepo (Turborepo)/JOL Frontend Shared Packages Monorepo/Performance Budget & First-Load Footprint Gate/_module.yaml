@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: frontend/shared_packages/perf
+title: Performance Budget & First-Load Footprint Gate
+scope:
+    - frontend/packages/perf/
+source_files: []
+depends_on: []
+related_to: []

@@ -10,8 +10,8 @@
  * SEO: ItemList + BreadcrumbList JSON-LD, canonical/hreflang/OG.
  */
 import type { Metadata } from 'next';
-import { getMessages, translate } from '@jol-hub/i18n';
-import { ServiceCard } from '@jol-hub/ui/components/composite';
+import { getMessages, translate } from '@journeyoflife-org/i18n';
+import { ServiceCard } from '@journeyoflife-org/ui/components/composite';
 import { getServices } from '@/lib/collections';
 import { JsonLd, breadcrumbEntity, itemListEntity } from '@/lib/json-ld';
 import { absoluteUrl } from '@/lib/seo';

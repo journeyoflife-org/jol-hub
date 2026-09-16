@@ -1,0 +1,1 @@
+Django project root providing settings, URL routing, WSGI/ASGI entry points, and Celery initialization for the JOL-HUB backend application.

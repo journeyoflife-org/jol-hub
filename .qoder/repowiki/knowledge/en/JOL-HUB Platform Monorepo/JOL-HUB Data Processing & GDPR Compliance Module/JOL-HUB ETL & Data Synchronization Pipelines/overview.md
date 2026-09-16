@@ -1,0 +1,1 @@
+Python ETL pipelines for synchronizing parish/donation/event data across 27 EU countries, bulk entity import with GDPR-compliant CSV validation, and k-anonymized donation analytics aggregation.

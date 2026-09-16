@@ -1,0 +1,1 @@
+Async Bitrix24 REST API client providing typed CRM, deals, calendar events, and email marketing operations with GDPR/PCI-DSS compliant tamper-evident audit logging and webhook-driven sync to the local Django CRM.

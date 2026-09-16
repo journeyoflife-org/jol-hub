@@ -1,0 +1,1 @@
+Receives and processes inbound webhooks from PayPal and Bitrix24, idempotently persisting events and asynchronously syncing CRM data into the Django ORM.

@@ -1,0 +1,1 @@
+Pure Python standard library (dataclasses, hashlib.sha256, datetime, enum); integrates with the project's `src.audit.AuditLogger` for GDPR request audit trails; outputs JSON and Markdown without external serialization libraries.

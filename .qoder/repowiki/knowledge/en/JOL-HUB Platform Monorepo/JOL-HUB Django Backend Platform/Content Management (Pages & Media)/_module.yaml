@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: backend/content
+title: Content Management (Pages & Media)
+scope:
+    - backend/django/apps/content/
+source_files: []
+depends_on: []
+related_to:
+    - path: backend/analytics
+    - path: frontend/template_renderer_app/editor

@@ -1,0 +1,1 @@
+React component library that renders any tenant's pages from data fixtures via a block-switch dispatcher, plus feature-scoped auth, commerce, CRM, editor, and observability components.

@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ['@jol-hub/ui', '@jol-hub/auth', '@jol-hub/i18n'],
+  transpilePackages: ['@journeyoflife-org/ui', '@journeyoflife-org/auth', '@journeyoflife-org/i18n'],
   
   images: {
     domains: [

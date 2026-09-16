@@ -10,7 +10,7 @@
 
 import { useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
 
 import { cn } from '../../../lib/utils';
 import type { MainNavProps, NavItem } from './MainNav.types';

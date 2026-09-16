@@ -18,7 +18,7 @@ import {
   useMemo,
   useRef,
 } from 'react';
-import type { PublicTenant, Vertical } from '@jol-hub/tenant-resolver';
+import type { PublicTenant, Vertical } from '@journeyoflife-org/tenant-resolver';
 
 interface TenantContextValue {
   /** Client-safe tenant record (no schema). */

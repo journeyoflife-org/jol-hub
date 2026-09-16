@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/runtime_utilities
+title: Runtime Utilities (Logging, Error Tracking, Rate Limiting & Slugs)
+scope:
+    - frontend/apps/template-renderer/src/lib/logger.ts
+    - frontend/apps/template-renderer/src/lib/error-tracking.ts
+    - frontend/apps/template-renderer/src/lib/rate-limit.ts
+    - frontend/apps/template-renderer/src/lib/slug.ts
+source_files: []
+depends_on: []
+related_to: []

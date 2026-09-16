@@ -1,0 +1,6 @@
+- Locale validation uses `isSupportedLocale(params.locale)` with fallback to `DEFAULT_LOCALE` before any downstream lookup.
+- Unknown tenants are rejected early via `notFound()` rather than returning empty data, ensuring identical responses for missing tenants and missing pages to prevent enumeration.
+- Per-tenant message catalogs are built by resolving a vertical (from fixture or `themeVerticalFor`) and passing it to `getMessages(locale, { vertical })` instead of hard-coding keys.
+- Tenant data crossing into the client is always sanitized through `toPublicTenant`, which strips internal schema fields before being passed to `TenantProvider`.
+- User-facing strings are never hardcoded; all labels, navigation items, and legal links are resolved via `translate(messages, key)` or `pickLocalized` against the active locale.
+- Cross-cutting concerns (skip link, cookie consent, announcer) are wrapped around `children` in the layout rather than duplicated per page.

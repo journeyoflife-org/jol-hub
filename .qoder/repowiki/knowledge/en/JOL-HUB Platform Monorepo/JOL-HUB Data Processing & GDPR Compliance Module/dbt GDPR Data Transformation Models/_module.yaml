@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: data_pipelines/dbt_models
+title: dbt GDPR Data Transformation Models
+scope:
+    - data/dbt/
+source_files: []
+depends_on: []
+related_to:
+    - path: data_pipelines/airflow_dags
+    - path: data_pipelines/sql_and_transformations

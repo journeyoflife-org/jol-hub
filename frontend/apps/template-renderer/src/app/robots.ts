@@ -1,7 +1,7 @@
 /**
  * robots.txt — STEP 11.
  *
- * Emitted per-request from the `@jol-hub/seo` policy (single source of
+ * Emitted per-request from the `@journeyoflife-org/seo` policy (single source of
  * truth). The sitemap URL and Host directive use the PUBLIC origin
  * (proxy-safe) so each tenant domain advertises its own sitemap.
  *
@@ -15,7 +15,7 @@
  *     middleware rate limiter is the real protection).
  */
 import type { MetadataRoute } from 'next';
-import { robotsDirectives, ROBOTS_CRAWL_DELAY } from '@jol-hub/seo';
+import { robotsDirectives, ROBOTS_CRAWL_DELAY } from '@journeyoflife-org/seo';
 import { resolveSeoOrigin } from '@/lib/seo';
 
 // Request-bound (public origin) → per-request rendering.

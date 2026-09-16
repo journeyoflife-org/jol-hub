@@ -2,7 +2,7 @@
  * Commerce core tests — STEP 8.
  *
  * Covers cart math, VAT-inclusive breakdown, EUR formatting and capability
- * gating. Run via `pnpm --filter @jol-hub/commerce test` (tsx --test).
+ * gating. Run via `pnpm --filter @journeyoflife-org/commerce test` (tsx --test).
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';

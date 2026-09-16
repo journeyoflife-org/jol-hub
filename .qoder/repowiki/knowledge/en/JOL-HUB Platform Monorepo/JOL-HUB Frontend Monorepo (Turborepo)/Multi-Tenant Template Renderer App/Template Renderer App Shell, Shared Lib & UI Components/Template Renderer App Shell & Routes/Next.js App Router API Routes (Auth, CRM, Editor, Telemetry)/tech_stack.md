@@ -1,0 +1,1 @@
+Next.js App Router Route Handlers with TypeScript; Zod for request-body validation; next-auth for OIDC auth delegation; `@jol-hub/auth/oidc`, `@jol-hub/observability`, `@jol-hub/tenant-resolver`, `@jol-hub/bitrix-sdk` for shared cross-app libraries; direct `fetch` calls to `BACKEND_API_URL` for backend proxying.

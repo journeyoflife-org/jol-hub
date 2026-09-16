@@ -1,0 +1,1 @@
+Build with `pnpm build` (tsup) and type-check with `pnpm type-check` (`tsc --noEmit`). Fixtures are committed as JSON and validated on import — adding a new tenant requires creating a JSON file under `src/fixtures/tenants/` and importing it in `registry.ts` so it participates in the Zod parse step.

@@ -1,0 +1,1 @@
+Server-only integration modules that wrap external backends (auth, Bitrix CRM, editor) and build JSON-LD structured data for church and services landing pages.

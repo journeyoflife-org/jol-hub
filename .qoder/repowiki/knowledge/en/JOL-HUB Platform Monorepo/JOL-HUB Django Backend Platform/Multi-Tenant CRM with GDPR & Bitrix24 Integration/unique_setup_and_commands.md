@@ -1,0 +1,1 @@
+Run Bitrix24 sync via `python manage.py sync_bitrix24 --tenant=<org_id> --entity={contact|deal|all} [--all] [--ids=id1,id2] [--dry-run] [--batch-size=50]`; sync status is tracked on entities via `bitrix24_sync_status` (pending/synced/failed/conflict).

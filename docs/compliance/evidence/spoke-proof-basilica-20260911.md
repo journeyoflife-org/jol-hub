@@ -23,18 +23,18 @@
 |---|---|
 | `adr011-invariants.test.ts` | 17/17 PASS, exit 0 |
 
-### Gates requiring published @jol-hub/* packages (deferred)
+### Gates requiring published @journeyoflife-org/* packages (deferred)
 
 | Gate | Status | Blocker |
 |---|---|---|
-| `type-check` (tsc --noEmit) | BLOCKED | @jol-hub/* packages not yet published |
+| `type-check` (tsc --noEmit) | BLOCKED | @journeyoflife-org/* packages not yet published |
 | `test:unit` / `test:vitest` | BLOCKED | No test runner without node_modules |
 | `test:e2e` (Playwright) | BLOCKED | Requires running dev server |
 | `test:a11y` (check-a11y-pages.ts) | BLOCKED | Requires built .next output |
 | `check-perf` (check-perf-budget.ts) | BLOCKED | Requires built .next output |
 | `test:security` | BLOCKED | Requires dependency tree |
 
-**Resolution:** These gates activate when `pnpm install` runs against published @jol-hub/* packages. The CI pipeline (`.github/workflows/ci.yml`) calls all 5 reusable workflows + drift-check, which will execute these gates in GitHub Actions.
+**Resolution:** These gates activate when `pnpm install` runs against published @journeyoflife-org/* packages. The CI pipeline (`.github/workflows/ci.yml`) calls all 5 reusable workflows + drift-check, which will execute these gates in GitHub Actions.
 
 ## Step 2: Lighthouse ≥ 90 Mobile
 
@@ -74,7 +74,7 @@ No silent English fallback possible.
 **Status:** DEFERRED — requires:
 1. GitHub repo `journeyoflife-org/jol-site-basilica` created
 2. Spoke pushed to GitHub
-3. `pnpm install` with published @jol-hub/* packages
+3. `pnpm install` with published @journeyoflife-org/* packages
 4. Proxmox ingress + TLS configured
 5. `noindex` until Vilnius mandate resolved
 

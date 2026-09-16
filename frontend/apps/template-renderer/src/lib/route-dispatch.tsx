@@ -18,12 +18,12 @@
  */
 import { notFound } from 'next/navigation';
 import type { ReactElement } from 'react';
-import { isSupportedLocale } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
-import type { SupportedLocale } from '@jol-hub/i18n';
-import { findTenantBySlug } from '@jol-hub/tenant-resolver';
-import type { Tenant } from '@jol-hub/tenant-resolver';
-import type { TenantFixture } from '@jol-hub/seed-data';
+import { isSupportedLocale } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
+import { findTenantBySlug } from '@journeyoflife-org/tenant-resolver';
+import type { Tenant } from '@journeyoflife-org/tenant-resolver';
+import type { TenantFixture } from '@journeyoflife-org/seed-data';
 import { findTenantPage, loadTenantFixture } from './content-loader';
 import { TemplateRenderer } from '@/components/TemplateRenderer';
 

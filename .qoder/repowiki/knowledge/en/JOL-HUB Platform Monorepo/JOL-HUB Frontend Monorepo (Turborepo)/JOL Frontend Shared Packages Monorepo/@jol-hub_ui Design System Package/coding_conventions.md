@@ -1,0 +1,6 @@
+- Each component folder follows a three-file layout: `<Component>.tsx` implementation, `<Component>.types.ts` prop/interface definitions, and an `index.ts` barrel that re-exports both the component and its props.
+- Components are marked `'use client'` at the top of their entry files so they can be tree-shaken into server-rendered apps while remaining interactive.
+- Class name composition uses the shared `cn(...)` helper (clsx + tailwind-merge) rather than string concatenation or template literals.
+- Variant and size prop patterns are expressed via union-typed enums (e.g. `ButtonVariant`, `BadgeSize`) defined in the component's `*.types.ts` file.
+- Public APIs are explicitly re-exported through per-subpath barrels (`components/primitives/index.ts`, `components/composite/index.ts`, etc.) and mapped to `package.json` `exports` entries for deterministic consumer imports.
+- Accessibility-critical interactions (focus trapping, screen-reader announcements, skip links) are implemented as dedicated primitives under `components/accessibility/` and composed by higher-level components instead of being duplicated inline.

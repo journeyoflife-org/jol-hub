@@ -3,7 +3,7 @@
  *
  * Builds Next.js `Metadata` (title, description, ABSOLUTE canonical,
  * reciprocal hreflang alternates, Open Graph) for tenant pages via the
- * `@jol-hub/seo` core. Structured data (JSON-LD) is rendered separately via
+ * `@journeyoflife-org/seo` core. Structured data (JSON-LD) is rendered separately via
  * the `<JsonLd>` component because Next's `Metadata` API does not carry
  * arbitrary ld+json.
  *
@@ -11,10 +11,10 @@
  * cross-tenant (no enumeration).
  */
 import type { Metadata } from 'next';
-import type { Tenant } from '@jol-hub/tenant-resolver';
-import type { SupportedLocale } from '@jol-hub/i18n';
-import { LOCALE_HREFLANG } from '@jol-hub/i18n';
-import type { TenantFixture } from '@jol-hub/seed-data';
+import type { Tenant } from '@journeyoflife-org/tenant-resolver';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
+import { LOCALE_HREFLANG } from '@journeyoflife-org/i18n';
+import type { TenantFixture } from '@journeyoflife-org/seed-data';
 import { pickLocalized } from './i18n-helpers';
 import { buildSeoAlternates } from './seo';
 

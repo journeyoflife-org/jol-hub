@@ -1,0 +1,6 @@
+- Each SEO concern lives in its own single-responsibility file and is re-exported through `src/index.ts`, keeping the public surface flat.
+- Domain constants are declared as `readonly` arrays or object maps (e.g. `PILOT_HREFLANG`, `ROBOTS_DISALLOW`, `SITEMAP_POLICY`) so callers cannot mutate policy tables at runtime.
+- Builders return plain JSON objects typed via the shared `Json` union rather than emitting strings or HTML, leaving serialization to the renderer.
+- Policy decisions are keyed off the closed `SeoPageKind` union (home/about/news/events/services/generic/admin/editor/api) so privileged kinds are excluded from sitemaps and indexed robots by default.
+- URL construction goes exclusively through `absoluteCanonical` / `normalizeRoute` / `sanitizeOrigin` to enforce the hard rule that canonicals are absolute, query-free, fragment-free, and slash-normalized.
+- Optional fields in entity inputs are spread conditionally (`...(input.field ? { field } : {})`) so generated JSON-LD never emits empty keys.

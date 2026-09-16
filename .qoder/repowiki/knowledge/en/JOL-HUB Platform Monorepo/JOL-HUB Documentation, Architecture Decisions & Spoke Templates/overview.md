@@ -1,0 +1,1 @@
+Central repository for JOL-HUB's architecture docs, ADRs, compliance evidence, design specs, SEO strategy, and the Next.js spoke-template that scaffolds each vertical front-end.

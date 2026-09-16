@@ -12,8 +12,8 @@
  * that fetch collections) are awaited by React's RSC rendering.
  */
 import type { ReactElement } from 'react';
-import type { Tenant } from '@jol-hub/tenant-resolver';
-import type { SupportedLocale } from '@jol-hub/i18n';
+import type { Tenant } from '@journeyoflife-org/tenant-resolver';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
 import type { Module, ModuleLayout, PageConfig } from './page-config';
 import { getModuleComponent, isModuleEntitled } from '@/modules/registry';
 

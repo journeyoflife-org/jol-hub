@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: frontend/template_renderer_app/app_shell_and_lib/shared_runtime_lib/editor_blocks
+title: Template Renderer Editor Core Library
+scope:
+    - frontend/apps/template-renderer/src/lib/editor/
+source_files: []
+depends_on: []
+related_to: []

@@ -1,0 +1,1 @@
+Publishes validated tenant seed fixtures extracted from the legacy lt-* demo apps, exposing a Zod-validated registry of Lituanian church and parish site content for the template renderer.

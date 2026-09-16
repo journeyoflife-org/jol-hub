@@ -6,7 +6,7 @@
  */
 'use client';
 
-import { useTranslations } from '@jol-hub/i18n/use-translations';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
 
 import { cn } from '../../../lib/utils';
 import type { SpinnerProps } from './Spinner.types';

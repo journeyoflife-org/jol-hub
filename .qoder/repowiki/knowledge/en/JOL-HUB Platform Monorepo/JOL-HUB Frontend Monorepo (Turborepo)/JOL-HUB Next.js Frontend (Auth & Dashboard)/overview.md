@@ -1,0 +1,1 @@
+Next.js App Router frontend for the JOL-HUB platform, providing JWT-based authentication, session rehydration, and a protected dashboard with Tailwind-styled UI.

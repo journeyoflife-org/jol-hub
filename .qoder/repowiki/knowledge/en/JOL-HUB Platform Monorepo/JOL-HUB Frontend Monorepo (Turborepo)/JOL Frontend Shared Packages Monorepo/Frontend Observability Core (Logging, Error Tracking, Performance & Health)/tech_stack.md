@@ -1,0 +1,1 @@
+TypeScript compiled with tsup to ESM+CJS+d.ts; tests run via `tsx --test`; published to GitHub Packages registry as `@jol-hub/observability`.

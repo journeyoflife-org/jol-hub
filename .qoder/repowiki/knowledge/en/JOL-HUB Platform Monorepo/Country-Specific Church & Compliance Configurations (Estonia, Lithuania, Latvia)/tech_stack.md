@@ -1,0 +1,1 @@
+YAML-based configuration (YAML anchors/lists for dioceses, feast days, compliance rules) and one JSON fixture (`parish.json`) for test data; references external systems via config keys (Bitrix24 portals, X-Road, GDPR Art./Canon Law citations).

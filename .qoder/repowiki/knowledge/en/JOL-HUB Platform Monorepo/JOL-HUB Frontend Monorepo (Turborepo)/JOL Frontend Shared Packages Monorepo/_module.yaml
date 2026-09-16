@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: frontend/shared_packages
+title: JOL Frontend Shared Packages Monorepo
+scope:
+    - frontend/packages/
+source_files: []
+depends_on: []
+related_to: []

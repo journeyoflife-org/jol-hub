@@ -1,0 +1,1 @@
+Pure TypeScript library that parses Lighthouse-format budgets, measures gzipped first-load JS/CSS per Next.js route, and produces a CI gate report to enforce transfer-size limits on modest on-prem hardware.

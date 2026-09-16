@@ -4,7 +4,7 @@
 
 **Goal:** Deliver ten separately-deployed vertical front-ends (basilica, cathedral, diocese, deanery, parish church, funeral, cemetery care, protestant, orthodox, other churches) for the Lithuanian pilot, each a reusable professional template for all subsequent sites of that vertical, extensible to LV/EE and 27 EU countries.
 
-**Architecture:** Hub-and-spoke. `jol-hub` remains the Tier-0 platform source and governance root; twelve `@jol-hub/*` packages become **published, versioned artifacts**; ten spoke repositories consume them and contain **only** vertical composition. Eleven invariants (§6 of the architecture blueprint) are enforced as CI tests, not review discipline.
+**Architecture:** Hub-and-spoke. `jol-hub` remains the Tier-0 platform source and governance root; twelve `@journeyoflife-org/*` packages become **published, versioned artifacts**; ten spoke repositories consume them and contain **only** vertical composition. Eleven invariants (§6 of the architecture blueprint) are enforced as CI tests, not review discipline.
 
 **Tech Stack:** Next.js 14 App Router · React 18 · TypeScript strict · Turborepo · **pnpm 10.30.3 only (never npm in `frontend/`)** · Tailwind + design tokens · PostgreSQL 16 schema-per-tenant + RLS · Django · Proxmox VE 9.2 · PBS 4.2 · SOPS/age · Verdaccio (or GitHub Packages) · GitHub Actions reusable workflows.
 
@@ -56,14 +56,14 @@ Correcting my previous turn: it is **2**, not 1. `845f1a65` records the push of 
 
 ### BF-3 (P0) — Zero of twelve packages are publishable
 
-Variant B requires spokes to consume `@jol-hub/*` as versioned dependencies. Measured reality:
+Variant B requires spokes to consume `@journeyoflife-org/*` as versioned dependencies. Measured reality:
 
 | Defect | Evidence | Consequence |
 |---|---|---|
 | `"private": true` on 11 of 12 | `a11y`, `auth`, `bitrix-sdk`, `commerce`, `i18n`, `seo`, + others | `pnpm publish` **refuses outright** |
 | `exports`/`main`/`types` point at raw `./src/*.ts` | `seo`: `".": "./src/index.ts"`; `i18n`: 8 subpaths all `./src/*`; `ui`: 17 subpaths | Consumers must compile your TypeScript from `node_modules`; no versioned artifact exists |
 | No build step, no `dist/`, no `files` allowlist | all 12 | Nothing to publish |
-| `workspace:*` dependencies | `ui` → `@jol-hub/i18n: workspace:*` | Requires publish-time resolution **and** the dependency published first |
+| `workspace:*` dependencies | `ui` → `@journeyoflife-org/i18n: workspace:*` | Requires publish-time resolution **and** the dependency published first |
 | Wildcard export | `ui`: `"./components/*": "./src/components/*/index.ts"` | Cannot be mirrored to `dist/` without a build |
 
 **This is the critical path, and it is ADR-002's own unmet trigger condition** — *"packages (`ui`, `i18n`, `auth`, `bitrix-sdk`) have stable public APIs."*
@@ -76,7 +76,7 @@ Variant B requires spokes to consume `@jol-hub/*` as versioned dependencies. Mea
 "./components/donation": "./src/components/donation/index.ts"
 ```
 
-Glob for `frontend/packages/ui/src/components/donation/**` returns **0 files** — D-041 deleted 24 files across both widget trees. The export survived the deletion. Any consumer resolving `@jol-hub/ui/components/donation` gets module-not-found, and the manifest still advertises a donation component that the payment-boundary remediation removed. **Fix in Phase 0** — it is a one-line deletion and it will break the first publish dry-run otherwise.
+Glob for `frontend/packages/ui/src/components/donation/**` returns **0 files** — D-041 deleted 24 files across both widget trees. The export survived the deletion. Any consumer resolving `@journeyoflife-org/ui/components/donation` gets module-not-found, and the manifest still advertises a donation component that the payment-boundary remediation removed. **Fix in Phase 0** — it is a one-line deletion and it will break the first publish dry-run otherwise.
 
 ### BF-5 (P1) — There is no front-end repository template
 
@@ -309,7 +309,7 @@ const missing=Object.entries(pkg.exports||{})
 if(missing.length){console.error('DANGLING EXPORTS:',missing.join(', '));process.exit(1);}
 console.log('all exports resolve');
 "
-pnpm --filter @jol-hub/ui verify
+pnpm --filter @journeyoflife-org/ui verify
 ```
 
 Expected: `all exports resolve`, then `verify` exit 0 (tsc + tests + check-contrast + check-a11y).
@@ -330,7 +330,7 @@ git commit -m "fix(ui): remove dangling components/donation export
 
 The donation widget tree was deleted by O-021 staged removal (D-041, 24 files)
 but its export subpath survived in the manifest. Consumers resolving
-@jol-hub/ui/components/donation got module-not-found, and the manifest still
+@journeyoflife-org/ui/components/donation got module-not-found, and the manifest still
 advertised a component the payment-boundary remediation removed.
 
 Refs: ADR-009 · D-041 · O-021"
@@ -446,7 +446,7 @@ node -e "
 const g=require('/tmp/pkg-graph.json');
 for(const p of g){
   const d=Object.entries({...p.dependencies,...p.devDependencies})
-    .filter(([k])=>k.startsWith('@jol-hub/')).map(([k,v])=>k+'@'+v);
+    .filter(([k])=>k.startsWith('@journeyoflife-org/')).map(([k,v])=>k+'@'+v);
   console.log(p.name.padEnd(28), d.join(' ')||'(leaf)');
 }"
 ```
@@ -466,7 +466,7 @@ for(const p of g){
 
 ```bash
 cd /opt/jol/repos/jol-hub/frontend
-pnpm --filter @jol-hub/<pkg> build && pnpm --filter @jol-hub/<pkg> verify
+pnpm --filter @journeyoflife-org/<pkg> build && pnpm --filter @journeyoflife-org/<pkg> verify
 ```
 
 Expected: `dist/` populated; `verify` exit 0.
@@ -496,14 +496,14 @@ Expected: `dist/` populated; `verify` exit 0.
 - [ ] **Step 2: Add the blocks** the vertical page packages require and the current five (`hero`, `text`, `keyValue`, `list`, `cta`) cannot express: `massSchedule`, `gallery`, `faq`, `sacramentList`, `clergyRoleList`, `visitingInfo`, `mapLocation`. Clergy blocks carry **roles only, never names** — clergy names are Art. 9 personal data and must come from the RLS-scoped content API, never from a committed fixture.
 - [ ] **Step 3: Decide per block** whether it renders through the generic `[...slug]` catch-all or needs a first-class typed route. Rule: a block needs a typed route **iff** it carries its own JSON-LD (`massSchedule` → `Event`/`ChurchService`; `faq` → `FAQPage`; `sacramentList` → `Service`).
 - [ ] **Step 4: Emit correct structured data.** Mass times are `Event` instances with `startDate`, **not** `openingHoursSpecification` — that property models visitor opening hours and belongs to `visitingInfo`.
-- [ ] **Step 5: Gate** — `pnpm --filter @jol-hub/seed-data test`, `pnpm test:unit`, `pnpm type-check`, then the full battery.
+- [ ] **Step 5: Gate** — `pnpm --filter @journeyoflife-org/seed-data test`, `pnpm test:unit`, `pnpm type-check`, then the full battery.
 - [ ] **Step 6: Commit.** **This must land before any spoke is cut** — doing it ten times is the single largest avoidable cost in Variant B.
 
 ### Task 2.6: Create `jol-frontend-repo-template` (BF-5)
 
 **Files:** new repository `journeyoflife-org/jol-frontend-repo-template`, marked as a GitHub template
 
-- [ ] **Step 1: Scaffold** Next.js 14 App Router + TypeScript strict + Tailwind, pnpm-only (`packageManager: pnpm@10.30.3`), consuming `@jol-hub/*` at pinned versions from Task 2.4.
+- [ ] **Step 1: Scaffold** Next.js 14 App Router + TypeScript strict + Tailwind, pnpm-only (`packageManager: pnpm@10.30.3`), consuming `@journeyoflife-org/*` at pinned versions from Task 2.4.
 - [ ] **Step 2: Embed the satellite kit byte-identically** — `.sops.yaml`, `scripts/sops-validate.py`, pre-commit secret hooks, `secrets/README.md`, `secrets/encrypted/{common,production,critical}/.gitkeep`, CODEOWNERS rules for `/.sops.yaml`, `/secrets/`, `/scripts/sops-validate.py`.
 - [ ] **Step 3: Embed the SHA-256 drift check** against `jol-hub@main` — the mechanism already proven in the SOPS rollout. Any mismatch fails the pipeline.
 - [ ] **Step 4: Embed the governance baseline** — GitFlow (`develop` integration, `feature/*`), **GPG-signed commits mandatory**, Conventional Commits with the closed Appendix A scope list, `LICENSE`, `SECURITY.md` (`security@journeyoflife.org`, 72-hour Art. 33 workflow), `CHANGELOG.md`, `CONTRIBUTING.md`, `.editorconfig`, `.gitignore` covering `.env*`, `.next`, `.turbo`, `*.tsbuildinfo`, `.idea`, `.venv`.

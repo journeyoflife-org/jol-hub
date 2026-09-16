@@ -6,7 +6,7 @@
 'use client';
 
 import { Calendar, GraduationCap } from 'lucide-react';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
 
 import { cn } from '../../../lib/utils';
 import { accentTextClass } from '../../../lib/tenant-theme';

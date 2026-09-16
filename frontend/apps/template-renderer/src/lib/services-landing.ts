@@ -13,10 +13,10 @@
  * data at all; structured data carries no phone numbers beyond the tenant's
  * own published contact.
  */
-import type { Vertical } from '@jol-hub/tenant-resolver';
-import type { SupportedLocale } from '@jol-hub/i18n';
-import type { TenantFixture } from '@jol-hub/seed-data';
-import { churchEntity } from '@jol-hub/seo';
+import type { Vertical } from '@journeyoflife-org/tenant-resolver';
+import type { SupportedLocale } from '@journeyoflife-org/i18n';
+import type { TenantFixture } from '@journeyoflife-org/seed-data';
+import { churchEntity } from '@journeyoflife-org/seo';
 import { pickLocalized } from './i18n-helpers';
 import type { JsonValue } from './json-ld';
 

@@ -1,8 +1,8 @@
 /**
  * JOL Design System — global base styles.
  *
- * Consumed by apps via `import '@jol-hub/ui/styles/globals.css'` together
- * with the generated `@jol-hub/ui/styles/tokens.css`.
+ * Consumed by apps via `import '@journeyoflife-org/ui/styles/globals.css'` together
+ * with the generated `@journeyoflife-org/ui/styles/tokens.css`.
  *
  * Principles:
  * - Specific, accessible reset (no blanket `* { margin: 0 }`).

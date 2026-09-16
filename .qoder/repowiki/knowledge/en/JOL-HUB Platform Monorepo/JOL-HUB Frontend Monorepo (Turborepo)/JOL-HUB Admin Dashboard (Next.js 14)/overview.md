@@ -1,0 +1,1 @@
+Next.js 14 admin dashboard for managing parish websites across 27 EU countries, providing authentication, entity management, analytics, compliance, and Bitrix24 sync via a role-scoped 4-tier federation hierarchy.

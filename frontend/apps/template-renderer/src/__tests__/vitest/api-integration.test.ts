@@ -15,7 +15,7 @@ import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } 
 import { setupServer } from 'msw/node';
 import { http, HttpResponse } from 'msw';
 import { NextRequest } from 'next/server';
-import { backendHandlers, MOCK_BACKEND_URL, MOCK_DRAFT } from '@jol-hub/testing';
+import { backendHandlers, MOCK_BACKEND_URL, MOCK_DRAFT } from '@journeyoflife-org/testing';
 
 const server = setupServer(...backendHandlers);
 

@@ -1,0 +1,1 @@
+Next.js app that resolves a tenant's vertical to a lazy-loaded template, then composes its PageConfig modules into server-rendered pages via a central registry and composer.

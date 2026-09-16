@@ -113,7 +113,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: UI showcase scan (isolated components)
-        run: pnpm --filter @jol-hub/ui check-a11y
+        run: pnpm --filter @journeyoflife-org/ui check-a11y
       - name: Build renderer for page scans
         run: pnpm --filter template-renderer build
       - name: Serve built app

@@ -1,0 +1,1 @@
+Build: `npm run build` (tsup). Type-check: `npm run type-check` (`tsc --noEmit`). Test: `npm run test` (`tsx --test src/__tests__/*.test.ts`). At runtime the API client requires the `COMMERCE_API_URL` environment variable; when unset every call returns `{ ok: false, error: { kind: 'unconfigured' } }` so components can render a 'coming soon' state.

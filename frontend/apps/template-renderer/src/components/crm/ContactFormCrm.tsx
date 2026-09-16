@@ -23,9 +23,9 @@
 'use client';
 
 import { useCallback } from 'react';
-import { ContactForm, type ContactFormValues } from '@jol-hub/ui/components/composite';
-import { captureUtm } from '@jol-hub/bitrix-sdk';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
+import { ContactForm, type ContactFormValues } from '@journeyoflife-org/ui/components/composite';
+import { captureUtm } from '@journeyoflife-org/bitrix-sdk';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
 import type { tenantThemeFor } from '@/modules/types';
 
 /** Client-safe theming shape (matches the server's tenantThemeFor output). */

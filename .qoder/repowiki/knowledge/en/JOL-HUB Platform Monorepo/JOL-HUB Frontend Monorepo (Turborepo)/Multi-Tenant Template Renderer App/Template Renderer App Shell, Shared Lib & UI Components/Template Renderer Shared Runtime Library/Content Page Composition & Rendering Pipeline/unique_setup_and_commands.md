@@ -1,0 +1,1 @@
+Pilot mode: when `BACKEND_API_URL` is unset, every `content-api` fetch returns `null` so callers render accessible empty states against seed fixtures; `BACKEND_SERVICE_TOKEN` is required for server-to-server auth headers. Tenant routes require both a resolved tenant slug and a supported locale from `@jol-hub/i18n`.

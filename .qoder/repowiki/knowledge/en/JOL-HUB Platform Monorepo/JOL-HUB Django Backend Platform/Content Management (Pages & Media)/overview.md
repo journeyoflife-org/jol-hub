@@ -1,0 +1,1 @@
+Django app providing a REST API and admin for managing organization-scoped web pages and uploaded media assets with tenant isolation, soft deletion, and publish workflow.

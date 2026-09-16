@@ -1,0 +1,6 @@
+- Each script is a standalone executable with a `#!/usr/bin/env python3` shebang, a module docstring describing usage, and an `argparse`-based `main()` guarded by `if __name__ == "__main__"`.
+- Cross-package imports are performed by prepending a sibling path to `sys.path` at import time (e.g. `sys.path.insert(0, str(Path(__file__).parent.parent / 'data'))`) rather than installing packages.
+- CLI tools accept `--output text|json` to toggle human-readable vs machine-parseable output, and return non-zero exit codes when any checks fail.
+- Validation scripts define typed dataclasses (`ValidationResult`, `ValidationSummary`, etc.) with `to_dict()` methods so results can be emitted as either JSON or formatted text from the same logic.
+- Static-scan scripts implement an exclusion ledger pattern: hardcoded lists of exempt file paths (VOCAB, RULEDOC) are checked against grep hits before reporting violations.
+- MCP server scripts follow a uniform stdio JSON-RPC 2.0 loop: parse lines from `sys.stdin`, dispatch on `method` (`initialize`, `tools/list`, `tools/call`), and print JSON responses flushed immediately.

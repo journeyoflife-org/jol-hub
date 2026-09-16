@@ -12,8 +12,8 @@
  */
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getMessages, translate, formatDate, formatTime } from '@jol-hub/i18n';
-import { Badge } from '@jol-hub/ui';
+import { getMessages, translate, formatDate, formatTime } from '@journeyoflife-org/i18n';
+import { Badge } from '@journeyoflife-org/ui';
 import { JsonLd, eventEntity, breadcrumbEntity } from '@/lib/json-ld';
 import { absoluteUrl } from '@/lib/seo';
 import { buildTenantMetadata, tenantDisplayName } from '@/lib/page-seo';

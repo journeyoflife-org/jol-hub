@@ -2,7 +2,7 @@
  * CRM client binding — STEP 9.
  *
  * SERVER-ONLY instantiation of the hub-backed CRM client
- * (`@jol-hub/bitrix-sdk` → `CrmBackendClient`). The base URL comes from
+ * (`@journeyoflife-org/bitrix-sdk` → `CrmBackendClient`). The base URL comes from
  * `BACKEND_API_URL` (same convention as `lib/content-api.ts`) and NEVER
  * leaves the server: browser code talks to the same-origin
  * `/api/crm/*` route handlers, which forward through this client.
@@ -15,7 +15,7 @@
  * Pilot mode: with no `BACKEND_API_URL` configured, {@link isCrmConfigured}
  * is false and callers render quiet "CRM not configured" behaviour.
  */
-import { CrmBackendClient } from '@jol-hub/bitrix-sdk';
+import { CrmBackendClient } from '@journeyoflife-org/bitrix-sdk';
 
 const BACKEND_API_URL = process.env.BACKEND_API_URL;
 

@@ -1,0 +1,1 @@
+Next.js App Router pages that render tenant-scoped content listings and detail views for events, news articles, and services with fixture-first overrides, SEO JSON-LD, and per-content caching strategies.

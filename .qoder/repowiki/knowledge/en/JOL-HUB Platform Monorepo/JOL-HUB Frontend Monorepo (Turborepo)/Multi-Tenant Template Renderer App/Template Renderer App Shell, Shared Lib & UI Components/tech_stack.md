@@ -1,0 +1,1 @@
+Next.js App Router (server components, route handlers, parallel routes), React Server Components for data fetching, NextAuth for authentication, and a shared TypeScript/React component model across all three sub-trees.

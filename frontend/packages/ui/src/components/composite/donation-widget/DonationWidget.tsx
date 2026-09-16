@@ -19,8 +19,8 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from '@jol-hub/i18n/use-translations';
-import { useLocale } from '@jol-hub/i18n/use-locale';
+import { useTranslations } from '@journeyoflife-org/i18n/use-translations';
+import { useLocale } from '@journeyoflife-org/i18n/use-locale';
 
 import { cn } from '../../../lib/utils';
 import { accentBgClass } from '../../../lib/tenant-theme';

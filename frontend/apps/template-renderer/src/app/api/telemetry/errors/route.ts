@@ -15,7 +15,7 @@
  */
 import { NextResponse, type NextRequest } from 'next/server';
 import { z } from 'zod';
-import { redactValue } from '@jol-hub/observability';
+import { redactValue } from '@journeyoflife-org/observability';
 import { logger } from '@/lib/logger';
 import { clientIp, isRateLimited } from '@/lib/rate-limit';
 

@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: backend/organizations
+title: Organizations & Multi-Tenant Membership
+scope:
+    - backend/django/apps/organizations/
+source_files: []
+depends_on: []
+related_to: []

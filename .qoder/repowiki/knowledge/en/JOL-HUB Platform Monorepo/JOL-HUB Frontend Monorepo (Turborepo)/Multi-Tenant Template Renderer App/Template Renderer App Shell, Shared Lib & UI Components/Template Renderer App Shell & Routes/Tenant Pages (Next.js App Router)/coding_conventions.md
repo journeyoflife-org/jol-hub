@@ -1,0 +1,3 @@
+- Each tenant-scoped route lives in its own folder under `[locale]/[tenant]/` with `page.tsx` as the entry point.
+- Pages resolve tenant context from the URL segment rather than props, relying on the parent layout to set up i18n and chrome.
+- Static and listing pages share the same fixture-first composition pattern for rendering content and SEO metadata.

@@ -1,0 +1,1 @@
+Next.js server runtime with NextAuth (`next-auth`); CRM integration via `@jol-hub/bitrix-sdk`; editor integration via a local `EditorApiClient`; JSON-LD generation through the shared `@jol-hub/seo` `churchEntity` builder.

@@ -8,8 +8,8 @@
  * never sees backend URLs or tokens (STEP 9 rules). GDPR consent + privacy
  * link are built into the ui ContactForm.
  */
-import { getMessages, translate, isSupportedLocale } from '@jol-hub/i18n';
-import { DEFAULT_LOCALE } from '@jol-hub/i18n/config';
+import { getMessages, translate, isSupportedLocale } from '@journeyoflife-org/i18n';
+import { DEFAULT_LOCALE } from '@journeyoflife-org/i18n/config';
 import { ContactFormCrm } from '@/components/crm';
 import { isCrmConfigured } from '@/lib/bitrix-client';
 import { tenantThemeFor, type ModuleProps } from './types';
