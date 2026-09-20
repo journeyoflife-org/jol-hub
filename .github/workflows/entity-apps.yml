@@ -42,6 +42,9 @@ env:
 # Infrastructure Apps (3): admin-dashboard, master-site, parish-template
 # Countries: LT (Lithuania) - Phase 1; LV (Latvia), EE (Estonia) - Phase 2
 
+permissions:
+  contents: read
+
 jobs:
   # ===========================================================================
   # DETECT APPS TO BUILD
