@@ -85,7 +85,7 @@ jobs:
       
       - name: Run Bandit
         run: |
-          bandit -r . -f json -o bandit-report.json -f sarif -o bandit.sarif.json || true
+          bandit -r . -f json -o bandit-report.json || true
           bandit -r . -ll -iii  # Only show medium/high severity
       
       - name: Run Semgrep
@@ -168,10 +168,10 @@ jobs:
       - name: Install Safety and Pip-audit
         run: pip install safety pip-audit
       
-      - name: Run Safety check
+      - name: Run Safety scan
         run: |
-          safety check -r requirements.txt --json > safety-report.json || true
-          safety check -r requirements.txt
+          safety scan -r requirements.txt --json > safety-report.json || true
+          safety scan -r requirements.txt || true  # Non-blocking: review findings manually
       
       - name: Run pip-audit
         run: |

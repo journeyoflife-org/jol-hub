@@ -298,7 +298,7 @@ jobs:
       
       - name: Install accessibility testing tools
         run: |
-          pnpm add -D @axe-core/react pa11y eslint-plugin-jsx-a11y
+          pnpm add -wD @axe-core/react pa11y eslint-plugin-jsx-a11y
       
       - name: Run ESLint accessibility checks
         run: |
