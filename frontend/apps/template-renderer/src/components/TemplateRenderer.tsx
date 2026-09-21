@@ -138,11 +138,11 @@ function BlockView({ block, accent, href }: BlockViewProps) {
           )}
           <div className="grid gap-4 md:grid-cols-2">
             {block.entries.map((entry) => (
-              <Card key={`${entry.day}-${entry.times.join('-')}`}>
+              <Card key={`${t(entry.day)}-${entry.times.join('-')}`}>
                 <CardContent className="p-4">
-                  <h3 className="font-heading text-primary text-lg">{entry.day}</h3>
-                  {entry.dayEn && entry.dayEn !== entry.day && (
-                    <p className="text-xs text-gray-500">{entry.dayEn}</p>
+                  <h3 className="font-heading text-primary text-lg">{t(entry.day)}</h3>
+                  {entry.day.en && entry.day.en !== entry.day.lt && (
+                    <p className="text-xs text-gray-500">{entry.day.en}</p>
                   )}
                   <div className="mt-2 flex flex-wrap gap-2">
                     {entry.times.map((time) => (
