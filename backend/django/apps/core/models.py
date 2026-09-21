@@ -185,41 +185,10 @@ class AuditLog(UUIDModel, TimeStampedModel):
         super().save(*args, **kwargs)
 
     def _validate_tenant_context(self):
-        """
-        Validate that the organization_id matches current tenant context.
-
-        Prevents cross-tenant audit log creation.
-        Skip validation if no tenant context (system operations).
-        """
-        import logging
-
-        logger = logging.getLogger("jolhub.tenant_validation")
-
-        # Skip if no organization set
-        if not self.organization_id:
-            return
-
-        # Get current tenant context
-        try:
-            from apps.crm.middleware import get_current_tenant_id
-
-            tenant_id = get_current_tenant_id()
-
-            if tenant_id and str(self.organization_id) != str(tenant_id):
-                logger.error(
-                    f"Cross-tenant audit log attempt: context_tenant={tenant_id}, "
-                    f"target_org={self.organization_id}"
-                )
-                from django.core.exceptions import ValidationError
-
-                raise ValidationError(
-                    "Organization ID does not match current tenant context"
-                )
-        except ImportError:
-            pass  # Middleware not available, skip validation
-        except Exception as e:
-            logger.debug(f"Tenant validation skipped: {e}")
-
+        from apps.tenants.validators import validate_tenant_context
+        validate_tenant_context(
+            self.organization_id, "AuditLog", str(self.pk) if self.pk else None
+        )
     def verify_integrity(self) -> bool:
         """Verify audit log entry integrity."""
         if not self.checksum:
