@@ -208,12 +208,12 @@ class Organization(BaseModel):
         blank=True,
         unique=True,
         help_text=_("Unique entity identifier (e.g., lt-catholic-basilica-001)"),
+    )
 
     # Schema-per-tenant (ADR-001, django-tenants)
     schema_name = models.CharField(
         _("schema name"), max_length=63, unique=True, blank=True,
         help_text=_("Postgres schema name (auto-generated from slug, e.g. t_vilnius)"),
-    )
     )
 
     extra = models.JSONField(_("extra"), default=dict)

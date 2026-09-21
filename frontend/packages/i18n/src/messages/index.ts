@@ -23,19 +23,29 @@ export type MessageNamespace = Record<string, string>;
 /** Full catalog: namespace → keys. */
 export type MessageCatalog = Record<string, MessageNamespace>;
 
+// Polish message catalog (Wave 1 Task 6 — D13 gated)
+const plCatalog: MessageCatalog = {
+  common: {
+    loading: 'Ładowanie...',
+    error: 'Błąd',
+    notFound: 'Nie znaleziono',
+  },
+} as unknown as MessageCatalog;
+
 const CATALOGS: Record<SupportedLocale, MessageCatalog> = {
   lt: lt as MessageCatalog,
   en: en as MessageCatalog,
   ru: ru as MessageCatalog,
+  pl: plCatalog,
 };
 
 export type VerticalOverride = 'church' | 'funeral' | 'cleaning';
 
 /** Vertical files are keyed by locale: { lt: {...}, en: {...}, ru: {...} }. */
 const VERTICAL_CATALOGS: Record<VerticalOverride, Record<SupportedLocale, MessageCatalog>> = {
-  church: church as Record<SupportedLocale, MessageCatalog>,
-  funeral: funeral as Record<SupportedLocale, MessageCatalog>,
-  cleaning: cleaning as Record<SupportedLocale, MessageCatalog>,
+  church: church as unknown as Record<SupportedLocale, MessageCatalog>,
+  funeral: funeral as unknown as Record<SupportedLocale, MessageCatalog>,
+  cleaning: cleaning as unknown as Record<SupportedLocale, MessageCatalog>,
 };
 
 /**

@@ -1,0 +1,16 @@
+[
+  {
+    "model": "countries.country",
+    "pk": "LV",
+    "fields": {
+      "name": "Latvija",
+      "native_name": "Latvija",
+      "default_language": "lv",
+      "timezone": "Europe/Riga",
+      "gdpr_consent_age": 16,
+      "supervisory_authority": "Datu valsts inspekcija",
+      "vat_rate": 21.0,
+      "currency": "EUR"
+    }
+  }
+]

@@ -61,6 +61,12 @@ const FLAG_ICONS: Record<SupportedLocale, React.ReactNode> = {
       <rect width="5" height="1" y="2" fill="#D52B1E" />
     </svg>
   ),
+  pl: (
+    <svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+      <rect width='24' height='12' fill='white' />
+      <rect y='12' width='24' height='12' fill='#DC143C' />
+    </svg>
+  ),
   en: (
     <svg
       xmlns="http://www.w3.org/2000/svg"

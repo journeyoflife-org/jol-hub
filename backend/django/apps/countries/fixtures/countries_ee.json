@@ -1,0 +1,16 @@
+[
+  {
+    "model": "countries.country",
+    "pk": "EE",
+    "fields": {
+      "name": "Eesti",
+      "native_name": "Eesti",
+      "default_language": "et",
+      "timezone": "Europe/Tallinn",
+      "gdpr_consent_age": 16,
+      "supervisory_authority": "Andmekaitse Inspektsioon",
+      "vat_rate": 22.0,
+      "currency": "EUR"
+    }
+  }
+]

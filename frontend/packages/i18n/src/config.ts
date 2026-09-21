@@ -28,6 +28,7 @@ export const LOCALE_NAMES: Record<SupportedLocale, string> = {
   lt: 'Lietuvių',
   en: 'English',
   ru: 'Русский',
+  pl: 'Polski',
 };
 
 /** URL path prefixes for the locale-prefixed routing strategy. */
@@ -35,6 +36,7 @@ export const LOCALE_PREFIXES: Record<SupportedLocale, `/${SupportedLocale}`> = {
   lt: '/lt',
   en: '/en',
   ru: '/ru',
+  pl: '/pl',
 };
 
 /** BCP-47 regional tags used for hreflang / og:locale. */
@@ -42,6 +44,7 @@ export const LOCALE_HREFLANG: Record<SupportedLocale, string> = {
   lt: 'lt-LT',
   en: 'en-LT',
   ru: 'ru-LT',
+  pl: 'pl-PL',
 };
 
 /** Cookie carrying the user's explicit language choice. Strictly-necessary

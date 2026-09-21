@@ -23,6 +23,7 @@ export const INTL_TAGS: Record<SupportedLocale, string> = {
   lt: 'lt-LT',
   en: 'en-GB',
   ru: 'ru-RU',
+  pl: 'pl-PL',
 };
 
 function normalizeDate(date: Date | string | number): Date {

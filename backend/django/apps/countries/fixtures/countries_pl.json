@@ -1,0 +1,16 @@
+[
+  {
+    "model": "countries.country",
+    "pk": "PL",
+    "fields": {
+      "name": "Polska",
+      "native_name": "Polska",
+      "default_language": "pl",
+      "timezone": "Europe/Warsaw",
+      "gdpr_consent_age": 16,
+      "supervisory_authority": "Urz\u0105d Ochrony Danych Osobowych",
+      "vat_rate": 23.0,
+      "currency": "PLN"
+    }
+  }
+]
