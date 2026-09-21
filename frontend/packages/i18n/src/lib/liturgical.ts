@@ -254,6 +254,14 @@ export const LITURGICAL_TERMS: Record<SupportedLocale, Record<string, string>> =
     atlaidai: 'Patronal Feast',
     šventadienis: 'Sunday',
   },
+  pl: {
+    msza: 'Msza św.',
+    liturgia: 'Liturgia',
+    niedziela: 'Niedziela',
+    adwent: 'Adwent',
+    boze_narodzenie: 'Boże Narodzenie',
+    wielkanoc: 'Wielkanoc',
+  },
 };
 
 /**

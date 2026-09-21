@@ -16,6 +16,7 @@ const DEEPL_LANG_MAP: Record<SupportedLocale, deepl.TargetLanguageCode> = {
   lt: 'lt',
   ru: 'ru',
   en: 'en-US',
+  pl: 'pl',
 };
 
 let _translator: deepl.Translator | null = null;

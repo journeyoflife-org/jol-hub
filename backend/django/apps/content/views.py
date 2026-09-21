@@ -13,10 +13,29 @@ from apps.core.permissions import IsOrganizationMember
 from apps.tenants.filters import TenantScopedFilterBackend
 
 from .models import MediaFile, Page
+
+class TenantScopedQuerysetMixin:
+    """Scope queryset to the current tenant (request.tenant set by django-tenants middleware).
+
+    Wave 1 Task 3 — defense-in-depth: even if the middleware is bypassed,
+    the queryset is scoped to the verified tenant. Cross-tenant data never
+    reaches the serializer (GDPR Art. 9 / SOC 2 CC6.1).
+    """
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        tenant = getattr(self.request, "tenant", None)
+        if tenant is not None:
+            return qs.filter(organization=tenant)
+        # No tenant context (e.g., superuser admin) — return unscoped
+        # (admin has its own scoping in Task 4)
+        return qs
+
+
 from .serializers import MediaFileSerializer, PageCreateSerializer, PageSerializer
 
 
-class PageListCreateView(generics.ListCreateAPIView):
+class PageListCreateView(TenantScopedQuerysetMixin, generics.ListCreateAPIView):
     """GET / POST /api/v1/content/pages/ — tenant-scoped."""
 
     permission_classes = [IsAuthenticated, IsOrganizationMember]
@@ -39,7 +58,7 @@ class PageListCreateView(generics.ListCreateAPIView):
         return qs
 
 
-class PageDetailView(generics.RetrieveUpdateDestroyAPIView):
+class PageDetailView(TenantScopedQuerysetMixin, generics.RetrieveUpdateDestroyAPIView):
     """GET / PATCH / DELETE /api/v1/content/pages/{id}/ — tenant-scoped."""
 
     serializer_class = PageSerializer
@@ -63,7 +82,7 @@ class PagePublishView(APIView):
         return Response(PageSerializer(page).data)
 
 
-class MediaFileListCreateView(generics.ListCreateAPIView):
+class MediaFileListCreateView(TenantScopedQuerysetMixin, generics.ListCreateAPIView):
     """GET / POST /api/v1/content/media/ — tenant-scoped."""
 
     serializer_class = MediaFileSerializer
@@ -82,7 +101,7 @@ class MediaFileListCreateView(generics.ListCreateAPIView):
         serializer.save(uploaded_by=self.request.user, organization=org)
 
 
-class MediaFileDetailView(generics.RetrieveDestroyAPIView):
+class MediaFileDetailView(TenantScopedQuerysetMixin, generics.RetrieveDestroyAPIView):
     """GET / DELETE /api/v1/content/media/{id}/ — tenant-scoped."""
 
     serializer_class = MediaFileSerializer

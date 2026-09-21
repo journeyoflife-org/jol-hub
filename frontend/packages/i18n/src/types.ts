@@ -1,7 +1,7 @@
 /**
  * Supported locales for JOL-HUB.
  */
-export type SupportedLocale = 'lt' | 'ru' | 'en';
+export type SupportedLocale = 'lt' | 'ru' | 'en' | 'pl';
 
 /**
  * Locale configuration.
@@ -64,6 +64,14 @@ export const LOCALE_CONFIGS: Record<SupportedLocale, LocaleConfig> = {
     dateFormat: 'MM/dd/yyyy',
     timeFormat: 'h:mm a',
   },
+  pl: {
+    code: 'pl',
+    name: 'Polish',
+    nativeName: 'Polski',
+    direction: 'ltr',
+    dateFormat: 'dd.MM.yyyy',
+    timeFormat: 'HH:mm',
+  },
 };
 
 /**
@@ -74,4 +82,4 @@ export const DEFAULT_LOCALE: SupportedLocale = 'lt';
 /**
  * All supported locales.
  */
-export const SUPPORTED_LOCALES: SupportedLocale[] = ['lt', 'ru', 'en'];
+export const SUPPORTED_LOCALES: SupportedLocale[] = ['lt', 'ru', 'en', 'pl'];

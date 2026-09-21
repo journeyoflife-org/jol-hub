@@ -102,6 +102,7 @@ function getLocaleString(locale: SupportedLocale): string {
     lt: 'lt-LT',
     ru: 'ru-RU',
     en: 'en-US',
+    pl: 'pl-PL',
   };
 
   return localeMap[locale];
