@@ -198,7 +198,19 @@ class UserListView(generics.ListCreateAPIView):
     serializer_class = UserSerializer
 
     def get_queryset(self):
-        return User.objects.active().order_by("email")
+        """Only return users who are members of the current tenant (C5)."""
+        from apps.crm.middleware import get_current_tenant_id
+        from apps.organizations.models import OrganizationMember
+
+        tenant_id = get_current_tenant_id()
+        if not tenant_id:
+            return User.objects.none()
+
+        member_user_ids = OrganizationMember.objects.filter(
+            organization_id=tenant_id, is_deleted=False
+        ).values_list("user_id", flat=True)
+
+        return User.objects.filter(id__in=member_user_ids, is_active=True).order_by("email")
 
 
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -214,7 +226,7 @@ class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
 
         if tenant_id:
             is_member = OrganizationMember.objects.filter(
-                organization_id=tenant_id, user=obj, is_active=True
+                organization_id=tenant_id, user=obj, is_deleted=False
             ).exists()
             if not is_member:
                 raise Http404  # 404 — no enumeration

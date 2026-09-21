@@ -32,7 +32,7 @@ def get_entitled_tenants(user) -> list:
 
     # Step 1: Direct memberships
     direct_memberships = OrganizationMember.objects.filter(
-        user=user, is_active=True
+        user=user, is_deleted=False
     ).values_list("organization_id", flat=True)
 
     if not direct_memberships:
@@ -86,7 +86,7 @@ def get_primary_tenant(user) -> Optional[object]:
     from apps.organizations.models import OrganizationMember
 
     membership = (
-        OrganizationMember.objects.filter(user=user, is_active=True)
+        OrganizationMember.objects.filter(user=user, is_deleted=False)
         .select_related("organization")
         .order_by("organization__name")
         .first()
