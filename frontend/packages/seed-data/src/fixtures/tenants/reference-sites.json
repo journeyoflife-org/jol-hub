@@ -341,12 +341,7 @@
                   "lt": "Sekmadienis",
                   "en": "Sunday"
                 },
-                "times": [
-                  "8:00",
-                  "10:00",
-                  "12:00",
-                  "18:00"
-                ],
+                "times": ["8:00", "10:00", "12:00", "18:00"],
                 "notes": "12:00 — Šeimų Mišios su vaikų liturgija"
               },
               {
@@ -354,20 +349,14 @@
                   "lt": "Šiokiadienis",
                   "en": "Weekdays"
                 },
-                "times": [
-                  "7:30",
-                  "18:00"
-                ]
+                "times": ["7:30", "18:00"]
               },
               {
                 "day": {
                   "lt": "Šeštadienis",
                   "en": "Saturday"
                 },
-                "times": [
-                  "9:00",
-                  "18:00"
-                ],
+                "times": ["9:00", "18:00"],
                 "notes": "18:00 — sekmadienio Mišios iš vakaro"
               }
             ]
@@ -862,9 +851,7 @@
                   "en": "Cleaning, plant care and candle placement before a feast day."
                 },
                 "price": 35,
-                "tags": [
-                  "prieš Vėlines"
-                ]
+                "tags": ["prieš Vėlines"]
               },
               {
                 "title": {
@@ -876,9 +863,7 @@
                   "en": "Regular visits with a photo report after each one."
                 },
                 "price": 25,
-                "tags": [
-                  "foto ataskaita"
-                ]
+                "tags": ["foto ataskaita"]
               },
               {
                 "title": {
@@ -890,9 +875,7 @@
                   "en": "12 visits, seasonal decoration, All Saints' and Mother's Day styling."
                 },
                 "price": 240,
-                "tags": [
-                  "-17%"
-                ]
+                "tags": ["-17%"]
               }
             ]
           },
@@ -1107,19 +1090,14 @@
                   "lt": "Sekmadienis",
                   "en": "Sunday"
                 },
-                "times": [
-                  "9:00",
-                  "11:30"
-                ]
+                "times": ["9:00", "11:30"]
               },
               {
                 "day": {
                   "lt": "Trečiadienis, penktadienis",
                   "en": "Wednesday, Friday"
                 },
-                "times": [
-                  "18:00"
-                ]
+                "times": ["18:00"]
               }
             ]
           },

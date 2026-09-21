@@ -320,6 +320,7 @@ const FIXTURE_DERIVED: Tenant[] = tenantFixtures
       name: { lt: string; en?: string };
       vertical: string;
       locale: string;
+      identity?: { domain?: string };
     }) => {
       const tier = fixtureTier(fixture.vertical);
       return {

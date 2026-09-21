@@ -86,7 +86,7 @@ const KeyValueBlockSchema = z.object({
     .min(1),
 });
 
-const ScheduleBlockSchema = z.object({
+export const ScheduleBlockSchema = z.object({
   type: z.literal('schedule'),
   heading: LocalizedTextSchema.optional(),
   entries: z
@@ -101,9 +101,15 @@ const ScheduleBlockSchema = z.object({
           .refine(isValidRRule, { message: 'Invalid iCalendar RRULE format' })
           .optional(),
         /** ISO 8601 date from which this rule is effective. */
-        validFrom: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+        validFrom: z
+          .string()
+          .regex(/^\d{4}-\d{2}-\d{2}$/)
+          .optional(),
         /** ISO 8601 date until which this rule is effective. */
-        validTo: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+        validTo: z
+          .string()
+          .regex(/^\d{4}-\d{2}-\d{2}$/)
+          .optional(),
         notes: z.string().optional(),
       })
     )
@@ -156,7 +162,7 @@ const CtaBlockSchema = z.object({
  * Mass schedule block — emits Event JSON-LD with startDate.
  * NOT openingHoursSpecification (that models visitor opening hours).
  */
-const MassScheduleBlockSchema = z.object({
+export const MassScheduleBlockSchema = z.object({
   type: z.literal('massSchedule'),
   heading: LocalizedTextSchema.optional(),
   masses: z
@@ -170,9 +176,15 @@ const MassScheduleBlockSchema = z.object({
           message: 'Invalid iCalendar RRULE format (FREQ= required)',
         }),
         /** ISO 8601 date from which this rule is effective. */
-        validFrom: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+        validFrom: z
+          .string()
+          .regex(/^\d{4}-\d{2}-\d{2}$/)
+          .optional(),
         /** ISO 8601 date until which this rule is effective. */
-        validTo: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+        validTo: z
+          .string()
+          .regex(/^\d{4}-\d{2}-\d{2}$/)
+          .optional(),
         language: z.string().optional(),
         notes: LocalizedTextSchema.optional(),
       })

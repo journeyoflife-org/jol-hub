@@ -181,19 +181,14 @@
                   "lt": "Sekmadienis",
                   "en": "Sunday"
                 },
-                "times": [
-                  "10:00",
-                  "12:00"
-                ]
+                "times": ["10:00", "12:00"]
               },
               {
                 "day": {
                   "lt": "Trečiadienis",
                   "en": "Wednesday"
                 },
-                "times": [
-                  "18:00"
-                ]
+                "times": ["18:00"]
               }
             ]
           },

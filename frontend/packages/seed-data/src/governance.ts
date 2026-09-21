@@ -28,7 +28,10 @@ export const GovernanceSchema = z
     /** Editorial approval status. */
     approvalStatus: ApprovalStatusSchema,
     /** Next scheduled review date (ISO 8601). */
-    nextReviewDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+    nextReviewDate: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/)
+      .optional(),
   })
   .refine(
     (data) => {
@@ -54,8 +57,7 @@ export type Governance = z.infer<typeof GovernanceSchema>;
  *   FREQ=DAILY|WEEKLY|MONTHLY|YEARLY [;BYDAY=...] [;COUNT=N] [;UNTIL=date]
  * Does NOT attempt full RFC compliance — just format sanity.
  */
-const RRULE_PATTERN =
-  /^FREQ=(DAILY|WEEKLY|MONTHLY|YEARLY)(;[A-Z]+=[^;]+)*$/;
+const RRULE_PATTERN = /^FREQ=(DAILY|WEEKLY|MONTHLY|YEARLY)(;[A-Z]+=[^;]+)*$/;
 
 export function isValidRRule(value: string): boolean {
   return RRULE_PATTERN.test(value);

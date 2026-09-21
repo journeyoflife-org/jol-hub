@@ -221,10 +221,7 @@
                   "lt": "Sekmadienis",
                   "en": "Sunday"
                 },
-                "times": [
-                  "09:00",
-                  "11:30"
-                ],
+                "times": ["09:00", "11:30"],
                 "notes": "11:30 — giesmės su parapijos choru"
               },
               {
@@ -232,18 +229,14 @@
                   "lt": "Antradienis, ketvirtadienis",
                   "en": "Tuesday, Thursday"
                 },
-                "times": [
-                  "18:00"
-                ]
+                "times": ["18:00"]
               },
               {
                 "day": {
                   "lt": "Pirmasis penktadienis",
                   "en": "First Friday"
                 },
-                "times": [
-                  "18:00"
-                ],
+                "times": ["18:00"],
                 "notes": "Šv. Komunijos ir atgailos diena"
               }
             ]

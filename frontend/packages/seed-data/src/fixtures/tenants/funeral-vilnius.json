@@ -175,9 +175,7 @@
                 "en": "How to talk to children about death",
                 "ru": "How to talk to children about death [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": [
-                "šeima"
-              ]
+              "tags": ["šeima"]
             },
             {
               "title": {
@@ -185,9 +183,7 @@
                 "en": "Stages of Grief",
                 "ru": "Stages of Grief [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": [
-                "psichologinė pagalba"
-              ]
+              "tags": ["psichologinė pagalba"]
             },
             {
               "title": {
@@ -195,9 +191,7 @@
                 "en": "Legal matters after death",
                 "ru": "Legal matters after death [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": [
-                "teisinė pagalba"
-              ]
+              "tags": ["teisinė pagalba"]
             },
             {
               "title": {
@@ -205,9 +199,7 @@
                 "en": "Support groups list",
                 "ru": "Support groups list [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": [
-                "bendruomenė"
-              ]
+              "tags": ["bendruomenė"]
             }
           ]
         }
@@ -241,11 +233,7 @@
                 "ru": "Basic funeral package, simple casket, transport [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "price": 25,
-              "tags": [
-                "EUR/mėn.",
-                "vertė 2000 EUR",
-                "96 mėn."
-              ]
+              "tags": ["EUR/mėn.", "vertė 2000 EUR", "96 mėn."]
             },
             {
               "title": {
@@ -259,11 +247,7 @@
                 "ru": "Traditional funeral package, quality casket, flowers, music [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "price": 50,
-              "tags": [
-                "EUR/mėn.",
-                "vertė 4500 EUR",
-                "96 mėn."
-              ]
+              "tags": ["EUR/mėn.", "vertė 4500 EUR", "96 mėn."]
             },
             {
               "title": {
@@ -277,11 +261,7 @@
                 "ru": "Premium funeral package, handcrafted casket, full services, streaming [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "price": 100,
-              "tags": [
-                "EUR/mėn.",
-                "vertė 9000 EUR",
-                "96 mėn."
-              ]
+              "tags": ["EUR/mėn.", "vertė 9000 EUR", "96 mėn."]
             }
           ]
         }

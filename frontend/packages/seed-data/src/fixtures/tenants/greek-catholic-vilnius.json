@@ -328,9 +328,7 @@
                 "ru": "Small candle [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "price": 0.5,
-              "tags": [
-                "dega 2 val."
-              ]
+              "tags": ["dega 2 val."]
             },
             {
               "title": {
@@ -339,9 +337,7 @@
                 "ru": "Medium candle [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "price": 1,
-              "tags": [
-                "dega 4 val."
-              ]
+              "tags": ["dega 4 val."]
             },
             {
               "title": {
@@ -350,9 +346,7 @@
                 "ru": "Large candle [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "price": 2,
-              "tags": [
-                "dega 8 val."
-              ]
+              "tags": ["dega 8 val."]
             },
             {
               "title": {
@@ -361,9 +355,7 @@
                 "ru": "Votive candle [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "price": 3,
-              "tags": [
-                "dega 24 val."
-              ]
+              "tags": ["dega 24 val."]
             },
             {
               "title": {
@@ -372,9 +364,7 @@
                 "ru": "Paschal candle [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "price": 10,
-              "tags": [
-                "dega 48 val."
-              ]
+              "tags": ["dega 48 val."]
             }
           ]
         }

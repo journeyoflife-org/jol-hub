@@ -51,9 +51,7 @@
                 "lt": "Kasdien",
                 "en": "Daily"
               },
-              "times": [
-                "07:00"
-              ],
+              "times": ["07:00"],
               "notes": "Dalyvaujant visai bendruomenei"
             },
             {
@@ -61,10 +59,7 @@
                 "lt": "Sekmadienis",
                 "en": "Sunday"
               },
-              "times": [
-                "07:00",
-                "10:00"
-              ],
+              "times": ["07:00", "10:00"],
               "notes": "10:00 - už parapijiečius ir svečius"
             }
           ]

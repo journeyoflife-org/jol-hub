@@ -55,10 +55,7 @@
                 "lt": "Darbo dienomis",
                 "en": "Weekdays"
               },
-              "times": [
-                "07:00",
-                "17:30"
-              ],
+              "times": ["07:00", "17:30"],
               "notes": "Visos Mišios lenkiškai po lietuviškų"
             },
             {
@@ -66,11 +63,7 @@
                 "lt": "Šeštadienis",
                 "en": "Saturday"
               },
-              "times": [
-                "07:00",
-                "08:00",
-                "17:30"
-              ],
+              "times": ["07:00", "08:00", "17:30"],
               "notes": "08:00 - lenkų k."
             },
             {
@@ -78,13 +71,7 @@
                 "lt": "Sekmadienis",
                 "en": "Sunday"
               },
-              "times": [
-                "07:00",
-                "08:00",
-                "09:00",
-                "11:00",
-                "17:30"
-              ],
+              "times": ["07:00", "08:00", "09:00", "11:00", "17:30"],
               "notes": "08:00 - lenkų k., 09:00 - rusų k., 11:00 - pagrindinės lietuvių k."
             },
             {
@@ -92,12 +79,7 @@
                 "lt": "Šventinės dienos",
                 "en": "Holy Days"
               },
-              "times": [
-                "07:00",
-                "09:00",
-                "11:00",
-                "17:30"
-              ],
+              "times": ["07:00", "09:00", "11:00", "17:30"],
               "notes": "Daugiau Mišių per didžiąsias šventes"
             }
           ]

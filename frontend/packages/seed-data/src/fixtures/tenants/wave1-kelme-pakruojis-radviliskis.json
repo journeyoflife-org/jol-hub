@@ -527,18 +527,14 @@
                   "lt": "Sekmadienis",
                   "en": "Sunday"
                 },
-                "times": [
-                  "10:30"
-                ]
+                "times": ["10:30"]
               },
               {
                 "day": {
                   "lt": "Penktadienis",
                   "en": "Friday"
                 },
-                "times": [
-                  "17:00"
-                ]
+                "times": ["17:00"]
               }
             ]
           },
@@ -964,19 +960,14 @@
                   "lt": "Sekmadienis",
                   "en": "Sunday"
                 },
-                "times": [
-                  "09:30",
-                  "11:30"
-                ]
+                "times": ["09:30", "11:30"]
               },
               {
                 "day": {
                   "lt": "Ketvirtadienis",
                   "en": "Thursday"
                 },
-                "times": [
-                  "17:30"
-                ]
+                "times": ["17:30"]
               }
             ]
           },

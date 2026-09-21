@@ -57,9 +57,7 @@
                 "lt": "Sekmadienis",
                 "en": "Sunday"
               },
-              "times": [
-                "10:00"
-              ],
+              "times": ["10:00"],
               "notes": "Pagrindinės pamaldos su Šv. Vakariene"
             },
             {
@@ -67,9 +65,7 @@
                 "lt": "Sekmadienis",
                 "en": "Sunday"
               },
-              "times": [
-                "18:00"
-              ],
+              "times": ["18:00"],
               "notes": "Vakarinės pamaldos"
             },
             {
@@ -77,9 +73,7 @@
                 "lt": "Trečiadienis",
                 "en": "Wednesday"
               },
-              "times": [
-                "18:30"
-              ],
+              "times": ["18:30"],
               "notes": "Biblijos studijos"
             },
             {
@@ -87,9 +81,7 @@
                 "lt": "Pirmasis mėnesio sekmadienis",
                 "en": "First Sunday of month"
               },
-              "times": [
-                "10:00"
-              ],
+              "times": ["10:00"],
               "notes": "Ypatingos pamaldos"
             }
           ]
@@ -150,11 +142,7 @@
                 "en": "Pastor",
                 "ru": "Pastor [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": [
-                "pastor@kaunaslutheran.lt",
-                "+370 37 331 234",
-                "nuo 2015 m."
-              ]
+              "tags": ["pastor@kaunaslutheran.lt", "+370 37 331 234", "nuo 2015 m."]
             },
             {
               "title": {
@@ -166,9 +154,7 @@
                 "en": "Elder",
                 "ru": "Elder [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": [
-                "vyresnioji@kaunaslutheran.lt"
-              ]
+              "tags": ["vyresnioji@kaunaslutheran.lt"]
             },
             {
               "title": {
@@ -180,9 +166,7 @@
                 "en": "Deacon",
                 "ru": "Deacon [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": [
-                "diakonas@kaunaslutheran.lt"
-              ]
+              "tags": ["diakonas@kaunaslutheran.lt"]
             }
           ]
         },

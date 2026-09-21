@@ -202,7 +202,8 @@ export function LanguageSwitcher({
       i18n.changeLanguage(locale).catch(() => {});
 
       // Navigate to new locale route
-      const cleanPath = pathname.replace(new RegExp(`^\\/(${SUPPORTED_LOCALES.join('|')})(\\/.+)?$`), '$2') || '/';
+      const cleanPath =
+        pathname.replace(new RegExp(`^\\/(${SUPPORTED_LOCALES.join('|')})(\\/.+)?$`), '$2') || '/';
       router.push(`/${locale}${cleanPath}`);
 
       setIsOpen(false);
@@ -348,7 +349,8 @@ export function LanguageSwitcherCompact({ className = '' }: { className?: string
       const locale = e.target.value as SupportedLocale;
       setLocaleCookie(locale);
       i18n.changeLanguage(locale).catch(() => {});
-      const cleanPath = pathname.replace(new RegExp(`^\\/(${SUPPORTED_LOCALES.join('|')})(\\/.+)?$`), '$2') || '/';
+      const cleanPath =
+        pathname.replace(new RegExp(`^\\/(${SUPPORTED_LOCALES.join('|')})(\\/.+)?$`), '$2') || '/';
       router.push(`/${locale}${cleanPath}`);
     },
     [pathname, router, i18n]
