@@ -48,8 +48,11 @@ const EXCLUDED_PATHS = [
 /**
  * Extract locale from URL path (/lt/, /ru/, /en/)
  */
+/** Locale alternation pattern derived from SUPPORTED_LOCALES (SSOT). */
+const LOCALE_PATTERN = SUPPORTED_LOCALES.join('|');
+
 function getLocaleFromPath(pathname: string): SupportedLocale | null {
-  const match = pathname.match(/^\/(lt|ru|en)(?:\/|$)/);
+  const match = pathname.match(new RegExp(`^\\/(${LOCALE_PATTERN})(?:\\/|$)`));
   if (match && SUPPORTED_LOCALES.includes(match[1] as SupportedLocale)) {
     return match[1] as SupportedLocale;
   }

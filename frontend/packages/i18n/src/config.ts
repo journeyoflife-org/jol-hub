@@ -59,7 +59,12 @@ export const LOCALE_HEADER = 'x-locale';
  * resolution short-circuits on the first supported match; the chain
  * documents the intent and order for future regional variants.
  */
-export const FALLBACK_ORDER: readonly SupportedLocale[] = ['ru', 'en', 'lt'];
+export const FALLBACK_ORDER: readonly SupportedLocale[] = ['lt', 'en', 'ru'];
+
+/** Locale alternation pattern derived from SUPPORTED_LOCALES (SSOT).
+ * Adding a locale to SUPPORTED_LOCALES automatically updates all regex-based matching.
+ */
+const LOCALE_PATTERN = SUPPORTED_LOCALES.join('|');
 
 /**
  * OPEN QUESTION — Poland (pl). Declared so the extension point is explicit,
@@ -85,7 +90,7 @@ export function isSupportedLocale(value: string | null | undefined): value is Su
  * Extracts /lt/, /ru/, /en/ from pathname.
  */
 export function getLocaleFromPath(pathname: string): SupportedLocale | null {
-  const match = pathname.match(/^\/(lt|ru|en)(?:\/|$)/);
+  const match = pathname.match(new RegExp(`^\\/(${LOCALE_PATTERN})(?:\\/|$)`));
   if (match && isSupportedLocale(match[1])) {
     return match[1];
   }
@@ -97,7 +102,7 @@ export function getLocaleFromPath(pathname: string): SupportedLocale | null {
  */
 export function localizePath(path: string, locale: SupportedLocale): string {
   // Remove existing locale prefix if present
-  const cleanPath = path.replace(/^\/(lt|ru|en)\//, '/');
+  const cleanPath = path.replace(new RegExp(`^\\/(${LOCALE_PATTERN})\\/`), '/');
 
   // Don't add locale for default if it's the root
   if (locale === DEFAULT_LOCALE && cleanPath === '/') {
