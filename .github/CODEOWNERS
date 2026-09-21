@@ -64,4 +64,3 @@
 
 # ---- Dependabot & CI configuration -----------------------------------------
 /.github/dependabot.yml @journeyoflife-org/devops
-/qodana.yaml            @journeyoflife-org/devops
