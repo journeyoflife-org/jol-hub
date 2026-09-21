@@ -202,6 +202,24 @@ class UserListView(generics.ListCreateAPIView):
 
 
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
+
+    def get_object(self):
+        """Tenant-scoped object retrieval — 404 for cross-tenant (C5)."""
+        from apps.crm.middleware import get_current_tenant_id
+        from apps.organizations.models import OrganizationMember
+        from django.http import Http404
+
+        obj = super().get_object()
+        tenant_id = get_current_tenant_id()
+
+        if tenant_id:
+            is_member = OrganizationMember.objects.filter(
+                organization_id=tenant_id, user=obj, is_active=True
+            ).exists()
+            if not is_member:
+                raise Http404  # 404 — no enumeration
+
+        return obj
     """GET / PATCH / DELETE /api/v1/users/{id}/"""
 
     serializer_class = UserSerializer
