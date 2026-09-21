@@ -12,6 +12,8 @@
  * branch `feat/template-renderer-step1` (fixtures remain valid seed data).
  */
 import { z } from 'zod';
+import { GovernanceSchema, isValidRRule } from './governance';
+export { GovernanceSchema, type Governance, type ApprovalStatus } from './governance';
 
 /** BCP-47-style short locale tag; fixtures are Lithuanian-first. */
 export const LocaleSchema = z.string().regex(/^[a-z]{2}(-[A-Z]{2})?$/);
@@ -21,6 +23,7 @@ export const LocalizedTextSchema = z.object({
   lt: z.string().min(1),
   en: z.string().optional(),
   ru: z.string().optional(),
+  pl: z.string().optional(), // Wave 0 — groundwork per D13
 });
 export type LocalizedText = z.infer<typeof LocalizedTextSchema>;
 
@@ -83,15 +86,30 @@ const KeyValueBlockSchema = z.object({
     .min(1),
 });
 
-const ScheduleBlockSchema = z.object({
+export const ScheduleBlockSchema = z.object({
   type: z.literal('schedule'),
   heading: LocalizedTextSchema.optional(),
   entries: z
     .array(
       z.object({
-        day: z.string().min(1),
+        day: LocalizedTextSchema, // Changed from string — D12
         dayEn: z.string().optional(),
         times: z.array(z.string()).min(1),
+        /** iCalendar RRULE for recurrence (D12). */
+        rrule: z
+          .string()
+          .refine(isValidRRule, { message: 'Invalid iCalendar RRULE format' })
+          .optional(),
+        /** ISO 8601 date from which this rule is effective. */
+        validFrom: z
+          .string()
+          .regex(/^\d{4}-\d{2}-\d{2}$/)
+          .optional(),
+        /** ISO 8601 date until which this rule is effective. */
+        validTo: z
+          .string()
+          .regex(/^\d{4}-\d{2}-\d{2}$/)
+          .optional(),
         notes: z.string().optional(),
       })
     )
@@ -144,17 +162,29 @@ const CtaBlockSchema = z.object({
  * Mass schedule block — emits Event JSON-LD with startDate.
  * NOT openingHoursSpecification (that models visitor opening hours).
  */
-const MassScheduleBlockSchema = z.object({
+export const MassScheduleBlockSchema = z.object({
   type: z.literal('massSchedule'),
   heading: LocalizedTextSchema.optional(),
   masses: z
     .array(
       z.object({
-        day: z.string().min(1),
+        day: LocalizedTextSchema, // Changed from string — D12
         dayEn: z.string().optional(),
         time: z.string().min(1),
-        /** ISO 8601 date for JSON-LD startDate (e.g. "2026-09-13T10:00:00"). */
-        startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/),
+        /** iCalendar RRULE for recurrence (D12). */
+        rrule: z.string().refine(isValidRRule, {
+          message: 'Invalid iCalendar RRULE format (FREQ= required)',
+        }),
+        /** ISO 8601 date from which this rule is effective. */
+        validFrom: z
+          .string()
+          .regex(/^\d{4}-\d{2}-\d{2}$/)
+          .optional(),
+        /** ISO 8601 date until which this rule is effective. */
+        validTo: z
+          .string()
+          .regex(/^\d{4}-\d{2}-\d{2}$/)
+          .optional(),
         language: z.string().optional(),
         notes: LocalizedTextSchema.optional(),
       })
@@ -331,10 +361,12 @@ export const TenantFixtureSchema = z.object({
   name: LocalizedTextSchema,
   tagline: LocalizedTextSchema,
   identity: TenantIdentitySchema.optional(),
+  /** Governance metadata — required in v2 (source verification + approval). */
+  governance: GovernanceSchema,
   pages: z.array(TenantPageSchema).min(1),
 });
 export type TenantFixture = z.infer<typeof TenantFixtureSchema>;
 
 /** Fixture payload schema version reported by the tenant resolver. */
-export const TENANT_FIXTURE_SCHEMA = 'tenant-fixture/v1' as const;
+export const TENANT_FIXTURE_SCHEMA = 'tenant-fixture/v2' as const;
 export type TenantFixtureSchemaVersion = typeof TENANT_FIXTURE_SCHEMA;

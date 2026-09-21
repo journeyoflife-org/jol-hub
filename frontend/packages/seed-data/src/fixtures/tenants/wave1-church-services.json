@@ -3,7 +3,10 @@
     "slug": "zagare-funeral",
     "vertical": "funeral-home",
     "locale": "lt",
-    "name": { "lt": "Žagarės laidojimo namai", "en": "Žagarė Funeral Home" },
+    "name": {
+      "lt": "Žagarės laidojimo namai",
+      "en": "Žagarė Funeral Home"
+    },
     "tagline": {
       "lt": "Su pagarba Žagarės ir apylinkių šeimoms",
       "en": "With respect for the families of Žagarė"
@@ -18,11 +21,17 @@
     "pages": [
       {
         "route": "/",
-        "title": { "lt": "Pradžia", "en": "Home" },
+        "title": {
+          "lt": "Pradžia",
+          "en": "Home"
+        },
         "contentBlocks": [
           {
             "type": "hero",
-            "heading": { "lt": "Žagarės laidojimo namai", "en": "Žagarė Funeral Home" },
+            "heading": {
+              "lt": "Žagarės laidojimo namai",
+              "en": "Žagarė Funeral Home"
+            },
             "subheading": {
               "lt": "Laidojimo organizavimas ir kapų priežiūra Žagarės krašte — visą parą",
               "en": "Funeral arrangement and grave care in the Žagarė area — around the clock"
@@ -30,7 +39,10 @@
           },
           {
             "type": "list",
-            "heading": { "lt": "Paslaugos ir kainos", "en": "Services and prices" },
+            "heading": {
+              "lt": "Paslaugos ir kainos",
+              "en": "Services and prices"
+            },
             "items": [
               {
                 "title": {
@@ -40,25 +52,40 @@
                 "price": 1650
               },
               {
-                "title": { "lt": "Kremavimo organizavimas", "en": "Cremation arrangement" },
+                "title": {
+                  "lt": "Kremavimo organizavimas",
+                  "en": "Cremation arrangement"
+                },
                 "price": 1200
               }
             ]
           },
           {
             "type": "keyValue",
-            "heading": { "lt": "Visą parą", "en": "Around the clock" },
+            "heading": {
+              "lt": "Visą parą",
+              "en": "Around the clock"
+            },
             "items": [
               {
-                "label": { "lt": "Skubus telefonas", "en": "Urgent phone" },
+                "label": {
+                  "lt": "Skubus telefonas",
+                  "en": "Urgent phone"
+                },
                 "value": "+370 42 60 60 60"
               },
               {
-                "label": { "lt": "Adresas", "en": "Address" },
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Address"
+                },
                 "value": "Malūno g. 6, 84315 Žagarė"
               },
               {
-                "label": { "lt": "El. paštas", "en": "Email" },
+                "label": {
+                  "lt": "El. paštas",
+                  "en": "Email"
+                },
                 "value": "info@zagare-laidojimas-demo.lt"
               }
             ]
@@ -68,13 +95,22 @@
           "description": "Žagarės laidojimo namai — laidojimo ir kremavimo organizavimas 24/7 Žagarės krašte."
         }
       }
-    ]
+    ],
+    "governance": {
+      "sourceUrl": "https://www.gyvenimo-kelias.lt/tenants/zagare-funeral",
+      "verifiedDate": "2026-09-01",
+      "approvalStatus": "approved",
+      "nextReviewDate": "2027-06-01"
+    }
   },
   {
     "slug": "zagare-cleaning",
     "vertical": "cemetery",
     "locale": "lt",
-    "name": { "lt": "Žagarės kapinių priežiūra", "en": "Žagarė Cemetery Care" },
+    "name": {
+      "lt": "Žagarės kapinių priežiūra",
+      "en": "Žagarė Cemetery Care"
+    },
     "tagline": {
       "lt": "Kapaviečių priežiūra Žagarės kapinėse",
       "en": "Grave care in the Žagarė cemeteries"
@@ -89,11 +125,17 @@
     "pages": [
       {
         "route": "/",
-        "title": { "lt": "Pradžia", "en": "Home" },
+        "title": {
+          "lt": "Pradžia",
+          "en": "Home"
+        },
         "contentBlocks": [
           {
             "type": "hero",
-            "heading": { "lt": "Kapaviečių priežiūra Žagarėje", "en": "Grave care in Žagarė" },
+            "heading": {
+              "lt": "Kapaviečių priežiūra Žagarėje",
+              "en": "Grave care in Žagarė"
+            },
             "subheading": {
               "lt": "Tvarkymas, želdiniai ir šventinis puošimas su foto ataskaitomis",
               "en": "Tidying, planting and feast-day decoration with photo reports"
@@ -101,20 +143,53 @@
           },
           {
             "type": "list",
-            "heading": { "lt": "Planai ir kainos", "en": "Plans and prices" },
+            "heading": {
+              "lt": "Planai ir kainos",
+              "en": "Plans and prices"
+            },
             "items": [
-              { "title": { "lt": "Vienkartinis tvarkymas", "en": "One-time care" }, "price": 26 },
-              { "title": { "lt": "Mėnesinė priežiūra", "en": "Monthly care" }, "price": 18 },
-              { "title": { "lt": "Metinis planas", "en": "Annual plan" }, "price": 180 }
+              {
+                "title": {
+                  "lt": "Vienkartinis tvarkymas",
+                  "en": "One-time care"
+                },
+                "price": 26
+              },
+              {
+                "title": {
+                  "lt": "Mėnesinė priežiūra",
+                  "en": "Monthly care"
+                },
+                "price": 18
+              },
+              {
+                "title": {
+                  "lt": "Metinis planas",
+                  "en": "Annual plan"
+                },
+                "price": 180
+              }
             ]
           },
           {
             "type": "keyValue",
-            "heading": { "lt": "Kontaktai", "en": "Contacts" },
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Contacts"
+            },
             "items": [
-              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 60 70 70" },
               {
-                "label": { "lt": "El. paštas", "en": "Email" },
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Phone"
+                },
+                "value": "+370 42 60 70 70"
+              },
+              {
+                "label": {
+                  "lt": "El. paštas",
+                  "en": "Email"
+                },
                 "value": "info@zagare-prieziura-demo.lt"
               }
             ]
@@ -124,13 +199,22 @@
           "description": "Žagarės kapinių priežiūra — tvarkymas, želdiniai ir šventinis puošimas su foto ataskaitomis."
         }
       }
-    ]
+    ],
+    "governance": {
+      "sourceUrl": "https://www.gyvenimo-kelias.lt/tenants/zagare-cleaning",
+      "verifiedDate": "2026-09-01",
+      "approvalStatus": "approved",
+      "nextReviewDate": "2027-06-01"
+    }
   },
   {
     "slug": "kraziai-funeral",
     "vertical": "funeral-home",
     "locale": "lt",
-    "name": { "lt": "Kražių laidojimo namai", "en": "Kražiai Funeral Home" },
+    "name": {
+      "lt": "Kražių laidojimo namai",
+      "en": "Kražiai Funeral Home"
+    },
     "tagline": {
       "lt": "Ramybė ir pagarba Kražių krašto šeimoms",
       "en": "Peace and respect for the families of Kražiai"
@@ -145,11 +229,17 @@
     "pages": [
       {
         "route": "/",
-        "title": { "lt": "Pradžia", "en": "Home" },
+        "title": {
+          "lt": "Pradžia",
+          "en": "Home"
+        },
         "contentBlocks": [
           {
             "type": "hero",
-            "heading": { "lt": "Kražių laidojimo namai", "en": "Kražiai Funeral Home" },
+            "heading": {
+              "lt": "Kražių laidojimo namai",
+              "en": "Kražiai Funeral Home"
+            },
             "subheading": {
               "lt": "Laidojimo organizavimas ir kapų priežiūra Kražiuose — visą parą",
               "en": "Funeral arrangement and grave care in Kražiai — around the clock"
@@ -157,7 +247,10 @@
           },
           {
             "type": "list",
-            "heading": { "lt": "Paslaugos ir kainos", "en": "Services and prices" },
+            "heading": {
+              "lt": "Paslaugos ir kainos",
+              "en": "Services and prices"
+            },
             "items": [
               {
                 "title": {
@@ -167,25 +260,40 @@
                 "price": 1650
               },
               {
-                "title": { "lt": "Kremavimo organizavimas", "en": "Cremation arrangement" },
+                "title": {
+                  "lt": "Kremavimo organizavimas",
+                  "en": "Cremation arrangement"
+                },
                 "price": 1200
               }
             ]
           },
           {
             "type": "keyValue",
-            "heading": { "lt": "Visą parą", "en": "Around the clock" },
+            "heading": {
+              "lt": "Visą parą",
+              "en": "Around the clock"
+            },
             "items": [
               {
-                "label": { "lt": "Skubus telefonas", "en": "Urgent phone" },
+                "label": {
+                  "lt": "Skubus telefonas",
+                  "en": "Urgent phone"
+                },
                 "value": "+370 42 70 50 50"
               },
               {
-                "label": { "lt": "Adresas", "en": "Address" },
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Address"
+                },
                 "value": "Vienuolyno g. 2, 86211 Kražiai"
               },
               {
-                "label": { "lt": "El. paštas", "en": "Email" },
+                "label": {
+                  "lt": "El. paštas",
+                  "en": "Email"
+                },
                 "value": "info@kraziai-laidojimas-demo.lt"
               }
             ]
@@ -195,13 +303,22 @@
           "description": "Kražių laidojimo namai — laidojimo ir kremavimo organizavimas 24/7 Kražių krašte."
         }
       }
-    ]
+    ],
+    "governance": {
+      "sourceUrl": "https://www.gyvenimo-kelias.lt/tenants/kraziai-funeral",
+      "verifiedDate": "2026-09-01",
+      "approvalStatus": "approved",
+      "nextReviewDate": "2027-06-01"
+    }
   },
   {
     "slug": "kraziai-cleaning",
     "vertical": "cemetery",
     "locale": "lt",
-    "name": { "lt": "Kražių kapinių priežiūra", "en": "Kražiai Cemetery Care" },
+    "name": {
+      "lt": "Kražių kapinių priežiūra",
+      "en": "Kražiai Cemetery Care"
+    },
     "tagline": {
       "lt": "Kapaviečių priežiūra Kražių kapinėse",
       "en": "Grave care in the Kražiai cemeteries"
@@ -216,11 +333,17 @@
     "pages": [
       {
         "route": "/",
-        "title": { "lt": "Pradžia", "en": "Home" },
+        "title": {
+          "lt": "Pradžia",
+          "en": "Home"
+        },
         "contentBlocks": [
           {
             "type": "hero",
-            "heading": { "lt": "Kapaviečių priežiūra Kražiuose", "en": "Grave care in Kražiai" },
+            "heading": {
+              "lt": "Kapaviečių priežiūra Kražiuose",
+              "en": "Grave care in Kražiai"
+            },
             "subheading": {
               "lt": "Tvarkymas, želdiniai ir šventinis puošimas su foto ataskaitomis",
               "en": "Tidying, planting and feast-day decoration with photo reports"
@@ -228,20 +351,53 @@
           },
           {
             "type": "list",
-            "heading": { "lt": "Planai ir kainos", "en": "Plans and prices" },
+            "heading": {
+              "lt": "Planai ir kainos",
+              "en": "Plans and prices"
+            },
             "items": [
-              { "title": { "lt": "Vienkartinis tvarkymas", "en": "One-time care" }, "price": 26 },
-              { "title": { "lt": "Mėnesinė priežiūra", "en": "Monthly care" }, "price": 18 },
-              { "title": { "lt": "Metinis planas", "en": "Annual plan" }, "price": 180 }
+              {
+                "title": {
+                  "lt": "Vienkartinis tvarkymas",
+                  "en": "One-time care"
+                },
+                "price": 26
+              },
+              {
+                "title": {
+                  "lt": "Mėnesinė priežiūra",
+                  "en": "Monthly care"
+                },
+                "price": 18
+              },
+              {
+                "title": {
+                  "lt": "Metinis planas",
+                  "en": "Annual plan"
+                },
+                "price": 180
+              }
             ]
           },
           {
             "type": "keyValue",
-            "heading": { "lt": "Kontaktai", "en": "Contacts" },
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Contacts"
+            },
             "items": [
-              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 70 60 60" },
               {
-                "label": { "lt": "El. paštas", "en": "Email" },
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Phone"
+                },
+                "value": "+370 42 70 60 60"
+              },
+              {
+                "label": {
+                  "lt": "El. paštas",
+                  "en": "Email"
+                },
                 "value": "info@kraziai-prieziura-demo.lt"
               }
             ]
@@ -251,13 +407,22 @@
           "description": "Kražių kapinių priežiūra — tvarkymas, želdiniai ir šventinis puošymas su foto ataskaitomis."
         }
       }
-    ]
+    ],
+    "governance": {
+      "sourceUrl": "https://www.gyvenimo-kelias.lt/tenants/kraziai-cleaning",
+      "verifiedDate": "2026-09-01",
+      "approvalStatus": "approved",
+      "nextReviewDate": "2027-06-01"
+    }
   },
   {
     "slug": "lygumai-funeral",
     "vertical": "funeral-home",
     "locale": "lt",
-    "name": { "lt": "Lygumų laidojimo namai", "en": "Lygumai Funeral Home" },
+    "name": {
+      "lt": "Lygumų laidojimo namai",
+      "en": "Lygumai Funeral Home"
+    },
     "tagline": {
       "lt": "Su pagarba Lygumų krašto šeimoms",
       "en": "With respect for the families of Lygumai"
@@ -272,11 +437,17 @@
     "pages": [
       {
         "route": "/",
-        "title": { "lt": "Pradžia", "en": "Home" },
+        "title": {
+          "lt": "Pradžia",
+          "en": "Home"
+        },
         "contentBlocks": [
           {
             "type": "hero",
-            "heading": { "lt": "Lygumų laidojimo namai", "en": "Lygumai Funeral Home" },
+            "heading": {
+              "lt": "Lygumų laidojimo namai",
+              "en": "Lygumai Funeral Home"
+            },
             "subheading": {
               "lt": "Laidojimo organizavimas ir kapų priežiūra Lygumų miestelyje — visą parą",
               "en": "Funeral arrangement and grave care in Lygumai — around the clock"
@@ -284,7 +455,10 @@
           },
           {
             "type": "list",
-            "heading": { "lt": "Paslaugos ir kainos", "en": "Services and prices" },
+            "heading": {
+              "lt": "Paslaugos ir kainos",
+              "en": "Services and prices"
+            },
             "items": [
               {
                 "title": {
@@ -294,25 +468,40 @@
                 "price": 1650
               },
               {
-                "title": { "lt": "Kremavimo organizavimas", "en": "Cremation arrangement" },
+                "title": {
+                  "lt": "Kremavimo organizavimas",
+                  "en": "Cremation arrangement"
+                },
                 "price": 1200
               }
             ]
           },
           {
             "type": "keyValue",
-            "heading": { "lt": "Visą parą", "en": "Around the clock" },
+            "heading": {
+              "lt": "Visą parą",
+              "en": "Around the clock"
+            },
             "items": [
               {
-                "label": { "lt": "Skubus telefonas", "en": "Urgent phone" },
+                "label": {
+                  "lt": "Skubus telefonas",
+                  "en": "Urgent phone"
+                },
                 "value": "+370 42 80 60 60"
               },
               {
-                "label": { "lt": "Adresas", "en": "Address" },
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Address"
+                },
                 "value": "Bažnyčios g. 3, 83315 Lygumai"
               },
               {
-                "label": { "lt": "El. paštas", "en": "Email" },
+                "label": {
+                  "lt": "El. paštas",
+                  "en": "Email"
+                },
                 "value": "info@lygumai-laidojimas-demo.lt"
               }
             ]
@@ -322,13 +511,22 @@
           "description": "Lygumų laidojimo namai — laidojimo ir kremavimo organizavimas 24/7 Lygumų miestelyje."
         }
       }
-    ]
+    ],
+    "governance": {
+      "sourceUrl": "https://www.gyvenimo-kelias.lt/tenants/lygumai-funeral",
+      "verifiedDate": "2026-09-01",
+      "approvalStatus": "approved",
+      "nextReviewDate": "2027-06-01"
+    }
   },
   {
     "slug": "lygumai-cleaning",
     "vertical": "cemetery",
     "locale": "lt",
-    "name": { "lt": "Lygumų kapinių priežiūra", "en": "Lygumai Cemetery Care" },
+    "name": {
+      "lt": "Lygumų kapinių priežiūra",
+      "en": "Lygumai Cemetery Care"
+    },
     "tagline": {
       "lt": "Kapaviečių priežiūra Lygumų kapinėse",
       "en": "Grave care in the Lygumai cemeteries"
@@ -343,11 +541,17 @@
     "pages": [
       {
         "route": "/",
-        "title": { "lt": "Pradžia", "en": "Home" },
+        "title": {
+          "lt": "Pradžia",
+          "en": "Home"
+        },
         "contentBlocks": [
           {
             "type": "hero",
-            "heading": { "lt": "Kapaviečių priežiūra Lygumuose", "en": "Grave care in Lygumai" },
+            "heading": {
+              "lt": "Kapaviečių priežiūra Lygumuose",
+              "en": "Grave care in Lygumai"
+            },
             "subheading": {
               "lt": "Tvarkymas, želdiniai ir šventinis puošimas su foto ataskaitomis",
               "en": "Tidying, planting and feast-day decoration with photo reports"
@@ -355,20 +559,53 @@
           },
           {
             "type": "list",
-            "heading": { "lt": "Planai ir kainos", "en": "Plans and prices" },
+            "heading": {
+              "lt": "Planai ir kainos",
+              "en": "Plans and prices"
+            },
             "items": [
-              { "title": { "lt": "Vienkartinis tvarkymas", "en": "One-time care" }, "price": 26 },
-              { "title": { "lt": "Mėnesinė priežiūra", "en": "Monthly care" }, "price": 18 },
-              { "title": { "lt": "Metinis planas", "en": "Annual plan" }, "price": 180 }
+              {
+                "title": {
+                  "lt": "Vienkartinis tvarkymas",
+                  "en": "One-time care"
+                },
+                "price": 26
+              },
+              {
+                "title": {
+                  "lt": "Mėnesinė priežiūra",
+                  "en": "Monthly care"
+                },
+                "price": 18
+              },
+              {
+                "title": {
+                  "lt": "Metinis planas",
+                  "en": "Annual plan"
+                },
+                "price": 180
+              }
             ]
           },
           {
             "type": "keyValue",
-            "heading": { "lt": "Kontaktai", "en": "Contacts" },
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Contacts"
+            },
             "items": [
-              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 80 70 70" },
               {
-                "label": { "lt": "El. paštas", "en": "Email" },
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Phone"
+                },
+                "value": "+370 42 80 70 70"
+              },
+              {
+                "label": {
+                  "lt": "El. paštas",
+                  "en": "Email"
+                },
                 "value": "info@lygumai-prieziura-demo.lt"
               }
             ]
@@ -378,13 +615,22 @@
           "description": "Lygumų kapinių priežiūra — tvarkymas, želdiniai ir šventinis puošymas su foto ataskaitomis."
         }
       }
-    ]
+    ],
+    "governance": {
+      "sourceUrl": "https://www.gyvenimo-kelias.lt/tenants/lygumai-cleaning",
+      "verifiedDate": "2026-09-01",
+      "approvalStatus": "approved",
+      "nextReviewDate": "2027-06-01"
+    }
   },
   {
     "slug": "baisogala-funeral",
     "vertical": "funeral-home",
     "locale": "lt",
-    "name": { "lt": "Baisogalos laidojimo namai", "en": "Baisogala Funeral Home" },
+    "name": {
+      "lt": "Baisogalos laidojimo namai",
+      "en": "Baisogala Funeral Home"
+    },
     "tagline": {
       "lt": "Su pagarba Baisogalos krašto šeimoms",
       "en": "With respect for the families of Baisogala"
@@ -399,11 +645,17 @@
     "pages": [
       {
         "route": "/",
-        "title": { "lt": "Pradžia", "en": "Home" },
+        "title": {
+          "lt": "Pradžia",
+          "en": "Home"
+        },
         "contentBlocks": [
           {
             "type": "hero",
-            "heading": { "lt": "Baisogalos laidojimo namai", "en": "Baisogala Funeral Home" },
+            "heading": {
+              "lt": "Baisogalos laidojimo namai",
+              "en": "Baisogala Funeral Home"
+            },
             "subheading": {
               "lt": "Laidojimo organizavimas ir kapų priežiūra Baisogaloje — visą parą",
               "en": "Funeral arrangement and grave care in Baisogala — around the clock"
@@ -411,7 +663,10 @@
           },
           {
             "type": "list",
-            "heading": { "lt": "Paslaugos ir kainos", "en": "Services and prices" },
+            "heading": {
+              "lt": "Paslaugos ir kainos",
+              "en": "Services and prices"
+            },
             "items": [
               {
                 "title": {
@@ -421,25 +676,40 @@
                 "price": 1650
               },
               {
-                "title": { "lt": "Kremavimo organizavimas", "en": "Cremation arrangement" },
+                "title": {
+                  "lt": "Kremavimo organizavimas",
+                  "en": "Cremation arrangement"
+                },
                 "price": 1200
               }
             ]
           },
           {
             "type": "keyValue",
-            "heading": { "lt": "Visą parą", "en": "Around the clock" },
+            "heading": {
+              "lt": "Visą parą",
+              "en": "Around the clock"
+            },
             "items": [
               {
-                "label": { "lt": "Skubus telefonas", "en": "Urgent phone" },
+                "label": {
+                  "lt": "Skubus telefonas",
+                  "en": "Urgent phone"
+                },
                 "value": "+370 42 90 60 60"
               },
               {
-                "label": { "lt": "Adresas", "en": "Address" },
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Address"
+                },
                 "value": "Dvaro g. 4, 82315 Baisogala"
               },
               {
-                "label": { "lt": "El. paštas", "en": "Email" },
+                "label": {
+                  "lt": "El. paštas",
+                  "en": "Email"
+                },
                 "value": "info@baisogala-laidojimas-demo.lt"
               }
             ]
@@ -449,13 +719,22 @@
           "description": "Baisogalos laidojimo namai — laidojimo ir kremavimo organizavimas 24/7 Baisogalos miestelyje."
         }
       }
-    ]
+    ],
+    "governance": {
+      "sourceUrl": "https://www.gyvenimo-kelias.lt/tenants/baisogala-funeral",
+      "verifiedDate": "2026-09-01",
+      "approvalStatus": "approved",
+      "nextReviewDate": "2027-06-01"
+    }
   },
   {
     "slug": "baisogala-cleaning",
     "vertical": "cemetery",
     "locale": "lt",
-    "name": { "lt": "Baisogalos kapinių priežiūra", "en": "Baisogala Cemetery Care" },
+    "name": {
+      "lt": "Baisogalos kapinių priežiūra",
+      "en": "Baisogala Cemetery Care"
+    },
     "tagline": {
       "lt": "Kapaviečių priežiūra Baisogalos kapinėse",
       "en": "Grave care in the Baisogala cemeteries"
@@ -470,7 +749,10 @@
     "pages": [
       {
         "route": "/",
-        "title": { "lt": "Pradžia", "en": "Home" },
+        "title": {
+          "lt": "Pradžia",
+          "en": "Home"
+        },
         "contentBlocks": [
           {
             "type": "hero",
@@ -485,20 +767,53 @@
           },
           {
             "type": "list",
-            "heading": { "lt": "Planai ir kainos", "en": "Plans and prices" },
+            "heading": {
+              "lt": "Planai ir kainos",
+              "en": "Plans and prices"
+            },
             "items": [
-              { "title": { "lt": "Vienkartinis tvarkymas", "en": "One-time care" }, "price": 26 },
-              { "title": { "lt": "Mėnesinė priežiūra", "en": "Monthly care" }, "price": 18 },
-              { "title": { "lt": "Metinis planas", "en": "Annual plan" }, "price": 180 }
+              {
+                "title": {
+                  "lt": "Vienkartinis tvarkymas",
+                  "en": "One-time care"
+                },
+                "price": 26
+              },
+              {
+                "title": {
+                  "lt": "Mėnesinė priežiūra",
+                  "en": "Monthly care"
+                },
+                "price": 18
+              },
+              {
+                "title": {
+                  "lt": "Metinis planas",
+                  "en": "Annual plan"
+                },
+                "price": 180
+              }
             ]
           },
           {
             "type": "keyValue",
-            "heading": { "lt": "Kontaktai", "en": "Contacts" },
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Contacts"
+            },
             "items": [
-              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 90 70 70" },
               {
-                "label": { "lt": "El. paštas", "en": "Email" },
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Phone"
+                },
+                "value": "+370 42 90 70 70"
+              },
+              {
+                "label": {
+                  "lt": "El. paštas",
+                  "en": "Email"
+                },
                 "value": "info@baisogala-prieziura-demo.lt"
               }
             ]
@@ -508,6 +823,12 @@
           "description": "Baisogalos kapinių priežiūra — tvarkymas, želdiniai ir šventinis puošymas su foto ataskaitomis."
         }
       }
-    ]
+    ],
+    "governance": {
+      "sourceUrl": "https://www.gyvenimo-kelias.lt/tenants/baisogala-cleaning",
+      "verifiedDate": "2026-09-01",
+      "approvalStatus": "approved",
+      "nextReviewDate": "2027-06-01"
+    }
   }
 ]

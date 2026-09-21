@@ -24,11 +24,17 @@
     "pages": [
       {
         "route": "/",
-        "title": { "lt": "Pradžia", "en": "Home" },
+        "title": {
+          "lt": "Pradžia",
+          "en": "Home"
+        },
         "contentBlocks": [
           {
             "type": "hero",
-            "heading": { "lt": "Šiaulių vyskupija", "en": "Diocese of Šiauliai" },
+            "heading": {
+              "lt": "Šiaulių vyskupija",
+              "en": "Diocese of Šiauliai"
+            },
             "subheading": {
               "lt": "Ganytojiškumas, ugdymas ir bendrystė — 67 parapijos Šiaurės Lietuvoje",
               "en": "Pastoral care, formation and communion — 67 parishes in Northern Lithuania"
@@ -36,17 +42,47 @@
           },
           {
             "type": "stats",
-            "heading": { "lt": "Vyskupija skaičiais", "en": "The diocese in numbers" },
+            "heading": {
+              "lt": "Vyskupija skaičiais",
+              "en": "The diocese in numbers"
+            },
             "items": [
-              { "label": { "lt": "Parapijų", "en": "Parishes" }, "value": 67 },
-              { "label": { "lt": "Dekanatų", "en": "Deaneries" }, "value": 7 },
-              { "label": { "lt": "Kunigų", "en": "Priests" }, "value": 52 },
-              { "label": { "lt": "Įkurta", "en": "Established" }, "value": "1997" }
+              {
+                "label": {
+                  "lt": "Parapijų",
+                  "en": "Parishes"
+                },
+                "value": 67
+              },
+              {
+                "label": {
+                  "lt": "Dekanatų",
+                  "en": "Deaneries"
+                },
+                "value": 7
+              },
+              {
+                "label": {
+                  "lt": "Kunigų",
+                  "en": "Priests"
+                },
+                "value": 52
+              },
+              {
+                "label": {
+                  "lt": "Įkurta",
+                  "en": "Established"
+                },
+                "value": "1997"
+              }
             ]
           },
           {
             "type": "text",
-            "heading": { "lt": "Sveikinimas", "en": "Welcome" },
+            "heading": {
+              "lt": "Sveikinimas",
+              "en": "Welcome"
+            },
             "body": {
               "lt": "Šiaulių vyskupija — Bažnyčios dalis, tarnaujanti Žemaitijos ir Aukštaitijos sandūroje. Čia rasite vyskupo ganytojiškus laiškus, dekanatų naujienas, jaunimo ir šeimos centro programas bei piligriminių kelionių maršrutus. Kviečiame dalyvauti vyskupijos gyvenime — nuo atlaidų iki karitatyvinės tarnystės.",
               "en": "The Diocese of Šiauliai serves at the crossroads of Samogitia and Aukštaitija. Here you will find pastoral letters, deanery news, youth and family programmes, and pilgrimage routes. We invite you to take part in the life of the diocese — from patronal feasts to charitable service."
@@ -54,11 +90,32 @@
           },
           {
             "type": "cta",
-            "heading": { "lt": "Raskite savo parapiją", "en": "Find your parish" },
+            "heading": {
+              "lt": "Raskite savo parapiją",
+              "en": "Find your parish"
+            },
             "links": [
-              { "label": { "lt": "Dekanatai", "en": "Deaneries" }, "href": "/dekanatai" },
-              { "label": { "lt": "Vyskupas", "en": "The Bishop" }, "href": "/vyskupas" },
-              { "label": { "lt": "Kontaktai", "en": "Contacts" }, "href": "/kontaktai" }
+              {
+                "label": {
+                  "lt": "Dekanatai",
+                  "en": "Deaneries"
+                },
+                "href": "/dekanatai"
+              },
+              {
+                "label": {
+                  "lt": "Vyskupas",
+                  "en": "The Bishop"
+                },
+                "href": "/vyskupas"
+              },
+              {
+                "label": {
+                  "lt": "Kontaktai",
+                  "en": "Contacts"
+                },
+                "href": "/kontaktai"
+              }
             ]
           }
         ],
@@ -68,28 +125,43 @@
       },
       {
         "route": "/dekanatai",
-        "title": { "lt": "Dekanatai", "en": "Deaneries" },
+        "title": {
+          "lt": "Dekanatai",
+          "en": "Deaneries"
+        },
         "contentBlocks": [
           {
             "type": "list",
-            "heading": { "lt": "Vyskupijos dekanatai", "en": "Deaneries of the diocese" },
+            "heading": {
+              "lt": "Vyskupijos dekanatai",
+              "en": "Deaneries of the diocese"
+            },
             "items": [
               {
-                "title": { "lt": "Šiaulių dekanatas", "en": "Šiauliai Deanery" },
+                "title": {
+                  "lt": "Šiaulių dekanatas",
+                  "en": "Šiauliai Deanery"
+                },
                 "subtitle": {
                   "lt": "Šiaulių miesto ir apylinkių parapijos",
                   "en": "Parishes of Šiauliai city and surroundings"
                 }
               },
               {
-                "title": { "lt": "Telšių dekanatas", "en": "Telšiai Deanery" },
+                "title": {
+                  "lt": "Telšių dekanatas",
+                  "en": "Telšiai Deanery"
+                },
                 "subtitle": {
                   "lt": "Žemaitijos širdies parapijos",
                   "en": "Parishes of the Samogitian heartland"
                 }
               },
               {
-                "title": { "lt": "Jonaičio dekanatas", "en": "Jonaitis Deanery" },
+                "title": {
+                  "lt": "Jonaičio dekanatas",
+                  "en": "Jonaitis Deanery"
+                },
                 "subtitle": {
                   "lt": "Rytų vyskupijos parapijos",
                   "en": "Parishes of the eastern deanery"
@@ -111,11 +183,17 @@
       },
       {
         "route": "/vyskupas",
-        "title": { "lt": "Vyskupas", "en": "The Bishop" },
+        "title": {
+          "lt": "Vyskupas",
+          "en": "The Bishop"
+        },
         "contentBlocks": [
           {
             "type": "text",
-            "heading": { "lt": "Ganytojiškas laiškas", "en": "Pastoral letter" },
+            "heading": {
+              "lt": "Ganytojiškas laiškas",
+              "en": "Pastoral letter"
+            },
             "body": {
               "lt": "Broliškai sveikinu visus vyskupijos tikinčiuosius. Šie metai kviečia mus atsinaujinti maldoje, bendrystėje ir tarnystėje vargstantiems. Tegul kiekviena parapija tampa svetingumo ir vilties namais.",
               "en": "I greet all the faithful of the diocese as brothers and sisters. This year invites us to renew ourselves in prayer, communion and service to those in need. May every parish become a home of hospitality and hope."
@@ -123,15 +201,30 @@
           },
           {
             "type": "keyValue",
-            "heading": { "lt": "Vyskupijos kurija", "en": "Diocesan curia" },
+            "heading": {
+              "lt": "Vyskupijos kurija",
+              "en": "Diocesan curia"
+            },
             "items": [
               {
-                "label": { "lt": "Adresas", "en": "Address" },
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Address"
+                },
                 "value": "Aušros al. 42, 76283 Šiauliai"
               },
-              { "label": { "lt": "Raštinė", "en": "Chancery" }, "value": "+370 41 52 20 01" },
               {
-                "label": { "lt": "Priėmimo laikas", "en": "Office hours" },
+                "label": {
+                  "lt": "Raštinė",
+                  "en": "Chancery"
+                },
+                "value": "+370 41 52 20 01"
+              },
+              {
+                "label": {
+                  "lt": "Priėmimo laikas",
+                  "en": "Office hours"
+                },
                 "value": "I–V 9:00–16:00"
               }
             ]
@@ -143,30 +236,57 @@
       },
       {
         "route": "/kontaktai",
-        "title": { "lt": "Kontaktai", "en": "Contacts" },
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Contacts"
+        },
         "contentBlocks": [
           {
             "type": "keyValue",
-            "heading": { "lt": "Susisiekite su kurija", "en": "Contact the curia" },
+            "heading": {
+              "lt": "Susisiekite su kurija",
+              "en": "Contact the curia"
+            },
             "items": [
               {
-                "label": { "lt": "Adresas", "en": "Address" },
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Address"
+                },
                 "value": "Aušros al. 42, 76283 Šiauliai, Lietuva"
               },
-              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 41 52 20 01" },
               {
-                "label": { "lt": "El. paštas", "en": "Email" },
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Phone"
+                },
+                "value": "+370 41 52 20 01"
+              },
+              {
+                "label": {
+                  "lt": "El. paštas",
+                  "en": "Email"
+                },
                 "value": "info@siauliuvyskupija-demo.lt"
               },
               {
-                "label": { "lt": "Darbo laikas", "en": "Office hours" },
+                "label": {
+                  "lt": "Darbo laikas",
+                  "en": "Office hours"
+                },
                 "value": "Pirmadienis–penktadienis 9:00–16:00"
               }
             ]
           }
         ]
       }
-    ]
+    ],
+    "governance": {
+      "sourceUrl": "https://www.gyvenimo-kelias.lt/tenants/siauliai-diocese",
+      "verifiedDate": "2026-09-01",
+      "approvalStatus": "approved",
+      "nextReviewDate": "2027-06-01"
+    }
   },
   {
     "slug": "siauliai-church",
@@ -193,7 +313,10 @@
     "pages": [
       {
         "route": "/",
-        "title": { "lt": "Pradžia", "en": "Home" },
+        "title": {
+          "lt": "Pradžia",
+          "en": "Home"
+        },
         "contentBlocks": [
           {
             "type": "hero",
@@ -208,22 +331,31 @@
           },
           {
             "type": "schedule",
-            "heading": { "lt": "Šv. Mišių tvarkaraštis", "en": "Holy Mass schedule" },
+            "heading": {
+              "lt": "Šv. Mišių tvarkaraštis",
+              "en": "Holy Mass schedule"
+            },
             "entries": [
               {
-                "day": "Sekmadienis",
-                "dayEn": "Sunday",
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sunday"
+                },
                 "times": ["8:00", "10:00", "12:00", "18:00"],
                 "notes": "12:00 — Šeimų Mišios su vaikų liturgija"
               },
               {
-                "day": "Šiokiadienis",
-                "dayEn": "Weekdays",
+                "day": {
+                  "lt": "Šiokiadienis",
+                  "en": "Weekdays"
+                },
                 "times": ["7:30", "18:00"]
               },
               {
-                "day": "Šeštadienis",
-                "dayEn": "Saturday",
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Saturday"
+                },
                 "times": ["9:00", "18:00"],
                 "notes": "18:00 — sekmadienio Mišios iš vakaro"
               }
@@ -236,9 +368,27 @@
               "en": "Take part in cathedral life"
             },
             "links": [
-              { "label": { "lt": "Renginiai", "en": "Events" }, "href": "/renginiai" },
-              { "label": { "lt": "Paaukoti", "en": "Donate" }, "href": "/aukos" },
-              { "label": { "lt": "Paveldas", "en": "Heritage" }, "href": "/paveldas" }
+              {
+                "label": {
+                  "lt": "Renginiai",
+                  "en": "Events"
+                },
+                "href": "/renginiai"
+              },
+              {
+                "label": {
+                  "lt": "Paaukoti",
+                  "en": "Donate"
+                },
+                "href": "/aukos"
+              },
+              {
+                "label": {
+                  "lt": "Paveldas",
+                  "en": "Heritage"
+                },
+                "href": "/paveldas"
+              }
             ]
           }
         ],
@@ -248,14 +398,23 @@
       },
       {
         "route": "/renginiai",
-        "title": { "lt": "Renginiai", "en": "Events" },
+        "title": {
+          "lt": "Renginiai",
+          "en": "Events"
+        },
         "contentBlocks": [
           {
             "type": "list",
-            "heading": { "lt": "Artimiausi renginiai", "en": "Upcoming events" },
+            "heading": {
+              "lt": "Artimiausi renginiai",
+              "en": "Upcoming events"
+            },
             "items": [
               {
-                "title": { "lt": "Vargonų muzikos vakaras", "en": "Organ music evening" },
+                "title": {
+                  "lt": "Vargonų muzikos vakaras",
+                  "en": "Organ music evening"
+                },
                 "subtitle": {
                   "lt": "Penktadienis, 19:00 — įėjimas laisvas",
                   "en": "Friday, 19:00 — free entry"
@@ -266,16 +425,28 @@
                 }
               },
               {
-                "title": { "lt": "Šeimų sekmadienis", "en": "Family Sunday" },
-                "subtitle": { "lt": "Sekmadienis, 12:00", "en": "Sunday, 12:00" },
+                "title": {
+                  "lt": "Šeimų sekmadienis",
+                  "en": "Family Sunday"
+                },
+                "subtitle": {
+                  "lt": "Sekmadienis, 12:00",
+                  "en": "Sunday, 12:00"
+                },
                 "description": {
                   "lt": "Mišios su vaikų liturgija ir bendryste po pamaldų.",
                   "en": "Mass with children's liturgy and fellowship afterwards."
                 }
               },
               {
-                "title": { "lt": "Adoracija", "en": "Adoration" },
-                "subtitle": { "lt": "Ketvirtadienis, 17:00–18:00", "en": "Thursday, 17:00–18:00" }
+                "title": {
+                  "lt": "Adoracija",
+                  "en": "Adoration"
+                },
+                "subtitle": {
+                  "lt": "Ketvirtadienis, 17:00–18:00",
+                  "en": "Thursday, 17:00–18:00"
+                }
               }
             ]
           }
@@ -286,7 +457,10 @@
       },
       {
         "route": "/aukos",
-        "title": { "lt": "Paaukoti", "en": "Donate" },
+        "title": {
+          "lt": "Paaukoti",
+          "en": "Donate"
+        },
         "contentBlocks": [
           {
             "type": "text",
@@ -301,18 +475,30 @@
           },
           {
             "type": "keyValue",
-            "heading": { "lt": "Paramos būdai", "en": "Ways to give" },
+            "heading": {
+              "lt": "Paramos būdai",
+              "en": "Ways to give"
+            },
             "items": [
               {
-                "label": { "lt": "Elektroninė auka", "en": "Online giving" },
+                "label": {
+                  "lt": "Elektroninė auka",
+                  "en": "Online giving"
+                },
                 "value": "Aktyvuojama su mokėjimų posisteme (ADR-007)"
               },
               {
-                "label": { "lt": "Raštinėje", "en": "At the chancery" },
+                "label": {
+                  "lt": "Raštinėje",
+                  "en": "At the chancery"
+                },
                 "value": "I–V 9:00–16:00"
               },
               {
-                "label": { "lt": "Pavedimu", "en": "Bank transfer" },
+                "label": {
+                  "lt": "Pavedimu",
+                  "en": "Bank transfer"
+                },
                 "value": "Rekvizitai — raštinėje"
               }
             ]
@@ -324,11 +510,17 @@
       },
       {
         "route": "/paveldas",
-        "title": { "lt": "Paveldas", "en": "Heritage" },
+        "title": {
+          "lt": "Paveldas",
+          "en": "Heritage"
+        },
         "contentBlocks": [
           {
             "type": "text",
-            "heading": { "lt": "Istorija", "en": "History" },
+            "heading": {
+              "lt": "Istorija",
+              "en": "History"
+            },
             "body": {
               "lt": "Pirmoji bažnyčia Šiauliuose pastatyta 1634 m. Dabartinė barokinė šventovė su masyviais bokštais yra miesto simbolis ir vyskupijos motina. Katedros vargonai, freskos ir altoriai yra saugomi kultūros paveldo objektai.",
               "en": "The first church in Šiauliai was built in 1634. The present baroque sanctuary with its massive towers is the symbol of the city and the mother church of the diocese. The cathedral organ, frescoes and altars are protected heritage objects."
@@ -339,7 +531,13 @@
           "description": "Šiaulių katedros istorija nuo 1634 m. — baroko architektūra, vargonai, freskos ir paveldo apsauga."
         }
       }
-    ]
+    ],
+    "governance": {
+      "sourceUrl": "https://www.gyvenimo-kelias.lt/tenants/siauliai-church",
+      "verifiedDate": "2026-09-01",
+      "approvalStatus": "approved",
+      "nextReviewDate": "2027-06-01"
+    }
   },
   {
     "slug": "siauliai-funeral",
@@ -365,7 +563,10 @@
     "pages": [
       {
         "route": "/",
-        "title": { "lt": "Pradžia", "en": "Home" },
+        "title": {
+          "lt": "Pradžia",
+          "en": "Home"
+        },
         "contentBlocks": [
           {
             "type": "hero",
@@ -393,11 +594,17 @@
             },
             "links": [
               {
-                "label": { "lt": "Skambinti: +370 41 52 30 03", "en": "Call: +370 41 52 30 03" },
+                "label": {
+                  "lt": "Skambinti: +370 41 52 30 03",
+                  "en": "Call: +370 41 52 30 03"
+                },
                 "href": "/kontaktai"
               },
               {
-                "label": { "lt": "Rezervuoti konsultaciją", "en": "Book a consultation" },
+                "label": {
+                  "lt": "Rezervuoti konsultaciją",
+                  "en": "Book a consultation"
+                },
                 "href": "/paslaugos"
               }
             ]
@@ -409,11 +616,17 @@
       },
       {
         "route": "/paslaugos",
-        "title": { "lt": "Paslaugos ir kainos", "en": "Services and prices" },
+        "title": {
+          "lt": "Paslaugos ir kainos",
+          "en": "Services and prices"
+        },
         "contentBlocks": [
           {
             "type": "list",
-            "heading": { "lt": "Paslaugos", "en": "Services" },
+            "heading": {
+              "lt": "Paslaugos",
+              "en": "Services"
+            },
             "items": [
               {
                 "title": {
@@ -427,7 +640,10 @@
                 "price": 1950
               },
               {
-                "title": { "lt": "Kremavimo organizavimas", "en": "Cremation arrangement" },
+                "title": {
+                  "lt": "Kremavimo organizavimas",
+                  "en": "Cremation arrangement"
+                },
                 "description": {
                   "lt": "Kremavimas, urna, palydėjimas ir urnos įteikimas šeimai.",
                   "en": "Cremation, urn, escort and handing the urn to the family."
@@ -435,13 +651,25 @@
                 "price": 1450
               },
               {
-                "title": { "lt": "Atsisveikinimo salės nuoma", "en": "Farewell hall rental" },
-                "subtitle": { "lt": "3 val. su personalu", "en": "3 hours with staff" },
+                "title": {
+                  "lt": "Atsisveikinimo salės nuoma",
+                  "en": "Farewell hall rental"
+                },
+                "subtitle": {
+                  "lt": "3 val. su personalu",
+                  "en": "3 hours with staff"
+                },
                 "price": 180
               },
               {
-                "title": { "lt": "Kaplų ir paminklų tvarkymas", "en": "Grave and monument care" },
-                "subtitle": { "lt": "Pagal atskirą sutartį", "en": "By separate agreement" }
+                "title": {
+                  "lt": "Kaplų ir paminklų tvarkymas",
+                  "en": "Grave and monument care"
+                },
+                "subtitle": {
+                  "lt": "Pagal atskirą sutartį",
+                  "en": "By separate agreement"
+                }
               }
             ]
           }
@@ -452,11 +680,17 @@
       },
       {
         "route": "/nekrologai",
-        "title": { "lt": "Nekrologai", "en": "Obituaries" },
+        "title": {
+          "lt": "Nekrologai",
+          "en": "Obituaries"
+        },
         "contentBlocks": [
           {
             "type": "text",
-            "heading": { "lt": "Atsisveikiname", "en": "In remembrance" },
+            "heading": {
+              "lt": "Atsisveikiname",
+              "en": "In remembrance"
+            },
             "body": {
               "lt": "Nekrologų skiltis aktyvuojama su turinio posisteme. Šeimos gali pateikti atsisveikinimo tekstą ir nuotrauką — publikuojame tik gavus rašytinį sutikimą (BDAR 9 str.).",
               "en": "The obituary section activates with the content plane. Families may submit farewell texts and a photograph — published only with written consent (GDPR Art. 9)."
@@ -469,30 +703,57 @@
       },
       {
         "route": "/kontaktai",
-        "title": { "lt": "Kontaktai", "en": "Contacts" },
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Contacts"
+        },
         "contentBlocks": [
           {
             "type": "keyValue",
-            "heading": { "lt": "Visą parą", "en": "Around the clock" },
+            "heading": {
+              "lt": "Visą parą",
+              "en": "Around the clock"
+            },
             "items": [
               {
-                "label": { "lt": "Skubus telefonas", "en": "Urgent phone" },
+                "label": {
+                  "lt": "Skubus telefonas",
+                  "en": "Urgent phone"
+                },
                 "value": "+370 41 52 30 03"
               },
               {
-                "label": { "lt": "Adresas", "en": "Address" },
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Address"
+                },
                 "value": "Pramonės g. 15, 76103 Šiauliai"
               },
-              { "label": { "lt": "El. paštas", "en": "Email" }, "value": "info@rimtis-demo.lt" },
               {
-                "label": { "lt": "Darbo laikas", "en": "Office hours" },
+                "label": {
+                  "lt": "El. paštas",
+                  "en": "Email"
+                },
+                "value": "info@rimtis-demo.lt"
+              },
+              {
+                "label": {
+                  "lt": "Darbo laikas",
+                  "en": "Office hours"
+                },
                 "value": "I–VI 8:00–20:00, skubus iškvietimas — 24/7"
               }
             ]
           }
         ]
       }
-    ]
+    ],
+    "governance": {
+      "sourceUrl": "https://www.gyvenimo-kelias.lt/tenants/siauliai-funeral",
+      "verifiedDate": "2026-09-01",
+      "approvalStatus": "approved",
+      "nextReviewDate": "2027-06-01"
+    }
   },
   {
     "slug": "siauliai-cleaning",
@@ -518,7 +779,10 @@
     "pages": [
       {
         "route": "/",
-        "title": { "lt": "Pradžia", "en": "Home" },
+        "title": {
+          "lt": "Pradžia",
+          "en": "Home"
+        },
         "contentBlocks": [
           {
             "type": "hero",
@@ -542,22 +806,46 @@
           },
           {
             "type": "stats",
-            "heading": { "lt": "Mūsų darbas", "en": "Our work" },
+            "heading": {
+              "lt": "Mūsų darbas",
+              "en": "Our work"
+            },
             "items": [
               {
-                "label": { "lt": "Prižiūrimų kapaviečių", "en": "Graves maintained" },
+                "label": {
+                  "lt": "Prižiūrimų kapaviečių",
+                  "en": "Graves maintained"
+                },
                 "value": 640
               },
-              { "label": { "lt": "Metų patirtis", "en": "Years of experience" }, "value": 10 },
-              { "label": { "lt": "Aptarnaujamos kapinės", "en": "Cemeteries served" }, "value": 4 }
+              {
+                "label": {
+                  "lt": "Metų patirtis",
+                  "en": "Years of experience"
+                },
+                "value": 10
+              },
+              {
+                "label": {
+                  "lt": "Aptarnaujamos kapinės",
+                  "en": "Cemeteries served"
+                },
+                "value": 4
+              }
             ]
           },
           {
             "type": "list",
-            "heading": { "lt": "Populiariausi planai", "en": "Most popular plans" },
+            "heading": {
+              "lt": "Populiariausi planai",
+              "en": "Most popular plans"
+            },
             "items": [
               {
-                "title": { "lt": "Vienkartinis tvarkymas", "en": "One-time care" },
+                "title": {
+                  "lt": "Vienkartinis tvarkymas",
+                  "en": "One-time care"
+                },
                 "description": {
                   "lt": "Nuvalymas, želdinių priežiūra, žvakių padėjimas prieš šventę.",
                   "en": "Cleaning, plant care and candle placement before a feast day."
@@ -566,7 +854,10 @@
                 "tags": ["prieš Vėlines"]
               },
               {
-                "title": { "lt": "Mėnesinė priežiūra", "en": "Monthly care" },
+                "title": {
+                  "lt": "Mėnesinė priežiūra",
+                  "en": "Monthly care"
+                },
                 "description": {
                   "lt": "Reguliarus lankymas, ataskaita su nuotrauka po kiekvieno vizito.",
                   "en": "Regular visits with a photo report after each one."
@@ -575,7 +866,10 @@
                 "tags": ["foto ataskaita"]
               },
               {
-                "title": { "lt": "Metinis planas", "en": "Annual plan" },
+                "title": {
+                  "lt": "Metinis planas",
+                  "en": "Annual plan"
+                },
                 "description": {
                   "lt": "12 vizitų, sezoninis dekoravimas, Vėlinių ir Motinos dienos puošyba.",
                   "en": "12 visits, seasonal decoration, All Saints' and Mother's Day styling."
@@ -587,7 +881,10 @@
           },
           {
             "type": "text",
-            "heading": { "lt": "Kodėl pasitiki mumis", "en": "Why families trust us" },
+            "heading": {
+              "lt": "Kodėl pasitiki mumis",
+              "en": "Why families trust us"
+            },
             "body": {
               "lt": "Kiekvieną vizitą užfiksuojame nuotrauka ir trumpa ataskaita el. paštu — artimieji mato rezultatą iš bet kur. Dirbame su švelniomis, akmeniui ir žalumynams saugiomis priemonėmis, o kainos sutartyje fiksuotos visam sezonui.",
               "en": "Every visit is documented with a photo and a short email report — relatives see the result from anywhere. We use gentle, stone- and plant-safe products, and contract prices stay fixed for the whole season."
@@ -595,13 +892,25 @@
           },
           {
             "type": "cta",
-            "heading": { "lt": "Užsakykite priežiūrą internetu", "en": "Book care online" },
+            "heading": {
+              "lt": "Užsakykite priežiūrą internetu",
+              "en": "Book care online"
+            },
             "links": [
               {
-                "label": { "lt": "Paslaugos ir kainos", "en": "Services and prices" },
+                "label": {
+                  "lt": "Paslaugos ir kainos",
+                  "en": "Services and prices"
+                },
                 "href": "/paslaugos"
               },
-              { "label": { "lt": "Rezervuoti vizitą", "en": "Book a visit" }, "href": "/kontaktai" }
+              {
+                "label": {
+                  "lt": "Rezervuoti vizitą",
+                  "en": "Book a visit"
+                },
+                "href": "/kontaktai"
+              }
             ]
           }
         ],
@@ -611,14 +920,23 @@
       },
       {
         "route": "/paslaugos",
-        "title": { "lt": "Paslaugos ir kainos", "en": "Services and prices" },
+        "title": {
+          "lt": "Paslaugos ir kainos",
+          "en": "Services and prices"
+        },
         "contentBlocks": [
           {
             "type": "list",
-            "heading": { "lt": "Priežiūros planai", "en": "Care plans" },
+            "heading": {
+              "lt": "Priežiūros planai",
+              "en": "Care plans"
+            },
             "items": [
               {
-                "title": { "lt": "Vienkartinis tvarkymas", "en": "One-time care" },
+                "title": {
+                  "lt": "Vienkartinis tvarkymas",
+                  "en": "One-time care"
+                },
                 "description": {
                   "lt": "Nuvalymas, želdinių priežiūra, žvakių padėjimas prieš šventę.",
                   "en": "Cleaning, plant care and candle placement before a feast day."
@@ -626,7 +944,10 @@
                 "price": 35
               },
               {
-                "title": { "lt": "Mėnesinė priežiūra", "en": "Monthly care" },
+                "title": {
+                  "lt": "Mėnesinė priežiūra",
+                  "en": "Monthly care"
+                },
                 "description": {
                   "lt": "Reguliarus lankymas, ataskaita su nuotrauka po kiekvieno vizito.",
                   "en": "Regular visits with a photo report after each one."
@@ -634,7 +955,10 @@
                 "price": 25
               },
               {
-                "title": { "lt": "Metinis planas", "en": "Annual plan" },
+                "title": {
+                  "lt": "Metinis planas",
+                  "en": "Annual plan"
+                },
                 "description": {
                   "lt": "12 vizitų, sezoninis dekoravimas, Vėlinių ir Motinos dienos puošyba.",
                   "en": "12 visits, seasonal decoration, All Saints' and Mother's Day styling."
@@ -642,7 +966,10 @@
                 "price": 240
               },
               {
-                "title": { "lt": "Paminklo plovimas", "en": "Monument washing" },
+                "title": {
+                  "lt": "Paminklo plovimas",
+                  "en": "Monument washing"
+                },
                 "subtitle": {
                   "lt": "Švelnios, akmeniui saugios priemonės",
                   "en": "Gentle, stone-safe products"
@@ -658,19 +985,37 @@
       },
       {
         "route": "/kontaktai",
-        "title": { "lt": "Kontaktai ir rezervacija", "en": "Contacts and booking" },
+        "title": {
+          "lt": "Kontaktai ir rezervacija",
+          "en": "Contacts and booking"
+        },
         "contentBlocks": [
           {
             "type": "keyValue",
-            "heading": { "lt": "Susisiekite", "en": "Get in touch" },
+            "heading": {
+              "lt": "Susisiekite",
+              "en": "Get in touch"
+            },
             "items": [
-              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 41 52 40 04" },
               {
-                "label": { "lt": "El. paštas", "en": "Email" },
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Phone"
+                },
+                "value": "+370 41 52 40 04"
+              },
+              {
+                "label": {
+                  "lt": "El. paštas",
+                  "en": "Email"
+                },
                 "value": "info@kapiniuprieziura-demo.lt"
               },
               {
-                "label": { "lt": "Darbo laikas", "en": "Working hours" },
+                "label": {
+                  "lt": "Darbo laikas",
+                  "en": "Working hours"
+                },
                 "value": "I–V 8:00–17:00, šeštadieniais — pagal susitarimą"
               }
             ]
@@ -684,7 +1029,13 @@
           }
         ]
       }
-    ]
+    ],
+    "governance": {
+      "sourceUrl": "https://www.gyvenimo-kelias.lt/tenants/siauliai-cleaning",
+      "verifiedDate": "2026-09-01",
+      "approvalStatus": "approved",
+      "nextReviewDate": "2027-06-01"
+    }
   },
   {
     "slug": "kraziai-church",
@@ -711,7 +1062,10 @@
     "pages": [
       {
         "route": "/",
-        "title": { "lt": "Pradžia", "en": "Home" },
+        "title": {
+          "lt": "Pradžia",
+          "en": "Home"
+        },
         "contentBlocks": [
           {
             "type": "hero",
@@ -726,23 +1080,33 @@
           },
           {
             "type": "schedule",
-            "heading": { "lt": "Pamaldų laikai", "en": "Service times" },
+            "heading": {
+              "lt": "Pamaldų laikai",
+              "en": "Service times"
+            },
             "entries": [
               {
-                "day": "Sekmadienis",
-                "dayEn": "Sunday",
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sunday"
+                },
                 "times": ["9:00", "11:30"]
               },
               {
-                "day": "Trečiadienis, penktadienis",
-                "dayEn": "Wednesday, Friday",
+                "day": {
+                  "lt": "Trečiadienis, penktadienis",
+                  "en": "Wednesday, Friday"
+                },
                 "times": ["18:00"]
               }
             ]
           },
           {
             "type": "text",
-            "heading": { "lt": "Parapijos gyvenimas", "en": "Parish life" },
+            "heading": {
+              "lt": "Parapijos gyvenimas",
+              "en": "Parish life"
+            },
             "body": {
               "lt": "Esame nedidelė, bet gyva bendruomenė: vaikų katechezė, jaunimo choras, Senelių dienos pietūs ir kasmetiniai Šv. Rokaus atlaidai. Naujus parapijiečius pasitinkame su džiaugsmu — užsukite po Mišių pasikalbėti prie arbatos.",
               "en": "We are a small but lively community: children's catechesis, a youth choir, seniors' lunches and the annual patronal feast. We welcome new parishioners with joy — stay for tea after Mass."
@@ -755,29 +1119,56 @@
       },
       {
         "route": "/kontaktai",
-        "title": { "lt": "Kontaktai", "en": "Contacts" },
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Contacts"
+        },
         "contentBlocks": [
           {
             "type": "keyValue",
-            "heading": { "lt": "Parapijos raštinė", "en": "Parish office" },
+            "heading": {
+              "lt": "Parapijos raštinė",
+              "en": "Parish office"
+            },
             "items": [
               {
-                "label": { "lt": "Adresas", "en": "Address" },
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Address"
+                },
                 "value": "Bažnyčios g. 3, 86142 Kražiai"
               },
-              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 26 10 05" },
               {
-                "label": { "lt": "El. paštas", "en": "Email" },
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Phone"
+                },
+                "value": "+370 42 26 10 05"
+              },
+              {
+                "label": {
+                  "lt": "El. paštas",
+                  "en": "Email"
+                },
                 "value": "parapija@kraziai-demo.lt"
               },
               {
-                "label": { "lt": "Raštinės laikas", "en": "Office hours" },
+                "label": {
+                  "lt": "Raštinės laikas",
+                  "en": "Office hours"
+                },
                 "value": "Po sekmadienio Mišių ir trečiadieniais 16:00–18:00"
               }
             ]
           }
         ]
       }
-    ]
+    ],
+    "governance": {
+      "sourceUrl": "https://www.gyvenimo-kelias.lt/tenants/kraziai-church",
+      "verifiedDate": "2026-09-01",
+      "approvalStatus": "approved",
+      "nextReviewDate": "2027-06-01"
+    }
   }
 ]

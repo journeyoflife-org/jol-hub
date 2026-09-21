@@ -196,7 +196,7 @@ describe('slug extraction helpers', () => {
 });
 
 describe('registry integrity (Wave-1 pilot)', () => {
-  it('holds the 21 Wave-1 tenants plus the 12 seed fixtures', () => {
+  it('holds all Wave-1 pilots plus seed fixture tenants', () => {
     const wave1 = TENANTS.filter((tenant) => tenant.createdAt === '2026-08-25T00:00:00.000Z');
     assert.ok(wave1.length >= 21, `expected >= 21 Wave-1 tenants, got ${wave1.length}`);
     assert.ok(TENANTS.length >= 33, `expected >= 33 total tenants, got ${TENANTS.length}`);

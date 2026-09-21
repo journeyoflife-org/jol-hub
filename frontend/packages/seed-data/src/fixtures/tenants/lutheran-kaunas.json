@@ -53,26 +53,34 @@
           },
           "entries": [
             {
-              "day": "Sekmadienis",
-              "dayEn": "Sunday",
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sunday"
+              },
               "times": ["10:00"],
               "notes": "Pagrindinės pamaldos su Šv. Vakariene"
             },
             {
-              "day": "Sekmadienis",
-              "dayEn": "Sunday",
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sunday"
+              },
               "times": ["18:00"],
               "notes": "Vakarinės pamaldos"
             },
             {
-              "day": "Trečiadienis",
-              "dayEn": "Wednesday",
+              "day": {
+                "lt": "Trečiadienis",
+                "en": "Wednesday"
+              },
               "times": ["18:30"],
               "notes": "Biblijos studijos"
             },
             {
-              "day": "Pirmasis mėnesio sekmadienis",
-              "dayEn": "First Sunday of month",
+              "day": {
+                "lt": "Pirmasis mėnesio sekmadienis",
+                "en": "First Sunday of month"
+              },
               "times": ["10:00"],
               "notes": "Ypatingos pamaldos"
             }
@@ -260,5 +268,11 @@
         }
       ]
     }
-  ]
+  ],
+  "governance": {
+    "sourceUrl": "https://www.liuteronai.lt",
+    "verifiedDate": "2026-09-01",
+    "approvalStatus": "approved",
+    "nextReviewDate": "2027-06-01"
+  }
 }

@@ -512,5 +512,11 @@
         }
       ]
     }
-  ]
+  ],
+  "governance": {
+    "sourceUrl": "https://www.vilniauskapines.lt",
+    "verifiedDate": "2026-09-01",
+    "approvalStatus": "approved",
+    "nextReviewDate": "2027-03-01"
+  }
 }

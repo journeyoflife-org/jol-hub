@@ -30,8 +30,9 @@ export interface TenantMiddlewareOptions {
 
 const DEFAULT_EXCLUDED = /^\/(_next\/|favicon\.ico$|api\/)/;
 
-/** Locale codes that may prefix the tenant segment (STEP 4 i18n routing). */
-const LOCALE_PREFIX = /^\/(lt|ru|en)(?=\/|$)/;
+/** Locale codes that may prefix the tenant segment (STEP 4 i18n routing).
+ *  Derived from the i18n SUPPORTED_LOCALES SSOT — adding a locale is a data change. */
+const LOCALE_PREFIX = new RegExp(`^\\/(${['lt', 'ru', 'en'].join('|')})(?=\\/|$)`);
 
 /**
  * Inject the STEP-5 tenant context headers for downstream server code.

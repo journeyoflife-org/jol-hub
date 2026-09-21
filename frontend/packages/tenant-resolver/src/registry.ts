@@ -50,7 +50,7 @@ function makeTenant(spec: PilotSpec): Tenant {
 }
 
 /* ------------------------------------------------------------------------ */
-/* Wave 1 — Šiauliai region pilot (21 tenants)                              */
+/* Wave 1 — Šiauliai region pilot (count: WAVE1_PILOTS.length)                */
 /* ------------------------------------------------------------------------ */
 
 const WAVE1_PILOTS: PilotSpec[] = [
@@ -299,7 +299,7 @@ const WAVE1_PILOTS: PilotSpec[] = [
 ];
 
 /* ------------------------------------------------------------------------ */
-/* Derived entries — the 12 seed-data fixture tenants                       */
+/* Derived entries — seed-data fixture tenants (count: tenantFixtures.length) */
 /* ------------------------------------------------------------------------ */
 
 /** Tier heuristic for fixture-era tenants (documented, admin-correctable). */
@@ -320,6 +320,7 @@ const FIXTURE_DERIVED: Tenant[] = tenantFixtures
       name: { lt: string; en?: string };
       vertical: string;
       locale: string;
+      identity?: { domain?: string };
     }) => {
       const tier = fixtureTier(fixture.vertical);
       return {
@@ -330,7 +331,7 @@ const FIXTURE_DERIVED: Tenant[] = tenantFixtures
         schema: schemaForTenant(fixture.slug),
         locale: fixture.locale,
         packageTier: tier,
-        domain: null,
+        domain: fixture.identity?.domain ?? null, // Wave 0: populate from fixture identity
         features: FEATURES_BY_TIER[tier],
         settings: {},
         createdAt: WAVE1_CREATED,

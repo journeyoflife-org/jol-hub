@@ -23,7 +23,10 @@
   "pages": [
     {
       "route": "/",
-      "title": { "lt": "Pradžia", "en": "Home" },
+      "title": {
+        "lt": "Pradžia",
+        "en": "Home"
+      },
       "contentBlocks": [
         {
           "type": "hero",
@@ -38,17 +41,24 @@
         },
         {
           "type": "schedule",
-          "heading": { "lt": "Mišių tvarkaraštis", "en": "Mass Schedule" },
+          "heading": {
+            "lt": "Mišių tvarkaraštis",
+            "en": "Mass Schedule"
+          },
           "entries": [
             {
-              "day": "Kasdien",
-              "dayEn": "Daily",
+              "day": {
+                "lt": "Kasdien",
+                "en": "Daily"
+              },
               "times": ["07:00"],
               "notes": "Dalyvaujant visai bendruomenei"
             },
             {
-              "day": "Sekmadienis",
-              "dayEn": "Sunday",
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sunday"
+              },
               "times": ["07:00", "10:00"],
               "notes": "10:00 - už parapijiečius ir svečius"
             }
@@ -56,46 +66,114 @@
         },
         {
           "type": "list",
-          "heading": { "lt": "Vienuolių dienos tvarka", "en": "Monastic Daily Schedule" },
+          "heading": {
+            "lt": "Vienuolių dienos tvarka",
+            "en": "Monastic Daily Schedule"
+          },
           "items": [
-            { "title": { "lt": "Budynės (Vigils)" }, "subtitle": { "lt": "05:30 · Koplyčia" } },
             {
-              "title": { "lt": "Rytmetinė malda (Lauds)" },
-              "subtitle": { "lt": "06:30 · Koplyčia" }
+              "title": {
+                "lt": "Budynės (Vigils)"
+              },
+              "subtitle": {
+                "lt": "05:30 · Koplyčia"
+              }
             },
             {
-              "title": { "lt": "Trečia valanda (Terce)" },
-              "subtitle": { "lt": "09:00 · Koplyčia" }
-            },
-            { "title": { "lt": "Šešta valanda (Sext)" }, "subtitle": { "lt": "12:00 · Koplyčia" } },
-            {
-              "title": { "lt": "Devinta valanda (None)" },
-              "subtitle": { "lt": "14:30 · Koplyčia" }
-            },
-            {
-              "title": { "lt": "Vakarinė malda (Vespers)" },
-              "subtitle": { "lt": "17:30 · Koplyčia" }
+              "title": {
+                "lt": "Rytmetinė malda (Lauds)"
+              },
+              "subtitle": {
+                "lt": "06:30 · Koplyčia"
+              }
             },
             {
-              "title": { "lt": "Naktinė malda (Compline)" },
-              "subtitle": { "lt": "19:30 · Koplyčia" }
+              "title": {
+                "lt": "Trečia valanda (Terce)"
+              },
+              "subtitle": {
+                "lt": "09:00 · Koplyčia"
+              }
+            },
+            {
+              "title": {
+                "lt": "Šešta valanda (Sext)"
+              },
+              "subtitle": {
+                "lt": "12:00 · Koplyčia"
+              }
+            },
+            {
+              "title": {
+                "lt": "Devinta valanda (None)"
+              },
+              "subtitle": {
+                "lt": "14:30 · Koplyčia"
+              }
+            },
+            {
+              "title": {
+                "lt": "Vakarinė malda (Vespers)"
+              },
+              "subtitle": {
+                "lt": "17:30 · Koplyčia"
+              }
+            },
+            {
+              "title": {
+                "lt": "Naktinė malda (Compline)"
+              },
+              "subtitle": {
+                "lt": "19:30 · Koplyčia"
+              }
             }
           ]
         },
         {
           "type": "keyValue",
-          "heading": { "lt": "Kontaktai ir vadovybė", "en": "Contact & Leadership" },
+          "heading": {
+            "lt": "Kontaktai ir vadovybė",
+            "en": "Contact & Leadership"
+          },
           "items": [
-            { "label": { "lt": "Adresas" }, "value": "Aušros Vartų g. 8, Vilnius" },
-            { "label": { "lt": "Telefonas" }, "value": "+370 5 262 1234" },
-            { "label": { "lt": "El. paštas" }, "value": "monasteris@vienuolynas.lt" },
-            { "label": { "lt": "Abatas" }, "value": "Abatas Tadas Kazlauskas (nuo 2015 m.)" },
-            { "label": { "lt": "Prioras" }, "value": "Tėvas Benediktas Petrauskas" }
+            {
+              "label": {
+                "lt": "Adresas"
+              },
+              "value": "Aušros Vartų g. 8, Vilnius"
+            },
+            {
+              "label": {
+                "lt": "Telefonas"
+              },
+              "value": "+370 5 262 1234"
+            },
+            {
+              "label": {
+                "lt": "El. paštas"
+              },
+              "value": "monasteris@vienuolynas.lt"
+            },
+            {
+              "label": {
+                "lt": "Abatas"
+              },
+              "value": "Abatas Tadas Kazlauskas (nuo 2015 m.)"
+            },
+            {
+              "label": {
+                "lt": "Prioras"
+              },
+              "value": "Tėvas Benediktas Petrauskas"
+            }
           ]
         },
         {
           "type": "text",
-          "heading": { "lt": "Svečių namai", "en": "Guest House" },
+          "heading": {
+            "lt": "Svečių namai",
+            "en": "Guest House"
+          },
           "body": {
             "lt": "8 kambariai svečiams, ieškantiems tylos ir maldos. 35 EUR už naktį su pusryčiais. Būtina išankstinė rezervacija. Rekolekcijų programos galimos.",
             "en": "8 rooms for guests seeking silence and prayer. 35 EUR per night with breakfast. Advance reservation required. Retreat programs available."
@@ -103,15 +181,44 @@
         },
         {
           "type": "stats",
-          "heading": { "lt": "Bendruomenė", "en": "Community" },
+          "heading": {
+            "lt": "Bendruomenė",
+            "en": "Community"
+          },
           "items": [
-            { "label": { "lt": "Bendruomenės narių" }, "value": 8 },
-            { "label": { "lt": "Oblatų" }, "value": 24 },
-            { "label": { "lt": "Rekolekcijų per metus" }, "value": 15 },
-            { "label": { "lt": "Svečių nakvynių per metus" }, "value": 350 }
+            {
+              "label": {
+                "lt": "Bendruomenės narių"
+              },
+              "value": 8
+            },
+            {
+              "label": {
+                "lt": "Oblatų"
+              },
+              "value": 24
+            },
+            {
+              "label": {
+                "lt": "Rekolekcijų per metus"
+              },
+              "value": 15
+            },
+            {
+              "label": {
+                "lt": "Svečių nakvynių per metus"
+              },
+              "value": 350
+            }
           ]
         }
       ]
     }
-  ]
+  ],
+  "governance": {
+    "sourceUrl": "https://www.vilniausvienuolynas.lt",
+    "verifiedDate": "2026-09-01",
+    "approvalStatus": "approved",
+    "nextReviewDate": "2027-06-01"
+  }
 }

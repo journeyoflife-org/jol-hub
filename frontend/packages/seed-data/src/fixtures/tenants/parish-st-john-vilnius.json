@@ -58,24 +58,32 @@
           },
           "entries": [
             {
-              "day": "Pirmadienis - Penktadienis",
-              "dayEn": "Monday - Friday",
+              "day": {
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Monday - Friday"
+              },
               "times": ["07:30", "18:30"]
             },
             {
-              "day": "Šeštadienis",
-              "dayEn": "Saturday",
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Saturday"
+              },
               "times": ["09:00", "18:00"]
             },
             {
-              "day": "Sekmadienis",
-              "dayEn": "Sunday",
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sunday"
+              },
               "times": ["09:00", "11:00", "18:00"],
               "notes": "11:00 - pagrindinės Šv. Mišios"
             },
             {
-              "day": "Šventinės dienos",
-              "dayEn": "Holy Days",
+              "day": {
+                "lt": "Šventinės dienos",
+                "en": "Holy Days"
+              },
               "times": ["07:30", "09:00", "11:00", "18:00"],
               "notes": "Patikslinkite tvarkaraštį šventėms"
             }
@@ -412,5 +420,11 @@
         }
       ]
     }
-  ]
+  ],
+  "governance": {
+    "sourceUrl": "https://www.jonobaznycia.lt",
+    "verifiedDate": "2026-09-01",
+    "approvalStatus": "approved",
+    "nextReviewDate": "2027-09-01"
+  }
 }

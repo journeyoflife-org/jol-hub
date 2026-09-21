@@ -367,5 +367,11 @@
         }
       ]
     }
-  ]
+  ],
+  "governance": {
+    "sourceUrl": "https://www.orthodox.lt",
+    "verifiedDate": "2026-09-01",
+    "approvalStatus": "approved",
+    "nextReviewDate": "2027-06-01"
+  }
 }

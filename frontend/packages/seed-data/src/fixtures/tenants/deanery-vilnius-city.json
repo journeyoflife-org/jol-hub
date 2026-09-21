@@ -264,5 +264,11 @@
         }
       ]
     }
-  ]
+  ],
+  "governance": {
+    "sourceUrl": "https://www.vilniausdekanatas.lt",
+    "verifiedDate": "2026-09-01",
+    "approvalStatus": "approved",
+    "nextReviewDate": "2027-09-01"
+  }
 }

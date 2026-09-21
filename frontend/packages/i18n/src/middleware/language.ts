@@ -27,6 +27,8 @@ import { NextResponse } from 'next/server';
 
 export const SUPPORTED_LOCALES = ['lt', 'ru', 'en'] as const;
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
+/** Locale alternation pattern derived from SUPPORTED_LOCALES (SSOT). */
+const LOCALE_PATTERN = SUPPORTED_LOCALES.join('|');
 export const DEFAULT_LOCALE: SupportedLocale = 'lt';
 export const LOCALE_COOKIE = 'i18next-language';
 
@@ -56,7 +58,7 @@ const RTL_LOCALES: string[] = [];
  * Extract locale from URL path (/lt/, /ru/, /en/)
  */
 export function getLocaleFromPath(pathname: string): SupportedLocale | null {
-  const match = pathname.match(/^\/(lt|ru|en)(?:\/|$)/);
+  const match = pathname.match(new RegExp(`^\\/(${LOCALE_PATTERN})(?:\\/|$)`));
   if (match && SUPPORTED_LOCALES.includes(match[1] as SupportedLocale)) {
     return match[1] as SupportedLocale;
   }
@@ -264,7 +266,7 @@ export const languageMiddlewareMatcher = [
  */
 export function localizePath(path: string, locale: SupportedLocale): string {
   // Remove existing locale prefix if present
-  const cleanPath = path.replace(/^\/(lt|ru|en)\//, '/');
+  const cleanPath = path.replace(new RegExp(`^\\/(${LOCALE_PATTERN})\\/`), '/');
 
   // Don't add locale for default if it's the root
   if (locale === DEFAULT_LOCALE && cleanPath === '/') {
