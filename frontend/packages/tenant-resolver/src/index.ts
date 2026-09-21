@@ -49,7 +49,7 @@ export const TENANT_HEADER = 'x-tenant';
 export const TENANT_BASE_DOMAIN = process.env.TENANT_BASE_DOMAIN ?? 'gyvenimo-kelias.lt';
 
 /** Resolution cache — 5 min TTL per STEP 5. */
-const resolutionCache = new LruCache<Tenant | null>(512, 5 * 60 * 1000);
+const resolutionCache = new LruCache<Tenant | null>(2048, 5 * 60 * 1000); // F18: sized for ~1,300 tenants + headroom
 
 /** Test/ops hook. */
 export function clearTenantCache(): void {
