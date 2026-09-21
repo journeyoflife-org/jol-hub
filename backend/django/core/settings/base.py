@@ -83,29 +83,65 @@ THIRD_PARTY_APPS = [
     "debug_toolbar",
 ]
 
-LOCAL_APPS = [
-    # Core applications
+
+# =============================================================================
+# DJANGO-TENANTS CONFIGURATION (ADR-001: schema-per-tenant)
+# =============================================================================
+
+SHARED_APPS = [
+    # Django core
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django.contrib.humanize",
+    "django.contrib.sites",
+    "django.contrib.sitemaps",
+    # Third-party (shared across all tenants)
+    "django_tenants",
+    "rest_framework",
+    "rest_framework.authtoken",
+    "corsheaders",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
+    "allauth.socialaccount.providers.facebook",
+    "drf_spectacular",
+    "django_filters",
+    "django_redis",
+    "django_celery_beat",
+    "django_celery_results",
+    "storages",
+    "debug_toolbar",
+    # Local apps (shared)
     "apps.core",
     "apps.users",
     "apps.organizations",
+    "apps.tenants",
+    "apps.countries",
+]
+
+TENANT_APPS = [
+    # Apps that operate within a tenant schema
     "apps.content",
     "apps.donations",
     "apps.analytics",
-    # Country-specific apps
-    "apps.countries",
-    # Integration apps
-    "apps.integrations",
-    # Financial apps
-    "apps.financial",
-    # CRM app
     "apps.crm",
-    # Internal payment-event ingress (Model A, ADR-009; flag-gated)
+    "apps.integrations",
+    "apps.financial",
     "apps.payment_events",
 ]
 
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = list(SHARED_APPS) + [
+    app for app in TENANT_APPS if app not in SHARED_APPS
+]
 
 MIDDLEWARE = [
+    # django-tenants MUST be first (ADR-001)
+    "django_tenants.middleware.main.TenantMainMiddleware",
     # Security middleware
     "django.middleware.security.SecurityMiddleware",
     "corsheaders.middleware.CorsMiddleware",
@@ -121,8 +157,8 @@ MIDDLEWARE = [
     "django.middleware.locale.LocaleMiddleware",
     # Allauth middleware
     "allauth.account.middleware.AccountMiddleware",
-    # Tenant context middleware (for CRM multi-tenant isolation)
-    "apps.crm.middleware.TenantContextMiddleware",
+    # Tenant entitlement (replaces crm.middleware.TenantContextMiddleware)
+    "apps.tenants.middleware.TenantEntitlementMiddleware",
     # Debug toolbar (activated conditionally)
 ]
 
@@ -161,6 +197,7 @@ DATABASES = {
         "PORT": env("DB_PORT", default="5432"),
         "CONN_MAX_AGE": 600,
         "CONN_HEALTH_CHECKS": True,
+        "ATOMIC_REQUESTS": True,
         "OPTIONS": {
             "connect_timeout": 10,
         },
@@ -169,6 +206,15 @@ DATABASES = {
 
 # Custom database user model
 AUTH_USER_MODEL = "users.User"
+
+# =============================================================================
+# TENANT CONFIGURATION (ADR-001)
+# =============================================================================
+
+TENANT_MODEL = "organizations.Organization"
+TENANT_DOMAIN_MODEL = "tenants.TenantDomain"
+DATABASE_ROUTERS = ["django_tenants.routers.TenantSyncRouter"]
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
