@@ -3,7 +3,6 @@ import assert from 'node:assert/strict';
 import { clearTenantCache, resolveTenant } from '../index';
 import { findTenantByDomain, TENANTS } from '../registry';
 
-const BASE = 'gyvenimo-kelias.lt';
 
 describe('domain resolution from fixture identity.domain', () => {
   beforeEach(() => clearTenantCache());
