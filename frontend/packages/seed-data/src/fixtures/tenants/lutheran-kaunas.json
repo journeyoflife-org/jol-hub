@@ -53,27 +53,43 @@
           },
           "entries": [
             {
-              "day": "Sekmadienis",
-              "dayEn": "Sunday",
-              "times": ["10:00"],
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sunday"
+              },
+              "times": [
+                "10:00"
+              ],
               "notes": "Pagrindinės pamaldos su Šv. Vakariene"
             },
             {
-              "day": "Sekmadienis",
-              "dayEn": "Sunday",
-              "times": ["18:00"],
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sunday"
+              },
+              "times": [
+                "18:00"
+              ],
               "notes": "Vakarinės pamaldos"
             },
             {
-              "day": "Trečiadienis",
-              "dayEn": "Wednesday",
-              "times": ["18:30"],
+              "day": {
+                "lt": "Trečiadienis",
+                "en": "Wednesday"
+              },
+              "times": [
+                "18:30"
+              ],
               "notes": "Biblijos studijos"
             },
             {
-              "day": "Pirmasis mėnesio sekmadienis",
-              "dayEn": "First Sunday of month",
-              "times": ["10:00"],
+              "day": {
+                "lt": "Pirmasis mėnesio sekmadienis",
+                "en": "First Sunday of month"
+              },
+              "times": [
+                "10:00"
+              ],
               "notes": "Ypatingos pamaldos"
             }
           ]
@@ -134,7 +150,11 @@
                 "en": "Pastor",
                 "ru": "Pastor [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["pastor@kaunaslutheran.lt", "+370 37 331 234", "nuo 2015 m."]
+              "tags": [
+                "pastor@kaunaslutheran.lt",
+                "+370 37 331 234",
+                "nuo 2015 m."
+              ]
             },
             {
               "title": {
@@ -146,7 +166,9 @@
                 "en": "Elder",
                 "ru": "Elder [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["vyresnioji@kaunaslutheran.lt"]
+              "tags": [
+                "vyresnioji@kaunaslutheran.lt"
+              ]
             },
             {
               "title": {
@@ -158,7 +180,9 @@
                 "en": "Deacon",
                 "ru": "Deacon [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["diakonas@kaunaslutheran.lt"]
+              "tags": [
+                "diakonas@kaunaslutheran.lt"
+              ]
             }
           ]
         },
@@ -260,5 +284,11 @@
         }
       ]
     }
-  ]
+  ],
+  "governance": {
+    "sourceUrl": "https://www.liuteronai.lt",
+    "verifiedDate": "2026-09-01",
+    "approvalStatus": "approved",
+    "nextReviewDate": "2027-06-01"
+  }
 }

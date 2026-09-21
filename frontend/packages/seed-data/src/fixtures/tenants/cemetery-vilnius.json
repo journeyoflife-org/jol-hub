@@ -290,35 +290,50 @@
                 "lt": "A sekcija",
                 "ru": "A sekcija [TODO: verify — do not publish unverified]"
               },
-              "tags": ["istorinė", "nuo 1900"]
+              "tags": [
+                "istorinė",
+                "nuo 1900"
+              ]
             },
             {
               "title": {
                 "lt": "B sekcija",
                 "ru": "B sekcija [TODO: verify — do not publish unverified]"
               },
-              "tags": ["stačiatikių", "nuo 1920"]
+              "tags": [
+                "stačiatikių",
+                "nuo 1920"
+              ]
             },
             {
               "title": {
                 "lt": "C sekcija",
                 "ru": "C sekcija [TODO: verify — do not publish unverified]"
               },
-              "tags": ["katalikų", "nuo 1950"]
+              "tags": [
+                "katalikų",
+                "nuo 1950"
+              ]
             },
             {
               "title": {
                 "lt": "D sekcija",
                 "ru": "D sekcija [TODO: verify — do not publish unverified]"
               },
-              "tags": ["naujoji", "nuo 1990"]
+              "tags": [
+                "naujoji",
+                "nuo 1990"
+              ]
             },
             {
               "title": {
                 "lt": "E sekcija",
                 "ru": "E sekcija [TODO: verify — do not publish unverified]"
               },
-              "tags": ["kremavimo", "nuo 2010"]
+              "tags": [
+                "kremavimo",
+                "nuo 2010"
+              ]
             }
           ]
         }
@@ -352,7 +367,10 @@
                 "ru": "Grass cutting, leaf removal, monument cleaning [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "price": 100,
-              "tags": ["kas ketvirtį", "25 EUR vizitas"]
+              "tags": [
+                "kas ketvirtį",
+                "25 EUR vizitas"
+              ]
             },
             {
               "title": {
@@ -366,7 +384,10 @@
                 "ru": "Grass cutting, leaf removal, monument cleaning, flower care [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "price": 420,
-              "tags": ["kas mėnesį", "35 EUR vizitas"]
+              "tags": [
+                "kas mėnesį",
+                "35 EUR vizitas"
+              ]
             },
             {
               "title": {
@@ -380,7 +401,10 @@
                 "ru": "Full grave care, seasonal flower planting, monument upkeep [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "price": 2600,
-              "tags": ["kas savaitę", "50 EUR vizitas"]
+              "tags": [
+                "kas savaitę",
+                "50 EUR vizitas"
+              ]
             }
           ]
         }
@@ -412,7 +436,9 @@
                 "ru": "Granitas · 120×60 cm [TODO: verify — do not publish unverified]"
               },
               "price": 1500,
-              "tags": ["individualizacija galima"]
+              "tags": [
+                "individualizacija galima"
+              ]
             },
             {
               "title": {
@@ -424,7 +450,9 @@
                 "ru": "Akmuo · 150×40 cm [TODO: verify — do not publish unverified]"
               },
               "price": 1200,
-              "tags": ["individualizacija galima"]
+              "tags": [
+                "individualizacija galima"
+              ]
             },
             {
               "title": {
@@ -436,7 +464,9 @@
                 "ru": "Marmuras · 100×80 cm [TODO: verify — do not publish unverified]"
               },
               "price": 2500,
-              "tags": ["individualizacija galima"]
+              "tags": [
+                "individualizacija galima"
+              ]
             },
             {
               "title": {
@@ -448,7 +478,9 @@
                 "ru": "Bronza · 80×50 cm [TODO: verify — do not publish unverified]"
               },
               "price": 5000,
-              "tags": ["individualizacija galima"]
+              "tags": [
+                "individualizacija galima"
+              ]
             },
             {
               "title": {
@@ -460,7 +492,9 @@
                 "ru": "Granitas · 180×60 cm [TODO: verify — do not publish unverified]"
               },
               "price": 800,
-              "tags": ["individualizacija galima"]
+              "tags": [
+                "individualizacija galima"
+              ]
             }
           ]
         }
@@ -512,5 +546,11 @@
         }
       ]
     }
-  ]
+  ],
+  "governance": {
+    "sourceUrl": "https://www.vilniauskapines.lt",
+    "verifiedDate": "2026-09-01",
+    "approvalStatus": "approved",
+    "nextReviewDate": "2027-03-01"
+  }
 }

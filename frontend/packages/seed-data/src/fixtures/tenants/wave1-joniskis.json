@@ -3,7 +3,10 @@
     "slug": "joniskis-deanery",
     "vertical": "deanery",
     "locale": "lt",
-    "name": { "lt": "Joniškio dekanatas", "en": "Joniškis Deanery" },
+    "name": {
+      "lt": "Joniškio dekanatas",
+      "en": "Joniškis Deanery"
+    },
     "tagline": {
       "lt": "Šiaurės lygumų parapijos — nuo Joniškio iki Žagarės",
       "en": "Parishes of the northern plains — from Joniškis to Žagarė"
@@ -18,11 +21,17 @@
     "pages": [
       {
         "route": "/",
-        "title": { "lt": "Pradžia", "en": "Home" },
+        "title": {
+          "lt": "Pradžia",
+          "en": "Home"
+        },
         "contentBlocks": [
           {
             "type": "hero",
-            "heading": { "lt": "Joniškio dekanatas", "en": "Joniškis Deanery" },
+            "heading": {
+              "lt": "Joniškio dekanatas",
+              "en": "Joniškis Deanery"
+            },
             "subheading": {
               "lt": "Septynios parapijos Šiaurės Lietuvoje — bendra malda, katechezė ir Caritas",
               "en": "Seven parishes in Northern Lithuania — common prayer, catechesis and Caritas"
@@ -30,34 +39,49 @@
           },
           {
             "type": "list",
-            "heading": { "lt": "Dekanato parapijos", "en": "Parishes of the deanery" },
+            "heading": {
+              "lt": "Dekanato parapijos",
+              "en": "Parishes of the deanery"
+            },
             "items": [
               {
                 "title": {
                   "lt": "Joniškio Šv. apaštalo evangelisto Mato parapija",
                   "en": "Joniškis St. Matthew the Apostle Parish"
                 },
-                "subtitle": { "lt": "Joniškis", "en": "Joniškis" }
+                "subtitle": {
+                  "lt": "Joniškis",
+                  "en": "Joniškis"
+                }
               },
               {
                 "title": {
                   "lt": "Žagarės Šv. apaštalų Petro ir Pauliaus parapija",
                   "en": "Žagarė Sts. Peter and Paul Parish"
                 },
-                "subtitle": { "lt": "Žagarė", "en": "Žagarė" }
+                "subtitle": {
+                  "lt": "Žagarė",
+                  "en": "Žagarė"
+                }
               },
               {
                 "title": {
                   "lt": "Skaistgirio Šv. Jurgio parapija",
                   "en": "Skaistgiris St. George Parish"
                 },
-                "subtitle": { "lt": "Skaistgiris", "en": "Skaistgiris" }
+                "subtitle": {
+                  "lt": "Skaistgiris",
+                  "en": "Skaistgiris"
+                }
               }
             ]
           },
           {
             "type": "text",
-            "heading": { "lt": "Dekanato tarnystės", "en": "Deanery ministries" },
+            "heading": {
+              "lt": "Dekanato tarnystės",
+              "en": "Deanery ministries"
+            },
             "body": {
               "lt": "Bendra jaunimo stovykla, šeimų dienos ir advento rekolekcijos visam dekanatui. Dekano vizitacijos pagal vyskupijos planą; kunigų susitikimai — pirmąjį mėnesio antradienį.",
               "en": "A joint youth camp, family days and Advent retreats for the whole deanery. The dean's visitations follow the diocesan plan; priests meet on the first Tuesday of the month."
@@ -65,14 +89,32 @@
           },
           {
             "type": "keyValue",
-            "heading": { "lt": "Dekano raštinė", "en": "Dean's office" },
+            "heading": {
+              "lt": "Dekano raštinė",
+              "en": "Dean's office"
+            },
             "items": [
               {
-                "label": { "lt": "Adresas", "en": "Address" },
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Address"
+                },
                 "value": "Vilniaus g. 2, 84127 Joniškis"
               },
-              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 60 20 10" },
-              { "label": { "lt": "Priėmimas", "en": "Hours" }, "value": "IV 10:00–14:00" }
+              {
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Phone"
+                },
+                "value": "+370 42 60 20 10"
+              },
+              {
+                "label": {
+                  "lt": "Priėmimas",
+                  "en": "Hours"
+                },
+                "value": "IV 10:00–14:00"
+              }
             ]
           }
         ],
@@ -80,7 +122,13 @@
           "description": "Joniškio dekanatas — parapijų sąrašas, bendros stovyklos, rekolekcijos ir dekano raštinės laikai."
         }
       }
-    ]
+    ],
+    "governance": {
+      "sourceUrl": "https://www.gyvenimo-kelias.lt/tenants/joniskis-deanery",
+      "verifiedDate": "2026-09-01",
+      "approvalStatus": "approved",
+      "nextReviewDate": "2027-06-01"
+    }
   },
   {
     "slug": "joniskis-church",
@@ -105,7 +153,10 @@
     "pages": [
       {
         "route": "/",
-        "title": { "lt": "Pradžia", "en": "Home" },
+        "title": {
+          "lt": "Pradžia",
+          "en": "Home"
+        },
         "contentBlocks": [
           {
             "type": "hero",
@@ -120,46 +171,99 @@
           },
           {
             "type": "schedule",
-            "heading": { "lt": "Pamaldų laikai", "en": "Service times" },
+            "heading": {
+              "lt": "Pamaldų laikai",
+              "en": "Service times"
+            },
             "entries": [
-              { "day": "Sekmadienis", "dayEn": "Sunday", "times": ["10:00", "12:00"] },
-              { "day": "Trečiadienis", "dayEn": "Wednesday", "times": ["18:00"] }
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sunday"
+                },
+                "times": [
+                  "10:00",
+                  "12:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Trečiadienis",
+                  "en": "Wednesday"
+                },
+                "times": [
+                  "18:00"
+                ]
+              }
             ]
           },
           {
             "type": "list",
-            "heading": { "lt": "Sakramentai ir pasiruošimas", "en": "Sacraments and preparation" },
+            "heading": {
+              "lt": "Sakramentai ir pasiruošimas",
+              "en": "Sacraments and preparation"
+            },
             "items": [
               {
-                "title": { "lt": "Krikštas", "en": "Baptism" },
+                "title": {
+                  "lt": "Krikštas",
+                  "en": "Baptism"
+                },
                 "description": {
                   "lt": "Sekmadieniais po 12:00 Mišių.",
                   "en": "Sundays after the 12:00 Mass."
                 }
               },
               {
-                "title": { "lt": "Santuoka", "en": "Marriage" },
+                "title": {
+                  "lt": "Santuoka",
+                  "en": "Marriage"
+                },
                 "description": {
                   "lt": "Registracija raštinėje prieš 3 mėn.",
                   "en": "Register 3 months ahead."
                 }
               },
               {
-                "title": { "lt": "Išpažintis", "en": "Confession" },
-                "description": { "lt": "Prieš kiekvienas Mišias.", "en": "Before every Mass." }
+                "title": {
+                  "lt": "Išpažintis",
+                  "en": "Confession"
+                },
+                "description": {
+                  "lt": "Prieš kiekvienas Mišias.",
+                  "en": "Before every Mass."
+                }
               }
             ]
           },
           {
             "type": "keyValue",
-            "heading": { "lt": "Raštinė", "en": "Parish office" },
+            "heading": {
+              "lt": "Raštinė",
+              "en": "Parish office"
+            },
             "items": [
               {
-                "label": { "lt": "Adresas", "en": "Address" },
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Address"
+                },
                 "value": "Malūno g. 2, 84311 Žagarė"
               },
-              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 60 30 30" },
-              { "label": { "lt": "Laikas", "en": "Hours" }, "value": "Po sekmadienio Mišių" }
+              {
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Phone"
+                },
+                "value": "+370 42 60 30 30"
+              },
+              {
+                "label": {
+                  "lt": "Laikas",
+                  "en": "Hours"
+                },
+                "value": "Po sekmadienio Mišių"
+              }
             ]
           }
         ],
@@ -167,13 +271,22 @@
           "description": "Žagarės Šv. apaštalų Petro ir Pauliaus parapija — pamaldų laikai, sakramentai ir parapijos kontaktai."
         }
       }
-    ]
+    ],
+    "governance": {
+      "sourceUrl": "https://www.gyvenimo-kelias.lt/tenants/joniskis-church",
+      "verifiedDate": "2026-09-01",
+      "approvalStatus": "approved",
+      "nextReviewDate": "2027-06-01"
+    }
   },
   {
     "slug": "joniskis-funeral",
     "vertical": "funeral-home",
     "locale": "lt",
-    "name": { "lt": "Joniškio laidojimo namai", "en": "Joniškis Funeral Home" },
+    "name": {
+      "lt": "Joniškio laidojimo namai",
+      "en": "Joniškis Funeral Home"
+    },
     "tagline": {
       "lt": "Orumas, pagarba ir pagalba kiekvienai šeimai",
       "en": "Dignity, respect and help for every family"
@@ -188,11 +301,17 @@
     "pages": [
       {
         "route": "/",
-        "title": { "lt": "Pradžia", "en": "Home" },
+        "title": {
+          "lt": "Pradžia",
+          "en": "Home"
+        },
         "contentBlocks": [
           {
             "type": "hero",
-            "heading": { "lt": "Joniškio laidojimo namai", "en": "Joniškis Funeral Home" },
+            "heading": {
+              "lt": "Joniškio laidojimo namai",
+              "en": "Joniškis Funeral Home"
+            },
             "subheading": {
               "lt": "Visos laidojimo paslaugos Joniškio rajone — visą parą",
               "en": "All funeral services in the Joniškis district — around the clock"
@@ -200,7 +319,10 @@
           },
           {
             "type": "list",
-            "heading": { "lt": "Paslaugos ir kainos", "en": "Services and prices" },
+            "heading": {
+              "lt": "Paslaugos ir kainos",
+              "en": "Services and prices"
+            },
             "items": [
               {
                 "title": {
@@ -210,29 +332,50 @@
                 "price": 1750
               },
               {
-                "title": { "lt": "Kremavimo organizavimas", "en": "Cremation arrangement" },
+                "title": {
+                  "lt": "Kremavimo organizavimas",
+                  "en": "Cremation arrangement"
+                },
                 "price": 1300
               },
               {
-                "title": { "lt": "Kapų tvarkymas", "en": "Grave care" },
-                "subtitle": { "lt": "Pagal sutartį", "en": "By agreement" }
+                "title": {
+                  "lt": "Kapų tvarkymas",
+                  "en": "Grave care"
+                },
+                "subtitle": {
+                  "lt": "Pagal sutartį",
+                  "en": "By agreement"
+                }
               }
             ]
           },
           {
             "type": "keyValue",
-            "heading": { "lt": "Visą parą", "en": "Around the clock" },
+            "heading": {
+              "lt": "Visą parą",
+              "en": "Around the clock"
+            },
             "items": [
               {
-                "label": { "lt": "Skubus telefonas", "en": "Urgent phone" },
+                "label": {
+                  "lt": "Skubus telefonas",
+                  "en": "Urgent phone"
+                },
                 "value": "+370 42 60 40 40"
               },
               {
-                "label": { "lt": "Adresas", "en": "Address" },
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Address"
+                },
                 "value": "Parko g. 9, 84142 Joniškis"
               },
               {
-                "label": { "lt": "El. paštas", "en": "Email" },
+                "label": {
+                  "lt": "El. paštas",
+                  "en": "Email"
+                },
                 "value": "info@joniskis-laidojimas-demo.lt"
               }
             ]
@@ -242,13 +385,22 @@
           "description": "Joniškio laidojimo namai — laidojimo ir kremavimo organizavimas 24/7, skaidrios kainos Joniškio rajone."
         }
       }
-    ]
+    ],
+    "governance": {
+      "sourceUrl": "https://www.gyvenimo-kelias.lt/tenants/joniskis-funeral",
+      "verifiedDate": "2026-09-01",
+      "approvalStatus": "approved",
+      "nextReviewDate": "2027-06-01"
+    }
   },
   {
     "slug": "joniskis-cleaning",
     "vertical": "cemetery",
     "locale": "lt",
-    "name": { "lt": "Joniškio kapinių priežiūra", "en": "Joniškis Cemetery Care" },
+    "name": {
+      "lt": "Joniškio kapinių priežiūra",
+      "en": "Joniškis Cemetery Care"
+    },
     "tagline": {
       "lt": "Pagarba, kuri matoma — kiekvieną sezoną",
       "en": "Respect you can see — every season"
@@ -263,11 +415,17 @@
     "pages": [
       {
         "route": "/",
-        "title": { "lt": "Pradžia", "en": "Home" },
+        "title": {
+          "lt": "Pradžia",
+          "en": "Home"
+        },
         "contentBlocks": [
           {
             "type": "hero",
-            "heading": { "lt": "Kapaviečių priežiūra Joniškyje", "en": "Grave care in Joniškis" },
+            "heading": {
+              "lt": "Kapaviečių priežiūra Joniškyje",
+              "en": "Grave care in Joniškis"
+            },
             "subheading": {
               "lt": "Tvarkymas, želdiniai ir šventinis puošimas su foto ataskaitomis",
               "en": "Tidying, planting and feast-day decoration with photo reports"
@@ -275,20 +433,53 @@
           },
           {
             "type": "list",
-            "heading": { "lt": "Planai ir kainos", "en": "Plans and prices" },
+            "heading": {
+              "lt": "Planai ir kainos",
+              "en": "Plans and prices"
+            },
             "items": [
-              { "title": { "lt": "Vienkartinis tvarkymas", "en": "One-time care" }, "price": 30 },
-              { "title": { "lt": "Mėnesinė priežiūra", "en": "Monthly care" }, "price": 22 },
-              { "title": { "lt": "Metinis planas", "en": "Annual plan" }, "price": 220 }
+              {
+                "title": {
+                  "lt": "Vienkartinis tvarkymas",
+                  "en": "One-time care"
+                },
+                "price": 30
+              },
+              {
+                "title": {
+                  "lt": "Mėnesinė priežiūra",
+                  "en": "Monthly care"
+                },
+                "price": 22
+              },
+              {
+                "title": {
+                  "lt": "Metinis planas",
+                  "en": "Annual plan"
+                },
+                "price": 220
+              }
             ]
           },
           {
             "type": "keyValue",
-            "heading": { "lt": "Kontaktai", "en": "Contacts" },
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Contacts"
+            },
             "items": [
-              { "label": { "lt": "Telefonas", "en": "Phone" }, "value": "+370 42 60 50 50" },
               {
-                "label": { "lt": "El. paštas", "en": "Email" },
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Phone"
+                },
+                "value": "+370 42 60 50 50"
+              },
+              {
+                "label": {
+                  "lt": "El. paštas",
+                  "en": "Email"
+                },
                 "value": "info@joniskis-prieziura-demo.lt"
               }
             ]
@@ -298,6 +489,12 @@
           "description": "Joniškio kapinių priežiūra — tvarkymas, želdiniai ir šventinis puošimas su foto ataskaitomis artimiesiems."
         }
       }
-    ]
+    ],
+    "governance": {
+      "sourceUrl": "https://www.gyvenimo-kelias.lt/tenants/joniskis-cleaning",
+      "verifiedDate": "2026-09-01",
+      "approvalStatus": "approved",
+      "nextReviewDate": "2027-06-01"
+    }
   }
 ]

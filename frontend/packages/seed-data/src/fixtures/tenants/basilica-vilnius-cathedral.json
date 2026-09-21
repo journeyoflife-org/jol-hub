@@ -25,7 +25,11 @@
   "pages": [
     {
       "route": "/",
-      "title": { "lt": "Pradžia", "en": "Home", "ru": "Главная" },
+      "title": {
+        "lt": "Pradžia",
+        "en": "Home",
+        "ru": "Главная"
+      },
       "contentBlocks": [
         {
           "type": "hero",
@@ -54,47 +58,80 @@
           },
           "masses": [
             {
-              "day": "Sekmadienis",
-              "dayEn": "Sunday",
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sunday"
+              },
               "time": "10:00",
-              "startDate": "2026-09-13T10:00:00",
               "language": "lt",
-              "notes": { "lt": "Su giedojimu", "en": "With singing", "ru": "С пением" }
+              "notes": {
+                "lt": "Su giedojimu",
+                "en": "With singing",
+                "ru": "С пением"
+              },
+              "rrule": "FREQ=WEEKLY;BYDAY=SU",
+              "validFrom": "2026-09-13"
             },
             {
-              "day": "Pirmadienis–Penktadienis",
-              "dayEn": "Monday–Friday",
+              "day": {
+                "lt": "Pirmadienis–Penktadienis",
+                "en": "Monday–Friday"
+              },
               "time": "08:00",
-              "startDate": "2026-09-14T08:00:00",
-              "language": "lt"
+              "language": "lt",
+              "rrule": "FREQ=WEEKLY;BYDAY=MO",
+              "validFrom": "2026-09-14"
             },
             {
-              "day": "Šeštadienis",
-              "dayEn": "Saturday",
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Saturday"
+              },
               "time": "09:00",
-              "startDate": "2026-09-12T09:00:00",
-              "language": "lt"
+              "language": "lt",
+              "rrule": "FREQ=WEEKLY;BYDAY=SA",
+              "validFrom": "2026-09-12"
             }
           ]
         },
         {
           "type": "keyValue",
-          "heading": { "lt": "Kontaktai", "en": "Contact", "ru": "Контакты" },
+          "heading": {
+            "lt": "Kontaktai",
+            "en": "Contact",
+            "ru": "Контакты"
+          },
           "items": [
             {
-              "label": { "lt": "Adresas", "en": "Address", "ru": "Адрес" },
+              "label": {
+                "lt": "Adresas",
+                "en": "Address",
+                "ru": "Адрес"
+              },
               "value": "Katedros a. 1, 01143 Vilnius"
             },
             {
-              "label": { "lt": "Telefonas", "en": "Phone", "ru": "Телефон" },
+              "label": {
+                "lt": "Telefonas",
+                "en": "Phone",
+                "ru": "Телефон"
+              },
               "value": "+370 5 261 0731"
             },
             {
-              "label": { "lt": "El. paštas", "en": "Email", "ru": "Эл. почта" },
+              "label": {
+                "lt": "El. paštas",
+                "en": "Email",
+                "ru": "Эл. почта"
+              },
               "value": "info@katedra.lt"
             },
             {
-              "label": { "lt": "Svetainė", "en": "Website", "ru": "Сайт" },
+              "label": {
+                "lt": "Svetainė",
+                "en": "Website",
+                "ru": "Сайт"
+              },
               "value": "https://katedra.lt"
             }
           ]
@@ -120,7 +157,11 @@
               }
             },
             {
-              "name": { "lt": "Išpažintis", "en": "Confession", "ru": "Исповедь" },
+              "name": {
+                "lt": "Išpažintis",
+                "en": "Confession",
+                "ru": "Исповедь"
+              },
               "schedule": {
                 "lt": "Šeštadieniais 9:30–10:30 arba pagal susitarimą",
                 "en": "Saturdays 9:30–10:30 or by appointment",
@@ -128,7 +169,11 @@
               }
             },
             {
-              "name": { "lt": "Krikštas", "en": "Baptism", "ru": "Крещение" },
+              "name": {
+                "lt": "Krikštas",
+                "en": "Baptism",
+                "ru": "Крещение"
+              },
               "requirements": {
                 "lt": "Susisiekite su klebonu dėl datos",
                 "en": "Contact the parish priest for scheduling",
@@ -146,13 +191,25 @@
           },
           "items": [
             {
-              "title": { "lt": "Žvakės", "en": "Candles", "ru": "Свечи" }
+              "title": {
+                "lt": "Žvakės",
+                "en": "Candles",
+                "ru": "Свечи"
+              }
             },
             {
-              "title": { "lt": "Piligrimystės", "en": "Pilgrimages", "ru": "Паломничество" }
+              "title": {
+                "lt": "Piligrimystės",
+                "en": "Pilgrimages",
+                "ru": "Паломничество"
+              }
             },
             {
-              "title": { "lt": "Knygos", "en": "Books", "ru": "Книги" }
+              "title": {
+                "lt": "Knygos",
+                "en": "Books",
+                "ru": "Книги"
+              }
             }
           ]
         },
@@ -165,7 +222,11 @@
           },
           "roles": [
             {
-              "role": { "lt": "Klebonas", "en": "Parish Priest", "ru": "Настоятель" },
+              "role": {
+                "lt": "Klebonas",
+                "en": "Parish Priest",
+                "ru": "Настоятель"
+              },
               "description": {
                 "lt": "Atsakingas už sielovadą ir administraciją",
                 "en": "Responsible for pastoral care and administration",
@@ -174,7 +235,11 @@
               "contact": "klebonas@katedra.lt"
             },
             {
-              "role": { "lt": "Vikaras", "en": "Vicar", "ru": "Викарий" },
+              "role": {
+                "lt": "Vikaras",
+                "en": "Vicar",
+                "ru": "Викарий"
+              },
               "description": {
                 "lt": "Padeda klebonui sielovados darbe",
                 "en": "Assists the parish priest in pastoral work",
@@ -200,7 +265,11 @@
               },
               "width": 1200,
               "height": 800,
-              "caption": { "lt": "Fasadas", "en": "Façade", "ru": "Фасад" }
+              "caption": {
+                "lt": "Fasadas",
+                "en": "Façade",
+                "ru": "Фасад"
+              }
             },
             {
               "src": "/images/basilica-interior.jpg",
@@ -289,5 +358,12 @@
         "description": "Vilniaus Šv. Stanislovo ir Šv. Vladislovo arkikatedra bazilika"
       }
     }
-  ]
+  ],
+  "governance": {
+    "sourceUrl": "https://www.katedra.lt/apie",
+    "verifiedDate": "2026-09-01",
+    "verifier": "admin@katedra.lt",
+    "approvalStatus": "approved",
+    "nextReviewDate": "2027-09-01"
+  }
 }

@@ -58,25 +58,48 @@
           },
           "entries": [
             {
-              "day": "Pirmadienis - Penktadienis",
-              "dayEn": "Monday - Friday",
-              "times": ["07:30", "18:30"]
+              "day": {
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Monday - Friday"
+              },
+              "times": [
+                "07:30",
+                "18:30"
+              ]
             },
             {
-              "day": "Šeštadienis",
-              "dayEn": "Saturday",
-              "times": ["09:00", "18:00"]
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Saturday"
+              },
+              "times": [
+                "09:00",
+                "18:00"
+              ]
             },
             {
-              "day": "Sekmadienis",
-              "dayEn": "Sunday",
-              "times": ["09:00", "11:00", "18:00"],
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sunday"
+              },
+              "times": [
+                "09:00",
+                "11:00",
+                "18:00"
+              ],
               "notes": "11:00 - pagrindinės Šv. Mišios"
             },
             {
-              "day": "Šventinės dienos",
-              "dayEn": "Holy Days",
-              "times": ["07:30", "09:00", "11:00", "18:00"],
+              "day": {
+                "lt": "Šventinės dienos",
+                "en": "Holy Days"
+              },
+              "times": [
+                "07:30",
+                "09:00",
+                "11:00",
+                "18:00"
+              ],
               "notes": "Patikslinkite tvarkaraštį šventėms"
             }
           ]
@@ -229,7 +252,10 @@
                 "en": "Sacrament of Baptism - entry into the Church",
                 "ru": "Sacrament of Baptism - entry into the Church [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["Pasiruošimas: 2-3 savaitės", "Tėvų ir krikštatėvių katechezė"]
+              "tags": [
+                "Pasiruošimas: 2-3 savaitės",
+                "Tėvų ir krikštatėvių katechezė"
+              ]
             },
             {
               "title": {
@@ -242,7 +268,10 @@
                 "en": "First reception of the Eucharist",
                 "ru": "First reception of the Eucharist [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["Pasiruošimas: 2 metai", "Katechezės kursas"]
+              "tags": [
+                "Pasiruošimas: 2 metai",
+                "Katechezės kursas"
+              ]
             },
             {
               "title": {
@@ -255,7 +284,9 @@
                 "en": "Sacrament of Confirmation",
                 "ru": "Sacrament of Confirmation [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["Pasiruošimas: 1-2 metai"]
+              "tags": [
+                "Pasiruošimas: 1-2 metai"
+              ]
             },
             {
               "title": {
@@ -268,7 +299,10 @@
                 "en": "Sacrament of Holy Matrimony",
                 "ru": "Sacrament of Holy Matrimony [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["Pasiruošimas: 6 mėnesiai", "Susitikimas su kunigu prieš 6 mėn."]
+              "tags": [
+                "Pasiruošimas: 6 mėnesiai",
+                "Susitikimas su kunigu prieš 6 mėn."
+              ]
             },
             {
               "title": {
@@ -281,7 +315,9 @@
                 "en": "Sacrament of Reconciliation",
                 "ru": "Sacrament of Reconciliation [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["Be išankstinio pasiruošimo"]
+              "tags": [
+                "Be išankstinio pasiruošimo"
+              ]
             },
             {
               "title": {
@@ -294,7 +330,9 @@
                 "en": "Sacrament of the Anointing of the Sick",
                 "ru": "Sacrament of the Anointing of the Sick [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["Kreiptis į parapijos biurą"]
+              "tags": [
+                "Kreiptis į parapijos biurą"
+              ]
             }
           ]
         }
@@ -387,7 +425,9 @@
                 "ru": "Kitchen, tables & chairs, sound system, projector, wheelchair access [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "price": 25,
-              "tags": ["EUR/val."]
+              "tags": [
+                "EUR/val."
+              ]
             },
             {
               "title": {
@@ -406,11 +446,19 @@
                 "ru": "Kitchen, tables & chairs [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "price": 15,
-              "tags": ["EUR/val."]
+              "tags": [
+                "EUR/val."
+              ]
             }
           ]
         }
       ]
     }
-  ]
+  ],
+  "governance": {
+    "sourceUrl": "https://www.jonobaznycia.lt",
+    "verifiedDate": "2026-09-01",
+    "approvalStatus": "approved",
+    "nextReviewDate": "2027-09-01"
+  }
 }

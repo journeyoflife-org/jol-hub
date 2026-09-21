@@ -101,7 +101,9 @@
                 "en": "Nativity of Christ",
                 "ru": "Nativity of Christ [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["01-07"]
+              "tags": [
+                "01-07"
+              ]
             },
             {
               "title": {
@@ -109,7 +111,9 @@
                 "en": "Theophany",
                 "ru": "Theophany [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["01-19"]
+              "tags": [
+                "01-19"
+              ]
             },
             {
               "title": {
@@ -117,7 +121,9 @@
                 "en": "Pascha (Resurrection)",
                 "ru": "Pascha (Resurrection) [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["kilnojama"]
+              "tags": [
+                "kilnojama"
+              ]
             },
             {
               "title": {
@@ -125,7 +131,9 @@
                 "en": "Ascension",
                 "ru": "Ascension [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["kilnojama +40 d."]
+              "tags": [
+                "kilnojama +40 d."
+              ]
             },
             {
               "title": {
@@ -133,7 +141,9 @@
                 "en": "Pentecost",
                 "ru": "Pentecost [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["kilnojama +50 d."]
+              "tags": [
+                "kilnojama +50 d."
+              ]
             },
             {
               "title": {
@@ -141,7 +151,9 @@
                 "en": "Transfiguration",
                 "ru": "Transfiguration [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["08-19"]
+              "tags": [
+                "08-19"
+              ]
             },
             {
               "title": {
@@ -149,7 +161,9 @@
                 "en": "Dormition",
                 "ru": "Dormition [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["08-28"]
+              "tags": [
+                "08-28"
+              ]
             }
           ]
         },
@@ -334,7 +348,9 @@
                 "ru": "Small candle [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "price": 0.5,
-              "tags": ["dega 2 val."]
+              "tags": [
+                "dega 2 val."
+              ]
             },
             {
               "title": {
@@ -343,7 +359,9 @@
                 "ru": "Medium candle [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "price": 1,
-              "tags": ["dega 4 val."]
+              "tags": [
+                "dega 4 val."
+              ]
             },
             {
               "title": {
@@ -352,7 +370,9 @@
                 "ru": "Large candle [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "price": 2,
-              "tags": ["dega 8 val."]
+              "tags": [
+                "dega 8 val."
+              ]
             },
             {
               "title": {
@@ -361,11 +381,19 @@
                 "ru": "Votive candle [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "price": 3,
-              "tags": ["dega 24 val."]
+              "tags": [
+                "dega 24 val."
+              ]
             }
           ]
         }
       ]
     }
-  ]
+  ],
+  "governance": {
+    "sourceUrl": "https://www.orthodox.lt",
+    "verifiedDate": "2026-09-01",
+    "approvalStatus": "approved",
+    "nextReviewDate": "2027-06-01"
+  }
 }
