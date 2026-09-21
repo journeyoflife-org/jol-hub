@@ -141,6 +141,10 @@ class TenantEntitlementMiddleware:
             )
             set_tenant_context(context)
             request.tenant_context = context
+
+            # RLS defense-in-depth (C4)
+            from apps.tenants.rls import set_tenant_id_for_request
+            set_tenant_id_for_request(str(org.id))
         except Organization.DoesNotExist:
             logger.warning("TENANT_RESOLVE: org not found tenant_id=%s", tenant_id)
             raise
