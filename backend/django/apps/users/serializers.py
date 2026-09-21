@@ -4,8 +4,10 @@ User serializers — registration, profile read/write, and JWT token pair.
 
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import (
+
     TokenObtainPairSerializer as BaseTokenPairSerializer,
 )
+from apps.tenants.tokens import RefreshToken
 
 from apps.core.serializers import BaseModelSerializer
 from django.contrib.auth.password_validation import validate_password
@@ -134,9 +136,21 @@ class ChangePasswordSerializer(serializers.Serializer):
 
 
 class TokenObtainPairSerializer(BaseTokenPairSerializer):
-    """Extended JWT pair serializer that embeds user data in the response."""
+    """
+    Extended JWT pair serializer with server-signed tenant claim.
+
+    C1 fix: embeds tenant_id from the user's primary entitlement.
+    """
 
     def validate(self, attrs):
         data = super().validate(attrs)
         data["user"] = UserSerializer(self.user).data
+
+        # Inject tenant_id into the refresh token (C1)
+        from apps.tenants.entitlement import get_primary_tenant
+        tenant = get_primary_tenant(self.user)
+        if tenant:
+            data["refresh"].access_token["tenant_id"] = str(tenant.id)
+            data["refresh"]["tenant_id"] = str(tenant.id)
+
         return data

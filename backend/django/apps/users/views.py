@@ -198,10 +198,40 @@ class UserListView(generics.ListCreateAPIView):
     serializer_class = UserSerializer
 
     def get_queryset(self):
-        return User.objects.active().order_by("email")
+        """Only return users who are members of the current tenant (C5)."""
+        from apps.crm.middleware import get_current_tenant_id
+        from apps.organizations.models import OrganizationMember
+
+        tenant_id = get_current_tenant_id()
+        if not tenant_id:
+            return User.objects.none()
+
+        member_user_ids = OrganizationMember.objects.filter(
+            organization_id=tenant_id, is_deleted=False
+        ).values_list("user_id", flat=True)
+
+        return User.objects.filter(id__in=member_user_ids, is_active=True).order_by("email")
 
 
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
+
+    def get_object(self):
+        """Tenant-scoped object retrieval — 404 for cross-tenant (C5)."""
+        from apps.crm.middleware import get_current_tenant_id
+        from apps.organizations.models import OrganizationMember
+        from django.http import Http404
+
+        obj = super().get_object()
+        tenant_id = get_current_tenant_id()
+
+        if tenant_id:
+            is_member = OrganizationMember.objects.filter(
+                organization_id=tenant_id, user=obj, is_deleted=False
+            ).exists()
+            if not is_member:
+                raise Http404  # 404 — no enumeration
+
+        return obj
     """GET / PATCH / DELETE /api/v1/users/{id}/"""
 
     serializer_class = UserSerializer
