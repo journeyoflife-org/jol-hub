@@ -119,3 +119,65 @@ EMAIL_USE_TLS = True
 # =============================================================================
 
 ENVIRONMENT = "production"
+
+
+# =============================================================================
+# LT-FIRST DEFAULTS (F7)
+# =============================================================================
+
+LANGUAGE_CODE = "lt"
+TIME_ZONE = "Europe/Vilnius"
+
+# =============================================================================
+# ALLOWED HOSTS — wildcard for tenant subdomains
+# =============================================================================
+
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[
+    ".journeyoflife.org",
+    ".gyvenimo-kelias.lt",
+])
+
+# =============================================================================
+# CONTENT SECURITY POLICY
+# =============================================================================
+
+CSP_DEFAULT_SRC = ("'self'",)
+CSP_SCRIPT_SRC = ("'self'",)
+CSP_STYLE_SRC = ("'self'", "'unsafe-inline'")  # Tailwind needs inline styles
+CSP_IMG_SRC = ("'self'", "data:")
+CSP_FONT_SRC = ("'self'",)
+CSP_CONNECT_SRC = ("'self'",)
+
+# =============================================================================
+# DATABASE — fail if credentials unset (F9)
+# =============================================================================
+
+if env("DB_PASSWORD", default="") in ("", "postgres"):
+    from django.core.exceptions import ImproperlyConfigured
+    raise ImproperlyConfigured(
+        "DB_PASSWORD must be set and must not be 'postgres' in production"
+    )
+
+# =============================================================================
+# PROMETHEUS — lock down /metrics/
+# =============================================================================
+
+if not PROMETHEUS_ALLOWED_IPS:
+    from django.core.exceptions import ImproperlyConfigured
+    raise ImproperlyConfigured(
+        "PROMETHEUS_ALLOWED_IPS must be set in production"
+    )
+
+# =============================================================================
+# THROTTLE — restore granular rates (production.py was clobbering them)
+# =============================================================================
+
+REST_FRAMEWORK["DEFAULT_THROTTLE_RATES"] = {
+    "anon": "100/hour",
+    "user": "1000/hour",
+    "auth": "10/hour",
+    "gdpr_export": "5/hour",
+    "gdpr_delete": "3/hour",
+    "donation_create": "20/hour",
+    "donation_refund": "10/hour",
+}
