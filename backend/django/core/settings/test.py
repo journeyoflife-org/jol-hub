@@ -70,8 +70,27 @@ else:
         }
 
 
-# All tables in public schema for tests (no tenant routing)
-DATABASE_ROUTERS = []
+# -----------------------------------------------------------------------------
+# django-tenants test router — permissive allow_migrate for CI
+# -----------------------------------------------------------------------------
+# django-tenants requires TenantSyncRouter in DATABASE_ROUTERS (checked in
+# its apps.py ready()). The default router blocks TENANT_APPS migrations
+# from creating tables in the public schema. This subclass overrides
+# allow_migrate to permit all apps, so manage.py migrate creates every
+# table in the public schema (which is the only schema in tests).
+# -----------------------------------------------------------------------------
+
+class _TestRouter:
+    """Permissive test router — allows all migrations in the public schema."""
+
+    def allow_migrate(self, db, app_label, model_name=None, **hints):
+        return True
+
+
+DATABASE_ROUTERS = [
+    "django_tenants.routers.TenantSyncRouter",
+    "core.settings.test._TestRouter",
+]
 
 # =============================================================================
 # PASSWORD HASHERS — Use fastest hasher for tests
