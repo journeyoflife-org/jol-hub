@@ -93,6 +93,20 @@ DATABASE_ROUTERS = [
     "core.settings.test._TestRouter",
 ]
 
+# -----------------------------------------------------------------------------
+# Test-time app configuration - all apps in SHARED_APPS
+# -----------------------------------------------------------------------------
+# django-tenants replaces manage.py migrate with migrate_schemas which only
+# creates tables for SHARED_APPS in the public schema. TENANT_APPS tables
+# are only created inside tenant schemas which do not exist in CI.
+# Override: put ALL apps in SHARED_APPS so migrate_schemas creates every
+# table in the public schema. Keep minimal TENANT_APPS for validation.
+# -----------------------------------------------------------------------------
+
+SHARED_APPS = list(INSTALLED_APPS)  # All apps -> public schema in tests
+TENANT_APPS = ["apps.organizations"]  # Minimal: just the tenant model app
+INSTALLED_APPS = list(SHARED_APPS)  # Recalculate
+
 # =============================================================================
 # PASSWORD HASHERS — Use fastest hasher for tests
 # =============================================================================
