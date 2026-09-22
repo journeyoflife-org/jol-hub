@@ -59,8 +59,8 @@ class TestEntitlementService:
             parent_diocese=None,
         )
         # Set tenant context for subsequent OrganizationMember creation
-        from conftest import _set_tenant_context
-        _set_tenant_context(diocese)
+        from apps.tenants.test_utils import set_test_tenant_context
+        set_test_tenant_context(diocese)
         return diocese, deanery, parish_a, parish_b
 
     def test_diocese_admin_entitled_to_all_children(self):
@@ -68,8 +68,8 @@ class TestEntitlementService:
         diocese, deanery, parish_a, parish_b = self._create_hierarchy()
         user = User.objects.create_user(email="bishop@test.lt", password="Test1234!")
         OrganizationMember.objects.create(organization=diocese, user=user, role="admin")
-        from conftest import _clear_tenant_context
-        _clear_tenant_context()
+        from apps.tenants.test_utils import clear_test_tenant_context
+        clear_test_tenant_context()
 
         entitled = get_entitled_tenants(user)
         entitled_ids = {str(t.id) for t in entitled}
@@ -84,8 +84,8 @@ class TestEntitlementService:
         diocese, deanery, parish_a, parish_b = self._create_hierarchy()
         user = User.objects.create_user(email="dean@test.lt", password="Test1234!")
         OrganizationMember.objects.create(organization=deanery, user=user, role="admin")
-        from conftest import _clear_tenant_context
-        _clear_tenant_context()
+        from apps.tenants.test_utils import clear_test_tenant_context
+        clear_test_tenant_context()
 
         entitled = get_entitled_tenants(user)
         entitled_ids = {str(t.id) for t in entitled}
