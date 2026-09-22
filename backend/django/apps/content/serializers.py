@@ -37,9 +37,7 @@ class MediaFileSerializer(BaseModelSerializer):
 
 class PageSerializer(BaseModelSerializer):
     featured_image = MediaFileSerializer(read_only=True)
-    featured_image_id = serializers.UUIDField(
-        write_only=True, required=False, allow_null=True
-    )
+    featured_image_id = serializers.UUIDField(write_only=True, required=False, allow_null=True)
 
     class Meta:
         model = Page
