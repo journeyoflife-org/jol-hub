@@ -47,7 +47,9 @@ class TestWaveMinus1ExitGate:
             schema_name="t_parish_b",
         )
         set_test_tenant_context(org_b)
-        Page.objects.create(organization=org_b, title="Secret", slug="secret", language="lt")
+        Page.objects.create(
+            organization=org_b, title="Secret", slug="secret", language="lt"
+        )
         clear_test_tenant_context()
 
         user = User.objects.create_user(email="a@test.lt", password="Test1234!")
@@ -193,7 +195,9 @@ class TestWaveMinus1ExitGate:
 
         set_test_tenant_context(org)
         before = AuditLog.objects.count()
-        Page.objects.create(organization=org, title="Audit Test", slug="audit-test", language="lt")
+        Page.objects.create(
+            organization=org, title="Audit Test", slug="audit-test", language="lt"
+        )
         after = AuditLog.objects.count()
 
         assert after > before, "Page creation must emit AuditLog"
@@ -258,7 +262,9 @@ class TestWaveMinus1ExitGate:
         )
         user = User.objects.create_user(email="g2@test.lt", password="Test1234!")
         set_test_tenant_context(diocese_a)
-        OrganizationMember.objects.create(organization=diocese_a, user=user, role="admin")
+        OrganizationMember.objects.create(
+            organization=diocese_a, user=user, role="admin"
+        )
         clear_test_tenant_context()
 
         assert not is_entitled_for_tenant(user, diocese_b.id)
