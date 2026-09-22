@@ -21,11 +21,8 @@ from unittest.mock import patch
 
 import pytest
 
-from conftest import (
-    BITRIX24_TEST_SECRET,
-    build_bitrix24_payload,
-    compute_bitrix24_signature,
-)
+from conftest import (BITRIX24_TEST_SECRET, build_bitrix24_payload,
+                      compute_bitrix24_signature)
 
 # URL for the Bitrix24 webhook endpoint.
 WEBHOOK_URL = "/api/v1/integrations/webhooks/bitrix24/"

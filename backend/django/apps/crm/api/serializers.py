@@ -18,14 +18,8 @@ from apps.core.models import BaseModel
 from django.utils import timezone
 
 from ..middleware import get_current_tenant_id
-from ..models import (
-    AuditEntry,
-    ConsentStatus,
-    Contact,
-    DataClassification,
-    DataSubjectRequest,
-    Deal,
-)
+from ..models import (AuditEntry, ConsentStatus, Contact, DataClassification,
+                      DataSubjectRequest, Deal)
 
 
 class GDPRSerializerMixin:

@@ -30,7 +30,8 @@ from typing import Any, Dict, List, Optional, Set, Type, Union
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db import models, transaction
-from django.db.models.signals import m2m_changed, post_delete, post_save, pre_save
+from django.db.models.signals import (m2m_changed, post_delete, post_save,
+                                      pre_save)
 from django.dispatch import receiver
 from django.utils import timezone as django_timezone
 

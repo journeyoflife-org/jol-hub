@@ -8,14 +8,10 @@ D7: Server-signed entitlement claim + membership/hierarchy validation.
 import logging
 from typing import Optional
 
+from apps.crm.middleware import (TenantContext, clear_tenant_context,
+                                 set_tenant_context)
+from apps.tenants.entitlement import get_primary_tenant, is_entitled_for_tenant
 from django.http import HttpRequest, HttpResponse, JsonResponse
-
-from apps.crm.middleware import (
-    TenantContext,
-    set_tenant_context,
-    clear_tenant_context,
-)
-from apps.tenants.entitlement import is_entitled_for_tenant, get_primary_tenant
 
 logger = logging.getLogger("jolhub.tenant.security")
 
@@ -123,7 +119,8 @@ class TenantEntitlementMiddleware:
     def _get_jwt_tenant(self, request: HttpRequest) -> Optional[str]:
         """Extract tenant_id from JWT access token."""
         try:
-            from rest_framework_simplejwt.authentication import JWTAuthentication
+            from rest_framework_simplejwt.authentication import \
+                JWTAuthentication
 
             auth = JWTAuthentication()
             result = auth.authenticate(request)

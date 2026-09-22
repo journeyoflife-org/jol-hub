@@ -6,7 +6,7 @@ F9 fix: connects post_save/post_delete signals to AuditLog.
 
 import logging
 
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 
 logger = logging.getLogger("jolhub.tenant.audit")
@@ -15,7 +15,8 @@ logger = logging.getLogger("jolhub.tenant.audit")
 def _log_mutation(sender, instance, created, action_override=None, **kwargs):
     """Emit an AuditLog entry for a model mutation."""
     from apps.core.models import AuditLog
-    from apps.crm.middleware import get_current_tenant_id, get_current_tenant_context
+    from apps.crm.middleware import (get_current_tenant_context,
+                                     get_current_tenant_id)
 
     tenant_id = get_current_tenant_id()
     context = get_current_tenant_context()

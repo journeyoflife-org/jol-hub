@@ -331,14 +331,10 @@ def _execute_business_logic(
         ValidationError: Unknown fields, missing tenant, or invalid data.
         KeyError: Required fields missing from payload.
     """
-    from .bitrix24_mappings import (
-        ALLOWED_CONTACT_FIELDS,
-        ALLOWED_LEAD_FIELDS,
-        EVENT_ENTITY_MAP,
-        EVENT_OPERATION_MAP,
-        mask_pii,
-        validate_fields,
-    )
+    from .bitrix24_mappings import (ALLOWED_CONTACT_FIELDS,
+                                    ALLOWED_LEAD_FIELDS, EVENT_ENTITY_MAP,
+                                    EVENT_OPERATION_MAP, mask_pii,
+                                    validate_fields)
     from .models import WebhookEvent
 
     # =================================================================
@@ -493,14 +489,10 @@ def _sync_contact(
     from apps.crm.models import ConsentStatus, Contact
     from django.utils import timezone as django_tz
 
-    from .bitrix24_mappings import (
-        CONTACT_CUSTOM_FIELD_MAP,
-        CONTACT_FIELD_MAP,
-        detect_consent_from_fields,
-        extract_email,
-        extract_phone,
-        parse_bitrix24_date,
-    )
+    from .bitrix24_mappings import (CONTACT_CUSTOM_FIELD_MAP,
+                                    CONTACT_FIELD_MAP,
+                                    detect_consent_from_fields, extract_email,
+                                    extract_phone, parse_bitrix24_date)
 
     bitrix24_id = str(fields.get("ID", ""))
     if not bitrix24_id:

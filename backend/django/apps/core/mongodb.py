@@ -105,7 +105,8 @@ MONGO_POOL_AVAILABLE = Gauge(
 # PyMongo CommandListener — bridges driver events to Prometheus.
 # ---------------------------------------------------------------------------
 
-from pymongo.monitoring import CommandListener as _PyMongoCommandListener  # noqa: E402
+from pymongo.monitoring import \
+    CommandListener as _PyMongoCommandListener  # noqa: E402
 
 
 class PrometheusCommandListener(_PyMongoCommandListener):

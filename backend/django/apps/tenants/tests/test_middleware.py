@@ -2,11 +2,13 @@
 C2: Middleware must validate entitlement, not just presence.
 """
 
-import pytest
 import uuid
 from unittest.mock import MagicMock, patch
-from django.test import RequestFactory
+
+import pytest
+
 from django.http import HttpResponse
+from django.test import RequestFactory
 
 
 @pytest.mark.django_db
@@ -22,9 +24,9 @@ class TestTenantEntitlementMiddleware:
 
     def test_forged_x_tenant_id_returns_404(self):
         """X-Tenant-ID for a tenant the user is NOT entitled to -> 404."""
+        from apps.organizations.models import Organization, OrganizationMember
         from apps.tenants.middleware import TenantEntitlementMiddleware
         from apps.users.models import User
-        from apps.organizations.models import Organization, OrganizationMember
 
         user = User.objects.create_user(email="test@test.lt", password="Test1234!")
         org = Organization.objects.create(
@@ -48,9 +50,9 @@ class TestTenantEntitlementMiddleware:
 
     def test_valid_tenant_passes(self):
         """X-Tenant-ID matching entitlement -> passes through."""
+        from apps.organizations.models import Organization, OrganizationMember
         from apps.tenants.middleware import TenantEntitlementMiddleware
         from apps.users.models import User
-        from apps.organizations.models import Organization, OrganizationMember
 
         user = User.objects.create_user(email="test2@test.lt", password="Test1234!")
         org = Organization.objects.create(

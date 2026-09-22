@@ -1,7 +1,8 @@
 """§5.1.10: Mongo collections must be tenant-scoped with TTL."""
 
+from unittest.mock import MagicMock, patch
+
 import pytest
-from unittest.mock import patch, MagicMock
 
 
 @pytest.mark.django_db
@@ -9,7 +10,8 @@ class TestMongoStoreIsolation:
 
     def test_webhook_collection_requires_tenant_context(self):
         """Bitrix24 webhook access requires tenant context."""
-        from apps.crm.middleware import get_current_tenant_id, clear_tenant_context
+        from apps.crm.middleware import (clear_tenant_context,
+                                         get_current_tenant_id)
 
         clear_tenant_context()
         tenant_id = get_current_tenant_id()
@@ -17,12 +19,9 @@ class TestMongoStoreIsolation:
 
     def test_tenant_id_propagates_to_mongo_queries(self):
         """When tenant context is set, it should be available for Mongo filtering."""
-        from apps.crm.middleware import (
-            TenantContext,
-            set_tenant_context,
-            get_current_tenant_id,
-            clear_tenant_context,
-        )
+        from apps.crm.middleware import (TenantContext, clear_tenant_context,
+                                         get_current_tenant_id,
+                                         set_tenant_context)
 
         set_tenant_context(
             TenantContext(

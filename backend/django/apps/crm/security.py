@@ -440,10 +440,8 @@ def audit_operation(operation: str, entity_type: str):
 
     def decorator(func):
         def wrapper(*args, **kwargs):
-            from apps.crm.middleware import (
-                get_current_tenant_context,
-                get_current_tenant_id,
-            )
+            from apps.crm.middleware import (get_current_tenant_context,
+                                             get_current_tenant_id)
             from apps.crm.models import AuditEntry
 
             result = func(*args, **kwargs)

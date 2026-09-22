@@ -10,7 +10,8 @@ Usage:
 import logging
 from typing import Optional
 
-from apps.crm.models import AuditEntry, ConsentStatus, Contact, DataSubjectRequest, Deal
+from apps.crm.models import (AuditEntry, ConsentStatus, Contact,
+                             DataSubjectRequest, Deal)
 from apps.crm.observability import ComplianceMonitor, ComplianceReport
 from django.core.management.base import BaseCommand, CommandError
 from django.db.models import Q

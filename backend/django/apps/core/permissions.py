@@ -180,7 +180,8 @@ class IsOrganizationAdmin(permissions.BasePermission):
     def _check_admin_role(self, user: User, tenant_id: str) -> bool:
         """Check if user has admin role in organization."""
         try:
-            from apps.organizations.models import Organization, OrganizationMember
+            from apps.organizations.models import (Organization,
+                                                   OrganizationMember)
 
             # Check for admin role
             is_admin = OrganizationMember.objects.filter(
@@ -293,7 +294,8 @@ class CanProcessFinancialData(permissions.BasePermission):
 
         # Only admins can process financial data
         try:
-            from apps.organizations.models import Organization, OrganizationMember
+            from apps.organizations.models import (Organization,
+                                                   OrganizationMember)
 
             is_admin = OrganizationMember.objects.filter(
                 user=request.user,

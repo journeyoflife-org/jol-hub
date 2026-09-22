@@ -11,9 +11,10 @@ Wave −1 Exit Gate — Red-Team Isolation Suite.
 (g) hierarchical admin reaches children, not siblings
 """
 
-import pytest
 import uuid
 from unittest.mock import patch
+
+import pytest
 
 
 @pytest.mark.django_db
@@ -21,11 +22,11 @@ class TestWaveMinus1ExitGate:
 
     def test_a_cross_tenant_read_returns_404(self):
         """(a) Tenant A cannot read Tenant B's pages."""
-        from apps.organizations.models import Organization, OrganizationMember
         from apps.content.models import Page
+        from apps.organizations.models import Organization, OrganizationMember
+        from apps.tenants.middleware import TenantEntitlementMiddleware
         from apps.users.models import User
         from django.test import RequestFactory
-        from apps.tenants.middleware import TenantEntitlementMiddleware
 
         org_a = Organization.objects.create(
             name="Parish A",
@@ -61,9 +62,9 @@ class TestWaveMinus1ExitGate:
     def test_a_cross_tenant_write_returns_404(self):
         """(a) Tenant A cannot create pages in Tenant B (middleware blocks)."""
         from apps.organizations.models import Organization, OrganizationMember
+        from apps.tenants.middleware import TenantEntitlementMiddleware
         from apps.users.models import User
         from django.test import RequestFactory
-        from apps.tenants.middleware import TenantEntitlementMiddleware
 
         org_a = Organization.objects.create(
             name="Parish A2",
@@ -98,9 +99,9 @@ class TestWaveMinus1ExitGate:
 
     def test_b_forged_tenant_id_returns_404(self):
         """(b) Forged X-Tenant-ID (not in entitlement) -> 404."""
+        from apps.tenants.middleware import TenantEntitlementMiddleware
         from apps.users.models import User
         from django.test import RequestFactory
-        from apps.tenants.middleware import TenantEntitlementMiddleware
 
         user = User.objects.create_user(email="b@test.lt", password="Test1234!")
         factory = RequestFactory()
@@ -127,9 +128,9 @@ class TestWaveMinus1ExitGate:
 
     def test_d_missing_context_denies(self):
         """(d) No tenant context -> deny operation (403)."""
+        from apps.tenants.middleware import TenantEntitlementMiddleware
         from apps.users.models import User
         from django.test import RequestFactory
-        from apps.tenants.middleware import TenantEntitlementMiddleware
 
         user = User.objects.create_user(email="d@test.lt", password="Test1234!")
         # No membership -> no tenant context
@@ -157,13 +158,10 @@ class TestWaveMinus1ExitGate:
     def test_f_mutation_creates_audit_log(self):
         """(f) Every content mutation writes an AuditLog row."""
         from apps.content.models import Page
-        from apps.organizations.models import Organization
         from apps.core.models import AuditLog
-        from apps.crm.middleware import (
-            TenantContext,
-            set_tenant_context,
-            clear_tenant_context,
-        )
+        from apps.crm.middleware import (TenantContext, clear_tenant_context,
+                                         set_tenant_context)
+        from apps.organizations.models import Organization
 
         org = Organization.objects.create(
             name="Audit Parish",
@@ -195,11 +193,9 @@ class TestWaveMinus1ExitGate:
 
     def test_g_hierarchical_admin_reaches_children(self):
         """(g) Diocese admin can access deanery/parish content."""
-        from apps.tenants.entitlement import (
-            get_entitled_tenants,
-            is_entitled_for_tenant,
-        )
         from apps.organizations.models import Organization, OrganizationMember
+        from apps.tenants.entitlement import (get_entitled_tenants,
+                                              is_entitled_for_tenant)
         from apps.users.models import User
 
         diocese = Organization.objects.create(
@@ -228,8 +224,8 @@ class TestWaveMinus1ExitGate:
 
     def test_g_hierarchical_admin_denied_siblings(self):
         """(g) Diocese admin CANNOT access sibling diocese content."""
-        from apps.tenants.entitlement import is_entitled_for_tenant
         from apps.organizations.models import Organization, OrganizationMember
+        from apps.tenants.entitlement import is_entitled_for_tenant
         from apps.users.models import User
 
         diocese_a = Organization.objects.create(

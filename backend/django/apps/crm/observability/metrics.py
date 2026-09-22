@@ -17,7 +17,8 @@ from typing import Any, Callable, Dict, List, Optional
 
 from prometheus_client import Counter, Gauge, Histogram, Info
 
-from apps.crm.middleware import get_current_tenant_context, get_current_tenant_id
+from apps.crm.middleware import (get_current_tenant_context,
+                                 get_current_tenant_id)
 from django.conf import settings
 from django.core.cache import cache
 from django.db.models import Avg, Count, Q, Sum
@@ -194,13 +195,8 @@ class ComplianceMonitor:
     @classmethod
     def generate_report(cls, tenant_id: Optional[str] = None) -> ComplianceReport:
         """Generate compliance report for tenant."""
-        from apps.crm.models import (
-            AuditEntry,
-            ConsentStatus,
-            Contact,
-            DataSubjectRequest,
-            Deal,
-        )
+        from apps.crm.models import (AuditEntry, ConsentStatus, Contact,
+                                     DataSubjectRequest, Deal)
 
         tenant_id = tenant_id or get_current_tenant_id()
         if not tenant_id:

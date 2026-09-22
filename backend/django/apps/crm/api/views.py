@@ -16,14 +16,11 @@ from datetime import datetime, timedelta
 from typing import Any, Dict, Optional
 
 from django_filters.rest_framework import DjangoFilterBackend
-from drf_spectacular.utils import OpenApiParameter, OpenApiResponse, extend_schema
+from drf_spectacular.utils import (OpenApiParameter, OpenApiResponse,
+                                   extend_schema)
 from rest_framework import mixins, status, viewsets
-from rest_framework.decorators import (
-    action,
-    api_view,
-    permission_classes,
-    throttle_classes,
-)
+from rest_framework.decorators import (action, api_view, permission_classes,
+                                       throttle_classes)
 from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
@@ -39,32 +36,16 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_headers
 
-from ..middleware import (
-    TenantDataAccessValidator,
-    get_current_tenant_context,
-    get_current_tenant_id,
-    log_tenant_access,
-)
-from ..models import (
-    AuditEntry,
-    ConsentStatus,
-    Contact,
-    DataClassification,
-    DataSubjectRequest,
-    Deal,
-)
-from .serializers import (
-    AuditEntrySerializer,
-    Bitrix24SyncSerializer,
-    ConsentSerializer,
-    ContactMinimalSerializer,
-    ContactSerializer,
-    DataExportSerializer,
-    DataSubjectRequestSerializer,
-    DealMinimalSerializer,
-    DealPaymentSerializer,
-    DealSerializer,
-)
+from ..middleware import (TenantDataAccessValidator,
+                          get_current_tenant_context, get_current_tenant_id,
+                          log_tenant_access)
+from ..models import (AuditEntry, ConsentStatus, Contact, DataClassification,
+                      DataSubjectRequest, Deal)
+from .serializers import (AuditEntrySerializer, Bitrix24SyncSerializer,
+                          ConsentSerializer, ContactMinimalSerializer,
+                          ContactSerializer, DataExportSerializer,
+                          DataSubjectRequestSerializer, DealMinimalSerializer,
+                          DealPaymentSerializer, DealSerializer)
 
 logger = logging.getLogger("jolhub.crm.views")
 

@@ -582,12 +582,10 @@ class TenantIsolationVerifier:
         check_id = "TENANT-CTX-001"
 
         try:
-            from apps.crm.middleware import (
-                TenantContext,
-                clear_tenant_context,
-                get_current_tenant_id,
-                set_tenant_context,
-            )
+            from apps.crm.middleware import (TenantContext,
+                                             clear_tenant_context,
+                                             get_current_tenant_id,
+                                             set_tenant_context)
 
             # Test setting and getting context
             test_tenant_id = str(uuid.uuid4())

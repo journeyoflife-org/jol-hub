@@ -5,9 +5,11 @@ Verifies that missing/misconfigured tenant context DENIES operations
 rather than silently skipping validation (C3 fix).
 """
 
+from unittest.mock import MagicMock, patch
+
 import pytest
-from unittest.mock import patch, MagicMock
-from django.core.exceptions import ValidationError, PermissionDenied
+
+from django.core.exceptions import PermissionDenied, ValidationError
 
 
 @pytest.mark.django_db

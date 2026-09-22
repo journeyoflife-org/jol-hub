@@ -8,13 +8,8 @@ from rest_framework.routers import DefaultRouter
 
 from django.urls import include, path
 
-from .views import (
-    AuditEntryViewSet,
-    Bitrix24SyncViewSet,
-    ContactViewSet,
-    DataSubjectRequestViewSet,
-    DealViewSet,
-)
+from .views import (AuditEntryViewSet, Bitrix24SyncViewSet, ContactViewSet,
+                    DataSubjectRequestViewSet, DealViewSet)
 
 router = DefaultRouter()
 router.register(r"contacts", ContactViewSet, basename="crm-contact")

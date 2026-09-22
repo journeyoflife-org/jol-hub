@@ -8,12 +8,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Organization, OrganizationMember, Website
-from .serializers import (
-    OrganizationCreateSerializer,
-    OrganizationMemberSerializer,
-    OrganizationSerializer,
-    WebsiteSerializer,
-)
+from .serializers import (OrganizationCreateSerializer,
+                          OrganizationMemberSerializer, OrganizationSerializer,
+                          WebsiteSerializer)
 
 
 class OrganizationListCreateView(generics.ListCreateAPIView):

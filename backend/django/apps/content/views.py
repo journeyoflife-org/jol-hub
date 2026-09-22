@@ -34,7 +34,8 @@ class TenantScopedQuerysetMixin:
         return qs
 
 
-from .serializers import MediaFileSerializer, PageCreateSerializer, PageSerializer
+from .serializers import (MediaFileSerializer, PageCreateSerializer,
+                          PageSerializer)
 
 
 class PageListCreateView(TenantScopedQuerysetMixin, generics.ListCreateAPIView):

@@ -5,7 +5,7 @@ resolver fixtures stay in lockstep. If this test fails, either the
 API or the fixtures drifted.
 """
 
-from django.test import TestCase, Client
+from django.test import Client, TestCase
 
 
 class ApiFixtureParityTests(TestCase):

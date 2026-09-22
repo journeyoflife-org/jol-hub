@@ -2,8 +2,10 @@
 C3/C5: Queryset scoping and serializer org-forcing tests.
 """
 
-import pytest
 from unittest.mock import MagicMock
+
+import pytest
+
 from django.test import RequestFactory
 
 
@@ -12,13 +14,10 @@ class TestTenantScopedFilter:
 
     def test_filter_backend_scopes_to_tenant(self):
         """TenantScopedFilterBackend injects organization_id filter."""
-        from apps.tenants.filters import TenantScopedFilterBackend
         from apps.content.models import Page
-        from apps.crm.middleware import (
-            TenantContext,
-            set_tenant_context,
-            clear_tenant_context,
-        )
+        from apps.crm.middleware import (TenantContext, clear_tenant_context,
+                                         set_tenant_context)
+        from apps.tenants.filters import TenantScopedFilterBackend
 
         set_tenant_context(
             TenantContext(
@@ -44,9 +43,9 @@ class TestTenantScopedFilter:
 
     def test_filter_backend_returns_empty_without_tenant(self):
         """Without tenant context, returns empty queryset."""
-        from apps.tenants.filters import TenantScopedFilterBackend
         from apps.content.models import Page
         from apps.crm.middleware import clear_tenant_context
+        from apps.tenants.filters import TenantScopedFilterBackend
 
         clear_tenant_context()
 

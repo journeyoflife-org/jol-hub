@@ -18,19 +18,15 @@ from decimal import Decimal
 from typing import Any, Dict, List, Optional, Set
 
 from django.core.exceptions import ObjectDoesNotExist
-from django.db.models.signals import m2m_changed, post_delete, post_save, pre_save
+from django.db.models.signals import (m2m_changed, post_delete, post_save,
+                                      pre_save)
 from django.dispatch import receiver
 from django.utils import timezone
 
-from .audit_logger import (
-    AuditContext,
-    AuditEventType,
-    ComplianceAuditLogger,
-    FieldChange,
-    GDPRLegalBasis,
-    get_audit_logger,
-)
-from .models import AuditEntry, ConsentStatus, Contact, DataSubjectRequest, Deal
+from .audit_logger import (AuditContext, AuditEventType, ComplianceAuditLogger,
+                           FieldChange, GDPRLegalBasis, get_audit_logger)
+from .models import (AuditEntry, ConsentStatus, Contact, DataSubjectRequest,
+                     Deal)
 
 logger = logging.getLogger("jolhub.crm.signals")
 

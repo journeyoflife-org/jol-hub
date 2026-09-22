@@ -17,22 +17,15 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework_simplejwt.views import (TokenObtainPairView,
+                                            TokenRefreshView)
 
-from apps.core.throttling import (
-    AuthAnonRateThrottle,
-    AuthRateThrottle,
-    GDPRDeleteThrottle,
-    GDPRExportThrottle,
-)
+from apps.core.throttling import (AuthAnonRateThrottle, AuthRateThrottle,
+                                  GDPRDeleteThrottle, GDPRExportThrottle)
 
 from .models import User
-from .serializers import (
-    ChangePasswordSerializer,
-    RegisterSerializer,
-    TokenObtainPairSerializer,
-    UserSerializer,
-)
+from .serializers import (ChangePasswordSerializer, RegisterSerializer,
+                          TokenObtainPairSerializer, UserSerializer)
 
 logger = logging.getLogger(__name__)
 

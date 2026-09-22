@@ -18,13 +18,8 @@ import pytest
 sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
 
 from backend.django.apps.crm.tenant_verification import (
-    IsolationAuditReport,
-    TenantIsolationEnforcer,
-    TenantIsolationVerifier,
-    VerificationResult,
-    VerificationStatus,
-    verify_tenant_isolation,
-)
+    IsolationAuditReport, TenantIsolationEnforcer, TenantIsolationVerifier,
+    VerificationResult, VerificationStatus, verify_tenant_isolation)
 
 # =============================================================================
 # FIXTURES
@@ -98,12 +93,10 @@ class TestThreadLocalIsolation:
 
     def test_context_set_and_get(self):
         """Test setting and getting tenant context."""
-        from backend.django.apps.crm.middleware import (
-            TenantContext,
-            clear_tenant_context,
-            get_current_tenant_id,
-            set_tenant_context,
-        )
+        from backend.django.apps.crm.middleware import (TenantContext,
+                                                        clear_tenant_context,
+                                                        get_current_tenant_id,
+                                                        set_tenant_context)
 
         tenant_id = str(uuid.uuid4())
         context = TenantContext(
@@ -129,12 +122,10 @@ class TestThreadLocalIsolation:
 
     def test_context_thread_safety(self):
         """Test that context is isolated between threads."""
-        from backend.django.apps.crm.middleware import (
-            TenantContext,
-            clear_tenant_context,
-            get_current_tenant_id,
-            set_tenant_context,
-        )
+        from backend.django.apps.crm.middleware import (TenantContext,
+                                                        clear_tenant_context,
+                                                        get_current_tenant_id,
+                                                        set_tenant_context)
 
         results = {}
 
@@ -174,12 +165,10 @@ class TestThreadLocalIsolation:
 
     def test_context_clear_prevents_leakage(self):
         """Test that cleared context doesn't leak."""
-        from backend.django.apps.crm.middleware import (
-            TenantContext,
-            clear_tenant_context,
-            get_current_tenant_id,
-            set_tenant_context,
-        )
+        from backend.django.apps.crm.middleware import (TenantContext,
+                                                        clear_tenant_context,
+                                                        get_current_tenant_id,
+                                                        set_tenant_context)
 
         # Set context
         context = TenantContext(
@@ -429,18 +418,17 @@ class TestSecurityScenarios:
 
     def test_cross_tenant_id_manipulation(self):
         """Test that manipulated tenant IDs are caught."""
-        from backend.django.apps.crm.middleware import TenantDataAccessValidator
+        from backend.django.apps.crm.middleware import \
+            TenantDataAccessValidator
 
         # Create mock object with different tenant
         obj = Mock()
         obj.organization_id = "tenant-attacker"
 
         # Set current tenant to victim
-        from backend.django.apps.crm.middleware import (
-            TenantContext,
-            clear_tenant_context,
-            set_tenant_context,
-        )
+        from backend.django.apps.crm.middleware import (TenantContext,
+                                                        clear_tenant_context,
+                                                        set_tenant_context)
 
         context = TenantContext(
             tenant_id="tenant-victim",
@@ -462,9 +450,7 @@ class TestSecurityScenarios:
     def test_missing_tenant_context_blocked(self):
         """Test that missing tenant context is blocked."""
         from backend.django.apps.crm.middleware import (
-            TenantDataAccessValidator,
-            clear_tenant_context,
-        )
+            TenantDataAccessValidator, clear_tenant_context)
 
         # Ensure no context
         clear_tenant_context()

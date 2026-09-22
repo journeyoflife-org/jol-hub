@@ -21,11 +21,8 @@ from django.core.exceptions import ValidationError
 from django.db.models import Avg, Count, Sum
 
 from .models import DailyStats, PageView
-from .serializers import (
-    AnalyticsOverviewSerializer,
-    DailyStatsSerializer,
-    TopParishSerializer,
-)
+from .serializers import (AnalyticsOverviewSerializer, DailyStatsSerializer,
+                          TopParishSerializer)
 
 logger = logging.getLogger(__name__)
 

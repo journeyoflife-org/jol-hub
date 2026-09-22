@@ -12,14 +12,8 @@ from django.db.models import Q
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-from .models import (
-    AuditEntry,
-    ConsentStatus,
-    Contact,
-    DataClassification,
-    DataSubjectRequest,
-    Deal,
-)
+from .models import (AuditEntry, ConsentStatus, Contact, DataClassification,
+                     DataSubjectRequest, Deal)
 
 
 @admin.register(Contact)

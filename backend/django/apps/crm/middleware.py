@@ -20,7 +20,8 @@ from functools import wraps
 from typing import Any, Callable, Optional
 
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework_simplejwt.exceptions import AuthenticationFailed, InvalidToken
+from rest_framework_simplejwt.exceptions import (AuthenticationFailed,
+                                                 InvalidToken)
 
 from django.conf import settings
 from django.contrib.auth import get_user_model

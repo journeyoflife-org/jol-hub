@@ -29,12 +29,8 @@ from __future__ import annotations
 import logging
 from typing import ClassVar
 
-from prometheus_client import (
-    CONTENT_TYPE_LATEST,
-    CollectorRegistry,
-    generate_latest,
-    multiprocess,
-)
+from prometheus_client import (CONTENT_TYPE_LATEST, CollectorRegistry,
+                               generate_latest, multiprocess)
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response

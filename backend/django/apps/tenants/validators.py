@@ -11,7 +11,7 @@ in its save() method.
 import logging
 from typing import Optional
 
-from django.core.exceptions import ValidationError, PermissionDenied
+from django.core.exceptions import PermissionDenied, ValidationError
 
 logger = logging.getLogger("jolhub.tenant_validation")
 
