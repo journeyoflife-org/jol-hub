@@ -9,7 +9,10 @@ class TenantAPITests(TestCase):
 
     def setUp(self):
         """Create test data."""
-        from apps.tenants.test_utils import set_test_tenant_context, clear_test_tenant_context
+        from apps.tenants.test_utils import (
+            set_test_tenant_context,
+            clear_test_tenant_context,
+        )
 
         self.client = Client()
         self.test_parish = Organization.objects.create(
