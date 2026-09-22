@@ -78,9 +78,7 @@ class Organization(BaseModel):
 
     name = models.CharField(_("name"), max_length=255, db_index=True)
     slug = models.SlugField(_("slug"), max_length=255, unique=True)
-    org_type = models.CharField(
-        _("type"), max_length=20, choices=TYPE_CHOICES, db_index=True
-    )
+    org_type = models.CharField(_("type"), max_length=20, choices=TYPE_CHOICES, db_index=True)
     status = models.CharField(
         _("status"),
         max_length=20,
@@ -113,12 +111,8 @@ class Organization(BaseModel):
     )
 
     # Geolocation
-    latitude = models.DecimalField(
-        _("latitude"), max_digits=9, decimal_places=6, null=True, blank=True
-    )
-    longitude = models.DecimalField(
-        _("longitude"), max_digits=9, decimal_places=6, null=True, blank=True
-    )
+    latitude = models.DecimalField(_("latitude"), max_digits=9, decimal_places=6, null=True, blank=True)
+    longitude = models.DecimalField(_("longitude"), max_digits=9, decimal_places=6, null=True, blank=True)
 
     # Hierarchical relationships (4-tier RBAC: Diocese -> Deanery -> Parish/Church)
     parent_diocese = models.ForeignKey(
@@ -179,9 +173,7 @@ class Organization(BaseModel):
     legal_hold_reason = models.TextField(
         _("legal hold reason"),
         blank=True,
-        help_text=_(
-            "Reason for legal hold (e.g., pending litigation, regulatory investigation)"
-        ),
+        help_text=_("Reason for legal hold (e.g., pending litigation, regulatory investigation)"),
     )
     legal_hold_until = models.DateTimeField(
         _("legal hold until"),
@@ -268,9 +260,7 @@ class Organization(BaseModel):
 
     def requires_canonical_compliance(self):
         """Check if organization requires Canon Law compliance."""
-        return (
-            self.compliance_level == self.COMPLIANCE_CANONICAL or self.canonical_records
-        )
+        return self.compliance_level == self.COMPLIANCE_CANONICAL or self.canonical_records
 
     def requires_pci_dss(self):
         """Check if organization requires PCI-DSS compliance."""
@@ -324,9 +314,7 @@ class OrganizationMember(BaseModel):
         related_name="organization_memberships",
         verbose_name=_("user"),
     )
-    role = models.CharField(
-        _("role"), max_length=20, choices=ROLE_CHOICES, default=ROLE_VIEWER
-    )
+    role = models.CharField(_("role"), max_length=20, choices=ROLE_CHOICES, default=ROLE_VIEWER)
     joined_at = models.DateTimeField(_("joined at"), auto_now_add=True)
     invited_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -376,9 +364,7 @@ class Website(BaseModel):
     )
     domain = models.CharField(_("domain"), max_length=255, unique=True, blank=True)
     theme = models.CharField(_("theme"), max_length=64, default="default")
-    default_language = models.CharField(
-        _("default language"), max_length=8, default="en"
-    )
+    default_language = models.CharField(_("default language"), max_length=8, default="en")
     languages = models.JSONField(_("languages"), default=list)
     ssl_enabled = models.BooleanField(_("SSL enabled"), default=True)
     analytics_id = models.CharField(_("analytics ID"), max_length=64, blank=True)
@@ -404,9 +390,7 @@ class Website(BaseModel):
     def _validate_tenant_context(self):
         from apps.tenants.validators import validate_tenant_context
 
-        validate_tenant_context(
-            self.organization_id, "Website", str(self.pk) if self.pk else None
-        )
+        validate_tenant_context(self.organization_id, "Website", str(self.pk) if self.pk else None)
 
 
 class ConsentSettings(BaseModel):
@@ -486,9 +470,7 @@ class ConsentSettings(BaseModel):
     def _validate_tenant_context(self):
         from apps.tenants.validators import validate_tenant_context
 
-        validate_tenant_context(
-            self.organization_id, "ConsentSettings", str(self.pk) if self.pk else None
-        )
+        validate_tenant_context(self.organization_id, "ConsentSettings", str(self.pk) if self.pk else None)
 
     def has_analytics_consent(self):
         """Check if organization has valid analytics consent."""
