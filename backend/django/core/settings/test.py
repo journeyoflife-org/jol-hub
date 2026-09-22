@@ -36,19 +36,37 @@ if os.environ.get("USE_SQLITE") == "1":
     }
 else:
     # CI or local with PostgreSQL
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.environ.get("DB_NAME", "jolhub_test"),
-            "USER": os.environ.get("DB_USER", "test_user"),
-            "PASSWORD": os.environ.get("DB_PASSWORD", "test_password"),
-            "HOST": os.environ.get("DB_HOST", "localhost"),
-            "PORT": os.environ.get("DB_PORT", "5432"),
-            "TEST": {
-                "NAME": "jolhub_test",
-            },
+    # Parse DATABASE_URL if set (CI), otherwise use DB_* env vars
+    _db_url = os.environ.get("DATABASE_URL")
+    if _db_url:
+        _parsed = urlparse(_db_url)
+        DATABASES = {
+            "default": {
+                "ENGINE": "django.db.backends.postgresql",
+                "NAME": _parsed.path.lstrip("/"),
+                "USER": _parsed.username,
+                "PASSWORD": _parsed.password or "",
+                "HOST": _parsed.hostname,
+                "PORT": str(_parsed.port or 5432),
+                "TEST": {
+                    "NAME": _parsed.path.lstrip("/") + "_test",
+                },
+            }
         }
-    }
+    else:
+        DATABASES = {
+            "default": {
+                "ENGINE": "django.db.backends.postgresql",
+                "NAME": os.environ.get("DB_NAME", "jolhub_test"),
+                "USER": os.environ.get("DB_USER", "test_user"),
+                "PASSWORD": os.environ.get("DB_PASSWORD", "test_password"),
+                "HOST": os.environ.get("DB_HOST", "localhost"),
+                "PORT": os.environ.get("DB_PORT", "5432"),
+                "TEST": {
+                    "NAME": "jolhub_test",
+                },
+            }
+        }
 
 # =============================================================================
 # PASSWORD HASHERS — Use fastest hasher for tests

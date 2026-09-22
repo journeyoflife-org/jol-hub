@@ -8,9 +8,10 @@ and the schema-per-tenant migration infrastructure.
 ADR-001: schema-per-tenant + RLS defense-in-depth.
 """
 
+from django_tenants.models import TenantMixin
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django_tenants.models import TenantMixin
 
 
 def generate_schema_name(tenant):
