@@ -8,7 +8,6 @@ cross-branch -> DENIED
 """
 
 import pytest
-
 from apps.organizations.models import Organization, OrganizationMember
 from apps.tenants.entitlement import (
     get_entitled_tenants,
