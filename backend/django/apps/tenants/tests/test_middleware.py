@@ -67,7 +67,9 @@ class TestTenantEntitlementMiddleware:
             status="active",
             schema_name="t_my_parish_2",
         )
+        set_test_tenant_context(org)
         OrganizationMember.objects.create(organization=org, user=user, role="editor")
+        clear_test_tenant_context()
 
         request = self._make_request(user, tenant_header=str(org.id))
 
