@@ -142,8 +142,4 @@ export { i18nMiddleware, i18nMiddlewareMatcher } from './middleware';
 // strings; tenant fixtures carry translations INLINE as { lt, en?, ru? }.
 // PURE module — server/edge/client safe.
 // -----------------------------------------------------------------------------
-export {
-  resolveLocale,
-  TODO_MARKER,
-  type LocalizedText,
-} from './localized-text';
+export { resolveLocale, TODO_MARKER, type LocalizedText } from './localized-text';

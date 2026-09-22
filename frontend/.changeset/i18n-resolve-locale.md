@@ -1,5 +1,5 @@
 ---
-"@journeyoflife-org/i18n": minor
+'@journeyoflife-org/i18n': minor
 ---
 
 Add `resolveLocale`, `LocalizedText` and `TODO_MARKER` for inline localized-field resolution.

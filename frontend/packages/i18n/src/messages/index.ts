@@ -24,7 +24,6 @@ export type MessageNamespace = Record<string, string>;
 /** Full catalog: namespace → keys. */
 export type MessageCatalog = Record<string, MessageNamespace>;
 
-
 const CATALOGS: Record<SupportedLocale, MessageCatalog> = {
   lt: lt as MessageCatalog,
   en: en as MessageCatalog,

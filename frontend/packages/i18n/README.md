@@ -115,7 +115,7 @@ reference locale, add a `pl` section to every `verticals/*.json`, and extend
 silently.
 
 `PLANNED_LOCALES` is reserved for locales that are designed for but not yet
-*declared*, and is kept disjoint from `SUPPORTED_LOCALES` by the
+_declared_, and is kept disjoint from `SUPPORTED_LOCALES` by the
 locale-parity unit test.
 
 ## Legacy surface
