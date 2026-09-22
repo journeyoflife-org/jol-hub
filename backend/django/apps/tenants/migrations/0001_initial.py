@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ("organizations", "0001_initial"),
+        ("organizations", "0005_organization_schema_name"),
     ]
 
     operations = [
@@ -63,16 +63,6 @@ class Migration(migrations.Migration):
                 "ordering": ["-is_primary", "domain"],
             },
         ),
-        migrations.AddField(
-            model_name="organization",
-            name="schema_name",
-            field=models.CharField(
-                blank=True,
-                help_text="Postgres schema name (auto-generated from slug)",
-                max_length=63,
-                unique=True,
-                verbose_name="schema name",
-            ),
-        ),
+
         migrations.RunPython(populate_schema_names, migrations.RunPython.noop),
     ]
