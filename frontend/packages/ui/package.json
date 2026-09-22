@@ -55,6 +55,7 @@
   "files": [
     "dist",
     "src/styles",
+    "src/tokens",
     "tailwind.config.ts"
   ],
   "publishConfig": {
