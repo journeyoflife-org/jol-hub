@@ -63,6 +63,5 @@ class Migration(migrations.Migration):
                 "ordering": ["-is_primary", "domain"],
             },
         ),
-
         migrations.RunPython(populate_schema_names, migrations.RunPython.noop),
     ]
