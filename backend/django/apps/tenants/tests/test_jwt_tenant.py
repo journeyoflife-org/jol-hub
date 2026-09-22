@@ -24,7 +24,11 @@ class TestJWTTenantClaim:
             status="active",
             schema_name="t_test_parish",
         )
+        # Set tenant context before creating org-scoped objects
+        from conftest import _set_tenant_context, _clear_tenant_context
+        _set_tenant_context(org)
         OrganizationMember.objects.create(organization=org, user=user, role="admin")
+        _clear_tenant_context()
 
         token = RefreshToken.for_user(user)
         assert "tenant_id" in token, "JWT token must include tenant_id claim"
@@ -44,7 +48,10 @@ class TestJWTTenantClaim:
             status="active",
             schema_name="t_test_parish_2",
         )
+        from conftest import _set_tenant_context, _clear_tenant_context
+        _set_tenant_context(org)
         OrganizationMember.objects.create(organization=org, user=user, role="editor")
+        _clear_tenant_context()
 
         token = RefreshToken.for_user(user)
         assert token.get("tenant_id") == str(org.id)
