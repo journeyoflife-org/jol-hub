@@ -14,13 +14,34 @@ from apps.organizations.models import Organization
 
 # Country → locale mapping (ISO 3166-1 alpha-2 → BCP 47)
 COUNTRY_LOCALE_MAP = {
-    "LT": "lt", "LV": "lv", "EE": "et", "PL": "pl",
-    "DE": "de", "FR": "fr", "IT": "it", "ES": "es",
-    "PT": "pt", "NL": "nl", "BE": "nl", "AT": "de",
-    "IE": "en", "GB": "en", "HU": "hu", "SK": "sk",
-    "SI": "sl", "HR": "hr", "RO": "ro", "BG": "bg",
-    "CZ": "cs", "FI": "fi", "SE": "sv", "DK": "da",
-    "GR": "el", "CY": "el", "MT": "mt", "LU": "fr",
+    "LT": "lt",
+    "LV": "lv",
+    "EE": "et",
+    "PL": "pl",
+    "DE": "de",
+    "FR": "fr",
+    "IT": "it",
+    "ES": "es",
+    "PT": "pt",
+    "NL": "nl",
+    "BE": "nl",
+    "AT": "de",
+    "IE": "en",
+    "GB": "en",
+    "HU": "hu",
+    "SK": "sk",
+    "SI": "sl",
+    "HR": "hr",
+    "RO": "ro",
+    "BG": "bg",
+    "CZ": "cs",
+    "FI": "fi",
+    "SE": "sv",
+    "DK": "da",
+    "GR": "el",
+    "CY": "el",
+    "MT": "mt",
+    "LU": "fr",
 }
 
 
@@ -55,14 +76,16 @@ class TenantListView(viewsets.ViewSet):
         result = []
         for org in tenants:
             locale = COUNTRY_LOCALE_MAP.get(org.country, "lt")
-            result.append({
-                "slug": org.slug,
-                "name": {"lt": org.name, "en": org.name},
-                "vertical": org.org_type,
-                "locale": locale,
-                "schema": f"t_{org.slug}",
-                "domain": _extract_domain(org.website),
-                "country": org.country,
-            })
+            result.append(
+                {
+                    "slug": org.slug,
+                    "name": {"lt": org.name, "en": org.name},
+                    "vertical": org.org_type,
+                    "locale": locale,
+                    "schema": f"t_{org.slug}",
+                    "domain": _extract_domain(org.website),
+                    "country": org.country,
+                }
+            )
 
         return Response(result)

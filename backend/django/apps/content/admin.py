@@ -20,8 +20,6 @@ class PageAdmin(admin.ModelAdmin):
     date_hierarchy = "created_at"
     raw_id_fields = ("organization", "author", "parent", "featured_image")
 
-
-
     def get_queryset(self, request):
         """Scope admin queryset to entitled tenant (no cross-tenant data)."""
         qs = super().get_queryset(request)
@@ -54,4 +52,3 @@ class MediaFileAdmin(admin.ModelAdmin):
         if tenant is not None:
             return qs.filter(organization=tenant)
         return qs
-

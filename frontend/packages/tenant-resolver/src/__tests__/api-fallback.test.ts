@@ -48,8 +48,7 @@ describe('Tenant API client', () => {
       json: async () => mockTenants,
     }));
 
-    const { setFetchImpl, clearApiCache, resetCircuitBreaker } =
-      await import('../api');
+    const { setFetchImpl, clearApiCache, resetCircuitBreaker } = await import('../api');
     setFetchImpl(mockFetch as unknown as typeof globalThis.fetch);
     clearApiCache();
     resetCircuitBreaker();

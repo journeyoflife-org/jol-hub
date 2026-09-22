@@ -21,12 +21,20 @@ class ApiFixtureParityTests(TestCase):
         data = response.json()
         self.assertIsInstance(data, list)
 
-        required_keys = {"slug", "name", "vertical", "locale", "schema", "domain", "country"}
+        required_keys = {
+            "slug",
+            "name",
+            "vertical",
+            "locale",
+            "schema",
+            "domain",
+            "country",
+        }
         for tenant in data:
             self.assertTrue(
                 required_keys.issubset(tenant.keys()),
                 f"Tenant {tenant.get('slug', '?')} missing keys: "
-                f"{required_keys - set(tenant.keys())}"
+                f"{required_keys - set(tenant.keys())}",
             )
 
     def test_api_schema_follows_adr001(self):
@@ -39,7 +47,7 @@ class ApiFixtureParityTests(TestCase):
                 tenant["schema"],
                 expected_schema,
                 f"Schema mismatch for {tenant['slug']}: "
-                f"got {tenant['schema']}, expected {expected_schema}"
+                f"got {tenant['schema']}, expected {expected_schema}",
             )
 
     def test_api_no_duplicate_slugs(self):
@@ -52,7 +60,7 @@ class ApiFixtureParityTests(TestCase):
     def test_api_locale_matches_country(self):
         """Locale is consistent with country code."""
         from apps.organizations.api.tenants import COUNTRY_LOCALE_MAP
-        
+
         response = self.client.get("/api/v1/tenants/")
         data = response.json()
         for tenant in data:
@@ -62,5 +70,5 @@ class ApiFixtureParityTests(TestCase):
                 expected_locale,
                 f"Locale mismatch for {tenant['slug']}: "
                 f"country={tenant['country']}, "
-                f"got locale={tenant['locale']}, expected {expected_locale}"
+                f"got locale={tenant['locale']}, expected {expected_locale}",
             )
