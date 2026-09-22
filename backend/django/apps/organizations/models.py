@@ -2,6 +2,8 @@
 Organization domain models — religious institutions and their membership.
 """
 
+import uuid
+
 from apps.core.models import BaseModel
 from django.conf import settings
 from django.db import models
@@ -235,6 +237,15 @@ class Organization(BaseModel):
 
     def __str__(self):
         return f"{self.name} ({self.country})"
+
+    def save(self, *args, **kwargs):
+        """Auto-generate entity_id and schema_name if not set."""
+        if not self.entity_id:
+            self.entity_id = f"org-{uuid.uuid4().hex[:16]}"
+        if not self.schema_name and self.slug:
+            slug = self.slug.replace("-", "_")[:63]
+            self.schema_name = f"t_{slug}"
+        super().save(*args, **kwargs)
 
     def is_catholic(self):
         """Check if organization is a Catholic entity."""
