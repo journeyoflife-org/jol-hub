@@ -26,7 +26,9 @@ from django.test import RequestFactory
 BITRIX24_TEST_SECRET = "test-bitrix24-hmac-secret-key"
 
 
-def compute_bitrix24_signature(payload: dict[str, Any], secret: str = BITRIX24_TEST_SECRET) -> str:
+def compute_bitrix24_signature(
+    payload: dict[str, Any], secret: str = BITRIX24_TEST_SECRET
+) -> str:
     """Compute the HMAC-SHA256 signature for a Bitrix24 webhook payload.
 
     Args:
