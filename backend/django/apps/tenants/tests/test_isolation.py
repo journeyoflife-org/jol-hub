@@ -15,8 +15,7 @@ import uuid
 from unittest.mock import patch
 
 import pytest
-
-from apps.tenants.test_utils import set_test_tenant_context, clear_test_tenant_context
+from apps.tenants.test_utils import clear_test_tenant_context, set_test_tenant_context
 
 
 @pytest.mark.django_db
