@@ -4,9 +4,12 @@
  * Guarantees:
  *   1. lt / en / ru base catalogs have IDENTICAL key sets (missing or
  *      extra keys in any locale fail the build — no partial translations).
- *   2. Every vertical override (church/funeral/cleaning) contains the same
+ *   2. pl (Poland) is declared but NOT content-complete: missing keys are
+ *      warned (not failed), extra keys still fail. The resolveLocale
+ *      function handles missing keys with [pl translation pending] markers.
+ *   3. Every vertical override (church/funeral/cleaning) contains the same
  *     locale set and identical keys per locale.
- *   3. Vertical override keys exist in the base catalog (overrides can
+ *   4. Vertical override keys exist in the base catalog (overrides can
  *      only REPLACE existing strings, never invent new ones).
  *
  * Run: `pnpm i18n:check` (packages/i18n). Exits non-zero on mismatch.
@@ -44,9 +47,14 @@ function diff(reference: string[], candidate: string[]): { missing: string[]; ex
 }
 
 let failures = 0;
+let warnings = 0;
 const fail = (message: string): void => {
   failures += 1;
   console.error(`[FAIL] ${message}`);
+};
+const warn = (message: string): void => {
+  warnings += 1;
+  console.log(`[WARN] ${message}`);
 };
 
 console.log('JOL i18n — message key parity check');
@@ -73,10 +81,18 @@ if (!referenceKeys) {
   fail(`Reference locale '${referenceLocale}' not found.`);
 }
 
+// Partial locales (declared but not content-complete) get warnings for missing
+// keys instead of failures. Extra keys still fail (no invented keys).
+const PARTIAL_LOCALES = ['pl'];
+
 for (const locale of baseLocales) {
   if (locale === referenceLocale) continue;
   const { missing, extra } = diff(referenceKeys, baseKeys[locale]);
-  for (const key of missing) fail(`${locale}.json missing key: ${key}`);
+  const isPartial = PARTIAL_LOCALES.includes(locale);
+  for (const key of missing) {
+    if (isPartial) warn(`${locale}.json missing key: ${key}`);
+    else fail(`${locale}.json missing key: ${key}`);
+  }
   for (const key of extra) fail(`${locale}.json has extra key: ${key}`);
 }
 
@@ -124,6 +140,9 @@ for (const file of verticalFiles) {
 }
 
 console.log('='.repeat(70));
+if (warnings > 0) {
+  console.log(`${warnings} warning(s) (partial locale(s): ${PARTIAL_LOCALES.join(', ')}).`);
+}
 if (failures > 0) {
   console.error(`${failures} parity problem(s) found.`);
   process.exit(1);
