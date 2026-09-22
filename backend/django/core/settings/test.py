@@ -116,7 +116,9 @@ INSTALLED_APPS = list(SHARED_APPS)  # Recalculate
 # Remove it; keep TenantEntitlementMiddleware which handles auth gracefully.
 # =============================================================================
 
-MIDDLEWARE = [m for m in MIDDLEWARE if m != "django_tenants.middleware.main.TenantMainMiddleware"]
+MIDDLEWARE = [
+    m for m in MIDDLEWARE if m != "django_tenants.middleware.main.TenantMainMiddleware"
+]
 
 # =============================================================================
 # PASSWORD HASHERS — Use fastest hasher for tests
