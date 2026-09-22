@@ -53,7 +53,9 @@ class TestWaveMinus1ExitGate:
         clear_test_tenant_context()
 
         user = User.objects.create_user(email="a@test.lt", password="Test1234!")
+        set_test_tenant_context(org_a)
         OrganizationMember.objects.create(organization=org_a, user=user, role="admin")
+        clear_test_tenant_context()
 
         factory = RequestFactory()
         request = factory.get("/api/v1/content/pages/", HTTP_X_TENANT_ID=str(org_b.id))
@@ -88,7 +90,9 @@ class TestWaveMinus1ExitGate:
         )
 
         user = User.objects.create_user(email="a2@test.lt", password="Test1234!")
+        set_test_tenant_context(org_a)
         OrganizationMember.objects.create(organization=org_a, user=user, role="admin")
+        clear_test_tenant_context()
 
         factory = RequestFactory()
         request = factory.post(
