@@ -7,6 +7,7 @@ provides a secondary isolation layer.
 ADR-001: RLS on all tenant-scoped tables.
 SET LOCAL app.tenant_id inside ATOMIC_REQUESTS transaction.
 """
+
 import logging
 
 from django.db import connection
@@ -55,11 +56,14 @@ def set_tenant_id_for_request(tenant_id: str):
 def verify_rls_active(table_name: str) -> bool:
     """Check if RLS is enabled and forced on a table."""
     with connection.cursor() as cursor:
-        cursor.execute("""
+        cursor.execute(
+            """
             SELECT relname, relrowsecurity, relforcerowsecurity
             FROM pg_class
             WHERE relname = %s AND relkind = 'r';
-        """, [table_name])
+        """,
+            [table_name],
+        )
         row = cursor.fetchone()
         if row:
             return row[1] and row[2]  # both must be True

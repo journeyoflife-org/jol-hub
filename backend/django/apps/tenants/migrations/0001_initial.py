@@ -23,10 +23,39 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="TenantDomain",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
-                ("domain", models.CharField(db_index=True, max_length=255, unique=True, verbose_name="domain")),
-                ("is_primary", models.BooleanField(db_index=True, default=True, verbose_name="primary domain")),
-                ("tenant", models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name="domains", to="organizations.organization", verbose_name="tenant")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "domain",
+                    models.CharField(
+                        db_index=True,
+                        max_length=255,
+                        unique=True,
+                        verbose_name="domain",
+                    ),
+                ),
+                (
+                    "is_primary",
+                    models.BooleanField(
+                        db_index=True, default=True, verbose_name="primary domain"
+                    ),
+                ),
+                (
+                    "tenant",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="domains",
+                        to="organizations.organization",
+                        verbose_name="tenant",
+                    ),
+                ),
             ],
             options={
                 "verbose_name": "tenant domain",
@@ -37,7 +66,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="organization",
             name="schema_name",
-            field=models.CharField(blank=True, help_text="Postgres schema name (auto-generated from slug)", max_length=63, unique=True, verbose_name="schema name"),
+            field=models.CharField(
+                blank=True,
+                help_text="Postgres schema name (auto-generated from slug)",
+                max_length=63,
+                unique=True,
+                verbose_name="schema name",
+            ),
         ),
         migrations.RunPython(populate_schema_names, migrations.RunPython.noop),
     ]

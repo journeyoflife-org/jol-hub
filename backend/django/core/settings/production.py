@@ -132,10 +132,13 @@ TIME_ZONE = "Europe/Vilnius"
 # ALLOWED HOSTS — wildcard for tenant subdomains
 # =============================================================================
 
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[
-    ".journeyoflife.org",
-    ".gyvenimo-kelias.lt",
-])
+ALLOWED_HOSTS = env.list(
+    "ALLOWED_HOSTS",
+    default=[
+        ".journeyoflife.org",
+        ".gyvenimo-kelias.lt",
+    ],
+)
 
 # =============================================================================
 # CONTENT SECURITY POLICY
@@ -154,6 +157,7 @@ CSP_CONNECT_SRC = ("'self'",)
 
 if env("DB_PASSWORD", default="") in ("", "postgres"):
     from django.core.exceptions import ImproperlyConfigured
+
     raise ImproperlyConfigured(
         "DB_PASSWORD must be set and must not be 'postgres' in production"
     )
@@ -164,9 +168,8 @@ if env("DB_PASSWORD", default="") in ("", "postgres"):
 
 if not PROMETHEUS_ALLOWED_IPS:
     from django.core.exceptions import ImproperlyConfigured
-    raise ImproperlyConfigured(
-        "PROMETHEUS_ALLOWED_IPS must be set in production"
-    )
+
+    raise ImproperlyConfigured("PROMETHEUS_ALLOWED_IPS must be set in production")
 
 # =============================================================================
 # THROTTLE — restore granular rates (production.py was clobbering them)

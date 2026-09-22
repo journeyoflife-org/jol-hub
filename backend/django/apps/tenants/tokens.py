@@ -3,6 +3,7 @@ Custom JWT token classes with tenant claim injection.
 
 C1: Server-signed tenant_id claim from entitlement service.
 """
+
 from rest_framework_simplejwt.tokens import RefreshToken as BaseRefreshToken
 
 
@@ -19,6 +20,7 @@ class RefreshToken(BaseRefreshToken):
 
         # Inject tenant_id from entitlement
         from apps.tenants.entitlement import get_primary_tenant
+
         tenant = get_primary_tenant(user)
         if tenant:
             token["tenant_id"] = str(tenant.id)

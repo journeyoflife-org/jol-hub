@@ -4,6 +4,7 @@ Tests for fail-closed tenant validation guards.
 Verifies that missing/misconfigured tenant context DENIES operations
 rather than silently skipping validation (C3 fix).
 """
+
 import pytest
 from unittest.mock import patch, MagicMock
 from django.core.exceptions import ValidationError, PermissionDenied
@@ -18,7 +19,9 @@ class TestFailClosedGuards:
         from apps.content.models import Page
 
         page = Page(
-            title="Test", slug="test", language="lt",
+            title="Test",
+            slug="test",
+            language="lt",
             organization_id="00000000-0000-0000-0000-000000000001",
         )
 
@@ -31,7 +34,9 @@ class TestFailClosedGuards:
         from apps.content.models import Page
 
         page = Page(
-            title="Test", slug="test", language="lt",
+            title="Test",
+            slug="test",
+            language="lt",
             organization_id="00000000-0000-0000-0000-000000000001",
         )
 

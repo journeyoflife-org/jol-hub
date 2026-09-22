@@ -210,7 +210,9 @@ class UserListView(generics.ListCreateAPIView):
             organization_id=tenant_id, is_deleted=False
         ).values_list("user_id", flat=True)
 
-        return User.objects.filter(id__in=member_user_ids, is_active=True).order_by("email")
+        return User.objects.filter(id__in=member_user_ids, is_active=True).order_by(
+            "email"
+        )
 
 
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -232,6 +234,7 @@ class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
                 raise Http404  # 404 — no enumeration
 
         return obj
+
     """GET / PATCH / DELETE /api/v1/users/{id}/"""
 
     serializer_class = UserSerializer

@@ -1,6 +1,7 @@
 """
 C2: Middleware must validate entitlement, not just presence.
 """
+
 import pytest
 import uuid
 from unittest.mock import MagicMock, patch
@@ -27,8 +28,12 @@ class TestTenantEntitlementMiddleware:
 
         user = User.objects.create_user(email="test@test.lt", password="Test1234!")
         org = Organization.objects.create(
-            name="My Parish", slug="my-parish", org_type="parish",
-            country="LT", status="active", schema_name="t_my_parish",
+            name="My Parish",
+            slug="my-parish",
+            org_type="parish",
+            country="LT",
+            status="active",
+            schema_name="t_my_parish",
         )
         OrganizationMember.objects.create(organization=org, user=user, role="admin")
 
@@ -49,8 +54,12 @@ class TestTenantEntitlementMiddleware:
 
         user = User.objects.create_user(email="test2@test.lt", password="Test1234!")
         org = Organization.objects.create(
-            name="My Parish 2", slug="my-parish-2", org_type="parish",
-            country="LT", status="active", schema_name="t_my_parish_2",
+            name="My Parish 2",
+            slug="my-parish-2",
+            org_type="parish",
+            country="LT",
+            status="active",
+            schema_name="t_my_parish_2",
         )
         OrganizationMember.objects.create(organization=org, user=user, role="editor")
 

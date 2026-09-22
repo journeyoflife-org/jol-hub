@@ -7,6 +7,7 @@ authoritative validator that DENIES on any anomaly (C3 fix).
 Every model with an organization FK must call validate_tenant_context()
 in its save() method.
 """
+
 import logging
 from typing import Optional
 
@@ -15,7 +16,9 @@ from django.core.exceptions import ValidationError, PermissionDenied
 logger = logging.getLogger("jolhub.tenant_validation")
 
 
-def validate_tenant_context(organization_id, model_name: str, entity_id: Optional[str] = None):
+def validate_tenant_context(
+    organization_id, model_name: str, entity_id: Optional[str] = None
+):
     """
     Validate that the given organization_id matches the current tenant context.
 
@@ -43,7 +46,8 @@ def validate_tenant_context(organization_id, model_name: str, entity_id: Optiona
         logger.error(
             "TENANT_VALIDATION_FAIL_CLOSED: middleware import fails — denying. "
             "model=%s org=%s",
-            model_name, organization_id,
+            model_name,
+            organization_id,
         )
         _emit_security_event("IMPORT_ERROR", model_name, organization_id)
         raise PermissionDenied(
@@ -53,37 +57,39 @@ def validate_tenant_context(organization_id, model_name: str, entity_id: Optiona
         logger.error(
             "TENANT_VALIDATION_FAIL_CLOSED: unexpected error — denying. "
             "model=%s org=%s error=%s",
-            model_name, organization_id, exc,
+            model_name,
+            organization_id,
+            exc,
         )
         _emit_security_event("UNEXPECTED_ERROR", model_name, organization_id)
-        raise PermissionDenied(
-            "Tenant context validation failed — operation denied"
-        )
+        raise PermissionDenied("Tenant context validation failed — operation denied")
 
     if not tenant_id:
         # No tenant context established — deny if org is set
         logger.error(
             "TENANT_VALIDATION_FAIL_CLOSED: no tenant context but org set — denying. "
             "model=%s org=%s",
-            model_name, organization_id,
+            model_name,
+            organization_id,
         )
         _emit_security_event("NO_CONTEXT", model_name, organization_id)
-        raise PermissionDenied(
-            "No tenant context established — operation denied"
-        )
+        raise PermissionDenied("No tenant context established — operation denied")
 
     if str(organization_id) != str(tenant_id):
         logger.error(
             "TENANT_VALIDATION_CROSS_TENANT: context=%s target=%s model=%s entity=%s",
-            tenant_id, organization_id, model_name, entity_id,
+            tenant_id,
+            organization_id,
+            model_name,
+            entity_id,
         )
         _emit_security_event("CROSS_TENANT", model_name, organization_id, tenant_id)
-        raise ValidationError(
-            "Organization does not match current tenant context"
-        )
+        raise ValidationError("Organization does not match current tenant context")
 
 
-def _emit_security_event(event_type: str, model_name: str, organization_id, expected_tenant=None):
+def _emit_security_event(
+    event_type: str, model_name: str, organization_id, expected_tenant=None
+):
     """Emit a security event for audit trail."""
     try:
         from apps.core.models import AuditLog

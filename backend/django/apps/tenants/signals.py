@@ -3,6 +3,7 @@ Audit signal handlers — emit AuditLog on content/user mutations.
 
 F9 fix: connects post_save/post_delete signals to AuditLog.
 """
+
 import logging
 
 from django.db.models.signals import post_save, post_delete
@@ -33,7 +34,9 @@ def _log_mutation(sender, instance, created, action_override=None, **kwargs):
     except Exception as exc:
         logger.error(
             "AUDIT_SIGNAL_ERROR: %s model=%s id=%s",
-            exc, sender.__name__, instance.id,
+            exc,
+            sender.__name__,
+            instance.id,
         )
 
 

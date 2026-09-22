@@ -98,9 +98,11 @@ class Page(BaseModel):
 
     def _validate_tenant_context(self):
         from apps.tenants.validators import validate_tenant_context
+
         validate_tenant_context(
             self.organization_id, "Page", str(self.pk) if self.pk else None
         )
+
     def publish(self):
         from django.utils import timezone
 
@@ -168,6 +170,7 @@ class MediaFile(BaseModel):
 
     def _validate_tenant_context(self):
         from apps.tenants.validators import validate_tenant_context
+
         validate_tenant_context(
             self.organization_id, "MediaFile", str(self.pk) if self.pk else None
         )

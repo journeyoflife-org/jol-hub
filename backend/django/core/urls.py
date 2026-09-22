@@ -56,7 +56,9 @@ urlpatterns = [
     # API v1 endpoints
     path("api/v1/auth/", include("apps.users.auth_urls")),
     path("api/v1/organizations/", include("apps.organizations.urls")),
-    path("api/v1/tenants/", TenantListView.as_view({"get": "list"}), name="tenant-list"),
+    path(
+        "api/v1/tenants/", TenantListView.as_view({"get": "list"}), name="tenant-list"
+    ),
     path("api/v1/users/", include("apps.users.urls")),
     path("api/v1/content/", include("apps.content.urls")),
     path("api/v1/donations/", include("apps.donations.urls")),

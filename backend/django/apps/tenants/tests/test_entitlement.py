@@ -6,6 +6,7 @@ deanery admin -> reaches all parishes below
 parish admin -> reaches own parish only
 cross-branch -> DENIED
 """
+
 import pytest
 from apps.organizations.models import Organization, OrganizationMember
 from apps.users.models import User
@@ -22,24 +23,39 @@ class TestEntitlementService:
     def _create_hierarchy(self):
         """Create diocese -> deanery -> parish hierarchy."""
         diocese = Organization.objects.create(
-            name="Vilnius Archdiocese", slug="vilnius-archdiocese",
-            org_type="diocese", country="LT", status="active",
+            name="Vilnius Archdiocese",
+            slug="vilnius-archdiocese",
+            org_type="diocese",
+            country="LT",
+            status="active",
             schema_name="t_vilnius_archdiocese",
         )
         deanery = Organization.objects.create(
-            name="Vilnius Deanery", slug="vilnius-deanery",
-            org_type="deanery", country="LT", status="active",
-            schema_name="t_vilnius_deanery", parent_diocese=diocese,
+            name="Vilnius Deanery",
+            slug="vilnius-deanery",
+            org_type="deanery",
+            country="LT",
+            status="active",
+            schema_name="t_vilnius_deanery",
+            parent_diocese=diocese,
         )
         parish_a = Organization.objects.create(
-            name="Basilica Vilnius", slug="basilica-vilnius",
-            org_type="basilica", country="LT", status="active",
-            schema_name="t_basilica_vilnius", parent_diocese=deanery,
+            name="Basilica Vilnius",
+            slug="basilica-vilnius",
+            org_type="basilica",
+            country="LT",
+            status="active",
+            schema_name="t_basilica_vilnius",
+            parent_diocese=deanery,
         )
         parish_b = Organization.objects.create(
-            name="Parish Kaunas", slug="parish-kaunas",
-            org_type="parish", country="LT", status="active",
-            schema_name="t_parish_kaunas", parent_diocese=None,
+            name="Parish Kaunas",
+            slug="parish-kaunas",
+            org_type="parish",
+            country="LT",
+            status="active",
+            schema_name="t_parish_kaunas",
+            parent_diocese=None,
         )
         return diocese, deanery, parish_a, parish_b
 
@@ -75,7 +91,9 @@ class TestEntitlementService:
         """Parish admin can only act as their own parish."""
         diocese, deanery, parish_a, parish_b = self._create_hierarchy()
         user = User.objects.create_user(email="rector@test.lt", password="Test1234!")
-        OrganizationMember.objects.create(organization=parish_a, user=user, role="admin")
+        OrganizationMember.objects.create(
+            organization=parish_a, user=user, role="admin"
+        )
 
         entitled = get_entitled_tenants(user)
         entitled_ids = {str(t.id) for t in entitled}
@@ -95,7 +113,9 @@ class TestEntitlementService:
         """Viewer role still gets entitlement (read access)."""
         diocese, _, _, _ = self._create_hierarchy()
         user = User.objects.create_user(email="viewer@test.lt", password="Test1234!")
-        OrganizationMember.objects.create(organization=diocese, user=user, role="viewer")
+        OrganizationMember.objects.create(
+            organization=diocese, user=user, role="viewer"
+        )
 
         assert is_entitled_for_tenant(user, diocese.id)
 
