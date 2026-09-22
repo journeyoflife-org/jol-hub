@@ -25,6 +25,7 @@ ENVIRONMENT = "test"
 # is set by the workflow. For local dev without PostgreSQL, set USE_SQLITE=1.
 
 import os
+from urllib.parse import urlparse
 
 if os.environ.get("USE_SQLITE") == "1":
     # Local dev fallback (django-tenants features will not work)
