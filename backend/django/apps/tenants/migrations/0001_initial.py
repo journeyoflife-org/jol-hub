@@ -33,6 +33,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 (
+                    "schema_name",
+                    models.CharField(max_length=63, unique=True),
+                ),
+                (
                     "domain",
                     models.CharField(
                         db_index=True,
