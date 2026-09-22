@@ -212,7 +212,10 @@ class Organization(BaseModel):
 
     # Schema-per-tenant (ADR-001, django-tenants)
     schema_name = models.CharField(
-        _("schema name"), max_length=63, unique=True, blank=True,
+        _("schema name"),
+        max_length=63,
+        unique=True,
+        blank=True,
         help_text=_("Postgres schema name (auto-generated from slug, e.g. t_vilnius)"),
     )
 
@@ -343,9 +346,13 @@ class OrganizationMember(BaseModel):
 
     def _validate_tenant_context(self):
         from apps.tenants.validators import validate_tenant_context
+
         validate_tenant_context(
-            self.organization_id, "OrganizationMember", str(self.pk) if self.pk else None
+            self.organization_id,
+            "OrganizationMember",
+            str(self.pk) if self.pk else None,
         )
+
 
 class Website(BaseModel):
     """Website configuration attached to an Organization."""
@@ -385,9 +392,11 @@ class Website(BaseModel):
 
     def _validate_tenant_context(self):
         from apps.tenants.validators import validate_tenant_context
+
         validate_tenant_context(
             self.organization_id, "Website", str(self.pk) if self.pk else None
         )
+
 
 class ConsentSettings(BaseModel):
     """
@@ -465,9 +474,11 @@ class ConsentSettings(BaseModel):
 
     def _validate_tenant_context(self):
         from apps.tenants.validators import validate_tenant_context
+
         validate_tenant_context(
             self.organization_id, "ConsentSettings", str(self.pk) if self.pk else None
         )
+
     def has_analytics_consent(self):
         """Check if organization has valid analytics consent."""
         return self.analytics_consent_enabled

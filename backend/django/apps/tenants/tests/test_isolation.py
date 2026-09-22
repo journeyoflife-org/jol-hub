@@ -10,6 +10,7 @@ Wave −1 Exit Gate — Red-Team Isolation Suite.
 (f) every mutation writes an AuditLog row
 (g) hierarchical admin reaches children, not siblings
 """
+
 import pytest
 import uuid
 from unittest.mock import patch
@@ -27,12 +28,20 @@ class TestWaveMinus1ExitGate:
         from apps.tenants.middleware import TenantEntitlementMiddleware
 
         org_a = Organization.objects.create(
-            name="Parish A", slug="parish-a", org_type="parish",
-            country="LT", status="active", schema_name="t_parish_a",
+            name="Parish A",
+            slug="parish-a",
+            org_type="parish",
+            country="LT",
+            status="active",
+            schema_name="t_parish_a",
         )
         org_b = Organization.objects.create(
-            name="Parish B", slug="parish-b", org_type="parish",
-            country="LT", status="active", schema_name="t_parish_b",
+            name="Parish B",
+            slug="parish-b",
+            org_type="parish",
+            country="LT",
+            status="active",
+            schema_name="t_parish_b",
         )
         Page.objects.create(
             organization=org_b, title="Secret", slug="secret", language="lt"
@@ -42,9 +51,7 @@ class TestWaveMinus1ExitGate:
         OrganizationMember.objects.create(organization=org_a, user=user, role="admin")
 
         factory = RequestFactory()
-        request = factory.get(
-            "/api/v1/content/pages/", HTTP_X_TENANT_ID=str(org_b.id)
-        )
+        request = factory.get("/api/v1/content/pages/", HTTP_X_TENANT_ID=str(org_b.id))
         request.user = user
 
         middleware = TenantEntitlementMiddleware(lambda r: None)
@@ -59,12 +66,20 @@ class TestWaveMinus1ExitGate:
         from apps.tenants.middleware import TenantEntitlementMiddleware
 
         org_a = Organization.objects.create(
-            name="Parish A2", slug="parish-a2", org_type="parish",
-            country="LT", status="active", schema_name="t_parish_a2",
+            name="Parish A2",
+            slug="parish-a2",
+            org_type="parish",
+            country="LT",
+            status="active",
+            schema_name="t_parish_a2",
         )
         org_b = Organization.objects.create(
-            name="Parish B2", slug="parish-b2", org_type="parish",
-            country="LT", status="active", schema_name="t_parish_b2",
+            name="Parish B2",
+            slug="parish-b2",
+            org_type="parish",
+            country="LT",
+            status="active",
+            schema_name="t_parish_b2",
         )
 
         user = User.objects.create_user(email="a2@test.lt", password="Test1234!")
@@ -144,17 +159,30 @@ class TestWaveMinus1ExitGate:
         from apps.content.models import Page
         from apps.organizations.models import Organization
         from apps.core.models import AuditLog
-        from apps.crm.middleware import TenantContext, set_tenant_context, clear_tenant_context
+        from apps.crm.middleware import (
+            TenantContext,
+            set_tenant_context,
+            clear_tenant_context,
+        )
 
         org = Organization.objects.create(
-            name="Audit Parish", slug="audit-parish", org_type="parish",
-            country="LT", status="active", schema_name="t_audit_parish",
+            name="Audit Parish",
+            slug="audit-parish",
+            org_type="parish",
+            country="LT",
+            status="active",
+            schema_name="t_audit_parish",
         )
-        set_tenant_context(TenantContext(
-            tenant_id=str(org.id), tenant_name="Audit", country_code="LT",
-            data_residency_region="EU", compliance_level="gdpr",
-            request_id="audit",
-        ))
+        set_tenant_context(
+            TenantContext(
+                tenant_id=str(org.id),
+                tenant_name="Audit",
+                country_code="LT",
+                data_residency_region="EU",
+                compliance_level="gdpr",
+                request_id="audit",
+            )
+        )
 
         before = AuditLog.objects.count()
         Page.objects.create(
@@ -167,17 +195,28 @@ class TestWaveMinus1ExitGate:
 
     def test_g_hierarchical_admin_reaches_children(self):
         """(g) Diocese admin can access deanery/parish content."""
-        from apps.tenants.entitlement import get_entitled_tenants, is_entitled_for_tenant
+        from apps.tenants.entitlement import (
+            get_entitled_tenants,
+            is_entitled_for_tenant,
+        )
         from apps.organizations.models import Organization, OrganizationMember
         from apps.users.models import User
 
         diocese = Organization.objects.create(
-            name="Archdiocese", slug="archdiocese", org_type="diocese",
-            country="LT", status="active", schema_name="t_archdiocese",
+            name="Archdiocese",
+            slug="archdiocese",
+            org_type="diocese",
+            country="LT",
+            status="active",
+            schema_name="t_archdiocese",
         )
         parish = Organization.objects.create(
-            name="Child Parish", slug="child-parish", org_type="parish",
-            country="LT", status="active", schema_name="t_child_parish",
+            name="Child Parish",
+            slug="child-parish",
+            org_type="parish",
+            country="LT",
+            status="active",
+            schema_name="t_child_parish",
             parent_diocese=diocese,
         )
         user = User.objects.create_user(email="g@test.lt", password="Test1234!")
@@ -194,14 +233,24 @@ class TestWaveMinus1ExitGate:
         from apps.users.models import User
 
         diocese_a = Organization.objects.create(
-            name="Diocese A", slug="diocese-a", org_type="diocese",
-            country="LT", status="active", schema_name="t_diocese_a",
+            name="Diocese A",
+            slug="diocese-a",
+            org_type="diocese",
+            country="LT",
+            status="active",
+            schema_name="t_diocese_a",
         )
         diocese_b = Organization.objects.create(
-            name="Diocese B", slug="diocese-b", org_type="diocese",
-            country="LT", status="active", schema_name="t_diocese_b",
+            name="Diocese B",
+            slug="diocese-b",
+            org_type="diocese",
+            country="LT",
+            status="active",
+            schema_name="t_diocese_b",
         )
         user = User.objects.create_user(email="g2@test.lt", password="Test1234!")
-        OrganizationMember.objects.create(organization=diocese_a, user=user, role="admin")
+        OrganizationMember.objects.create(
+            organization=diocese_a, user=user, role="admin"
+        )
 
         assert not is_entitled_for_tenant(user, diocese_b.id)

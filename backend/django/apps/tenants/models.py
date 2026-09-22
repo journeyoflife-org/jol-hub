@@ -7,6 +7,7 @@ and the schema-per-tenant migration infrastructure.
 
 ADR-001: schema-per-tenant + RLS defense-in-depth.
 """
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_tenants.models import TenantMixin
@@ -26,18 +27,14 @@ class TenantDomain(TenantMixin):
     Organization tenant schemas (t_vilnius).
     """
 
-    domain = models.CharField(
-        _("domain"), max_length=255, unique=True, db_index=True
-    )
+    domain = models.CharField(_("domain"), max_length=255, unique=True, db_index=True)
     tenant = models.ForeignKey(
         "organizations.Organization",
         on_delete=models.CASCADE,
         related_name="domains",
         verbose_name=_("tenant"),
     )
-    is_primary = models.BooleanField(
-        _("primary domain"), default=True, db_index=True
-    )
+    is_primary = models.BooleanField(_("primary domain"), default=True, db_index=True)
 
     auto_create_schema = True
     auto_drop_schema = False  # Safety: never drop schema on domain deletion

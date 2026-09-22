@@ -4,7 +4,6 @@ User serializers — registration, profile read/write, and JWT token pair.
 
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import (
-
     TokenObtainPairSerializer as BaseTokenPairSerializer,
 )
 from apps.tenants.tokens import RefreshToken
@@ -148,6 +147,7 @@ class TokenObtainPairSerializer(BaseTokenPairSerializer):
 
         # Inject tenant_id into the refresh token (C1)
         from apps.tenants.entitlement import get_primary_tenant
+
         tenant = get_primary_tenant(self.user)
         if tenant:
             data["refresh"].access_token["tenant_id"] = str(tenant.id)

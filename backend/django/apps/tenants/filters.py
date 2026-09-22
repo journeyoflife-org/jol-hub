@@ -3,6 +3,7 @@ DRF filter backend that auto-scopes querysets to the current tenant.
 
 C3 fix: removes client-controlled organization_id filtering.
 """
+
 import logging
 
 from rest_framework.filters import BaseFilterBackend

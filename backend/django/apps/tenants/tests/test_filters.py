@@ -1,6 +1,7 @@
 """
 C3/C5: Queryset scoping and serializer org-forcing tests.
 """
+
 import pytest
 from unittest.mock import MagicMock
 from django.test import RequestFactory
@@ -13,14 +14,22 @@ class TestTenantScopedFilter:
         """TenantScopedFilterBackend injects organization_id filter."""
         from apps.tenants.filters import TenantScopedFilterBackend
         from apps.content.models import Page
-        from apps.crm.middleware import TenantContext, set_tenant_context, clear_tenant_context
+        from apps.crm.middleware import (
+            TenantContext,
+            set_tenant_context,
+            clear_tenant_context,
+        )
 
-        set_tenant_context(TenantContext(
-            tenant_id="00000000-0000-0000-0000-000000000001",
-            tenant_name="Test", country_code="LT",
-            data_residency_region="EU", compliance_level="gdpr",
-            request_id="t1",
-        ))
+        set_tenant_context(
+            TenantContext(
+                tenant_id="00000000-0000-0000-0000-000000000001",
+                tenant_name="Test",
+                country_code="LT",
+                data_residency_region="EU",
+                compliance_level="gdpr",
+                request_id="t1",
+            )
+        )
 
         qs = Page.objects.all()
         backend = TenantScopedFilterBackend()

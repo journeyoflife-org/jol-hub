@@ -186,9 +186,11 @@ class AuditLog(UUIDModel, TimeStampedModel):
 
     def _validate_tenant_context(self):
         from apps.tenants.validators import validate_tenant_context
+
         validate_tenant_context(
             self.organization_id, "AuditLog", str(self.pk) if self.pk else None
         )
+
     def verify_integrity(self) -> bool:
         """Verify audit log entry integrity."""
         if not self.checksum:

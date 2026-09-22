@@ -4,6 +4,7 @@ Tenant Entitlement Middleware — fail-closed replacement for crm.middleware.
 C2 fix: validates X-Tenant-ID against the user's entitlement set.
 D7: Server-signed entitlement claim + membership/hierarchy validation.
 """
+
 import logging
 from typing import Optional
 
@@ -20,10 +21,17 @@ logger = logging.getLogger("jolhub.tenant.security")
 
 # Paths that do NOT require tenant context
 TENANT_EXEMPT_PATHS = {
-    "/health/", "/health/ready/", "/metrics/",
-    "/api/v1/auth/login/", "/api/v1/auth/register/",
-    "/api/v1/auth/refresh/", "/api/schema/", "/api/docs/", "/api/redoc/",
-    "/admin/", "/accounts/",
+    "/health/",
+    "/health/ready/",
+    "/metrics/",
+    "/api/v1/auth/login/",
+    "/api/v1/auth/register/",
+    "/api/v1/auth/refresh/",
+    "/api/schema/",
+    "/api/docs/",
+    "/api/redoc/",
+    "/admin/",
+    "/accounts/",
 }
 
 
@@ -59,7 +67,8 @@ class TenantEntitlementMiddleware:
                 if request.path.startswith("/api/"):
                     logger.warning(
                         "TENANT_DENY: no tenant context for user=%s path=%s",
-                        request.user.id, request.path,
+                        request.user.id,
+                        request.path,
                     )
                     return JsonResponse(
                         {"error": "tenant_context_required"},
@@ -71,7 +80,9 @@ class TenantEntitlementMiddleware:
             if not is_entitled_for_tenant(request.user, tenant_id):
                 logger.warning(
                     "TENANT_DENY: user=%s not entitled for tenant=%s path=%s",
-                    request.user.id, tenant_id, request.path,
+                    request.user.id,
+                    tenant_id,
+                    request.path,
                 )
                 # 404 — not 403 — no enumeration (D6)
                 return JsonResponse({"error": "not_found"}, status=404)
@@ -144,6 +155,7 @@ class TenantEntitlementMiddleware:
 
             # RLS defense-in-depth (C4)
             from apps.tenants.rls import set_tenant_id_for_request
+
             set_tenant_id_for_request(str(org.id))
         except Organization.DoesNotExist:
             logger.warning("TENANT_RESOLVE: org not found tenant_id=%s", tenant_id)

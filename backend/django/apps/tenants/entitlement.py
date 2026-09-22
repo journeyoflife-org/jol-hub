@@ -7,6 +7,7 @@ via parent_diocese (diocese->deanery->parish).
 
 D8: Hierarchical entitlement model.
 """
+
 import logging
 from typing import Optional, Set
 
