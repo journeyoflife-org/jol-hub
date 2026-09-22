@@ -8,13 +8,14 @@ cross-branch -> DENIED
 """
 
 import pytest
+
 from apps.organizations.models import Organization, OrganizationMember
-from apps.users.models import User
 from apps.tenants.entitlement import (
     get_entitled_tenants,
     get_primary_tenant,
     is_entitled_for_tenant,
 )
+from apps.users.models import User
 
 
 @pytest.mark.django_db

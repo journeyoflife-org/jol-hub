@@ -1,7 +1,8 @@
 """C1: JWT must carry server-signed tenant claim."""
 
-import pytest
 from unittest.mock import MagicMock
+
+import pytest
 
 
 @pytest.mark.django_db
@@ -10,9 +11,9 @@ class TestJWTTenantClaim:
 
     def test_token_contains_tenant_id(self):
         """Login response JWT must include tenant_id claim."""
-        from apps.users.models import User
         from apps.organizations.models import Organization, OrganizationMember
         from apps.tenants.tokens import RefreshToken
+        from apps.users.models import User
 
         user = User.objects.create_user(email="test@test.lt", password="Test1234!")
         org = Organization.objects.create(
@@ -30,9 +31,9 @@ class TestJWTTenantClaim:
 
     def test_token_tenant_id_matches_entitlement(self):
         """tenant_id in JWT must match user's entitled organization."""
-        from apps.users.models import User
         from apps.organizations.models import Organization, OrganizationMember
         from apps.tenants.tokens import RefreshToken
+        from apps.users.models import User
 
         user = User.objects.create_user(email="test2@test.lt", password="Test1234!")
         org = Organization.objects.create(

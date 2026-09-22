@@ -6,9 +6,9 @@ from rest_framework import serializers
 from rest_framework_simplejwt.serializers import (
     TokenObtainPairSerializer as BaseTokenPairSerializer,
 )
-from apps.tenants.tokens import RefreshToken
 
 from apps.core.serializers import BaseModelSerializer
+from apps.tenants.tokens import RefreshToken
 from django.contrib.auth.password_validation import validate_password
 
 from .models import User, UserProfile

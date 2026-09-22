@@ -1,7 +1,7 @@
 """Tests for GET /api/v1/tenants endpoint."""
 
-from django.test import TestCase, Client
 from apps.organizations.models import Organization
+from django.test import Client, TestCase
 
 
 class TenantAPITests(TestCase):
