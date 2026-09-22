@@ -25,7 +25,14 @@ class MediaFileSerializer(BaseModelSerializer):
             "created_at",
             "updated_at",
         ]
-        read_only_fields = ["id", "file_size", "mime_type", "created_at", "updated_at", "organization"]
+        read_only_fields = [
+            "id",
+            "file_size",
+            "mime_type",
+            "created_at",
+            "updated_at",
+            "organization",
+        ]
 
 
 class PageSerializer(BaseModelSerializer):
@@ -87,6 +94,7 @@ class PageCreateSerializer(BaseModelSerializer):
         tenant_id = get_current_tenant_id()
         if not tenant_id:
             from rest_framework.exceptions import PermissionDenied
+
             raise PermissionDenied("Tenant context required")
         validated_data["organization"] = Organization.objects.get(id=tenant_id)
         validated_data["author"] = self.context["request"].user

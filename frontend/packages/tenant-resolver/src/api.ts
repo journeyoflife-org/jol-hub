@@ -104,7 +104,7 @@ export async function fetchTenantsFromAPI(): Promise<ApiTenant[] | null> {
       circuitResetAt = Date.now() + CIRCUIT_RESET_MS;
       console.warn(
         `[tenant-resolver] API circuit-breaker open after ${failureCount} failures, ` +
-        `falling back to fixtures for ${CIRCUIT_RESET_MS / 1000}s`
+          `falling back to fixtures for ${CIRCUIT_RESET_MS / 1000}s`
       );
     }
     return null;

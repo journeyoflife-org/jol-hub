@@ -52,7 +52,6 @@ export const TENANT_BASE_DOMAIN = process.env.TENANT_BASE_DOMAIN ?? 'gyvenimo-ke
 /** Resolution cache — 5 min TTL per STEP 5. */
 const resolutionCache = new LruCache<Tenant | null>(2048, 5 * 60 * 1000); // F18: sized for ~1,300 tenants + headroom
 
-
 /** API-sourced tenant lookup (populated on first async resolution). */
 let apiTenantMap: Map<string, Tenant> | null = null;
 let apiDomainMap: Map<string, Tenant> | null = null;
@@ -61,9 +60,10 @@ const API_REFRESH_MS = 5 * 60 * 1000; // 5 min
 
 /** Convert API response to full Tenant shape. */
 function apiTenantToTenant(api: ApiTenant): Tenant {
-  const tier = api.vertical === 'diocese' || api.vertical === 'basilica' || api.vertical === 'cathedral'
-    ? 'vip' as const
-    : 'normal' as const;
+  const tier =
+    api.vertical === 'diocese' || api.vertical === 'basilica' || api.vertical === 'cathedral'
+      ? ('vip' as const)
+      : ('normal' as const);
   return {
     id: api.slug,
     slug: api.slug,
@@ -90,9 +90,7 @@ async function refreshApiTenants(): Promise<boolean> {
 
   const tenants = apiTenants.map(apiTenantToTenant);
   apiTenantMap = new Map(tenants.map((t) => [t.slug, t]));
-  apiDomainMap = new Map(
-    tenants.filter((t) => t.domain).map((t) => [t.domain!.toLowerCase(), t])
-  );
+  apiDomainMap = new Map(tenants.filter((t) => t.domain).map((t) => [t.domain!.toLowerCase(), t]));
   apiLastFetch = Date.now();
   return true;
 }
@@ -203,7 +201,8 @@ export async function resolveTenant(hostname: string, headers: Headers): Promise
   if (isApiConfigured()) {
     const hasApi = await refreshApiTenants();
     if (hasApi && apiDomainMap && apiTenantMap) {
-      const effectiveHost = normalizeHost(headers.get('x-forwarded-host')) ?? normalizeHost(hostname);
+      const effectiveHost =
+        normalizeHost(headers.get('x-forwarded-host')) ?? normalizeHost(hostname);
       const xTenant = normalizeSlug(headers.get(TENANT_HEADER));
 
       // (a) API domain match

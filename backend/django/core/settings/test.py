@@ -1,8 +1,8 @@
 """
 Test settings for JOL-HUB.
 
-Optimized for fast test execution with minimal external dependencies.
-Uses SQLite in-memory database and disables Celery eager mode.
+Uses PostgreSQL for django-tenants compatibility (schema-per-tenant).
+Set USE_SQLITE=1 for local dev without PostgreSQL (limited functionality).
 
 Usage:
     DJANGO_SETTINGS_MODULE=core.settings.test python manage.py test
@@ -19,15 +19,36 @@ DEBUG = False
 ENVIRONMENT = "test"
 
 # =============================================================================
-# DATABASE — SQLite in-memory for speed
+# DATABASE — PostgreSQL for django-tenants compatibility
 # =============================================================================
+# django-tenants requires PostgreSQL (schema-per-tenant). In CI, DATABASE_URL
+# is set by the workflow. For local dev without PostgreSQL, set USE_SQLITE=1.
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": ":memory:",
+import os
+
+if os.environ.get("USE_SQLITE") == "1":
+    # Local dev fallback (django-tenants features will not work)
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": ":memory:",
+        }
     }
-}
+else:
+    # CI or local with PostgreSQL
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.environ.get("DB_NAME", "jolhub_test"),
+            "USER": os.environ.get("DB_USER", "test_user"),
+            "PASSWORD": os.environ.get("DB_PASSWORD", "test_password"),
+            "HOST": os.environ.get("DB_HOST", "localhost"),
+            "PORT": os.environ.get("DB_PORT", "5432"),
+            "TEST": {
+                "NAME": "jolhub_test",
+            },
+        }
+    }
 
 # =============================================================================
 # PASSWORD HASHERS — Use fastest hasher for tests

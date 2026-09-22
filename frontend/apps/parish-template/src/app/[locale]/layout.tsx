@@ -23,7 +23,7 @@ import type { SupportedLocale } from '@journeyoflife-org/i18n';
 // TYPES
 // =============================================================================
 
-const SUPPORTED_LOCALES = ['lt', 'ru', 'en'] as const;
+const SUPPORTED_LOCALES: SupportedLocale[] = ['lt', 'ru', 'en'];
 
 function isSupportedLocale(value: string): value is SupportedLocale {
   return SUPPORTED_LOCALES.includes(value as SupportedLocale);

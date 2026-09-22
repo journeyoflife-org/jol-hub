@@ -4,6 +4,7 @@ Content views — tenant-scoped.
 C3 fix: querysets auto-scoped by TenantScopedFilterBackend.
 Client organization_id parameter removed.
 """
+
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -13,6 +14,7 @@ from apps.core.permissions import IsOrganizationMember
 from apps.tenants.filters import TenantScopedFilterBackend
 
 from .models import MediaFile, Page
+
 
 class TenantScopedQuerysetMixin:
     """Scope queryset to the current tenant (request.tenant set by django-tenants middleware).
