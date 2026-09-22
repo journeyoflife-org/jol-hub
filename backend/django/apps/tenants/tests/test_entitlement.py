@@ -60,6 +60,7 @@ class TestEntitlementService:
         )
         # Set tenant context for subsequent OrganizationMember creation
         from apps.tenants.test_utils import set_test_tenant_context
+
         set_test_tenant_context(diocese)
         return diocese, deanery, parish_a, parish_b
 
@@ -69,6 +70,7 @@ class TestEntitlementService:
         user = User.objects.create_user(email="bishop@test.lt", password="Test1234!")
         OrganizationMember.objects.create(organization=diocese, user=user, role="admin")
         from apps.tenants.test_utils import clear_test_tenant_context
+
         clear_test_tenant_context()
 
         entitled = get_entitled_tenants(user)
@@ -85,6 +87,7 @@ class TestEntitlementService:
         user = User.objects.create_user(email="dean@test.lt", password="Test1234!")
         OrganizationMember.objects.create(organization=deanery, user=user, role="admin")
         from apps.tenants.test_utils import clear_test_tenant_context
+
         clear_test_tenant_context()
 
         entitled = get_entitled_tenants(user)
@@ -99,9 +102,7 @@ class TestEntitlementService:
         """Parish admin can only act as their own parish."""
         diocese, deanery, parish_a, parish_b = self._create_hierarchy()
         user = User.objects.create_user(email="rector@test.lt", password="Test1234!")
-        OrganizationMember.objects.create(
-            organization=parish_a, user=user, role="admin"
-        )
+        OrganizationMember.objects.create(organization=parish_a, user=user, role="admin")
 
         entitled = get_entitled_tenants(user)
         entitled_ids = {str(t.id) for t in entitled}
@@ -121,9 +122,7 @@ class TestEntitlementService:
         """Viewer role still gets entitlement (read access)."""
         diocese, _, _, _ = self._create_hierarchy()
         user = User.objects.create_user(email="viewer@test.lt", password="Test1234!")
-        OrganizationMember.objects.create(
-            organization=diocese, user=user, role="viewer"
-        )
+        OrganizationMember.objects.create(organization=diocese, user=user, role="viewer")
 
         assert is_entitled_for_tenant(user, diocese.id)
 
