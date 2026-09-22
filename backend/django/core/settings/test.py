@@ -43,7 +43,7 @@ else:
         _parsed = urlparse(_db_url)
         DATABASES = {
             "default": {
-                "ENGINE": "django.db.backends.postgresql",
+                "ENGINE": "django_tenants.postgresql_backend",
                 "NAME": _parsed.path.lstrip("/"),
                 "USER": _parsed.username,
                 "PASSWORD": _parsed.password or "",
@@ -57,7 +57,7 @@ else:
     else:
         DATABASES = {
             "default": {
-                "ENGINE": "django.db.backends.postgresql",
+                "ENGINE": "django_tenants.postgresql_backend",
                 "NAME": os.environ.get("DB_NAME", "jolhub_test"),
                 "USER": os.environ.get("DB_USER", "test_user"),
                 "PASSWORD": os.environ.get("DB_PASSWORD", "test_password"),
@@ -79,6 +79,7 @@ else:
 # allow_migrate to permit all apps, so manage.py migrate creates every
 # table in the public schema (which is the only schema in tests).
 # -----------------------------------------------------------------------------
+
 
 class _TestRouter:
     """Permissive test router — allows all migrations in the public schema."""
