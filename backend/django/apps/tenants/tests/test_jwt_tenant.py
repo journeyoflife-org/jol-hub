@@ -25,7 +25,10 @@ class TestJWTTenantClaim:
             schema_name="t_test_parish",
         )
         # Set tenant context before creating org-scoped objects
-        from apps.tenants.test_utils import set_test_tenant_context, clear_test_tenant_context
+        from apps.tenants.test_utils import (
+            set_test_tenant_context,
+            clear_test_tenant_context,
+        )
 
         set_test_tenant_context(org)
         OrganizationMember.objects.create(organization=org, user=user, role="admin")
@@ -49,7 +52,10 @@ class TestJWTTenantClaim:
             status="active",
             schema_name="t_test_parish_2",
         )
-        from apps.tenants.test_utils import set_test_tenant_context, clear_test_tenant_context
+        from apps.tenants.test_utils import (
+            set_test_tenant_context,
+            clear_test_tenant_context,
+        )
 
         set_test_tenant_context(org)
         OrganizationMember.objects.create(organization=org, user=user, role="editor")
