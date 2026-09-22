@@ -6,6 +6,7 @@ import uuid
 from unittest.mock import MagicMock, patch
 
 import pytest
+
 from apps.tenants.test_utils import clear_test_tenant_context, set_test_tenant_context
 from django.http import HttpResponse
 from django.test import RequestFactory
