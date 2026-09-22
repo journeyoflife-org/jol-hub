@@ -135,3 +135,15 @@ export {
 
 // Legacy middleware export (for backward compatibility)
 export { i18nMiddleware, i18nMiddlewareMatcher } from './middleware';
+
+// -----------------------------------------------------------------------------
+// Inline localized-field resolution (tenant/entity data)
+// Complements the message-catalog pipeline above: catalogs map KEYS to ICU
+// strings; tenant fixtures carry translations INLINE as { lt, en?, ru? }.
+// PURE module — server/edge/client safe.
+// -----------------------------------------------------------------------------
+export {
+  resolveLocale,
+  TODO_MARKER,
+  type LocalizedText,
+} from './localized-text';

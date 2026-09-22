@@ -75,9 +75,10 @@
     "build": "tsup",
     "lint": "eslint src/",
     "type-check": "tsc --noEmit",
+    "test": "tsx --test src/__tests__/*.test.ts",
     "i18n:check": "tsx scripts/check-parity.ts",
     "i18n:find-hardcoded": "tsx scripts/find-hardcoded.ts",
-    "verify": "tsc --noEmit && tsx scripts/check-parity.ts && tsx scripts/find-hardcoded.ts",
+    "verify": "tsc --noEmit && tsx scripts/check-parity.ts && tsx scripts/find-hardcoded.ts && pnpm test",
     "clean": "rm -rf .turbo node_modules"
   },
   "dependencies": {

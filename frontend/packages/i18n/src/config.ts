@@ -4,8 +4,13 @@
  * Design decisions (documented in packages/i18n/README.md):
  * - Pilot locales: lt (primary/default), en, ru. Adding a locale is a
  *   data change (message files + one array entry) — never a redesign.
- * - Poland (pl) is an OPEN QUESTION: declared in PLANNED_LOCALES but
- *   intentionally NOT enabled.
+ * - SUPPORTED_LOCALES (./types) is the single source of truth: routing,
+ *   detection, hreflang and message catalogs all derive from it. The
+ *   locale-parity unit test fails if any locale map drifts out of step.
+ * - Poland (pl) IS declared in SupportedLocale/SUPPORTED_LOCALES (Wave 1
+ *   Task 6) but is NOT content-complete: messages/pl.json is not wired into
+ *   CATALOGS, the vertical catalogs have no pl section, and seed-data cannot
+ *   carry pl content. See README "Poland (pl)" before treating pl as ready.
  * - This module is PURE (no i18next/react imports) so it is safe for the
  *   edge runtime, server components and client bundles alike. The legacy
  *   i18next runtime lives in ./i18next.
@@ -58,7 +63,8 @@ export const LOCALE_HEADER = 'x-locale';
 
 /**
  * Negotiation fallback chain: an unsupported locale request never 404s —
- * resolution falls back ru → en → lt (STEP 4 requirement). In practice
+ * resolution is LT-first (lt → en → ru), matching DEFAULT_LOCALE and the
+ * LT-first policy asserted by the locale-derivation test. In practice
  * resolution short-circuits on the first supported match; the chain
  * documents the intent and order for future regional variants.
  */
@@ -70,11 +76,14 @@ export const FALLBACK_ORDER: readonly SupportedLocale[] = ['lt', 'en', 'ru'];
 const LOCALE_PATTERN = SUPPORTED_LOCALES.join('|');
 
 /**
- * OPEN QUESTION — Poland (pl). Declared so the extension point is explicit,
- * but NOT in SUPPORTED_LOCALES: no routing, no messages, no detection.
- * Enabling = add messages/pl.json + move 'pl' into SUPPORTED_LOCALES.
+ * Locales that are designed for but NOT yet declared in SUPPORTED_LOCALES.
+ * Keep this disjoint from SUPPORTED_LOCALES — the locale-parity test
+ * enforces it. Poland (pl) is not listed here because it is already DECLARED
+ * (Wave 1 Task 6); it is tracked as content-incomplete instead — see README
+ * "Poland (pl)".
+ * Declaring a locale = add messages/<code>.json + add it to SUPPORTED_LOCALES.
  */
-export const PLANNED_LOCALES = ['pl'] as const;
+export const PLANNED_LOCALES = [] as const;
 export type PlannedLocale = (typeof PLANNED_LOCALES)[number];
 /** Full horizon type — superset used by code that must anticipate scale. */
 export type LocaleCode = SupportedLocale | PlannedLocale;
@@ -90,7 +99,7 @@ export function isSupportedLocale(value: string | null | undefined): value is Su
 
 /**
  * Get locale from URL path.
- * Extracts /lt/, /ru/, /en/ from pathname.
+ * Matches the /<locale>/ prefix for every entry in SUPPORTED_LOCALES.
  */
 export function getLocaleFromPath(pathname: string): SupportedLocale | null {
   const match = pathname.match(new RegExp(`^\\/(${LOCALE_PATTERN})(?:\\/|$)`));
