@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ("organizations", "0001_initial"),
+        ("organizations", "0005_organization_schema_name"),
     ]
 
     operations = [
@@ -31,6 +31,10 @@ class Migration(migrations.Migration):
                         serialize=False,
                         verbose_name="ID",
                     ),
+                ),
+                (
+                    "schema_name",
+                    models.CharField(max_length=63, unique=True),
                 ),
                 (
                     "domain",
@@ -62,17 +66,6 @@ class Migration(migrations.Migration):
                 "verbose_name_plural": "tenant domains",
                 "ordering": ["-is_primary", "domain"],
             },
-        ),
-        migrations.AddField(
-            model_name="organization",
-            name="schema_name",
-            field=models.CharField(
-                blank=True,
-                help_text="Postgres schema name (auto-generated from slug)",
-                max_length=63,
-                unique=True,
-                verbose_name="schema name",
-            ),
         ),
         migrations.RunPython(populate_schema_names, migrations.RunPython.noop),
     ]

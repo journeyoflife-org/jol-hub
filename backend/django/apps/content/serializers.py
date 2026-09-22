@@ -85,6 +85,7 @@ class PageCreateSerializer(BaseModelSerializer):
             "meta_description",
             "meta_keywords",
         ]
+        read_only_fields = ["organization"]
 
     def create(self, validated_data):
         from apps.crm.middleware import get_current_tenant_id

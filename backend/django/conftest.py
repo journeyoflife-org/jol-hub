@@ -99,3 +99,14 @@ def api_client() -> APIClient:
 def rf() -> RequestFactory:
     """Return a Django ``RequestFactory``."""
     return RequestFactory()
+
+
+# ---------------------------------------------------------------------------
+# Tenant context helpers for multi-tenant tests
+# ---------------------------------------------------------------------------
+# Import from apps.tenants.test_utils for use in test files.
+# conftest.py re-exports them for convenience.
+from apps.tenants.test_utils import (  # noqa: F401
+    clear_test_tenant_context,
+    set_test_tenant_context,
+)

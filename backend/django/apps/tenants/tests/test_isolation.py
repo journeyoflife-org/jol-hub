@@ -16,6 +16,8 @@ from unittest.mock import patch
 
 import pytest
 
+from apps.tenants.test_utils import clear_test_tenant_context, set_test_tenant_context
+
 
 @pytest.mark.django_db
 class TestWaveMinus1ExitGate:
@@ -44,12 +46,16 @@ class TestWaveMinus1ExitGate:
             status="active",
             schema_name="t_parish_b",
         )
+        set_test_tenant_context(org_b)
         Page.objects.create(
             organization=org_b, title="Secret", slug="secret", language="lt"
         )
+        clear_test_tenant_context()
 
         user = User.objects.create_user(email="a@test.lt", password="Test1234!")
+        set_test_tenant_context(org_a)
         OrganizationMember.objects.create(organization=org_a, user=user, role="admin")
+        clear_test_tenant_context()
 
         factory = RequestFactory()
         request = factory.get("/api/v1/content/pages/", HTTP_X_TENANT_ID=str(org_b.id))
@@ -84,7 +90,9 @@ class TestWaveMinus1ExitGate:
         )
 
         user = User.objects.create_user(email="a2@test.lt", password="Test1234!")
+        set_test_tenant_context(org_a)
         OrganizationMember.objects.create(organization=org_a, user=user, role="admin")
+        clear_test_tenant_context()
 
         factory = RequestFactory()
         request = factory.post(
@@ -185,6 +193,7 @@ class TestWaveMinus1ExitGate:
             )
         )
 
+        set_test_tenant_context(org)
         before = AuditLog.objects.count()
         Page.objects.create(
             organization=org, title="Audit Test", slug="audit-test", language="lt"
@@ -221,7 +230,9 @@ class TestWaveMinus1ExitGate:
             parent_diocese=diocese,
         )
         user = User.objects.create_user(email="g@test.lt", password="Test1234!")
+        set_test_tenant_context(diocese)
         OrganizationMember.objects.create(organization=diocese, user=user, role="admin")
+        clear_test_tenant_context()
 
         assert is_entitled_for_tenant(user, parish.id)
         entitled = get_entitled_tenants(user)
@@ -250,8 +261,10 @@ class TestWaveMinus1ExitGate:
             schema_name="t_diocese_b",
         )
         user = User.objects.create_user(email="g2@test.lt", password="Test1234!")
+        set_test_tenant_context(diocese_a)
         OrganizationMember.objects.create(
             organization=diocese_a, user=user, role="admin"
         )
+        clear_test_tenant_context()
 
         assert not is_entitled_for_tenant(user, diocese_b.id)

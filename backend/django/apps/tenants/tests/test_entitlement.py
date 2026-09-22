@@ -58,6 +58,10 @@ class TestEntitlementService:
             schema_name="t_parish_kaunas",
             parent_diocese=None,
         )
+        # Set tenant context for subsequent OrganizationMember creation
+        from apps.tenants.test_utils import set_test_tenant_context
+
+        set_test_tenant_context(diocese)
         return diocese, deanery, parish_a, parish_b
 
     def test_diocese_admin_entitled_to_all_children(self):
@@ -65,6 +69,9 @@ class TestEntitlementService:
         diocese, deanery, parish_a, parish_b = self._create_hierarchy()
         user = User.objects.create_user(email="bishop@test.lt", password="Test1234!")
         OrganizationMember.objects.create(organization=diocese, user=user, role="admin")
+        from apps.tenants.test_utils import clear_test_tenant_context
+
+        clear_test_tenant_context()
 
         entitled = get_entitled_tenants(user)
         entitled_ids = {str(t.id) for t in entitled}
@@ -78,7 +85,12 @@ class TestEntitlementService:
         """Deanery admin can act as child parishes, not siblings."""
         diocese, deanery, parish_a, parish_b = self._create_hierarchy()
         user = User.objects.create_user(email="dean@test.lt", password="Test1234!")
+        from apps.tenants.test_utils import clear_test_tenant_context as _ct
+        from apps.tenants.test_utils import set_test_tenant_context as _st
+
+        _st(deanery)
         OrganizationMember.objects.create(organization=deanery, user=user, role="admin")
+        _ct()
 
         entitled = get_entitled_tenants(user)
         entitled_ids = {str(t.id) for t in entitled}
@@ -92,9 +104,14 @@ class TestEntitlementService:
         """Parish admin can only act as their own parish."""
         diocese, deanery, parish_a, parish_b = self._create_hierarchy()
         user = User.objects.create_user(email="rector@test.lt", password="Test1234!")
+        from apps.tenants.test_utils import clear_test_tenant_context as _ct
+        from apps.tenants.test_utils import set_test_tenant_context as _st
+
+        _st(parish_a)
         OrganizationMember.objects.create(
             organization=parish_a, user=user, role="admin"
         )
+        _ct()
 
         entitled = get_entitled_tenants(user)
         entitled_ids = {str(t.id) for t in entitled}
