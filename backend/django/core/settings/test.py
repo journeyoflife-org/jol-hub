@@ -107,6 +107,20 @@ SHARED_APPS = list(INSTALLED_APPS)  # All apps -> public schema in tests
 TENANT_APPS = ["apps.organizations"]  # Minimal: just the tenant model app
 INSTALLED_APPS = list(SHARED_APPS)  # Recalculate
 
+
+# =============================================================================
+# MIDDLEWARE — Remove django-tenants schema middleware for tests
+# =============================================================================
+# TenantMainMiddleware tries to resolve tenant schema from request hostname.
+# In CI tests there is no tenant domain, so it returns 404 for all requests.
+# Remove it; keep TenantEntitlementMiddleware which handles auth gracefully.
+# =============================================================================
+
+MIDDLEWARE = [
+    m for m in MIDDLEWARE
+    if m != "django_tenants.middleware.main.TenantMainMiddleware"
+]
+
 # =============================================================================
 # PASSWORD HASHERS — Use fastest hasher for tests
 # =============================================================================
