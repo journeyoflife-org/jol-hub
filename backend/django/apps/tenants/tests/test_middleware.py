@@ -7,6 +7,8 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
+from conftest import _set_tenant_context, _clear_tenant_context
+
 from django.http import HttpResponse
 from django.test import RequestFactory
 
@@ -37,7 +39,9 @@ class TestTenantEntitlementMiddleware:
             status="active",
             schema_name="t_my_parish",
         )
+        _set_tenant_context(org)
         OrganizationMember.objects.create(organization=org, user=user, role="admin")
+        _clear_tenant_context()
 
         # Forge a different tenant ID
         forged_id = str(uuid.uuid4())
