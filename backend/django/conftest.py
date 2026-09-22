@@ -13,9 +13,8 @@ import json
 from typing import Any
 
 import pytest
-from rest_framework.test import APIClient
-
 from django.test import RequestFactory
+from rest_framework.test import APIClient
 
 # ---------------------------------------------------------------------------
 # Bitrix24 webhook test helpers
