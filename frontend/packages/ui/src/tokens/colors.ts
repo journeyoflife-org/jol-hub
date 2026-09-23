@@ -269,6 +269,33 @@ export const verticalAccents = {
 export type VerticalAccentName = keyof typeof verticalAccents;
 
 /* ------------------------------------------------------------------ */
+/* Locale accents                                                      */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Per-locale accent palette (header stripes, border accents, locale badges).
+ * These are NATIONAL identity, not denominational — they sit on a separate
+ * axis from theme profiles (DS-THEME-01) and vertical accents.
+ *
+ * A tenant's localeAccent is resolved via TenantIdentity.localeAccent (seed-data
+ * schema). The template merges these ON TOP of the denomination profile for
+ * tenants that opt in; tenants without the field render pure denomination.
+ *
+ * All values are flat hex — they are decorative accents, not full scales.
+ * Each triplet must pass WCAG-AA against the neutral surface when used as
+ * foreground-on-surface (DS-A11Y-01).
+ */
+export const localeAccents = {
+  lt: {
+    primary: '#00843D',   // Lithuanian green
+    secondary: '#FFCC00', // Lithuanian yellow
+    accent: '#C8102E',    // Lithuanian red
+  },
+} as const;
+
+export type LocaleAccentRef = keyof typeof localeAccents;
+
+/* ------------------------------------------------------------------ */
 /* Semantic light/dark roles                                           */
 /* ------------------------------------------------------------------ */
 
