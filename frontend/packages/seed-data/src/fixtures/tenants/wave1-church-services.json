@@ -22,8 +22,8 @@
       {
         "route": "/",
         "title": {
-          "lt": "Pradžia",
-          "en": "Home"
+          "lt": "Žagarės laidojimo namai",
+          "en": "Žagarė Funeral Home"
         },
         "contentBlocks": [
           {
@@ -33,67 +33,406 @@
               "en": "Žagarė Funeral Home"
             },
             "subheading": {
-              "lt": "Laidojimo organizavimas ir kapų priežiūra Žagarės krašte — visą parą",
-              "en": "Funeral arrangement and grave care in the Žagarė area — around the clock"
+              "lt": "Su pagarba Žagarės ir apylinkių šeimoms",
+              "en": "With respect for the families of Žagarė"
             }
           },
           {
             "type": "list",
             "heading": {
-              "lt": "Paslaugos ir kainos",
-              "en": "Services and prices"
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "title": {
-                  "lt": "Pilnas laidojimo organizavimas",
-                  "en": "Full funeral arrangement"
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 1650
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               },
               {
                 "title": {
-                  "lt": "Kremavimo organizavimas",
-                  "en": "Cremation arrangement"
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 1200
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               }
             ]
           },
           {
-            "type": "keyValue",
+            "type": "stats",
             "heading": {
-              "lt": "Visą parą",
-              "en": "Around the clock"
+              "lt": "Faktai",
+              "en": "Faktai",
+              "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "label": {
-                  "lt": "Skubus telefonas",
-                  "en": "Urgent phone"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "+370 42 60 60 60"
+                "value": "2012"
+              }
+            ]
+          },
+          {
+            "type": "cta",
+            "links": [
+              {
+                "label": {
+                  "lt": "Kontaktai",
+                  "en": "Contact"
+                },
+                "href": "/contact"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/about",
+        "title": {
+          "lt": "Apie",
+          "en": "Apie",
+          "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "text",
+            "heading": {
+              "lt": "Apie",
+              "en": "Apie",
+              "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "body": {
+              "lt": "Su pagarba Žagarės ir apylinkių šeimoms",
+              "en": "With respect for the families of Žagarė"
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Duomenys",
+              "en": "Duomenys",
+              "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Entity ID",
+                  "en": "Entity ID",
+                  "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "lt-wave1-funeral-007"
               },
               {
                 "label": {
-                  "lt": "Adresas",
-                  "en": "Address"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "Malūno g. 6, 84315 Žagarė"
+                "value": "2012"
+              }
+            ]
+          },
+          {
+            "type": "visitingInfo",
+            "heading": {
+              "lt": "Lankymo laikas",
+              "en": "Lankymo laikas",
+              "ru": "Lankymo laikas [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "hours": [
+              {
+                "day": "Pirmadienis - Penktadienis",
+                "dayEn": "Monday - Friday",
+                "open": "09:00",
+                "close": "17:00"
+              },
+              {
+                "day": "Šeštadienis",
+                "dayEn": "Saturday",
+                "open": "10:00",
+                "close": "14:00"
+              }
+            ],
+            "admission": {
+              "lt": "Lankymas nemokamas",
+              "en": "Lankymas nemokamas",
+              "ru": "Lankymas nemokamas [TODO: verify with parish/diocese — do not publish unverified]"
+            }
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Mal%C5%ABno%20g.%206%2C%2084315%20%C5%BDagar%C4%97%2C%20Lithuania"
+          }
+        ]
+      },
+      {
+        "route": "/contact",
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Kontaktai",
+          "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Kontaktai",
+              "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Adresas",
+                  "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Malūno g. 6, 84315 Žagarė, Lithuania"
               },
               {
                 "label": {
                   "lt": "El. paštas",
-                  "en": "Email"
+                  "en": "El. paštas",
+                  "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
                 "value": "info@zagare-laidojimas-demo.lt"
+              },
+              {
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Telefonas",
+                  "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "+370 42 60 60 60"
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Mal%C5%ABno%20g.%206%2C%2084315%20%C5%BDagar%C4%97%2C%20Lithuania"
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Biuro valandos",
+              "en": "Biuro valandos",
+              "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
               }
             ]
           }
-        ],
-        "meta": {
-          "description": "Žagarės laidojimo namai — laidojimo ir kremavimo organizavimas 24/7 Žagarės krašte."
-        }
+        ]
+      },
+      {
+        "route": "/services",
+        "title": {
+          "lt": "Paslaugos",
+          "en": "Paslaugos",
+          "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Žagarės laidojimo namai",
+              "en": "Žagarė Funeral Home"
+            },
+            "subheading": {
+              "lt": "Su pagarba Žagarės ir apylinkių šeimoms",
+              "en": "With respect for the families of Žagarė"
+            }
+          },
+          {
+            "type": "list",
+            "heading": {
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "title": {
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "title": {
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "faq",
+            "heading": {
+              "lt": "Dažni klausimai",
+              "en": "Dažni klausimai",
+              "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "questions": [
+              {
+                "question": {
+                  "lt": "Kaip užsakyti paslaugą?",
+                  "en": "Kaip užsakyti paslaugą?",
+                  "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "question": {
+                  "lt": "Ar reikalinga išankstinė registracija?",
+                  "en": "Ar reikalinga išankstinė registracija?",
+                  "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/schedule",
+        "title": {
+          "lt": "Tvarkaraštis",
+          "en": "Tvarkaraštis",
+          "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Žagarės laidojimo namai",
+              "en": "Žagarė Funeral Home"
+            },
+            "subheading": {
+              "lt": "Su pagarba Žagarės ir apylinkių šeimoms",
+              "en": "With respect for the families of Žagarė"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Tvarkaraštis",
+              "en": "Tvarkaraštis",
+              "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "governance": {
@@ -126,78 +465,417 @@
       {
         "route": "/",
         "title": {
-          "lt": "Pradžia",
-          "en": "Home"
+          "lt": "Žagarės kapinių priežiūra",
+          "en": "Žagarė Cemetery Care"
         },
         "contentBlocks": [
           {
             "type": "hero",
             "heading": {
-              "lt": "Kapaviečių priežiūra Žagarėje",
-              "en": "Grave care in Žagarė"
+              "lt": "Žagarės kapinių priežiūra",
+              "en": "Žagarė Cemetery Care"
             },
             "subheading": {
-              "lt": "Tvarkymas, želdiniai ir šventinis puošimas su foto ataskaitomis",
-              "en": "Tidying, planting and feast-day decoration with photo reports"
+              "lt": "Kapaviečių priežiūra Žagarės kapinėse",
+              "en": "Grave care in the Žagarė cemeteries"
             }
           },
           {
             "type": "list",
             "heading": {
-              "lt": "Planai ir kainos",
-              "en": "Plans and prices"
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "title": {
-                  "lt": "Vienkartinis tvarkymas",
-                  "en": "One-time care"
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 26
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               },
               {
                 "title": {
-                  "lt": "Mėnesinė priežiūra",
-                  "en": "Monthly care"
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 18
-              },
-              {
-                "title": {
-                  "lt": "Metinis planas",
-                  "en": "Annual plan"
-                },
-                "price": 180
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               }
             ]
           },
           {
-            "type": "keyValue",
+            "type": "stats",
             "heading": {
-              "lt": "Kontaktai",
-              "en": "Contacts"
+              "lt": "Faktai",
+              "en": "Faktai",
+              "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "label": {
-                  "lt": "Telefonas",
-                  "en": "Phone"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "+370 42 60 70 70"
+                "value": "2021"
+              }
+            ]
+          },
+          {
+            "type": "cta",
+            "links": [
+              {
+                "label": {
+                  "lt": "Kontaktai",
+                  "en": "Contact"
+                },
+                "href": "/contact"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/about",
+        "title": {
+          "lt": "Apie",
+          "en": "Apie",
+          "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "text",
+            "heading": {
+              "lt": "Apie",
+              "en": "Apie",
+              "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "body": {
+              "lt": "Kapaviečių priežiūra Žagarės kapinėse",
+              "en": "Grave care in the Žagarė cemeteries"
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Duomenys",
+              "en": "Duomenys",
+              "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Entity ID",
+                  "en": "Entity ID",
+                  "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "lt-wave1-cleaning-007"
+              },
+              {
+                "label": {
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "2021"
+              }
+            ]
+          },
+          {
+            "type": "visitingInfo",
+            "heading": {
+              "lt": "Lankymo laikas",
+              "en": "Lankymo laikas",
+              "ru": "Lankymo laikas [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "hours": [
+              {
+                "day": "Pirmadienis - Penktadienis",
+                "dayEn": "Monday - Friday",
+                "open": "09:00",
+                "close": "17:00"
+              },
+              {
+                "day": "Šeštadienis",
+                "dayEn": "Saturday",
+                "open": "10:00",
+                "close": "14:00"
+              }
+            ],
+            "admission": {
+              "lt": "Lankymas nemokamas",
+              "en": "Lankymas nemokamas",
+              "ru": "Lankymas nemokamas [TODO: verify with parish/diocese — do not publish unverified]"
+            }
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Kap%C5%B3%20g.%203%2C%2084320%20%C5%BDagar%C4%97%2C%20Lithuania"
+          }
+        ]
+      },
+      {
+        "route": "/contact",
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Kontaktai",
+          "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Kontaktai",
+              "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Adresas",
+                  "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Kapų g. 3, 84320 Žagarė, Lithuania"
               },
               {
                 "label": {
                   "lt": "El. paštas",
-                  "en": "Email"
+                  "en": "El. paštas",
+                  "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
                 "value": "info@zagare-prieziura-demo.lt"
+              },
+              {
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Telefonas",
+                  "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "+370 42 60 70 70"
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Kap%C5%B3%20g.%203%2C%2084320%20%C5%BDagar%C4%97%2C%20Lithuania"
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Biuro valandos",
+              "en": "Biuro valandos",
+              "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
               }
             ]
           }
-        ],
-        "meta": {
-          "description": "Žagarės kapinių priežiūra — tvarkymas, želdiniai ir šventinis puošimas su foto ataskaitomis."
-        }
+        ]
+      },
+      {
+        "route": "/services",
+        "title": {
+          "lt": "Paslaugos",
+          "en": "Paslaugos",
+          "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Žagarės kapinių priežiūra",
+              "en": "Žagarė Cemetery Care"
+            },
+            "subheading": {
+              "lt": "Kapaviečių priežiūra Žagarės kapinėse",
+              "en": "Grave care in the Žagarė cemeteries"
+            }
+          },
+          {
+            "type": "list",
+            "heading": {
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "title": {
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "title": {
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "faq",
+            "heading": {
+              "lt": "Dažni klausimai",
+              "en": "Dažni klausimai",
+              "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "questions": [
+              {
+                "question": {
+                  "lt": "Kaip užsakyti paslaugą?",
+                  "en": "Kaip užsakyti paslaugą?",
+                  "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "question": {
+                  "lt": "Ar reikalinga išankstinė registracija?",
+                  "en": "Ar reikalinga išankstinė registracija?",
+                  "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/schedule",
+        "title": {
+          "lt": "Tvarkaraštis",
+          "en": "Tvarkaraštis",
+          "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Žagarės kapinių priežiūra",
+              "en": "Žagarė Cemetery Care"
+            },
+            "subheading": {
+              "lt": "Kapaviečių priežiūra Žagarės kapinėse",
+              "en": "Grave care in the Žagarė cemeteries"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Tvarkaraštis",
+              "en": "Tvarkaraštis",
+              "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "governance": {
@@ -230,8 +908,8 @@
       {
         "route": "/",
         "title": {
-          "lt": "Pradžia",
-          "en": "Home"
+          "lt": "Kražių laidojimo namai",
+          "en": "Kražiai Funeral Home"
         },
         "contentBlocks": [
           {
@@ -241,67 +919,406 @@
               "en": "Kražiai Funeral Home"
             },
             "subheading": {
-              "lt": "Laidojimo organizavimas ir kapų priežiūra Kražiuose — visą parą",
-              "en": "Funeral arrangement and grave care in Kražiai — around the clock"
+              "lt": "Ramybė ir pagarba Kražių krašto šeimoms",
+              "en": "Peace and respect for the families of Kražiai"
             }
           },
           {
             "type": "list",
             "heading": {
-              "lt": "Paslaugos ir kainos",
-              "en": "Services and prices"
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "title": {
-                  "lt": "Pilnas laidojimo organizavimas",
-                  "en": "Full funeral arrangement"
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 1650
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               },
               {
                 "title": {
-                  "lt": "Kremavimo organizavimas",
-                  "en": "Cremation arrangement"
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 1200
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               }
             ]
           },
           {
-            "type": "keyValue",
+            "type": "stats",
             "heading": {
-              "lt": "Visą parą",
-              "en": "Around the clock"
+              "lt": "Faktai",
+              "en": "Faktai",
+              "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "label": {
-                  "lt": "Skubus telefonas",
-                  "en": "Urgent phone"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "+370 42 70 50 50"
+                "value": "2014"
+              }
+            ]
+          },
+          {
+            "type": "cta",
+            "links": [
+              {
+                "label": {
+                  "lt": "Kontaktai",
+                  "en": "Contact"
+                },
+                "href": "/contact"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/about",
+        "title": {
+          "lt": "Apie",
+          "en": "Apie",
+          "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "text",
+            "heading": {
+              "lt": "Apie",
+              "en": "Apie",
+              "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "body": {
+              "lt": "Ramybė ir pagarba Kražių krašto šeimoms",
+              "en": "Peace and respect for the families of Kražiai"
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Duomenys",
+              "en": "Duomenys",
+              "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Entity ID",
+                  "en": "Entity ID",
+                  "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "lt-wave1-funeral-008"
               },
               {
                 "label": {
-                  "lt": "Adresas",
-                  "en": "Address"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "Vienuolyno g. 2, 86211 Kražiai"
+                "value": "2014"
+              }
+            ]
+          },
+          {
+            "type": "visitingInfo",
+            "heading": {
+              "lt": "Lankymo laikas",
+              "en": "Lankymo laikas",
+              "ru": "Lankymo laikas [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "hours": [
+              {
+                "day": "Pirmadienis - Penktadienis",
+                "dayEn": "Monday - Friday",
+                "open": "09:00",
+                "close": "17:00"
+              },
+              {
+                "day": "Šeštadienis",
+                "dayEn": "Saturday",
+                "open": "10:00",
+                "close": "14:00"
+              }
+            ],
+            "admission": {
+              "lt": "Lankymas nemokamas",
+              "en": "Lankymas nemokamas",
+              "ru": "Lankymas nemokamas [TODO: verify with parish/diocese — do not publish unverified]"
+            }
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Vienuolyno%20g.%202%2C%2086211%20Kra%C5%BEiai%2C%20Lithuania"
+          }
+        ]
+      },
+      {
+        "route": "/contact",
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Kontaktai",
+          "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Kontaktai",
+              "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Adresas",
+                  "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Vienuolyno g. 2, 86211 Kražiai, Lithuania"
               },
               {
                 "label": {
                   "lt": "El. paštas",
-                  "en": "Email"
+                  "en": "El. paštas",
+                  "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
                 "value": "info@kraziai-laidojimas-demo.lt"
+              },
+              {
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Telefonas",
+                  "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "+370 42 70 50 50"
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Vienuolyno%20g.%202%2C%2086211%20Kra%C5%BEiai%2C%20Lithuania"
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Biuro valandos",
+              "en": "Biuro valandos",
+              "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
               }
             ]
           }
-        ],
-        "meta": {
-          "description": "Kražių laidojimo namai — laidojimo ir kremavimo organizavimas 24/7 Kražių krašte."
-        }
+        ]
+      },
+      {
+        "route": "/services",
+        "title": {
+          "lt": "Paslaugos",
+          "en": "Paslaugos",
+          "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Kražių laidojimo namai",
+              "en": "Kražiai Funeral Home"
+            },
+            "subheading": {
+              "lt": "Ramybė ir pagarba Kražių krašto šeimoms",
+              "en": "Peace and respect for the families of Kražiai"
+            }
+          },
+          {
+            "type": "list",
+            "heading": {
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "title": {
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "title": {
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "faq",
+            "heading": {
+              "lt": "Dažni klausimai",
+              "en": "Dažni klausimai",
+              "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "questions": [
+              {
+                "question": {
+                  "lt": "Kaip užsakyti paslaugą?",
+                  "en": "Kaip užsakyti paslaugą?",
+                  "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "question": {
+                  "lt": "Ar reikalinga išankstinė registracija?",
+                  "en": "Ar reikalinga išankstinė registracija?",
+                  "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/schedule",
+        "title": {
+          "lt": "Tvarkaraštis",
+          "en": "Tvarkaraštis",
+          "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Kražių laidojimo namai",
+              "en": "Kražiai Funeral Home"
+            },
+            "subheading": {
+              "lt": "Ramybė ir pagarba Kražių krašto šeimoms",
+              "en": "Peace and respect for the families of Kražiai"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Tvarkaraštis",
+              "en": "Tvarkaraštis",
+              "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "governance": {
@@ -334,78 +1351,417 @@
       {
         "route": "/",
         "title": {
-          "lt": "Pradžia",
-          "en": "Home"
+          "lt": "Kražių kapinių priežiūra",
+          "en": "Kražiai Cemetery Care"
         },
         "contentBlocks": [
           {
             "type": "hero",
             "heading": {
-              "lt": "Kapaviečių priežiūra Kražiuose",
-              "en": "Grave care in Kražiai"
+              "lt": "Kražių kapinių priežiūra",
+              "en": "Kražiai Cemetery Care"
             },
             "subheading": {
-              "lt": "Tvarkymas, želdiniai ir šventinis puošimas su foto ataskaitomis",
-              "en": "Tidying, planting and feast-day decoration with photo reports"
+              "lt": "Kapaviečių priežiūra Kražių kapinėse",
+              "en": "Grave care in the Kražiai cemeteries"
             }
           },
           {
             "type": "list",
             "heading": {
-              "lt": "Planai ir kainos",
-              "en": "Plans and prices"
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "title": {
-                  "lt": "Vienkartinis tvarkymas",
-                  "en": "One-time care"
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 26
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               },
               {
                 "title": {
-                  "lt": "Mėnesinė priežiūra",
-                  "en": "Monthly care"
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 18
-              },
-              {
-                "title": {
-                  "lt": "Metinis planas",
-                  "en": "Annual plan"
-                },
-                "price": 180
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               }
             ]
           },
           {
-            "type": "keyValue",
+            "type": "stats",
             "heading": {
-              "lt": "Kontaktai",
-              "en": "Contacts"
+              "lt": "Faktai",
+              "en": "Faktai",
+              "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "label": {
-                  "lt": "Telefonas",
-                  "en": "Phone"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "+370 42 70 60 60"
+                "value": "2022"
+              }
+            ]
+          },
+          {
+            "type": "cta",
+            "links": [
+              {
+                "label": {
+                  "lt": "Kontaktai",
+                  "en": "Contact"
+                },
+                "href": "/contact"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/about",
+        "title": {
+          "lt": "Apie",
+          "en": "Apie",
+          "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "text",
+            "heading": {
+              "lt": "Apie",
+              "en": "Apie",
+              "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "body": {
+              "lt": "Kapaviečių priežiūra Kražių kapinėse",
+              "en": "Grave care in the Kražiai cemeteries"
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Duomenys",
+              "en": "Duomenys",
+              "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Entity ID",
+                  "en": "Entity ID",
+                  "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "lt-wave1-cleaning-008"
+              },
+              {
+                "label": {
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "2022"
+              }
+            ]
+          },
+          {
+            "type": "visitingInfo",
+            "heading": {
+              "lt": "Lankymo laikas",
+              "en": "Lankymo laikas",
+              "ru": "Lankymo laikas [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "hours": [
+              {
+                "day": "Pirmadienis - Penktadienis",
+                "dayEn": "Monday - Friday",
+                "open": "09:00",
+                "close": "17:00"
+              },
+              {
+                "day": "Šeštadienis",
+                "dayEn": "Saturday",
+                "open": "10:00",
+                "close": "14:00"
+              }
+            ],
+            "admission": {
+              "lt": "Lankymas nemokamas",
+              "en": "Lankymas nemokamas",
+              "ru": "Lankymas nemokamas [TODO: verify with parish/diocese — do not publish unverified]"
+            }
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Kap%C5%B3%20g.%201%2C%2086215%20Kra%C5%BEiai%2C%20Lithuania"
+          }
+        ]
+      },
+      {
+        "route": "/contact",
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Kontaktai",
+          "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Kontaktai",
+              "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Adresas",
+                  "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Kapų g. 1, 86215 Kražiai, Lithuania"
               },
               {
                 "label": {
                   "lt": "El. paštas",
-                  "en": "Email"
+                  "en": "El. paštas",
+                  "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
                 "value": "info@kraziai-prieziura-demo.lt"
+              },
+              {
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Telefonas",
+                  "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "+370 42 70 60 60"
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Kap%C5%B3%20g.%201%2C%2086215%20Kra%C5%BEiai%2C%20Lithuania"
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Biuro valandos",
+              "en": "Biuro valandos",
+              "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
               }
             ]
           }
-        ],
-        "meta": {
-          "description": "Kražių kapinių priežiūra — tvarkymas, želdiniai ir šventinis puošymas su foto ataskaitomis."
-        }
+        ]
+      },
+      {
+        "route": "/services",
+        "title": {
+          "lt": "Paslaugos",
+          "en": "Paslaugos",
+          "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Kražių kapinių priežiūra",
+              "en": "Kražiai Cemetery Care"
+            },
+            "subheading": {
+              "lt": "Kapaviečių priežiūra Kražių kapinėse",
+              "en": "Grave care in the Kražiai cemeteries"
+            }
+          },
+          {
+            "type": "list",
+            "heading": {
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "title": {
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "title": {
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "faq",
+            "heading": {
+              "lt": "Dažni klausimai",
+              "en": "Dažni klausimai",
+              "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "questions": [
+              {
+                "question": {
+                  "lt": "Kaip užsakyti paslaugą?",
+                  "en": "Kaip užsakyti paslaugą?",
+                  "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "question": {
+                  "lt": "Ar reikalinga išankstinė registracija?",
+                  "en": "Ar reikalinga išankstinė registracija?",
+                  "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/schedule",
+        "title": {
+          "lt": "Tvarkaraštis",
+          "en": "Tvarkaraštis",
+          "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Kražių kapinių priežiūra",
+              "en": "Kražiai Cemetery Care"
+            },
+            "subheading": {
+              "lt": "Kapaviečių priežiūra Kražių kapinėse",
+              "en": "Grave care in the Kražiai cemeteries"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Tvarkaraštis",
+              "en": "Tvarkaraštis",
+              "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "governance": {
@@ -438,8 +1794,8 @@
       {
         "route": "/",
         "title": {
-          "lt": "Pradžia",
-          "en": "Home"
+          "lt": "Lygumų laidojimo namai",
+          "en": "Lygumai Funeral Home"
         },
         "contentBlocks": [
           {
@@ -449,67 +1805,406 @@
               "en": "Lygumai Funeral Home"
             },
             "subheading": {
-              "lt": "Laidojimo organizavimas ir kapų priežiūra Lygumų miestelyje — visą parą",
-              "en": "Funeral arrangement and grave care in Lygumai — around the clock"
+              "lt": "Su pagarba Lygumų krašto šeimoms",
+              "en": "With respect for the families of Lygumai"
             }
           },
           {
             "type": "list",
             "heading": {
-              "lt": "Paslaugos ir kainos",
-              "en": "Services and prices"
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "title": {
-                  "lt": "Pilnas laidojimo organizavimas",
-                  "en": "Full funeral arrangement"
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 1650
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               },
               {
                 "title": {
-                  "lt": "Kremavimo organizavimas",
-                  "en": "Cremation arrangement"
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 1200
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               }
             ]
           },
           {
-            "type": "keyValue",
+            "type": "stats",
             "heading": {
-              "lt": "Visą parą",
-              "en": "Around the clock"
+              "lt": "Faktai",
+              "en": "Faktai",
+              "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "label": {
-                  "lt": "Skubus telefonas",
-                  "en": "Urgent phone"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "+370 42 80 60 60"
+                "value": "2016"
+              }
+            ]
+          },
+          {
+            "type": "cta",
+            "links": [
+              {
+                "label": {
+                  "lt": "Kontaktai",
+                  "en": "Contact"
+                },
+                "href": "/contact"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/about",
+        "title": {
+          "lt": "Apie",
+          "en": "Apie",
+          "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "text",
+            "heading": {
+              "lt": "Apie",
+              "en": "Apie",
+              "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "body": {
+              "lt": "Su pagarba Lygumų krašto šeimoms",
+              "en": "With respect for the families of Lygumai"
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Duomenys",
+              "en": "Duomenys",
+              "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Entity ID",
+                  "en": "Entity ID",
+                  "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "lt-wave1-funeral-009"
               },
               {
                 "label": {
-                  "lt": "Adresas",
-                  "en": "Address"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "Bažnyčios g. 3, 83315 Lygumai"
+                "value": "2016"
+              }
+            ]
+          },
+          {
+            "type": "visitingInfo",
+            "heading": {
+              "lt": "Lankymo laikas",
+              "en": "Lankymo laikas",
+              "ru": "Lankymo laikas [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "hours": [
+              {
+                "day": "Pirmadienis - Penktadienis",
+                "dayEn": "Monday - Friday",
+                "open": "09:00",
+                "close": "17:00"
+              },
+              {
+                "day": "Šeštadienis",
+                "dayEn": "Saturday",
+                "open": "10:00",
+                "close": "14:00"
+              }
+            ],
+            "admission": {
+              "lt": "Lankymas nemokamas",
+              "en": "Lankymas nemokamas",
+              "ru": "Lankymas nemokamas [TODO: verify with parish/diocese — do not publish unverified]"
+            }
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Ba%C5%BEny%C4%8Dios%20g.%203%2C%2083315%20Lygumai%2C%20Lithuania"
+          }
+        ]
+      },
+      {
+        "route": "/contact",
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Kontaktai",
+          "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Kontaktai",
+              "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Adresas",
+                  "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Bažnyčios g. 3, 83315 Lygumai, Lithuania"
               },
               {
                 "label": {
                   "lt": "El. paštas",
-                  "en": "Email"
+                  "en": "El. paštas",
+                  "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
                 "value": "info@lygumai-laidojimas-demo.lt"
+              },
+              {
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Telefonas",
+                  "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "+370 42 80 60 60"
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Ba%C5%BEny%C4%8Dios%20g.%203%2C%2083315%20Lygumai%2C%20Lithuania"
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Biuro valandos",
+              "en": "Biuro valandos",
+              "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
               }
             ]
           }
-        ],
-        "meta": {
-          "description": "Lygumų laidojimo namai — laidojimo ir kremavimo organizavimas 24/7 Lygumų miestelyje."
-        }
+        ]
+      },
+      {
+        "route": "/services",
+        "title": {
+          "lt": "Paslaugos",
+          "en": "Paslaugos",
+          "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Lygumų laidojimo namai",
+              "en": "Lygumai Funeral Home"
+            },
+            "subheading": {
+              "lt": "Su pagarba Lygumų krašto šeimoms",
+              "en": "With respect for the families of Lygumai"
+            }
+          },
+          {
+            "type": "list",
+            "heading": {
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "title": {
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "title": {
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "faq",
+            "heading": {
+              "lt": "Dažni klausimai",
+              "en": "Dažni klausimai",
+              "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "questions": [
+              {
+                "question": {
+                  "lt": "Kaip užsakyti paslaugą?",
+                  "en": "Kaip užsakyti paslaugą?",
+                  "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "question": {
+                  "lt": "Ar reikalinga išankstinė registracija?",
+                  "en": "Ar reikalinga išankstinė registracija?",
+                  "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/schedule",
+        "title": {
+          "lt": "Tvarkaraštis",
+          "en": "Tvarkaraštis",
+          "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Lygumų laidojimo namai",
+              "en": "Lygumai Funeral Home"
+            },
+            "subheading": {
+              "lt": "Su pagarba Lygumų krašto šeimoms",
+              "en": "With respect for the families of Lygumai"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Tvarkaraštis",
+              "en": "Tvarkaraštis",
+              "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "governance": {
@@ -542,78 +2237,417 @@
       {
         "route": "/",
         "title": {
-          "lt": "Pradžia",
-          "en": "Home"
+          "lt": "Lygumų kapinių priežiūra",
+          "en": "Lygumai Cemetery Care"
         },
         "contentBlocks": [
           {
             "type": "hero",
             "heading": {
-              "lt": "Kapaviečių priežiūra Lygumuose",
-              "en": "Grave care in Lygumai"
+              "lt": "Lygumų kapinių priežiūra",
+              "en": "Lygumai Cemetery Care"
             },
             "subheading": {
-              "lt": "Tvarkymas, želdiniai ir šventinis puošimas su foto ataskaitomis",
-              "en": "Tidying, planting and feast-day decoration with photo reports"
+              "lt": "Kapaviečių priežiūra Lygumų kapinėse",
+              "en": "Grave care in the Lygumai cemeteries"
             }
           },
           {
             "type": "list",
             "heading": {
-              "lt": "Planai ir kainos",
-              "en": "Plans and prices"
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "title": {
-                  "lt": "Vienkartinis tvarkymas",
-                  "en": "One-time care"
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 26
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               },
               {
                 "title": {
-                  "lt": "Mėnesinė priežiūra",
-                  "en": "Monthly care"
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 18
-              },
-              {
-                "title": {
-                  "lt": "Metinis planas",
-                  "en": "Annual plan"
-                },
-                "price": 180
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               }
             ]
           },
           {
-            "type": "keyValue",
+            "type": "stats",
             "heading": {
-              "lt": "Kontaktai",
-              "en": "Contacts"
+              "lt": "Faktai",
+              "en": "Faktai",
+              "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "label": {
-                  "lt": "Telefonas",
-                  "en": "Phone"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "+370 42 80 70 70"
+                "value": "2022"
+              }
+            ]
+          },
+          {
+            "type": "cta",
+            "links": [
+              {
+                "label": {
+                  "lt": "Kontaktai",
+                  "en": "Contact"
+                },
+                "href": "/contact"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/about",
+        "title": {
+          "lt": "Apie",
+          "en": "Apie",
+          "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "text",
+            "heading": {
+              "lt": "Apie",
+              "en": "Apie",
+              "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "body": {
+              "lt": "Kapaviečių priežiūra Lygumų kapinėse",
+              "en": "Grave care in the Lygumai cemeteries"
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Duomenys",
+              "en": "Duomenys",
+              "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Entity ID",
+                  "en": "Entity ID",
+                  "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "lt-wave1-cleaning-009"
+              },
+              {
+                "label": {
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "2022"
+              }
+            ]
+          },
+          {
+            "type": "visitingInfo",
+            "heading": {
+              "lt": "Lankymo laikas",
+              "en": "Lankymo laikas",
+              "ru": "Lankymo laikas [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "hours": [
+              {
+                "day": "Pirmadienis - Penktadienis",
+                "dayEn": "Monday - Friday",
+                "open": "09:00",
+                "close": "17:00"
+              },
+              {
+                "day": "Šeštadienis",
+                "dayEn": "Saturday",
+                "open": "10:00",
+                "close": "14:00"
+              }
+            ],
+            "admission": {
+              "lt": "Lankymas nemokamas",
+              "en": "Lankymas nemokamas",
+              "ru": "Lankymas nemokamas [TODO: verify with parish/diocese — do not publish unverified]"
+            }
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Kap%C5%B3%20g.%202%2C%2083318%20Lygumai%2C%20Lithuania"
+          }
+        ]
+      },
+      {
+        "route": "/contact",
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Kontaktai",
+          "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Kontaktai",
+              "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Adresas",
+                  "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Kapų g. 2, 83318 Lygumai, Lithuania"
               },
               {
                 "label": {
                   "lt": "El. paštas",
-                  "en": "Email"
+                  "en": "El. paštas",
+                  "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
                 "value": "info@lygumai-prieziura-demo.lt"
+              },
+              {
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Telefonas",
+                  "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "+370 42 80 70 70"
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Kap%C5%B3%20g.%202%2C%2083318%20Lygumai%2C%20Lithuania"
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Biuro valandos",
+              "en": "Biuro valandos",
+              "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
               }
             ]
           }
-        ],
-        "meta": {
-          "description": "Lygumų kapinių priežiūra — tvarkymas, želdiniai ir šventinis puošymas su foto ataskaitomis."
-        }
+        ]
+      },
+      {
+        "route": "/services",
+        "title": {
+          "lt": "Paslaugos",
+          "en": "Paslaugos",
+          "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Lygumų kapinių priežiūra",
+              "en": "Lygumai Cemetery Care"
+            },
+            "subheading": {
+              "lt": "Kapaviečių priežiūra Lygumų kapinėse",
+              "en": "Grave care in the Lygumai cemeteries"
+            }
+          },
+          {
+            "type": "list",
+            "heading": {
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "title": {
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "title": {
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "faq",
+            "heading": {
+              "lt": "Dažni klausimai",
+              "en": "Dažni klausimai",
+              "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "questions": [
+              {
+                "question": {
+                  "lt": "Kaip užsakyti paslaugą?",
+                  "en": "Kaip užsakyti paslaugą?",
+                  "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "question": {
+                  "lt": "Ar reikalinga išankstinė registracija?",
+                  "en": "Ar reikalinga išankstinė registracija?",
+                  "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/schedule",
+        "title": {
+          "lt": "Tvarkaraštis",
+          "en": "Tvarkaraštis",
+          "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Lygumų kapinių priežiūra",
+              "en": "Lygumai Cemetery Care"
+            },
+            "subheading": {
+              "lt": "Kapaviečių priežiūra Lygumų kapinėse",
+              "en": "Grave care in the Lygumai cemeteries"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Tvarkaraštis",
+              "en": "Tvarkaraštis",
+              "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "governance": {
@@ -646,8 +2680,8 @@
       {
         "route": "/",
         "title": {
-          "lt": "Pradžia",
-          "en": "Home"
+          "lt": "Baisogalos laidojimo namai",
+          "en": "Baisogala Funeral Home"
         },
         "contentBlocks": [
           {
@@ -657,67 +2691,406 @@
               "en": "Baisogala Funeral Home"
             },
             "subheading": {
-              "lt": "Laidojimo organizavimas ir kapų priežiūra Baisogaloje — visą parą",
-              "en": "Funeral arrangement and grave care in Baisogala — around the clock"
+              "lt": "Su pagarba Baisogalos krašto šeimoms",
+              "en": "With respect for the families of Baisogala"
             }
           },
           {
             "type": "list",
             "heading": {
-              "lt": "Paslaugos ir kainos",
-              "en": "Services and prices"
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "title": {
-                  "lt": "Pilnas laidojimo organizavimas",
-                  "en": "Full funeral arrangement"
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 1650
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               },
               {
                 "title": {
-                  "lt": "Kremavimo organizavimas",
-                  "en": "Cremation arrangement"
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 1200
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               }
             ]
           },
           {
-            "type": "keyValue",
+            "type": "stats",
             "heading": {
-              "lt": "Visą parą",
-              "en": "Around the clock"
+              "lt": "Faktai",
+              "en": "Faktai",
+              "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "label": {
-                  "lt": "Skubus telefonas",
-                  "en": "Urgent phone"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "+370 42 90 60 60"
+                "value": "2015"
+              }
+            ]
+          },
+          {
+            "type": "cta",
+            "links": [
+              {
+                "label": {
+                  "lt": "Kontaktai",
+                  "en": "Contact"
+                },
+                "href": "/contact"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/about",
+        "title": {
+          "lt": "Apie",
+          "en": "Apie",
+          "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "text",
+            "heading": {
+              "lt": "Apie",
+              "en": "Apie",
+              "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "body": {
+              "lt": "Su pagarba Baisogalos krašto šeimoms",
+              "en": "With respect for the families of Baisogala"
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Duomenys",
+              "en": "Duomenys",
+              "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Entity ID",
+                  "en": "Entity ID",
+                  "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "lt-wave1-funeral-010"
               },
               {
                 "label": {
-                  "lt": "Adresas",
-                  "en": "Address"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "Dvaro g. 4, 82315 Baisogala"
+                "value": "2015"
+              }
+            ]
+          },
+          {
+            "type": "visitingInfo",
+            "heading": {
+              "lt": "Lankymo laikas",
+              "en": "Lankymo laikas",
+              "ru": "Lankymo laikas [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "hours": [
+              {
+                "day": "Pirmadienis - Penktadienis",
+                "dayEn": "Monday - Friday",
+                "open": "09:00",
+                "close": "17:00"
+              },
+              {
+                "day": "Šeštadienis",
+                "dayEn": "Saturday",
+                "open": "10:00",
+                "close": "14:00"
+              }
+            ],
+            "admission": {
+              "lt": "Lankymas nemokamas",
+              "en": "Lankymas nemokamas",
+              "ru": "Lankymas nemokamas [TODO: verify with parish/diocese — do not publish unverified]"
+            }
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Dvaro%20g.%204%2C%2082315%20Baisogala%2C%20Lithuania"
+          }
+        ]
+      },
+      {
+        "route": "/contact",
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Kontaktai",
+          "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Kontaktai",
+              "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Adresas",
+                  "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Dvaro g. 4, 82315 Baisogala, Lithuania"
               },
               {
                 "label": {
                   "lt": "El. paštas",
-                  "en": "Email"
+                  "en": "El. paštas",
+                  "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
                 "value": "info@baisogala-laidojimas-demo.lt"
+              },
+              {
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Telefonas",
+                  "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "+370 42 90 60 60"
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Dvaro%20g.%204%2C%2082315%20Baisogala%2C%20Lithuania"
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Biuro valandos",
+              "en": "Biuro valandos",
+              "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
               }
             ]
           }
-        ],
-        "meta": {
-          "description": "Baisogalos laidojimo namai — laidojimo ir kremavimo organizavimas 24/7 Baisogalos miestelyje."
-        }
+        ]
+      },
+      {
+        "route": "/services",
+        "title": {
+          "lt": "Paslaugos",
+          "en": "Paslaugos",
+          "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Baisogalos laidojimo namai",
+              "en": "Baisogala Funeral Home"
+            },
+            "subheading": {
+              "lt": "Su pagarba Baisogalos krašto šeimoms",
+              "en": "With respect for the families of Baisogala"
+            }
+          },
+          {
+            "type": "list",
+            "heading": {
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "title": {
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "title": {
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "faq",
+            "heading": {
+              "lt": "Dažni klausimai",
+              "en": "Dažni klausimai",
+              "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "questions": [
+              {
+                "question": {
+                  "lt": "Kaip užsakyti paslaugą?",
+                  "en": "Kaip užsakyti paslaugą?",
+                  "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "question": {
+                  "lt": "Ar reikalinga išankstinė registracija?",
+                  "en": "Ar reikalinga išankstinė registracija?",
+                  "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/schedule",
+        "title": {
+          "lt": "Tvarkaraštis",
+          "en": "Tvarkaraštis",
+          "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Baisogalos laidojimo namai",
+              "en": "Baisogala Funeral Home"
+            },
+            "subheading": {
+              "lt": "Su pagarba Baisogalos krašto šeimoms",
+              "en": "With respect for the families of Baisogala"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Tvarkaraštis",
+              "en": "Tvarkaraštis",
+              "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "governance": {
@@ -750,78 +3123,417 @@
       {
         "route": "/",
         "title": {
-          "lt": "Pradžia",
-          "en": "Home"
+          "lt": "Baisogalos kapinių priežiūra",
+          "en": "Baisogala Cemetery Care"
         },
         "contentBlocks": [
           {
             "type": "hero",
             "heading": {
-              "lt": "Kapaviečių priežiūra Baisogaloje",
-              "en": "Grave care in Baisogala"
+              "lt": "Baisogalos kapinių priežiūra",
+              "en": "Baisogala Cemetery Care"
             },
             "subheading": {
-              "lt": "Tvarkymas, želdiniai ir šventinis puošimas su foto ataskaitomis",
-              "en": "Tidying, planting and feast-day decoration with photo reports"
+              "lt": "Kapaviečių priežiūra Baisogalos kapinėse",
+              "en": "Grave care in the Baisogala cemeteries"
             }
           },
           {
             "type": "list",
             "heading": {
-              "lt": "Planai ir kainos",
-              "en": "Plans and prices"
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "title": {
-                  "lt": "Vienkartinis tvarkymas",
-                  "en": "One-time care"
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 26
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               },
               {
                 "title": {
-                  "lt": "Mėnesinė priežiūra",
-                  "en": "Monthly care"
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 18
-              },
-              {
-                "title": {
-                  "lt": "Metinis planas",
-                  "en": "Annual plan"
-                },
-                "price": 180
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               }
             ]
           },
           {
-            "type": "keyValue",
+            "type": "stats",
             "heading": {
-              "lt": "Kontaktai",
-              "en": "Contacts"
+              "lt": "Faktai",
+              "en": "Faktai",
+              "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "label": {
-                  "lt": "Telefonas",
-                  "en": "Phone"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "+370 42 90 70 70"
+                "value": "2023"
+              }
+            ]
+          },
+          {
+            "type": "cta",
+            "links": [
+              {
+                "label": {
+                  "lt": "Kontaktai",
+                  "en": "Contact"
+                },
+                "href": "/contact"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/about",
+        "title": {
+          "lt": "Apie",
+          "en": "Apie",
+          "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "text",
+            "heading": {
+              "lt": "Apie",
+              "en": "Apie",
+              "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "body": {
+              "lt": "Kapaviečių priežiūra Baisogalos kapinėse",
+              "en": "Grave care in the Baisogala cemeteries"
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Duomenys",
+              "en": "Duomenys",
+              "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Entity ID",
+                  "en": "Entity ID",
+                  "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "lt-wave1-cleaning-010"
+              },
+              {
+                "label": {
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "2023"
+              }
+            ]
+          },
+          {
+            "type": "visitingInfo",
+            "heading": {
+              "lt": "Lankymo laikas",
+              "en": "Lankymo laikas",
+              "ru": "Lankymo laikas [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "hours": [
+              {
+                "day": "Pirmadienis - Penktadienis",
+                "dayEn": "Monday - Friday",
+                "open": "09:00",
+                "close": "17:00"
+              },
+              {
+                "day": "Šeštadienis",
+                "dayEn": "Saturday",
+                "open": "10:00",
+                "close": "14:00"
+              }
+            ],
+            "admission": {
+              "lt": "Lankymas nemokamas",
+              "en": "Lankymas nemokamas",
+              "ru": "Lankymas nemokamas [TODO: verify with parish/diocese — do not publish unverified]"
+            }
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Kap%C5%B3%20g.%205%2C%2082318%20Baisogala%2C%20Lithuania"
+          }
+        ]
+      },
+      {
+        "route": "/contact",
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Kontaktai",
+          "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Kontaktai",
+              "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Adresas",
+                  "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Kapų g. 5, 82318 Baisogala, Lithuania"
               },
               {
                 "label": {
                   "lt": "El. paštas",
-                  "en": "Email"
+                  "en": "El. paštas",
+                  "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
                 "value": "info@baisogala-prieziura-demo.lt"
+              },
+              {
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Telefonas",
+                  "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "+370 42 90 70 70"
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Kap%C5%B3%20g.%205%2C%2082318%20Baisogala%2C%20Lithuania"
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Biuro valandos",
+              "en": "Biuro valandos",
+              "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
               }
             ]
           }
-        ],
-        "meta": {
-          "description": "Baisogalos kapinių priežiūra — tvarkymas, želdiniai ir šventinis puošymas su foto ataskaitomis."
-        }
+        ]
+      },
+      {
+        "route": "/services",
+        "title": {
+          "lt": "Paslaugos",
+          "en": "Paslaugos",
+          "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Baisogalos kapinių priežiūra",
+              "en": "Baisogala Cemetery Care"
+            },
+            "subheading": {
+              "lt": "Kapaviečių priežiūra Baisogalos kapinėse",
+              "en": "Grave care in the Baisogala cemeteries"
+            }
+          },
+          {
+            "type": "list",
+            "heading": {
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "title": {
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "title": {
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "faq",
+            "heading": {
+              "lt": "Dažni klausimai",
+              "en": "Dažni klausimai",
+              "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "questions": [
+              {
+                "question": {
+                  "lt": "Kaip užsakyti paslaugą?",
+                  "en": "Kaip užsakyti paslaugą?",
+                  "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "question": {
+                  "lt": "Ar reikalinga išankstinė registracija?",
+                  "en": "Ar reikalinga išankstinė registracija?",
+                  "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/schedule",
+        "title": {
+          "lt": "Tvarkaraštis",
+          "en": "Tvarkaraštis",
+          "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Baisogalos kapinių priežiūra",
+              "en": "Baisogala Cemetery Care"
+            },
+            "subheading": {
+              "lt": "Kapaviečių priežiūra Baisogalos kapinėse",
+              "en": "Grave care in the Baisogala cemeteries"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Tvarkaraštis",
+              "en": "Tvarkaraštis",
+              "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "governance": {

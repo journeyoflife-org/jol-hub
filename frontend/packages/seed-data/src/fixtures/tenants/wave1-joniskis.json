@@ -22,8 +22,8 @@
       {
         "route": "/",
         "title": {
-          "lt": "Pradžia",
-          "en": "Home"
+          "lt": "Joniškio dekanatas",
+          "en": "Joniškis Deanery"
         },
         "contentBlocks": [
           {
@@ -33,94 +33,439 @@
               "en": "Joniškis Deanery"
             },
             "subheading": {
-              "lt": "Septynios parapijos Šiaurės Lietuvoje — bendra malda, katechezė ir Caritas",
-              "en": "Seven parishes in Northern Lithuania — common prayer, catechesis and Caritas"
+              "lt": "Šiaurės lygumų parapijos — nuo Joniškio iki Žagarės",
+              "en": "Parishes of the northern plains — from Joniškis to Žagarė"
+            },
+            "body": {
+              "lt": "Šiauliai Diocese · Est. —",
+              "en": "Šiauliai Diocese · Est. —"
             }
           },
           {
-            "type": "list",
+            "type": "schedule",
             "heading": {
-              "lt": "Dekanato parapijos",
-              "en": "Parishes of the deanery"
+              "lt": "Tvarkaraštis",
+              "en": "Tvarkaraštis",
+              "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
             },
-            "items": [
+            "entries": [
               {
-                "title": {
-                  "lt": "Joniškio Šv. apaštalo evangelisto Mato parapija",
-                  "en": "Joniškis St. Matthew the Apostle Parish"
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "subtitle": {
-                  "lt": "Joniškis",
-                  "en": "Joniškis"
-                }
+                "times": [
+                  "09:00 - 17:00"
+                ]
               },
               {
-                "title": {
-                  "lt": "Žagarės Šv. apaštalų Petro ir Pauliaus parapija",
-                  "en": "Žagarė Sts. Peter and Paul Parish"
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "subtitle": {
-                  "lt": "Žagarė",
-                  "en": "Žagarė"
-                }
+                "times": [
+                  "10:00 - 14:00"
+                ]
               },
               {
-                "title": {
-                  "lt": "Skaistgirio Šv. Jurgio parapija",
-                  "en": "Skaistgiris St. George Parish"
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "subtitle": {
-                  "lt": "Skaistgiris",
-                  "en": "Skaistgiris"
-                }
+                "times": [
+                  "closed"
+                ]
               }
             ]
           },
           {
+            "type": "stats",
+            "heading": {
+              "lt": "Faktai",
+              "en": "Faktai",
+              "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "—"
+              },
+              {
+                "label": {
+                  "lt": "Jurisdikcija",
+                  "en": "Jurisdikcija",
+                  "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Šiauliai Diocese"
+              }
+            ]
+          },
+          {
+            "type": "cta",
+            "links": [
+              {
+                "label": {
+                  "lt": "Kontaktai",
+                  "en": "Contact"
+                },
+                "href": "/contact"
+              },
+              {
+                "label": {
+                  "lt": "Naujienos",
+                  "en": "News"
+                },
+                "href": "/news"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/about",
+        "title": {
+          "lt": "Apie",
+          "en": "Apie",
+          "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
             "type": "text",
             "heading": {
-              "lt": "Dekanato tarnystės",
-              "en": "Deanery ministries"
+              "lt": "Apie",
+              "en": "Apie",
+              "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "body": {
-              "lt": "Bendra jaunimo stovykla, šeimų dienos ir advento rekolekcijos visam dekanatui. Dekano vizitacijos pagal vyskupijos planą; kunigų susitikimai — pirmąjį mėnesio antradienį.",
-              "en": "A joint youth camp, family days and Advent retreats for the whole deanery. The dean's visitations follow the diocesan plan; priests meet on the first Tuesday of the month."
+              "lt": "Šiaurės lygumų parapijos — nuo Joniškio iki Žagarės",
+              "en": "Parishes of the northern plains — from Joniškis to Žagarė"
             }
           },
           {
             "type": "keyValue",
             "heading": {
-              "lt": "Dekano raštinė",
-              "en": "Dean's office"
+              "lt": "Duomenys",
+              "en": "Duomenys",
+              "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Entity ID",
+                  "en": "Entity ID",
+                  "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "lt-wave1-deanery-002"
+              },
+              {
+                "label": {
+                  "lt": "Jurisdikcija",
+                  "en": "Jurisdikcija",
+                  "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Šiauliai Diocese"
+              }
+            ]
+          },
+          {
+            "type": "visitingInfo",
+            "heading": {
+              "lt": "Lankymo laikas",
+              "en": "Lankymo laikas",
+              "ru": "Lankymo laikas [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "hours": [
+              {
+                "day": "Pirmadienis - Penktadienis",
+                "dayEn": "Monday - Friday",
+                "open": "09:00",
+                "close": "17:00"
+              },
+              {
+                "day": "Šeštadienis",
+                "dayEn": "Saturday",
+                "open": "10:00",
+                "close": "14:00"
+              }
+            ],
+            "admission": {
+              "lt": "Lankymas nemokamas",
+              "en": "Lankymas nemokamas",
+              "ru": "Lankymas nemokamas [TODO: verify with parish/diocese — do not publish unverified]"
+            }
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Vilniaus%20g.%202%2C%2084127%20Joni%C5%A1kis%2C%20Lithuania"
+          }
+        ]
+      },
+      {
+        "route": "/contact",
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Kontaktai",
+          "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Kontaktai",
+              "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "label": {
                   "lt": "Adresas",
-                  "en": "Address"
+                  "en": "Adresas",
+                  "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "Vilniaus g. 2, 84127 Joniškis"
+                "value": "Vilniaus g. 2, 84127 Joniškis, Lithuania"
+              },
+              {
+                "label": {
+                  "lt": "El. paštas",
+                  "en": "El. paštas",
+                  "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "dekanas@joniskis-dekanatas-demo.lt"
               },
               {
                 "label": {
                   "lt": "Telefonas",
-                  "en": "Phone"
+                  "en": "Telefonas",
+                  "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
                 "value": "+370 42 60 20 10"
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Vilniaus%20g.%202%2C%2084127%20Joni%C5%A1kis%2C%20Lithuania"
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Biuro valandos",
+              "en": "Biuro valandos",
+              "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
               },
               {
-                "label": {
-                  "lt": "Priėmimas",
-                  "en": "Hours"
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "IV 10:00–14:00"
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
               }
             ]
           }
-        ],
-        "meta": {
-          "description": "Joniškio dekanatas — parapijų sąrašas, bendros stovyklos, rekolekcijos ir dekano raštinės laikai."
-        }
+        ]
+      },
+      {
+        "route": "/services",
+        "title": {
+          "lt": "Paslaugos",
+          "en": "Paslaugos",
+          "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Joniškio dekanatas",
+              "en": "Joniškis Deanery"
+            },
+            "subheading": {
+              "lt": "Šiaurės lygumų parapijos — nuo Joniškio iki Žagarės",
+              "en": "Parishes of the northern plains — from Joniškis to Žagarė"
+            },
+            "body": {
+              "lt": "Šiauliai Diocese · Est. —",
+              "en": "Šiauliai Diocese · Est. —"
+            }
+          },
+          {
+            "type": "list",
+            "heading": {
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "title": {
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "title": {
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "faq",
+            "heading": {
+              "lt": "Dažni klausimai",
+              "en": "Dažni klausimai",
+              "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "questions": [
+              {
+                "question": {
+                  "lt": "Kaip užsakyti paslaugą?",
+                  "en": "Kaip užsakyti paslaugą?",
+                  "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "question": {
+                  "lt": "Ar reikalinga išankstinė registracija?",
+                  "en": "Ar reikalinga išankstinė registracija?",
+                  "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/schedule",
+        "title": {
+          "lt": "Tvarkaraštis",
+          "en": "Tvarkaraštis",
+          "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Joniškio dekanatas",
+              "en": "Joniškis Deanery"
+            },
+            "subheading": {
+              "lt": "Šiaurės lygumų parapijos — nuo Joniškio iki Žagarės",
+              "en": "Parishes of the northern plains — from Joniškis to Žagarė"
+            },
+            "body": {
+              "lt": "Šiauliai Diocese · Est. —",
+              "en": "Šiauliai Diocese · Est. —"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Tvarkaraštis",
+              "en": "Tvarkaraštis",
+              "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "governance": {
@@ -154,117 +499,533 @@
       {
         "route": "/",
         "title": {
-          "lt": "Pradžia",
-          "en": "Home"
+          "lt": "Žagarės Šv. apaštalų Petro ir Pauliaus bažnyčia",
+          "en": "Žagarė Sts. Peter and Paul Church"
         },
         "contentBlocks": [
           {
             "type": "hero",
             "heading": {
-              "lt": "Žagarės Šv. apaštalų Petro ir Pauliaus parapija",
-              "en": "Žagarė Sts. Peter and Paul Parish"
+              "lt": "Žagarės Šv. apaštalų Petro ir Pauliaus bažnyčia",
+              "en": "Žagarė Sts. Peter and Paul Church"
             },
             "subheading": {
-              "lt": "Žagarės vyšnių festivalio ir senųjų atlaidų namai",
-              "en": "Home of the Žagarė cherry festival and the old patronal feasts"
+              "lt": "Senojo miesto šviesa prie Švėtės upės",
+              "en": "The light of the old town by the Švėtė river"
+            },
+            "body": {
+              "lt": "Šiauliai Diocese · Est. 1633",
+              "en": "Šiauliai Diocese · Est. 1633"
             }
           },
           {
-            "type": "schedule",
+            "type": "massSchedule",
             "heading": {
-              "lt": "Pamaldų laikai",
-              "en": "Service times"
+              "lt": "Šv. Mišių tvarkaraštis",
+              "en": "Šv. Mišių tvarkaraštis",
+              "ru": "Šv. Mišių tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
             },
-            "entries": [
+            "masses": [
               {
                 "day": {
-                  "lt": "Sekmadienis",
-                  "en": "Sunday"
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "times": ["10:00", "12:00"]
+                "time": "07:30",
+                "rrule": "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
               },
               {
                 "day": {
-                  "lt": "Trečiadienis",
-                  "en": "Wednesday"
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "times": ["18:00"]
+                "time": "09:00",
+                "rrule": "FREQ=WEEKLY;BYDAY=SA"
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "time": "09:00",
+                "rrule": "FREQ=WEEKLY;BYDAY=SU"
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "time": "11:00",
+                "rrule": "FREQ=WEEKLY;BYDAY=SU"
               }
             ]
           },
           {
-            "type": "list",
+            "type": "stats",
             "heading": {
-              "lt": "Sakramentai ir pasiruošimas",
-              "en": "Sacraments and preparation"
+              "lt": "Faktai",
+              "en": "Faktai",
+              "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
-                "title": {
-                  "lt": "Krikštas",
-                  "en": "Baptism"
+                "label": {
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "description": {
-                  "lt": "Sekmadieniais po 12:00 Mišių.",
-                  "en": "Sundays after the 12:00 Mass."
-                }
+                "value": "1633"
               },
               {
-                "title": {
-                  "lt": "Santuoka",
-                  "en": "Marriage"
+                "label": {
+                  "lt": "Jurisdikcija",
+                  "en": "Jurisdikcija",
+                  "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "description": {
-                  "lt": "Registracija raštinėje prieš 3 mėn.",
-                  "en": "Register 3 months ahead."
-                }
-              },
-              {
-                "title": {
-                  "lt": "Išpažintis",
-                  "en": "Confession"
-                },
-                "description": {
-                  "lt": "Prieš kiekvienas Mišias.",
-                  "en": "Before every Mass."
-                }
+                "value": "Šiauliai Diocese"
               }
             ]
+          },
+          {
+            "type": "cta",
+            "links": [
+              {
+                "label": {
+                  "lt": "Užsakyti Mišių intenciją",
+                  "en": "Order Mass Intention"
+                },
+                "href": "/shop"
+              },
+              {
+                "label": {
+                  "lt": "Sakramentai",
+                  "en": "Sacraments"
+                },
+                "href": "/services"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/about",
+        "title": {
+          "lt": "Apie",
+          "en": "Apie",
+          "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "text",
+            "heading": {
+              "lt": "Apie",
+              "en": "Apie",
+              "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "body": {
+              "lt": "Senojo miesto šviesa prie Švėtės upės",
+              "en": "The light of the old town by the Švėtė river"
+            }
           },
           {
             "type": "keyValue",
             "heading": {
-              "lt": "Raštinė",
-              "en": "Parish office"
+              "lt": "Duomenys",
+              "en": "Duomenys",
+              "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Entity ID",
+                  "en": "Entity ID",
+                  "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "lt-wave1-parish-003"
+              },
+              {
+                "label": {
+                  "lt": "Jurisdikcija",
+                  "en": "Jurisdikcija",
+                  "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Šiauliai Diocese"
+              },
+              {
+                "label": {
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "1633"
+              }
+            ]
+          },
+          {
+            "type": "clergyRoleList",
+            "heading": {
+              "lt": "Dvasininkai",
+              "en": "Dvasininkai",
+              "ru": "Dvasininkai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "roles": [
+              {
+                "role": {
+                  "lt": "Klebonas",
+                  "en": "Klebonas",
+                  "ru": "Klebonas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Parish priest",
+                  "en": "Parish priest",
+                  "ru": "Parish priest [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Mal%C5%ABno%20g.%202%2C%2084311%20%C5%BDagar%C4%97%2C%20Lithuania"
+          }
+        ]
+      },
+      {
+        "route": "/contact",
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Kontaktai",
+          "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Kontaktai",
+              "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "label": {
                   "lt": "Adresas",
-                  "en": "Address"
+                  "en": "Adresas",
+                  "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "Malūno g. 2, 84311 Žagarė"
+                "value": "Malūno g. 2, 84311 Žagarė, Lithuania"
+              },
+              {
+                "label": {
+                  "lt": "El. paštas",
+                  "en": "El. paštas",
+                  "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "parapija@zagare-demo.lt"
               },
               {
                 "label": {
                   "lt": "Telefonas",
-                  "en": "Phone"
+                  "en": "Telefonas",
+                  "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
                 "value": "+370 42 60 30 30"
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Mal%C5%ABno%20g.%202%2C%2084311%20%C5%BDagar%C4%97%2C%20Lithuania"
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Biuro valandos",
+              "en": "Biuro valandos",
+              "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
               },
               {
-                "label": {
-                  "lt": "Laikas",
-                  "en": "Hours"
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "Po sekmadienio Mišių"
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
               }
             ]
           }
-        ],
-        "meta": {
-          "description": "Žagarės Šv. apaštalų Petro ir Pauliaus parapija — pamaldų laikai, sakramentai ir parapijos kontaktai."
-        }
+        ]
+      },
+      {
+        "route": "/services",
+        "title": {
+          "lt": "Paslaugos",
+          "en": "Paslaugos",
+          "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Žagarės Šv. apaštalų Petro ir Pauliaus bažnyčia",
+              "en": "Žagarė Sts. Peter and Paul Church"
+            },
+            "subheading": {
+              "lt": "Senojo miesto šviesa prie Švėtės upės",
+              "en": "The light of the old town by the Švėtė river"
+            },
+            "body": {
+              "lt": "Šiauliai Diocese · Est. 1633",
+              "en": "Šiauliai Diocese · Est. 1633"
+            }
+          },
+          {
+            "type": "sacramentList",
+            "heading": {
+              "lt": "Sakramentai",
+              "en": "Sakramentai",
+              "ru": "Sakramentai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "sacraments": [
+              {
+                "name": {
+                  "lt": "Krikštas",
+                  "en": "Krikštas",
+                  "ru": "Krikštas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Krikšto sakramentas",
+                  "en": "Krikšto sakramentas",
+                  "ru": "Krikšto sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "name": {
+                  "lt": "Pirmoji Komunija",
+                  "en": "Pirmoji Komunija",
+                  "ru": "Pirmoji Komunija [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Eucharistijos sakramentas",
+                  "en": "Eucharistijos sakramentas",
+                  "ru": "Eucharistijos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "name": {
+                  "lt": "Sutvirtinimas",
+                  "en": "Sutvirtinimas",
+                  "ru": "Sutvirtinimas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Sutvirtinimo sakramentas",
+                  "en": "Sutvirtinimo sakramentas",
+                  "ru": "Sutvirtinimo sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "name": {
+                  "lt": "Santuoka",
+                  "en": "Santuoka",
+                  "ru": "Santuoka [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Santuokos sakramentas",
+                  "en": "Santuokos sakramentas",
+                  "ru": "Santuokos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "name": {
+                  "lt": "Išpažintis",
+                  "en": "Išpažintis",
+                  "ru": "Išpažintis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Atgailos sakramentas",
+                  "en": "Atgailos sakramentas",
+                  "ru": "Atgailos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "name": {
+                  "lt": "Ligonių patepimas",
+                  "en": "Ligonių patepimas",
+                  "ru": "Ligonių patepimas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Ligonių patepimo sakramentas",
+                  "en": "Ligonių patepimo sakramentas",
+                  "ru": "Ligonių patepimo sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "faq",
+            "heading": {
+              "lt": "Dažni klausimai",
+              "en": "Dažni klausimai",
+              "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "questions": [
+              {
+                "question": {
+                  "lt": "Kaip užsakyti paslaugą?",
+                  "en": "Kaip užsakyti paslaugą?",
+                  "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "question": {
+                  "lt": "Ar reikalinga išankstinė registracija?",
+                  "en": "Ar reikalinga išankstinė registracija?",
+                  "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/schedule",
+        "title": {
+          "lt": "Tvarkaraštis",
+          "en": "Tvarkaraštis",
+          "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Žagarės Šv. apaštalų Petro ir Pauliaus bažnyčia",
+              "en": "Žagarė Sts. Peter and Paul Church"
+            },
+            "subheading": {
+              "lt": "Senojo miesto šviesa prie Švėtės upės",
+              "en": "The light of the old town by the Švėtė river"
+            },
+            "body": {
+              "lt": "Šiauliai Diocese · Est. 1633",
+              "en": "Šiauliai Diocese · Est. 1633"
+            }
+          },
+          {
+            "type": "massSchedule",
+            "heading": {
+              "lt": "Šv. Mišių tvarkaraštis",
+              "en": "Šv. Mišių tvarkaraštis",
+              "ru": "Šv. Mišių tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "masses": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "time": "07:30",
+                "rrule": "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "time": "09:00",
+                "rrule": "FREQ=WEEKLY;BYDAY=SA"
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "time": "09:00",
+                "rrule": "FREQ=WEEKLY;BYDAY=SU"
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "time": "11:00",
+                "rrule": "FREQ=WEEKLY;BYDAY=SU"
+              }
+            ]
+          },
+          {
+            "type": "gallery",
+            "heading": {
+              "lt": "Galerija",
+              "en": "Galerija",
+              "ru": "Galerija [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "images": [
+              {
+                "src": "/media/placeholder-1.jpg",
+                "alt": {
+                  "lt": "Nuotrauka",
+                  "en": "Nuotrauka",
+                  "ru": "Nuotrauka [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "width": 800,
+                "height": 600
+              }
+            ]
+          }
+        ]
       }
     ],
     "governance": {
@@ -297,8 +1058,8 @@
       {
         "route": "/",
         "title": {
-          "lt": "Pradžia",
-          "en": "Home"
+          "lt": "Joniškio laidojimo namai",
+          "en": "Joniškis Funeral Home"
         },
         "contentBlocks": [
           {
@@ -308,77 +1069,406 @@
               "en": "Joniškis Funeral Home"
             },
             "subheading": {
-              "lt": "Visos laidojimo paslaugos Joniškio rajone — visą parą",
-              "en": "All funeral services in the Joniškis district — around the clock"
+              "lt": "Orumas, pagarba ir pagalba kiekvienai šeimai",
+              "en": "Dignity, respect and help for every family"
             }
           },
           {
             "type": "list",
             "heading": {
-              "lt": "Paslaugos ir kainos",
-              "en": "Services and prices"
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "title": {
-                  "lt": "Pilnas laidojimo organizavimas",
-                  "en": "Full funeral arrangement"
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 1750
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               },
               {
                 "title": {
-                  "lt": "Kremavimo organizavimas",
-                  "en": "Cremation arrangement"
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 1300
-              },
-              {
-                "title": {
-                  "lt": "Kapų tvarkymas",
-                  "en": "Grave care"
-                },
-                "subtitle": {
-                  "lt": "Pagal sutartį",
-                  "en": "By agreement"
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
                 }
               }
             ]
           },
           {
-            "type": "keyValue",
+            "type": "stats",
             "heading": {
-              "lt": "Visą parą",
-              "en": "Around the clock"
+              "lt": "Faktai",
+              "en": "Faktai",
+              "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "label": {
-                  "lt": "Skubus telefonas",
-                  "en": "Urgent phone"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "+370 42 60 40 40"
+                "value": "2006"
+              }
+            ]
+          },
+          {
+            "type": "cta",
+            "links": [
+              {
+                "label": {
+                  "lt": "Kontaktai",
+                  "en": "Contact"
+                },
+                "href": "/contact"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/about",
+        "title": {
+          "lt": "Apie",
+          "en": "Apie",
+          "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "text",
+            "heading": {
+              "lt": "Apie",
+              "en": "Apie",
+              "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "body": {
+              "lt": "Orumas, pagarba ir pagalba kiekvienai šeimai",
+              "en": "Dignity, respect and help for every family"
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Duomenys",
+              "en": "Duomenys",
+              "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Entity ID",
+                  "en": "Entity ID",
+                  "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "lt-wave1-funeral-003"
               },
               {
                 "label": {
-                  "lt": "Adresas",
-                  "en": "Address"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "Parko g. 9, 84142 Joniškis"
+                "value": "2006"
+              }
+            ]
+          },
+          {
+            "type": "visitingInfo",
+            "heading": {
+              "lt": "Lankymo laikas",
+              "en": "Lankymo laikas",
+              "ru": "Lankymo laikas [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "hours": [
+              {
+                "day": "Pirmadienis - Penktadienis",
+                "dayEn": "Monday - Friday",
+                "open": "09:00",
+                "close": "17:00"
+              },
+              {
+                "day": "Šeštadienis",
+                "dayEn": "Saturday",
+                "open": "10:00",
+                "close": "14:00"
+              }
+            ],
+            "admission": {
+              "lt": "Lankymas nemokamas",
+              "en": "Lankymas nemokamas",
+              "ru": "Lankymas nemokamas [TODO: verify with parish/diocese — do not publish unverified]"
+            }
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Parko%20g.%209%2C%2084142%20Joni%C5%A1kis%2C%20Lithuania"
+          }
+        ]
+      },
+      {
+        "route": "/contact",
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Kontaktai",
+          "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Kontaktai",
+              "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Adresas",
+                  "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Parko g. 9, 84142 Joniškis, Lithuania"
               },
               {
                 "label": {
                   "lt": "El. paštas",
-                  "en": "Email"
+                  "en": "El. paštas",
+                  "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
                 "value": "info@joniskis-laidojimas-demo.lt"
+              },
+              {
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Telefonas",
+                  "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "+370 42 60 40 40"
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Parko%20g.%209%2C%2084142%20Joni%C5%A1kis%2C%20Lithuania"
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Biuro valandos",
+              "en": "Biuro valandos",
+              "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
               }
             ]
           }
-        ],
-        "meta": {
-          "description": "Joniškio laidojimo namai — laidojimo ir kremavimo organizavimas 24/7, skaidrios kainos Joniškio rajone."
-        }
+        ]
+      },
+      {
+        "route": "/services",
+        "title": {
+          "lt": "Paslaugos",
+          "en": "Paslaugos",
+          "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Joniškio laidojimo namai",
+              "en": "Joniškis Funeral Home"
+            },
+            "subheading": {
+              "lt": "Orumas, pagarba ir pagalba kiekvienai šeimai",
+              "en": "Dignity, respect and help for every family"
+            }
+          },
+          {
+            "type": "list",
+            "heading": {
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "title": {
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "title": {
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "faq",
+            "heading": {
+              "lt": "Dažni klausimai",
+              "en": "Dažni klausimai",
+              "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "questions": [
+              {
+                "question": {
+                  "lt": "Kaip užsakyti paslaugą?",
+                  "en": "Kaip užsakyti paslaugą?",
+                  "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "question": {
+                  "lt": "Ar reikalinga išankstinė registracija?",
+                  "en": "Ar reikalinga išankstinė registracija?",
+                  "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/schedule",
+        "title": {
+          "lt": "Tvarkaraštis",
+          "en": "Tvarkaraštis",
+          "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Joniškio laidojimo namai",
+              "en": "Joniškis Funeral Home"
+            },
+            "subheading": {
+              "lt": "Orumas, pagarba ir pagalba kiekvienai šeimai",
+              "en": "Dignity, respect and help for every family"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Tvarkaraštis",
+              "en": "Tvarkaraštis",
+              "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "governance": {
@@ -411,78 +1501,417 @@
       {
         "route": "/",
         "title": {
-          "lt": "Pradžia",
-          "en": "Home"
+          "lt": "Joniškio kapinių priežiūra",
+          "en": "Joniškis Cemetery Care"
         },
         "contentBlocks": [
           {
             "type": "hero",
             "heading": {
-              "lt": "Kapaviečių priežiūra Joniškyje",
-              "en": "Grave care in Joniškis"
+              "lt": "Joniškio kapinių priežiūra",
+              "en": "Joniškis Cemetery Care"
             },
             "subheading": {
-              "lt": "Tvarkymas, želdiniai ir šventinis puošimas su foto ataskaitomis",
-              "en": "Tidying, planting and feast-day decoration with photo reports"
+              "lt": "Pagarba, kuri matoma — kiekvieną sezoną",
+              "en": "Respect you can see — every season"
             }
           },
           {
             "type": "list",
             "heading": {
-              "lt": "Planai ir kainos",
-              "en": "Plans and prices"
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "title": {
-                  "lt": "Vienkartinis tvarkymas",
-                  "en": "One-time care"
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 30
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               },
               {
                 "title": {
-                  "lt": "Mėnesinė priežiūra",
-                  "en": "Monthly care"
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 22
-              },
-              {
-                "title": {
-                  "lt": "Metinis planas",
-                  "en": "Annual plan"
-                },
-                "price": 220
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               }
             ]
           },
           {
-            "type": "keyValue",
+            "type": "stats",
             "heading": {
-              "lt": "Kontaktai",
-              "en": "Contacts"
+              "lt": "Faktai",
+              "en": "Faktai",
+              "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "label": {
-                  "lt": "Telefonas",
-                  "en": "Phone"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "+370 42 60 50 50"
+                "value": "2018"
+              }
+            ]
+          },
+          {
+            "type": "cta",
+            "links": [
+              {
+                "label": {
+                  "lt": "Kontaktai",
+                  "en": "Contact"
+                },
+                "href": "/contact"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/about",
+        "title": {
+          "lt": "Apie",
+          "en": "Apie",
+          "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "text",
+            "heading": {
+              "lt": "Apie",
+              "en": "Apie",
+              "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "body": {
+              "lt": "Pagarba, kuri matoma — kiekvieną sezoną",
+              "en": "Respect you can see — every season"
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Duomenys",
+              "en": "Duomenys",
+              "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Entity ID",
+                  "en": "Entity ID",
+                  "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "lt-wave1-cleaning-003"
+              },
+              {
+                "label": {
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "2018"
+              }
+            ]
+          },
+          {
+            "type": "visitingInfo",
+            "heading": {
+              "lt": "Lankymo laikas",
+              "en": "Lankymo laikas",
+              "ru": "Lankymo laikas [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "hours": [
+              {
+                "day": "Pirmadienis - Penktadienis",
+                "dayEn": "Monday - Friday",
+                "open": "09:00",
+                "close": "17:00"
+              },
+              {
+                "day": "Šeštadienis",
+                "dayEn": "Saturday",
+                "open": "10:00",
+                "close": "14:00"
+              }
+            ],
+            "admission": {
+              "lt": "Lankymas nemokamas",
+              "en": "Lankymas nemokamas",
+              "ru": "Lankymas nemokamas [TODO: verify with parish/diocese — do not publish unverified]"
+            }
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Sod%C5%B3%20g.%2012%2C%2084155%20Joni%C5%A1kis%2C%20Lithuania"
+          }
+        ]
+      },
+      {
+        "route": "/contact",
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Kontaktai",
+          "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Kontaktai",
+              "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Adresas",
+                  "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Sodų g. 12, 84155 Joniškis, Lithuania"
               },
               {
                 "label": {
                   "lt": "El. paštas",
-                  "en": "Email"
+                  "en": "El. paštas",
+                  "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
                 "value": "info@joniskis-prieziura-demo.lt"
+              },
+              {
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Telefonas",
+                  "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "+370 42 60 50 50"
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Sod%C5%B3%20g.%2012%2C%2084155%20Joni%C5%A1kis%2C%20Lithuania"
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Biuro valandos",
+              "en": "Biuro valandos",
+              "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
               }
             ]
           }
-        ],
-        "meta": {
-          "description": "Joniškio kapinių priežiūra — tvarkymas, želdiniai ir šventinis puošimas su foto ataskaitomis artimiesiems."
-        }
+        ]
+      },
+      {
+        "route": "/services",
+        "title": {
+          "lt": "Paslaugos",
+          "en": "Paslaugos",
+          "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Joniškio kapinių priežiūra",
+              "en": "Joniškis Cemetery Care"
+            },
+            "subheading": {
+              "lt": "Pagarba, kuri matoma — kiekvieną sezoną",
+              "en": "Respect you can see — every season"
+            }
+          },
+          {
+            "type": "list",
+            "heading": {
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "title": {
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "title": {
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "faq",
+            "heading": {
+              "lt": "Dažni klausimai",
+              "en": "Dažni klausimai",
+              "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "questions": [
+              {
+                "question": {
+                  "lt": "Kaip užsakyti paslaugą?",
+                  "en": "Kaip užsakyti paslaugą?",
+                  "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "question": {
+                  "lt": "Ar reikalinga išankstinė registracija?",
+                  "en": "Ar reikalinga išankstinė registracija?",
+                  "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/schedule",
+        "title": {
+          "lt": "Tvarkaraštis",
+          "en": "Tvarkaraštis",
+          "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Joniškio kapinių priežiūra",
+              "en": "Joniškis Cemetery Care"
+            },
+            "subheading": {
+              "lt": "Pagarba, kuri matoma — kiekvieną sezoną",
+              "en": "Respect you can see — every season"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Tvarkaraštis",
+              "en": "Tvarkaraštis",
+              "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "governance": {
