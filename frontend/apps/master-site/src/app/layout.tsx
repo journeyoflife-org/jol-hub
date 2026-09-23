@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Merriweather } from 'next/font/google';
+import { Inter, Source_Serif_4 } from 'next/font/google';
+import { localeAccents } from '@journeyoflife-org/ui/tokens';
 import './globals.css';
 
 const inter = Inter({
@@ -7,9 +8,9 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-const merriweather = Merriweather({
+const serif = Source_Serif_4({
   subsets: ['latin', 'latin-ext'],
-  variable: '--font-merriweather',
+  variable: '--font-serif',
   weight: ['300', '400', '700', '900'],
 });
 
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#00843D',
+  themeColor: localeAccents.lt.primary,
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -56,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="lt" className={`${inter.variable} ${merriweather.variable}`}>
+    <html lang="lt" className={`${inter.variable} ${serif.variable}`}>
       <body className="bg-background min-h-screen font-sans antialiased">{children}</body>
     </html>
   );

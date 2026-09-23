@@ -13,7 +13,7 @@
  */
 
 import type { Metadata, Viewport } from 'next';
-import { Inter, Merriweather } from 'next/font/google';
+import { Inter, Source_Serif_4 } from 'next/font/google';
 import './globals.css';
 
 const inter = Inter({
@@ -21,9 +21,9 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-const merriweather = Merriweather({
+const serif = Source_Serif_4({
   subsets: ['latin', 'latin-ext'],
-  variable: '--font-merriweather',
+  variable: '--font-serif',
   weight: ['300', '400', '700', '900'],
 });
 
@@ -65,7 +65,7 @@ export default function RootLayout({
       // Default lang; overridden by [locale]/layout.tsx via the I18nProvider
       lang="lt"
       dir="ltr"
-      className={`${inter.variable} ${merriweather.variable}`}
+      className={`${inter.variable} ${serif.variable}`}
     >
       <body className="bg-background flex min-h-screen flex-col font-sans antialiased">
         {/* Skip-to-content link for screen readers */}

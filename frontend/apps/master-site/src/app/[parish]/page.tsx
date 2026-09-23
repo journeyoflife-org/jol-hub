@@ -32,6 +32,7 @@ import {
   AvatarImage,
   Separator,
 } from '@journeyoflife-org/ui';
+import { liturgicalClassic, accent, neutral, localeAccents } from '@journeyoflife-org/ui/tokens';
 import {
   MapPin,
   Phone,
@@ -142,7 +143,7 @@ function HeroSection({ parish, season }: { parish: ParishConfig; season: string 
   return (
     <section
       className="relative overflow-hidden py-24 lg:py-32"
-      style={{ backgroundColor: 'var(--parish-primary, #00843D)' }}
+      style={{ backgroundColor: `var(--parish-primary, ${localeAccents.lt.primary})` }}
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
@@ -155,8 +156,8 @@ function HeroSection({ parish, season }: { parish: ParishConfig; season: string 
           <Badge
             className="mb-6 px-4 py-1.5 text-sm font-medium"
             style={{
-              backgroundColor: 'var(--parish-accent, #D4AF37)',
-              color: '#000',
+              backgroundColor: `var(--parish-accent, ${accent.DEFAULT})`,
+              color: neutral[900],
             }}
           >
             {seasonDisplay}
@@ -593,15 +594,15 @@ function getSeasonDisplayName(season: string): string {
  */
 function getSeasonColor(season: string): string {
   const colors: Record<string, string> = {
-    advent: '#4B0082', // Purple
-    christmas: '#FFD700', // Gold
-    ordinary_time: '#00843D', // Green
-    lent: '#800080', // Purple
-    holy_week: '#FF0000', // Red
-    easter: '#FFD700', // Gold
-    pentecost: '#FF0000', // Red
+    advent: liturgicalClassic.purple,
+    christmas: accent.DEFAULT,
+    ordinary_time: liturgicalClassic.green,
+    lent: liturgicalClassic.purple,
+    holy_week: liturgicalClassic.red,
+    easter: accent.DEFAULT,
+    pentecost: liturgicalClassic.red,
   };
-  return colors[season] ?? '#00843D';
+  return colors[season] ?? liturgicalClassic.green;
 }
 
 // =============================================================================
