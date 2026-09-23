@@ -325,7 +325,9 @@ function contactPage(fixture: TenantFixture): TenantPage {
     kvItems.push({ label: ltVerified('El. paštas'), value: fixture.identity.email });
   if (fixture.identity?.phone)
     kvItems.push({ label: ltVerified('Telefonas'), value: fixture.identity.phone });
-  blocks.push(keyValueBlock(ltVerified('Kontaktai'), kvItems));
+  if (kvItems.length > 0) {
+    blocks.push(keyValueBlock(ltVerified('Kontaktai'), kvItems));
+  }
 
   const map = mapLocationBlock(fixture);
   if (map) blocks.push(map);

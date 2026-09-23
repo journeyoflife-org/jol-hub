@@ -12,7 +12,7 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { tenantFixtures } from '../src/registry';
 import { generateTenantPages } from '../src/page-archetypes';
-import { TenantFixtureSchema } from '../src/schema';
+import { TenantFixtureSchema, TenantPageSchema } from '../src/schema';
 
 const FIXTURES_DIR = path.resolve(__dirname, '../src/fixtures/tenants');
 
@@ -50,6 +50,19 @@ function main() {
     fileGroups.set(file, group);
   }
 
+  // Validate generated pages before writing.
+  console.log('\nValidating generated pages...');
+  for (const fixture of tenantFixtures) {
+    const pages = generateTenantPages(fixture);
+    for (const page of pages) {
+      const result = TenantPageSchema.safeParse(page);
+      if (!result.success) {
+        console.error(`  FAIL: ${fixture.slug} / ${page.route} — ${result.error.message}`);
+        process.exit(1);
+      }
+    }
+  }
+
   let totalPages = 0;
   let totalFixtures = 0;
 
@@ -78,16 +91,6 @@ function main() {
     }
 
     console.log(`  ✓ ${file} (${fixtures.length} fixture(s))`);
-  }
-
-  // Re-validate all fixtures after generation.
-  console.log('\nRe-validating all fixtures...');
-  for (const fixture of tenantFixtures) {
-    const result = TenantFixtureSchema.safeParse(fixture);
-    if (!result.success) {
-      console.error(`  FAIL: ${fixture.slug} — ${result.error.message}`);
-      process.exit(1);
-    }
   }
 
   console.log(`\nDone: ${totalFixtures} fixtures, ${totalPages} pages generated.`);

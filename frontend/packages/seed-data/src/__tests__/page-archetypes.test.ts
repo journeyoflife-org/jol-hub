@@ -101,6 +101,19 @@ describe('generateTenantPages', () => {
     assert.ok(!hasClergy, 'administrative about page should NOT include clergyRoleList');
   });
 
+  it('contact page omits keyValue block when identity has no contact fields', () => {
+    const fixture = makeFixture({
+      vertical: 'parish',
+      identity: { entityId: 'no-contact' },
+    });
+    const pages = generateTenantPages(fixture);
+    const contact = pages.find((p) => p.route === '/contact')!;
+    const hasKeyValue = contact.contentBlocks.some((b) => b.type === 'keyValue');
+    assert.ok(!hasKeyValue, 'contact page should not include empty keyValue block');
+    // Page should still have other blocks (map or schedule)
+    assert.ok(contact.contentBlocks.length >= 1, 'contact page should have at least one block');
+  });
+
   it('works for all 12 verticals without throwing', () => {
     const verticals = [
       'parish',

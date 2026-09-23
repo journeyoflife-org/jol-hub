@@ -356,7 +356,7 @@ export const TenantIdentitySchema = z.object({
    * Tenants WITH this field get a locale-flavored overlay (header stripe,
    * border accent, optional badge) — controlled by the template.
    */
-  localeAccent: z.string().optional(),
+  localeAccent: z.string().regex(/^[a-z]{2}$/).optional(),
 });
 export type TenantIdentity = z.infer<typeof TenantIdentitySchema>;
 
