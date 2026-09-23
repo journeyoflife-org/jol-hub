@@ -31,5 +31,16 @@
       "messageLabel": "Запрос услуги",
       "submit": "Заказать услугу"
     }
+  },
+  "pl": {
+    "commerce": {
+      "donateTitle": "Wsparcie usługi",
+      "donateDescription": "Twoje wsparcie utrzymuje naszą usługę sprzątania i opieki dla wspólnot.",
+      "donateCta": "Wesprzyj usługę"
+    },
+    "forms": {
+      "messageLabel": "Zapytanie o usługę",
+      "submit": "Zamów usługę"
+    }
   }
 }

@@ -92,8 +92,31 @@ locale-switcher}`, `src/lib`) and `apps/template-renderer/src` for
 
 ## Poland (pl)
 
-OPEN QUESTION. `PLANNED_LOCALES = ['pl']` marks the extension point; it is
-**disabled** (not in `SUPPORTED_LOCALES`, no messages, no routing).
+**Declared but NOT content-complete.** `pl` is in `SupportedLocale` /
+`SUPPORTED_LOCALES` (Wave 1 Task 6), so it does have routing (`/pl/…`),
+detection (`isSupportedLocale`), locale maps (`LOCALE_NAMES`,
+`LOCALE_PREFIXES`, `LOCALE_HREFLANG` = `pl-PL`) and a DeepL mapping.
+
+What is still missing:
+
+- `src/messages/pl.json` exists but is **not** wired into `CATALOGS`; the
+  runtime `pl` catalog is a 3-key inline stub in `src/messages/index.ts`.
+- `scripts/check-parity.ts` (run by `pnpm verify`) reports `pl` key-set
+  mismatches against `lt`/`en`/`ru`, and all three `verticals/*.json` files
+  lack a `pl` section. **`pnpm verify` is red because of this.**
+- `@journeyoflife-org/seed-data` defines `LocalizedTextSchema` as 3-locale
+  (`lt` mandatory, `en`/`ru` optional), so tenant fixtures cannot carry
+  Polish content at all.
+
+Completing `pl` = wire `pl.json` into `CATALOGS`, reach key parity with the
+reference locale, add a `pl` section to every `verticals/*.json`, and extend
+`LocalizedTextSchema` in seed-data. Until then `resolveLocale` falls back to
+`lt` with a visible `[PL translation pending]` marker rather than degrading
+silently.
+
+`PLANNED_LOCALES` is reserved for locales that are designed for but not yet
+_declared_, and is kept disjoint from `SUPPORTED_LOCALES` by the
+locale-parity unit test.
 
 ## Legacy surface
 

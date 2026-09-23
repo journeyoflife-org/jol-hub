@@ -7,9 +7,9 @@
  * - Sets `lang` dynamically from the resolved tenant's locale (lt/en/ru
  *   path; unknown/unresolved requests fall back to `lt`).
  * - Fonts: system-first token stacks (Inter / Source Serif 4 preferred);
- *   no build-time webfont fetch — the build environment is offline and
- *   fallbacks keep every tenant deterministic. Webfonts can be vendored
- *   later via `next/font/local` without changing the token contract.
+ *   vendored woff2 files in `packages/ui/fonts/` are loaded by sibling
+ *   apps via `next/font/local`. The template-renderer itself uses system
+ *   fallbacks since it renders any tenant without per-tenant font config.
  *
  * Tenant identity (name, nav, contacts) is rendered by
  * `app/[locale]/[tenant]/layout.tsx`.

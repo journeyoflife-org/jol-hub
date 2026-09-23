@@ -26,9 +26,9 @@
     {
       "route": "/",
       "title": {
-        "lt": "Pradžia",
-        "en": "Home",
-        "ru": "Home [TODO: verify with parish/diocese — do not publish unverified]"
+        "lt": "Vilniaus arkivyskupija",
+        "en": "Vilnius Archdiocese",
+        "ru": "Vilnius Archdiocese [TODO: verify with parish/diocese — do not publish unverified]"
       },
       "contentBlocks": [
         {
@@ -39,58 +39,78 @@
             "ru": "Vilnius Archdiocese [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "subheading": {
-            "lt": "Metropolijos centras · Šv. Kazimiero globa",
-            "en": "Metropolitan see · Patron: St. Casimir",
-            "ru": "Metropolitan see · Patron: St. Casimir [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Metropolijos centras, įkurtas 1387 m., Šv. Kazimiero globoje",
+            "en": "Metropolitan see founded in 1387, under the patronage of St. Casimir",
+            "ru": "Metropolitan see founded in 1387, under the patronage of St. Casimir [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "body": {
-            "lt": "Įkurta 1387 m. Katedra - Vilniaus arkikatedra bazilika.",
-            "en": "Erected in 1387. Cathedral: Vilnius Cathedral Basilica.",
-            "ru": "Erected in 1387. Cathedral: Vilnius Cathedral Basilica. [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Vilnius Archdiocese · Est. 1387",
+            "en": "Vilnius Archdiocese · Est. 1387"
           }
+        },
+        {
+          "type": "schedule",
+          "heading": {
+            "lt": "Tvarkaraštis",
+            "en": "Tvarkaraštis",
+            "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "entries": [
+            {
+              "day": {
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "09:00 - 17:00"
+              ]
+            },
+            {
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "10:00 - 14:00"
+              ]
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "closed"
+              ]
+            }
+          ]
         },
         {
           "type": "stats",
           "heading": {
-            "lt": "Arkivyskupija skaičiais",
-            "en": "The Archdiocese in Numbers",
-            "ru": "The Archdiocese in Numbers [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Faktai",
+            "en": "Faktai",
+            "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "items": [
             {
               "label": {
-                "lt": "Parapijų",
-                "ru": "Parapijų [TODO: verify — do not publish unverified]"
+                "lt": "Įkurta",
+                "en": "Įkurta",
+                "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "value": 54
+              "value": "1387"
             },
             {
               "label": {
-                "lt": "Kunigų",
-                "ru": "Kunigų [TODO: verify — do not publish unverified]"
+                "lt": "Jurisdikcija",
+                "en": "Jurisdikcija",
+                "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "value": 78
-            },
-            {
-              "label": {
-                "lt": "Diakonų",
-                "ru": "Diakonų [TODO: verify — do not publish unverified]"
-              },
-              "value": 5
-            },
-            {
-              "label": {
-                "lt": "Parapijiečių",
-                "ru": "Parapijiečių [TODO: verify — do not publish unverified]"
-              },
-              "value": 320000
-            },
-            {
-              "label": {
-                "lt": "Katalikų",
-                "ru": "Katalikų [TODO: verify — do not publish unverified]"
-              },
-              "value": 580000
+              "value": "Vilnius Archdiocese"
             }
           ]
         },
@@ -99,171 +119,376 @@
           "links": [
             {
               "label": {
-                "lt": "Dekanatų katalogas",
-                "ru": "Dekanatų katalogas [TODO: verify — do not publish unverified]"
+                "lt": "Kontaktai",
+                "en": "Contact"
               },
-              "href": "/directory"
+              "href": "/contact"
             },
             {
               "label": {
                 "lt": "Naujienos",
-                "ru": "Naujienos [TODO: verify — do not publish unverified]"
+                "en": "News"
               },
               "href": "/news"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/about",
+      "title": {
+        "lt": "Apie",
+        "en": "Apie",
+        "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": {
+            "lt": "Apie",
+            "en": "Apie",
+            "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Metropolijos centras, įkurtas 1387 m., Šv. Kazimiero globoje",
+            "en": "Metropolitan see founded in 1387, under the patronage of St. Casimir"
+          }
+        },
+        {
+          "type": "keyValue",
+          "heading": {
+            "lt": "Duomenys",
+            "en": "Duomenys",
+            "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "label": {
+                "lt": "Entity ID",
+                "en": "Entity ID",
+                "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "lt-diocese-vilnius-001"
             },
             {
               "label": {
-                "lt": "Pašaukimai",
-                "ru": "Pašaukimai [TODO: verify — do not publish unverified]"
+                "lt": "Jurisdikcija",
+                "en": "Jurisdikcija",
+                "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "href": "/vocations"
+              "value": "Vilnius Archdiocese"
+            },
+            {
+              "label": {
+                "lt": "Įkurta",
+                "en": "Įkurta",
+                "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "1387"
+            },
+            {
+              "label": {
+                "lt": "Domenas",
+                "en": "Domenas",
+                "ru": "Domenas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "vilniusarkivyskupija.lt"
+            }
+          ]
+        },
+        {
+          "type": "visitingInfo",
+          "heading": {
+            "lt": "Lankymo laikas",
+            "en": "Lankymo laikas",
+            "ru": "Lankymo laikas [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "hours": [
+            {
+              "day": "Pirmadienis - Penktadienis",
+              "dayEn": "Monday - Friday",
+              "open": "09:00",
+              "close": "17:00"
+            },
+            {
+              "day": "Šeštadienis",
+              "dayEn": "Saturday",
+              "open": "10:00",
+              "close": "14:00"
+            }
+          ],
+          "admission": {
+            "lt": "Lankymas nemokamas",
+            "en": "Lankymas nemokamas",
+            "ru": "Lankymas nemokamas [TODO: verify with parish/diocese — do not publish unverified]"
+          }
+        },
+        {
+          "type": "mapLocation",
+          "heading": {
+            "lt": "Vieta",
+            "en": "Vieta",
+            "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "lat": 54.6872,
+          "lng": 25.2797,
+          "directionsUrl": "https://www.google.com/maps/search/?api=1&query=%C5%A0v.%20Jono%20g.%203%2C%2001141%20Vilnius%2C%20Lithuania"
+        }
+      ]
+    },
+    {
+      "route": "/contact",
+      "title": {
+        "lt": "Kontaktai",
+        "en": "Kontaktai",
+        "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "keyValue",
+          "heading": {
+            "lt": "Kontaktai",
+            "en": "Kontaktai",
+            "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "label": {
+                "lt": "Adresas",
+                "en": "Adresas",
+                "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "Šv. Jono g. 3, 01141 Vilnius, Lithuania"
+            },
+            {
+              "label": {
+                "lt": "El. paštas",
+                "en": "El. paštas",
+                "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "info@vilniusarkivyskupija.lt"
+            },
+            {
+              "label": {
+                "lt": "Telefonas",
+                "en": "Telefonas",
+                "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "+370 5 261 0744"
+            }
+          ]
+        },
+        {
+          "type": "mapLocation",
+          "heading": {
+            "lt": "Vieta",
+            "en": "Vieta",
+            "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "lat": 54.6872,
+          "lng": 25.2797,
+          "directionsUrl": "https://www.google.com/maps/search/?api=1&query=%C5%A0v.%20Jono%20g.%203%2C%2001141%20Vilnius%2C%20Lithuania"
+        },
+        {
+          "type": "schedule",
+          "heading": {
+            "lt": "Biuro valandos",
+            "en": "Biuro valandos",
+            "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "entries": [
+            {
+              "day": {
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "09:00 - 17:00"
+              ]
+            },
+            {
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "10:00 - 14:00"
+              ]
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "closed"
+              ]
             }
           ]
         }
       ]
     },
     {
-      "route": "/directory",
+      "route": "/services",
       "title": {
-        "lt": "Dekanatai",
-        "en": "Deaneries",
-        "ru": "Deaneries [TODO: verify with parish/diocese — do not publish unverified]"
+        "lt": "Paslaugos",
+        "en": "Paslaugos",
+        "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
       },
       "contentBlocks": [
         {
+          "type": "hero",
+          "heading": {
+            "lt": "Vilniaus arkivyskupija",
+            "en": "Vilnius Archdiocese",
+            "ru": "Vilnius Archdiocese [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "subheading": {
+            "lt": "Metropolijos centras, įkurtas 1387 m., Šv. Kazimiero globoje",
+            "en": "Metropolitan see founded in 1387, under the patronage of St. Casimir",
+            "ru": "Metropolitan see founded in 1387, under the patronage of St. Casimir [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Vilnius Archdiocese · Est. 1387",
+            "en": "Vilnius Archdiocese · Est. 1387"
+          }
+        },
+        {
           "type": "list",
           "heading": {
-            "lt": "Arkivyskupijos dekanatai",
-            "en": "Archdiocesan Deaneries",
-            "ru": "Archdiocesan Deaneries [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Paslaugos",
+            "en": "Paslaugos",
+            "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "items": [
             {
               "title": {
-                "lt": "Vilniaus I dekanatas",
-                "en": "Vilnius I Deanery",
-                "ru": "Vilnius I Deanery [TODO: verify with parish/diocese — do not publish unverified]"
+                "lt": "Pagrindinė paslauga",
+                "en": "Pagrindinė paslauga",
+                "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["12 parapijų"]
+              "description": {
+                "lt": "Aprašymas",
+                "en": "Aprašymas",
+                "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
             },
             {
               "title": {
-                "lt": "Vilniaus II dekanatas",
-                "en": "Vilnius II Deanery",
-                "ru": "Vilnius II Deanery [TODO: verify with parish/diocese — do not publish unverified]"
+                "lt": "Papildoma paslauga",
+                "en": "Papildoma paslauga",
+                "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["15 parapijų"]
+              "description": {
+                "lt": "Aprašymas",
+                "en": "Aprašymas",
+                "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        },
+        {
+          "type": "faq",
+          "heading": {
+            "lt": "Dažni klausimai",
+            "en": "Dažni klausimai",
+            "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "questions": [
+            {
+              "question": {
+                "lt": "Kaip užsakyti paslaugą?",
+                "en": "Kaip užsakyti paslaugą?",
+                "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "answer": {
+                "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+              }
             },
             {
-              "title": {
-                "lt": "Trakų dekanatas",
-                "en": "Trakai Deanery",
-                "ru": "Trakai Deanery [TODO: verify with parish/diocese — do not publish unverified]"
+              "question": {
+                "lt": "Ar reikalinga išankstinė registracija?",
+                "en": "Ar reikalinga išankstinė registracija?",
+                "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "tags": ["10 parapijų"]
-            },
-            {
-              "title": {
-                "lt": "Šalčininkų dekanatas",
-                "en": "Šalčininkai Deanery",
-                "ru": "Šalčininkai Deanery [TODO: verify with parish/diocese — do not publish unverified]"
-              },
-              "tags": ["8 parapijos"]
-            },
-            {
-              "title": {
-                "lt": "Švenčionių dekanatas",
-                "en": "Švenčionys Deanery",
-                "ru": "Švenčionys Deanery [TODO: verify with parish/diocese — do not publish unverified]"
-              },
-              "tags": ["9 parapijos"]
+              "answer": {
+                "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+              }
             }
           ]
         }
       ]
     },
     {
-      "route": "/news",
+      "route": "/schedule",
       "title": {
-        "lt": "Naujienos",
-        "en": "News",
-        "ru": "News [TODO: verify with parish/diocese — do not publish unverified]"
+        "lt": "Tvarkaraštis",
+        "en": "Tvarkaraštis",
+        "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
       },
       "contentBlocks": [
         {
-          "type": "text",
+          "type": "hero",
           "heading": {
-            "lt": "Arkivyskupijos naujienų portalas",
-            "en": "Archdiocesan News Portal",
-            "ru": "Archdiocesan News Portal [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Vilniaus arkivyskupija",
+            "en": "Vilnius Archdiocese",
+            "ru": "Vilnius Archdiocese [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "subheading": {
+            "lt": "Metropolijos centras, įkurtas 1387 m., Šv. Kazimiero globoje",
+            "en": "Metropolitan see founded in 1387, under the patronage of St. Casimir",
+            "ru": "Metropolitan see founded in 1387, under the patronage of St. Casimir [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "body": {
-            "lt": "Oficialūs pranešimai, ganytojiniai laiškai, liturginis kalendorius ir parapijų naujienos.",
-            "en": "Official announcements, pastoral letters, liturgical calendar and parish news.",
-            "ru": "Official announcements, pastoral letters, liturgical calendar and parish news. [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Vilnius Archdiocese · Est. 1387",
+            "en": "Vilnius Archdiocese · Est. 1387"
           }
-        }
-      ]
-    },
-    {
-      "route": "/vocations",
-      "title": {
-        "lt": "Pašaukimai",
-        "en": "Vocations",
-        "ru": "Vocations [TODO: verify with parish/diocese — do not publish unverified]"
-      },
-      "contentBlocks": [
+        },
         {
-          "type": "text",
+          "type": "schedule",
           "heading": {
-            "lt": "Pašaukimų tarnyba",
-            "en": "Vocations Office",
-            "ru": "Vocations Office [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Tvarkaraštis",
+            "en": "Tvarkaraštis",
+            "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
           },
-          "body": {
-            "lt": "Informacija apie kunigystės ir pašvęstojo gyvenimo pašaukimą, seminarija, palydėjimas ir kontaktai.",
-            "en": "Information about priestly and consecrated-life vocations, the seminary, accompaniment and contacts.",
-            "ru": "Information about priestly and consecrated-life vocations, the seminary, accompaniment and contacts. [TODO: verify with parish/diocese — do not publish unverified]"
-          }
-        }
-      ]
-    },
-    {
-      "route": "/shop",
-      "title": {
-        "lt": "Krautuvėlė",
-        "en": "Shop",
-        "ru": "Shop [TODO: verify with parish/diocese — do not publish unverified]"
-      },
-      "contentBlocks": [
-        {
-          "type": "list",
-          "heading": {
-            "lt": "Arkivyskupijos krautuvėlė",
-            "en": "Archdiocesan Shop",
-            "ru": "Archdiocesan Shop [TODO: verify with parish/diocese — do not publish unverified]"
-          },
-          "items": [
+          "entries": [
             {
-              "title": {
-                "lt": "Vyskupijos leidiniai",
-                "en": "Diocesan Publications",
-                "ru": "Diocesan Publications [TODO: verify with parish/diocese — do not publish unverified]"
-              }
+              "day": {
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "09:00 - 17:00"
+              ]
             },
             {
-              "title": {
-                "lt": "Renginių bilietai",
-                "en": "Event Tickets",
-                "ru": "Event Tickets [TODO: verify with parish/diocese — do not publish unverified]"
-              }
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "10:00 - 14:00"
+              ]
             },
             {
-              "title": {
-                "lt": "Rekolekcijos",
-                "en": "Retreat Bookings",
-                "ru": "Retreat Bookings [TODO: verify with parish/diocese — do not publish unverified]"
-              }
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "closed"
+              ]
             }
           ]
         }
