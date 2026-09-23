@@ -12,9 +12,11 @@
  * subdomain → tenant → schema → locale → template → content → theme_ref.
  * Swapping a tenant's theme is a `theme_ref` data change — zero code.
  *
- * MIGRATION BASELINE: the `catholic` profile is the parish-template's legacy
- * hardcoded Tailwind scales, copied VALUE-FOR-VALUE (visual parity is the
- * acceptance criterion; the parity snapshot test pins this).
+ * LITURGICAL BASELINE: the `catholic` profile projects from the core design-
+ * system scales (Baltic navy, liturgical purple, liturgical gold) via
+ * themeScale(). The parity snapshot test pins these projected values.
+ * National character (e.g. LT flag) is a separate axis — see localeAccents
+ * in colors.ts and TenantIdentity.localeAccent in seed-data schema.
  */
 import type { ColorScale } from '../colors';
 import { accent, primary as corePrimary, secondary as coreSecondary, wood } from '../colors';
@@ -67,52 +69,16 @@ function themeScale(scale: ColorScale): ThemeScale {
 }
 
 /**
- * CATHOLIC profile — the parish-template migration baseline. Every value
- * below is copied verbatim from apps/parish-template/tailwind.config.ts as it
- * stood before the token migration (frozen in the parity snapshot test).
+ * CATHOLIC profile — core liturgical scales projected via themeScale().
+ * Baltic navy primary, liturgical purple secondary, liturgical gold accent.
+ * The parity snapshot test pins these values (theme-parity.test.ts).
  */
 const catholic: ThemeProfile = {
   id: 'catholic',
   palettes: {
-    primary: {
-      DEFAULT: '#00843D',
-      50: '#E6F5EC',
-      100: '#CCEADA',
-      200: '#99D5B5',
-      300: '#66C08F',
-      400: '#33AB6A',
-      500: '#00843D',
-      600: '#006A31',
-      700: '#005025',
-      800: '#003518',
-      900: '#001B0C',
-    },
-    secondary: {
-      DEFAULT: '#FFCC00',
-      50: '#FFFBEB',
-      100: '#FFF7D6',
-      200: '#FFEFAD',
-      300: '#FFE785',
-      400: '#FFDF5C',
-      500: '#FFCC00',
-      600: '#CCA300',
-      700: '#997A00',
-      800: '#665200',
-      900: '#332900',
-    },
-    accent: {
-      DEFAULT: '#C8102E',
-      50: '#FCE8EB',
-      100: '#F9D1D7',
-      200: '#F3A3AF',
-      300: '#ED7587',
-      400: '#E7475F',
-      500: '#C8102E',
-      600: '#A00D25',
-      700: '#780A1C',
-      800: '#500713',
-      900: '#280409',
-    },
+    primary: themeScale(corePrimary),    // Baltic navy  #1e3a5f
+    secondary: themeScale(coreSecondary), // Liturgical purple #4a1a6b
+    accent: themeScale(accent),          // Liturgical gold   #d4af37
   },
 };
 
