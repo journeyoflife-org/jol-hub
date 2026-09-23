@@ -347,6 +347,16 @@ export const TenantIdentitySchema = z.object({
   phone: z.string().optional(),
   domain: z.string().optional(),
   theme: z.string().optional(),
+  /**
+   * Optional locale-accent reference — applies national/cultural color
+   * accents ON TOP of the denomination theme profile. Values reference
+   * the `localeAccents` registry in @journeyoflife-org/ui tokens/colors.
+   *
+   * Tenants WITHOUT this field render pure denomination identity.
+   * Tenants WITH this field get a locale-flavored overlay (header stripe,
+   * border accent, optional badge) — controlled by the template.
+   */
+  localeAccent: z.string().optional(),
 });
 export type TenantIdentity = z.infer<typeof TenantIdentitySchema>;
 
