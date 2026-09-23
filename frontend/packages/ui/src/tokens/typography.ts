@@ -30,6 +30,32 @@ export const fontSizes = {
   '5xl': ['3rem', { lineHeight: '1.2' }],
 } as const;
 
+/**
+ * Fluid typography — `clamp()` values that scale between viewport widths.
+ *
+ * Formula: `clamp(minRem, preferredVw, maxRem)` where the preferred value
+ * is a viewport-width percentage that produces smooth scaling between a
+ * 360px mobile and 1440px desktop viewport.
+ *
+ * These are an ALTERNATIVE to the fixed `fontSizes` above — consumers pick
+ * either the fixed scale or the fluid scale. The roles (`body`, `heading`,
+ * etc.) reference size-step names so they work with either.
+ *
+ * WCAG 2.1 SC 1.4.4 (Resize text): all fluid min values meet the 12px
+ * minimum for body text; users can zoom to 200% without horizontal scroll.
+ */
+export const fluidSizes = {
+  xs:    'clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem)',
+  sm:    'clamp(0.875rem, 0.8rem + 0.35vw, 1rem)',
+  base:  'clamp(1rem, 0.925rem + 0.4vw, 1.125rem)',
+  lg:    'clamp(1.125rem, 1rem + 0.5vw, 1.25rem)',
+  xl:    'clamp(1.25rem, 1.1rem + 0.65vw, 1.5rem)',
+  '2xl': 'clamp(1.5rem, 1.25rem + 1vw, 1.875rem)',
+  '3xl': 'clamp(1.875rem, 1.5rem + 1.5vw, 2.25rem)',
+  '4xl': 'clamp(2.25rem, 1.75rem + 2vw, 3rem)',
+  '5xl': 'clamp(3rem, 2.25rem + 3vw, 3.75rem)',
+} as const;
+
 export const fontWeights = {
   light: 300,
   normal: 400,

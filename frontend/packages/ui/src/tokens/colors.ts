@@ -324,6 +324,35 @@ export const themeRoles = {
   },
 } as const;
 
+/**
+ * Church-specific scale roles per mode.
+ *
+ * The church semantic scales (`altar`, `candle`, `incense`, `stone`, `wood`)
+ * span 50 (lightest) → 950 (darkest). In dark mode the step selections
+ * invert: dark surfaces use 900–950, light text uses 100–200, and accents
+ * shift to mid-range steps (300–400) for WCAG-AA contrast against dark
+ * surfaces.
+ *
+ * Consumers reference these via CSS custom properties
+ * (`--jol-altar-surface`, `--jol-candle-accent`, ...).
+ */
+export const churchScaleRoles = {
+  light: {
+    altar: { surface: altar[50], text: altar[900], accent: altar[500], border: altar[200] },
+    candle: { surface: candle[50], text: candle[900], accent: candle[500], border: candle[200] },
+    incense: { surface: incense[50], text: incense[900], accent: incense[500], border: incense[200] },
+    stone: { surface: stone[50], text: stone[900], accent: stone[500], border: stone[200] },
+    wood: { surface: wood[50], text: wood[900], accent: wood[500], border: wood[200] },
+  },
+  dark: {
+    altar: { surface: altar[950], text: altar[200], accent: altar[400], border: altar[800] },
+    candle: { surface: candle[950], text: candle[200], accent: candle[400], border: candle[800] },
+    incense: { surface: incense[950], text: incense[200], accent: incense[400], border: incense[800] },
+    stone: { surface: stone[950], text: stone[200], accent: stone[400], border: stone[800] },
+    wood: { surface: wood[950], text: wood[200], accent: wood[400], border: wood[800] },
+  },
+} as const;
+
 /** All named scales, for iteration (CSS generation, contrast checks). */
 export const colorScales = {
   primary,
