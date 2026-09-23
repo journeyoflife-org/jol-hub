@@ -1,17 +1,21 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Source_Serif_4 } from 'next/font/google';
+import localFont from 'next/font/local';
 import { localeAccents } from '@journeyoflife-org/ui/tokens';
 import './globals.css';
 
-const inter = Inter({
-  subsets: ['latin', 'latin-ext'],
+const inter = localFont({
+  src: '../../../../packages/ui/fonts/Inter.var.woff2',
   variable: '--font-inter',
+  display: 'swap',
 });
 
-const serif = Source_Serif_4({
-  subsets: ['latin', 'latin-ext'],
+const serif = localFont({
+  src: [
+    { path: '../../../../packages/ui/fonts/SourceSerif4Variable-Roman.woff2', style: 'normal' },
+    { path: '../../../../packages/ui/fonts/SourceSerif4Variable-It.woff2', style: 'italic' },
+  ],
   variable: '--font-serif',
-  weight: ['300', '400', '700', '900'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {

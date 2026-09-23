@@ -1,11 +1,10 @@
 /**
  * JOL Design System — typography tokens.
  *
- * Font strategy (STEP 2 decision): system-first stacks with Inter /
- * Source Serif 4 as preferred faces. Webfont files are NOT fetched at
- * build time — the CI/build environment is offline, and graceful
- * fallback keeps every tenant rendering deterministically. When font
- * files are vendored later, use `next/font/local` and keep these stacks.
+ * Font strategy: Inter and Source Serif 4 are vendored as woff2 variable
+ * fonts in `packages/ui/fonts/` and loaded via `next/font/local`. This
+ * provides offline-capable builds, GDPR compliance (no external CDN
+ * requests), and deterministic rendering across all tenants.
  */
 
 export const fontFamilies = {
