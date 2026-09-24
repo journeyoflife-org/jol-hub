@@ -376,6 +376,45 @@ alembic revision --autogenerate -m "description_of_change"
 alembic downgrade -1
 ```
 
+### Tenant Schema Provisioning — Cross-Plane RLS Contract
+
+**Mandatory for anyone touching tenant provisioning.** Per ADR-001
+(jol-ecommerce-engine), jol-hub is the tenant management & admin plane:
+when the Django migration runner (django-tenants) provisions a new tenant
+schema `tenant_{uuid}`, it **must apply the same isolation DDL** the
+commerce engine applies in its own provisioning path. The engine's data
+plane assumes these policies exist and **cannot detect their absence** —
+a schema created by Django without RLS is a silent cross-tenant isolation
+gap (SOC2 CC6.1/CC6.2).
+
+Source-of-truth template (in `jol-ecommerce-engine`):
+`backend/jol_commerce/db/sql/002_tenant_schema_template.sql`. The runner
+must apply its full content to every new tenant schema:
+
+| Requirement | DDL |
+|---|---|
+| RLS enabled **and forced** on every tenant table (`orders`, `payment_tokens`, `commission_ledger`, and any future tenant-owned table) | `ALTER TABLE {t} ENABLE ROW LEVEL SECURITY; ALTER TABLE {t} FORCE ROW LEVEL SECURITY;` |
+| Isolation policy per table, bound to the per-request session setting — never a literal | `CREATE POLICY tenant_isolation_{t} ON {t} USING (tenant_id = current_setting('app.current_tenant')::UUID);` |
+| Append-only audit log | `BEFORE UPDATE`/`BEFORE DELETE` triggers on `audit_log` |
+
+Django-side obligations:
+
+1. **Apply, don't reimplement** — run the engine's template artifact (or a
+   byte-identical migration) rather than paraphrasing the DDL, so the two
+   planes cannot drift.
+2. **`FORCE` is non-negotiable** — without it the table owner bypasses RLS,
+   and the Django migration connection typically runs as that owner.
+3. **Assert after provisioning** — verify live state inside the same
+   transaction (e.g. `SELECT relrowsecurity, relforcerowsecurity FROM
+   pg_class` for every tenant table, plus `pg_policies` row counts) and
+   roll back tenant creation on any mismatch.
+4. **Guard in CI** — jol-ecommerce-engine's
+   `tests/security/test_rls_ddl_contract.py` verifies only the engine's own
+   template; jol-hub needs its own equivalent test covering the runner path.
+
+The identical contract is documented in the jol-ecommerce-engine README
+(Cross-Plane Tenancy Contract).
+
 ***
 
 ## MCP Servers
