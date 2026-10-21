@@ -28,5 +28,15 @@
     "forms": {
       "messageLabel": "Сообщение приходу"
     }
+  },
+  "pl": {
+    "commerce": {
+      "donateTitle": "Dar kościoelny",
+      "donateDescription": "Twoja darowizna wspiera posługę kościoła, opiekę duszpasterską i życie wspólnoty.",
+      "donateCta": "Daruj kościołowi"
+    },
+    "forms": {
+      "messageLabel": "Wiadomość do parafii"
+    }
   }
 }

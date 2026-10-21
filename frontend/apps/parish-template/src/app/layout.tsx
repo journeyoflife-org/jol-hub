@@ -13,18 +13,22 @@
  */
 
 import type { Metadata, Viewport } from 'next';
-import { Inter, Merriweather } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 
-const inter = Inter({
-  subsets: ['latin', 'latin-ext'],
+const inter = localFont({
+  src: '../../../../packages/ui/fonts/Inter.var.woff2',
   variable: '--font-inter',
+  display: 'swap',
 });
 
-const merriweather = Merriweather({
-  subsets: ['latin', 'latin-ext'],
-  variable: '--font-merriweather',
-  weight: ['300', '400', '700', '900'],
+const serif = localFont({
+  src: [
+    { path: '../../../../packages/ui/fonts/SourceSerif4Variable-Roman.woff2', style: 'normal' },
+    { path: '../../../../packages/ui/fonts/SourceSerif4Variable-It.woff2', style: 'italic' },
+  ],
+  variable: '--font-serif',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -65,7 +69,7 @@ export default function RootLayout({
       // Default lang; overridden by [locale]/layout.tsx via the I18nProvider
       lang="lt"
       dir="ltr"
-      className={`${inter.variable} ${merriweather.variable}`}
+      className={`${inter.variable} ${serif.variable}`}
     >
       <body className="bg-background flex min-h-screen flex-col font-sans antialiased">
         {/* Skip-to-content link for screen readers */}

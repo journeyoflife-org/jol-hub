@@ -26,64 +26,97 @@
     {
       "route": "/",
       "title": {
-        "lt": "Pradžia",
-        "en": "Home",
-        "ru": "Home [TODO: verify with parish/diocese — do not publish unverified]"
+        "lt": "Kauno Šv. apaštalų Petro ir Pauliaus arkikatedra bazilija",
+        "en": "Kaunas Cathedral Basilica of St. Peter and St. Paul",
+        "ru": "Kaunas Cathedral Basilica of St. Peter and St. Paul [TODO: verify with parish/diocese — do not publish unverified]"
       },
       "contentBlocks": [
         {
           "type": "hero",
           "heading": {
-            "lt": "Kauno arkikatedra bazilija",
-            "en": "Kaunas Cathedral Basilica",
-            "ru": "Kaunas Cathedral Basilica [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Kauno Šv. apaštalų Petro ir Pauliaus arkikatedra bazilija",
+            "en": "Kaunas Cathedral Basilica of St. Peter and St. Paul",
+            "ru": "Kaunas Cathedral Basilica of St. Peter and St. Paul [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "subheading": {
-            "lt": "Šv. apaštalų Petro ir Pauliaus garbei",
-            "en": "Dedicated to St. Peter and St. Paul",
-            "ru": "Dedicated to St. Peter and St. Paul [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Kauno arkivyskupo sostinė, konsekruota 1650 m.",
+            "en": "Seat of the Archbishop of Kaunas, consecrated in 1650",
+            "ru": "Seat of the Archbishop of Kaunas, consecrated in 1650 [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "body": {
-            "lt": "Kauno arkivyskupijos motininė bažnyčia ir arkivyskupo sostinė.",
-            "en": "Mother church of the Kaunas Archdiocese and seat of the Archbishop.",
-            "ru": "Mother church of the Kaunas Archdiocese and seat of the Archbishop. [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Kaunas Archdiocese · Est. 1650",
+            "en": "Kaunas Archdiocese · Est. 1650"
           }
         },
         {
-          "type": "keyValue",
+          "type": "massSchedule",
           "heading": {
-            "lt": "Kontaktai",
-            "en": "Contact",
-            "ru": "Contact [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Šv. Mišių tvarkaraštis",
+            "en": "Šv. Mišių tvarkaraštis",
+            "ru": "Šv. Mišių tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "masses": [
+            {
+              "day": {
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "07:30",
+              "rrule": "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+            },
+            {
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "09:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SA"
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "09:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SU"
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "11:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SU"
+            }
+          ]
+        },
+        {
+          "type": "stats",
+          "heading": {
+            "lt": "Faktai",
+            "en": "Faktai",
+            "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "items": [
             {
               "label": {
-                "lt": "Adresas",
-                "ru": "Adresas [TODO: verify — do not publish unverified]"
+                "lt": "Įkurta",
+                "en": "Įkurta",
+                "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "value": "Vilniaus g. 1, 44287 Kaunas"
+              "value": "1650"
             },
             {
               "label": {
-                "lt": "Telefonas",
-                "ru": "Telefonas [TODO: verify — do not publish unverified]"
+                "lt": "Jurisdikcija",
+                "en": "Jurisdikcija",
+                "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "value": "+370 37 32 26 08"
-            },
-            {
-              "label": {
-                "lt": "El. paštas",
-                "ru": "El. paštas [TODO: verify — do not publish unverified]"
-              },
-              "value": "info@kaunoarkikatedra.lt"
-            },
-            {
-              "label": {
-                "lt": "Svetainė",
-                "ru": "Svetainė [TODO: verify — do not publish unverified]"
-              },
-              "value": "https://kaunoarkikatedra.lt"
+              "value": "Kaunas Archdiocese"
             }
           ]
         },
@@ -92,174 +125,445 @@
           "links": [
             {
               "label": {
-                "lt": "Vyskupo žinutės",
-                "ru": "Vyskupo žinutės [TODO: verify — do not publish unverified]"
+                "lt": "Užsakyti Mišių intenciją",
+                "en": "Order Mass Intention"
               },
-              "href": "/bishops-messages"
+              "href": "/shop"
             },
             {
               "label": {
-                "lt": "Renginiai",
-                "ru": "Renginiai [TODO: verify — do not publish unverified]"
+                "lt": "Sakramentai",
+                "en": "Sacraments"
               },
-              "href": "/events"
-            },
-            {
-              "label": {
-                "lt": "Paveldas",
-                "ru": "Paveldas [TODO: verify — do not publish unverified]"
-              },
-              "href": "/heritage"
-            },
-            {
-              "label": {
-                "lt": "Paaukoti",
-                "ru": "Paaukoti [TODO: verify — do not publish unverified]"
-              },
-              "href": "/donate"
+              "href": "/services"
             }
           ]
         }
-      ],
-      "meta": {
-        "description": "Kauno Šv. apaštalų Petro ir Pauliaus arkikatedra bazilija"
-      }
+      ]
     },
     {
-      "route": "/bishops-messages",
+      "route": "/about",
       "title": {
-        "lt": "Vyskupo žinutės",
-        "en": "Bishop's Messages",
-        "ru": "Bishop's Messages [TODO: verify with parish/diocese — do not publish unverified]"
+        "lt": "Apie",
+        "en": "Apie",
+        "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
       },
       "contentBlocks": [
         {
           "type": "text",
           "heading": {
-            "lt": "Vyskupo žinutės",
-            "en": "Bishop's Messages",
-            "ru": "Bishop's Messages [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Apie",
+            "en": "Apie",
+            "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "body": {
-            "lt": "Kauno arkivyskupo ganytojiniai laiškai, homilijos ir kreipimaisi tikintiesiems.",
-            "en": "Pastoral letters, homilies and addresses of the Archbishop of Kaunas.",
-            "ru": "Pastoral letters, homilies and addresses of the Archbishop of Kaunas. [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Kauno arkivyskupo sostinė, konsekruota 1650 m.",
+            "en": "Seat of the Archbishop of Kaunas, consecrated in 1650"
           }
-        }
-      ]
-    },
-    {
-      "route": "/donate",
-      "title": {
-        "lt": "Paaukoti",
-        "en": "Donate",
-        "ru": "Donate [TODO: verify with parish/diocese — do not publish unverified]"
-      },
-      "contentBlocks": [
+        },
         {
-          "type": "text",
+          "type": "keyValue",
           "heading": {
-            "lt": "Parama katedrai",
-            "en": "Support the Cathedral",
-            "ru": "Support the Cathedral [TODO: verify with parish/diocese — do not publish unverified]"
-          },
-          "body": {
-            "lt": "Jūsų auka padeda išlaikyti katedros paveldą, liturgiją ir karitatyvinę tarnystę.",
-            "en": "Your donation helps sustain the cathedral's heritage, liturgy and charitable ministry.",
-            "ru": "Your donation helps sustain the cathedral's heritage, liturgy and charitable ministry. [TODO: verify with parish/diocese — do not publish unverified]"
-          }
-        }
-      ]
-    },
-    {
-      "route": "/events",
-      "title": {
-        "lt": "Renginiai",
-        "en": "Events",
-        "ru": "Events [TODO: verify with parish/diocese — do not publish unverified]"
-      },
-      "contentBlocks": [
-        {
-          "type": "text",
-          "heading": {
-            "lt": "Arkivyskupijos renginių kalendorius",
-            "en": "Diocesan Events Calendar",
-            "ru": "Diocesan Events Calendar [TODO: verify with parish/diocese — do not publish unverified]"
-          },
-          "body": {
-            "lt": "Bendras arkivyskupijos renginių kalendorius: piligrimystės, koncertai, jaunimo dienos ir atlaidai.",
-            "en": "Shared archdiocesan events calendar: pilgrimages, concerts, youth days and patronal feasts.",
-            "ru": "Shared archdiocesan events calendar: pilgrimages, concerts, youth days and patronal feasts. [TODO: verify with parish/diocese — do not publish unverified]"
-          }
-        }
-      ]
-    },
-    {
-      "route": "/heritage",
-      "title": {
-        "lt": "Paveldas",
-        "en": "Heritage",
-        "ru": "Heritage [TODO: verify with parish/diocese — do not publish unverified]"
-      },
-      "contentBlocks": [
-        {
-          "type": "text",
-          "heading": {
-            "lt": "Katedros paveldas",
-            "en": "Cathedral Heritage",
-            "ru": "Cathedral Heritage [TODO: verify with parish/diocese — do not publish unverified]"
-          },
-          "body": {
-            "lt": "Katedros istorija, architektūra ir sakralinio meno kolekcijos nuo 1650 m. iki šių dienų.",
-            "en": "Cathedral history, architecture and sacred art collections from 1650 to the present day.",
-            "ru": "Cathedral history, architecture and sacred art collections from 1650 to the present day. [TODO: verify with parish/diocese — do not publish unverified]"
-          }
-        }
-      ]
-    },
-    {
-      "route": "/shop",
-      "title": {
-        "lt": "Krautuvėlė",
-        "en": "Shop",
-        "ru": "Shop [TODO: verify with parish/diocese — do not publish unverified]"
-      },
-      "contentBlocks": [
-        {
-          "type": "list",
-          "heading": {
-            "lt": "Katedros krautuvėlė",
-            "en": "Cathedral Shop",
-            "ru": "Cathedral Shop [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Duomenys",
+            "en": "Duomenys",
+            "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "items": [
             {
-              "title": {
-                "lt": "Mišių kortelės",
-                "en": "Mass Cards",
-                "ru": "Mass Cards [TODO: verify with parish/diocese — do not publish unverified]"
+              "label": {
+                "lt": "Entity ID",
+                "en": "Entity ID",
+                "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "lt-catholic-cathedral-001"
+            },
+            {
+              "label": {
+                "lt": "Jurisdikcija",
+                "en": "Jurisdikcija",
+                "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "Kaunas Archdiocese"
+            },
+            {
+              "label": {
+                "lt": "Įkurta",
+                "en": "Įkurta",
+                "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "1650"
+            },
+            {
+              "label": {
+                "lt": "Domenas",
+                "en": "Domenas",
+                "ru": "Domenas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "kaunoarkikatedra.lt"
+            }
+          ]
+        },
+        {
+          "type": "clergyRoleList",
+          "heading": {
+            "lt": "Dvasininkai",
+            "en": "Dvasininkai",
+            "ru": "Dvasininkai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "roles": [
+            {
+              "role": {
+                "lt": "Klebonas",
+                "en": "Klebonas",
+                "ru": "Klebonas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Parish priest",
+                "en": "Parish priest",
+                "ru": "Parish priest [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        },
+        {
+          "type": "mapLocation",
+          "heading": {
+            "lt": "Vieta",
+            "en": "Vieta",
+            "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "lat": 54.6872,
+          "lng": 25.2797,
+          "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Vilniaus%20g.%201%2C%2044287%20Kaunas%2C%20Lithuania"
+        }
+      ]
+    },
+    {
+      "route": "/contact",
+      "title": {
+        "lt": "Kontaktai",
+        "en": "Kontaktai",
+        "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "keyValue",
+          "heading": {
+            "lt": "Kontaktai",
+            "en": "Kontaktai",
+            "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "label": {
+                "lt": "Adresas",
+                "en": "Adresas",
+                "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "Vilniaus g. 1, 44287 Kaunas, Lithuania"
+            },
+            {
+              "label": {
+                "lt": "El. paštas",
+                "en": "El. paštas",
+                "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "info@kaunoarkikatedra.lt"
+            },
+            {
+              "label": {
+                "lt": "Telefonas",
+                "en": "Telefonas",
+                "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "+370 37 32 26 08"
+            }
+          ]
+        },
+        {
+          "type": "mapLocation",
+          "heading": {
+            "lt": "Vieta",
+            "en": "Vieta",
+            "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "lat": 54.6872,
+          "lng": 25.2797,
+          "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Vilniaus%20g.%201%2C%2044287%20Kaunas%2C%20Lithuania"
+        },
+        {
+          "type": "schedule",
+          "heading": {
+            "lt": "Biuro valandos",
+            "en": "Biuro valandos",
+            "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "entries": [
+            {
+              "day": {
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "09:00 - 17:00"
+              ]
+            },
+            {
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "10:00 - 14:00"
+              ]
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "closed"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/services",
+      "title": {
+        "lt": "Paslaugos",
+        "en": "Paslaugos",
+        "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Kauno Šv. apaštalų Petro ir Pauliaus arkikatedra bazilija",
+            "en": "Kaunas Cathedral Basilica of St. Peter and St. Paul",
+            "ru": "Kaunas Cathedral Basilica of St. Peter and St. Paul [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "subheading": {
+            "lt": "Kauno arkivyskupo sostinė, konsekruota 1650 m.",
+            "en": "Seat of the Archbishop of Kaunas, consecrated in 1650",
+            "ru": "Seat of the Archbishop of Kaunas, consecrated in 1650 [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Kaunas Archdiocese · Est. 1650",
+            "en": "Kaunas Archdiocese · Est. 1650"
+          }
+        },
+        {
+          "type": "sacramentList",
+          "heading": {
+            "lt": "Sakramentai",
+            "en": "Sakramentai",
+            "ru": "Sakramentai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "sacraments": [
+            {
+              "name": {
+                "lt": "Krikštas",
+                "en": "Krikštas",
+                "ru": "Krikštas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Krikšto sakramentas",
+                "en": "Krikšto sakramentas",
+                "ru": "Krikšto sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
               }
             },
             {
-              "title": {
-                "lt": "Katedros suvenyrai",
-                "en": "Cathedral Merchandise",
-                "ru": "Cathedral Merchandise [TODO: verify with parish/diocese — do not publish unverified]"
+              "name": {
+                "lt": "Pirmoji Komunija",
+                "en": "Pirmoji Komunija",
+                "ru": "Pirmoji Komunija [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Eucharistijos sakramentas",
+                "en": "Eucharistijos sakramentas",
+                "ru": "Eucharistijos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
               }
             },
             {
-              "title": {
-                "lt": "Koncertų bilietai",
-                "en": "Concert Tickets",
-                "ru": "Concert Tickets [TODO: verify with parish/diocese — do not publish unverified]"
+              "name": {
+                "lt": "Sutvirtinimas",
+                "en": "Sutvirtinimas",
+                "ru": "Sutvirtinimas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Sutvirtinimo sakramentas",
+                "en": "Sutvirtinimo sakramentas",
+                "ru": "Sutvirtinimo sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
               }
             },
             {
-              "title": {
-                "lt": "Ekskursijos",
-                "en": "Guided Tours",
-                "ru": "Guided Tours [TODO: verify with parish/diocese — do not publish unverified]"
+              "name": {
+                "lt": "Santuoka",
+                "en": "Santuoka",
+                "ru": "Santuoka [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Santuokos sakramentas",
+                "en": "Santuokos sakramentas",
+                "ru": "Santuokos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
               }
+            },
+            {
+              "name": {
+                "lt": "Išpažintis",
+                "en": "Išpažintis",
+                "ru": "Išpažintis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Atgailos sakramentas",
+                "en": "Atgailos sakramentas",
+                "ru": "Atgailos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "name": {
+                "lt": "Ligonių patepimas",
+                "en": "Ligonių patepimas",
+                "ru": "Ligonių patepimas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Ligonių patepimo sakramentas",
+                "en": "Ligonių patepimo sakramentas",
+                "ru": "Ligonių patepimo sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        },
+        {
+          "type": "faq",
+          "heading": {
+            "lt": "Dažni klausimai",
+            "en": "Dažni klausimai",
+            "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "questions": [
+            {
+              "question": {
+                "lt": "Kaip užsakyti paslaugą?",
+                "en": "Kaip užsakyti paslaugą?",
+                "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "answer": {
+                "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "question": {
+                "lt": "Ar reikalinga išankstinė registracija?",
+                "en": "Ar reikalinga išankstinė registracija?",
+                "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "answer": {
+                "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/schedule",
+      "title": {
+        "lt": "Tvarkaraštis",
+        "en": "Tvarkaraštis",
+        "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Kauno Šv. apaštalų Petro ir Pauliaus arkikatedra bazilija",
+            "en": "Kaunas Cathedral Basilica of St. Peter and St. Paul",
+            "ru": "Kaunas Cathedral Basilica of St. Peter and St. Paul [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "subheading": {
+            "lt": "Kauno arkivyskupo sostinė, konsekruota 1650 m.",
+            "en": "Seat of the Archbishop of Kaunas, consecrated in 1650",
+            "ru": "Seat of the Archbishop of Kaunas, consecrated in 1650 [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Kaunas Archdiocese · Est. 1650",
+            "en": "Kaunas Archdiocese · Est. 1650"
+          }
+        },
+        {
+          "type": "massSchedule",
+          "heading": {
+            "lt": "Šv. Mišių tvarkaraštis",
+            "en": "Šv. Mišių tvarkaraštis",
+            "ru": "Šv. Mišių tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "masses": [
+            {
+              "day": {
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "07:30",
+              "rrule": "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+            },
+            {
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "09:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SA"
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "09:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SU"
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "11:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SU"
+            }
+          ]
+        },
+        {
+          "type": "gallery",
+          "heading": {
+            "lt": "Galerija",
+            "en": "Galerija",
+            "ru": "Galerija [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "images": [
+            {
+              "src": "/media/placeholder-1.jpg",
+              "alt": {
+                "lt": "Nuotrauka",
+                "en": "Nuotrauka",
+                "ru": "Nuotrauka [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "width": 800,
+              "height": 600
             }
           ]
         }

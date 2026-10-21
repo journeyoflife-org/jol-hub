@@ -338,7 +338,7 @@ export const THEME_PRESETS: Record<string, ParishTheme> = {
     primaryColor: '#00843D', // Catholic green
     secondaryColor: '#1E40AF', // Church blue
     accentColor: '#D4AF37', // Gold
-    headingFont: 'var(--font-merriweather)',
+    headingFont: 'var(--font-serif)',
     bodyFont: 'var(--font-inter)',
   },
   modern: {
@@ -354,8 +354,8 @@ export const THEME_PRESETS: Record<string, ParishTheme> = {
     primaryColor: '#7C2D12', // Traditional brown
     secondaryColor: '#854D0E', // Gold-brown
     accentColor: '#B91C1C', // Cardinal red
-    headingFont: 'var(--font-merriweather)',
-    bodyFont: 'var(--font-merriweather)',
+    headingFont: 'var(--font-serif)',
+    bodyFont: 'var(--font-serif)',
   },
   minimal: {
     id: 'minimal',

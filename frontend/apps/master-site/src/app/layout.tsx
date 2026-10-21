@@ -1,16 +1,21 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Merriweather } from 'next/font/google';
+import localFont from 'next/font/local';
+import { localeAccents } from '@journeyoflife-org/ui/tokens';
 import './globals.css';
 
-const inter = Inter({
-  subsets: ['latin', 'latin-ext'],
+const inter = localFont({
+  src: '../../../../packages/ui/fonts/Inter.var.woff2',
   variable: '--font-inter',
+  display: 'swap',
 });
 
-const merriweather = Merriweather({
-  subsets: ['latin', 'latin-ext'],
-  variable: '--font-merriweather',
-  weight: ['300', '400', '700', '900'],
+const serif = localFont({
+  src: [
+    { path: '../../../../packages/ui/fonts/SourceSerif4Variable-Roman.woff2', style: 'normal' },
+    { path: '../../../../packages/ui/fonts/SourceSerif4Variable-It.woff2', style: 'italic' },
+  ],
+  variable: '--font-serif',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -44,7 +49,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#00843D',
+  themeColor: localeAccents.lt.primary,
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -56,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="lt" className={`${inter.variable} ${merriweather.variable}`}>
+    <html lang="lt" className={`${inter.variable} ${serif.variable}`}>
       <body className="bg-background min-h-screen font-sans antialiased">{children}</body>
     </html>
   );

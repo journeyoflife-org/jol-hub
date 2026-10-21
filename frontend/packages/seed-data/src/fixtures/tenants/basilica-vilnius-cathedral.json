@@ -26,311 +26,99 @@
     {
       "route": "/",
       "title": {
-        "lt": "Pradžia",
-        "en": "Home",
-        "ru": "Главная"
+        "lt": "Vilniaus Šv. Stanislovo ir Šv. Vladislovo arkikatedra bazilika",
+        "en": "Vilnius Cathedral Basilica of St. Stanislaus and St. Ladislaus",
+        "ru": "Кафедральный собор Святого Станислава и Святого Владислава в Вильнюсе"
       },
       "contentBlocks": [
         {
           "type": "hero",
           "heading": {
-            "lt": "Vilniaus arkikatedra bazilika",
-            "en": "Vilnius Cathedral Basilica",
-            "ru": "Кафедральный собор в Вильнюсе"
+            "lt": "Vilniaus Šv. Stanislovo ir Šv. Vladislovo arkikatedra bazilika",
+            "en": "Vilnius Cathedral Basilica of St. Stanislaus and St. Ladislaus",
+            "ru": "Кафедральный собор Святого Станислава и Святого Владислава в Вильнюсе"
           },
           "subheading": {
-            "lt": "Šv. Stanislovo ir Šv. Vladislovo garbei",
-            "en": "Dedicated to St. Stanislaus and St. Ladislaus",
-            "ru": "Во имя Святого Станислава и Святого Владислава"
+            "lt": "Vilniaus arkivyskupijos motininė bažnyčia, mažoji bazilika nuo 1922 m.",
+            "en": "Mother church of the Vilnius Archdiocese, minor basilica since 1922",
+            "ru": "[TODO: verify with parish/diocese — do not publish unverified] Материнская церковь Виленской архиепархии, малая базилика с 1922 г."
           },
           "body": {
-            "lt": "[TODO: verify with parish/diocese — do not publish unverified] Konsekruota 1783 m. Mažosios bazilikos titulas suteiktas 1922-03-04.",
-            "en": "[TODO: verify with parish/diocese — do not publish unverified] Consecrated in 1783. Elevated to a minor basilica on 4 March 1922.",
-            "ru": "[TODO: verify with parish/diocese — do not publish unverified] Освящена в 1783 г. Титул малой базилики присвоен 4 марта 1922 г."
+            "lt": "Vilnius Archdiocese · Est. 1783",
+            "en": "Vilnius Archdiocese · Est. 1783"
           }
         },
         {
           "type": "massSchedule",
           "heading": {
             "lt": "Šv. Mišių tvarkaraštis",
-            "en": "Mass Schedule",
-            "ru": "Расписание Месс"
+            "en": "Šv. Mišių tvarkaraštis",
+            "ru": "Šv. Mišių tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "masses": [
             {
               "day": {
-                "lt": "Sekmadienis",
-                "en": "Sunday"
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "time": "10:00",
-              "language": "lt",
-              "notes": {
-                "lt": "Su giedojimu",
-                "en": "With singing",
-                "ru": "С пением"
-              },
-              "rrule": "FREQ=WEEKLY;BYDAY=SU",
-              "validFrom": "2026-09-13"
-            },
-            {
-              "day": {
-                "lt": "Pirmadienis–Penktadienis",
-                "en": "Monday–Friday"
-              },
-              "time": "08:00",
-              "language": "lt",
-              "rrule": "FREQ=WEEKLY;BYDAY=MO",
-              "validFrom": "2026-09-14"
+              "time": "07:30",
+              "rrule": "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
             },
             {
               "day": {
                 "lt": "Šeštadienis",
-                "en": "Saturday"
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
               },
               "time": "09:00",
-              "language": "lt",
-              "rrule": "FREQ=WEEKLY;BYDAY=SA",
-              "validFrom": "2026-09-12"
+              "rrule": "FREQ=WEEKLY;BYDAY=SA"
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "09:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SU"
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "11:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SU"
             }
           ]
         },
         {
-          "type": "keyValue",
+          "type": "stats",
           "heading": {
-            "lt": "Kontaktai",
-            "en": "Contact",
-            "ru": "Контакты"
+            "lt": "Faktai",
+            "en": "Faktai",
+            "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "items": [
             {
               "label": {
-                "lt": "Adresas",
-                "en": "Address",
-                "ru": "Адрес"
+                "lt": "Įkurta",
+                "en": "Įkurta",
+                "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "value": "Katedros a. 1, 01143 Vilnius"
+              "value": "1783"
             },
             {
               "label": {
-                "lt": "Telefonas",
-                "en": "Phone",
-                "ru": "Телефон"
+                "lt": "Jurisdikcija",
+                "en": "Jurisdikcija",
+                "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "value": "+370 5 261 0731"
-            },
-            {
-              "label": {
-                "lt": "El. paštas",
-                "en": "Email",
-                "ru": "Эл. почта"
-              },
-              "value": "info@katedra.lt"
-            },
-            {
-              "label": {
-                "lt": "Svetainė",
-                "en": "Website",
-                "ru": "Сайт"
-              },
-              "value": "https://katedra.lt"
+              "value": "Vilnius Archdiocese"
             }
           ]
-        },
-        {
-          "type": "sacramentList",
-          "heading": {
-            "lt": "Sakramentai ir tarnystės",
-            "en": "Sacraments & Services",
-            "ru": "Таинства и служения"
-          },
-          "sacraments": [
-            {
-              "name": {
-                "lt": "Šv. Mišių intencija",
-                "en": "Mass Intention",
-                "ru": "Намерение Мессы"
-              },
-              "description": {
-                "lt": "Užsakymas Mišioms už gyvuosius ar mirusiuosius",
-                "en": "Booking Mass for the living or the deceased",
-                "ru": "[TODO: verify with parish/diocese — do not publish unverified] Заказ Мессы за живых или усопших"
-              }
-            },
-            {
-              "name": {
-                "lt": "Išpažintis",
-                "en": "Confession",
-                "ru": "Исповедь"
-              },
-              "schedule": {
-                "lt": "Šeštadieniais 9:30–10:30 arba pagal susitarimą",
-                "en": "Saturdays 9:30–10:30 or by appointment",
-                "ru": "[TODO: verify with parish/diocese — do not publish unverified] По субботам 9:30–10:30 или по договорённости"
-              }
-            },
-            {
-              "name": {
-                "lt": "Krikštas",
-                "en": "Baptism",
-                "ru": "Крещение"
-              },
-              "requirements": {
-                "lt": "Susisiekite su klebonu dėl datos",
-                "en": "Contact the parish priest for scheduling",
-                "ru": "[TODO: verify with parish/diocese — do not publish unverified] Свяжитесь с настоятелем для назначения даты"
-              }
-            }
-          ]
-        },
-        {
-          "type": "list",
-          "heading": {
-            "lt": "Katedros tarnystės",
-            "en": "Cathedral Services",
-            "ru": "Службы собора"
-          },
-          "items": [
-            {
-              "title": {
-                "lt": "Žvakės",
-                "en": "Candles",
-                "ru": "Свечи"
-              }
-            },
-            {
-              "title": {
-                "lt": "Piligrimystės",
-                "en": "Pilgrimages",
-                "ru": "Паломничество"
-              }
-            },
-            {
-              "title": {
-                "lt": "Knygos",
-                "en": "Books",
-                "ru": "Книги"
-              }
-            }
-          ]
-        },
-        {
-          "type": "clergyRoleList",
-          "heading": {
-            "lt": "Tarnybos",
-            "en": "Ministries",
-            "ru": "Служения"
-          },
-          "roles": [
-            {
-              "role": {
-                "lt": "Klebonas",
-                "en": "Parish Priest",
-                "ru": "Настоятель"
-              },
-              "description": {
-                "lt": "Atsakingas už sielovadą ir administraciją",
-                "en": "Responsible for pastoral care and administration",
-                "ru": "[TODO: verify with parish/diocese — do not publish unverified] Отвечает за пастырское попечение и администрацию"
-              },
-              "contact": "klebonas@katedra.lt"
-            },
-            {
-              "role": {
-                "lt": "Vikaras",
-                "en": "Vicar",
-                "ru": "Викарий"
-              },
-              "description": {
-                "lt": "Padeda klebonui sielovados darbe",
-                "en": "Assists the parish priest in pastoral work",
-                "ru": "[TODO: verify with parish/diocese — do not publish unverified] Помогает настоятелю в пастырской работе"
-              }
-            }
-          ]
-        },
-        {
-          "type": "gallery",
-          "heading": {
-            "lt": "Galerija",
-            "en": "Gallery",
-            "ru": "Галерея"
-          },
-          "images": [
-            {
-              "src": "/images/basilica-exterior.jpg",
-              "alt": {
-                "lt": "Vilniaus arkikatedros bazilikos fasadas",
-                "en": "Façade of Vilnius Cathedral Basilica",
-                "ru": "Фасад Кафедрального собора Вильнюса"
-              },
-              "width": 1200,
-              "height": 800,
-              "caption": {
-                "lt": "Fasadas",
-                "en": "Façade",
-                "ru": "Фасад"
-              }
-            },
-            {
-              "src": "/images/basilica-interior.jpg",
-              "alt": {
-                "lt": "Arkikatedros vidus",
-                "en": "Cathedral interior",
-                "ru": "Интерьер собора"
-              },
-              "width": 1200,
-              "height": 800
-            }
-          ]
-        },
-        {
-          "type": "visitingInfo",
-          "heading": {
-            "lt": "Lankymo laikas",
-            "en": "Visiting Hours",
-            "ru": "Часы посещения"
-          },
-          "hours": [
-            {
-              "day": "Pirmadienis–Penktadienis",
-              "dayEn": "Monday–Friday",
-              "open": "07:00",
-              "close": "19:00"
-            },
-            {
-              "day": "Šeštadienis",
-              "dayEn": "Saturday",
-              "open": "08:00",
-              "close": "18:00"
-            },
-            {
-              "day": "Sekmadienis",
-              "dayEn": "Sunday",
-              "open": "07:00",
-              "close": "20:00",
-              "notes": {
-                "lt": "Mišių metu lankytojai prašomi netrukdyti",
-                "en": "Visitors asked not to disturb during Mass",
-                "ru": "[TODO: verify with parish/diocese — do not publish unverified] Во время Мессы просим не беспокоить"
-              }
-            }
-          ],
-          "admission": {
-            "lt": "Įėjimas laisvas. Gido paslaugos — pagal susitarimą.",
-            "en": "Free entry. Guide services by arrangement.",
-            "ru": "[TODO: verify with parish/diocese — do not publish unverified] Вход свободный. Услуги гида по договорённости."
-          }
-        },
-        {
-          "type": "mapLocation",
-          "heading": {
-            "lt": "Kaip mus rasti",
-            "en": "How to Find Us",
-            "ru": "Как нас найти"
-          },
-          "lat": 54.6862,
-          "lng": 25.2903,
-          "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=54.6862,25.2903"
         },
         {
           "type": "cta",
@@ -338,25 +126,448 @@
             {
               "label": {
                 "lt": "Užsakyti Mišių intenciją",
-                "en": "Book Mass Intention",
-                "ru": "Заказать намерение Мессы"
+                "en": "Order Mass Intention"
               },
-              "href": "/#mass-intentions"
+              "href": "/shop"
             },
             {
               "label": {
-                "lt": "Žvakių aukojimas",
-                "en": "Offer Candles",
-                "ru": "Пожертвовать свечи"
+                "lt": "Sakramentai",
+                "en": "Sacraments"
               },
-              "href": "/#candles"
+              "href": "/services"
             }
           ]
         }
-      ],
-      "meta": {
-        "description": "Vilniaus Šv. Stanislovo ir Šv. Vladislovo arkikatedra bazilika"
-      }
+      ]
+    },
+    {
+      "route": "/about",
+      "title": {
+        "lt": "Apie",
+        "en": "Apie",
+        "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": {
+            "lt": "Apie",
+            "en": "Apie",
+            "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Vilniaus arkivyskupijos motininė bažnyčia, mažoji bazilika nuo 1922 m.",
+            "en": "Mother church of the Vilnius Archdiocese, minor basilica since 1922"
+          }
+        },
+        {
+          "type": "keyValue",
+          "heading": {
+            "lt": "Duomenys",
+            "en": "Duomenys",
+            "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "label": {
+                "lt": "Entity ID",
+                "en": "Entity ID",
+                "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "lt-catholic-basilica-001"
+            },
+            {
+              "label": {
+                "lt": "Jurisdikcija",
+                "en": "Jurisdikcija",
+                "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "Vilnius Archdiocese"
+            },
+            {
+              "label": {
+                "lt": "Įkurta",
+                "en": "Įkurta",
+                "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "1783"
+            },
+            {
+              "label": {
+                "lt": "Domenas",
+                "en": "Domenas",
+                "ru": "Domenas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "katedra.lt"
+            }
+          ]
+        },
+        {
+          "type": "clergyRoleList",
+          "heading": {
+            "lt": "Dvasininkai",
+            "en": "Dvasininkai",
+            "ru": "Dvasininkai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "roles": [
+            {
+              "role": {
+                "lt": "Klebonas",
+                "en": "Klebonas",
+                "ru": "Klebonas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Parish priest",
+                "en": "Parish priest",
+                "ru": "Parish priest [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        },
+        {
+          "type": "mapLocation",
+          "heading": {
+            "lt": "Vieta",
+            "en": "Vieta",
+            "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "lat": 54.6872,
+          "lng": 25.2797,
+          "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Katedros%20a.%201%2C%2001143%20Vilnius%2C%20Lithuania"
+        }
+      ]
+    },
+    {
+      "route": "/contact",
+      "title": {
+        "lt": "Kontaktai",
+        "en": "Kontaktai",
+        "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "keyValue",
+          "heading": {
+            "lt": "Kontaktai",
+            "en": "Kontaktai",
+            "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "label": {
+                "lt": "Adresas",
+                "en": "Adresas",
+                "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "Katedros a. 1, 01143 Vilnius, Lithuania"
+            },
+            {
+              "label": {
+                "lt": "El. paštas",
+                "en": "El. paštas",
+                "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "info@katedra.lt"
+            },
+            {
+              "label": {
+                "lt": "Telefonas",
+                "en": "Telefonas",
+                "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "+370 5 261 0731"
+            }
+          ]
+        },
+        {
+          "type": "mapLocation",
+          "heading": {
+            "lt": "Vieta",
+            "en": "Vieta",
+            "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "lat": 54.6872,
+          "lng": 25.2797,
+          "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Katedros%20a.%201%2C%2001143%20Vilnius%2C%20Lithuania"
+        },
+        {
+          "type": "schedule",
+          "heading": {
+            "lt": "Biuro valandos",
+            "en": "Biuro valandos",
+            "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "entries": [
+            {
+              "day": {
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "09:00 - 17:00"
+              ]
+            },
+            {
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "10:00 - 14:00"
+              ]
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "closed"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/services",
+      "title": {
+        "lt": "Paslaugos",
+        "en": "Paslaugos",
+        "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Vilniaus Šv. Stanislovo ir Šv. Vladislovo arkikatedra bazilika",
+            "en": "Vilnius Cathedral Basilica of St. Stanislaus and St. Ladislaus",
+            "ru": "Кафедральный собор Святого Станислава и Святого Владислава в Вильнюсе"
+          },
+          "subheading": {
+            "lt": "Vilniaus arkivyskupijos motininė bažnyčia, mažoji bazilika nuo 1922 m.",
+            "en": "Mother church of the Vilnius Archdiocese, minor basilica since 1922",
+            "ru": "[TODO: verify with parish/diocese — do not publish unverified] Материнская церковь Виленской архиепархии, малая базилика с 1922 г."
+          },
+          "body": {
+            "lt": "Vilnius Archdiocese · Est. 1783",
+            "en": "Vilnius Archdiocese · Est. 1783"
+          }
+        },
+        {
+          "type": "sacramentList",
+          "heading": {
+            "lt": "Sakramentai",
+            "en": "Sakramentai",
+            "ru": "Sakramentai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "sacraments": [
+            {
+              "name": {
+                "lt": "Krikštas",
+                "en": "Krikštas",
+                "ru": "Krikštas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Krikšto sakramentas",
+                "en": "Krikšto sakramentas",
+                "ru": "Krikšto sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "name": {
+                "lt": "Pirmoji Komunija",
+                "en": "Pirmoji Komunija",
+                "ru": "Pirmoji Komunija [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Eucharistijos sakramentas",
+                "en": "Eucharistijos sakramentas",
+                "ru": "Eucharistijos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "name": {
+                "lt": "Sutvirtinimas",
+                "en": "Sutvirtinimas",
+                "ru": "Sutvirtinimas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Sutvirtinimo sakramentas",
+                "en": "Sutvirtinimo sakramentas",
+                "ru": "Sutvirtinimo sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "name": {
+                "lt": "Santuoka",
+                "en": "Santuoka",
+                "ru": "Santuoka [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Santuokos sakramentas",
+                "en": "Santuokos sakramentas",
+                "ru": "Santuokos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "name": {
+                "lt": "Išpažintis",
+                "en": "Išpažintis",
+                "ru": "Išpažintis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Atgailos sakramentas",
+                "en": "Atgailos sakramentas",
+                "ru": "Atgailos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "name": {
+                "lt": "Ligonių patepimas",
+                "en": "Ligonių patepimas",
+                "ru": "Ligonių patepimas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Ligonių patepimo sakramentas",
+                "en": "Ligonių patepimo sakramentas",
+                "ru": "Ligonių patepimo sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        },
+        {
+          "type": "faq",
+          "heading": {
+            "lt": "Dažni klausimai",
+            "en": "Dažni klausimai",
+            "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "questions": [
+            {
+              "question": {
+                "lt": "Kaip užsakyti paslaugą?",
+                "en": "Kaip užsakyti paslaugą?",
+                "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "answer": {
+                "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "question": {
+                "lt": "Ar reikalinga išankstinė registracija?",
+                "en": "Ar reikalinga išankstinė registracija?",
+                "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "answer": {
+                "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/schedule",
+      "title": {
+        "lt": "Tvarkaraštis",
+        "en": "Tvarkaraštis",
+        "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Vilniaus Šv. Stanislovo ir Šv. Vladislovo arkikatedra bazilika",
+            "en": "Vilnius Cathedral Basilica of St. Stanislaus and St. Ladislaus",
+            "ru": "Кафедральный собор Святого Станислава и Святого Владислава в Вильнюсе"
+          },
+          "subheading": {
+            "lt": "Vilniaus arkivyskupijos motininė bažnyčia, mažoji bazilika nuo 1922 m.",
+            "en": "Mother church of the Vilnius Archdiocese, minor basilica since 1922",
+            "ru": "[TODO: verify with parish/diocese — do not publish unverified] Материнская церковь Виленской архиепархии, малая базилика с 1922 г."
+          },
+          "body": {
+            "lt": "Vilnius Archdiocese · Est. 1783",
+            "en": "Vilnius Archdiocese · Est. 1783"
+          }
+        },
+        {
+          "type": "massSchedule",
+          "heading": {
+            "lt": "Šv. Mišių tvarkaraštis",
+            "en": "Šv. Mišių tvarkaraštis",
+            "ru": "Šv. Mišių tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "masses": [
+            {
+              "day": {
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "07:30",
+              "rrule": "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+            },
+            {
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "09:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SA"
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "09:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SU"
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "11:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SU"
+            }
+          ]
+        },
+        {
+          "type": "gallery",
+          "heading": {
+            "lt": "Galerija",
+            "en": "Galerija",
+            "ru": "Galerija [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "images": [
+            {
+              "src": "/media/placeholder-1.jpg",
+              "alt": {
+                "lt": "Nuotrauka",
+                "en": "Nuotrauka",
+                "ru": "Nuotrauka [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "width": 800,
+              "height": 600
+            }
+          ]
+        }
+      ]
     }
   ],
   "governance": {

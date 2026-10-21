@@ -22,8 +22,8 @@
       {
         "route": "/",
         "title": {
-          "lt": "Pradžia",
-          "en": "Home"
+          "lt": "Šiaulių dekanatas",
+          "en": "Šiauliai Deanery"
         },
         "contentBlocks": [
           {
@@ -33,134 +33,439 @@
               "en": "Šiauliai Deanery"
             },
             "subheading": {
-              "lt": "Aštuonios miesto ir apylinkių parapijos, sujungtos bendra malda ir tarnyste",
-              "en": "Eight parishes of the city and surroundings, united in common prayer and service"
+              "lt": "Šiauliai Diocese",
+              "en": "Šiaulių vyskupijos parapijų bendrystė mieste ir apylinkėse"
+            },
+            "body": {
+              "lt": "Šiauliai Diocese · Est. —",
+              "en": "Šiauliai Diocese · Est. —"
             }
           },
           {
-            "type": "list",
+            "type": "schedule",
             "heading": {
-              "lt": "Dekanato parapijos",
-              "en": "Parishes of the deanery"
+              "lt": "Tvarkaraštis",
+              "en": "Tvarkaraštis",
+              "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
             },
-            "items": [
+            "entries": [
               {
-                "title": {
-                  "lt": "Šiaulių Šv. apaštalų Petro ir Pauliaus katedra",
-                  "en": "Šiauliai Cathedral of Sts. Peter and Paul"
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "subtitle": {
-                  "lt": "Dekanato centrinė šventovė",
-                  "en": "The deanery's central church"
-                }
+                "times": [
+                  "09:00 - 17:00"
+                ]
               },
               {
-                "title": {
-                  "lt": "Kuršėnų Šv. Jono Krikštytojo parapija",
-                  "en": "Kuršėnai St. John the Baptist Parish"
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "subtitle": {
-                  "lt": "Kuršėnai",
-                  "en": "Kuršėnai"
-                }
+                "times": [
+                  "10:00 - 14:00"
+                ]
               },
               {
-                "title": {
-                  "lt": "Šiaulių Šv. Ignaco Lojolos parapija",
-                  "en": "Šiauliai St. Ignatius Loyola Parish"
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "subtitle": {
-                  "lt": "Šiauliai",
-                  "en": "Šiauliai"
-                }
-              },
-              {
-                "title": {
-                  "lt": "Ginkūnų Šv. Dvasios parapija",
-                  "en": "Ginkūnai Holy Spirit Parish"
-                },
-                "subtitle": {
-                  "lt": "Ginkūnai",
-                  "en": "Ginkūnai"
-                }
+                "times": [
+                  "closed"
+                ]
               }
             ]
           },
           {
-            "type": "text",
+            "type": "stats",
             "heading": {
-              "lt": "Bendros tarnystės",
-              "en": "Shared ministries"
-            },
-            "body": {
-              "lt": "Dekanatas koordinuoja bendrą katechezę, jaunimo ir šeimų centrus, Caritas tinklą bei ligonių lankymą. Dekano vizitacijos, bendros atlaidų iškilmės ir kunigų susitikimai vyksta pagal vyskupijos metinį planą.",
-              "en": "The deanery coordinates common catechesis, youth and family centres, the Caritas network and visits to the sick. Dean's visitations, joint patronal feasts and priests' meetings follow the diocesan annual plan."
-            }
-          },
-          {
-            "type": "keyValue",
-            "heading": {
-              "lt": "Dekano raštinė",
-              "en": "Dean's office"
+              "lt": "Faktai",
+              "en": "Faktai",
+              "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "label": {
-                  "lt": "Adresas",
-                  "en": "Address"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "Aušros al. 42, 76283 Šiauliai"
+                "value": "—"
               },
               {
                 "label": {
-                  "lt": "Telefonas",
-                  "en": "Phone"
+                  "lt": "Jurisdikcija",
+                  "en": "Jurisdikcija",
+                  "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "+370 41 52 20 10"
-              },
-              {
-                "label": {
-                  "lt": "Priėmimas",
-                  "en": "Office hours"
-                },
-                "value": "III 10:00–14:00, V 14:00–17:00"
-              },
-              {
-                "label": {
-                  "lt": "Skubus sielovados numeris",
-                  "en": "Emergency pastoral line"
-                },
-                "value": "+370 41 52 20 11"
+                "value": "Šiauliai Diocese"
               }
             ]
           },
           {
             "type": "cta",
-            "heading": {
-              "lt": "Raskite savo parapiją",
-              "en": "Find your parish"
-            },
             "links": [
               {
                 "label": {
-                  "lt": "Katedra",
-                  "en": "Cathedral"
+                  "lt": "Kontaktai",
+                  "en": "Contact"
                 },
-                "href": "/"
+                "href": "/contact"
               },
               {
                 "label": {
-                  "lt": "Kuršėnai",
-                  "en": "Kuršėnai"
+                  "lt": "Naujienos",
+                  "en": "News"
                 },
-                "href": "/"
+                "href": "/news"
               }
             ]
           }
-        ],
-        "meta": {
-          "description": "Šiaulių dekanatas — parapijų sąrašas, bendros tarnystės, dekano raštinės laikai ir skubus sielovados numeris."
-        }
+        ]
+      },
+      {
+        "route": "/about",
+        "title": {
+          "lt": "Apie",
+          "en": "Apie",
+          "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "text",
+            "heading": {
+              "lt": "Apie",
+              "en": "Apie",
+              "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "body": {
+              "lt": "Šiauliai Diocese",
+              "en": "Šiaulių vyskupijos parapijų bendrystė mieste ir apylinkėse"
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Duomenys",
+              "en": "Duomenys",
+              "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Entity ID",
+                  "en": "Entity ID",
+                  "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "lt-wave1-deanery-001"
+              },
+              {
+                "label": {
+                  "lt": "Jurisdikcija",
+                  "en": "Jurisdikcija",
+                  "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Šiauliai Diocese"
+              }
+            ]
+          },
+          {
+            "type": "visitingInfo",
+            "heading": {
+              "lt": "Lankymo laikas",
+              "en": "Lankymo laikas",
+              "ru": "Lankymo laikas [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "hours": [
+              {
+                "day": "Pirmadienis - Penktadienis",
+                "dayEn": "Monday - Friday",
+                "open": "09:00",
+                "close": "17:00"
+              },
+              {
+                "day": "Šeštadienis",
+                "dayEn": "Saturday",
+                "open": "10:00",
+                "close": "14:00"
+              }
+            ],
+            "admission": {
+              "lt": "Lankymas nemokamas",
+              "en": "Lankymas nemokamas",
+              "ru": "Lankymas nemokamas [TODO: verify with parish/diocese — do not publish unverified]"
+            }
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Au%C5%A1ros%20al.%2042%2C%2076283%20%C5%A0iauliai%2C%20Lithuania"
+          }
+        ]
+      },
+      {
+        "route": "/contact",
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Kontaktai",
+          "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Kontaktai",
+              "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Adresas",
+                  "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Aušros al. 42, 76283 Šiauliai, Lithuania"
+              },
+              {
+                "label": {
+                  "lt": "El. paštas",
+                  "en": "El. paštas",
+                  "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "dekanas@siauliai-dekanatas-demo.lt"
+              },
+              {
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Telefonas",
+                  "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "+370 41 52 20 10"
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Au%C5%A1ros%20al.%2042%2C%2076283%20%C5%A0iauliai%2C%20Lithuania"
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Biuro valandos",
+              "en": "Biuro valandos",
+              "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/services",
+        "title": {
+          "lt": "Paslaugos",
+          "en": "Paslaugos",
+          "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Šiaulių dekanatas",
+              "en": "Šiauliai Deanery"
+            },
+            "subheading": {
+              "lt": "Šiauliai Diocese",
+              "en": "Šiaulių vyskupijos parapijų bendrystė mieste ir apylinkėse"
+            },
+            "body": {
+              "lt": "Šiauliai Diocese · Est. —",
+              "en": "Šiauliai Diocese · Est. —"
+            }
+          },
+          {
+            "type": "list",
+            "heading": {
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "title": {
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "title": {
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "faq",
+            "heading": {
+              "lt": "Dažni klausimai",
+              "en": "Dažni klausimai",
+              "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "questions": [
+              {
+                "question": {
+                  "lt": "Kaip užsakyti paslaugą?",
+                  "en": "Kaip užsakyti paslaugą?",
+                  "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "question": {
+                  "lt": "Ar reikalinga išankstinė registracija?",
+                  "en": "Ar reikalinga išankstinė registracija?",
+                  "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/schedule",
+        "title": {
+          "lt": "Tvarkaraštis",
+          "en": "Tvarkaraštis",
+          "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Šiaulių dekanatas",
+              "en": "Šiauliai Deanery"
+            },
+            "subheading": {
+              "lt": "Šiauliai Diocese",
+              "en": "Šiaulių vyskupijos parapijų bendrystė mieste ir apylinkėse"
+            },
+            "body": {
+              "lt": "Šiauliai Diocese · Est. —",
+              "en": "Šiauliai Diocese · Est. —"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Tvarkaraštis",
+              "en": "Tvarkaraštis",
+              "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "governance": {
@@ -194,184 +499,529 @@
       {
         "route": "/",
         "title": {
-          "lt": "Pradžia",
-          "en": "Home"
+          "lt": "Kuršėnų Šv. Jono Krikštytojo bažnyčia",
+          "en": "Kuršėnai St. John the Baptist Church"
         },
         "contentBlocks": [
           {
             "type": "hero",
             "heading": {
-              "lt": "Kuršėnų Šv. Jono Krikštytojo parapija",
-              "en": "Kuršėnai St. John the Baptist Parish"
+              "lt": "Kuršėnų Šv. Jono Krikštytojo bažnyčia",
+              "en": "Kuršėnai St. John the Baptist Church"
             },
             "subheading": {
-              "lt": "Kviečiame į Mišias, krikštą, santuoką ir bendrą maldą prie Ventos",
-              "en": "We invite you to Mass, baptism, marriage and common prayer by the Venta"
+              "lt": "Parapija prie Ventos — tikėjimo namai nuo XVI a.",
+              "en": "A parish by the Venta — a home of faith since the 16th century"
+            },
+            "body": {
+              "lt": "Šiauliai Diocese · Est. 1595",
+              "en": "Šiauliai Diocese · Est. 1595"
             }
           },
           {
-            "type": "schedule",
+            "type": "massSchedule",
             "heading": {
-              "lt": "Šv. Mišių laikai",
-              "en": "Holy Mass times"
+              "lt": "Šv. Mišių tvarkaraštis",
+              "en": "Šv. Mišių tvarkaraštis",
+              "ru": "Šv. Mišių tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
             },
-            "entries": [
+            "masses": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "time": "07:30",
+                "rrule": "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "time": "09:00",
+                "rrule": "FREQ=WEEKLY;BYDAY=SA"
+              },
               {
                 "day": {
                   "lt": "Sekmadienis",
-                  "en": "Sunday"
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "times": ["09:00", "11:30"],
-                "notes": "11:30 — giesmės su parapijos choru"
+                "time": "09:00",
+                "rrule": "FREQ=WEEKLY;BYDAY=SU"
               },
               {
                 "day": {
-                  "lt": "Antradienis, ketvirtadienis",
-                  "en": "Tuesday, Thursday"
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "times": ["18:00"]
-              },
-              {
-                "day": {
-                  "lt": "Pirmasis penktadienis",
-                  "en": "First Friday"
-                },
-                "times": ["18:00"],
-                "notes": "Šv. Komunijos ir atgailos diena"
+                "time": "11:00",
+                "rrule": "FREQ=WEEKLY;BYDAY=SU"
               }
             ]
           },
           {
-            "type": "list",
+            "type": "stats",
             "heading": {
-              "lt": "Sakramentai",
-              "en": "Sacraments"
-            },
-            "items": [
-              {
-                "title": {
-                  "lt": "Krikštas",
-                  "en": "Baptism"
-                },
-                "description": {
-                  "lt": "Katechezė tėvams ir krikštadaviams — prieš kiekvieną krikštą.",
-                  "en": "Catechesis for parents and godparents before each baptism."
-                }
-              },
-              {
-                "title": {
-                  "lt": "Santuoka",
-                  "en": "Marriage"
-                },
-                "description": {
-                  "lt": "Pasirengimo kursai — registracija raštinėje prieš 3 mėn.",
-                  "en": "Preparation courses — register at the office 3 months ahead."
-                }
-              },
-              {
-                "title": {
-                  "lt": "Ligoniuose",
-                  "en": "Anointing of the sick"
-                },
-                "description": {
-                  "lt": "Kviečiame kunigą pas ligonį bet kuriuo paros metu.",
-                  "en": "Call the priest to the sick at any hour."
-                }
-              }
-            ]
-          },
-          {
-            "type": "keyValue",
-            "heading": {
-              "lt": "Parapijos raštinė",
-              "en": "Parish office"
+              "lt": "Faktai",
+              "en": "Faktai",
+              "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "label": {
-                  "lt": "Adresas",
-                  "en": "Address"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "Bažnyčios g. 4, 81139 Kuršėnai"
+                "value": "1595"
               },
               {
                 "label": {
-                  "lt": "Telefonas",
-                  "en": "Phone"
+                  "lt": "Jurisdikcija",
+                  "en": "Jurisdikcija",
+                  "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "+370 41 55 20 20"
-              },
-              {
-                "label": {
-                  "lt": "Laikas",
-                  "en": "Hours"
-                },
-                "value": "Po Mišių ir III 16:00–18:00"
-              },
-              {
-                "label": {
-                  "lt": "Klebonas",
-                  "en": "Parish priest"
-                },
-                "value": "Kun. demonstracinis vardas (demo)"
+                "value": "Šiauliai Diocese"
               }
             ]
           },
           {
             "type": "cta",
-            "heading": {
-              "lt": "Parapijos gyvenimas",
-              "en": "Parish life"
-            },
             "links": [
               {
                 "label": {
-                  "lt": "Kontaktai",
-                  "en": "Contacts"
+                  "lt": "Užsakyti Mišių intenciją",
+                  "en": "Order Mass Intention"
                 },
-                "href": "/kontaktai"
+                "href": "/shop"
+              },
+              {
+                "label": {
+                  "lt": "Sakramentai",
+                  "en": "Sacraments"
+                },
+                "href": "/services"
               }
             ]
           }
-        ],
-        "meta": {
-          "description": "Kuršėnų Šv. Jono Krikštytojo parapija — Mišių laikai, sakramentai, raštinės laikai ir parapijos naujienos."
-        }
+        ]
       },
       {
-        "route": "/kontaktai",
+        "route": "/about",
+        "title": {
+          "lt": "Apie",
+          "en": "Apie",
+          "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "text",
+            "heading": {
+              "lt": "Apie",
+              "en": "Apie",
+              "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "body": {
+              "lt": "Parapija prie Ventos — tikėjimo namai nuo XVI a.",
+              "en": "A parish by the Venta — a home of faith since the 16th century"
+            }
+          },
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Duomenys",
+              "en": "Duomenys",
+              "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Entity ID",
+                  "en": "Entity ID",
+                  "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "lt-wave1-parish-002"
+              },
+              {
+                "label": {
+                  "lt": "Jurisdikcija",
+                  "en": "Jurisdikcija",
+                  "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Šiauliai Diocese"
+              },
+              {
+                "label": {
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "1595"
+              }
+            ]
+          },
+          {
+            "type": "clergyRoleList",
+            "heading": {
+              "lt": "Dvasininkai",
+              "en": "Dvasininkai",
+              "ru": "Dvasininkai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "roles": [
+              {
+                "role": {
+                  "lt": "Klebonas",
+                  "en": "Klebonas",
+                  "ru": "Klebonas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Parish priest",
+                  "en": "Parish priest",
+                  "ru": "Parish priest [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Ba%C5%BEny%C4%8Dios%20g.%204%2C%2081139%20Kur%C5%A1%C4%97nai%2C%20Lithuania"
+          }
+        ]
+      },
+      {
+        "route": "/contact",
         "title": {
           "lt": "Kontaktai",
-          "en": "Contacts"
+          "en": "Kontaktai",
+          "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
         },
         "contentBlocks": [
           {
             "type": "keyValue",
             "heading": {
-              "lt": "Susisiekite",
-              "en": "Get in touch"
+              "lt": "Kontaktai",
+              "en": "Kontaktai",
+              "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "label": {
                   "lt": "Adresas",
-                  "en": "Address"
+                  "en": "Adresas",
+                  "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "Bažnyčios g. 4, 81139 Kuršėnai"
-              },
-              {
-                "label": {
-                  "lt": "Telefonas",
-                  "en": "Phone"
-                },
-                "value": "+370 41 55 20 20"
+                "value": "Bažnyčios g. 4, 81139 Kuršėnai, Lithuania"
               },
               {
                 "label": {
                   "lt": "El. paštas",
-                  "en": "Email"
+                  "en": "El. paštas",
+                  "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
                 "value": "parapija@kursenai-demo.lt"
+              },
+              {
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Telefonas",
+                  "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "+370 41 55 20 20"
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Ba%C5%BEny%C4%8Dios%20g.%204%2C%2081139%20Kur%C5%A1%C4%97nai%2C%20Lithuania"
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Biuro valandos",
+              "en": "Biuro valandos",
+              "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/services",
+        "title": {
+          "lt": "Paslaugos",
+          "en": "Paslaugos",
+          "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Kuršėnų Šv. Jono Krikštytojo bažnyčia",
+              "en": "Kuršėnai St. John the Baptist Church"
+            },
+            "subheading": {
+              "lt": "Parapija prie Ventos — tikėjimo namai nuo XVI a.",
+              "en": "A parish by the Venta — a home of faith since the 16th century"
+            },
+            "body": {
+              "lt": "Šiauliai Diocese · Est. 1595",
+              "en": "Šiauliai Diocese · Est. 1595"
+            }
+          },
+          {
+            "type": "sacramentList",
+            "heading": {
+              "lt": "Sakramentai",
+              "en": "Sakramentai",
+              "ru": "Sakramentai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "sacraments": [
+              {
+                "name": {
+                  "lt": "Krikštas",
+                  "en": "Krikštas",
+                  "ru": "Krikštas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Krikšto sakramentas",
+                  "en": "Krikšto sakramentas",
+                  "ru": "Krikšto sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "name": {
+                  "lt": "Pirmoji Komunija",
+                  "en": "Pirmoji Komunija",
+                  "ru": "Pirmoji Komunija [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Eucharistijos sakramentas",
+                  "en": "Eucharistijos sakramentas",
+                  "ru": "Eucharistijos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "name": {
+                  "lt": "Sutvirtinimas",
+                  "en": "Sutvirtinimas",
+                  "ru": "Sutvirtinimas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Sutvirtinimo sakramentas",
+                  "en": "Sutvirtinimo sakramentas",
+                  "ru": "Sutvirtinimo sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "name": {
+                  "lt": "Santuoka",
+                  "en": "Santuoka",
+                  "ru": "Santuoka [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Santuokos sakramentas",
+                  "en": "Santuokos sakramentas",
+                  "ru": "Santuokos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "name": {
+                  "lt": "Išpažintis",
+                  "en": "Išpažintis",
+                  "ru": "Išpažintis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Atgailos sakramentas",
+                  "en": "Atgailos sakramentas",
+                  "ru": "Atgailos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "name": {
+                  "lt": "Ligonių patepimas",
+                  "en": "Ligonių patepimas",
+                  "ru": "Ligonių patepimas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Ligonių patepimo sakramentas",
+                  "en": "Ligonių patepimo sakramentas",
+                  "ru": "Ligonių patepimo sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "faq",
+            "heading": {
+              "lt": "Dažni klausimai",
+              "en": "Dažni klausimai",
+              "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "questions": [
+              {
+                "question": {
+                  "lt": "Kaip užsakyti paslaugą?",
+                  "en": "Kaip užsakyti paslaugą?",
+                  "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "question": {
+                  "lt": "Ar reikalinga išankstinė registracija?",
+                  "en": "Ar reikalinga išankstinė registracija?",
+                  "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/schedule",
+        "title": {
+          "lt": "Tvarkaraštis",
+          "en": "Tvarkaraštis",
+          "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Kuršėnų Šv. Jono Krikštytojo bažnyčia",
+              "en": "Kuršėnai St. John the Baptist Church"
+            },
+            "subheading": {
+              "lt": "Parapija prie Ventos — tikėjimo namai nuo XVI a.",
+              "en": "A parish by the Venta — a home of faith since the 16th century"
+            },
+            "body": {
+              "lt": "Šiauliai Diocese · Est. 1595",
+              "en": "Šiauliai Diocese · Est. 1595"
+            }
+          },
+          {
+            "type": "massSchedule",
+            "heading": {
+              "lt": "Šv. Mišių tvarkaraštis",
+              "en": "Šv. Mišių tvarkaraštis",
+              "ru": "Šv. Mišių tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "masses": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "time": "07:30",
+                "rrule": "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "time": "09:00",
+                "rrule": "FREQ=WEEKLY;BYDAY=SA"
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "time": "09:00",
+                "rrule": "FREQ=WEEKLY;BYDAY=SU"
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "time": "11:00",
+                "rrule": "FREQ=WEEKLY;BYDAY=SU"
+              }
+            ]
+          },
+          {
+            "type": "gallery",
+            "heading": {
+              "lt": "Galerija",
+              "en": "Galerija",
+              "ru": "Galerija [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "images": [
+              {
+                "src": "/media/placeholder-1.jpg",
+                "alt": {
+                  "lt": "Nuotrauka",
+                  "en": "Nuotrauka",
+                  "ru": "Nuotrauka [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "width": 800,
+                "height": 600
               }
             ]
           }
@@ -408,104 +1058,417 @@
       {
         "route": "/",
         "title": {
-          "lt": "Pradžia",
-          "en": "Home"
+          "lt": "Kuršėnų laidojimo namai",
+          "en": "Kuršėnai Funeral Home"
         },
         "contentBlocks": [
           {
             "type": "hero",
             "heading": {
-              "lt": "Esame šalia, kai sunkiausia",
-              "en": "We are with you in the hardest hour"
+              "lt": "Kuršėnų laidojimo namai",
+              "en": "Kuršėnai Funeral Home"
             },
             "subheading": {
-              "lt": "Laidojimo organizavimas, kremavimas ir kapų priežiūra Kuršėnuose ir apylinkėse",
-              "en": "Funeral arrangement, cremation and grave care in Kuršėnai and surroundings"
+              "lt": "Su užuojauta ir orumu — visą parą",
+              "en": "With compassion and dignity — around the clock"
             }
           },
           {
             "type": "list",
             "heading": {
-              "lt": "Paslaugos ir kainos",
-              "en": "Services and prices"
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "title": {
-                  "lt": "Pilnas laidojimo organizavimas",
-                  "en": "Full funeral arrangement"
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
                 "description": {
-                  "lt": "Dokumentai, karstas, transportas, salė, ceremonija.",
-                  "en": "Paperwork, casket, transport, hall and ceremony."
-                },
-                "price": 1800
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               },
               {
                 "title": {
-                  "lt": "Kremavimo organizavimas",
-                  "en": "Cremation arrangement"
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 1350
-              },
-              {
-                "title": {
-                  "lt": "Atsisveikinimo salė",
-                  "en": "Farewell hall"
-                },
-                "subtitle": {
-                  "lt": "3 val. su personalu",
-                  "en": "3 hours with staff"
-                },
-                "price": 160
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               }
             ]
           },
           {
+            "type": "stats",
+            "heading": {
+              "lt": "Faktai",
+              "en": "Faktai",
+              "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "2009"
+              }
+            ]
+          },
+          {
+            "type": "cta",
+            "links": [
+              {
+                "label": {
+                  "lt": "Kontaktai",
+                  "en": "Contact"
+                },
+                "href": "/contact"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/about",
+        "title": {
+          "lt": "Apie",
+          "en": "Apie",
+          "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
             "type": "text",
             "heading": {
-              "lt": "Pagalba netekties metu",
-              "en": "Support in bereavement"
+              "lt": "Apie",
+              "en": "Apie",
+              "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "body": {
-              "lt": "Padedame paruošti dokumentus, suderinti ceremoniją su parapija arba civiliniu celebrantu, o šeimoms primename Bažnyčios žodį apie viltį ir prisikėlimą. Užuojautos metu — skambinkite bet kuriuo paros metu.",
-              "en": "We help with paperwork, coordinate the ceremony with the parish or a civil celebrant, and remind families of the Church's word on hope and resurrection. In bereavement — call at any hour."
+              "lt": "Su užuojauta ir orumu — visą parą",
+              "en": "With compassion and dignity — around the clock"
             }
           },
           {
             "type": "keyValue",
             "heading": {
-              "lt": "Visą parą",
-              "en": "Around the clock"
+              "lt": "Duomenys",
+              "en": "Duomenys",
+              "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "label": {
-                  "lt": "Skubus telefonas",
-                  "en": "Urgent phone"
+                  "lt": "Entity ID",
+                  "en": "Entity ID",
+                  "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "+370 41 55 30 30"
+                "value": "lt-wave1-funeral-002"
               },
               {
                 "label": {
-                  "lt": "Adresas",
-                  "en": "Address"
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "Ventos g. 18, 81121 Kuršėnai"
+                "value": "2009"
+              }
+            ]
+          },
+          {
+            "type": "visitingInfo",
+            "heading": {
+              "lt": "Lankymo laikas",
+              "en": "Lankymo laikas",
+              "ru": "Lankymo laikas [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "hours": [
+              {
+                "day": "Pirmadienis - Penktadienis",
+                "dayEn": "Monday - Friday",
+                "open": "09:00",
+                "close": "17:00"
+              },
+              {
+                "day": "Šeštadienis",
+                "dayEn": "Saturday",
+                "open": "10:00",
+                "close": "14:00"
+              }
+            ],
+            "admission": {
+              "lt": "Lankymas nemokamas",
+              "en": "Lankymas nemokamas",
+              "ru": "Lankymas nemokamas [TODO: verify with parish/diocese — do not publish unverified]"
+            }
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Ventos%20g.%2018%2C%2081121%20Kur%C5%A1%C4%97nai%2C%20Lithuania"
+          }
+        ]
+      },
+      {
+        "route": "/contact",
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Kontaktai",
+          "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Kontaktai",
+              "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Adresas",
+                  "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Ventos g. 18, 81121 Kuršėnai, Lithuania"
               },
               {
                 "label": {
                   "lt": "El. paštas",
-                  "en": "Email"
+                  "en": "El. paštas",
+                  "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
                 "value": "info@kursenai-laidojimas-demo.lt"
+              },
+              {
+                "label": {
+                  "lt": "Telefonas",
+                  "en": "Telefonas",
+                  "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "+370 41 55 30 30"
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Ventos%20g.%2018%2C%2081121%20Kur%C5%A1%C4%97nai%2C%20Lithuania"
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Biuro valandos",
+              "en": "Biuro valandos",
+              "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
               }
             ]
           }
-        ],
-        "meta": {
-          "description": "Kuršėnų laidojimo namai — pilnas laidojimo ir kremavimo organizavimas 24/7, skaidrios kainos, užuojauta šeimoms."
-        }
+        ]
+      },
+      {
+        "route": "/services",
+        "title": {
+          "lt": "Paslaugos",
+          "en": "Paslaugos",
+          "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Kuršėnų laidojimo namai",
+              "en": "Kuršėnai Funeral Home"
+            },
+            "subheading": {
+              "lt": "Su užuojauta ir orumu — visą parą",
+              "en": "With compassion and dignity — around the clock"
+            }
+          },
+          {
+            "type": "list",
+            "heading": {
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "title": {
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "title": {
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "faq",
+            "heading": {
+              "lt": "Dažni klausimai",
+              "en": "Dažni klausimai",
+              "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "questions": [
+              {
+                "question": {
+                  "lt": "Kaip užsakyti paslaugą?",
+                  "en": "Kaip užsakyti paslaugą?",
+                  "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "question": {
+                  "lt": "Ar reikalinga išankstinė registracija?",
+                  "en": "Ar reikalinga išankstinė registracija?",
+                  "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/schedule",
+        "title": {
+          "lt": "Tvarkaraštis",
+          "en": "Tvarkaraštis",
+          "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Kuršėnų laidojimo namai",
+              "en": "Kuršėnai Funeral Home"
+            },
+            "subheading": {
+              "lt": "Su užuojauta ir orumu — visą parą",
+              "en": "With compassion and dignity — around the clock"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Tvarkaraštis",
+              "en": "Tvarkaraštis",
+              "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "governance": {
@@ -538,100 +1501,417 @@
       {
         "route": "/",
         "title": {
-          "lt": "Pradžia",
-          "en": "Home"
+          "lt": "Kuršėnų kapinių priežiūra",
+          "en": "Kuršėnai Cemetery Care"
         },
         "contentBlocks": [
           {
             "type": "hero",
             "heading": {
-              "lt": "Kapaviečių priežiūra Kuršėnuose",
-              "en": "Grave care in Kuršėnai"
+              "lt": "Kuršėnų kapinių priežiūra",
+              "en": "Kuršėnai Cemetery Care"
             },
             "subheading": {
-              "lt": "Reguliari priežiūra, sezoninis puošimas ir ataskaitos su nuotraukomis",
-              "en": "Regular care, seasonal decoration and photo reports"
+              "lt": "Tvarkinga kapavietė — be Jūsų rūpesčio",
+              "en": "A cared-for grave — without your worry"
             }
           },
           {
             "type": "list",
             "heading": {
-              "lt": "Planai ir kainos",
-              "en": "Plans and prices"
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "title": {
-                  "lt": "Vienkartinis tvarkymas",
-                  "en": "One-time care"
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "price": 30
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               },
               {
                 "title": {
-                  "lt": "Mėnesinė priežiūra",
-                  "en": "Monthly care"
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
                 },
                 "description": {
-                  "lt": "Su foto ataskaita po vizito.",
-                  "en": "With a photo report after each visit."
-                },
-                "price": 22
-              },
-              {
-                "title": {
-                  "lt": "Metinis planas",
-                  "en": "Annual plan"
-                },
-                "description": {
-                  "lt": "12 vizitų ir šventinis puošimas.",
-                  "en": "12 visits and feast-day decoration."
-                },
-                "price": 220
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
               }
             ]
           },
           {
+            "type": "stats",
+            "heading": {
+              "lt": "Faktai",
+              "en": "Faktai",
+              "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "2017"
+              }
+            ]
+          },
+          {
+            "type": "cta",
+            "links": [
+              {
+                "label": {
+                  "lt": "Kontaktai",
+                  "en": "Contact"
+                },
+                "href": "/contact"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/about",
+        "title": {
+          "lt": "Apie",
+          "en": "Apie",
+          "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
             "type": "text",
+            "heading": {
+              "lt": "Apie",
+              "en": "Apie",
+              "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+            },
             "body": {
-              "lt": "Dirbame su švelniomis, akmeniui ir žalumynams saugiomis priemonėmis. Artimieji užsienyje kiekvieną vizitą mato nuotraukoje — ramybė, kurią dovanojame.",
-              "en": "We use gentle, stone- and plant-safe products. Relatives abroad see every visit in a photo — the peace of mind we give."
+              "lt": "Tvarkinga kapavietė — be Jūsų rūpesčio",
+              "en": "A cared-for grave — without your worry"
             }
           },
           {
             "type": "keyValue",
             "heading": {
-              "lt": "Kontaktai",
-              "en": "Contacts"
+              "lt": "Duomenys",
+              "en": "Duomenys",
+              "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
             },
             "items": [
               {
                 "label": {
-                  "lt": "Telefonas",
-                  "en": "Phone"
+                  "lt": "Entity ID",
+                  "en": "Entity ID",
+                  "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "+370 41 55 40 40"
+                "value": "lt-wave1-cleaning-002"
+              },
+              {
+                "label": {
+                  "lt": "Įkurta",
+                  "en": "Įkurta",
+                  "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "2017"
+              }
+            ]
+          },
+          {
+            "type": "visitingInfo",
+            "heading": {
+              "lt": "Lankymo laikas",
+              "en": "Lankymo laikas",
+              "ru": "Lankymo laikas [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "hours": [
+              {
+                "day": "Pirmadienis - Penktadienis",
+                "dayEn": "Monday - Friday",
+                "open": "09:00",
+                "close": "17:00"
+              },
+              {
+                "day": "Šeštadienis",
+                "dayEn": "Saturday",
+                "open": "10:00",
+                "close": "14:00"
+              }
+            ],
+            "admission": {
+              "lt": "Lankymas nemokamas",
+              "en": "Lankymas nemokamas",
+              "ru": "Lankymas nemokamas [TODO: verify with parish/diocese — do not publish unverified]"
+            }
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Kap%C5%B3%20g.%206%2C%2081144%20Kur%C5%A1%C4%97nai%2C%20Lithuania"
+          }
+        ]
+      },
+      {
+        "route": "/contact",
+        "title": {
+          "lt": "Kontaktai",
+          "en": "Kontaktai",
+          "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "keyValue",
+            "heading": {
+              "lt": "Kontaktai",
+              "en": "Kontaktai",
+              "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "label": {
+                  "lt": "Adresas",
+                  "en": "Adresas",
+                  "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "value": "Kapų g. 6, 81144 Kuršėnai, Lithuania"
               },
               {
                 "label": {
                   "lt": "El. paštas",
-                  "en": "Email"
+                  "en": "El. paštas",
+                  "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
                 "value": "info@kursenai-prieziura-demo.lt"
               },
               {
                 "label": {
-                  "lt": "Darbo laikas",
-                  "en": "Hours"
+                  "lt": "Telefonas",
+                  "en": "Telefonas",
+                  "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
                 },
-                "value": "I–V 8:00–17:00"
+                "value": "+370 41 55 40 40"
+              }
+            ]
+          },
+          {
+            "type": "mapLocation",
+            "heading": {
+              "lt": "Vieta",
+              "en": "Vieta",
+              "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "lat": 54.6872,
+            "lng": 25.2797,
+            "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Kap%C5%B3%20g.%206%2C%2081144%20Kur%C5%A1%C4%97nai%2C%20Lithuania"
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Biuro valandos",
+              "en": "Biuro valandos",
+              "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
               }
             ]
           }
-        ],
-        "meta": {
-          "description": "Kuršėnų kapinių priežiūra — vienkartinis tvarkymas, mėnesinė ir metinė priežiūra su foto ataskaitomis."
-        }
+        ]
+      },
+      {
+        "route": "/services",
+        "title": {
+          "lt": "Paslaugos",
+          "en": "Paslaugos",
+          "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Kuršėnų kapinių priežiūra",
+              "en": "Kuršėnai Cemetery Care"
+            },
+            "subheading": {
+              "lt": "Tvarkinga kapavietė — be Jūsų rūpesčio",
+              "en": "A cared-for grave — without your worry"
+            }
+          },
+          {
+            "type": "list",
+            "heading": {
+              "lt": "Paslaugos",
+              "en": "Paslaugos",
+              "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "items": [
+              {
+                "title": {
+                  "lt": "Pagrindinė paslauga",
+                  "en": "Pagrindinė paslauga",
+                  "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "title": {
+                  "lt": "Papildoma paslauga",
+                  "en": "Papildoma paslauga",
+                  "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "description": {
+                  "lt": "Aprašymas",
+                  "en": "Aprašymas",
+                  "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "faq",
+            "heading": {
+              "lt": "Dažni klausimai",
+              "en": "Dažni klausimai",
+              "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "questions": [
+              {
+                "question": {
+                  "lt": "Kaip užsakyti paslaugą?",
+                  "en": "Kaip užsakyti paslaugą?",
+                  "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                  "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              },
+              {
+                "question": {
+                  "lt": "Ar reikalinga išankstinė registracija?",
+                  "en": "Ar reikalinga išankstinė registracija?",
+                  "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "answer": {
+                  "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                  "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "route": "/schedule",
+        "title": {
+          "lt": "Tvarkaraštis",
+          "en": "Tvarkaraštis",
+          "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+        },
+        "contentBlocks": [
+          {
+            "type": "hero",
+            "heading": {
+              "lt": "Kuršėnų kapinių priežiūra",
+              "en": "Kuršėnai Cemetery Care"
+            },
+            "subheading": {
+              "lt": "Tvarkinga kapavietė — be Jūsų rūpesčio",
+              "en": "A cared-for grave — without your worry"
+            }
+          },
+          {
+            "type": "schedule",
+            "heading": {
+              "lt": "Tvarkaraštis",
+              "en": "Tvarkaraštis",
+              "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+            },
+            "entries": [
+              {
+                "day": {
+                  "lt": "Pirmadienis - Penktadienis",
+                  "en": "Pirmadienis - Penktadienis",
+                  "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "09:00 - 17:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Šeštadienis",
+                  "en": "Šeštadienis",
+                  "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "10:00 - 14:00"
+                ]
+              },
+              {
+                "day": {
+                  "lt": "Sekmadienis",
+                  "en": "Sekmadienis",
+                  "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+                },
+                "times": [
+                  "closed"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "governance": {

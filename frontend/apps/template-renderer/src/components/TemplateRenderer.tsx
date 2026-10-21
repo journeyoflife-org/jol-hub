@@ -247,10 +247,228 @@ function BlockView({ block, accent, href }: BlockViewProps) {
         </section>
       );
 
+    case 'massSchedule':
+      return (
+        <section>
+          {block.heading && (
+            <h2 className="font-heading text-primary mb-4 text-2xl font-bold">
+              {t(block.heading)}
+            </h2>
+          )}
+          <div className="grid gap-4 md:grid-cols-2">
+            {block.masses.map((mass) => (
+              <Card key={`${t(mass.day)}-${mass.time}`}>
+                <CardContent className="p-4">
+                  <h3 className="font-heading text-primary text-lg">{t(mass.day)}</h3>
+                  {mass.day.en && mass.day.en !== mass.day.lt && (
+                    <p className="text-xs text-gray-500">{mass.day.en}</p>
+                  )}
+                  <div className="mt-2 flex flex-wrap items-center gap-2">
+                    <Badge className="bg-primary text-white">{mass.time}</Badge>
+                    {mass.language && (
+                      <Badge variant="outline">{mass.language}</Badge>
+                    )}
+                  </div>
+                  {mass.notes && (
+                    <p className="mt-2 text-sm text-gray-500">{t(mass.notes)}</p>
+                  )}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+      );
+
+    case 'gallery':
+      return (
+        <section>
+          {block.heading && (
+            <h2 className="font-heading text-primary mb-4 text-2xl font-bold">
+              {t(block.heading)}
+            </h2>
+          )}
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {block.images.map((img) => (
+              <figure key={img.src} className="overflow-hidden rounded-lg">
+                <img
+                  src={img.src}
+                  alt={t(img.alt)}
+                  width={img.width}
+                  height={img.height}
+                  loading="lazy"
+                  className="h-auto w-full object-cover"
+                />
+                {img.caption && (
+                  <figcaption className="mt-1 text-center text-sm text-gray-500">
+                    {t(img.caption)}
+                  </figcaption>
+                )}
+              </figure>
+            ))}
+          </div>
+        </section>
+      );
+
+    case 'faq':
+      return (
+        <section>
+          {block.heading && (
+            <h2 className="font-heading text-primary mb-4 text-2xl font-bold">
+              {t(block.heading)}
+            </h2>
+          )}
+          <div className="space-y-3">
+            {block.questions.map((qa) => (
+              <details
+                key={t(qa.question)}
+                className="rounded-lg border border-neutral-200 dark:border-neutral-700"
+              >
+                <summary className="font-heading text-primary cursor-pointer px-4 py-3 font-semibold">
+                  {t(qa.question)}
+                </summary>
+                <div className="px-4 pb-3 text-gray-700">{t(qa.answer)}</div>
+              </details>
+            ))}
+          </div>
+        </section>
+      );
+
+    case 'sacramentList':
+      return (
+        <section>
+          {block.heading && (
+            <h2 className="font-heading text-primary mb-4 text-2xl font-bold">
+              {t(block.heading)}
+            </h2>
+          )}
+          <div className="grid gap-4 md:grid-cols-2">
+            {block.sacraments.map((sac) => (
+              <Card key={t(sac.name)}>
+                <CardContent className="p-4">
+                  <h3 className="text-primary font-semibold">{t(sac.name)}</h3>
+                  {sac.description && (
+                    <p className="mt-1 text-sm text-gray-600">{t(sac.description)}</p>
+                  )}
+                  {sac.schedule && (
+                    <p className="mt-1 text-sm text-gray-500">
+                      <span className="font-medium">Schedule:</span> {t(sac.schedule)}
+                    </p>
+                  )}
+                  {sac.requirements && (
+                    <p className="mt-1 text-sm text-gray-500">
+                      <span className="font-medium">Requirements:</span>{' '}
+                      {t(sac.requirements)}
+                    </p>
+                  )}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+      );
+
+    case 'clergyRoleList':
+      return (
+        <section>
+          {block.heading && (
+            <h2 className="font-heading text-primary mb-4 text-2xl font-bold">
+              {t(block.heading)}
+            </h2>
+          )}
+          <dl className="space-y-4">
+            {block.roles.map((role) => (
+              <div key={t(role.role)} className="border-b border-neutral-200 pb-3 dark:border-neutral-700">
+                <dt className="text-primary font-semibold">{t(role.role)}</dt>
+                {role.description && (
+                  <dd className="mt-1 text-sm text-gray-600">{t(role.description)}</dd>
+                )}
+                {role.contact && (
+                  <dd className="mt-1 text-sm">
+                    <a href={`mailto:${role.contact}`} className="text-primary underline">
+                      {role.contact}
+                    </a>
+                  </dd>
+                )}
+              </div>
+            ))}
+          </dl>
+        </section>
+      );
+
+    case 'visitingInfo':
+      return (
+        <section>
+          {block.heading && (
+            <h2 className="font-heading text-primary mb-4 text-2xl font-bold">
+              {t(block.heading)}
+            </h2>
+          )}
+          <Card>
+            <CardContent className="p-4">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-neutral-200 dark:border-neutral-700">
+                    <th className="py-2 text-start font-semibold">Day</th>
+                    <th className="py-2 text-start font-semibold">Open</th>
+                    <th className="py-2 text-start font-semibold">Close</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {block.hours.map((h) => (
+                    <tr key={h.day} className="border-b border-neutral-100 dark:border-neutral-800">
+                      <td className="py-2">{h.day}</td>
+                      <td className="py-2">{h.open}</td>
+                      <td className="py-2">{h.close}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {block.admission && (
+                <p className="mt-3 text-sm text-gray-600">{t(block.admission)}</p>
+              )}
+            </CardContent>
+          </Card>
+        </section>
+      );
+
+    case 'mapLocation':
+      return (
+        <section>
+          {block.heading && (
+            <h2 className="font-heading text-primary mb-4 text-2xl font-bold">
+              {t(block.heading)}
+            </h2>
+          )}
+          <div
+            data-lat={block.lat}
+            data-lng={block.lng}
+            className="space-y-3"
+          >
+            {block.staticMap && (
+              <img
+                src={block.staticMap.src}
+                alt={t(block.staticMap.alt)}
+                width={block.staticMap.width}
+                height={block.staticMap.height}
+                loading="lazy"
+                className="h-auto w-full rounded-lg object-cover"
+              />
+            )}
+            {block.directionsUrl && (
+              <a
+                href={block.directionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary inline-flex items-center gap-1 font-medium underline"
+              >
+                Get directions →
+              </a>
+            )}
+          </div>
+        </section>
+      );
+
     default:
-      // Unhandled block types (massSchedule, gallery, faq, sacramentList,
-      // clergyRoleList, visitingInfo, mapLocation) render nothing until
-      // their renderers are implemented.
       return null;
   }
 }

@@ -15,6 +15,7 @@ import lt from './lt.json';
 import en from './en.json';
 import ru from './ru.json';
 import church from './verticals/church.json';
+import pl from './pl.json';
 import funeral from './verticals/funeral.json';
 import cleaning from './verticals/cleaning.json';
 
@@ -23,20 +24,11 @@ export type MessageNamespace = Record<string, string>;
 /** Full catalog: namespace → keys. */
 export type MessageCatalog = Record<string, MessageNamespace>;
 
-// Polish message catalog (Wave 1 Task 6 — D13 gated)
-const plCatalog: MessageCatalog = {
-  common: {
-    loading: 'Ładowanie...',
-    error: 'Błąd',
-    notFound: 'Nie znaleziono',
-  },
-} as unknown as MessageCatalog;
-
 const CATALOGS: Record<SupportedLocale, MessageCatalog> = {
   lt: lt as MessageCatalog,
   en: en as MessageCatalog,
   ru: ru as MessageCatalog,
-  pl: plCatalog,
+  pl: pl as MessageCatalog,
 };
 
 export type VerticalOverride = 'church' | 'funeral' | 'cleaning';

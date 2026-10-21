@@ -40,5 +40,19 @@
     "navigation": {
       "contact": "Обратитесь к нам"
     }
+  },
+  "pl": {
+    "commerce": {
+      "donateTitle": "Fundusz wsparcia",
+      "donateDescription": "Twoje wsparcie pomaga rodzinom w żałobie i wspiera naszą opiekę.",
+      "donateCta": "Wesprzyj nas"
+    },
+    "forms": {
+      "messageLabel": "Zapytanie",
+      "submit": "Skontaktuj się"
+    },
+    "navigation": {
+      "contact": "Skontaktuj się z nami"
+    }
   }
 }

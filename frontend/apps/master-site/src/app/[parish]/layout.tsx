@@ -17,6 +17,7 @@ import type { ReactNode } from 'react';
 import { resolveParish } from '@/lib/tenant/resolver';
 import { getCurrentLiturgicalSeason, type ParishConfig } from '@/lib/tenant/config';
 import { ParishProvider } from '@/components/tenant/ParishProvider';
+import { localeAccents } from '@journeyoflife-org/ui/tokens';
 
 // =============================================================================
 // TYPES
@@ -111,7 +112,7 @@ export async function generateViewport(props: ParishLayoutProps): Promise<Viewpo
   const parish = await resolveParish(params.parish);
 
   return {
-    themeColor: parish?.theme.primaryColor ?? '#00843D',
+    themeColor: parish?.theme.primaryColor ?? localeAccents.lt.primary,
     width: 'device-width',
     initialScale: 1,
     maximumScale: 5,

@@ -26,9 +26,9 @@
     {
       "route": "/",
       "title": {
-        "lt": "Pradžia",
-        "en": "Home",
-        "ru": "Home [TODO: verify with parish/diocese — do not publish unverified]"
+        "lt": "Kauno evangelikų liuteronų bažnyčia",
+        "en": "Kaunas Evangelical Lutheran Church",
+        "ru": "Kaunas Evangelical Lutheran Church [TODO: verify with parish/diocese — do not publish unverified]"
       },
       "contentBlocks": [
         {
@@ -38,231 +38,452 @@
             "en": "Kaunas Evangelical Lutheran Church",
             "ru": "Kaunas Evangelical Lutheran Church [TODO: verify with parish/diocese — do not publish unverified]"
           },
+          "subheading": {
+            "lt": "Augsburgo išpažinimo bendruomenė nuo 1795 m.",
+            "en": "An Augsburg Confession congregation since 1795",
+            "ru": "An Augsburg Confession congregation since 1795 [TODO: verify with parish/diocese — do not publish unverified]"
+          },
           "body": {
-            "lt": "Liuteronų reformacijos paveldas · Augsburgo išpažinimas · Įkurta 1795 m.",
-            "en": "Lutheran Reformation heritage · Augsburg Confession · Founded 1795",
-            "ru": "Lutheran Reformation heritage · Augsburg Confession · Founded 1795 [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Evangelical Lutheran Church in Lithuania · Est. 1795",
+            "en": "Evangelical Lutheran Church in Lithuania · Est. 1795"
           }
         },
         {
           "type": "schedule",
           "heading": {
-            "lt": "Pamaldų tvarka",
-            "en": "Service Schedule",
-            "ru": "Service Schedule [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Tvarkaraštis",
+            "en": "Tvarkaraštis",
+            "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "entries": [
             {
               "day": {
-                "lt": "Sekmadienis",
-                "en": "Sunday"
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "times": ["10:00"],
-              "notes": "Pagrindinės pamaldos su Šv. Vakariene"
+              "times": [
+                "09:00 - 17:00"
+              ]
+            },
+            {
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "10:00 - 14:00"
+              ]
             },
             {
               "day": {
                 "lt": "Sekmadienis",
-                "en": "Sunday"
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "times": ["18:00"],
-              "notes": "Vakarinės pamaldos"
-            },
-            {
-              "day": {
-                "lt": "Trečiadienis",
-                "en": "Wednesday"
-              },
-              "times": ["18:30"],
-              "notes": "Biblijos studijos"
-            },
-            {
-              "day": {
-                "lt": "Pirmasis mėnesio sekmadienis",
-                "en": "First Sunday of month"
-              },
-              "times": ["10:00"],
-              "notes": "Ypatingos pamaldos"
+              "times": [
+                "closed"
+              ]
             }
           ]
         },
         {
-          "type": "keyValue",
+          "type": "stats",
           "heading": {
-            "lt": "Kontaktai",
-            "en": "Contact",
-            "ru": "Contact [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Faktai",
+            "en": "Faktai",
+            "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "items": [
             {
               "label": {
-                "lt": "Adresas",
-                "ru": "Adresas [TODO: verify — do not publish unverified]"
+                "lt": "Įkurta",
+                "en": "Įkurta",
+                "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "value": "M. Valančiaus g. 9, 44275 Kaunas"
+              "value": "1795"
             },
             {
               "label": {
-                "lt": "Telefonas",
-                "ru": "Telefonas [TODO: verify — do not publish unverified]"
+                "lt": "Jurisdikcija",
+                "en": "Jurisdikcija",
+                "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "value": "+370 37 331 234"
-            },
-            {
-              "label": {
-                "lt": "El. paštas",
-                "ru": "El. paštas [TODO: verify — do not publish unverified]"
-              },
-              "value": "info@kaunaslutheran.lt"
-            },
-            {
-              "label": {
-                "lt": "Biuras",
-                "ru": "Biuras [TODO: verify — do not publish unverified]"
-              },
-              "value": "I-V 10:00-16:00 (galima ir pagal susitarimą)"
+              "value": "Evangelical Lutheran Church in Lithuania"
             }
           ]
-        },
-        {
-          "type": "list",
-          "heading": {
-            "lt": "Vadovybė",
-            "en": "Leadership",
-            "ru": "Leadership [TODO: verify with parish/diocese — do not publish unverified]"
-          },
-          "items": [
-            {
-              "title": {
-                "lt": "Vikaras Tomas Šernas",
-                "ru": "Vikaras Tomas Šernas [TODO: verify — do not publish unverified]"
-              },
-              "subtitle": {
-                "lt": "Kunigas",
-                "en": "Pastor",
-                "ru": "Pastor [TODO: verify with parish/diocese — do not publish unverified]"
-              },
-              "tags": ["pastor@kaunaslutheran.lt", "+370 37 331 234", "nuo 2015 m."]
-            },
-            {
-              "title": {
-                "lt": "Asta Petronienė",
-                "ru": "Asta Petronienė [TODO: verify — do not publish unverified]"
-              },
-              "subtitle": {
-                "lt": "Vyresnioji",
-                "en": "Elder",
-                "ru": "Elder [TODO: verify with parish/diocese — do not publish unverified]"
-              },
-              "tags": ["vyresnioji@kaunaslutheran.lt"]
-            },
-            {
-              "title": {
-                "lt": "Jonas Kavaliauskas",
-                "ru": "Jonas Kavaliauskas [TODO: verify — do not publish unverified]"
-              },
-              "subtitle": {
-                "lt": "Diakonas",
-                "en": "Deacon",
-                "ru": "Deacon [TODO: verify with parish/diocese — do not publish unverified]"
-              },
-              "tags": ["diakonas@kaunaslutheran.lt"]
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "heading": {
-            "lt": "Valdymas",
-            "en": "Governance",
-            "ru": "Governance [TODO: verify with parish/diocese — do not publish unverified]"
-          },
-          "body": {
-            "lt": "Bažnyčios taryba - 7 nariai, renkami 3 metų kadencijai. Kiti rinkimai - 2027 m. kovas. Bendruomenė priklauso Evangelikų Liuteronų Bažnyčiai Lietuvoje.",
-            "en": "Church council of 7 members elected for a 3-year term. Next election: March 2027. The congregation belongs to the Evangelical Lutheran Church in Lithuania.",
-            "ru": "Church council of 7 members elected for a 3-year term. Next election: March 2027. The congregation belongs to the Evangelical Lutheran Church in Lithuania. [TODO: verify with parish/diocese — do not publish unverified]"
-          }
         },
         {
           "type": "cta",
           "links": [
             {
               "label": {
-                "lt": "Bendruomenės renginiai",
-                "ru": "Bendruomenės renginiai [TODO: verify — do not publish unverified]"
+                "lt": "Kontaktai",
+                "en": "Contact"
               },
-              "href": "/events"
+              "href": "/contact"
             },
             {
               "label": {
-                "lt": "Krautuvėlė",
-                "ru": "Krautuvėlė [TODO: verify — do not publish unverified]"
+                "lt": "Naujienos",
+                "en": "News"
               },
-              "href": "/shop"
+              "href": "/news"
             }
           ]
         }
       ]
     },
     {
-      "route": "/events",
+      "route": "/about",
       "title": {
-        "lt": "Renginiai",
-        "en": "Events",
-        "ru": "Events [TODO: verify with parish/diocese — do not publish unverified]"
+        "lt": "Apie",
+        "en": "Apie",
+        "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
       },
       "contentBlocks": [
         {
           "type": "text",
           "heading": {
-            "lt": "Bendruomenės renginiai",
-            "en": "Community Events",
-            "ru": "Community Events [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Apie",
+            "en": "Apie",
+            "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "body": {
-            "lt": "Koncertai, paskaitos, jaunimo vakarai ir ekumeniniai susitikimai. Bilietai į mokamus renginius - krautuvėlėje.",
-            "en": "Concerts, lectures, youth evenings and ecumenical gatherings. Tickets for paid events are available in the shop.",
-            "ru": "Concerts, lectures, youth evenings and ecumenical gatherings. Tickets for paid events are available in the shop. [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Augsburgo išpažinimo bendruomenė nuo 1795 m.",
+            "en": "An Augsburg Confession congregation since 1795"
           }
+        },
+        {
+          "type": "keyValue",
+          "heading": {
+            "lt": "Duomenys",
+            "en": "Duomenys",
+            "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "label": {
+                "lt": "Entity ID",
+                "en": "Entity ID",
+                "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "lt-lutheran-kaunas-001"
+            },
+            {
+              "label": {
+                "lt": "Jurisdikcija",
+                "en": "Jurisdikcija",
+                "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "Evangelical Lutheran Church in Lithuania"
+            },
+            {
+              "label": {
+                "lt": "Įkurta",
+                "en": "Įkurta",
+                "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "1795"
+            },
+            {
+              "label": {
+                "lt": "Domenas",
+                "en": "Domenas",
+                "ru": "Domenas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "kaunaslutheran.lt"
+            }
+          ]
+        },
+        {
+          "type": "clergyRoleList",
+          "heading": {
+            "lt": "Dvasininkai",
+            "en": "Dvasininkai",
+            "ru": "Dvasininkai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "roles": [
+            {
+              "role": {
+                "lt": "Klebonas",
+                "en": "Klebonas",
+                "ru": "Klebonas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Parish priest",
+                "en": "Parish priest",
+                "ru": "Parish priest [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        },
+        {
+          "type": "mapLocation",
+          "heading": {
+            "lt": "Vieta",
+            "en": "Vieta",
+            "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "lat": 54.6872,
+          "lng": 25.2797,
+          "directionsUrl": "https://www.google.com/maps/search/?api=1&query=M.%20Valan%C4%8Diaus%20g.%209%2C%2044275%20Kaunas%2C%20Lithuania"
         }
       ]
     },
     {
-      "route": "/shop",
+      "route": "/contact",
       "title": {
-        "lt": "Krautuvėlė",
-        "en": "Shop",
-        "ru": "Shop [TODO: verify with parish/diocese — do not publish unverified]"
+        "lt": "Kontaktai",
+        "en": "Kontaktai",
+        "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
       },
       "contentBlocks": [
         {
+          "type": "keyValue",
+          "heading": {
+            "lt": "Kontaktai",
+            "en": "Kontaktai",
+            "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "label": {
+                "lt": "Adresas",
+                "en": "Adresas",
+                "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "M. Valančiaus g. 9, 44275 Kaunas, Lithuania"
+            },
+            {
+              "label": {
+                "lt": "El. paštas",
+                "en": "El. paštas",
+                "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "info@kaunaslutheran.lt"
+            },
+            {
+              "label": {
+                "lt": "Telefonas",
+                "en": "Telefonas",
+                "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "+370 37 331 234"
+            }
+          ]
+        },
+        {
+          "type": "mapLocation",
+          "heading": {
+            "lt": "Vieta",
+            "en": "Vieta",
+            "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "lat": 54.6872,
+          "lng": 25.2797,
+          "directionsUrl": "https://www.google.com/maps/search/?api=1&query=M.%20Valan%C4%8Diaus%20g.%209%2C%2044275%20Kaunas%2C%20Lithuania"
+        },
+        {
+          "type": "schedule",
+          "heading": {
+            "lt": "Biuro valandos",
+            "en": "Biuro valandos",
+            "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "entries": [
+            {
+              "day": {
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "09:00 - 17:00"
+              ]
+            },
+            {
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "10:00 - 14:00"
+              ]
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "closed"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/services",
+      "title": {
+        "lt": "Paslaugos",
+        "en": "Paslaugos",
+        "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Kauno evangelikų liuteronų bažnyčia",
+            "en": "Kaunas Evangelical Lutheran Church",
+            "ru": "Kaunas Evangelical Lutheran Church [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "subheading": {
+            "lt": "Augsburgo išpažinimo bendruomenė nuo 1795 m.",
+            "en": "An Augsburg Confession congregation since 1795",
+            "ru": "An Augsburg Confession congregation since 1795 [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Evangelical Lutheran Church in Lithuania · Est. 1795",
+            "en": "Evangelical Lutheran Church in Lithuania · Est. 1795"
+          }
+        },
+        {
           "type": "list",
           "heading": {
-            "lt": "Bendruomenės krautuvėlė",
-            "en": "Community Shop",
-            "ru": "Community Shop [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Paslaugos",
+            "en": "Paslaugos",
+            "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "items": [
             {
               "title": {
-                "lt": "Bendruomenės prekės",
-                "en": "Community Merchandise",
-                "ru": "Community Merchandise [TODO: verify with parish/diocese — do not publish unverified]"
+                "lt": "Pagrindinė paslauga",
+                "en": "Pagrindinė paslauga",
+                "ru": "Pagrindinė paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Aprašymas",
+                "en": "Aprašymas",
+                "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
               }
             },
             {
               "title": {
-                "lt": "Renginių bilietai",
-                "en": "Event Tickets",
-                "ru": "Event Tickets [TODO: verify with parish/diocese — do not publish unverified]"
+                "lt": "Papildoma paslauga",
+                "en": "Papildoma paslauga",
+                "ru": "Papildoma paslauga [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Aprašymas",
+                "en": "Aprašymas",
+                "ru": "Aprašymas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        },
+        {
+          "type": "faq",
+          "heading": {
+            "lt": "Dažni klausimai",
+            "en": "Dažni klausimai",
+            "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "questions": [
+            {
+              "question": {
+                "lt": "Kaip užsakyti paslaugą?",
+                "en": "Kaip užsakyti paslaugą?",
+                "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "answer": {
+                "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
               }
             },
             {
-              "title": {
-                "lt": "Aukos",
-                "en": "Offerings",
-                "ru": "Offerings [TODO: verify with parish/diocese — do not publish unverified]"
+              "question": {
+                "lt": "Ar reikalinga išankstinė registracija?",
+                "en": "Ar reikalinga išankstinė registracija?",
+                "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "answer": {
+                "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
               }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/schedule",
+      "title": {
+        "lt": "Tvarkaraštis",
+        "en": "Tvarkaraštis",
+        "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Kauno evangelikų liuteronų bažnyčia",
+            "en": "Kaunas Evangelical Lutheran Church",
+            "ru": "Kaunas Evangelical Lutheran Church [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "subheading": {
+            "lt": "Augsburgo išpažinimo bendruomenė nuo 1795 m.",
+            "en": "An Augsburg Confession congregation since 1795",
+            "ru": "An Augsburg Confession congregation since 1795 [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Evangelical Lutheran Church in Lithuania · Est. 1795",
+            "en": "Evangelical Lutheran Church in Lithuania · Est. 1795"
+          }
+        },
+        {
+          "type": "schedule",
+          "heading": {
+            "lt": "Tvarkaraštis",
+            "en": "Tvarkaraštis",
+            "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "entries": [
+            {
+              "day": {
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "09:00 - 17:00"
+              ]
+            },
+            {
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "10:00 - 14:00"
+              ]
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "closed"
+              ]
             }
           ]
         }

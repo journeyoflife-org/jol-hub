@@ -24,171 +24,94 @@
     {
       "route": "/",
       "title": {
-        "lt": "Pradžia",
-        "en": "Home"
+        "lt": "Vilniaus Aušros Vartų koplyčia",
+        "en": "Vilnius Gate of Dawn Chapel"
       },
       "contentBlocks": [
         {
           "type": "hero",
           "heading": {
-            "lt": "Aušros Vartų koplyčia",
-            "en": "Gate of Dawn Chapel"
+            "lt": "Vilniaus Aušros Vartų koplyčia",
+            "en": "Vilnius Gate of Dawn Chapel"
           },
           "subheading": {
-            "lt": "Šventovė · piligrimystės vieta",
-            "en": "Shrine · pilgrimage site"
+            "lt": "Šventovė ir piligrimystės vieta nuo 1671 m.",
+            "en": "Shrine and pilgrimage site since 1671"
           },
           "body": {
-            "lt": "Švč. Mergelės Marijos, Gailestingumo Motinos, globa. Įkurta 1671 m., Vilniaus arkivyskupija.",
-            "en": "Under the patronage of the Blessed Virgin Mary, Mother of Mercy. Established 1671, Vilnius Archdiocese."
+            "lt": "Vilnius Archdiocese · Est. 1671",
+            "en": "Vilnius Archdiocese · Est. 1671"
           }
         },
         {
-          "type": "schedule",
+          "type": "massSchedule",
           "heading": {
             "lt": "Šv. Mišių tvarkaraštis",
-            "en": "Mass Schedule"
+            "en": "Šv. Mišių tvarkaraštis",
+            "ru": "Šv. Mišių tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
           },
-          "entries": [
+          "masses": [
             {
               "day": {
-                "lt": "Darbo dienomis",
-                "en": "Weekdays"
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "times": ["07:00", "17:30"],
-              "notes": "Visos Mišios lenkiškai po lietuviškų"
+              "time": "07:30",
+              "rrule": "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
             },
             {
               "day": {
                 "lt": "Šeštadienis",
-                "en": "Saturday"
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "times": ["07:00", "08:00", "17:30"],
-              "notes": "08:00 - lenkų k."
+              "time": "09:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SA"
             },
             {
               "day": {
                 "lt": "Sekmadienis",
-                "en": "Sunday"
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "times": ["07:00", "08:00", "09:00", "11:00", "17:30"],
-              "notes": "08:00 - lenkų k., 09:00 - rusų k., 11:00 - pagrindinės lietuvių k."
+              "time": "09:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SU"
             },
             {
               "day": {
-                "lt": "Šventinės dienos",
-                "en": "Holy Days"
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "times": ["07:00", "09:00", "11:00", "17:30"],
-              "notes": "Daugiau Mišių per didžiąsias šventes"
-            }
-          ]
-        },
-        {
-          "type": "keyValue",
-          "heading": {
-            "lt": "Lankymo laikas ir išpažintis",
-            "en": "Visiting Hours & Confession"
-          },
-          "items": [
-            {
-              "label": {
-                "lt": "Atidaryta"
-              },
-              "value": "06:30 - 19:00 (kasdien)"
-            },
-            {
-              "label": {
-                "lt": "Išpažintis (darbo dienomis)"
-              },
-              "value": "07:30 - 10:00, 16:00 - 18:00"
-            },
-            {
-              "label": {
-                "lt": "Išpažintis (savaitgaliais)"
-              },
-              "value": "07:30 - 12:00, 16:00 - 18:00"
-            },
-            {
-              "label": {
-                "lt": "Išpažinčių kalbos"
-              },
-              "value": "LT, PL, RU, EN"
-            },
-            {
-              "label": {
-                "lt": "Telefonas"
-              },
-              "value": "+370 5 262 3333"
-            },
-            {
-              "label": {
-                "lt": "El. paštas"
-              },
-              "value": "ausrosvartai@vilnius.lt"
-            }
-          ]
-        },
-        {
-          "type": "list",
-          "heading": {
-            "lt": "Žvakių tarnystė",
-            "en": "Candle Services"
-          },
-          "items": [
-            {
-              "title": {
-                "lt": "Votyvinė žvakė",
-                "en": "Votive Candle"
-              },
-              "price": 1
-            },
-            {
-              "title": {
-                "lt": "Didelė žvakė",
-                "en": "Large Candle"
-              },
-              "price": 5
-            },
-            {
-              "title": {
-                "lt": "Vigilijos žvakė",
-                "en": "Vigil Candle"
-              },
-              "price": 10
+              "time": "11:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SU"
             }
           ]
         },
         {
           "type": "stats",
           "heading": {
-            "lt": "Šventovė skaičiais",
-            "en": "The Shrine in Numbers"
+            "lt": "Faktai",
+            "en": "Faktai",
+            "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "items": [
             {
               "label": {
-                "lt": "Lankytojų per dieną"
+                "lt": "Įkurta",
+                "en": "Įkurta",
+                "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "value": 200
+              "value": "1671"
             },
             {
               "label": {
-                "lt": "Piligrimų per metus"
+                "lt": "Jurisdikcija",
+                "en": "Jurisdikcija",
+                "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "value": 50000
-            },
-            {
-              "label": {
-                "lt": "Sekmadienio Mišių dalyvių"
-              },
-              "value": 400
-            },
-            {
-              "label": {
-                "lt": "Žvakių per metus"
-              },
-              "value": 150000
+              "value": "Vilnius Archdiocese"
             }
           ]
         },
@@ -197,15 +120,441 @@
           "links": [
             {
               "label": {
-                "lt": "Piligrimystės registracija"
+                "lt": "Užsakyti Mišių intenciją",
+                "en": "Order Mass Intention"
               },
-              "href": "/#pilgrimage"
+              "href": "/shop"
             },
             {
               "label": {
-                "lt": "Mišių intencijos"
+                "lt": "Sakramentai",
+                "en": "Sacraments"
               },
-              "href": "/#mass-intentions"
+              "href": "/services"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/about",
+      "title": {
+        "lt": "Apie",
+        "en": "Apie",
+        "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "text",
+          "heading": {
+            "lt": "Apie",
+            "en": "Apie",
+            "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Šventovė ir piligrimystės vieta nuo 1671 m.",
+            "en": "Shrine and pilgrimage site since 1671"
+          }
+        },
+        {
+          "type": "keyValue",
+          "heading": {
+            "lt": "Duomenys",
+            "en": "Duomenys",
+            "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "label": {
+                "lt": "Entity ID",
+                "en": "Entity ID",
+                "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "lt-chapel-vilnius-001"
+            },
+            {
+              "label": {
+                "lt": "Jurisdikcija",
+                "en": "Jurisdikcija",
+                "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "Vilnius Archdiocese"
+            },
+            {
+              "label": {
+                "lt": "Įkurta",
+                "en": "Įkurta",
+                "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "1671"
+            },
+            {
+              "label": {
+                "lt": "Domenas",
+                "en": "Domenas",
+                "ru": "Domenas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "ausrosvartai.lt"
+            }
+          ]
+        },
+        {
+          "type": "clergyRoleList",
+          "heading": {
+            "lt": "Dvasininkai",
+            "en": "Dvasininkai",
+            "ru": "Dvasininkai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "roles": [
+            {
+              "role": {
+                "lt": "Klebonas",
+                "en": "Klebonas",
+                "ru": "Klebonas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Parish priest",
+                "en": "Parish priest",
+                "ru": "Parish priest [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        },
+        {
+          "type": "mapLocation",
+          "heading": {
+            "lt": "Vieta",
+            "en": "Vieta",
+            "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "lat": 54.6872,
+          "lng": 25.2797,
+          "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Au%C5%A1ros%20Vart%C5%B3%20g.%2012%2C%2001129%20Vilnius%2C%20Lithuania"
+        }
+      ]
+    },
+    {
+      "route": "/contact",
+      "title": {
+        "lt": "Kontaktai",
+        "en": "Kontaktai",
+        "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "keyValue",
+          "heading": {
+            "lt": "Kontaktai",
+            "en": "Kontaktai",
+            "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "items": [
+            {
+              "label": {
+                "lt": "Adresas",
+                "en": "Adresas",
+                "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "Aušros Vartų g. 12, 01129 Vilnius, Lithuania"
+            },
+            {
+              "label": {
+                "lt": "El. paštas",
+                "en": "El. paštas",
+                "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "ausrosvartai@vilnius.lt"
+            },
+            {
+              "label": {
+                "lt": "Telefonas",
+                "en": "Telefonas",
+                "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "value": "+370 5 262 3333"
+            }
+          ]
+        },
+        {
+          "type": "mapLocation",
+          "heading": {
+            "lt": "Vieta",
+            "en": "Vieta",
+            "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "lat": 54.6872,
+          "lng": 25.2797,
+          "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Au%C5%A1ros%20Vart%C5%B3%20g.%2012%2C%2001129%20Vilnius%2C%20Lithuania"
+        },
+        {
+          "type": "schedule",
+          "heading": {
+            "lt": "Biuro valandos",
+            "en": "Biuro valandos",
+            "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "entries": [
+            {
+              "day": {
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "09:00 - 17:00"
+              ]
+            },
+            {
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "10:00 - 14:00"
+              ]
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "closed"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/services",
+      "title": {
+        "lt": "Paslaugos",
+        "en": "Paslaugos",
+        "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Vilniaus Aušros Vartų koplyčia",
+            "en": "Vilnius Gate of Dawn Chapel"
+          },
+          "subheading": {
+            "lt": "Šventovė ir piligrimystės vieta nuo 1671 m.",
+            "en": "Shrine and pilgrimage site since 1671"
+          },
+          "body": {
+            "lt": "Vilnius Archdiocese · Est. 1671",
+            "en": "Vilnius Archdiocese · Est. 1671"
+          }
+        },
+        {
+          "type": "sacramentList",
+          "heading": {
+            "lt": "Sakramentai",
+            "en": "Sakramentai",
+            "ru": "Sakramentai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "sacraments": [
+            {
+              "name": {
+                "lt": "Krikštas",
+                "en": "Krikštas",
+                "ru": "Krikštas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Krikšto sakramentas",
+                "en": "Krikšto sakramentas",
+                "ru": "Krikšto sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "name": {
+                "lt": "Pirmoji Komunija",
+                "en": "Pirmoji Komunija",
+                "ru": "Pirmoji Komunija [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Eucharistijos sakramentas",
+                "en": "Eucharistijos sakramentas",
+                "ru": "Eucharistijos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "name": {
+                "lt": "Sutvirtinimas",
+                "en": "Sutvirtinimas",
+                "ru": "Sutvirtinimas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Sutvirtinimo sakramentas",
+                "en": "Sutvirtinimo sakramentas",
+                "ru": "Sutvirtinimo sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "name": {
+                "lt": "Santuoka",
+                "en": "Santuoka",
+                "ru": "Santuoka [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Santuokos sakramentas",
+                "en": "Santuokos sakramentas",
+                "ru": "Santuokos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "name": {
+                "lt": "Išpažintis",
+                "en": "Išpažintis",
+                "ru": "Išpažintis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Atgailos sakramentas",
+                "en": "Atgailos sakramentas",
+                "ru": "Atgailos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "name": {
+                "lt": "Ligonių patepimas",
+                "en": "Ligonių patepimas",
+                "ru": "Ligonių patepimas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Ligonių patepimo sakramentas",
+                "en": "Ligonių patepimo sakramentas",
+                "ru": "Ligonių patepimo sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        },
+        {
+          "type": "faq",
+          "heading": {
+            "lt": "Dažni klausimai",
+            "en": "Dažni klausimai",
+            "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "questions": [
+            {
+              "question": {
+                "lt": "Kaip užsakyti paslaugą?",
+                "en": "Kaip užsakyti paslaugą?",
+                "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "answer": {
+                "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "question": {
+                "lt": "Ar reikalinga išankstinė registracija?",
+                "en": "Ar reikalinga išankstinė registracija?",
+                "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "answer": {
+                "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/schedule",
+      "title": {
+        "lt": "Tvarkaraštis",
+        "en": "Tvarkaraštis",
+        "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Vilniaus Aušros Vartų koplyčia",
+            "en": "Vilnius Gate of Dawn Chapel"
+          },
+          "subheading": {
+            "lt": "Šventovė ir piligrimystės vieta nuo 1671 m.",
+            "en": "Shrine and pilgrimage site since 1671"
+          },
+          "body": {
+            "lt": "Vilnius Archdiocese · Est. 1671",
+            "en": "Vilnius Archdiocese · Est. 1671"
+          }
+        },
+        {
+          "type": "massSchedule",
+          "heading": {
+            "lt": "Šv. Mišių tvarkaraštis",
+            "en": "Šv. Mišių tvarkaraštis",
+            "ru": "Šv. Mišių tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "masses": [
+            {
+              "day": {
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "07:30",
+              "rrule": "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+            },
+            {
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "09:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SA"
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "09:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SU"
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "11:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SU"
+            }
+          ]
+        },
+        {
+          "type": "gallery",
+          "heading": {
+            "lt": "Galerija",
+            "en": "Galerija",
+            "ru": "Galerija [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "images": [
+            {
+              "src": "/media/placeholder-1.jpg",
+              "alt": {
+                "lt": "Nuotrauka",
+                "en": "Nuotrauka",
+                "ru": "Nuotrauka [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "width": 800,
+              "height": 600
             }
           ]
         }

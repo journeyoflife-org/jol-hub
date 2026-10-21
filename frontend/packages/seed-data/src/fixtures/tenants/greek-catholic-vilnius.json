@@ -26,148 +26,97 @@
     {
       "route": "/",
       "title": {
-        "lt": "Pradžia",
-        "en": "Home",
-        "ru": "Home [TODO: verify with parish/diocese — do not publish unverified]"
+        "lt": "Vilniaus Šv. Apaštalų Petro ir Povilo Graikų Katalikų Bažnyčia",
+        "en": "Vilnius Greek Catholic Church of Sts. Peter and Paul",
+        "ru": "Vilnius Greek Catholic Church of Sts. Peter and Paul [TODO: verify with parish/diocese — do not publish unverified]"
       },
       "contentBlocks": [
         {
           "type": "hero",
           "heading": {
-            "lt": "Graikų Katalikų Bažnyčia",
-            "en": "Greek Catholic Church",
-            "ru": "Greek Catholic Church [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Vilniaus Šv. Apaštalų Petro ir Povilo Graikų Katalikų Bažnyčia",
+            "en": "Vilnius Greek Catholic Church of Sts. Peter and Paul",
+            "ru": "Vilnius Greek Catholic Church of Sts. Peter and Paul [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "subheading": {
-            "lt": "Šv. Apaštalų Petro ir Povilo garbei",
-            "en": "Dedicated to the Holy Apostles Peter and Paul",
-            "ru": "Dedicated to the Holy Apostles Peter and Paul [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Bizantijos apeigų bendruomenė, vienybėje su Roma nuo 1991 m.",
+            "en": "A Byzantine-rite community in communion with Rome since 1991",
+            "ru": "A Byzantine-rite community in communion with Rome since 1991 [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "body": {
-            "lt": "Ukrainos Graikų Katalikų Bažnyčia · Kijevo-Haličo eparchija · Bizantijos apeigos · Pašventinta 1997 m.",
-            "en": "Ukrainian Greek Catholic Church · Kyiv-Halych Eparchy · Byzantine Rite · Consecrated 1997",
-            "ru": "Ukrainian Greek Catholic Church · Kyiv-Halych Eparchy · Byzantine Rite · Consecrated 1997 [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Ukrainian Greek Catholic Church in communion with Rome · Est. 1991",
+            "en": "Ukrainian Greek Catholic Church in communion with Rome · Est. 1991"
           }
         },
         {
-          "type": "list",
+          "type": "massSchedule",
           "heading": {
-            "lt": "Pamaldų tvarka",
-            "en": "Service Schedule",
-            "ru": "Service Schedule [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Šv. Mišių tvarkaraštis",
+            "en": "Šv. Mišių tvarkaraštis",
+            "ru": "Šv. Mišių tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
           },
-          "items": [
+          "masses": [
             {
-              "title": {
-                "lt": "Sekmadienis",
-                "en": "Sunday",
-                "ru": "Sunday [TODO: verify with parish/diocese — do not publish unverified]"
+              "day": {
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "description": {
-                "lt": "06:30 Rytmetinės · 09:00 Šv. Liturgija (ankstyvoji) · 10:30 Šv. Liturgija (vėlyvoji) · 17:00 Vakarinės",
-                "en": "06:30 Matins · 09:00 Divine Liturgy (early) · 10:30 Divine Liturgy (late) · 17:00 Vespers",
-                "ru": "06:30 Matins · 09:00 Divine Liturgy (early) · 10:30 Divine Liturgy (late) · 17:00 Vespers [TODO: verify with parish/diocese — do not publish unverified]"
-              }
+              "time": "07:30",
+              "rrule": "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
             },
             {
-              "title": {
+              "day": {
                 "lt": "Šeštadienis",
-                "en": "Saturday",
-                "ru": "Saturday [TODO: verify with parish/diocese — do not publish unverified]"
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "description": {
-                "lt": "09:00 Šv. Liturgija · 17:00 Visanaktinė budynė",
-                "en": "09:00 Divine Liturgy · 17:00 All-Night Vigil",
-                "ru": "09:00 Divine Liturgy · 17:00 All-Night Vigil [TODO: verify with parish/diocese — do not publish unverified]"
-              }
+              "time": "09:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SA"
             },
             {
-              "title": {
-                "lt": "Darbo dienos",
-                "en": "Weekdays",
-                "ru": "Weekdays [TODO: verify with parish/diocese — do not publish unverified]"
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "description": {
-                "lt": "08:00 Šv. Liturgija · 17:00 Vakarinės",
-                "en": "08:00 Divine Liturgy · 17:00 Vespers",
-                "ru": "08:00 Divine Liturgy · 17:00 Vespers [TODO: verify with parish/diocese — do not publish unverified]"
-              }
-            }
-          ]
-        },
-        {
-          "type": "keyValue",
-          "heading": {
-            "lt": "Kontaktai",
-            "en": "Contact",
-            "ru": "Contact [TODO: verify with parish/diocese — do not publish unverified]"
-          },
-          "items": [
-            {
-              "label": {
-                "lt": "Adresas",
-                "ru": "Adresas [TODO: verify — do not publish unverified]"
-              },
-              "value": "M. Valančiaus g. 5, 03102 Vilnius"
+              "time": "09:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SU"
             },
             {
-              "label": {
-                "lt": "Telefonas",
-                "ru": "Telefonas [TODO: verify — do not publish unverified]"
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "value": "+370 5 234 5678"
-            },
-            {
-              "label": {
-                "lt": "El. paštas",
-                "ru": "El. paštas [TODO: verify — do not publish unverified]"
-              },
-              "value": "info@greekcatholic.lt"
-            },
-            {
-              "label": {
-                "lt": "Raštinė",
-                "ru": "Raštinė [TODO: verify — do not publish unverified]"
-              },
-              "value": "I-V 10:00-18:00, savaitgaliais pagal susitarimą"
+              "time": "11:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SU"
             }
           ]
         },
         {
           "type": "stats",
           "heading": {
-            "lt": "Bendruomenė",
-            "en": "Community",
-            "ru": "Community [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Faktai",
+            "en": "Faktai",
+            "ru": "Faktai [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "items": [
             {
               "label": {
-                "lt": "Parapijiečių",
-                "ru": "Parapijiečių [TODO: verify — do not publish unverified]"
+                "lt": "Įkurta",
+                "en": "Įkurta",
+                "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "value": 1200
+              "value": "1991"
             },
             {
               "label": {
-                "lt": "Sekmadienio dalyvių (vid.)",
-                "ru": "Sekmadienio dalyvių (vid.) [TODO: verify — do not publish unverified]"
+                "lt": "Jurisdikcija",
+                "en": "Jurisdikcija",
+                "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "value": 350
-            },
-            {
-              "label": {
-                "lt": "Dvasininkų",
-                "ru": "Dvasininkų [TODO: verify — do not publish unverified]"
-              },
-              "value": 3
-            },
-            {
-              "label": {
-                "lt": "Švenčių dalyvių",
-                "ru": "Švenčių dalyvių [TODO: verify — do not publish unverified]"
-              },
-              "value": 600
+              "value": "Ukrainian Greek Catholic Church in communion with Rome"
             }
           ]
         },
@@ -176,195 +125,445 @@
           "links": [
             {
               "label": {
-                "lt": "Ikonų galerija",
-                "ru": "Ikonų galerija [TODO: verify — do not publish unverified]"
+                "lt": "Užsakyti Mišių intenciją",
+                "en": "Order Mass Intention"
               },
-              "href": "/gallery"
+              "href": "/shop"
             },
             {
               "label": {
-                "lt": "Krautuvėlė",
-                "ru": "Krautuvėlė [TODO: verify — do not publish unverified]"
+                "lt": "Sakramentai",
+                "en": "Sacraments"
               },
-              "href": "/shop"
+              "href": "/services"
             }
           ]
         }
       ]
     },
     {
-      "route": "/gallery",
+      "route": "/about",
       "title": {
-        "lt": "Ikonų galerija",
-        "en": "Icon Gallery",
-        "ru": "Icon Gallery [TODO: verify with parish/diocese — do not publish unverified]"
+        "lt": "Apie",
+        "en": "Apie",
+        "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
       },
       "contentBlocks": [
         {
-          "type": "list",
+          "type": "text",
           "heading": {
-            "lt": "Žymiausios ikonos",
-            "en": "Notable Icons",
-            "ru": "Notable Icons [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Apie",
+            "en": "Apie",
+            "ru": "Apie [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Bizantijos apeigų bendruomenė, vienybėje su Roma nuo 1991 m.",
+            "en": "A Byzantine-rite community in communion with Rome since 1991"
+          }
+        },
+        {
+          "type": "keyValue",
+          "heading": {
+            "lt": "Duomenys",
+            "en": "Duomenys",
+            "ru": "Duomenys [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "items": [
             {
-              "title": {
-                "lt": "Vilniaus Dievo Motinos Ikona",
-                "en": "Vilnius Icon of the Mother of God",
-                "ru": "Vilnius Icon of the Mother of God [TODO: verify with parish/diocese — do not publish unverified]"
+              "label": {
+                "lt": "Entity ID",
+                "en": "Entity ID",
+                "ru": "Entity ID [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "subtitle": {
-                "lt": "Kijevas · XVIII a. · Ikonostatas",
-                "ru": "Kijevas · XVIII a. · Ikonostatas [TODO: verify — do not publish unverified]"
-              },
-              "description": {
-                "lt": "Stebuklinga Dievo Motinos ikona, bendruomenės globėja",
-                "en": "Miracle-working icon of the Theotokos, patron of the community",
-                "ru": "Miracle-working icon of the Theotokos, patron of the community [TODO: verify with parish/diocese — do not publish unverified]"
-              }
+              "value": "lt-greek-catholic-vilnius-001"
             },
             {
-              "title": {
-                "lt": "Šv. Apaštalai Petras ir Paulius",
-                "en": "Holy Apostles Peter and Paul",
-                "ru": "Holy Apostles Peter and Paul [TODO: verify with parish/diocese — do not publish unverified]"
+              "label": {
+                "lt": "Jurisdikcija",
+                "en": "Jurisdikcija",
+                "ru": "Jurisdikcija [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "subtitle": {
-                "lt": "Lvovas · XIX a. · Pagrindinis ikonostatas",
-                "ru": "Lvovas · XIX a. · Pagrindinis ikonostatas [TODO: verify — do not publish unverified]"
-              },
-              "description": {
-                "lt": "Bažnyčios globėjų ikona",
-                "en": "Patron saints icon of the church",
-                "ru": "Patron saints icon of the church [TODO: verify with parish/diocese — do not publish unverified]"
-              }
+              "value": "Ukrainian Greek Catholic Church in communion with Rome"
             },
             {
-              "title": {
-                "lt": "Šv. Josafatas Kuncevičius",
-                "en": "St. Josaphat Kuntsevych",
-                "ru": "St. Josaphat Kuntsevych [TODO: verify with parish/diocese — do not publish unverified]"
+              "label": {
+                "lt": "Įkurta",
+                "en": "Įkurta",
+                "ru": "Įkurta [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "subtitle": {
-                "lt": "Polockas · XVII a. · Šoninė koplyčia",
-                "ru": "Polockas · XVII a. · Šoninė koplyčia [TODO: verify — do not publish unverified]"
+              "value": "1991"
+            },
+            {
+              "label": {
+                "lt": "Domenas",
+                "en": "Domenas",
+                "ru": "Domenas [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "description": {
-                "lt": "Bažnyčios vienybės globėjas, kankinys už Romos ir Konstantinopolio vienybę",
-                "en": "Patron of church unity, martyr for unity between Rome and Constantinople",
-                "ru": "Patron of church unity, martyr for unity between Rome and Constantinople [TODO: verify with parish/diocese — do not publish unverified]"
-              }
+              "value": "greekcatholic.lt"
             }
           ]
-        }
-      ]
-    },
-    {
-      "route": "/shop",
-      "title": {
-        "lt": "Krautuvėlė",
-        "en": "Shop",
-        "ru": "Shop [TODO: verify with parish/diocese — do not publish unverified]"
-      },
-      "contentBlocks": [
+        },
         {
-          "type": "list",
+          "type": "clergyRoleList",
           "heading": {
-            "lt": "Bažnyčios krautuvėlė",
-            "en": "Church Shop",
-            "ru": "Church Shop [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Dvasininkai",
+            "en": "Dvasininkai",
+            "ru": "Dvasininkai [TODO: verify with parish/diocese — do not publish unverified]"
           },
-          "items": [
+          "roles": [
             {
-              "title": {
-                "lt": "Ikonos",
-                "en": "Icons",
-                "ru": "Icons [TODO: verify with parish/diocese — do not publish unverified]"
-              }
-            },
-            {
-              "title": {
-                "lt": "Žvakės",
-                "en": "Candles",
-                "ru": "Candles [TODO: verify with parish/diocese — do not publish unverified]"
-              }
-            },
-            {
-              "title": {
-                "lt": "Knygos",
-                "en": "Books",
-                "ru": "Books [TODO: verify with parish/diocese — do not publish unverified]"
-              }
-            },
-            {
-              "title": {
-                "lt": "Apeiginiai drabužiai",
-                "en": "Vestments",
-                "ru": "Vestments [TODO: verify with parish/diocese — do not publish unverified]"
-              }
-            },
-            {
-              "title": {
-                "lt": "Muzika",
-                "en": "Music",
-                "ru": "Music [TODO: verify with parish/diocese — do not publish unverified]"
+              "role": {
+                "lt": "Klebonas",
+                "en": "Klebonas",
+                "ru": "Klebonas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Parish priest",
+                "en": "Parish priest",
+                "ru": "Parish priest [TODO: verify with parish/diocese — do not publish unverified]"
               }
             }
           ]
         },
         {
-          "type": "list",
+          "type": "mapLocation",
           "heading": {
-            "lt": "Žvakės",
-            "en": "Candles",
-            "ru": "Candles [TODO: verify with parish/diocese — do not publish unverified]"
+            "lt": "Vieta",
+            "en": "Vieta",
+            "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "lat": 54.6872,
+          "lng": 25.2797,
+          "directionsUrl": "https://www.google.com/maps/search/?api=1&query=M.%20Valan%C4%8Diaus%20g.%205%2C%2003102%20Vilnius%2C%20Lithuania"
+        }
+      ]
+    },
+    {
+      "route": "/contact",
+      "title": {
+        "lt": "Kontaktai",
+        "en": "Kontaktai",
+        "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "keyValue",
+          "heading": {
+            "lt": "Kontaktai",
+            "en": "Kontaktai",
+            "ru": "Kontaktai [TODO: verify with parish/diocese — do not publish unverified]"
           },
           "items": [
             {
-              "title": {
-                "lt": "Maža žvakė",
-                "en": "Small candle",
-                "ru": "Small candle [TODO: verify with parish/diocese — do not publish unverified]"
+              "label": {
+                "lt": "Adresas",
+                "en": "Adresas",
+                "ru": "Adresas [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "price": 0.5,
-              "tags": ["dega 2 val."]
+              "value": "M. Valančiaus g. 5, 03102 Vilnius, Lithuania"
             },
             {
-              "title": {
-                "lt": "Vidutinė žvakė",
-                "en": "Medium candle",
-                "ru": "Medium candle [TODO: verify with parish/diocese — do not publish unverified]"
+              "label": {
+                "lt": "El. paštas",
+                "en": "El. paštas",
+                "ru": "El. paštas [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "price": 1,
-              "tags": ["dega 4 val."]
+              "value": "info@greekcatholic.lt"
             },
             {
-              "title": {
-                "lt": "Didelė žvakė",
-                "en": "Large candle",
-                "ru": "Large candle [TODO: verify with parish/diocese — do not publish unverified]"
+              "label": {
+                "lt": "Telefonas",
+                "en": "Telefonas",
+                "ru": "Telefonas [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "price": 2,
-              "tags": ["dega 8 val."]
+              "value": "+370 5 234 5678"
+            }
+          ]
+        },
+        {
+          "type": "mapLocation",
+          "heading": {
+            "lt": "Vieta",
+            "en": "Vieta",
+            "ru": "Vieta [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "lat": 54.6872,
+          "lng": 25.2797,
+          "directionsUrl": "https://www.google.com/maps/search/?api=1&query=M.%20Valan%C4%8Diaus%20g.%205%2C%2003102%20Vilnius%2C%20Lithuania"
+        },
+        {
+          "type": "schedule",
+          "heading": {
+            "lt": "Biuro valandos",
+            "en": "Biuro valandos",
+            "ru": "Biuro valandos [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "entries": [
+            {
+              "day": {
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "times": [
+                "09:00 - 17:00"
+              ]
             },
             {
-              "title": {
-                "lt": "Votyvinė žvakė",
-                "en": "Votive candle",
-                "ru": "Votive candle [TODO: verify with parish/diocese — do not publish unverified]"
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "price": 3,
-              "tags": ["dega 24 val."]
+              "times": [
+                "10:00 - 14:00"
+              ]
             },
             {
-              "title": {
-                "lt": "Velykinė žvakė",
-                "en": "Paschal candle",
-                "ru": "Paschal candle [TODO: verify with parish/diocese — do not publish unverified]"
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
               },
-              "price": 10,
-              "tags": ["dega 48 val."]
+              "times": [
+                "closed"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/services",
+      "title": {
+        "lt": "Paslaugos",
+        "en": "Paslaugos",
+        "ru": "Paslaugos [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Vilniaus Šv. Apaštalų Petro ir Povilo Graikų Katalikų Bažnyčia",
+            "en": "Vilnius Greek Catholic Church of Sts. Peter and Paul",
+            "ru": "Vilnius Greek Catholic Church of Sts. Peter and Paul [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "subheading": {
+            "lt": "Bizantijos apeigų bendruomenė, vienybėje su Roma nuo 1991 m.",
+            "en": "A Byzantine-rite community in communion with Rome since 1991",
+            "ru": "A Byzantine-rite community in communion with Rome since 1991 [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Ukrainian Greek Catholic Church in communion with Rome · Est. 1991",
+            "en": "Ukrainian Greek Catholic Church in communion with Rome · Est. 1991"
+          }
+        },
+        {
+          "type": "sacramentList",
+          "heading": {
+            "lt": "Sakramentai",
+            "en": "Sakramentai",
+            "ru": "Sakramentai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "sacraments": [
+            {
+              "name": {
+                "lt": "Krikštas",
+                "en": "Krikštas",
+                "ru": "Krikštas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Krikšto sakramentas",
+                "en": "Krikšto sakramentas",
+                "ru": "Krikšto sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "name": {
+                "lt": "Pirmoji Komunija",
+                "en": "Pirmoji Komunija",
+                "ru": "Pirmoji Komunija [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Eucharistijos sakramentas",
+                "en": "Eucharistijos sakramentas",
+                "ru": "Eucharistijos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "name": {
+                "lt": "Sutvirtinimas",
+                "en": "Sutvirtinimas",
+                "ru": "Sutvirtinimas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Sutvirtinimo sakramentas",
+                "en": "Sutvirtinimo sakramentas",
+                "ru": "Sutvirtinimo sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "name": {
+                "lt": "Santuoka",
+                "en": "Santuoka",
+                "ru": "Santuoka [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Santuokos sakramentas",
+                "en": "Santuokos sakramentas",
+                "ru": "Santuokos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "name": {
+                "lt": "Išpažintis",
+                "en": "Išpažintis",
+                "ru": "Išpažintis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Atgailos sakramentas",
+                "en": "Atgailos sakramentas",
+                "ru": "Atgailos sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "name": {
+                "lt": "Ligonių patepimas",
+                "en": "Ligonių patepimas",
+                "ru": "Ligonių patepimas [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "description": {
+                "lt": "Ligonių patepimo sakramentas",
+                "en": "Ligonių patepimo sakramentas",
+                "ru": "Ligonių patepimo sakramentas [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        },
+        {
+          "type": "faq",
+          "heading": {
+            "lt": "Dažni klausimai",
+            "en": "Dažni klausimai",
+            "ru": "Dažni klausimai [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "questions": [
+            {
+              "question": {
+                "lt": "Kaip užsakyti paslaugą?",
+                "en": "Kaip užsakyti paslaugą?",
+                "ru": "Kaip užsakyti paslaugą? [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "answer": {
+                "lt": "Kreipkitės į biurą telefonu arba el. paštu.",
+                "en": "Kreipkitės į biurą telefonu arba el. paštu.",
+                "ru": "Kreipkitės į biurą telefonu arba el. paštu. [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            },
+            {
+              "question": {
+                "lt": "Ar reikalinga išankstinė registracija?",
+                "en": "Ar reikalinga išankstinė registracija?",
+                "ru": "Ar reikalinga išankstinė registracija? [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "answer": {
+                "lt": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                "en": "Kai kurioms paslaugoms reikalinga išankstinė registracija.",
+                "ru": "Kai kurioms paslaugoms reikalinga išankstinė registracija. [TODO: verify with parish/diocese — do not publish unverified]"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/schedule",
+      "title": {
+        "lt": "Tvarkaraštis",
+        "en": "Tvarkaraštis",
+        "ru": "Tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+      },
+      "contentBlocks": [
+        {
+          "type": "hero",
+          "heading": {
+            "lt": "Vilniaus Šv. Apaštalų Petro ir Povilo Graikų Katalikų Bažnyčia",
+            "en": "Vilnius Greek Catholic Church of Sts. Peter and Paul",
+            "ru": "Vilnius Greek Catholic Church of Sts. Peter and Paul [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "subheading": {
+            "lt": "Bizantijos apeigų bendruomenė, vienybėje su Roma nuo 1991 m.",
+            "en": "A Byzantine-rite community in communion with Rome since 1991",
+            "ru": "A Byzantine-rite community in communion with Rome since 1991 [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "body": {
+            "lt": "Ukrainian Greek Catholic Church in communion with Rome · Est. 1991",
+            "en": "Ukrainian Greek Catholic Church in communion with Rome · Est. 1991"
+          }
+        },
+        {
+          "type": "massSchedule",
+          "heading": {
+            "lt": "Šv. Mišių tvarkaraštis",
+            "en": "Šv. Mišių tvarkaraštis",
+            "ru": "Šv. Mišių tvarkaraštis [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "masses": [
+            {
+              "day": {
+                "lt": "Pirmadienis - Penktadienis",
+                "en": "Pirmadienis - Penktadienis",
+                "ru": "Pirmadienis - Penktadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "07:30",
+              "rrule": "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+            },
+            {
+              "day": {
+                "lt": "Šeštadienis",
+                "en": "Šeštadienis",
+                "ru": "Šeštadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "09:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SA"
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "09:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SU"
+            },
+            {
+              "day": {
+                "lt": "Sekmadienis",
+                "en": "Sekmadienis",
+                "ru": "Sekmadienis [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "time": "11:00",
+              "rrule": "FREQ=WEEKLY;BYDAY=SU"
+            }
+          ]
+        },
+        {
+          "type": "gallery",
+          "heading": {
+            "lt": "Galerija",
+            "en": "Galerija",
+            "ru": "Galerija [TODO: verify with parish/diocese — do not publish unverified]"
+          },
+          "images": [
+            {
+              "src": "/media/placeholder-1.jpg",
+              "alt": {
+                "lt": "Nuotrauka",
+                "en": "Nuotrauka",
+                "ru": "Nuotrauka [TODO: verify with parish/diocese — do not publish unverified]"
+              },
+              "width": 800,
+              "height": 600
             }
           ]
         }

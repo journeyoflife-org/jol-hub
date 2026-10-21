@@ -12,7 +12,8 @@
  * (`border-vertical-parish`, `bg-vertical-basilica`, ...) — no hex values
  * exist outside `tokens/`.
  */
-import { colorScales, liturgicalClassic, verticalAccents } from './colors';
+import { colorScales, liturgicalClassic, localeAccents, verticalAccents } from './colors';
+import type { LocaleAccentRef } from './colors';
 import { fontFamilies, fontSizes, fontWeights, letterSpacings } from './typography';
 import { spacingScale, spacingSemantic } from './spacing';
 import { breakpoints } from './breakpoints';
@@ -39,6 +40,29 @@ export function themeColorExtension(ref: ThemeRef) {
   };
 }
 
+/**
+ * Locale-accent CSS custom property fragment.
+ *
+ * Returns CSS variable declarations for the tenant's locale accent palette.
+ * The denomination profile provides primary/secondary/accent via
+ * `themeColorExtension()`; locale accents are a SEPARATE overlay applied
+ * by the template when the tenant opts in via TenantIdentity.localeAccent.
+ *
+ * Returns an empty object if no ref is provided or the ref is unknown —
+ * the no-locale-accent case is the default and produces zero CSS output.
+ */
+export function localeAccentExtension(
+  ref?: string
+): Record<string, string> {
+  if (!ref || !(ref in localeAccents)) return {};
+  const palette = localeAccents[ref as LocaleAccentRef];
+  return {
+    '--locale-primary': palette.primary,
+    '--locale-secondary': palette.secondary,
+    '--locale-accent': palette.accent,
+  };
+}
+
 export const jolThemeExtension = {
   screens: { ...breakpoints },
   colors: {
@@ -55,6 +79,7 @@ export const jolThemeExtension = {
       wood: colorScales.wood,
     },
     vertical: { ...verticalAccents },
+    locale: { ...localeAccents },
   },
   fontFamily: {
     sans: [fontFamilies.sans],
